@@ -48,6 +48,46 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    registerInterchainAccount(value: MsgRegisterInterchainAccount) {
+      return {
+        typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccount",
+        value: MsgRegisterInterchainAccount.toJSON(value)
+      };
+    },
+    sendTx(value: MsgSendTx) {
+      return {
+        typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTx",
+        value: MsgSendTx.toJSON(value)
+      };
+    },
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParams",
+        value: MsgUpdateParams.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    registerInterchainAccount(value: any) {
+      return {
+        typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccount",
+        value: MsgRegisterInterchainAccount.fromJSON(value)
+      };
+    },
+    sendTx(value: any) {
+      return {
+        typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTx",
+        value: MsgSendTx.fromJSON(value)
+      };
+    },
+    updateParams(value: any) {
+      return {
+        typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParams",
+        value: MsgUpdateParams.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     registerInterchainAccount(value: MsgRegisterInterchainAccount) {
       return {

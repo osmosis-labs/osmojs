@@ -84,6 +84,82 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    createPosition(value: MsgCreatePosition) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreatePosition",
+        value: MsgCreatePosition.toJSON(value)
+      };
+    },
+    withdrawPosition(value: MsgWithdrawPosition) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPosition",
+        value: MsgWithdrawPosition.toJSON(value)
+      };
+    },
+    addToPosition(value: MsgAddToPosition) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgAddToPosition",
+        value: MsgAddToPosition.toJSON(value)
+      };
+    },
+    collectSpreadRewards(value: MsgCollectSpreadRewards) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectSpreadRewards",
+        value: MsgCollectSpreadRewards.toJSON(value)
+      };
+    },
+    collectIncentives(value: MsgCollectIncentives) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives",
+        value: MsgCollectIncentives.toJSON(value)
+      };
+    },
+    transferPositions(value: MsgTransferPositions) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgTransferPositions",
+        value: MsgTransferPositions.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    createPosition(value: any) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreatePosition",
+        value: MsgCreatePosition.fromJSON(value)
+      };
+    },
+    withdrawPosition(value: any) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPosition",
+        value: MsgWithdrawPosition.fromJSON(value)
+      };
+    },
+    addToPosition(value: any) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgAddToPosition",
+        value: MsgAddToPosition.fromJSON(value)
+      };
+    },
+    collectSpreadRewards(value: any) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectSpreadRewards",
+        value: MsgCollectSpreadRewards.fromJSON(value)
+      };
+    },
+    collectIncentives(value: any) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives",
+        value: MsgCollectIncentives.fromJSON(value)
+      };
+    },
+    transferPositions(value: any) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgTransferPositions",
+        value: MsgTransferPositions.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createPosition(value: MsgCreatePosition) {
       return {

@@ -1,5 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { Decimal } from "@cosmjs/math";
 /** ===================== MsgCreatePosition */
 export interface MsgCreatePosition {
@@ -400,6 +402,16 @@ function createBaseMsgCreatePosition(): MsgCreatePosition {
 }
 export const MsgCreatePosition = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreatePosition",
+  aminoType: "osmosis/cl-create-position",
+  is(o: any): o is MsgCreatePosition {
+    return o && (o.$typeUrl === MsgCreatePosition.typeUrl || typeof o.poolId === "bigint" && typeof o.sender === "string" && typeof o.lowerTick === "bigint" && typeof o.upperTick === "bigint" && Array.isArray(o.tokensProvided) && (!o.tokensProvided.length || Coin.is(o.tokensProvided[0])) && typeof o.tokenMinAmount0 === "string" && typeof o.tokenMinAmount1 === "string");
+  },
+  isSDK(o: any): o is MsgCreatePositionSDKType {
+    return o && (o.$typeUrl === MsgCreatePosition.typeUrl || typeof o.pool_id === "bigint" && typeof o.sender === "string" && typeof o.lower_tick === "bigint" && typeof o.upper_tick === "bigint" && Array.isArray(o.tokens_provided) && (!o.tokens_provided.length || Coin.isSDK(o.tokens_provided[0])) && typeof o.token_min_amount0 === "string" && typeof o.token_min_amount1 === "string");
+  },
+  isAmino(o: any): o is MsgCreatePositionAmino {
+    return o && (o.$typeUrl === MsgCreatePosition.typeUrl || typeof o.pool_id === "bigint" && typeof o.sender === "string" && typeof o.lower_tick === "bigint" && typeof o.upper_tick === "bigint" && Array.isArray(o.tokens_provided) && (!o.tokens_provided.length || Coin.isAmino(o.tokens_provided[0])) && typeof o.token_min_amount0 === "string" && typeof o.token_min_amount1 === "string");
+  },
   encode(message: MsgCreatePosition, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -458,6 +470,32 @@ export const MsgCreatePosition = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCreatePosition {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      lowerTick: isSet(object.lowerTick) ? BigInt(object.lowerTick.toString()) : BigInt(0),
+      upperTick: isSet(object.upperTick) ? BigInt(object.upperTick.toString()) : BigInt(0),
+      tokensProvided: Array.isArray(object?.tokensProvided) ? object.tokensProvided.map((e: any) => Coin.fromJSON(e)) : [],
+      tokenMinAmount0: isSet(object.tokenMinAmount0) ? String(object.tokenMinAmount0) : "",
+      tokenMinAmount1: isSet(object.tokenMinAmount1) ? String(object.tokenMinAmount1) : ""
+    };
+  },
+  toJSON(message: MsgCreatePosition): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.lowerTick !== undefined && (obj.lowerTick = (message.lowerTick || BigInt(0)).toString());
+    message.upperTick !== undefined && (obj.upperTick = (message.upperTick || BigInt(0)).toString());
+    if (message.tokensProvided) {
+      obj.tokensProvided = message.tokensProvided.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.tokensProvided = [];
+    }
+    message.tokenMinAmount0 !== undefined && (obj.tokenMinAmount0 = message.tokenMinAmount0);
+    message.tokenMinAmount1 !== undefined && (obj.tokenMinAmount1 = message.tokenMinAmount1);
+    return obj;
   },
   fromPartial(object: Partial<MsgCreatePosition>): MsgCreatePosition {
     const message = createBaseMsgCreatePosition();
@@ -530,6 +568,8 @@ export const MsgCreatePosition = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreatePosition.typeUrl, MsgCreatePosition);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreatePosition.aminoType, MsgCreatePosition.typeUrl);
 function createBaseMsgCreatePositionResponse(): MsgCreatePositionResponse {
   return {
     positionId: BigInt(0),
@@ -542,6 +582,16 @@ function createBaseMsgCreatePositionResponse(): MsgCreatePositionResponse {
 }
 export const MsgCreatePositionResponse = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCreatePositionResponse",
+  aminoType: "osmosis/concentratedliquidity/create-position-response",
+  is(o: any): o is MsgCreatePositionResponse {
+    return o && (o.$typeUrl === MsgCreatePositionResponse.typeUrl || typeof o.positionId === "bigint" && typeof o.amount0 === "string" && typeof o.amount1 === "string" && typeof o.liquidityCreated === "string" && typeof o.lowerTick === "bigint" && typeof o.upperTick === "bigint");
+  },
+  isSDK(o: any): o is MsgCreatePositionResponseSDKType {
+    return o && (o.$typeUrl === MsgCreatePositionResponse.typeUrl || typeof o.position_id === "bigint" && typeof o.amount0 === "string" && typeof o.amount1 === "string" && typeof o.liquidity_created === "string" && typeof o.lower_tick === "bigint" && typeof o.upper_tick === "bigint");
+  },
+  isAmino(o: any): o is MsgCreatePositionResponseAmino {
+    return o && (o.$typeUrl === MsgCreatePositionResponse.typeUrl || typeof o.position_id === "bigint" && typeof o.amount0 === "string" && typeof o.amount1 === "string" && typeof o.liquidity_created === "string" && typeof o.lower_tick === "bigint" && typeof o.upper_tick === "bigint");
+  },
   encode(message: MsgCreatePositionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.positionId !== BigInt(0)) {
       writer.uint32(8).uint64(message.positionId);
@@ -594,6 +644,26 @@ export const MsgCreatePositionResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCreatePositionResponse {
+    return {
+      positionId: isSet(object.positionId) ? BigInt(object.positionId.toString()) : BigInt(0),
+      amount0: isSet(object.amount0) ? String(object.amount0) : "",
+      amount1: isSet(object.amount1) ? String(object.amount1) : "",
+      liquidityCreated: isSet(object.liquidityCreated) ? String(object.liquidityCreated) : "",
+      lowerTick: isSet(object.lowerTick) ? BigInt(object.lowerTick.toString()) : BigInt(0),
+      upperTick: isSet(object.upperTick) ? BigInt(object.upperTick.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgCreatePositionResponse): unknown {
+    const obj: any = {};
+    message.positionId !== undefined && (obj.positionId = (message.positionId || BigInt(0)).toString());
+    message.amount0 !== undefined && (obj.amount0 = message.amount0);
+    message.amount1 !== undefined && (obj.amount1 = message.amount1);
+    message.liquidityCreated !== undefined && (obj.liquidityCreated = message.liquidityCreated);
+    message.lowerTick !== undefined && (obj.lowerTick = (message.lowerTick || BigInt(0)).toString());
+    message.upperTick !== undefined && (obj.upperTick = (message.upperTick || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgCreatePositionResponse>): MsgCreatePositionResponse {
     const message = createBaseMsgCreatePositionResponse();
@@ -659,6 +729,8 @@ export const MsgCreatePositionResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreatePositionResponse.typeUrl, MsgCreatePositionResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreatePositionResponse.aminoType, MsgCreatePositionResponse.typeUrl);
 function createBaseMsgAddToPosition(): MsgAddToPosition {
   return {
     positionId: BigInt(0),
@@ -671,6 +743,16 @@ function createBaseMsgAddToPosition(): MsgAddToPosition {
 }
 export const MsgAddToPosition = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgAddToPosition",
+  aminoType: "osmosis/cl-add-to-position",
+  is(o: any): o is MsgAddToPosition {
+    return o && (o.$typeUrl === MsgAddToPosition.typeUrl || typeof o.positionId === "bigint" && typeof o.sender === "string" && typeof o.amount0 === "string" && typeof o.amount1 === "string" && typeof o.tokenMinAmount0 === "string" && typeof o.tokenMinAmount1 === "string");
+  },
+  isSDK(o: any): o is MsgAddToPositionSDKType {
+    return o && (o.$typeUrl === MsgAddToPosition.typeUrl || typeof o.position_id === "bigint" && typeof o.sender === "string" && typeof o.amount0 === "string" && typeof o.amount1 === "string" && typeof o.token_min_amount0 === "string" && typeof o.token_min_amount1 === "string");
+  },
+  isAmino(o: any): o is MsgAddToPositionAmino {
+    return o && (o.$typeUrl === MsgAddToPosition.typeUrl || typeof o.position_id === "bigint" && typeof o.sender === "string" && typeof o.amount0 === "string" && typeof o.amount1 === "string" && typeof o.token_min_amount0 === "string" && typeof o.token_min_amount1 === "string");
+  },
   encode(message: MsgAddToPosition, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.positionId !== BigInt(0)) {
       writer.uint32(8).uint64(message.positionId);
@@ -723,6 +805,26 @@ export const MsgAddToPosition = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgAddToPosition {
+    return {
+      positionId: isSet(object.positionId) ? BigInt(object.positionId.toString()) : BigInt(0),
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      amount0: isSet(object.amount0) ? String(object.amount0) : "",
+      amount1: isSet(object.amount1) ? String(object.amount1) : "",
+      tokenMinAmount0: isSet(object.tokenMinAmount0) ? String(object.tokenMinAmount0) : "",
+      tokenMinAmount1: isSet(object.tokenMinAmount1) ? String(object.tokenMinAmount1) : ""
+    };
+  },
+  toJSON(message: MsgAddToPosition): unknown {
+    const obj: any = {};
+    message.positionId !== undefined && (obj.positionId = (message.positionId || BigInt(0)).toString());
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.amount0 !== undefined && (obj.amount0 = message.amount0);
+    message.amount1 !== undefined && (obj.amount1 = message.amount1);
+    message.tokenMinAmount0 !== undefined && (obj.tokenMinAmount0 = message.tokenMinAmount0);
+    message.tokenMinAmount1 !== undefined && (obj.tokenMinAmount1 = message.tokenMinAmount1);
+    return obj;
   },
   fromPartial(object: Partial<MsgAddToPosition>): MsgAddToPosition {
     const message = createBaseMsgAddToPosition();
@@ -788,6 +890,8 @@ export const MsgAddToPosition = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgAddToPosition.typeUrl, MsgAddToPosition);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgAddToPosition.aminoType, MsgAddToPosition.typeUrl);
 function createBaseMsgAddToPositionResponse(): MsgAddToPositionResponse {
   return {
     positionId: BigInt(0),
@@ -797,6 +901,16 @@ function createBaseMsgAddToPositionResponse(): MsgAddToPositionResponse {
 }
 export const MsgAddToPositionResponse = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgAddToPositionResponse",
+  aminoType: "osmosis/concentratedliquidity/add-to-position-response",
+  is(o: any): o is MsgAddToPositionResponse {
+    return o && (o.$typeUrl === MsgAddToPositionResponse.typeUrl || typeof o.positionId === "bigint" && typeof o.amount0 === "string" && typeof o.amount1 === "string");
+  },
+  isSDK(o: any): o is MsgAddToPositionResponseSDKType {
+    return o && (o.$typeUrl === MsgAddToPositionResponse.typeUrl || typeof o.position_id === "bigint" && typeof o.amount0 === "string" && typeof o.amount1 === "string");
+  },
+  isAmino(o: any): o is MsgAddToPositionResponseAmino {
+    return o && (o.$typeUrl === MsgAddToPositionResponse.typeUrl || typeof o.position_id === "bigint" && typeof o.amount0 === "string" && typeof o.amount1 === "string");
+  },
   encode(message: MsgAddToPositionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.positionId !== BigInt(0)) {
       writer.uint32(8).uint64(message.positionId);
@@ -831,6 +945,20 @@ export const MsgAddToPositionResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgAddToPositionResponse {
+    return {
+      positionId: isSet(object.positionId) ? BigInt(object.positionId.toString()) : BigInt(0),
+      amount0: isSet(object.amount0) ? String(object.amount0) : "",
+      amount1: isSet(object.amount1) ? String(object.amount1) : ""
+    };
+  },
+  toJSON(message: MsgAddToPositionResponse): unknown {
+    const obj: any = {};
+    message.positionId !== undefined && (obj.positionId = (message.positionId || BigInt(0)).toString());
+    message.amount0 !== undefined && (obj.amount0 = message.amount0);
+    message.amount1 !== undefined && (obj.amount1 = message.amount1);
+    return obj;
   },
   fromPartial(object: Partial<MsgAddToPositionResponse>): MsgAddToPositionResponse {
     const message = createBaseMsgAddToPositionResponse();
@@ -881,6 +1009,8 @@ export const MsgAddToPositionResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgAddToPositionResponse.typeUrl, MsgAddToPositionResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgAddToPositionResponse.aminoType, MsgAddToPositionResponse.typeUrl);
 function createBaseMsgWithdrawPosition(): MsgWithdrawPosition {
   return {
     positionId: BigInt(0),
@@ -890,6 +1020,16 @@ function createBaseMsgWithdrawPosition(): MsgWithdrawPosition {
 }
 export const MsgWithdrawPosition = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPosition",
+  aminoType: "osmosis/cl-withdraw-position",
+  is(o: any): o is MsgWithdrawPosition {
+    return o && (o.$typeUrl === MsgWithdrawPosition.typeUrl || typeof o.positionId === "bigint" && typeof o.sender === "string" && typeof o.liquidityAmount === "string");
+  },
+  isSDK(o: any): o is MsgWithdrawPositionSDKType {
+    return o && (o.$typeUrl === MsgWithdrawPosition.typeUrl || typeof o.position_id === "bigint" && typeof o.sender === "string" && typeof o.liquidity_amount === "string");
+  },
+  isAmino(o: any): o is MsgWithdrawPositionAmino {
+    return o && (o.$typeUrl === MsgWithdrawPosition.typeUrl || typeof o.position_id === "bigint" && typeof o.sender === "string" && typeof o.liquidity_amount === "string");
+  },
   encode(message: MsgWithdrawPosition, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.positionId !== BigInt(0)) {
       writer.uint32(8).uint64(message.positionId);
@@ -924,6 +1064,20 @@ export const MsgWithdrawPosition = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgWithdrawPosition {
+    return {
+      positionId: isSet(object.positionId) ? BigInt(object.positionId.toString()) : BigInt(0),
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      liquidityAmount: isSet(object.liquidityAmount) ? String(object.liquidityAmount) : ""
+    };
+  },
+  toJSON(message: MsgWithdrawPosition): unknown {
+    const obj: any = {};
+    message.positionId !== undefined && (obj.positionId = (message.positionId || BigInt(0)).toString());
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.liquidityAmount !== undefined && (obj.liquidityAmount = message.liquidityAmount);
+    return obj;
   },
   fromPartial(object: Partial<MsgWithdrawPosition>): MsgWithdrawPosition {
     const message = createBaseMsgWithdrawPosition();
@@ -974,6 +1128,8 @@ export const MsgWithdrawPosition = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgWithdrawPosition.typeUrl, MsgWithdrawPosition);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgWithdrawPosition.aminoType, MsgWithdrawPosition.typeUrl);
 function createBaseMsgWithdrawPositionResponse(): MsgWithdrawPositionResponse {
   return {
     amount0: "",
@@ -982,6 +1138,16 @@ function createBaseMsgWithdrawPositionResponse(): MsgWithdrawPositionResponse {
 }
 export const MsgWithdrawPositionResponse = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgWithdrawPositionResponse",
+  aminoType: "osmosis/concentratedliquidity/withdraw-position-response",
+  is(o: any): o is MsgWithdrawPositionResponse {
+    return o && (o.$typeUrl === MsgWithdrawPositionResponse.typeUrl || typeof o.amount0 === "string" && typeof o.amount1 === "string");
+  },
+  isSDK(o: any): o is MsgWithdrawPositionResponseSDKType {
+    return o && (o.$typeUrl === MsgWithdrawPositionResponse.typeUrl || typeof o.amount0 === "string" && typeof o.amount1 === "string");
+  },
+  isAmino(o: any): o is MsgWithdrawPositionResponseAmino {
+    return o && (o.$typeUrl === MsgWithdrawPositionResponse.typeUrl || typeof o.amount0 === "string" && typeof o.amount1 === "string");
+  },
   encode(message: MsgWithdrawPositionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.amount0 !== "") {
       writer.uint32(10).string(message.amount0);
@@ -1010,6 +1176,18 @@ export const MsgWithdrawPositionResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgWithdrawPositionResponse {
+    return {
+      amount0: isSet(object.amount0) ? String(object.amount0) : "",
+      amount1: isSet(object.amount1) ? String(object.amount1) : ""
+    };
+  },
+  toJSON(message: MsgWithdrawPositionResponse): unknown {
+    const obj: any = {};
+    message.amount0 !== undefined && (obj.amount0 = message.amount0);
+    message.amount1 !== undefined && (obj.amount1 = message.amount1);
+    return obj;
   },
   fromPartial(object: Partial<MsgWithdrawPositionResponse>): MsgWithdrawPositionResponse {
     const message = createBaseMsgWithdrawPositionResponse();
@@ -1055,6 +1233,8 @@ export const MsgWithdrawPositionResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgWithdrawPositionResponse.typeUrl, MsgWithdrawPositionResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgWithdrawPositionResponse.aminoType, MsgWithdrawPositionResponse.typeUrl);
 function createBaseMsgCollectSpreadRewards(): MsgCollectSpreadRewards {
   return {
     positionIds: [],
@@ -1063,6 +1243,16 @@ function createBaseMsgCollectSpreadRewards(): MsgCollectSpreadRewards {
 }
 export const MsgCollectSpreadRewards = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectSpreadRewards",
+  aminoType: "osmosis/cl-col-sp-rewards",
+  is(o: any): o is MsgCollectSpreadRewards {
+    return o && (o.$typeUrl === MsgCollectSpreadRewards.typeUrl || Array.isArray(o.positionIds) && (!o.positionIds.length || typeof o.positionIds[0] === "bigint") && typeof o.sender === "string");
+  },
+  isSDK(o: any): o is MsgCollectSpreadRewardsSDKType {
+    return o && (o.$typeUrl === MsgCollectSpreadRewards.typeUrl || Array.isArray(o.position_ids) && (!o.position_ids.length || typeof o.position_ids[0] === "bigint") && typeof o.sender === "string");
+  },
+  isAmino(o: any): o is MsgCollectSpreadRewardsAmino {
+    return o && (o.$typeUrl === MsgCollectSpreadRewards.typeUrl || Array.isArray(o.position_ids) && (!o.position_ids.length || typeof o.position_ids[0] === "bigint") && typeof o.sender === "string");
+  },
   encode(message: MsgCollectSpreadRewards, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.positionIds) {
@@ -1100,6 +1290,22 @@ export const MsgCollectSpreadRewards = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCollectSpreadRewards {
+    return {
+      positionIds: Array.isArray(object?.positionIds) ? object.positionIds.map((e: any) => BigInt(e.toString())) : [],
+      sender: isSet(object.sender) ? String(object.sender) : ""
+    };
+  },
+  toJSON(message: MsgCollectSpreadRewards): unknown {
+    const obj: any = {};
+    if (message.positionIds) {
+      obj.positionIds = message.positionIds.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.positionIds = [];
+    }
+    message.sender !== undefined && (obj.sender = message.sender);
+    return obj;
   },
   fromPartial(object: Partial<MsgCollectSpreadRewards>): MsgCollectSpreadRewards {
     const message = createBaseMsgCollectSpreadRewards();
@@ -1147,6 +1353,8 @@ export const MsgCollectSpreadRewards = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCollectSpreadRewards.typeUrl, MsgCollectSpreadRewards);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCollectSpreadRewards.aminoType, MsgCollectSpreadRewards.typeUrl);
 function createBaseMsgCollectSpreadRewardsResponse(): MsgCollectSpreadRewardsResponse {
   return {
     collectedSpreadRewards: []
@@ -1154,6 +1362,16 @@ function createBaseMsgCollectSpreadRewardsResponse(): MsgCollectSpreadRewardsRes
 }
 export const MsgCollectSpreadRewardsResponse = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectSpreadRewardsResponse",
+  aminoType: "osmosis/concentratedliquidity/collect-spread-rewards-response",
+  is(o: any): o is MsgCollectSpreadRewardsResponse {
+    return o && (o.$typeUrl === MsgCollectSpreadRewardsResponse.typeUrl || Array.isArray(o.collectedSpreadRewards) && (!o.collectedSpreadRewards.length || Coin.is(o.collectedSpreadRewards[0])));
+  },
+  isSDK(o: any): o is MsgCollectSpreadRewardsResponseSDKType {
+    return o && (o.$typeUrl === MsgCollectSpreadRewardsResponse.typeUrl || Array.isArray(o.collected_spread_rewards) && (!o.collected_spread_rewards.length || Coin.isSDK(o.collected_spread_rewards[0])));
+  },
+  isAmino(o: any): o is MsgCollectSpreadRewardsResponseAmino {
+    return o && (o.$typeUrl === MsgCollectSpreadRewardsResponse.typeUrl || Array.isArray(o.collected_spread_rewards) && (!o.collected_spread_rewards.length || Coin.isAmino(o.collected_spread_rewards[0])));
+  },
   encode(message: MsgCollectSpreadRewardsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.collectedSpreadRewards) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1176,6 +1394,20 @@ export const MsgCollectSpreadRewardsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCollectSpreadRewardsResponse {
+    return {
+      collectedSpreadRewards: Array.isArray(object?.collectedSpreadRewards) ? object.collectedSpreadRewards.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgCollectSpreadRewardsResponse): unknown {
+    const obj: any = {};
+    if (message.collectedSpreadRewards) {
+      obj.collectedSpreadRewards = message.collectedSpreadRewards.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.collectedSpreadRewards = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<MsgCollectSpreadRewardsResponse>): MsgCollectSpreadRewardsResponse {
     const message = createBaseMsgCollectSpreadRewardsResponse();
@@ -1218,6 +1450,8 @@ export const MsgCollectSpreadRewardsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCollectSpreadRewardsResponse.typeUrl, MsgCollectSpreadRewardsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCollectSpreadRewardsResponse.aminoType, MsgCollectSpreadRewardsResponse.typeUrl);
 function createBaseMsgCollectIncentives(): MsgCollectIncentives {
   return {
     positionIds: [],
@@ -1226,6 +1460,16 @@ function createBaseMsgCollectIncentives(): MsgCollectIncentives {
 }
 export const MsgCollectIncentives = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentives",
+  aminoType: "osmosis/cl-collect-incentives",
+  is(o: any): o is MsgCollectIncentives {
+    return o && (o.$typeUrl === MsgCollectIncentives.typeUrl || Array.isArray(o.positionIds) && (!o.positionIds.length || typeof o.positionIds[0] === "bigint") && typeof o.sender === "string");
+  },
+  isSDK(o: any): o is MsgCollectIncentivesSDKType {
+    return o && (o.$typeUrl === MsgCollectIncentives.typeUrl || Array.isArray(o.position_ids) && (!o.position_ids.length || typeof o.position_ids[0] === "bigint") && typeof o.sender === "string");
+  },
+  isAmino(o: any): o is MsgCollectIncentivesAmino {
+    return o && (o.$typeUrl === MsgCollectIncentives.typeUrl || Array.isArray(o.position_ids) && (!o.position_ids.length || typeof o.position_ids[0] === "bigint") && typeof o.sender === "string");
+  },
   encode(message: MsgCollectIncentives, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.positionIds) {
@@ -1263,6 +1507,22 @@ export const MsgCollectIncentives = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCollectIncentives {
+    return {
+      positionIds: Array.isArray(object?.positionIds) ? object.positionIds.map((e: any) => BigInt(e.toString())) : [],
+      sender: isSet(object.sender) ? String(object.sender) : ""
+    };
+  },
+  toJSON(message: MsgCollectIncentives): unknown {
+    const obj: any = {};
+    if (message.positionIds) {
+      obj.positionIds = message.positionIds.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.positionIds = [];
+    }
+    message.sender !== undefined && (obj.sender = message.sender);
+    return obj;
   },
   fromPartial(object: Partial<MsgCollectIncentives>): MsgCollectIncentives {
     const message = createBaseMsgCollectIncentives();
@@ -1310,6 +1570,8 @@ export const MsgCollectIncentives = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCollectIncentives.typeUrl, MsgCollectIncentives);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCollectIncentives.aminoType, MsgCollectIncentives.typeUrl);
 function createBaseMsgCollectIncentivesResponse(): MsgCollectIncentivesResponse {
   return {
     collectedIncentives: [],
@@ -1318,6 +1580,16 @@ function createBaseMsgCollectIncentivesResponse(): MsgCollectIncentivesResponse 
 }
 export const MsgCollectIncentivesResponse = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgCollectIncentivesResponse",
+  aminoType: "osmosis/concentratedliquidity/collect-incentives-response",
+  is(o: any): o is MsgCollectIncentivesResponse {
+    return o && (o.$typeUrl === MsgCollectIncentivesResponse.typeUrl || Array.isArray(o.collectedIncentives) && (!o.collectedIncentives.length || Coin.is(o.collectedIncentives[0])) && Array.isArray(o.forfeitedIncentives) && (!o.forfeitedIncentives.length || Coin.is(o.forfeitedIncentives[0])));
+  },
+  isSDK(o: any): o is MsgCollectIncentivesResponseSDKType {
+    return o && (o.$typeUrl === MsgCollectIncentivesResponse.typeUrl || Array.isArray(o.collected_incentives) && (!o.collected_incentives.length || Coin.isSDK(o.collected_incentives[0])) && Array.isArray(o.forfeited_incentives) && (!o.forfeited_incentives.length || Coin.isSDK(o.forfeited_incentives[0])));
+  },
+  isAmino(o: any): o is MsgCollectIncentivesResponseAmino {
+    return o && (o.$typeUrl === MsgCollectIncentivesResponse.typeUrl || Array.isArray(o.collected_incentives) && (!o.collected_incentives.length || Coin.isAmino(o.collected_incentives[0])) && Array.isArray(o.forfeited_incentives) && (!o.forfeited_incentives.length || Coin.isAmino(o.forfeited_incentives[0])));
+  },
   encode(message: MsgCollectIncentivesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.collectedIncentives) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1346,6 +1618,26 @@ export const MsgCollectIncentivesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCollectIncentivesResponse {
+    return {
+      collectedIncentives: Array.isArray(object?.collectedIncentives) ? object.collectedIncentives.map((e: any) => Coin.fromJSON(e)) : [],
+      forfeitedIncentives: Array.isArray(object?.forfeitedIncentives) ? object.forfeitedIncentives.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgCollectIncentivesResponse): unknown {
+    const obj: any = {};
+    if (message.collectedIncentives) {
+      obj.collectedIncentives = message.collectedIncentives.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.collectedIncentives = [];
+    }
+    if (message.forfeitedIncentives) {
+      obj.forfeitedIncentives = message.forfeitedIncentives.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.forfeitedIncentives = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<MsgCollectIncentivesResponse>): MsgCollectIncentivesResponse {
     const message = createBaseMsgCollectIncentivesResponse();
@@ -1395,6 +1687,8 @@ export const MsgCollectIncentivesResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCollectIncentivesResponse.typeUrl, MsgCollectIncentivesResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCollectIncentivesResponse.aminoType, MsgCollectIncentivesResponse.typeUrl);
 function createBaseMsgFungifyChargedPositions(): MsgFungifyChargedPositions {
   return {
     positionIds: [],
@@ -1403,6 +1697,16 @@ function createBaseMsgFungifyChargedPositions(): MsgFungifyChargedPositions {
 }
 export const MsgFungifyChargedPositions = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositions",
+  aminoType: "osmosis/cl-fungify-charged-positions",
+  is(o: any): o is MsgFungifyChargedPositions {
+    return o && (o.$typeUrl === MsgFungifyChargedPositions.typeUrl || Array.isArray(o.positionIds) && (!o.positionIds.length || typeof o.positionIds[0] === "bigint") && typeof o.sender === "string");
+  },
+  isSDK(o: any): o is MsgFungifyChargedPositionsSDKType {
+    return o && (o.$typeUrl === MsgFungifyChargedPositions.typeUrl || Array.isArray(o.position_ids) && (!o.position_ids.length || typeof o.position_ids[0] === "bigint") && typeof o.sender === "string");
+  },
+  isAmino(o: any): o is MsgFungifyChargedPositionsAmino {
+    return o && (o.$typeUrl === MsgFungifyChargedPositions.typeUrl || Array.isArray(o.position_ids) && (!o.position_ids.length || typeof o.position_ids[0] === "bigint") && typeof o.sender === "string");
+  },
   encode(message: MsgFungifyChargedPositions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.positionIds) {
@@ -1440,6 +1744,22 @@ export const MsgFungifyChargedPositions = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgFungifyChargedPositions {
+    return {
+      positionIds: Array.isArray(object?.positionIds) ? object.positionIds.map((e: any) => BigInt(e.toString())) : [],
+      sender: isSet(object.sender) ? String(object.sender) : ""
+    };
+  },
+  toJSON(message: MsgFungifyChargedPositions): unknown {
+    const obj: any = {};
+    if (message.positionIds) {
+      obj.positionIds = message.positionIds.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.positionIds = [];
+    }
+    message.sender !== undefined && (obj.sender = message.sender);
+    return obj;
   },
   fromPartial(object: Partial<MsgFungifyChargedPositions>): MsgFungifyChargedPositions {
     const message = createBaseMsgFungifyChargedPositions();
@@ -1487,6 +1807,8 @@ export const MsgFungifyChargedPositions = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgFungifyChargedPositions.typeUrl, MsgFungifyChargedPositions);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgFungifyChargedPositions.aminoType, MsgFungifyChargedPositions.typeUrl);
 function createBaseMsgFungifyChargedPositionsResponse(): MsgFungifyChargedPositionsResponse {
   return {
     newPositionId: BigInt(0)
@@ -1494,6 +1816,16 @@ function createBaseMsgFungifyChargedPositionsResponse(): MsgFungifyChargedPositi
 }
 export const MsgFungifyChargedPositionsResponse = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgFungifyChargedPositionsResponse",
+  aminoType: "osmosis/concentratedliquidity/fungify-charged-positions-response",
+  is(o: any): o is MsgFungifyChargedPositionsResponse {
+    return o && (o.$typeUrl === MsgFungifyChargedPositionsResponse.typeUrl || typeof o.newPositionId === "bigint");
+  },
+  isSDK(o: any): o is MsgFungifyChargedPositionsResponseSDKType {
+    return o && (o.$typeUrl === MsgFungifyChargedPositionsResponse.typeUrl || typeof o.new_position_id === "bigint");
+  },
+  isAmino(o: any): o is MsgFungifyChargedPositionsResponseAmino {
+    return o && (o.$typeUrl === MsgFungifyChargedPositionsResponse.typeUrl || typeof o.new_position_id === "bigint");
+  },
   encode(message: MsgFungifyChargedPositionsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.newPositionId !== BigInt(0)) {
       writer.uint32(8).uint64(message.newPositionId);
@@ -1516,6 +1848,16 @@ export const MsgFungifyChargedPositionsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgFungifyChargedPositionsResponse {
+    return {
+      newPositionId: isSet(object.newPositionId) ? BigInt(object.newPositionId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgFungifyChargedPositionsResponse): unknown {
+    const obj: any = {};
+    message.newPositionId !== undefined && (obj.newPositionId = (message.newPositionId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgFungifyChargedPositionsResponse>): MsgFungifyChargedPositionsResponse {
     const message = createBaseMsgFungifyChargedPositionsResponse();
@@ -1556,6 +1898,8 @@ export const MsgFungifyChargedPositionsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgFungifyChargedPositionsResponse.typeUrl, MsgFungifyChargedPositionsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgFungifyChargedPositionsResponse.aminoType, MsgFungifyChargedPositionsResponse.typeUrl);
 function createBaseMsgTransferPositions(): MsgTransferPositions {
   return {
     positionIds: [],
@@ -1565,6 +1909,16 @@ function createBaseMsgTransferPositions(): MsgTransferPositions {
 }
 export const MsgTransferPositions = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgTransferPositions",
+  aminoType: "osmosis/cl-transfer-positions",
+  is(o: any): o is MsgTransferPositions {
+    return o && (o.$typeUrl === MsgTransferPositions.typeUrl || Array.isArray(o.positionIds) && (!o.positionIds.length || typeof o.positionIds[0] === "bigint") && typeof o.sender === "string" && typeof o.newOwner === "string");
+  },
+  isSDK(o: any): o is MsgTransferPositionsSDKType {
+    return o && (o.$typeUrl === MsgTransferPositions.typeUrl || Array.isArray(o.position_ids) && (!o.position_ids.length || typeof o.position_ids[0] === "bigint") && typeof o.sender === "string" && typeof o.new_owner === "string");
+  },
+  isAmino(o: any): o is MsgTransferPositionsAmino {
+    return o && (o.$typeUrl === MsgTransferPositions.typeUrl || Array.isArray(o.position_ids) && (!o.position_ids.length || typeof o.position_ids[0] === "bigint") && typeof o.sender === "string" && typeof o.new_owner === "string");
+  },
   encode(message: MsgTransferPositions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.positionIds) {
@@ -1608,6 +1962,24 @@ export const MsgTransferPositions = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgTransferPositions {
+    return {
+      positionIds: Array.isArray(object?.positionIds) ? object.positionIds.map((e: any) => BigInt(e.toString())) : [],
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      newOwner: isSet(object.newOwner) ? String(object.newOwner) : ""
+    };
+  },
+  toJSON(message: MsgTransferPositions): unknown {
+    const obj: any = {};
+    if (message.positionIds) {
+      obj.positionIds = message.positionIds.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.positionIds = [];
+    }
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.newOwner !== undefined && (obj.newOwner = message.newOwner);
+    return obj;
   },
   fromPartial(object: Partial<MsgTransferPositions>): MsgTransferPositions {
     const message = createBaseMsgTransferPositions();
@@ -1660,11 +2032,23 @@ export const MsgTransferPositions = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgTransferPositions.typeUrl, MsgTransferPositions);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgTransferPositions.aminoType, MsgTransferPositions.typeUrl);
 function createBaseMsgTransferPositionsResponse(): MsgTransferPositionsResponse {
   return {};
 }
 export const MsgTransferPositionsResponse = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.MsgTransferPositionsResponse",
+  aminoType: "osmosis/concentratedliquidity/transfer-positions-response",
+  is(o: any): o is MsgTransferPositionsResponse {
+    return o && o.$typeUrl === MsgTransferPositionsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgTransferPositionsResponseSDKType {
+    return o && o.$typeUrl === MsgTransferPositionsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgTransferPositionsResponseAmino {
+    return o && o.$typeUrl === MsgTransferPositionsResponse.typeUrl;
+  },
   encode(_: MsgTransferPositionsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -1681,6 +2065,13 @@ export const MsgTransferPositionsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgTransferPositionsResponse {
+    return {};
+  },
+  toJSON(_: MsgTransferPositionsResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgTransferPositionsResponse>): MsgTransferPositionsResponse {
     const message = createBaseMsgTransferPositionsResponse();
@@ -1716,3 +2107,5 @@ export const MsgTransferPositionsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgTransferPositionsResponse.typeUrl, MsgTransferPositionsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgTransferPositionsResponse.aminoType, MsgTransferPositionsResponse.typeUrl);

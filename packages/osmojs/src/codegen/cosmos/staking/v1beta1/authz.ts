@@ -1,5 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
+import { isSet } from "../../../helpers";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * AuthorizationType defines the type of staking module authorization type
  * 
@@ -147,6 +149,16 @@ function createBaseStakeAuthorization(): StakeAuthorization {
 }
 export const StakeAuthorization = {
   typeUrl: "/cosmos.staking.v1beta1.StakeAuthorization",
+  aminoType: "cosmos-sdk/StakeAuthorization",
+  is(o: any): o is StakeAuthorization {
+    return o && (o.$typeUrl === StakeAuthorization.typeUrl || isSet(o.authorizationType));
+  },
+  isSDK(o: any): o is StakeAuthorizationSDKType {
+    return o && (o.$typeUrl === StakeAuthorization.typeUrl || isSet(o.authorization_type));
+  },
+  isAmino(o: any): o is StakeAuthorizationAmino {
+    return o && (o.$typeUrl === StakeAuthorization.typeUrl || isSet(o.authorization_type));
+  },
   encode(message: StakeAuthorization, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.maxTokens !== undefined) {
       Coin.encode(message.maxTokens, writer.uint32(10).fork()).ldelim();
@@ -187,6 +199,22 @@ export const StakeAuthorization = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): StakeAuthorization {
+    return {
+      maxTokens: isSet(object.maxTokens) ? Coin.fromJSON(object.maxTokens) : undefined,
+      allowList: isSet(object.allowList) ? StakeAuthorization_Validators.fromJSON(object.allowList) : undefined,
+      denyList: isSet(object.denyList) ? StakeAuthorization_Validators.fromJSON(object.denyList) : undefined,
+      authorizationType: isSet(object.authorizationType) ? authorizationTypeFromJSON(object.authorizationType) : -1
+    };
+  },
+  toJSON(message: StakeAuthorization): unknown {
+    const obj: any = {};
+    message.maxTokens !== undefined && (obj.maxTokens = message.maxTokens ? Coin.toJSON(message.maxTokens) : undefined);
+    message.allowList !== undefined && (obj.allowList = message.allowList ? StakeAuthorization_Validators.toJSON(message.allowList) : undefined);
+    message.denyList !== undefined && (obj.denyList = message.denyList ? StakeAuthorization_Validators.toJSON(message.denyList) : undefined);
+    message.authorizationType !== undefined && (obj.authorizationType = authorizationTypeToJSON(message.authorizationType));
+    return obj;
   },
   fromPartial(object: Partial<StakeAuthorization>): StakeAuthorization {
     const message = createBaseStakeAuthorization();
@@ -242,6 +270,8 @@ export const StakeAuthorization = {
     };
   }
 };
+GlobalDecoderRegistry.register(StakeAuthorization.typeUrl, StakeAuthorization);
+GlobalDecoderRegistry.registerAminoProtoMapping(StakeAuthorization.aminoType, StakeAuthorization.typeUrl);
 function createBaseStakeAuthorization_Validators(): StakeAuthorization_Validators {
   return {
     address: []
@@ -249,6 +279,16 @@ function createBaseStakeAuthorization_Validators(): StakeAuthorization_Validator
 }
 export const StakeAuthorization_Validators = {
   typeUrl: "/cosmos.staking.v1beta1.Validators",
+  aminoType: "cosmos-sdk/Validators",
+  is(o: any): o is StakeAuthorization_Validators {
+    return o && (o.$typeUrl === StakeAuthorization_Validators.typeUrl || Array.isArray(o.address) && (!o.address.length || typeof o.address[0] === "string"));
+  },
+  isSDK(o: any): o is StakeAuthorization_ValidatorsSDKType {
+    return o && (o.$typeUrl === StakeAuthorization_Validators.typeUrl || Array.isArray(o.address) && (!o.address.length || typeof o.address[0] === "string"));
+  },
+  isAmino(o: any): o is StakeAuthorization_ValidatorsAmino {
+    return o && (o.$typeUrl === StakeAuthorization_Validators.typeUrl || Array.isArray(o.address) && (!o.address.length || typeof o.address[0] === "string"));
+  },
   encode(message: StakeAuthorization_Validators, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.address) {
       writer.uint32(10).string(v!);
@@ -271,6 +311,20 @@ export const StakeAuthorization_Validators = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): StakeAuthorization_Validators {
+    return {
+      address: Array.isArray(object?.address) ? object.address.map((e: any) => String(e)) : []
+    };
+  },
+  toJSON(message: StakeAuthorization_Validators): unknown {
+    const obj: any = {};
+    if (message.address) {
+      obj.address = message.address.map(e => e);
+    } else {
+      obj.address = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<StakeAuthorization_Validators>): StakeAuthorization_Validators {
     const message = createBaseStakeAuthorization_Validators();
@@ -313,3 +367,5 @@ export const StakeAuthorization_Validators = {
     };
   }
 };
+GlobalDecoderRegistry.register(StakeAuthorization_Validators.typeUrl, StakeAuthorization_Validators);
+GlobalDecoderRegistry.registerAminoProtoMapping(StakeAuthorization_Validators.aminoType, StakeAuthorization_Validators.typeUrl);

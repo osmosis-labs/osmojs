@@ -1,5 +1,7 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** Minter represents the minting state. */
 export interface Minter {
   /** epoch_provisions represent rewards for the current epoch. */
@@ -230,6 +232,16 @@ function createBaseMinter(): Minter {
 }
 export const Minter = {
   typeUrl: "/osmosis.mint.v1beta1.Minter",
+  aminoType: "osmosis/mint/minter",
+  is(o: any): o is Minter {
+    return o && (o.$typeUrl === Minter.typeUrl || typeof o.epochProvisions === "string");
+  },
+  isSDK(o: any): o is MinterSDKType {
+    return o && (o.$typeUrl === Minter.typeUrl || typeof o.epoch_provisions === "string");
+  },
+  isAmino(o: any): o is MinterAmino {
+    return o && (o.$typeUrl === Minter.typeUrl || typeof o.epoch_provisions === "string");
+  },
   encode(message: Minter, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.epochProvisions !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.epochProvisions, 18).atomics);
@@ -252,6 +264,16 @@ export const Minter = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Minter {
+    return {
+      epochProvisions: isSet(object.epochProvisions) ? String(object.epochProvisions) : ""
+    };
+  },
+  toJSON(message: Minter): unknown {
+    const obj: any = {};
+    message.epochProvisions !== undefined && (obj.epochProvisions = message.epochProvisions);
+    return obj;
   },
   fromPartial(object: Partial<Minter>): Minter {
     const message = createBaseMinter();
@@ -292,6 +314,8 @@ export const Minter = {
     };
   }
 };
+GlobalDecoderRegistry.register(Minter.typeUrl, Minter);
+GlobalDecoderRegistry.registerAminoProtoMapping(Minter.aminoType, Minter.typeUrl);
 function createBaseWeightedAddress(): WeightedAddress {
   return {
     address: "",
@@ -300,6 +324,16 @@ function createBaseWeightedAddress(): WeightedAddress {
 }
 export const WeightedAddress = {
   typeUrl: "/osmosis.mint.v1beta1.WeightedAddress",
+  aminoType: "osmosis/mint/weighted-address",
+  is(o: any): o is WeightedAddress {
+    return o && (o.$typeUrl === WeightedAddress.typeUrl || typeof o.address === "string" && typeof o.weight === "string");
+  },
+  isSDK(o: any): o is WeightedAddressSDKType {
+    return o && (o.$typeUrl === WeightedAddress.typeUrl || typeof o.address === "string" && typeof o.weight === "string");
+  },
+  isAmino(o: any): o is WeightedAddressAmino {
+    return o && (o.$typeUrl === WeightedAddress.typeUrl || typeof o.address === "string" && typeof o.weight === "string");
+  },
   encode(message: WeightedAddress, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -328,6 +362,18 @@ export const WeightedAddress = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): WeightedAddress {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      weight: isSet(object.weight) ? String(object.weight) : ""
+    };
+  },
+  toJSON(message: WeightedAddress): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.weight !== undefined && (obj.weight = message.weight);
+    return obj;
   },
   fromPartial(object: Partial<WeightedAddress>): WeightedAddress {
     const message = createBaseWeightedAddress();
@@ -373,6 +419,8 @@ export const WeightedAddress = {
     };
   }
 };
+GlobalDecoderRegistry.register(WeightedAddress.typeUrl, WeightedAddress);
+GlobalDecoderRegistry.registerAminoProtoMapping(WeightedAddress.aminoType, WeightedAddress.typeUrl);
 function createBaseDistributionProportions(): DistributionProportions {
   return {
     staking: "",
@@ -383,6 +431,16 @@ function createBaseDistributionProportions(): DistributionProportions {
 }
 export const DistributionProportions = {
   typeUrl: "/osmosis.mint.v1beta1.DistributionProportions",
+  aminoType: "osmosis/mint/distribution-proportions",
+  is(o: any): o is DistributionProportions {
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.staking === "string" && typeof o.poolIncentives === "string" && typeof o.developerRewards === "string" && typeof o.communityPool === "string");
+  },
+  isSDK(o: any): o is DistributionProportionsSDKType {
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.staking === "string" && typeof o.pool_incentives === "string" && typeof o.developer_rewards === "string" && typeof o.community_pool === "string");
+  },
+  isAmino(o: any): o is DistributionProportionsAmino {
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.staking === "string" && typeof o.pool_incentives === "string" && typeof o.developer_rewards === "string" && typeof o.community_pool === "string");
+  },
   encode(message: DistributionProportions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.staking !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.staking, 18).atomics);
@@ -423,6 +481,22 @@ export const DistributionProportions = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DistributionProportions {
+    return {
+      staking: isSet(object.staking) ? String(object.staking) : "",
+      poolIncentives: isSet(object.poolIncentives) ? String(object.poolIncentives) : "",
+      developerRewards: isSet(object.developerRewards) ? String(object.developerRewards) : "",
+      communityPool: isSet(object.communityPool) ? String(object.communityPool) : ""
+    };
+  },
+  toJSON(message: DistributionProportions): unknown {
+    const obj: any = {};
+    message.staking !== undefined && (obj.staking = message.staking);
+    message.poolIncentives !== undefined && (obj.poolIncentives = message.poolIncentives);
+    message.developerRewards !== undefined && (obj.developerRewards = message.developerRewards);
+    message.communityPool !== undefined && (obj.communityPool = message.communityPool);
+    return obj;
   },
   fromPartial(object: Partial<DistributionProportions>): DistributionProportions {
     const message = createBaseDistributionProportions();
@@ -478,6 +552,8 @@ export const DistributionProportions = {
     };
   }
 };
+GlobalDecoderRegistry.register(DistributionProportions.typeUrl, DistributionProportions);
+GlobalDecoderRegistry.registerAminoProtoMapping(DistributionProportions.aminoType, DistributionProportions.typeUrl);
 function createBaseParams(): Params {
   return {
     mintDenom: "",
@@ -492,6 +568,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.mint.v1beta1.Params",
+  aminoType: "osmosis/mint/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.mintDenom === "string" && typeof o.genesisEpochProvisions === "string" && typeof o.epochIdentifier === "string" && typeof o.reductionPeriodInEpochs === "bigint" && typeof o.reductionFactor === "string" && DistributionProportions.is(o.distributionProportions) && Array.isArray(o.weightedDeveloperRewardsReceivers) && (!o.weightedDeveloperRewardsReceivers.length || WeightedAddress.is(o.weightedDeveloperRewardsReceivers[0])) && typeof o.mintingRewardsDistributionStartEpoch === "bigint");
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.mint_denom === "string" && typeof o.genesis_epoch_provisions === "string" && typeof o.epoch_identifier === "string" && typeof o.reduction_period_in_epochs === "bigint" && typeof o.reduction_factor === "string" && DistributionProportions.isSDK(o.distribution_proportions) && Array.isArray(o.weighted_developer_rewards_receivers) && (!o.weighted_developer_rewards_receivers.length || WeightedAddress.isSDK(o.weighted_developer_rewards_receivers[0])) && typeof o.minting_rewards_distribution_start_epoch === "bigint");
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.mint_denom === "string" && typeof o.genesis_epoch_provisions === "string" && typeof o.epoch_identifier === "string" && typeof o.reduction_period_in_epochs === "bigint" && typeof o.reduction_factor === "string" && DistributionProportions.isAmino(o.distribution_proportions) && Array.isArray(o.weighted_developer_rewards_receivers) && (!o.weighted_developer_rewards_receivers.length || WeightedAddress.isAmino(o.weighted_developer_rewards_receivers[0])) && typeof o.minting_rewards_distribution_start_epoch === "bigint");
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.mintDenom !== "") {
       writer.uint32(10).string(message.mintDenom);
@@ -556,6 +642,34 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      mintDenom: isSet(object.mintDenom) ? String(object.mintDenom) : "",
+      genesisEpochProvisions: isSet(object.genesisEpochProvisions) ? String(object.genesisEpochProvisions) : "",
+      epochIdentifier: isSet(object.epochIdentifier) ? String(object.epochIdentifier) : "",
+      reductionPeriodInEpochs: isSet(object.reductionPeriodInEpochs) ? BigInt(object.reductionPeriodInEpochs.toString()) : BigInt(0),
+      reductionFactor: isSet(object.reductionFactor) ? String(object.reductionFactor) : "",
+      distributionProportions: isSet(object.distributionProportions) ? DistributionProportions.fromJSON(object.distributionProportions) : undefined,
+      weightedDeveloperRewardsReceivers: Array.isArray(object?.weightedDeveloperRewardsReceivers) ? object.weightedDeveloperRewardsReceivers.map((e: any) => WeightedAddress.fromJSON(e)) : [],
+      mintingRewardsDistributionStartEpoch: isSet(object.mintingRewardsDistributionStartEpoch) ? BigInt(object.mintingRewardsDistributionStartEpoch.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    message.mintDenom !== undefined && (obj.mintDenom = message.mintDenom);
+    message.genesisEpochProvisions !== undefined && (obj.genesisEpochProvisions = message.genesisEpochProvisions);
+    message.epochIdentifier !== undefined && (obj.epochIdentifier = message.epochIdentifier);
+    message.reductionPeriodInEpochs !== undefined && (obj.reductionPeriodInEpochs = (message.reductionPeriodInEpochs || BigInt(0)).toString());
+    message.reductionFactor !== undefined && (obj.reductionFactor = message.reductionFactor);
+    message.distributionProportions !== undefined && (obj.distributionProportions = message.distributionProportions ? DistributionProportions.toJSON(message.distributionProportions) : undefined);
+    if (message.weightedDeveloperRewardsReceivers) {
+      obj.weightedDeveloperRewardsReceivers = message.weightedDeveloperRewardsReceivers.map(e => e ? WeightedAddress.toJSON(e) : undefined);
+    } else {
+      obj.weightedDeveloperRewardsReceivers = [];
+    }
+    message.mintingRewardsDistributionStartEpoch !== undefined && (obj.mintingRewardsDistributionStartEpoch = (message.mintingRewardsDistributionStartEpoch || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
@@ -633,3 +747,5 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);

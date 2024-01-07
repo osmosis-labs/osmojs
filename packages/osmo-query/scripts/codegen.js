@@ -18,7 +18,6 @@ telescope({
   outPath,
   options: {
 
-    env: "v-next",
     removeUnusedImports: true,
     tsDisable: {
       patterns: ['**/*amino.ts', '**/*registry.ts']
@@ -110,7 +109,6 @@ telescope({
     rpcClients: {
       enabled: true,
       camelCase: true,
-      useConnectComet: true
     },
     reactQuery: {
       enabled: true

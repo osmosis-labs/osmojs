@@ -1,6 +1,8 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { Decimal } from "@cosmjs/math";
+import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export interface Params {
   /**
    * authorized_tick_spacing is an array of uint64s that represents the tick
@@ -125,6 +127,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.concentratedliquidity.Params",
+  aminoType: "osmosis/concentratedliquidity/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.authorizedTickSpacing) && (!o.authorizedTickSpacing.length || typeof o.authorizedTickSpacing[0] === "bigint") && Array.isArray(o.authorizedSpreadFactors) && (!o.authorizedSpreadFactors.length || typeof o.authorizedSpreadFactors[0] === "string") && typeof o.balancerSharesRewardDiscount === "string" && Array.isArray(o.authorizedQuoteDenoms) && (!o.authorizedQuoteDenoms.length || typeof o.authorizedQuoteDenoms[0] === "string") && Array.isArray(o.authorizedUptimes) && (!o.authorizedUptimes.length || Duration.is(o.authorizedUptimes[0])) && typeof o.isPermissionlessPoolCreationEnabled === "boolean" && Array.isArray(o.unrestrictedPoolCreatorWhitelist) && (!o.unrestrictedPoolCreatorWhitelist.length || typeof o.unrestrictedPoolCreatorWhitelist[0] === "string") && typeof o.hookGasLimit === "bigint");
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.authorized_tick_spacing) && (!o.authorized_tick_spacing.length || typeof o.authorized_tick_spacing[0] === "bigint") && Array.isArray(o.authorized_spread_factors) && (!o.authorized_spread_factors.length || typeof o.authorized_spread_factors[0] === "string") && typeof o.balancer_shares_reward_discount === "string" && Array.isArray(o.authorized_quote_denoms) && (!o.authorized_quote_denoms.length || typeof o.authorized_quote_denoms[0] === "string") && Array.isArray(o.authorized_uptimes) && (!o.authorized_uptimes.length || Duration.isSDK(o.authorized_uptimes[0])) && typeof o.is_permissionless_pool_creation_enabled === "boolean" && Array.isArray(o.unrestricted_pool_creator_whitelist) && (!o.unrestricted_pool_creator_whitelist.length || typeof o.unrestricted_pool_creator_whitelist[0] === "string") && typeof o.hook_gas_limit === "bigint");
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.authorized_tick_spacing) && (!o.authorized_tick_spacing.length || typeof o.authorized_tick_spacing[0] === "bigint") && Array.isArray(o.authorized_spread_factors) && (!o.authorized_spread_factors.length || typeof o.authorized_spread_factors[0] === "string") && typeof o.balancer_shares_reward_discount === "string" && Array.isArray(o.authorized_quote_denoms) && (!o.authorized_quote_denoms.length || typeof o.authorized_quote_denoms[0] === "string") && Array.isArray(o.authorized_uptimes) && (!o.authorized_uptimes.length || Duration.isAmino(o.authorized_uptimes[0])) && typeof o.is_permissionless_pool_creation_enabled === "boolean" && Array.isArray(o.unrestricted_pool_creator_whitelist) && (!o.unrestricted_pool_creator_whitelist.length || typeof o.unrestricted_pool_creator_whitelist[0] === "string") && typeof o.hook_gas_limit === "bigint");
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.authorizedTickSpacing) {
@@ -198,6 +210,50 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      authorizedTickSpacing: Array.isArray(object?.authorizedTickSpacing) ? object.authorizedTickSpacing.map((e: any) => BigInt(e.toString())) : [],
+      authorizedSpreadFactors: Array.isArray(object?.authorizedSpreadFactors) ? object.authorizedSpreadFactors.map((e: any) => String(e)) : [],
+      balancerSharesRewardDiscount: isSet(object.balancerSharesRewardDiscount) ? String(object.balancerSharesRewardDiscount) : "",
+      authorizedQuoteDenoms: Array.isArray(object?.authorizedQuoteDenoms) ? object.authorizedQuoteDenoms.map((e: any) => String(e)) : [],
+      authorizedUptimes: Array.isArray(object?.authorizedUptimes) ? object.authorizedUptimes.map((e: any) => Duration.fromJSON(e)) : [],
+      isPermissionlessPoolCreationEnabled: isSet(object.isPermissionlessPoolCreationEnabled) ? Boolean(object.isPermissionlessPoolCreationEnabled) : false,
+      unrestrictedPoolCreatorWhitelist: Array.isArray(object?.unrestrictedPoolCreatorWhitelist) ? object.unrestrictedPoolCreatorWhitelist.map((e: any) => String(e)) : [],
+      hookGasLimit: isSet(object.hookGasLimit) ? BigInt(object.hookGasLimit.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    if (message.authorizedTickSpacing) {
+      obj.authorizedTickSpacing = message.authorizedTickSpacing.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.authorizedTickSpacing = [];
+    }
+    if (message.authorizedSpreadFactors) {
+      obj.authorizedSpreadFactors = message.authorizedSpreadFactors.map(e => e);
+    } else {
+      obj.authorizedSpreadFactors = [];
+    }
+    message.balancerSharesRewardDiscount !== undefined && (obj.balancerSharesRewardDiscount = message.balancerSharesRewardDiscount);
+    if (message.authorizedQuoteDenoms) {
+      obj.authorizedQuoteDenoms = message.authorizedQuoteDenoms.map(e => e);
+    } else {
+      obj.authorizedQuoteDenoms = [];
+    }
+    if (message.authorizedUptimes) {
+      obj.authorizedUptimes = message.authorizedUptimes.map(e => e ? Duration.toJSON(e) : undefined);
+    } else {
+      obj.authorizedUptimes = [];
+    }
+    message.isPermissionlessPoolCreationEnabled !== undefined && (obj.isPermissionlessPoolCreationEnabled = message.isPermissionlessPoolCreationEnabled);
+    if (message.unrestrictedPoolCreatorWhitelist) {
+      obj.unrestrictedPoolCreatorWhitelist = message.unrestrictedPoolCreatorWhitelist.map(e => e);
+    } else {
+      obj.unrestrictedPoolCreatorWhitelist = [];
+    }
+    message.hookGasLimit !== undefined && (obj.hookGasLimit = (message.hookGasLimit || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
@@ -283,3 +339,5 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);

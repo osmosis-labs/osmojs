@@ -1,5 +1,7 @@
 import { BinaryReader, BinaryWriter } from "../../../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { isSet } from "../../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../../registry";
 /** ===================== MsgCreateConcentratedPool */
 export interface MsgCreateConcentratedPool {
   sender: string;
@@ -63,6 +65,16 @@ function createBaseMsgCreateConcentratedPool(): MsgCreateConcentratedPool {
 }
 export const MsgCreateConcentratedPool = {
   typeUrl: "/osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.MsgCreateConcentratedPool",
+  aminoType: "osmosis/concentratedliquidity/poolmodel/concentrated/create-concentrated-pool",
+  is(o: any): o is MsgCreateConcentratedPool {
+    return o && (o.$typeUrl === MsgCreateConcentratedPool.typeUrl || typeof o.sender === "string" && typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.tickSpacing === "bigint" && typeof o.spreadFactor === "string");
+  },
+  isSDK(o: any): o is MsgCreateConcentratedPoolSDKType {
+    return o && (o.$typeUrl === MsgCreateConcentratedPool.typeUrl || typeof o.sender === "string" && typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.tick_spacing === "bigint" && typeof o.spread_factor === "string");
+  },
+  isAmino(o: any): o is MsgCreateConcentratedPoolAmino {
+    return o && (o.$typeUrl === MsgCreateConcentratedPool.typeUrl || typeof o.sender === "string" && typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.tick_spacing === "bigint" && typeof o.spread_factor === "string");
+  },
   encode(message: MsgCreateConcentratedPool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -109,6 +121,24 @@ export const MsgCreateConcentratedPool = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCreateConcentratedPool {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      denom0: isSet(object.denom0) ? String(object.denom0) : "",
+      denom1: isSet(object.denom1) ? String(object.denom1) : "",
+      tickSpacing: isSet(object.tickSpacing) ? BigInt(object.tickSpacing.toString()) : BigInt(0),
+      spreadFactor: isSet(object.spreadFactor) ? String(object.spreadFactor) : ""
+    };
+  },
+  toJSON(message: MsgCreateConcentratedPool): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.denom0 !== undefined && (obj.denom0 = message.denom0);
+    message.denom1 !== undefined && (obj.denom1 = message.denom1);
+    message.tickSpacing !== undefined && (obj.tickSpacing = (message.tickSpacing || BigInt(0)).toString());
+    message.spreadFactor !== undefined && (obj.spreadFactor = message.spreadFactor);
+    return obj;
   },
   fromPartial(object: Partial<MsgCreateConcentratedPool>): MsgCreateConcentratedPool {
     const message = createBaseMsgCreateConcentratedPool();
@@ -169,6 +199,8 @@ export const MsgCreateConcentratedPool = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateConcentratedPool.typeUrl, MsgCreateConcentratedPool);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreateConcentratedPool.aminoType, MsgCreateConcentratedPool.typeUrl);
 function createBaseMsgCreateConcentratedPoolResponse(): MsgCreateConcentratedPoolResponse {
   return {
     poolId: BigInt(0)
@@ -176,6 +208,16 @@ function createBaseMsgCreateConcentratedPoolResponse(): MsgCreateConcentratedPoo
 }
 export const MsgCreateConcentratedPoolResponse = {
   typeUrl: "/osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.MsgCreateConcentratedPoolResponse",
+  aminoType: "osmosis/concentratedliquidity/poolmodel/concentrated/create-concentrated-pool-response",
+  is(o: any): o is MsgCreateConcentratedPoolResponse {
+    return o && (o.$typeUrl === MsgCreateConcentratedPoolResponse.typeUrl || typeof o.poolId === "bigint");
+  },
+  isSDK(o: any): o is MsgCreateConcentratedPoolResponseSDKType {
+    return o && (o.$typeUrl === MsgCreateConcentratedPoolResponse.typeUrl || typeof o.pool_id === "bigint");
+  },
+  isAmino(o: any): o is MsgCreateConcentratedPoolResponseAmino {
+    return o && (o.$typeUrl === MsgCreateConcentratedPoolResponse.typeUrl || typeof o.pool_id === "bigint");
+  },
   encode(message: MsgCreateConcentratedPoolResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -198,6 +240,16 @@ export const MsgCreateConcentratedPoolResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCreateConcentratedPoolResponse {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgCreateConcentratedPoolResponse): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgCreateConcentratedPoolResponse>): MsgCreateConcentratedPoolResponse {
     const message = createBaseMsgCreateConcentratedPoolResponse();
@@ -238,3 +290,5 @@ export const MsgCreateConcentratedPoolResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateConcentratedPoolResponse.typeUrl, MsgCreateConcentratedPoolResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreateConcentratedPoolResponse.aminoType, MsgCreateConcentratedPoolResponse.typeUrl);

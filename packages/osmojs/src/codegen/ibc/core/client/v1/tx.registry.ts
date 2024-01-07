@@ -96,6 +96,94 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    createClient(value: MsgCreateClient) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgCreateClient",
+        value: MsgCreateClient.toJSON(value)
+      };
+    },
+    updateClient(value: MsgUpdateClient) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgUpdateClient",
+        value: MsgUpdateClient.toJSON(value)
+      };
+    },
+    upgradeClient(value: MsgUpgradeClient) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgUpgradeClient",
+        value: MsgUpgradeClient.toJSON(value)
+      };
+    },
+    submitMisbehaviour(value: MsgSubmitMisbehaviour) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviour",
+        value: MsgSubmitMisbehaviour.toJSON(value)
+      };
+    },
+    recoverClient(value: MsgRecoverClient) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgRecoverClient",
+        value: MsgRecoverClient.toJSON(value)
+      };
+    },
+    iBCSoftwareUpgrade(value: MsgIBCSoftwareUpgrade) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgIBCSoftwareUpgrade",
+        value: MsgIBCSoftwareUpgrade.toJSON(value)
+      };
+    },
+    updateClientParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgUpdateParams",
+        value: MsgUpdateParams.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    createClient(value: any) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgCreateClient",
+        value: MsgCreateClient.fromJSON(value)
+      };
+    },
+    updateClient(value: any) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgUpdateClient",
+        value: MsgUpdateClient.fromJSON(value)
+      };
+    },
+    upgradeClient(value: any) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgUpgradeClient",
+        value: MsgUpgradeClient.fromJSON(value)
+      };
+    },
+    submitMisbehaviour(value: any) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviour",
+        value: MsgSubmitMisbehaviour.fromJSON(value)
+      };
+    },
+    recoverClient(value: any) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgRecoverClient",
+        value: MsgRecoverClient.fromJSON(value)
+      };
+    },
+    iBCSoftwareUpgrade(value: any) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgIBCSoftwareUpgrade",
+        value: MsgIBCSoftwareUpgrade.fromJSON(value)
+      };
+    },
+    updateClientParams(value: any) {
+      return {
+        typeUrl: "/ibc.core.client.v1.MsgUpdateParams",
+        value: MsgUpdateParams.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createClient(value: MsgCreateClient) {
       return {

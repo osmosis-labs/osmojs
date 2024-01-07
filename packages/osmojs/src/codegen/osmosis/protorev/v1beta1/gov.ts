@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * SetProtoRevEnabledProposal is a gov Content type to update whether the
  * protorev module is enabled
@@ -86,6 +88,16 @@ function createBaseSetProtoRevEnabledProposal(): SetProtoRevEnabledProposal {
 }
 export const SetProtoRevEnabledProposal = {
   typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevEnabledProposal",
+  aminoType: "osmosis/SetProtoRevEnabledProposal",
+  is(o: any): o is SetProtoRevEnabledProposal {
+    return o && (o.$typeUrl === SetProtoRevEnabledProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.enabled === "boolean");
+  },
+  isSDK(o: any): o is SetProtoRevEnabledProposalSDKType {
+    return o && (o.$typeUrl === SetProtoRevEnabledProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.enabled === "boolean");
+  },
+  isAmino(o: any): o is SetProtoRevEnabledProposalAmino {
+    return o && (o.$typeUrl === SetProtoRevEnabledProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.enabled === "boolean");
+  },
   encode(message: SetProtoRevEnabledProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -120,6 +132,20 @@ export const SetProtoRevEnabledProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SetProtoRevEnabledProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      enabled: isSet(object.enabled) ? Boolean(object.enabled) : false
+    };
+  },
+  toJSON(message: SetProtoRevEnabledProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.enabled !== undefined && (obj.enabled = message.enabled);
+    return obj;
   },
   fromPartial(object: Partial<SetProtoRevEnabledProposal>): SetProtoRevEnabledProposal {
     const message = createBaseSetProtoRevEnabledProposal();
@@ -170,6 +196,8 @@ export const SetProtoRevEnabledProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(SetProtoRevEnabledProposal.typeUrl, SetProtoRevEnabledProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(SetProtoRevEnabledProposal.aminoType, SetProtoRevEnabledProposal.typeUrl);
 function createBaseSetProtoRevAdminAccountProposal(): SetProtoRevAdminAccountProposal {
   return {
     $typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevAdminAccountProposal",
@@ -180,6 +208,16 @@ function createBaseSetProtoRevAdminAccountProposal(): SetProtoRevAdminAccountPro
 }
 export const SetProtoRevAdminAccountProposal = {
   typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevAdminAccountProposal",
+  aminoType: "osmosis/SetProtoRevAdminAccountProposal",
+  is(o: any): o is SetProtoRevAdminAccountProposal {
+    return o && (o.$typeUrl === SetProtoRevAdminAccountProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.account === "string");
+  },
+  isSDK(o: any): o is SetProtoRevAdminAccountProposalSDKType {
+    return o && (o.$typeUrl === SetProtoRevAdminAccountProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.account === "string");
+  },
+  isAmino(o: any): o is SetProtoRevAdminAccountProposalAmino {
+    return o && (o.$typeUrl === SetProtoRevAdminAccountProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.account === "string");
+  },
   encode(message: SetProtoRevAdminAccountProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -214,6 +252,20 @@ export const SetProtoRevAdminAccountProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SetProtoRevAdminAccountProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      account: isSet(object.account) ? String(object.account) : ""
+    };
+  },
+  toJSON(message: SetProtoRevAdminAccountProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.account !== undefined && (obj.account = message.account);
+    return obj;
   },
   fromPartial(object: Partial<SetProtoRevAdminAccountProposal>): SetProtoRevAdminAccountProposal {
     const message = createBaseSetProtoRevAdminAccountProposal();
@@ -264,3 +316,5 @@ export const SetProtoRevAdminAccountProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(SetProtoRevAdminAccountProposal.typeUrl, SetProtoRevAdminAccountProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(SetProtoRevAdminAccountProposal.aminoType, SetProtoRevAdminAccountProposal.typeUrl);

@@ -1,6 +1,8 @@
 import { ValidatorPreference, ValidatorPreferenceAmino, ValidatorPreferenceSDKType } from "./state";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** MsgCreateValidatorSetPreference is a list that holds validator-set. */
 export interface MsgSetValidatorSetPreference {
   /** delegator is the user who is trying to create a validator-set. */
@@ -329,6 +331,16 @@ function createBaseMsgSetValidatorSetPreference(): MsgSetValidatorSetPreference 
 }
 export const MsgSetValidatorSetPreference = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgSetValidatorSetPreference",
+  aminoType: "osmosis/MsgSetValidatorSetPreference",
+  is(o: any): o is MsgSetValidatorSetPreference {
+    return o && (o.$typeUrl === MsgSetValidatorSetPreference.typeUrl || typeof o.delegator === "string" && Array.isArray(o.preferences) && (!o.preferences.length || ValidatorPreference.is(o.preferences[0])));
+  },
+  isSDK(o: any): o is MsgSetValidatorSetPreferenceSDKType {
+    return o && (o.$typeUrl === MsgSetValidatorSetPreference.typeUrl || typeof o.delegator === "string" && Array.isArray(o.preferences) && (!o.preferences.length || ValidatorPreference.isSDK(o.preferences[0])));
+  },
+  isAmino(o: any): o is MsgSetValidatorSetPreferenceAmino {
+    return o && (o.$typeUrl === MsgSetValidatorSetPreference.typeUrl || typeof o.delegator === "string" && Array.isArray(o.preferences) && (!o.preferences.length || ValidatorPreference.isAmino(o.preferences[0])));
+  },
   encode(message: MsgSetValidatorSetPreference, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
@@ -357,6 +369,22 @@ export const MsgSetValidatorSetPreference = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSetValidatorSetPreference {
+    return {
+      delegator: isSet(object.delegator) ? String(object.delegator) : "",
+      preferences: Array.isArray(object?.preferences) ? object.preferences.map((e: any) => ValidatorPreference.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgSetValidatorSetPreference): unknown {
+    const obj: any = {};
+    message.delegator !== undefined && (obj.delegator = message.delegator);
+    if (message.preferences) {
+      obj.preferences = message.preferences.map(e => e ? ValidatorPreference.toJSON(e) : undefined);
+    } else {
+      obj.preferences = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<MsgSetValidatorSetPreference>): MsgSetValidatorSetPreference {
     const message = createBaseMsgSetValidatorSetPreference();
@@ -404,11 +432,23 @@ export const MsgSetValidatorSetPreference = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetValidatorSetPreference.typeUrl, MsgSetValidatorSetPreference);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetValidatorSetPreference.aminoType, MsgSetValidatorSetPreference.typeUrl);
 function createBaseMsgSetValidatorSetPreferenceResponse(): MsgSetValidatorSetPreferenceResponse {
   return {};
 }
 export const MsgSetValidatorSetPreferenceResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgSetValidatorSetPreferenceResponse",
+  aminoType: "osmosis/valsetpref/set-validator-set-preference-response",
+  is(o: any): o is MsgSetValidatorSetPreferenceResponse {
+    return o && o.$typeUrl === MsgSetValidatorSetPreferenceResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSetValidatorSetPreferenceResponseSDKType {
+    return o && o.$typeUrl === MsgSetValidatorSetPreferenceResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSetValidatorSetPreferenceResponseAmino {
+    return o && o.$typeUrl === MsgSetValidatorSetPreferenceResponse.typeUrl;
+  },
   encode(_: MsgSetValidatorSetPreferenceResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -425,6 +465,13 @@ export const MsgSetValidatorSetPreferenceResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetValidatorSetPreferenceResponse {
+    return {};
+  },
+  toJSON(_: MsgSetValidatorSetPreferenceResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgSetValidatorSetPreferenceResponse>): MsgSetValidatorSetPreferenceResponse {
     const message = createBaseMsgSetValidatorSetPreferenceResponse();
@@ -460,6 +507,8 @@ export const MsgSetValidatorSetPreferenceResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetValidatorSetPreferenceResponse.typeUrl, MsgSetValidatorSetPreferenceResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetValidatorSetPreferenceResponse.aminoType, MsgSetValidatorSetPreferenceResponse.typeUrl);
 function createBaseMsgDelegateToValidatorSet(): MsgDelegateToValidatorSet {
   return {
     delegator: "",
@@ -468,6 +517,16 @@ function createBaseMsgDelegateToValidatorSet(): MsgDelegateToValidatorSet {
 }
 export const MsgDelegateToValidatorSet = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateToValidatorSet",
+  aminoType: "osmosis/MsgDelegateToValidatorSet",
+  is(o: any): o is MsgDelegateToValidatorSet {
+    return o && (o.$typeUrl === MsgDelegateToValidatorSet.typeUrl || typeof o.delegator === "string" && Coin.is(o.coin));
+  },
+  isSDK(o: any): o is MsgDelegateToValidatorSetSDKType {
+    return o && (o.$typeUrl === MsgDelegateToValidatorSet.typeUrl || typeof o.delegator === "string" && Coin.isSDK(o.coin));
+  },
+  isAmino(o: any): o is MsgDelegateToValidatorSetAmino {
+    return o && (o.$typeUrl === MsgDelegateToValidatorSet.typeUrl || typeof o.delegator === "string" && Coin.isAmino(o.coin));
+  },
   encode(message: MsgDelegateToValidatorSet, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
@@ -496,6 +555,18 @@ export const MsgDelegateToValidatorSet = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgDelegateToValidatorSet {
+    return {
+      delegator: isSet(object.delegator) ? String(object.delegator) : "",
+      coin: isSet(object.coin) ? Coin.fromJSON(object.coin) : undefined
+    };
+  },
+  toJSON(message: MsgDelegateToValidatorSet): unknown {
+    const obj: any = {};
+    message.delegator !== undefined && (obj.delegator = message.delegator);
+    message.coin !== undefined && (obj.coin = message.coin ? Coin.toJSON(message.coin) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<MsgDelegateToValidatorSet>): MsgDelegateToValidatorSet {
     const message = createBaseMsgDelegateToValidatorSet();
@@ -541,11 +612,23 @@ export const MsgDelegateToValidatorSet = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgDelegateToValidatorSet.typeUrl, MsgDelegateToValidatorSet);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgDelegateToValidatorSet.aminoType, MsgDelegateToValidatorSet.typeUrl);
 function createBaseMsgDelegateToValidatorSetResponse(): MsgDelegateToValidatorSetResponse {
   return {};
 }
 export const MsgDelegateToValidatorSetResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateToValidatorSetResponse",
+  aminoType: "osmosis/valsetpref/delegate-to-validator-set-response",
+  is(o: any): o is MsgDelegateToValidatorSetResponse {
+    return o && o.$typeUrl === MsgDelegateToValidatorSetResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgDelegateToValidatorSetResponseSDKType {
+    return o && o.$typeUrl === MsgDelegateToValidatorSetResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgDelegateToValidatorSetResponseAmino {
+    return o && o.$typeUrl === MsgDelegateToValidatorSetResponse.typeUrl;
+  },
   encode(_: MsgDelegateToValidatorSetResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -562,6 +645,13 @@ export const MsgDelegateToValidatorSetResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgDelegateToValidatorSetResponse {
+    return {};
+  },
+  toJSON(_: MsgDelegateToValidatorSetResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgDelegateToValidatorSetResponse>): MsgDelegateToValidatorSetResponse {
     const message = createBaseMsgDelegateToValidatorSetResponse();
@@ -597,6 +687,8 @@ export const MsgDelegateToValidatorSetResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgDelegateToValidatorSetResponse.typeUrl, MsgDelegateToValidatorSetResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgDelegateToValidatorSetResponse.aminoType, MsgDelegateToValidatorSetResponse.typeUrl);
 function createBaseMsgUndelegateFromValidatorSet(): MsgUndelegateFromValidatorSet {
   return {
     delegator: "",
@@ -605,6 +697,16 @@ function createBaseMsgUndelegateFromValidatorSet(): MsgUndelegateFromValidatorSe
 }
 export const MsgUndelegateFromValidatorSet = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromValidatorSet",
+  aminoType: "osmosis/MsgUndelegateFromValidatorSet",
+  is(o: any): o is MsgUndelegateFromValidatorSet {
+    return o && (o.$typeUrl === MsgUndelegateFromValidatorSet.typeUrl || typeof o.delegator === "string" && Coin.is(o.coin));
+  },
+  isSDK(o: any): o is MsgUndelegateFromValidatorSetSDKType {
+    return o && (o.$typeUrl === MsgUndelegateFromValidatorSet.typeUrl || typeof o.delegator === "string" && Coin.isSDK(o.coin));
+  },
+  isAmino(o: any): o is MsgUndelegateFromValidatorSetAmino {
+    return o && (o.$typeUrl === MsgUndelegateFromValidatorSet.typeUrl || typeof o.delegator === "string" && Coin.isAmino(o.coin));
+  },
   encode(message: MsgUndelegateFromValidatorSet, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
@@ -633,6 +735,18 @@ export const MsgUndelegateFromValidatorSet = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgUndelegateFromValidatorSet {
+    return {
+      delegator: isSet(object.delegator) ? String(object.delegator) : "",
+      coin: isSet(object.coin) ? Coin.fromJSON(object.coin) : undefined
+    };
+  },
+  toJSON(message: MsgUndelegateFromValidatorSet): unknown {
+    const obj: any = {};
+    message.delegator !== undefined && (obj.delegator = message.delegator);
+    message.coin !== undefined && (obj.coin = message.coin ? Coin.toJSON(message.coin) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<MsgUndelegateFromValidatorSet>): MsgUndelegateFromValidatorSet {
     const message = createBaseMsgUndelegateFromValidatorSet();
@@ -678,11 +792,23 @@ export const MsgUndelegateFromValidatorSet = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUndelegateFromValidatorSet.typeUrl, MsgUndelegateFromValidatorSet);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUndelegateFromValidatorSet.aminoType, MsgUndelegateFromValidatorSet.typeUrl);
 function createBaseMsgUndelegateFromValidatorSetResponse(): MsgUndelegateFromValidatorSetResponse {
   return {};
 }
 export const MsgUndelegateFromValidatorSetResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromValidatorSetResponse",
+  aminoType: "osmosis/valsetpref/undelegate-from-validator-set-response",
+  is(o: any): o is MsgUndelegateFromValidatorSetResponse {
+    return o && o.$typeUrl === MsgUndelegateFromValidatorSetResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgUndelegateFromValidatorSetResponseSDKType {
+    return o && o.$typeUrl === MsgUndelegateFromValidatorSetResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgUndelegateFromValidatorSetResponseAmino {
+    return o && o.$typeUrl === MsgUndelegateFromValidatorSetResponse.typeUrl;
+  },
   encode(_: MsgUndelegateFromValidatorSetResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -699,6 +825,13 @@ export const MsgUndelegateFromValidatorSetResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgUndelegateFromValidatorSetResponse {
+    return {};
+  },
+  toJSON(_: MsgUndelegateFromValidatorSetResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgUndelegateFromValidatorSetResponse>): MsgUndelegateFromValidatorSetResponse {
     const message = createBaseMsgUndelegateFromValidatorSetResponse();
@@ -734,6 +867,8 @@ export const MsgUndelegateFromValidatorSetResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUndelegateFromValidatorSetResponse.typeUrl, MsgUndelegateFromValidatorSetResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUndelegateFromValidatorSetResponse.aminoType, MsgUndelegateFromValidatorSetResponse.typeUrl);
 function createBaseMsgUndelegateFromRebalancedValidatorSet(): MsgUndelegateFromRebalancedValidatorSet {
   return {
     delegator: "",
@@ -742,6 +877,16 @@ function createBaseMsgUndelegateFromRebalancedValidatorSet(): MsgUndelegateFromR
 }
 export const MsgUndelegateFromRebalancedValidatorSet = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromRebalancedValidatorSet",
+  aminoType: "osmosis/MsgUndelegateFromRebalValset",
+  is(o: any): o is MsgUndelegateFromRebalancedValidatorSet {
+    return o && (o.$typeUrl === MsgUndelegateFromRebalancedValidatorSet.typeUrl || typeof o.delegator === "string" && Coin.is(o.coin));
+  },
+  isSDK(o: any): o is MsgUndelegateFromRebalancedValidatorSetSDKType {
+    return o && (o.$typeUrl === MsgUndelegateFromRebalancedValidatorSet.typeUrl || typeof o.delegator === "string" && Coin.isSDK(o.coin));
+  },
+  isAmino(o: any): o is MsgUndelegateFromRebalancedValidatorSetAmino {
+    return o && (o.$typeUrl === MsgUndelegateFromRebalancedValidatorSet.typeUrl || typeof o.delegator === "string" && Coin.isAmino(o.coin));
+  },
   encode(message: MsgUndelegateFromRebalancedValidatorSet, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
@@ -770,6 +915,18 @@ export const MsgUndelegateFromRebalancedValidatorSet = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgUndelegateFromRebalancedValidatorSet {
+    return {
+      delegator: isSet(object.delegator) ? String(object.delegator) : "",
+      coin: isSet(object.coin) ? Coin.fromJSON(object.coin) : undefined
+    };
+  },
+  toJSON(message: MsgUndelegateFromRebalancedValidatorSet): unknown {
+    const obj: any = {};
+    message.delegator !== undefined && (obj.delegator = message.delegator);
+    message.coin !== undefined && (obj.coin = message.coin ? Coin.toJSON(message.coin) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<MsgUndelegateFromRebalancedValidatorSet>): MsgUndelegateFromRebalancedValidatorSet {
     const message = createBaseMsgUndelegateFromRebalancedValidatorSet();
@@ -815,11 +972,23 @@ export const MsgUndelegateFromRebalancedValidatorSet = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUndelegateFromRebalancedValidatorSet.typeUrl, MsgUndelegateFromRebalancedValidatorSet);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUndelegateFromRebalancedValidatorSet.aminoType, MsgUndelegateFromRebalancedValidatorSet.typeUrl);
 function createBaseMsgUndelegateFromRebalancedValidatorSetResponse(): MsgUndelegateFromRebalancedValidatorSetResponse {
   return {};
 }
 export const MsgUndelegateFromRebalancedValidatorSetResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromRebalancedValidatorSetResponse",
+  aminoType: "osmosis/valsetpref/undelegate-from-rebalanced-validator-set-response",
+  is(o: any): o is MsgUndelegateFromRebalancedValidatorSetResponse {
+    return o && o.$typeUrl === MsgUndelegateFromRebalancedValidatorSetResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgUndelegateFromRebalancedValidatorSetResponseSDKType {
+    return o && o.$typeUrl === MsgUndelegateFromRebalancedValidatorSetResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgUndelegateFromRebalancedValidatorSetResponseAmino {
+    return o && o.$typeUrl === MsgUndelegateFromRebalancedValidatorSetResponse.typeUrl;
+  },
   encode(_: MsgUndelegateFromRebalancedValidatorSetResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -836,6 +1005,13 @@ export const MsgUndelegateFromRebalancedValidatorSetResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgUndelegateFromRebalancedValidatorSetResponse {
+    return {};
+  },
+  toJSON(_: MsgUndelegateFromRebalancedValidatorSetResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgUndelegateFromRebalancedValidatorSetResponse>): MsgUndelegateFromRebalancedValidatorSetResponse {
     const message = createBaseMsgUndelegateFromRebalancedValidatorSetResponse();
@@ -871,6 +1047,8 @@ export const MsgUndelegateFromRebalancedValidatorSetResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUndelegateFromRebalancedValidatorSetResponse.typeUrl, MsgUndelegateFromRebalancedValidatorSetResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUndelegateFromRebalancedValidatorSetResponse.aminoType, MsgUndelegateFromRebalancedValidatorSetResponse.typeUrl);
 function createBaseMsgRedelegateValidatorSet(): MsgRedelegateValidatorSet {
   return {
     delegator: "",
@@ -879,6 +1057,16 @@ function createBaseMsgRedelegateValidatorSet(): MsgRedelegateValidatorSet {
 }
 export const MsgRedelegateValidatorSet = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgRedelegateValidatorSet",
+  aminoType: "osmosis/MsgRedelegateValidatorSet",
+  is(o: any): o is MsgRedelegateValidatorSet {
+    return o && (o.$typeUrl === MsgRedelegateValidatorSet.typeUrl || typeof o.delegator === "string" && Array.isArray(o.preferences) && (!o.preferences.length || ValidatorPreference.is(o.preferences[0])));
+  },
+  isSDK(o: any): o is MsgRedelegateValidatorSetSDKType {
+    return o && (o.$typeUrl === MsgRedelegateValidatorSet.typeUrl || typeof o.delegator === "string" && Array.isArray(o.preferences) && (!o.preferences.length || ValidatorPreference.isSDK(o.preferences[0])));
+  },
+  isAmino(o: any): o is MsgRedelegateValidatorSetAmino {
+    return o && (o.$typeUrl === MsgRedelegateValidatorSet.typeUrl || typeof o.delegator === "string" && Array.isArray(o.preferences) && (!o.preferences.length || ValidatorPreference.isAmino(o.preferences[0])));
+  },
   encode(message: MsgRedelegateValidatorSet, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
@@ -907,6 +1095,22 @@ export const MsgRedelegateValidatorSet = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgRedelegateValidatorSet {
+    return {
+      delegator: isSet(object.delegator) ? String(object.delegator) : "",
+      preferences: Array.isArray(object?.preferences) ? object.preferences.map((e: any) => ValidatorPreference.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgRedelegateValidatorSet): unknown {
+    const obj: any = {};
+    message.delegator !== undefined && (obj.delegator = message.delegator);
+    if (message.preferences) {
+      obj.preferences = message.preferences.map(e => e ? ValidatorPreference.toJSON(e) : undefined);
+    } else {
+      obj.preferences = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<MsgRedelegateValidatorSet>): MsgRedelegateValidatorSet {
     const message = createBaseMsgRedelegateValidatorSet();
@@ -954,11 +1158,23 @@ export const MsgRedelegateValidatorSet = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgRedelegateValidatorSet.typeUrl, MsgRedelegateValidatorSet);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgRedelegateValidatorSet.aminoType, MsgRedelegateValidatorSet.typeUrl);
 function createBaseMsgRedelegateValidatorSetResponse(): MsgRedelegateValidatorSetResponse {
   return {};
 }
 export const MsgRedelegateValidatorSetResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgRedelegateValidatorSetResponse",
+  aminoType: "osmosis/valsetpref/redelegate-validator-set-response",
+  is(o: any): o is MsgRedelegateValidatorSetResponse {
+    return o && o.$typeUrl === MsgRedelegateValidatorSetResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgRedelegateValidatorSetResponseSDKType {
+    return o && o.$typeUrl === MsgRedelegateValidatorSetResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgRedelegateValidatorSetResponseAmino {
+    return o && o.$typeUrl === MsgRedelegateValidatorSetResponse.typeUrl;
+  },
   encode(_: MsgRedelegateValidatorSetResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -975,6 +1191,13 @@ export const MsgRedelegateValidatorSetResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgRedelegateValidatorSetResponse {
+    return {};
+  },
+  toJSON(_: MsgRedelegateValidatorSetResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgRedelegateValidatorSetResponse>): MsgRedelegateValidatorSetResponse {
     const message = createBaseMsgRedelegateValidatorSetResponse();
@@ -1010,6 +1233,8 @@ export const MsgRedelegateValidatorSetResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgRedelegateValidatorSetResponse.typeUrl, MsgRedelegateValidatorSetResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgRedelegateValidatorSetResponse.aminoType, MsgRedelegateValidatorSetResponse.typeUrl);
 function createBaseMsgWithdrawDelegationRewards(): MsgWithdrawDelegationRewards {
   return {
     delegator: ""
@@ -1017,6 +1242,16 @@ function createBaseMsgWithdrawDelegationRewards(): MsgWithdrawDelegationRewards 
 }
 export const MsgWithdrawDelegationRewards = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgWithdrawDelegationRewards",
+  aminoType: "osmosis/MsgWithdrawDelegationRewards",
+  is(o: any): o is MsgWithdrawDelegationRewards {
+    return o && (o.$typeUrl === MsgWithdrawDelegationRewards.typeUrl || typeof o.delegator === "string");
+  },
+  isSDK(o: any): o is MsgWithdrawDelegationRewardsSDKType {
+    return o && (o.$typeUrl === MsgWithdrawDelegationRewards.typeUrl || typeof o.delegator === "string");
+  },
+  isAmino(o: any): o is MsgWithdrawDelegationRewardsAmino {
+    return o && (o.$typeUrl === MsgWithdrawDelegationRewards.typeUrl || typeof o.delegator === "string");
+  },
   encode(message: MsgWithdrawDelegationRewards, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
@@ -1039,6 +1274,16 @@ export const MsgWithdrawDelegationRewards = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgWithdrawDelegationRewards {
+    return {
+      delegator: isSet(object.delegator) ? String(object.delegator) : ""
+    };
+  },
+  toJSON(message: MsgWithdrawDelegationRewards): unknown {
+    const obj: any = {};
+    message.delegator !== undefined && (obj.delegator = message.delegator);
+    return obj;
   },
   fromPartial(object: Partial<MsgWithdrawDelegationRewards>): MsgWithdrawDelegationRewards {
     const message = createBaseMsgWithdrawDelegationRewards();
@@ -1079,11 +1324,23 @@ export const MsgWithdrawDelegationRewards = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgWithdrawDelegationRewards.typeUrl, MsgWithdrawDelegationRewards);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgWithdrawDelegationRewards.aminoType, MsgWithdrawDelegationRewards.typeUrl);
 function createBaseMsgWithdrawDelegationRewardsResponse(): MsgWithdrawDelegationRewardsResponse {
   return {};
 }
 export const MsgWithdrawDelegationRewardsResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgWithdrawDelegationRewardsResponse",
+  aminoType: "osmosis/valsetpref/withdraw-delegation-rewards-response",
+  is(o: any): o is MsgWithdrawDelegationRewardsResponse {
+    return o && o.$typeUrl === MsgWithdrawDelegationRewardsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgWithdrawDelegationRewardsResponseSDKType {
+    return o && o.$typeUrl === MsgWithdrawDelegationRewardsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgWithdrawDelegationRewardsResponseAmino {
+    return o && o.$typeUrl === MsgWithdrawDelegationRewardsResponse.typeUrl;
+  },
   encode(_: MsgWithdrawDelegationRewardsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -1100,6 +1357,13 @@ export const MsgWithdrawDelegationRewardsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgWithdrawDelegationRewardsResponse {
+    return {};
+  },
+  toJSON(_: MsgWithdrawDelegationRewardsResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgWithdrawDelegationRewardsResponse>): MsgWithdrawDelegationRewardsResponse {
     const message = createBaseMsgWithdrawDelegationRewardsResponse();
@@ -1135,6 +1399,8 @@ export const MsgWithdrawDelegationRewardsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgWithdrawDelegationRewardsResponse.typeUrl, MsgWithdrawDelegationRewardsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgWithdrawDelegationRewardsResponse.aminoType, MsgWithdrawDelegationRewardsResponse.typeUrl);
 function createBaseMsgDelegateBondedTokens(): MsgDelegateBondedTokens {
   return {
     delegator: "",
@@ -1143,6 +1409,16 @@ function createBaseMsgDelegateBondedTokens(): MsgDelegateBondedTokens {
 }
 export const MsgDelegateBondedTokens = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateBondedTokens",
+  aminoType: "osmosis/valsetpref/delegate-bonded-tokens",
+  is(o: any): o is MsgDelegateBondedTokens {
+    return o && (o.$typeUrl === MsgDelegateBondedTokens.typeUrl || typeof o.delegator === "string" && typeof o.lockID === "bigint");
+  },
+  isSDK(o: any): o is MsgDelegateBondedTokensSDKType {
+    return o && (o.$typeUrl === MsgDelegateBondedTokens.typeUrl || typeof o.delegator === "string" && typeof o.lockID === "bigint");
+  },
+  isAmino(o: any): o is MsgDelegateBondedTokensAmino {
+    return o && (o.$typeUrl === MsgDelegateBondedTokens.typeUrl || typeof o.delegator === "string" && typeof o.lockID === "bigint");
+  },
   encode(message: MsgDelegateBondedTokens, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegator !== "") {
       writer.uint32(10).string(message.delegator);
@@ -1171,6 +1447,18 @@ export const MsgDelegateBondedTokens = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgDelegateBondedTokens {
+    return {
+      delegator: isSet(object.delegator) ? String(object.delegator) : "",
+      lockID: isSet(object.lockID) ? BigInt(object.lockID.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgDelegateBondedTokens): unknown {
+    const obj: any = {};
+    message.delegator !== undefined && (obj.delegator = message.delegator);
+    message.lockID !== undefined && (obj.lockID = (message.lockID || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgDelegateBondedTokens>): MsgDelegateBondedTokens {
     const message = createBaseMsgDelegateBondedTokens();
@@ -1216,11 +1504,23 @@ export const MsgDelegateBondedTokens = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgDelegateBondedTokens.typeUrl, MsgDelegateBondedTokens);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgDelegateBondedTokens.aminoType, MsgDelegateBondedTokens.typeUrl);
 function createBaseMsgDelegateBondedTokensResponse(): MsgDelegateBondedTokensResponse {
   return {};
 }
 export const MsgDelegateBondedTokensResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateBondedTokensResponse",
+  aminoType: "osmosis/valsetpref/delegate-bonded-tokens-response",
+  is(o: any): o is MsgDelegateBondedTokensResponse {
+    return o && o.$typeUrl === MsgDelegateBondedTokensResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgDelegateBondedTokensResponseSDKType {
+    return o && o.$typeUrl === MsgDelegateBondedTokensResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgDelegateBondedTokensResponseAmino {
+    return o && o.$typeUrl === MsgDelegateBondedTokensResponse.typeUrl;
+  },
   encode(_: MsgDelegateBondedTokensResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -1237,6 +1537,13 @@ export const MsgDelegateBondedTokensResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgDelegateBondedTokensResponse {
+    return {};
+  },
+  toJSON(_: MsgDelegateBondedTokensResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgDelegateBondedTokensResponse>): MsgDelegateBondedTokensResponse {
     const message = createBaseMsgDelegateBondedTokensResponse();
@@ -1272,3 +1579,5 @@ export const MsgDelegateBondedTokensResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgDelegateBondedTokensResponse.typeUrl, MsgDelegateBondedTokensResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgDelegateBondedTokensResponse.aminoType, MsgDelegateBondedTokensResponse.typeUrl);

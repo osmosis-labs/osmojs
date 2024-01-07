@@ -36,6 +36,34 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    transfer(value: MsgTransfer) {
+      return {
+        typeUrl: "/ibc.applications.transfer.v1.MsgTransfer",
+        value: MsgTransfer.toJSON(value)
+      };
+    },
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/ibc.applications.transfer.v1.MsgUpdateParams",
+        value: MsgUpdateParams.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    transfer(value: any) {
+      return {
+        typeUrl: "/ibc.applications.transfer.v1.MsgTransfer",
+        value: MsgTransfer.fromJSON(value)
+      };
+    },
+    updateParams(value: any) {
+      return {
+        typeUrl: "/ibc.applications.transfer.v1.MsgUpdateParams",
+        value: MsgUpdateParams.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     transfer(value: MsgTransfer) {
       return {

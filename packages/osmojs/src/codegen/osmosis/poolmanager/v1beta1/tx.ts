@@ -1,6 +1,8 @@
 import { SwapAmountInRoute, SwapAmountInRouteAmino, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAmountOutRouteAmino, SwapAmountOutRouteSDKType, SwapAmountInSplitRoute, SwapAmountInSplitRouteAmino, SwapAmountInSplitRouteSDKType, SwapAmountOutSplitRoute, SwapAmountOutSplitRouteAmino, SwapAmountOutSplitRouteSDKType } from "./swap_route";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { Decimal } from "@cosmjs/math";
 /** ===================== MsgSwapExactAmountIn */
 export interface MsgSwapExactAmountIn {
@@ -267,6 +269,16 @@ function createBaseMsgSwapExactAmountIn(): MsgSwapExactAmountIn {
 }
 export const MsgSwapExactAmountIn = {
   typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountIn",
+  aminoType: "osmosis/poolmanager/swap-exact-amount-in",
+  is(o: any): o is MsgSwapExactAmountIn {
+    return o && (o.$typeUrl === MsgSwapExactAmountIn.typeUrl || typeof o.sender === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountInRoute.is(o.routes[0])) && Coin.is(o.tokenIn) && typeof o.tokenOutMinAmount === "string");
+  },
+  isSDK(o: any): o is MsgSwapExactAmountInSDKType {
+    return o && (o.$typeUrl === MsgSwapExactAmountIn.typeUrl || typeof o.sender === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountInRoute.isSDK(o.routes[0])) && Coin.isSDK(o.token_in) && typeof o.token_out_min_amount === "string");
+  },
+  isAmino(o: any): o is MsgSwapExactAmountInAmino {
+    return o && (o.$typeUrl === MsgSwapExactAmountIn.typeUrl || typeof o.sender === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountInRoute.isAmino(o.routes[0])) && Coin.isAmino(o.token_in) && typeof o.token_out_min_amount === "string");
+  },
   encode(message: MsgSwapExactAmountIn, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -307,6 +319,26 @@ export const MsgSwapExactAmountIn = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSwapExactAmountIn {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => SwapAmountInRoute.fromJSON(e)) : [],
+      tokenIn: isSet(object.tokenIn) ? Coin.fromJSON(object.tokenIn) : undefined,
+      tokenOutMinAmount: isSet(object.tokenOutMinAmount) ? String(object.tokenOutMinAmount) : ""
+    };
+  },
+  toJSON(message: MsgSwapExactAmountIn): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    if (message.routes) {
+      obj.routes = message.routes.map(e => e ? SwapAmountInRoute.toJSON(e) : undefined);
+    } else {
+      obj.routes = [];
+    }
+    message.tokenIn !== undefined && (obj.tokenIn = message.tokenIn ? Coin.toJSON(message.tokenIn) : undefined);
+    message.tokenOutMinAmount !== undefined && (obj.tokenOutMinAmount = message.tokenOutMinAmount);
+    return obj;
   },
   fromPartial(object: Partial<MsgSwapExactAmountIn>): MsgSwapExactAmountIn {
     const message = createBaseMsgSwapExactAmountIn();
@@ -364,6 +396,8 @@ export const MsgSwapExactAmountIn = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSwapExactAmountIn.typeUrl, MsgSwapExactAmountIn);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSwapExactAmountIn.aminoType, MsgSwapExactAmountIn.typeUrl);
 function createBaseMsgSwapExactAmountInResponse(): MsgSwapExactAmountInResponse {
   return {
     tokenOutAmount: ""
@@ -371,6 +405,16 @@ function createBaseMsgSwapExactAmountInResponse(): MsgSwapExactAmountInResponse 
 }
 export const MsgSwapExactAmountInResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountInResponse",
+  aminoType: "osmosis/poolmanager/swap-exact-amount-in-response",
+  is(o: any): o is MsgSwapExactAmountInResponse {
+    return o && (o.$typeUrl === MsgSwapExactAmountInResponse.typeUrl || typeof o.tokenOutAmount === "string");
+  },
+  isSDK(o: any): o is MsgSwapExactAmountInResponseSDKType {
+    return o && (o.$typeUrl === MsgSwapExactAmountInResponse.typeUrl || typeof o.token_out_amount === "string");
+  },
+  isAmino(o: any): o is MsgSwapExactAmountInResponseAmino {
+    return o && (o.$typeUrl === MsgSwapExactAmountInResponse.typeUrl || typeof o.token_out_amount === "string");
+  },
   encode(message: MsgSwapExactAmountInResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenOutAmount !== "") {
       writer.uint32(10).string(message.tokenOutAmount);
@@ -393,6 +437,16 @@ export const MsgSwapExactAmountInResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSwapExactAmountInResponse {
+    return {
+      tokenOutAmount: isSet(object.tokenOutAmount) ? String(object.tokenOutAmount) : ""
+    };
+  },
+  toJSON(message: MsgSwapExactAmountInResponse): unknown {
+    const obj: any = {};
+    message.tokenOutAmount !== undefined && (obj.tokenOutAmount = message.tokenOutAmount);
+    return obj;
   },
   fromPartial(object: Partial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse {
     const message = createBaseMsgSwapExactAmountInResponse();
@@ -433,6 +487,8 @@ export const MsgSwapExactAmountInResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSwapExactAmountInResponse.typeUrl, MsgSwapExactAmountInResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSwapExactAmountInResponse.aminoType, MsgSwapExactAmountInResponse.typeUrl);
 function createBaseMsgSplitRouteSwapExactAmountIn(): MsgSplitRouteSwapExactAmountIn {
   return {
     sender: "",
@@ -443,6 +499,16 @@ function createBaseMsgSplitRouteSwapExactAmountIn(): MsgSplitRouteSwapExactAmoun
 }
 export const MsgSplitRouteSwapExactAmountIn = {
   typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountIn",
+  aminoType: "osmosis/poolmanager/split-amount-in",
+  is(o: any): o is MsgSplitRouteSwapExactAmountIn {
+    return o && (o.$typeUrl === MsgSplitRouteSwapExactAmountIn.typeUrl || typeof o.sender === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountInSplitRoute.is(o.routes[0])) && typeof o.tokenInDenom === "string" && typeof o.tokenOutMinAmount === "string");
+  },
+  isSDK(o: any): o is MsgSplitRouteSwapExactAmountInSDKType {
+    return o && (o.$typeUrl === MsgSplitRouteSwapExactAmountIn.typeUrl || typeof o.sender === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountInSplitRoute.isSDK(o.routes[0])) && typeof o.token_in_denom === "string" && typeof o.token_out_min_amount === "string");
+  },
+  isAmino(o: any): o is MsgSplitRouteSwapExactAmountInAmino {
+    return o && (o.$typeUrl === MsgSplitRouteSwapExactAmountIn.typeUrl || typeof o.sender === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountInSplitRoute.isAmino(o.routes[0])) && typeof o.token_in_denom === "string" && typeof o.token_out_min_amount === "string");
+  },
   encode(message: MsgSplitRouteSwapExactAmountIn, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -483,6 +549,26 @@ export const MsgSplitRouteSwapExactAmountIn = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSplitRouteSwapExactAmountIn {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => SwapAmountInSplitRoute.fromJSON(e)) : [],
+      tokenInDenom: isSet(object.tokenInDenom) ? String(object.tokenInDenom) : "",
+      tokenOutMinAmount: isSet(object.tokenOutMinAmount) ? String(object.tokenOutMinAmount) : ""
+    };
+  },
+  toJSON(message: MsgSplitRouteSwapExactAmountIn): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    if (message.routes) {
+      obj.routes = message.routes.map(e => e ? SwapAmountInSplitRoute.toJSON(e) : undefined);
+    } else {
+      obj.routes = [];
+    }
+    message.tokenInDenom !== undefined && (obj.tokenInDenom = message.tokenInDenom);
+    message.tokenOutMinAmount !== undefined && (obj.tokenOutMinAmount = message.tokenOutMinAmount);
+    return obj;
   },
   fromPartial(object: Partial<MsgSplitRouteSwapExactAmountIn>): MsgSplitRouteSwapExactAmountIn {
     const message = createBaseMsgSplitRouteSwapExactAmountIn();
@@ -540,6 +626,8 @@ export const MsgSplitRouteSwapExactAmountIn = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSplitRouteSwapExactAmountIn.typeUrl, MsgSplitRouteSwapExactAmountIn);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSplitRouteSwapExactAmountIn.aminoType, MsgSplitRouteSwapExactAmountIn.typeUrl);
 function createBaseMsgSplitRouteSwapExactAmountInResponse(): MsgSplitRouteSwapExactAmountInResponse {
   return {
     tokenOutAmount: ""
@@ -547,6 +635,16 @@ function createBaseMsgSplitRouteSwapExactAmountInResponse(): MsgSplitRouteSwapEx
 }
 export const MsgSplitRouteSwapExactAmountInResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountInResponse",
+  aminoType: "osmosis/poolmanager/split-route-swap-exact-amount-in-response",
+  is(o: any): o is MsgSplitRouteSwapExactAmountInResponse {
+    return o && (o.$typeUrl === MsgSplitRouteSwapExactAmountInResponse.typeUrl || typeof o.tokenOutAmount === "string");
+  },
+  isSDK(o: any): o is MsgSplitRouteSwapExactAmountInResponseSDKType {
+    return o && (o.$typeUrl === MsgSplitRouteSwapExactAmountInResponse.typeUrl || typeof o.token_out_amount === "string");
+  },
+  isAmino(o: any): o is MsgSplitRouteSwapExactAmountInResponseAmino {
+    return o && (o.$typeUrl === MsgSplitRouteSwapExactAmountInResponse.typeUrl || typeof o.token_out_amount === "string");
+  },
   encode(message: MsgSplitRouteSwapExactAmountInResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenOutAmount !== "") {
       writer.uint32(10).string(message.tokenOutAmount);
@@ -569,6 +667,16 @@ export const MsgSplitRouteSwapExactAmountInResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSplitRouteSwapExactAmountInResponse {
+    return {
+      tokenOutAmount: isSet(object.tokenOutAmount) ? String(object.tokenOutAmount) : ""
+    };
+  },
+  toJSON(message: MsgSplitRouteSwapExactAmountInResponse): unknown {
+    const obj: any = {};
+    message.tokenOutAmount !== undefined && (obj.tokenOutAmount = message.tokenOutAmount);
+    return obj;
   },
   fromPartial(object: Partial<MsgSplitRouteSwapExactAmountInResponse>): MsgSplitRouteSwapExactAmountInResponse {
     const message = createBaseMsgSplitRouteSwapExactAmountInResponse();
@@ -609,6 +717,8 @@ export const MsgSplitRouteSwapExactAmountInResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSplitRouteSwapExactAmountInResponse.typeUrl, MsgSplitRouteSwapExactAmountInResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSplitRouteSwapExactAmountInResponse.aminoType, MsgSplitRouteSwapExactAmountInResponse.typeUrl);
 function createBaseMsgSwapExactAmountOut(): MsgSwapExactAmountOut {
   return {
     sender: "",
@@ -619,6 +729,16 @@ function createBaseMsgSwapExactAmountOut(): MsgSwapExactAmountOut {
 }
 export const MsgSwapExactAmountOut = {
   typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOut",
+  aminoType: "osmosis/poolmanager/swap-exact-amount-out",
+  is(o: any): o is MsgSwapExactAmountOut {
+    return o && (o.$typeUrl === MsgSwapExactAmountOut.typeUrl || typeof o.sender === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountOutRoute.is(o.routes[0])) && typeof o.tokenInMaxAmount === "string" && Coin.is(o.tokenOut));
+  },
+  isSDK(o: any): o is MsgSwapExactAmountOutSDKType {
+    return o && (o.$typeUrl === MsgSwapExactAmountOut.typeUrl || typeof o.sender === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountOutRoute.isSDK(o.routes[0])) && typeof o.token_in_max_amount === "string" && Coin.isSDK(o.token_out));
+  },
+  isAmino(o: any): o is MsgSwapExactAmountOutAmino {
+    return o && (o.$typeUrl === MsgSwapExactAmountOut.typeUrl || typeof o.sender === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountOutRoute.isAmino(o.routes[0])) && typeof o.token_in_max_amount === "string" && Coin.isAmino(o.token_out));
+  },
   encode(message: MsgSwapExactAmountOut, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -659,6 +779,26 @@ export const MsgSwapExactAmountOut = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSwapExactAmountOut {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => SwapAmountOutRoute.fromJSON(e)) : [],
+      tokenInMaxAmount: isSet(object.tokenInMaxAmount) ? String(object.tokenInMaxAmount) : "",
+      tokenOut: isSet(object.tokenOut) ? Coin.fromJSON(object.tokenOut) : undefined
+    };
+  },
+  toJSON(message: MsgSwapExactAmountOut): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    if (message.routes) {
+      obj.routes = message.routes.map(e => e ? SwapAmountOutRoute.toJSON(e) : undefined);
+    } else {
+      obj.routes = [];
+    }
+    message.tokenInMaxAmount !== undefined && (obj.tokenInMaxAmount = message.tokenInMaxAmount);
+    message.tokenOut !== undefined && (obj.tokenOut = message.tokenOut ? Coin.toJSON(message.tokenOut) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<MsgSwapExactAmountOut>): MsgSwapExactAmountOut {
     const message = createBaseMsgSwapExactAmountOut();
@@ -716,6 +856,8 @@ export const MsgSwapExactAmountOut = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSwapExactAmountOut.typeUrl, MsgSwapExactAmountOut);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSwapExactAmountOut.aminoType, MsgSwapExactAmountOut.typeUrl);
 function createBaseMsgSwapExactAmountOutResponse(): MsgSwapExactAmountOutResponse {
   return {
     tokenInAmount: ""
@@ -723,6 +865,16 @@ function createBaseMsgSwapExactAmountOutResponse(): MsgSwapExactAmountOutRespons
 }
 export const MsgSwapExactAmountOutResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOutResponse",
+  aminoType: "osmosis/poolmanager/swap-exact-amount-out-response",
+  is(o: any): o is MsgSwapExactAmountOutResponse {
+    return o && (o.$typeUrl === MsgSwapExactAmountOutResponse.typeUrl || typeof o.tokenInAmount === "string");
+  },
+  isSDK(o: any): o is MsgSwapExactAmountOutResponseSDKType {
+    return o && (o.$typeUrl === MsgSwapExactAmountOutResponse.typeUrl || typeof o.token_in_amount === "string");
+  },
+  isAmino(o: any): o is MsgSwapExactAmountOutResponseAmino {
+    return o && (o.$typeUrl === MsgSwapExactAmountOutResponse.typeUrl || typeof o.token_in_amount === "string");
+  },
   encode(message: MsgSwapExactAmountOutResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenInAmount !== "") {
       writer.uint32(10).string(message.tokenInAmount);
@@ -745,6 +897,16 @@ export const MsgSwapExactAmountOutResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSwapExactAmountOutResponse {
+    return {
+      tokenInAmount: isSet(object.tokenInAmount) ? String(object.tokenInAmount) : ""
+    };
+  },
+  toJSON(message: MsgSwapExactAmountOutResponse): unknown {
+    const obj: any = {};
+    message.tokenInAmount !== undefined && (obj.tokenInAmount = message.tokenInAmount);
+    return obj;
   },
   fromPartial(object: Partial<MsgSwapExactAmountOutResponse>): MsgSwapExactAmountOutResponse {
     const message = createBaseMsgSwapExactAmountOutResponse();
@@ -785,6 +947,8 @@ export const MsgSwapExactAmountOutResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSwapExactAmountOutResponse.typeUrl, MsgSwapExactAmountOutResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSwapExactAmountOutResponse.aminoType, MsgSwapExactAmountOutResponse.typeUrl);
 function createBaseMsgSplitRouteSwapExactAmountOut(): MsgSplitRouteSwapExactAmountOut {
   return {
     sender: "",
@@ -795,6 +959,16 @@ function createBaseMsgSplitRouteSwapExactAmountOut(): MsgSplitRouteSwapExactAmou
 }
 export const MsgSplitRouteSwapExactAmountOut = {
   typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountOut",
+  aminoType: "osmosis/poolmanager/split-amount-out",
+  is(o: any): o is MsgSplitRouteSwapExactAmountOut {
+    return o && (o.$typeUrl === MsgSplitRouteSwapExactAmountOut.typeUrl || typeof o.sender === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountOutSplitRoute.is(o.routes[0])) && typeof o.tokenOutDenom === "string" && typeof o.tokenInMaxAmount === "string");
+  },
+  isSDK(o: any): o is MsgSplitRouteSwapExactAmountOutSDKType {
+    return o && (o.$typeUrl === MsgSplitRouteSwapExactAmountOut.typeUrl || typeof o.sender === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountOutSplitRoute.isSDK(o.routes[0])) && typeof o.token_out_denom === "string" && typeof o.token_in_max_amount === "string");
+  },
+  isAmino(o: any): o is MsgSplitRouteSwapExactAmountOutAmino {
+    return o && (o.$typeUrl === MsgSplitRouteSwapExactAmountOut.typeUrl || typeof o.sender === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountOutSplitRoute.isAmino(o.routes[0])) && typeof o.token_out_denom === "string" && typeof o.token_in_max_amount === "string");
+  },
   encode(message: MsgSplitRouteSwapExactAmountOut, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -835,6 +1009,26 @@ export const MsgSplitRouteSwapExactAmountOut = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSplitRouteSwapExactAmountOut {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => SwapAmountOutSplitRoute.fromJSON(e)) : [],
+      tokenOutDenom: isSet(object.tokenOutDenom) ? String(object.tokenOutDenom) : "",
+      tokenInMaxAmount: isSet(object.tokenInMaxAmount) ? String(object.tokenInMaxAmount) : ""
+    };
+  },
+  toJSON(message: MsgSplitRouteSwapExactAmountOut): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    if (message.routes) {
+      obj.routes = message.routes.map(e => e ? SwapAmountOutSplitRoute.toJSON(e) : undefined);
+    } else {
+      obj.routes = [];
+    }
+    message.tokenOutDenom !== undefined && (obj.tokenOutDenom = message.tokenOutDenom);
+    message.tokenInMaxAmount !== undefined && (obj.tokenInMaxAmount = message.tokenInMaxAmount);
+    return obj;
   },
   fromPartial(object: Partial<MsgSplitRouteSwapExactAmountOut>): MsgSplitRouteSwapExactAmountOut {
     const message = createBaseMsgSplitRouteSwapExactAmountOut();
@@ -892,6 +1086,8 @@ export const MsgSplitRouteSwapExactAmountOut = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSplitRouteSwapExactAmountOut.typeUrl, MsgSplitRouteSwapExactAmountOut);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSplitRouteSwapExactAmountOut.aminoType, MsgSplitRouteSwapExactAmountOut.typeUrl);
 function createBaseMsgSplitRouteSwapExactAmountOutResponse(): MsgSplitRouteSwapExactAmountOutResponse {
   return {
     tokenInAmount: ""
@@ -899,6 +1095,16 @@ function createBaseMsgSplitRouteSwapExactAmountOutResponse(): MsgSplitRouteSwapE
 }
 export const MsgSplitRouteSwapExactAmountOutResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountOutResponse",
+  aminoType: "osmosis/poolmanager/split-route-swap-exact-amount-out-response",
+  is(o: any): o is MsgSplitRouteSwapExactAmountOutResponse {
+    return o && (o.$typeUrl === MsgSplitRouteSwapExactAmountOutResponse.typeUrl || typeof o.tokenInAmount === "string");
+  },
+  isSDK(o: any): o is MsgSplitRouteSwapExactAmountOutResponseSDKType {
+    return o && (o.$typeUrl === MsgSplitRouteSwapExactAmountOutResponse.typeUrl || typeof o.token_in_amount === "string");
+  },
+  isAmino(o: any): o is MsgSplitRouteSwapExactAmountOutResponseAmino {
+    return o && (o.$typeUrl === MsgSplitRouteSwapExactAmountOutResponse.typeUrl || typeof o.token_in_amount === "string");
+  },
   encode(message: MsgSplitRouteSwapExactAmountOutResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenInAmount !== "") {
       writer.uint32(10).string(message.tokenInAmount);
@@ -921,6 +1127,16 @@ export const MsgSplitRouteSwapExactAmountOutResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSplitRouteSwapExactAmountOutResponse {
+    return {
+      tokenInAmount: isSet(object.tokenInAmount) ? String(object.tokenInAmount) : ""
+    };
+  },
+  toJSON(message: MsgSplitRouteSwapExactAmountOutResponse): unknown {
+    const obj: any = {};
+    message.tokenInAmount !== undefined && (obj.tokenInAmount = message.tokenInAmount);
+    return obj;
   },
   fromPartial(object: Partial<MsgSplitRouteSwapExactAmountOutResponse>): MsgSplitRouteSwapExactAmountOutResponse {
     const message = createBaseMsgSplitRouteSwapExactAmountOutResponse();
@@ -961,6 +1177,8 @@ export const MsgSplitRouteSwapExactAmountOutResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSplitRouteSwapExactAmountOutResponse.typeUrl, MsgSplitRouteSwapExactAmountOutResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSplitRouteSwapExactAmountOutResponse.aminoType, MsgSplitRouteSwapExactAmountOutResponse.typeUrl);
 function createBaseMsgSetDenomPairTakerFee(): MsgSetDenomPairTakerFee {
   return {
     sender: "",
@@ -969,6 +1187,16 @@ function createBaseMsgSetDenomPairTakerFee(): MsgSetDenomPairTakerFee {
 }
 export const MsgSetDenomPairTakerFee = {
   typeUrl: "/osmosis.poolmanager.v1beta1.MsgSetDenomPairTakerFee",
+  aminoType: "osmosis/poolmanager/set-denom-pair-taker-fee",
+  is(o: any): o is MsgSetDenomPairTakerFee {
+    return o && (o.$typeUrl === MsgSetDenomPairTakerFee.typeUrl || typeof o.sender === "string" && Array.isArray(o.denomPairTakerFee) && (!o.denomPairTakerFee.length || DenomPairTakerFee.is(o.denomPairTakerFee[0])));
+  },
+  isSDK(o: any): o is MsgSetDenomPairTakerFeeSDKType {
+    return o && (o.$typeUrl === MsgSetDenomPairTakerFee.typeUrl || typeof o.sender === "string" && Array.isArray(o.denom_pair_taker_fee) && (!o.denom_pair_taker_fee.length || DenomPairTakerFee.isSDK(o.denom_pair_taker_fee[0])));
+  },
+  isAmino(o: any): o is MsgSetDenomPairTakerFeeAmino {
+    return o && (o.$typeUrl === MsgSetDenomPairTakerFee.typeUrl || typeof o.sender === "string" && Array.isArray(o.denom_pair_taker_fee) && (!o.denom_pair_taker_fee.length || DenomPairTakerFee.isAmino(o.denom_pair_taker_fee[0])));
+  },
   encode(message: MsgSetDenomPairTakerFee, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -997,6 +1225,22 @@ export const MsgSetDenomPairTakerFee = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSetDenomPairTakerFee {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      denomPairTakerFee: Array.isArray(object?.denomPairTakerFee) ? object.denomPairTakerFee.map((e: any) => DenomPairTakerFee.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgSetDenomPairTakerFee): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    if (message.denomPairTakerFee) {
+      obj.denomPairTakerFee = message.denomPairTakerFee.map(e => e ? DenomPairTakerFee.toJSON(e) : undefined);
+    } else {
+      obj.denomPairTakerFee = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<MsgSetDenomPairTakerFee>): MsgSetDenomPairTakerFee {
     const message = createBaseMsgSetDenomPairTakerFee();
@@ -1044,6 +1288,8 @@ export const MsgSetDenomPairTakerFee = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetDenomPairTakerFee.typeUrl, MsgSetDenomPairTakerFee);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetDenomPairTakerFee.aminoType, MsgSetDenomPairTakerFee.typeUrl);
 function createBaseMsgSetDenomPairTakerFeeResponse(): MsgSetDenomPairTakerFeeResponse {
   return {
     success: false
@@ -1051,6 +1297,16 @@ function createBaseMsgSetDenomPairTakerFeeResponse(): MsgSetDenomPairTakerFeeRes
 }
 export const MsgSetDenomPairTakerFeeResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.MsgSetDenomPairTakerFeeResponse",
+  aminoType: "osmosis/poolmanager/set-denom-pair-taker-fee-response",
+  is(o: any): o is MsgSetDenomPairTakerFeeResponse {
+    return o && (o.$typeUrl === MsgSetDenomPairTakerFeeResponse.typeUrl || typeof o.success === "boolean");
+  },
+  isSDK(o: any): o is MsgSetDenomPairTakerFeeResponseSDKType {
+    return o && (o.$typeUrl === MsgSetDenomPairTakerFeeResponse.typeUrl || typeof o.success === "boolean");
+  },
+  isAmino(o: any): o is MsgSetDenomPairTakerFeeResponseAmino {
+    return o && (o.$typeUrl === MsgSetDenomPairTakerFeeResponse.typeUrl || typeof o.success === "boolean");
+  },
   encode(message: MsgSetDenomPairTakerFeeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.success === true) {
       writer.uint32(8).bool(message.success);
@@ -1073,6 +1329,16 @@ export const MsgSetDenomPairTakerFeeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSetDenomPairTakerFeeResponse {
+    return {
+      success: isSet(object.success) ? Boolean(object.success) : false
+    };
+  },
+  toJSON(message: MsgSetDenomPairTakerFeeResponse): unknown {
+    const obj: any = {};
+    message.success !== undefined && (obj.success = message.success);
+    return obj;
   },
   fromPartial(object: Partial<MsgSetDenomPairTakerFeeResponse>): MsgSetDenomPairTakerFeeResponse {
     const message = createBaseMsgSetDenomPairTakerFeeResponse();
@@ -1113,6 +1379,8 @@ export const MsgSetDenomPairTakerFeeResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetDenomPairTakerFeeResponse.typeUrl, MsgSetDenomPairTakerFeeResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetDenomPairTakerFeeResponse.aminoType, MsgSetDenomPairTakerFeeResponse.typeUrl);
 function createBaseDenomPairTakerFee(): DenomPairTakerFee {
   return {
     denom0: "",
@@ -1122,6 +1390,16 @@ function createBaseDenomPairTakerFee(): DenomPairTakerFee {
 }
 export const DenomPairTakerFee = {
   typeUrl: "/osmosis.poolmanager.v1beta1.DenomPairTakerFee",
+  aminoType: "osmosis/poolmanager/denom-pair-taker-fee",
+  is(o: any): o is DenomPairTakerFee {
+    return o && (o.$typeUrl === DenomPairTakerFee.typeUrl || typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.takerFee === "string");
+  },
+  isSDK(o: any): o is DenomPairTakerFeeSDKType {
+    return o && (o.$typeUrl === DenomPairTakerFee.typeUrl || typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.taker_fee === "string");
+  },
+  isAmino(o: any): o is DenomPairTakerFeeAmino {
+    return o && (o.$typeUrl === DenomPairTakerFee.typeUrl || typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.taker_fee === "string");
+  },
   encode(message: DenomPairTakerFee, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom0 !== "") {
       writer.uint32(10).string(message.denom0);
@@ -1156,6 +1434,20 @@ export const DenomPairTakerFee = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DenomPairTakerFee {
+    return {
+      denom0: isSet(object.denom0) ? String(object.denom0) : "",
+      denom1: isSet(object.denom1) ? String(object.denom1) : "",
+      takerFee: isSet(object.takerFee) ? String(object.takerFee) : ""
+    };
+  },
+  toJSON(message: DenomPairTakerFee): unknown {
+    const obj: any = {};
+    message.denom0 !== undefined && (obj.denom0 = message.denom0);
+    message.denom1 !== undefined && (obj.denom1 = message.denom1);
+    message.takerFee !== undefined && (obj.takerFee = message.takerFee);
+    return obj;
   },
   fromPartial(object: Partial<DenomPairTakerFee>): DenomPairTakerFee {
     const message = createBaseDenomPairTakerFee();
@@ -1206,3 +1498,5 @@ export const DenomPairTakerFee = {
     };
   }
 };
+GlobalDecoderRegistry.register(DenomPairTakerFee.typeUrl, DenomPairTakerFee);
+GlobalDecoderRegistry.registerAminoProtoMapping(DenomPairTakerFee.aminoType, DenomPairTakerFee.typeUrl);

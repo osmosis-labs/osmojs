@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface Params {
   /**
    * code_ide_whitelist contains the list of code ids that are allowed to be
@@ -47,6 +49,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.Params",
+  aminoType: "osmosis/cosmwasmpool/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.codeIdWhitelist) && (!o.codeIdWhitelist.length || typeof o.codeIdWhitelist[0] === "bigint") && typeof o.poolMigrationLimit === "bigint");
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.code_id_whitelist) && (!o.code_id_whitelist.length || typeof o.code_id_whitelist[0] === "bigint") && typeof o.pool_migration_limit === "bigint");
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.code_id_whitelist) && (!o.code_id_whitelist.length || typeof o.code_id_whitelist[0] === "bigint") && typeof o.pool_migration_limit === "bigint");
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.codeIdWhitelist) {
@@ -84,6 +96,22 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      codeIdWhitelist: Array.isArray(object?.codeIdWhitelist) ? object.codeIdWhitelist.map((e: any) => BigInt(e.toString())) : [],
+      poolMigrationLimit: isSet(object.poolMigrationLimit) ? BigInt(object.poolMigrationLimit.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    if (message.codeIdWhitelist) {
+      obj.codeIdWhitelist = message.codeIdWhitelist.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.codeIdWhitelist = [];
+    }
+    message.poolMigrationLimit !== undefined && (obj.poolMigrationLimit = (message.poolMigrationLimit || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
@@ -131,3 +159,5 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);

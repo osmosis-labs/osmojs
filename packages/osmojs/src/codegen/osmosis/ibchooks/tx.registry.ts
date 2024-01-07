@@ -24,6 +24,22 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    emitIBCAck(value: MsgEmitIBCAck) {
+      return {
+        typeUrl: "/osmosis.ibchooks.MsgEmitIBCAck",
+        value: MsgEmitIBCAck.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    emitIBCAck(value: any) {
+      return {
+        typeUrl: "/osmosis.ibchooks.MsgEmitIBCAck",
+        value: MsgEmitIBCAck.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     emitIBCAck(value: MsgEmitIBCAck) {
       return {

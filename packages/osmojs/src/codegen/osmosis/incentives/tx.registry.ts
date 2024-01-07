@@ -48,6 +48,46 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    createGauge(value: MsgCreateGauge) {
+      return {
+        typeUrl: "/osmosis.incentives.MsgCreateGauge",
+        value: MsgCreateGauge.toJSON(value)
+      };
+    },
+    addToGauge(value: MsgAddToGauge) {
+      return {
+        typeUrl: "/osmosis.incentives.MsgAddToGauge",
+        value: MsgAddToGauge.toJSON(value)
+      };
+    },
+    createGroup(value: MsgCreateGroup) {
+      return {
+        typeUrl: "/osmosis.incentives.MsgCreateGroup",
+        value: MsgCreateGroup.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    createGauge(value: any) {
+      return {
+        typeUrl: "/osmosis.incentives.MsgCreateGauge",
+        value: MsgCreateGauge.fromJSON(value)
+      };
+    },
+    addToGauge(value: any) {
+      return {
+        typeUrl: "/osmosis.incentives.MsgAddToGauge",
+        value: MsgAddToGauge.fromJSON(value)
+      };
+    },
+    createGroup(value: any) {
+      return {
+        typeUrl: "/osmosis.incentives.MsgCreateGroup",
+        value: MsgCreateGroup.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createGauge(value: MsgCreateGauge) {
       return {

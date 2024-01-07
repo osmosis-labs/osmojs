@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../../binary";
+import { isSet } from "../../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../../registry";
 /**
  * Params defines the set of on-chain interchain accounts parameters.
  * The following parameters may be used to disable the controller submodule.
@@ -37,6 +39,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/ibc.applications.interchain_accounts.controller.v1.Params",
+  aminoType: "cosmos-sdk/Params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.controllerEnabled === "boolean");
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.controller_enabled === "boolean");
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.controller_enabled === "boolean");
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.controllerEnabled === true) {
       writer.uint32(8).bool(message.controllerEnabled);
@@ -59,6 +71,16 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      controllerEnabled: isSet(object.controllerEnabled) ? Boolean(object.controllerEnabled) : false
+    };
+  },
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    message.controllerEnabled !== undefined && (obj.controllerEnabled = message.controllerEnabled);
+    return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
@@ -99,3 +121,5 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);

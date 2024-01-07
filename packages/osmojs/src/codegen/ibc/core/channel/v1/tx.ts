@@ -2,7 +2,8 @@ import { Channel, ChannelAmino, ChannelSDKType, Packet, PacketAmino, PacketSDKTy
 import { Height, HeightAmino, HeightSDKType, Params, ParamsAmino, ParamsSDKType } from "../../client/v1/client";
 import { UpgradeFields, UpgradeFieldsAmino, UpgradeFieldsSDKType, Upgrade, UpgradeAmino, UpgradeSDKType, ErrorReceipt, ErrorReceiptAmino, ErrorReceiptSDKType } from "./upgrade";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** ResponseResultType defines the possible outcomes of the execution of a message */
 export enum ResponseResultType {
   /** RESPONSE_RESULT_TYPE_UNSPECIFIED - Default zero value enumeration */
@@ -1144,6 +1145,16 @@ function createBaseMsgChannelOpenInit(): MsgChannelOpenInit {
 }
 export const MsgChannelOpenInit = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelOpenInit",
+  aminoType: "cosmos-sdk/MsgChannelOpenInit",
+  is(o: any): o is MsgChannelOpenInit {
+    return o && (o.$typeUrl === MsgChannelOpenInit.typeUrl || typeof o.portId === "string" && Channel.is(o.channel) && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgChannelOpenInitSDKType {
+    return o && (o.$typeUrl === MsgChannelOpenInit.typeUrl || typeof o.port_id === "string" && Channel.isSDK(o.channel) && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgChannelOpenInitAmino {
+    return o && (o.$typeUrl === MsgChannelOpenInit.typeUrl || typeof o.port_id === "string" && Channel.isAmino(o.channel) && typeof o.signer === "string");
+  },
   encode(message: MsgChannelOpenInit, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -1178,6 +1189,20 @@ export const MsgChannelOpenInit = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelOpenInit {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channel: isSet(object.channel) ? Channel.fromJSON(object.channel) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgChannelOpenInit): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channel !== undefined && (obj.channel = message.channel ? Channel.toJSON(message.channel) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelOpenInit>): MsgChannelOpenInit {
     const message = createBaseMsgChannelOpenInit();
@@ -1228,6 +1253,8 @@ export const MsgChannelOpenInit = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelOpenInit.typeUrl, MsgChannelOpenInit);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelOpenInit.aminoType, MsgChannelOpenInit.typeUrl);
 function createBaseMsgChannelOpenInitResponse(): MsgChannelOpenInitResponse {
   return {
     channelId: "",
@@ -1236,6 +1263,16 @@ function createBaseMsgChannelOpenInitResponse(): MsgChannelOpenInitResponse {
 }
 export const MsgChannelOpenInitResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelOpenInitResponse",
+  aminoType: "cosmos-sdk/MsgChannelOpenInitResponse",
+  is(o: any): o is MsgChannelOpenInitResponse {
+    return o && (o.$typeUrl === MsgChannelOpenInitResponse.typeUrl || typeof o.channelId === "string" && typeof o.version === "string");
+  },
+  isSDK(o: any): o is MsgChannelOpenInitResponseSDKType {
+    return o && (o.$typeUrl === MsgChannelOpenInitResponse.typeUrl || typeof o.channel_id === "string" && typeof o.version === "string");
+  },
+  isAmino(o: any): o is MsgChannelOpenInitResponseAmino {
+    return o && (o.$typeUrl === MsgChannelOpenInitResponse.typeUrl || typeof o.channel_id === "string" && typeof o.version === "string");
+  },
   encode(message: MsgChannelOpenInitResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.channelId !== "") {
       writer.uint32(10).string(message.channelId);
@@ -1264,6 +1301,18 @@ export const MsgChannelOpenInitResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelOpenInitResponse {
+    return {
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      version: isSet(object.version) ? String(object.version) : ""
+    };
+  },
+  toJSON(message: MsgChannelOpenInitResponse): unknown {
+    const obj: any = {};
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.version !== undefined && (obj.version = message.version);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelOpenInitResponse>): MsgChannelOpenInitResponse {
     const message = createBaseMsgChannelOpenInitResponse();
@@ -1309,6 +1358,8 @@ export const MsgChannelOpenInitResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelOpenInitResponse.typeUrl, MsgChannelOpenInitResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelOpenInitResponse.aminoType, MsgChannelOpenInitResponse.typeUrl);
 function createBaseMsgChannelOpenTry(): MsgChannelOpenTry {
   return {
     portId: "",
@@ -1322,6 +1373,16 @@ function createBaseMsgChannelOpenTry(): MsgChannelOpenTry {
 }
 export const MsgChannelOpenTry = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelOpenTry",
+  aminoType: "cosmos-sdk/MsgChannelOpenTry",
+  is(o: any): o is MsgChannelOpenTry {
+    return o && (o.$typeUrl === MsgChannelOpenTry.typeUrl || typeof o.portId === "string" && typeof o.previousChannelId === "string" && Channel.is(o.channel) && typeof o.counterpartyVersion === "string" && (o.proofInit instanceof Uint8Array || typeof o.proofInit === "string") && Height.is(o.proofHeight) && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgChannelOpenTrySDKType {
+    return o && (o.$typeUrl === MsgChannelOpenTry.typeUrl || typeof o.port_id === "string" && typeof o.previous_channel_id === "string" && Channel.isSDK(o.channel) && typeof o.counterparty_version === "string" && (o.proof_init instanceof Uint8Array || typeof o.proof_init === "string") && Height.isSDK(o.proof_height) && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgChannelOpenTryAmino {
+    return o && (o.$typeUrl === MsgChannelOpenTry.typeUrl || typeof o.port_id === "string" && typeof o.previous_channel_id === "string" && Channel.isAmino(o.channel) && typeof o.counterparty_version === "string" && (o.proof_init instanceof Uint8Array || typeof o.proof_init === "string") && Height.isAmino(o.proof_height) && typeof o.signer === "string");
+  },
   encode(message: MsgChannelOpenTry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -1380,6 +1441,28 @@ export const MsgChannelOpenTry = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelOpenTry {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      previousChannelId: isSet(object.previousChannelId) ? String(object.previousChannelId) : "",
+      channel: isSet(object.channel) ? Channel.fromJSON(object.channel) : undefined,
+      counterpartyVersion: isSet(object.counterpartyVersion) ? String(object.counterpartyVersion) : "",
+      proofInit: isSet(object.proofInit) ? bytesFromBase64(object.proofInit) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgChannelOpenTry): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.previousChannelId !== undefined && (obj.previousChannelId = message.previousChannelId);
+    message.channel !== undefined && (obj.channel = message.channel ? Channel.toJSON(message.channel) : undefined);
+    message.counterpartyVersion !== undefined && (obj.counterpartyVersion = message.counterpartyVersion);
+    message.proofInit !== undefined && (obj.proofInit = base64FromBytes(message.proofInit !== undefined ? message.proofInit : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelOpenTry>): MsgChannelOpenTry {
     const message = createBaseMsgChannelOpenTry();
@@ -1450,6 +1533,8 @@ export const MsgChannelOpenTry = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelOpenTry.typeUrl, MsgChannelOpenTry);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelOpenTry.aminoType, MsgChannelOpenTry.typeUrl);
 function createBaseMsgChannelOpenTryResponse(): MsgChannelOpenTryResponse {
   return {
     version: "",
@@ -1458,6 +1543,16 @@ function createBaseMsgChannelOpenTryResponse(): MsgChannelOpenTryResponse {
 }
 export const MsgChannelOpenTryResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelOpenTryResponse",
+  aminoType: "cosmos-sdk/MsgChannelOpenTryResponse",
+  is(o: any): o is MsgChannelOpenTryResponse {
+    return o && (o.$typeUrl === MsgChannelOpenTryResponse.typeUrl || typeof o.version === "string" && typeof o.channelId === "string");
+  },
+  isSDK(o: any): o is MsgChannelOpenTryResponseSDKType {
+    return o && (o.$typeUrl === MsgChannelOpenTryResponse.typeUrl || typeof o.version === "string" && typeof o.channel_id === "string");
+  },
+  isAmino(o: any): o is MsgChannelOpenTryResponseAmino {
+    return o && (o.$typeUrl === MsgChannelOpenTryResponse.typeUrl || typeof o.version === "string" && typeof o.channel_id === "string");
+  },
   encode(message: MsgChannelOpenTryResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.version !== "") {
       writer.uint32(10).string(message.version);
@@ -1486,6 +1581,18 @@ export const MsgChannelOpenTryResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelOpenTryResponse {
+    return {
+      version: isSet(object.version) ? String(object.version) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : ""
+    };
+  },
+  toJSON(message: MsgChannelOpenTryResponse): unknown {
+    const obj: any = {};
+    message.version !== undefined && (obj.version = message.version);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelOpenTryResponse>): MsgChannelOpenTryResponse {
     const message = createBaseMsgChannelOpenTryResponse();
@@ -1531,6 +1638,8 @@ export const MsgChannelOpenTryResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelOpenTryResponse.typeUrl, MsgChannelOpenTryResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelOpenTryResponse.aminoType, MsgChannelOpenTryResponse.typeUrl);
 function createBaseMsgChannelOpenAck(): MsgChannelOpenAck {
   return {
     portId: "",
@@ -1544,6 +1653,16 @@ function createBaseMsgChannelOpenAck(): MsgChannelOpenAck {
 }
 export const MsgChannelOpenAck = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelOpenAck",
+  aminoType: "cosmos-sdk/MsgChannelOpenAck",
+  is(o: any): o is MsgChannelOpenAck {
+    return o && (o.$typeUrl === MsgChannelOpenAck.typeUrl || typeof o.portId === "string" && typeof o.channelId === "string" && typeof o.counterpartyChannelId === "string" && typeof o.counterpartyVersion === "string" && (o.proofTry instanceof Uint8Array || typeof o.proofTry === "string") && Height.is(o.proofHeight) && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgChannelOpenAckSDKType {
+    return o && (o.$typeUrl === MsgChannelOpenAck.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.counterparty_channel_id === "string" && typeof o.counterparty_version === "string" && (o.proof_try instanceof Uint8Array || typeof o.proof_try === "string") && Height.isSDK(o.proof_height) && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgChannelOpenAckAmino {
+    return o && (o.$typeUrl === MsgChannelOpenAck.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.counterparty_channel_id === "string" && typeof o.counterparty_version === "string" && (o.proof_try instanceof Uint8Array || typeof o.proof_try === "string") && Height.isAmino(o.proof_height) && typeof o.signer === "string");
+  },
   encode(message: MsgChannelOpenAck, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -1602,6 +1721,28 @@ export const MsgChannelOpenAck = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelOpenAck {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      counterpartyChannelId: isSet(object.counterpartyChannelId) ? String(object.counterpartyChannelId) : "",
+      counterpartyVersion: isSet(object.counterpartyVersion) ? String(object.counterpartyVersion) : "",
+      proofTry: isSet(object.proofTry) ? bytesFromBase64(object.proofTry) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgChannelOpenAck): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.counterpartyChannelId !== undefined && (obj.counterpartyChannelId = message.counterpartyChannelId);
+    message.counterpartyVersion !== undefined && (obj.counterpartyVersion = message.counterpartyVersion);
+    message.proofTry !== undefined && (obj.proofTry = base64FromBytes(message.proofTry !== undefined ? message.proofTry : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelOpenAck>): MsgChannelOpenAck {
     const message = createBaseMsgChannelOpenAck();
@@ -1672,11 +1813,23 @@ export const MsgChannelOpenAck = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelOpenAck.typeUrl, MsgChannelOpenAck);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelOpenAck.aminoType, MsgChannelOpenAck.typeUrl);
 function createBaseMsgChannelOpenAckResponse(): MsgChannelOpenAckResponse {
   return {};
 }
 export const MsgChannelOpenAckResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelOpenAckResponse",
+  aminoType: "cosmos-sdk/MsgChannelOpenAckResponse",
+  is(o: any): o is MsgChannelOpenAckResponse {
+    return o && o.$typeUrl === MsgChannelOpenAckResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgChannelOpenAckResponseSDKType {
+    return o && o.$typeUrl === MsgChannelOpenAckResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgChannelOpenAckResponseAmino {
+    return o && o.$typeUrl === MsgChannelOpenAckResponse.typeUrl;
+  },
   encode(_: MsgChannelOpenAckResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -1693,6 +1846,13 @@ export const MsgChannelOpenAckResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgChannelOpenAckResponse {
+    return {};
+  },
+  toJSON(_: MsgChannelOpenAckResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgChannelOpenAckResponse>): MsgChannelOpenAckResponse {
     const message = createBaseMsgChannelOpenAckResponse();
@@ -1728,6 +1888,8 @@ export const MsgChannelOpenAckResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelOpenAckResponse.typeUrl, MsgChannelOpenAckResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelOpenAckResponse.aminoType, MsgChannelOpenAckResponse.typeUrl);
 function createBaseMsgChannelOpenConfirm(): MsgChannelOpenConfirm {
   return {
     portId: "",
@@ -1739,6 +1901,16 @@ function createBaseMsgChannelOpenConfirm(): MsgChannelOpenConfirm {
 }
 export const MsgChannelOpenConfirm = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelOpenConfirm",
+  aminoType: "cosmos-sdk/MsgChannelOpenConfirm",
+  is(o: any): o is MsgChannelOpenConfirm {
+    return o && (o.$typeUrl === MsgChannelOpenConfirm.typeUrl || typeof o.portId === "string" && typeof o.channelId === "string" && (o.proofAck instanceof Uint8Array || typeof o.proofAck === "string") && Height.is(o.proofHeight) && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgChannelOpenConfirmSDKType {
+    return o && (o.$typeUrl === MsgChannelOpenConfirm.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && (o.proof_ack instanceof Uint8Array || typeof o.proof_ack === "string") && Height.isSDK(o.proof_height) && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgChannelOpenConfirmAmino {
+    return o && (o.$typeUrl === MsgChannelOpenConfirm.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && (o.proof_ack instanceof Uint8Array || typeof o.proof_ack === "string") && Height.isAmino(o.proof_height) && typeof o.signer === "string");
+  },
   encode(message: MsgChannelOpenConfirm, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -1785,6 +1957,24 @@ export const MsgChannelOpenConfirm = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelOpenConfirm {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      proofAck: isSet(object.proofAck) ? bytesFromBase64(object.proofAck) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgChannelOpenConfirm): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.proofAck !== undefined && (obj.proofAck = base64FromBytes(message.proofAck !== undefined ? message.proofAck : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelOpenConfirm>): MsgChannelOpenConfirm {
     const message = createBaseMsgChannelOpenConfirm();
@@ -1845,11 +2035,23 @@ export const MsgChannelOpenConfirm = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelOpenConfirm.typeUrl, MsgChannelOpenConfirm);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelOpenConfirm.aminoType, MsgChannelOpenConfirm.typeUrl);
 function createBaseMsgChannelOpenConfirmResponse(): MsgChannelOpenConfirmResponse {
   return {};
 }
 export const MsgChannelOpenConfirmResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelOpenConfirmResponse",
+  aminoType: "cosmos-sdk/MsgChannelOpenConfirmResponse",
+  is(o: any): o is MsgChannelOpenConfirmResponse {
+    return o && o.$typeUrl === MsgChannelOpenConfirmResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgChannelOpenConfirmResponseSDKType {
+    return o && o.$typeUrl === MsgChannelOpenConfirmResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgChannelOpenConfirmResponseAmino {
+    return o && o.$typeUrl === MsgChannelOpenConfirmResponse.typeUrl;
+  },
   encode(_: MsgChannelOpenConfirmResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -1866,6 +2068,13 @@ export const MsgChannelOpenConfirmResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgChannelOpenConfirmResponse {
+    return {};
+  },
+  toJSON(_: MsgChannelOpenConfirmResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgChannelOpenConfirmResponse>): MsgChannelOpenConfirmResponse {
     const message = createBaseMsgChannelOpenConfirmResponse();
@@ -1901,6 +2110,8 @@ export const MsgChannelOpenConfirmResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelOpenConfirmResponse.typeUrl, MsgChannelOpenConfirmResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelOpenConfirmResponse.aminoType, MsgChannelOpenConfirmResponse.typeUrl);
 function createBaseMsgChannelCloseInit(): MsgChannelCloseInit {
   return {
     portId: "",
@@ -1910,6 +2121,16 @@ function createBaseMsgChannelCloseInit(): MsgChannelCloseInit {
 }
 export const MsgChannelCloseInit = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelCloseInit",
+  aminoType: "cosmos-sdk/MsgChannelCloseInit",
+  is(o: any): o is MsgChannelCloseInit {
+    return o && (o.$typeUrl === MsgChannelCloseInit.typeUrl || typeof o.portId === "string" && typeof o.channelId === "string" && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgChannelCloseInitSDKType {
+    return o && (o.$typeUrl === MsgChannelCloseInit.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgChannelCloseInitAmino {
+    return o && (o.$typeUrl === MsgChannelCloseInit.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.signer === "string");
+  },
   encode(message: MsgChannelCloseInit, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -1944,6 +2165,20 @@ export const MsgChannelCloseInit = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelCloseInit {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgChannelCloseInit): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelCloseInit>): MsgChannelCloseInit {
     const message = createBaseMsgChannelCloseInit();
@@ -1994,11 +2229,23 @@ export const MsgChannelCloseInit = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelCloseInit.typeUrl, MsgChannelCloseInit);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelCloseInit.aminoType, MsgChannelCloseInit.typeUrl);
 function createBaseMsgChannelCloseInitResponse(): MsgChannelCloseInitResponse {
   return {};
 }
 export const MsgChannelCloseInitResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelCloseInitResponse",
+  aminoType: "cosmos-sdk/MsgChannelCloseInitResponse",
+  is(o: any): o is MsgChannelCloseInitResponse {
+    return o && o.$typeUrl === MsgChannelCloseInitResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgChannelCloseInitResponseSDKType {
+    return o && o.$typeUrl === MsgChannelCloseInitResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgChannelCloseInitResponseAmino {
+    return o && o.$typeUrl === MsgChannelCloseInitResponse.typeUrl;
+  },
   encode(_: MsgChannelCloseInitResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -2015,6 +2262,13 @@ export const MsgChannelCloseInitResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgChannelCloseInitResponse {
+    return {};
+  },
+  toJSON(_: MsgChannelCloseInitResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgChannelCloseInitResponse>): MsgChannelCloseInitResponse {
     const message = createBaseMsgChannelCloseInitResponse();
@@ -2050,6 +2304,8 @@ export const MsgChannelCloseInitResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelCloseInitResponse.typeUrl, MsgChannelCloseInitResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelCloseInitResponse.aminoType, MsgChannelCloseInitResponse.typeUrl);
 function createBaseMsgChannelCloseConfirm(): MsgChannelCloseConfirm {
   return {
     portId: "",
@@ -2062,6 +2318,16 @@ function createBaseMsgChannelCloseConfirm(): MsgChannelCloseConfirm {
 }
 export const MsgChannelCloseConfirm = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelCloseConfirm",
+  aminoType: "cosmos-sdk/MsgChannelCloseConfirm",
+  is(o: any): o is MsgChannelCloseConfirm {
+    return o && (o.$typeUrl === MsgChannelCloseConfirm.typeUrl || typeof o.portId === "string" && typeof o.channelId === "string" && (o.proofInit instanceof Uint8Array || typeof o.proofInit === "string") && Height.is(o.proofHeight) && typeof o.signer === "string" && typeof o.counterpartyUpgradeSequence === "bigint");
+  },
+  isSDK(o: any): o is MsgChannelCloseConfirmSDKType {
+    return o && (o.$typeUrl === MsgChannelCloseConfirm.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && (o.proof_init instanceof Uint8Array || typeof o.proof_init === "string") && Height.isSDK(o.proof_height) && typeof o.signer === "string" && typeof o.counterparty_upgrade_sequence === "bigint");
+  },
+  isAmino(o: any): o is MsgChannelCloseConfirmAmino {
+    return o && (o.$typeUrl === MsgChannelCloseConfirm.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && (o.proof_init instanceof Uint8Array || typeof o.proof_init === "string") && Height.isAmino(o.proof_height) && typeof o.signer === "string" && typeof o.counterparty_upgrade_sequence === "bigint");
+  },
   encode(message: MsgChannelCloseConfirm, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -2114,6 +2380,26 @@ export const MsgChannelCloseConfirm = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelCloseConfirm {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      proofInit: isSet(object.proofInit) ? bytesFromBase64(object.proofInit) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : "",
+      counterpartyUpgradeSequence: isSet(object.counterpartyUpgradeSequence) ? BigInt(object.counterpartyUpgradeSequence.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgChannelCloseConfirm): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.proofInit !== undefined && (obj.proofInit = base64FromBytes(message.proofInit !== undefined ? message.proofInit : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    message.counterpartyUpgradeSequence !== undefined && (obj.counterpartyUpgradeSequence = (message.counterpartyUpgradeSequence || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelCloseConfirm>): MsgChannelCloseConfirm {
     const message = createBaseMsgChannelCloseConfirm();
@@ -2179,11 +2465,23 @@ export const MsgChannelCloseConfirm = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelCloseConfirm.typeUrl, MsgChannelCloseConfirm);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelCloseConfirm.aminoType, MsgChannelCloseConfirm.typeUrl);
 function createBaseMsgChannelCloseConfirmResponse(): MsgChannelCloseConfirmResponse {
   return {};
 }
 export const MsgChannelCloseConfirmResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelCloseConfirmResponse",
+  aminoType: "cosmos-sdk/MsgChannelCloseConfirmResponse",
+  is(o: any): o is MsgChannelCloseConfirmResponse {
+    return o && o.$typeUrl === MsgChannelCloseConfirmResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgChannelCloseConfirmResponseSDKType {
+    return o && o.$typeUrl === MsgChannelCloseConfirmResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgChannelCloseConfirmResponseAmino {
+    return o && o.$typeUrl === MsgChannelCloseConfirmResponse.typeUrl;
+  },
   encode(_: MsgChannelCloseConfirmResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -2200,6 +2498,13 @@ export const MsgChannelCloseConfirmResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgChannelCloseConfirmResponse {
+    return {};
+  },
+  toJSON(_: MsgChannelCloseConfirmResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgChannelCloseConfirmResponse>): MsgChannelCloseConfirmResponse {
     const message = createBaseMsgChannelCloseConfirmResponse();
@@ -2235,6 +2540,8 @@ export const MsgChannelCloseConfirmResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelCloseConfirmResponse.typeUrl, MsgChannelCloseConfirmResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelCloseConfirmResponse.aminoType, MsgChannelCloseConfirmResponse.typeUrl);
 function createBaseMsgRecvPacket(): MsgRecvPacket {
   return {
     packet: Packet.fromPartial({}),
@@ -2245,6 +2552,16 @@ function createBaseMsgRecvPacket(): MsgRecvPacket {
 }
 export const MsgRecvPacket = {
   typeUrl: "/ibc.core.channel.v1.MsgRecvPacket",
+  aminoType: "cosmos-sdk/MsgRecvPacket",
+  is(o: any): o is MsgRecvPacket {
+    return o && (o.$typeUrl === MsgRecvPacket.typeUrl || Packet.is(o.packet) && (o.proofCommitment instanceof Uint8Array || typeof o.proofCommitment === "string") && Height.is(o.proofHeight) && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgRecvPacketSDKType {
+    return o && (o.$typeUrl === MsgRecvPacket.typeUrl || Packet.isSDK(o.packet) && (o.proof_commitment instanceof Uint8Array || typeof o.proof_commitment === "string") && Height.isSDK(o.proof_height) && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgRecvPacketAmino {
+    return o && (o.$typeUrl === MsgRecvPacket.typeUrl || Packet.isAmino(o.packet) && (o.proof_commitment instanceof Uint8Array || typeof o.proof_commitment === "string") && Height.isAmino(o.proof_height) && typeof o.signer === "string");
+  },
   encode(message: MsgRecvPacket, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.packet !== undefined) {
       Packet.encode(message.packet, writer.uint32(10).fork()).ldelim();
@@ -2285,6 +2602,22 @@ export const MsgRecvPacket = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgRecvPacket {
+    return {
+      packet: isSet(object.packet) ? Packet.fromJSON(object.packet) : undefined,
+      proofCommitment: isSet(object.proofCommitment) ? bytesFromBase64(object.proofCommitment) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgRecvPacket): unknown {
+    const obj: any = {};
+    message.packet !== undefined && (obj.packet = message.packet ? Packet.toJSON(message.packet) : undefined);
+    message.proofCommitment !== undefined && (obj.proofCommitment = base64FromBytes(message.proofCommitment !== undefined ? message.proofCommitment : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgRecvPacket>): MsgRecvPacket {
     const message = createBaseMsgRecvPacket();
@@ -2340,6 +2673,8 @@ export const MsgRecvPacket = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgRecvPacket.typeUrl, MsgRecvPacket);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgRecvPacket.aminoType, MsgRecvPacket.typeUrl);
 function createBaseMsgRecvPacketResponse(): MsgRecvPacketResponse {
   return {
     result: 0
@@ -2347,6 +2682,16 @@ function createBaseMsgRecvPacketResponse(): MsgRecvPacketResponse {
 }
 export const MsgRecvPacketResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgRecvPacketResponse",
+  aminoType: "cosmos-sdk/MsgRecvPacketResponse",
+  is(o: any): o is MsgRecvPacketResponse {
+    return o && (o.$typeUrl === MsgRecvPacketResponse.typeUrl || isSet(o.result));
+  },
+  isSDK(o: any): o is MsgRecvPacketResponseSDKType {
+    return o && (o.$typeUrl === MsgRecvPacketResponse.typeUrl || isSet(o.result));
+  },
+  isAmino(o: any): o is MsgRecvPacketResponseAmino {
+    return o && (o.$typeUrl === MsgRecvPacketResponse.typeUrl || isSet(o.result));
+  },
   encode(message: MsgRecvPacketResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.result !== 0) {
       writer.uint32(8).int32(message.result);
@@ -2369,6 +2714,16 @@ export const MsgRecvPacketResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgRecvPacketResponse {
+    return {
+      result: isSet(object.result) ? responseResultTypeFromJSON(object.result) : -1
+    };
+  },
+  toJSON(message: MsgRecvPacketResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = responseResultTypeToJSON(message.result));
+    return obj;
   },
   fromPartial(object: Partial<MsgRecvPacketResponse>): MsgRecvPacketResponse {
     const message = createBaseMsgRecvPacketResponse();
@@ -2409,6 +2764,8 @@ export const MsgRecvPacketResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgRecvPacketResponse.typeUrl, MsgRecvPacketResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgRecvPacketResponse.aminoType, MsgRecvPacketResponse.typeUrl);
 function createBaseMsgTimeout(): MsgTimeout {
   return {
     packet: Packet.fromPartial({}),
@@ -2420,6 +2777,16 @@ function createBaseMsgTimeout(): MsgTimeout {
 }
 export const MsgTimeout = {
   typeUrl: "/ibc.core.channel.v1.MsgTimeout",
+  aminoType: "cosmos-sdk/MsgTimeout",
+  is(o: any): o is MsgTimeout {
+    return o && (o.$typeUrl === MsgTimeout.typeUrl || Packet.is(o.packet) && (o.proofUnreceived instanceof Uint8Array || typeof o.proofUnreceived === "string") && Height.is(o.proofHeight) && typeof o.nextSequenceRecv === "bigint" && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgTimeoutSDKType {
+    return o && (o.$typeUrl === MsgTimeout.typeUrl || Packet.isSDK(o.packet) && (o.proof_unreceived instanceof Uint8Array || typeof o.proof_unreceived === "string") && Height.isSDK(o.proof_height) && typeof o.next_sequence_recv === "bigint" && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgTimeoutAmino {
+    return o && (o.$typeUrl === MsgTimeout.typeUrl || Packet.isAmino(o.packet) && (o.proof_unreceived instanceof Uint8Array || typeof o.proof_unreceived === "string") && Height.isAmino(o.proof_height) && typeof o.next_sequence_recv === "bigint" && typeof o.signer === "string");
+  },
   encode(message: MsgTimeout, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.packet !== undefined) {
       Packet.encode(message.packet, writer.uint32(10).fork()).ldelim();
@@ -2466,6 +2833,24 @@ export const MsgTimeout = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgTimeout {
+    return {
+      packet: isSet(object.packet) ? Packet.fromJSON(object.packet) : undefined,
+      proofUnreceived: isSet(object.proofUnreceived) ? bytesFromBase64(object.proofUnreceived) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      nextSequenceRecv: isSet(object.nextSequenceRecv) ? BigInt(object.nextSequenceRecv.toString()) : BigInt(0),
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgTimeout): unknown {
+    const obj: any = {};
+    message.packet !== undefined && (obj.packet = message.packet ? Packet.toJSON(message.packet) : undefined);
+    message.proofUnreceived !== undefined && (obj.proofUnreceived = base64FromBytes(message.proofUnreceived !== undefined ? message.proofUnreceived : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.nextSequenceRecv !== undefined && (obj.nextSequenceRecv = (message.nextSequenceRecv || BigInt(0)).toString());
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgTimeout>): MsgTimeout {
     const message = createBaseMsgTimeout();
@@ -2526,6 +2911,8 @@ export const MsgTimeout = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgTimeout.typeUrl, MsgTimeout);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgTimeout.aminoType, MsgTimeout.typeUrl);
 function createBaseMsgTimeoutResponse(): MsgTimeoutResponse {
   return {
     result: 0
@@ -2533,6 +2920,16 @@ function createBaseMsgTimeoutResponse(): MsgTimeoutResponse {
 }
 export const MsgTimeoutResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgTimeoutResponse",
+  aminoType: "cosmos-sdk/MsgTimeoutResponse",
+  is(o: any): o is MsgTimeoutResponse {
+    return o && (o.$typeUrl === MsgTimeoutResponse.typeUrl || isSet(o.result));
+  },
+  isSDK(o: any): o is MsgTimeoutResponseSDKType {
+    return o && (o.$typeUrl === MsgTimeoutResponse.typeUrl || isSet(o.result));
+  },
+  isAmino(o: any): o is MsgTimeoutResponseAmino {
+    return o && (o.$typeUrl === MsgTimeoutResponse.typeUrl || isSet(o.result));
+  },
   encode(message: MsgTimeoutResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.result !== 0) {
       writer.uint32(8).int32(message.result);
@@ -2555,6 +2952,16 @@ export const MsgTimeoutResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgTimeoutResponse {
+    return {
+      result: isSet(object.result) ? responseResultTypeFromJSON(object.result) : -1
+    };
+  },
+  toJSON(message: MsgTimeoutResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = responseResultTypeToJSON(message.result));
+    return obj;
   },
   fromPartial(object: Partial<MsgTimeoutResponse>): MsgTimeoutResponse {
     const message = createBaseMsgTimeoutResponse();
@@ -2595,6 +3002,8 @@ export const MsgTimeoutResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgTimeoutResponse.typeUrl, MsgTimeoutResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgTimeoutResponse.aminoType, MsgTimeoutResponse.typeUrl);
 function createBaseMsgTimeoutOnClose(): MsgTimeoutOnClose {
   return {
     packet: Packet.fromPartial({}),
@@ -2608,6 +3017,16 @@ function createBaseMsgTimeoutOnClose(): MsgTimeoutOnClose {
 }
 export const MsgTimeoutOnClose = {
   typeUrl: "/ibc.core.channel.v1.MsgTimeoutOnClose",
+  aminoType: "cosmos-sdk/MsgTimeoutOnClose",
+  is(o: any): o is MsgTimeoutOnClose {
+    return o && (o.$typeUrl === MsgTimeoutOnClose.typeUrl || Packet.is(o.packet) && (o.proofUnreceived instanceof Uint8Array || typeof o.proofUnreceived === "string") && (o.proofClose instanceof Uint8Array || typeof o.proofClose === "string") && Height.is(o.proofHeight) && typeof o.nextSequenceRecv === "bigint" && typeof o.signer === "string" && typeof o.counterpartyUpgradeSequence === "bigint");
+  },
+  isSDK(o: any): o is MsgTimeoutOnCloseSDKType {
+    return o && (o.$typeUrl === MsgTimeoutOnClose.typeUrl || Packet.isSDK(o.packet) && (o.proof_unreceived instanceof Uint8Array || typeof o.proof_unreceived === "string") && (o.proof_close instanceof Uint8Array || typeof o.proof_close === "string") && Height.isSDK(o.proof_height) && typeof o.next_sequence_recv === "bigint" && typeof o.signer === "string" && typeof o.counterparty_upgrade_sequence === "bigint");
+  },
+  isAmino(o: any): o is MsgTimeoutOnCloseAmino {
+    return o && (o.$typeUrl === MsgTimeoutOnClose.typeUrl || Packet.isAmino(o.packet) && (o.proof_unreceived instanceof Uint8Array || typeof o.proof_unreceived === "string") && (o.proof_close instanceof Uint8Array || typeof o.proof_close === "string") && Height.isAmino(o.proof_height) && typeof o.next_sequence_recv === "bigint" && typeof o.signer === "string" && typeof o.counterparty_upgrade_sequence === "bigint");
+  },
   encode(message: MsgTimeoutOnClose, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.packet !== undefined) {
       Packet.encode(message.packet, writer.uint32(10).fork()).ldelim();
@@ -2666,6 +3085,28 @@ export const MsgTimeoutOnClose = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgTimeoutOnClose {
+    return {
+      packet: isSet(object.packet) ? Packet.fromJSON(object.packet) : undefined,
+      proofUnreceived: isSet(object.proofUnreceived) ? bytesFromBase64(object.proofUnreceived) : new Uint8Array(),
+      proofClose: isSet(object.proofClose) ? bytesFromBase64(object.proofClose) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      nextSequenceRecv: isSet(object.nextSequenceRecv) ? BigInt(object.nextSequenceRecv.toString()) : BigInt(0),
+      signer: isSet(object.signer) ? String(object.signer) : "",
+      counterpartyUpgradeSequence: isSet(object.counterpartyUpgradeSequence) ? BigInt(object.counterpartyUpgradeSequence.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgTimeoutOnClose): unknown {
+    const obj: any = {};
+    message.packet !== undefined && (obj.packet = message.packet ? Packet.toJSON(message.packet) : undefined);
+    message.proofUnreceived !== undefined && (obj.proofUnreceived = base64FromBytes(message.proofUnreceived !== undefined ? message.proofUnreceived : new Uint8Array()));
+    message.proofClose !== undefined && (obj.proofClose = base64FromBytes(message.proofClose !== undefined ? message.proofClose : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.nextSequenceRecv !== undefined && (obj.nextSequenceRecv = (message.nextSequenceRecv || BigInt(0)).toString());
+    message.signer !== undefined && (obj.signer = message.signer);
+    message.counterpartyUpgradeSequence !== undefined && (obj.counterpartyUpgradeSequence = (message.counterpartyUpgradeSequence || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgTimeoutOnClose>): MsgTimeoutOnClose {
     const message = createBaseMsgTimeoutOnClose();
@@ -2736,6 +3177,8 @@ export const MsgTimeoutOnClose = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgTimeoutOnClose.typeUrl, MsgTimeoutOnClose);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgTimeoutOnClose.aminoType, MsgTimeoutOnClose.typeUrl);
 function createBaseMsgTimeoutOnCloseResponse(): MsgTimeoutOnCloseResponse {
   return {
     result: 0
@@ -2743,6 +3186,16 @@ function createBaseMsgTimeoutOnCloseResponse(): MsgTimeoutOnCloseResponse {
 }
 export const MsgTimeoutOnCloseResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgTimeoutOnCloseResponse",
+  aminoType: "cosmos-sdk/MsgTimeoutOnCloseResponse",
+  is(o: any): o is MsgTimeoutOnCloseResponse {
+    return o && (o.$typeUrl === MsgTimeoutOnCloseResponse.typeUrl || isSet(o.result));
+  },
+  isSDK(o: any): o is MsgTimeoutOnCloseResponseSDKType {
+    return o && (o.$typeUrl === MsgTimeoutOnCloseResponse.typeUrl || isSet(o.result));
+  },
+  isAmino(o: any): o is MsgTimeoutOnCloseResponseAmino {
+    return o && (o.$typeUrl === MsgTimeoutOnCloseResponse.typeUrl || isSet(o.result));
+  },
   encode(message: MsgTimeoutOnCloseResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.result !== 0) {
       writer.uint32(8).int32(message.result);
@@ -2765,6 +3218,16 @@ export const MsgTimeoutOnCloseResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgTimeoutOnCloseResponse {
+    return {
+      result: isSet(object.result) ? responseResultTypeFromJSON(object.result) : -1
+    };
+  },
+  toJSON(message: MsgTimeoutOnCloseResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = responseResultTypeToJSON(message.result));
+    return obj;
   },
   fromPartial(object: Partial<MsgTimeoutOnCloseResponse>): MsgTimeoutOnCloseResponse {
     const message = createBaseMsgTimeoutOnCloseResponse();
@@ -2805,6 +3268,8 @@ export const MsgTimeoutOnCloseResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgTimeoutOnCloseResponse.typeUrl, MsgTimeoutOnCloseResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgTimeoutOnCloseResponse.aminoType, MsgTimeoutOnCloseResponse.typeUrl);
 function createBaseMsgAcknowledgement(): MsgAcknowledgement {
   return {
     packet: Packet.fromPartial({}),
@@ -2816,6 +3281,16 @@ function createBaseMsgAcknowledgement(): MsgAcknowledgement {
 }
 export const MsgAcknowledgement = {
   typeUrl: "/ibc.core.channel.v1.MsgAcknowledgement",
+  aminoType: "cosmos-sdk/MsgAcknowledgement",
+  is(o: any): o is MsgAcknowledgement {
+    return o && (o.$typeUrl === MsgAcknowledgement.typeUrl || Packet.is(o.packet) && (o.acknowledgement instanceof Uint8Array || typeof o.acknowledgement === "string") && (o.proofAcked instanceof Uint8Array || typeof o.proofAcked === "string") && Height.is(o.proofHeight) && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgAcknowledgementSDKType {
+    return o && (o.$typeUrl === MsgAcknowledgement.typeUrl || Packet.isSDK(o.packet) && (o.acknowledgement instanceof Uint8Array || typeof o.acknowledgement === "string") && (o.proof_acked instanceof Uint8Array || typeof o.proof_acked === "string") && Height.isSDK(o.proof_height) && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgAcknowledgementAmino {
+    return o && (o.$typeUrl === MsgAcknowledgement.typeUrl || Packet.isAmino(o.packet) && (o.acknowledgement instanceof Uint8Array || typeof o.acknowledgement === "string") && (o.proof_acked instanceof Uint8Array || typeof o.proof_acked === "string") && Height.isAmino(o.proof_height) && typeof o.signer === "string");
+  },
   encode(message: MsgAcknowledgement, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.packet !== undefined) {
       Packet.encode(message.packet, writer.uint32(10).fork()).ldelim();
@@ -2862,6 +3337,24 @@ export const MsgAcknowledgement = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgAcknowledgement {
+    return {
+      packet: isSet(object.packet) ? Packet.fromJSON(object.packet) : undefined,
+      acknowledgement: isSet(object.acknowledgement) ? bytesFromBase64(object.acknowledgement) : new Uint8Array(),
+      proofAcked: isSet(object.proofAcked) ? bytesFromBase64(object.proofAcked) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgAcknowledgement): unknown {
+    const obj: any = {};
+    message.packet !== undefined && (obj.packet = message.packet ? Packet.toJSON(message.packet) : undefined);
+    message.acknowledgement !== undefined && (obj.acknowledgement = base64FromBytes(message.acknowledgement !== undefined ? message.acknowledgement : new Uint8Array()));
+    message.proofAcked !== undefined && (obj.proofAcked = base64FromBytes(message.proofAcked !== undefined ? message.proofAcked : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgAcknowledgement>): MsgAcknowledgement {
     const message = createBaseMsgAcknowledgement();
@@ -2922,6 +3415,8 @@ export const MsgAcknowledgement = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgAcknowledgement.typeUrl, MsgAcknowledgement);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgAcknowledgement.aminoType, MsgAcknowledgement.typeUrl);
 function createBaseMsgAcknowledgementResponse(): MsgAcknowledgementResponse {
   return {
     result: 0
@@ -2929,6 +3424,16 @@ function createBaseMsgAcknowledgementResponse(): MsgAcknowledgementResponse {
 }
 export const MsgAcknowledgementResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgAcknowledgementResponse",
+  aminoType: "cosmos-sdk/MsgAcknowledgementResponse",
+  is(o: any): o is MsgAcknowledgementResponse {
+    return o && (o.$typeUrl === MsgAcknowledgementResponse.typeUrl || isSet(o.result));
+  },
+  isSDK(o: any): o is MsgAcknowledgementResponseSDKType {
+    return o && (o.$typeUrl === MsgAcknowledgementResponse.typeUrl || isSet(o.result));
+  },
+  isAmino(o: any): o is MsgAcknowledgementResponseAmino {
+    return o && (o.$typeUrl === MsgAcknowledgementResponse.typeUrl || isSet(o.result));
+  },
   encode(message: MsgAcknowledgementResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.result !== 0) {
       writer.uint32(8).int32(message.result);
@@ -2951,6 +3456,16 @@ export const MsgAcknowledgementResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgAcknowledgementResponse {
+    return {
+      result: isSet(object.result) ? responseResultTypeFromJSON(object.result) : -1
+    };
+  },
+  toJSON(message: MsgAcknowledgementResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = responseResultTypeToJSON(message.result));
+    return obj;
   },
   fromPartial(object: Partial<MsgAcknowledgementResponse>): MsgAcknowledgementResponse {
     const message = createBaseMsgAcknowledgementResponse();
@@ -2991,6 +3506,8 @@ export const MsgAcknowledgementResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgAcknowledgementResponse.typeUrl, MsgAcknowledgementResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgAcknowledgementResponse.aminoType, MsgAcknowledgementResponse.typeUrl);
 function createBaseMsgChannelUpgradeInit(): MsgChannelUpgradeInit {
   return {
     portId: "",
@@ -3001,6 +3518,16 @@ function createBaseMsgChannelUpgradeInit(): MsgChannelUpgradeInit {
 }
 export const MsgChannelUpgradeInit = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeInit",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeInit",
+  is(o: any): o is MsgChannelUpgradeInit {
+    return o && (o.$typeUrl === MsgChannelUpgradeInit.typeUrl || typeof o.portId === "string" && typeof o.channelId === "string" && UpgradeFields.is(o.fields) && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgChannelUpgradeInitSDKType {
+    return o && (o.$typeUrl === MsgChannelUpgradeInit.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && UpgradeFields.isSDK(o.fields) && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgChannelUpgradeInitAmino {
+    return o && (o.$typeUrl === MsgChannelUpgradeInit.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && UpgradeFields.isAmino(o.fields) && typeof o.signer === "string");
+  },
   encode(message: MsgChannelUpgradeInit, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -3041,6 +3568,22 @@ export const MsgChannelUpgradeInit = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelUpgradeInit {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      fields: isSet(object.fields) ? UpgradeFields.fromJSON(object.fields) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgChannelUpgradeInit): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.fields !== undefined && (obj.fields = message.fields ? UpgradeFields.toJSON(message.fields) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelUpgradeInit>): MsgChannelUpgradeInit {
     const message = createBaseMsgChannelUpgradeInit();
@@ -3096,6 +3639,8 @@ export const MsgChannelUpgradeInit = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeInit.typeUrl, MsgChannelUpgradeInit);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeInit.aminoType, MsgChannelUpgradeInit.typeUrl);
 function createBaseMsgChannelUpgradeInitResponse(): MsgChannelUpgradeInitResponse {
   return {
     upgrade: Upgrade.fromPartial({}),
@@ -3104,6 +3649,16 @@ function createBaseMsgChannelUpgradeInitResponse(): MsgChannelUpgradeInitRespons
 }
 export const MsgChannelUpgradeInitResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeInitResponse",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeInitResponse",
+  is(o: any): o is MsgChannelUpgradeInitResponse {
+    return o && (o.$typeUrl === MsgChannelUpgradeInitResponse.typeUrl || Upgrade.is(o.upgrade) && typeof o.upgradeSequence === "bigint");
+  },
+  isSDK(o: any): o is MsgChannelUpgradeInitResponseSDKType {
+    return o && (o.$typeUrl === MsgChannelUpgradeInitResponse.typeUrl || Upgrade.isSDK(o.upgrade) && typeof o.upgrade_sequence === "bigint");
+  },
+  isAmino(o: any): o is MsgChannelUpgradeInitResponseAmino {
+    return o && (o.$typeUrl === MsgChannelUpgradeInitResponse.typeUrl || Upgrade.isAmino(o.upgrade) && typeof o.upgrade_sequence === "bigint");
+  },
   encode(message: MsgChannelUpgradeInitResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.upgrade !== undefined) {
       Upgrade.encode(message.upgrade, writer.uint32(10).fork()).ldelim();
@@ -3132,6 +3687,18 @@ export const MsgChannelUpgradeInitResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelUpgradeInitResponse {
+    return {
+      upgrade: isSet(object.upgrade) ? Upgrade.fromJSON(object.upgrade) : undefined,
+      upgradeSequence: isSet(object.upgradeSequence) ? BigInt(object.upgradeSequence.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgChannelUpgradeInitResponse): unknown {
+    const obj: any = {};
+    message.upgrade !== undefined && (obj.upgrade = message.upgrade ? Upgrade.toJSON(message.upgrade) : undefined);
+    message.upgradeSequence !== undefined && (obj.upgradeSequence = (message.upgradeSequence || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelUpgradeInitResponse>): MsgChannelUpgradeInitResponse {
     const message = createBaseMsgChannelUpgradeInitResponse();
@@ -3177,6 +3744,8 @@ export const MsgChannelUpgradeInitResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeInitResponse.typeUrl, MsgChannelUpgradeInitResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeInitResponse.aminoType, MsgChannelUpgradeInitResponse.typeUrl);
 function createBaseMsgChannelUpgradeTry(): MsgChannelUpgradeTry {
   return {
     portId: "",
@@ -3192,6 +3761,16 @@ function createBaseMsgChannelUpgradeTry(): MsgChannelUpgradeTry {
 }
 export const MsgChannelUpgradeTry = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeTry",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeTry",
+  is(o: any): o is MsgChannelUpgradeTry {
+    return o && (o.$typeUrl === MsgChannelUpgradeTry.typeUrl || typeof o.portId === "string" && typeof o.channelId === "string" && Array.isArray(o.proposedUpgradeConnectionHops) && (!o.proposedUpgradeConnectionHops.length || typeof o.proposedUpgradeConnectionHops[0] === "string") && UpgradeFields.is(o.counterpartyUpgradeFields) && typeof o.counterpartyUpgradeSequence === "bigint" && (o.proofChannel instanceof Uint8Array || typeof o.proofChannel === "string") && (o.proofUpgrade instanceof Uint8Array || typeof o.proofUpgrade === "string") && Height.is(o.proofHeight) && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgChannelUpgradeTrySDKType {
+    return o && (o.$typeUrl === MsgChannelUpgradeTry.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && Array.isArray(o.proposed_upgrade_connection_hops) && (!o.proposed_upgrade_connection_hops.length || typeof o.proposed_upgrade_connection_hops[0] === "string") && UpgradeFields.isSDK(o.counterparty_upgrade_fields) && typeof o.counterparty_upgrade_sequence === "bigint" && (o.proof_channel instanceof Uint8Array || typeof o.proof_channel === "string") && (o.proof_upgrade instanceof Uint8Array || typeof o.proof_upgrade === "string") && Height.isSDK(o.proof_height) && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgChannelUpgradeTryAmino {
+    return o && (o.$typeUrl === MsgChannelUpgradeTry.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && Array.isArray(o.proposed_upgrade_connection_hops) && (!o.proposed_upgrade_connection_hops.length || typeof o.proposed_upgrade_connection_hops[0] === "string") && UpgradeFields.isAmino(o.counterparty_upgrade_fields) && typeof o.counterparty_upgrade_sequence === "bigint" && (o.proof_channel instanceof Uint8Array || typeof o.proof_channel === "string") && (o.proof_upgrade instanceof Uint8Array || typeof o.proof_upgrade === "string") && Height.isAmino(o.proof_height) && typeof o.signer === "string");
+  },
   encode(message: MsgChannelUpgradeTry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -3262,6 +3841,36 @@ export const MsgChannelUpgradeTry = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelUpgradeTry {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      proposedUpgradeConnectionHops: Array.isArray(object?.proposedUpgradeConnectionHops) ? object.proposedUpgradeConnectionHops.map((e: any) => String(e)) : [],
+      counterpartyUpgradeFields: isSet(object.counterpartyUpgradeFields) ? UpgradeFields.fromJSON(object.counterpartyUpgradeFields) : undefined,
+      counterpartyUpgradeSequence: isSet(object.counterpartyUpgradeSequence) ? BigInt(object.counterpartyUpgradeSequence.toString()) : BigInt(0),
+      proofChannel: isSet(object.proofChannel) ? bytesFromBase64(object.proofChannel) : new Uint8Array(),
+      proofUpgrade: isSet(object.proofUpgrade) ? bytesFromBase64(object.proofUpgrade) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgChannelUpgradeTry): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    if (message.proposedUpgradeConnectionHops) {
+      obj.proposedUpgradeConnectionHops = message.proposedUpgradeConnectionHops.map(e => e);
+    } else {
+      obj.proposedUpgradeConnectionHops = [];
+    }
+    message.counterpartyUpgradeFields !== undefined && (obj.counterpartyUpgradeFields = message.counterpartyUpgradeFields ? UpgradeFields.toJSON(message.counterpartyUpgradeFields) : undefined);
+    message.counterpartyUpgradeSequence !== undefined && (obj.counterpartyUpgradeSequence = (message.counterpartyUpgradeSequence || BigInt(0)).toString());
+    message.proofChannel !== undefined && (obj.proofChannel = base64FromBytes(message.proofChannel !== undefined ? message.proofChannel : new Uint8Array()));
+    message.proofUpgrade !== undefined && (obj.proofUpgrade = base64FromBytes(message.proofUpgrade !== undefined ? message.proofUpgrade : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelUpgradeTry>): MsgChannelUpgradeTry {
     const message = createBaseMsgChannelUpgradeTry();
@@ -3344,6 +3953,8 @@ export const MsgChannelUpgradeTry = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeTry.typeUrl, MsgChannelUpgradeTry);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeTry.aminoType, MsgChannelUpgradeTry.typeUrl);
 function createBaseMsgChannelUpgradeTryResponse(): MsgChannelUpgradeTryResponse {
   return {
     upgrade: Upgrade.fromPartial({}),
@@ -3353,6 +3964,16 @@ function createBaseMsgChannelUpgradeTryResponse(): MsgChannelUpgradeTryResponse 
 }
 export const MsgChannelUpgradeTryResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeTryResponse",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeTryResponse",
+  is(o: any): o is MsgChannelUpgradeTryResponse {
+    return o && (o.$typeUrl === MsgChannelUpgradeTryResponse.typeUrl || Upgrade.is(o.upgrade) && typeof o.upgradeSequence === "bigint" && isSet(o.result));
+  },
+  isSDK(o: any): o is MsgChannelUpgradeTryResponseSDKType {
+    return o && (o.$typeUrl === MsgChannelUpgradeTryResponse.typeUrl || Upgrade.isSDK(o.upgrade) && typeof o.upgrade_sequence === "bigint" && isSet(o.result));
+  },
+  isAmino(o: any): o is MsgChannelUpgradeTryResponseAmino {
+    return o && (o.$typeUrl === MsgChannelUpgradeTryResponse.typeUrl || Upgrade.isAmino(o.upgrade) && typeof o.upgrade_sequence === "bigint" && isSet(o.result));
+  },
   encode(message: MsgChannelUpgradeTryResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.upgrade !== undefined) {
       Upgrade.encode(message.upgrade, writer.uint32(10).fork()).ldelim();
@@ -3387,6 +4008,20 @@ export const MsgChannelUpgradeTryResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelUpgradeTryResponse {
+    return {
+      upgrade: isSet(object.upgrade) ? Upgrade.fromJSON(object.upgrade) : undefined,
+      upgradeSequence: isSet(object.upgradeSequence) ? BigInt(object.upgradeSequence.toString()) : BigInt(0),
+      result: isSet(object.result) ? responseResultTypeFromJSON(object.result) : -1
+    };
+  },
+  toJSON(message: MsgChannelUpgradeTryResponse): unknown {
+    const obj: any = {};
+    message.upgrade !== undefined && (obj.upgrade = message.upgrade ? Upgrade.toJSON(message.upgrade) : undefined);
+    message.upgradeSequence !== undefined && (obj.upgradeSequence = (message.upgradeSequence || BigInt(0)).toString());
+    message.result !== undefined && (obj.result = responseResultTypeToJSON(message.result));
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelUpgradeTryResponse>): MsgChannelUpgradeTryResponse {
     const message = createBaseMsgChannelUpgradeTryResponse();
@@ -3437,6 +4072,8 @@ export const MsgChannelUpgradeTryResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeTryResponse.typeUrl, MsgChannelUpgradeTryResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeTryResponse.aminoType, MsgChannelUpgradeTryResponse.typeUrl);
 function createBaseMsgChannelUpgradeAck(): MsgChannelUpgradeAck {
   return {
     portId: "",
@@ -3450,6 +4087,16 @@ function createBaseMsgChannelUpgradeAck(): MsgChannelUpgradeAck {
 }
 export const MsgChannelUpgradeAck = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeAck",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeAck",
+  is(o: any): o is MsgChannelUpgradeAck {
+    return o && (o.$typeUrl === MsgChannelUpgradeAck.typeUrl || typeof o.portId === "string" && typeof o.channelId === "string" && Upgrade.is(o.counterpartyUpgrade) && (o.proofChannel instanceof Uint8Array || typeof o.proofChannel === "string") && (o.proofUpgrade instanceof Uint8Array || typeof o.proofUpgrade === "string") && Height.is(o.proofHeight) && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgChannelUpgradeAckSDKType {
+    return o && (o.$typeUrl === MsgChannelUpgradeAck.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && Upgrade.isSDK(o.counterparty_upgrade) && (o.proof_channel instanceof Uint8Array || typeof o.proof_channel === "string") && (o.proof_upgrade instanceof Uint8Array || typeof o.proof_upgrade === "string") && Height.isSDK(o.proof_height) && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgChannelUpgradeAckAmino {
+    return o && (o.$typeUrl === MsgChannelUpgradeAck.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && Upgrade.isAmino(o.counterparty_upgrade) && (o.proof_channel instanceof Uint8Array || typeof o.proof_channel === "string") && (o.proof_upgrade instanceof Uint8Array || typeof o.proof_upgrade === "string") && Height.isAmino(o.proof_height) && typeof o.signer === "string");
+  },
   encode(message: MsgChannelUpgradeAck, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -3508,6 +4155,28 @@ export const MsgChannelUpgradeAck = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelUpgradeAck {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      counterpartyUpgrade: isSet(object.counterpartyUpgrade) ? Upgrade.fromJSON(object.counterpartyUpgrade) : undefined,
+      proofChannel: isSet(object.proofChannel) ? bytesFromBase64(object.proofChannel) : new Uint8Array(),
+      proofUpgrade: isSet(object.proofUpgrade) ? bytesFromBase64(object.proofUpgrade) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgChannelUpgradeAck): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.counterpartyUpgrade !== undefined && (obj.counterpartyUpgrade = message.counterpartyUpgrade ? Upgrade.toJSON(message.counterpartyUpgrade) : undefined);
+    message.proofChannel !== undefined && (obj.proofChannel = base64FromBytes(message.proofChannel !== undefined ? message.proofChannel : new Uint8Array()));
+    message.proofUpgrade !== undefined && (obj.proofUpgrade = base64FromBytes(message.proofUpgrade !== undefined ? message.proofUpgrade : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelUpgradeAck>): MsgChannelUpgradeAck {
     const message = createBaseMsgChannelUpgradeAck();
@@ -3578,6 +4247,8 @@ export const MsgChannelUpgradeAck = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeAck.typeUrl, MsgChannelUpgradeAck);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeAck.aminoType, MsgChannelUpgradeAck.typeUrl);
 function createBaseMsgChannelUpgradeAckResponse(): MsgChannelUpgradeAckResponse {
   return {
     result: 0
@@ -3585,6 +4256,16 @@ function createBaseMsgChannelUpgradeAckResponse(): MsgChannelUpgradeAckResponse 
 }
 export const MsgChannelUpgradeAckResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeAckResponse",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeAckResponse",
+  is(o: any): o is MsgChannelUpgradeAckResponse {
+    return o && (o.$typeUrl === MsgChannelUpgradeAckResponse.typeUrl || isSet(o.result));
+  },
+  isSDK(o: any): o is MsgChannelUpgradeAckResponseSDKType {
+    return o && (o.$typeUrl === MsgChannelUpgradeAckResponse.typeUrl || isSet(o.result));
+  },
+  isAmino(o: any): o is MsgChannelUpgradeAckResponseAmino {
+    return o && (o.$typeUrl === MsgChannelUpgradeAckResponse.typeUrl || isSet(o.result));
+  },
   encode(message: MsgChannelUpgradeAckResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.result !== 0) {
       writer.uint32(8).int32(message.result);
@@ -3607,6 +4288,16 @@ export const MsgChannelUpgradeAckResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelUpgradeAckResponse {
+    return {
+      result: isSet(object.result) ? responseResultTypeFromJSON(object.result) : -1
+    };
+  },
+  toJSON(message: MsgChannelUpgradeAckResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = responseResultTypeToJSON(message.result));
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelUpgradeAckResponse>): MsgChannelUpgradeAckResponse {
     const message = createBaseMsgChannelUpgradeAckResponse();
@@ -3647,6 +4338,8 @@ export const MsgChannelUpgradeAckResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeAckResponse.typeUrl, MsgChannelUpgradeAckResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeAckResponse.aminoType, MsgChannelUpgradeAckResponse.typeUrl);
 function createBaseMsgChannelUpgradeConfirm(): MsgChannelUpgradeConfirm {
   return {
     portId: "",
@@ -3661,6 +4354,16 @@ function createBaseMsgChannelUpgradeConfirm(): MsgChannelUpgradeConfirm {
 }
 export const MsgChannelUpgradeConfirm = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeConfirm",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeConfirm",
+  is(o: any): o is MsgChannelUpgradeConfirm {
+    return o && (o.$typeUrl === MsgChannelUpgradeConfirm.typeUrl || typeof o.portId === "string" && typeof o.channelId === "string" && isSet(o.counterpartyChannelState) && Upgrade.is(o.counterpartyUpgrade) && (o.proofChannel instanceof Uint8Array || typeof o.proofChannel === "string") && (o.proofUpgrade instanceof Uint8Array || typeof o.proofUpgrade === "string") && Height.is(o.proofHeight) && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgChannelUpgradeConfirmSDKType {
+    return o && (o.$typeUrl === MsgChannelUpgradeConfirm.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && isSet(o.counterparty_channel_state) && Upgrade.isSDK(o.counterparty_upgrade) && (o.proof_channel instanceof Uint8Array || typeof o.proof_channel === "string") && (o.proof_upgrade instanceof Uint8Array || typeof o.proof_upgrade === "string") && Height.isSDK(o.proof_height) && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgChannelUpgradeConfirmAmino {
+    return o && (o.$typeUrl === MsgChannelUpgradeConfirm.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && isSet(o.counterparty_channel_state) && Upgrade.isAmino(o.counterparty_upgrade) && (o.proof_channel instanceof Uint8Array || typeof o.proof_channel === "string") && (o.proof_upgrade instanceof Uint8Array || typeof o.proof_upgrade === "string") && Height.isAmino(o.proof_height) && typeof o.signer === "string");
+  },
   encode(message: MsgChannelUpgradeConfirm, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -3725,6 +4428,30 @@ export const MsgChannelUpgradeConfirm = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelUpgradeConfirm {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      counterpartyChannelState: isSet(object.counterpartyChannelState) ? stateFromJSON(object.counterpartyChannelState) : -1,
+      counterpartyUpgrade: isSet(object.counterpartyUpgrade) ? Upgrade.fromJSON(object.counterpartyUpgrade) : undefined,
+      proofChannel: isSet(object.proofChannel) ? bytesFromBase64(object.proofChannel) : new Uint8Array(),
+      proofUpgrade: isSet(object.proofUpgrade) ? bytesFromBase64(object.proofUpgrade) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgChannelUpgradeConfirm): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.counterpartyChannelState !== undefined && (obj.counterpartyChannelState = stateToJSON(message.counterpartyChannelState));
+    message.counterpartyUpgrade !== undefined && (obj.counterpartyUpgrade = message.counterpartyUpgrade ? Upgrade.toJSON(message.counterpartyUpgrade) : undefined);
+    message.proofChannel !== undefined && (obj.proofChannel = base64FromBytes(message.proofChannel !== undefined ? message.proofChannel : new Uint8Array()));
+    message.proofUpgrade !== undefined && (obj.proofUpgrade = base64FromBytes(message.proofUpgrade !== undefined ? message.proofUpgrade : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelUpgradeConfirm>): MsgChannelUpgradeConfirm {
     const message = createBaseMsgChannelUpgradeConfirm();
@@ -3800,6 +4527,8 @@ export const MsgChannelUpgradeConfirm = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeConfirm.typeUrl, MsgChannelUpgradeConfirm);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeConfirm.aminoType, MsgChannelUpgradeConfirm.typeUrl);
 function createBaseMsgChannelUpgradeConfirmResponse(): MsgChannelUpgradeConfirmResponse {
   return {
     result: 0
@@ -3807,6 +4536,16 @@ function createBaseMsgChannelUpgradeConfirmResponse(): MsgChannelUpgradeConfirmR
 }
 export const MsgChannelUpgradeConfirmResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeConfirmResponse",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeConfirmResponse",
+  is(o: any): o is MsgChannelUpgradeConfirmResponse {
+    return o && (o.$typeUrl === MsgChannelUpgradeConfirmResponse.typeUrl || isSet(o.result));
+  },
+  isSDK(o: any): o is MsgChannelUpgradeConfirmResponseSDKType {
+    return o && (o.$typeUrl === MsgChannelUpgradeConfirmResponse.typeUrl || isSet(o.result));
+  },
+  isAmino(o: any): o is MsgChannelUpgradeConfirmResponseAmino {
+    return o && (o.$typeUrl === MsgChannelUpgradeConfirmResponse.typeUrl || isSet(o.result));
+  },
   encode(message: MsgChannelUpgradeConfirmResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.result !== 0) {
       writer.uint32(8).int32(message.result);
@@ -3829,6 +4568,16 @@ export const MsgChannelUpgradeConfirmResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelUpgradeConfirmResponse {
+    return {
+      result: isSet(object.result) ? responseResultTypeFromJSON(object.result) : -1
+    };
+  },
+  toJSON(message: MsgChannelUpgradeConfirmResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = responseResultTypeToJSON(message.result));
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelUpgradeConfirmResponse>): MsgChannelUpgradeConfirmResponse {
     const message = createBaseMsgChannelUpgradeConfirmResponse();
@@ -3869,6 +4618,8 @@ export const MsgChannelUpgradeConfirmResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeConfirmResponse.typeUrl, MsgChannelUpgradeConfirmResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeConfirmResponse.aminoType, MsgChannelUpgradeConfirmResponse.typeUrl);
 function createBaseMsgChannelUpgradeOpen(): MsgChannelUpgradeOpen {
   return {
     portId: "",
@@ -3881,6 +4632,16 @@ function createBaseMsgChannelUpgradeOpen(): MsgChannelUpgradeOpen {
 }
 export const MsgChannelUpgradeOpen = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeOpen",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeOpen",
+  is(o: any): o is MsgChannelUpgradeOpen {
+    return o && (o.$typeUrl === MsgChannelUpgradeOpen.typeUrl || typeof o.portId === "string" && typeof o.channelId === "string" && isSet(o.counterpartyChannelState) && (o.proofChannel instanceof Uint8Array || typeof o.proofChannel === "string") && Height.is(o.proofHeight) && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgChannelUpgradeOpenSDKType {
+    return o && (o.$typeUrl === MsgChannelUpgradeOpen.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && isSet(o.counterparty_channel_state) && (o.proof_channel instanceof Uint8Array || typeof o.proof_channel === "string") && Height.isSDK(o.proof_height) && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgChannelUpgradeOpenAmino {
+    return o && (o.$typeUrl === MsgChannelUpgradeOpen.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && isSet(o.counterparty_channel_state) && (o.proof_channel instanceof Uint8Array || typeof o.proof_channel === "string") && Height.isAmino(o.proof_height) && typeof o.signer === "string");
+  },
   encode(message: MsgChannelUpgradeOpen, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -3933,6 +4694,26 @@ export const MsgChannelUpgradeOpen = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelUpgradeOpen {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      counterpartyChannelState: isSet(object.counterpartyChannelState) ? stateFromJSON(object.counterpartyChannelState) : -1,
+      proofChannel: isSet(object.proofChannel) ? bytesFromBase64(object.proofChannel) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgChannelUpgradeOpen): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.counterpartyChannelState !== undefined && (obj.counterpartyChannelState = stateToJSON(message.counterpartyChannelState));
+    message.proofChannel !== undefined && (obj.proofChannel = base64FromBytes(message.proofChannel !== undefined ? message.proofChannel : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelUpgradeOpen>): MsgChannelUpgradeOpen {
     const message = createBaseMsgChannelUpgradeOpen();
@@ -3998,11 +4779,23 @@ export const MsgChannelUpgradeOpen = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeOpen.typeUrl, MsgChannelUpgradeOpen);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeOpen.aminoType, MsgChannelUpgradeOpen.typeUrl);
 function createBaseMsgChannelUpgradeOpenResponse(): MsgChannelUpgradeOpenResponse {
   return {};
 }
 export const MsgChannelUpgradeOpenResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeOpenResponse",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeOpenResponse",
+  is(o: any): o is MsgChannelUpgradeOpenResponse {
+    return o && o.$typeUrl === MsgChannelUpgradeOpenResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgChannelUpgradeOpenResponseSDKType {
+    return o && o.$typeUrl === MsgChannelUpgradeOpenResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgChannelUpgradeOpenResponseAmino {
+    return o && o.$typeUrl === MsgChannelUpgradeOpenResponse.typeUrl;
+  },
   encode(_: MsgChannelUpgradeOpenResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -4019,6 +4812,13 @@ export const MsgChannelUpgradeOpenResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgChannelUpgradeOpenResponse {
+    return {};
+  },
+  toJSON(_: MsgChannelUpgradeOpenResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgChannelUpgradeOpenResponse>): MsgChannelUpgradeOpenResponse {
     const message = createBaseMsgChannelUpgradeOpenResponse();
@@ -4054,6 +4854,8 @@ export const MsgChannelUpgradeOpenResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeOpenResponse.typeUrl, MsgChannelUpgradeOpenResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeOpenResponse.aminoType, MsgChannelUpgradeOpenResponse.typeUrl);
 function createBaseMsgChannelUpgradeTimeout(): MsgChannelUpgradeTimeout {
   return {
     portId: "",
@@ -4066,6 +4868,16 @@ function createBaseMsgChannelUpgradeTimeout(): MsgChannelUpgradeTimeout {
 }
 export const MsgChannelUpgradeTimeout = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeTimeout",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeTimeout",
+  is(o: any): o is MsgChannelUpgradeTimeout {
+    return o && (o.$typeUrl === MsgChannelUpgradeTimeout.typeUrl || typeof o.portId === "string" && typeof o.channelId === "string" && Channel.is(o.counterpartyChannel) && (o.proofChannel instanceof Uint8Array || typeof o.proofChannel === "string") && Height.is(o.proofHeight) && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgChannelUpgradeTimeoutSDKType {
+    return o && (o.$typeUrl === MsgChannelUpgradeTimeout.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && Channel.isSDK(o.counterparty_channel) && (o.proof_channel instanceof Uint8Array || typeof o.proof_channel === "string") && Height.isSDK(o.proof_height) && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgChannelUpgradeTimeoutAmino {
+    return o && (o.$typeUrl === MsgChannelUpgradeTimeout.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && Channel.isAmino(o.counterparty_channel) && (o.proof_channel instanceof Uint8Array || typeof o.proof_channel === "string") && Height.isAmino(o.proof_height) && typeof o.signer === "string");
+  },
   encode(message: MsgChannelUpgradeTimeout, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -4118,6 +4930,26 @@ export const MsgChannelUpgradeTimeout = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelUpgradeTimeout {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      counterpartyChannel: isSet(object.counterpartyChannel) ? Channel.fromJSON(object.counterpartyChannel) : undefined,
+      proofChannel: isSet(object.proofChannel) ? bytesFromBase64(object.proofChannel) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgChannelUpgradeTimeout): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.counterpartyChannel !== undefined && (obj.counterpartyChannel = message.counterpartyChannel ? Channel.toJSON(message.counterpartyChannel) : undefined);
+    message.proofChannel !== undefined && (obj.proofChannel = base64FromBytes(message.proofChannel !== undefined ? message.proofChannel : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelUpgradeTimeout>): MsgChannelUpgradeTimeout {
     const message = createBaseMsgChannelUpgradeTimeout();
@@ -4183,11 +5015,23 @@ export const MsgChannelUpgradeTimeout = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeTimeout.typeUrl, MsgChannelUpgradeTimeout);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeTimeout.aminoType, MsgChannelUpgradeTimeout.typeUrl);
 function createBaseMsgChannelUpgradeTimeoutResponse(): MsgChannelUpgradeTimeoutResponse {
   return {};
 }
 export const MsgChannelUpgradeTimeoutResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeTimeoutResponse",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeTimeoutResponse",
+  is(o: any): o is MsgChannelUpgradeTimeoutResponse {
+    return o && o.$typeUrl === MsgChannelUpgradeTimeoutResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgChannelUpgradeTimeoutResponseSDKType {
+    return o && o.$typeUrl === MsgChannelUpgradeTimeoutResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgChannelUpgradeTimeoutResponseAmino {
+    return o && o.$typeUrl === MsgChannelUpgradeTimeoutResponse.typeUrl;
+  },
   encode(_: MsgChannelUpgradeTimeoutResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -4204,6 +5048,13 @@ export const MsgChannelUpgradeTimeoutResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgChannelUpgradeTimeoutResponse {
+    return {};
+  },
+  toJSON(_: MsgChannelUpgradeTimeoutResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgChannelUpgradeTimeoutResponse>): MsgChannelUpgradeTimeoutResponse {
     const message = createBaseMsgChannelUpgradeTimeoutResponse();
@@ -4239,6 +5090,8 @@ export const MsgChannelUpgradeTimeoutResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeTimeoutResponse.typeUrl, MsgChannelUpgradeTimeoutResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeTimeoutResponse.aminoType, MsgChannelUpgradeTimeoutResponse.typeUrl);
 function createBaseMsgChannelUpgradeCancel(): MsgChannelUpgradeCancel {
   return {
     portId: "",
@@ -4251,6 +5104,16 @@ function createBaseMsgChannelUpgradeCancel(): MsgChannelUpgradeCancel {
 }
 export const MsgChannelUpgradeCancel = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeCancel",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeCancel",
+  is(o: any): o is MsgChannelUpgradeCancel {
+    return o && (o.$typeUrl === MsgChannelUpgradeCancel.typeUrl || typeof o.portId === "string" && typeof o.channelId === "string" && ErrorReceipt.is(o.errorReceipt) && (o.proofErrorReceipt instanceof Uint8Array || typeof o.proofErrorReceipt === "string") && Height.is(o.proofHeight) && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgChannelUpgradeCancelSDKType {
+    return o && (o.$typeUrl === MsgChannelUpgradeCancel.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && ErrorReceipt.isSDK(o.error_receipt) && (o.proof_error_receipt instanceof Uint8Array || typeof o.proof_error_receipt === "string") && Height.isSDK(o.proof_height) && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgChannelUpgradeCancelAmino {
+    return o && (o.$typeUrl === MsgChannelUpgradeCancel.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && ErrorReceipt.isAmino(o.error_receipt) && (o.proof_error_receipt instanceof Uint8Array || typeof o.proof_error_receipt === "string") && Height.isAmino(o.proof_height) && typeof o.signer === "string");
+  },
   encode(message: MsgChannelUpgradeCancel, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -4303,6 +5166,26 @@ export const MsgChannelUpgradeCancel = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgChannelUpgradeCancel {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      errorReceipt: isSet(object.errorReceipt) ? ErrorReceipt.fromJSON(object.errorReceipt) : undefined,
+      proofErrorReceipt: isSet(object.proofErrorReceipt) ? bytesFromBase64(object.proofErrorReceipt) : new Uint8Array(),
+      proofHeight: isSet(object.proofHeight) ? Height.fromJSON(object.proofHeight) : undefined,
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgChannelUpgradeCancel): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.errorReceipt !== undefined && (obj.errorReceipt = message.errorReceipt ? ErrorReceipt.toJSON(message.errorReceipt) : undefined);
+    message.proofErrorReceipt !== undefined && (obj.proofErrorReceipt = base64FromBytes(message.proofErrorReceipt !== undefined ? message.proofErrorReceipt : new Uint8Array()));
+    message.proofHeight !== undefined && (obj.proofHeight = message.proofHeight ? Height.toJSON(message.proofHeight) : undefined);
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgChannelUpgradeCancel>): MsgChannelUpgradeCancel {
     const message = createBaseMsgChannelUpgradeCancel();
@@ -4368,11 +5251,23 @@ export const MsgChannelUpgradeCancel = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeCancel.typeUrl, MsgChannelUpgradeCancel);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeCancel.aminoType, MsgChannelUpgradeCancel.typeUrl);
 function createBaseMsgChannelUpgradeCancelResponse(): MsgChannelUpgradeCancelResponse {
   return {};
 }
 export const MsgChannelUpgradeCancelResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeCancelResponse",
+  aminoType: "cosmos-sdk/MsgChannelUpgradeCancelResponse",
+  is(o: any): o is MsgChannelUpgradeCancelResponse {
+    return o && o.$typeUrl === MsgChannelUpgradeCancelResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgChannelUpgradeCancelResponseSDKType {
+    return o && o.$typeUrl === MsgChannelUpgradeCancelResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgChannelUpgradeCancelResponseAmino {
+    return o && o.$typeUrl === MsgChannelUpgradeCancelResponse.typeUrl;
+  },
   encode(_: MsgChannelUpgradeCancelResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -4389,6 +5284,13 @@ export const MsgChannelUpgradeCancelResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgChannelUpgradeCancelResponse {
+    return {};
+  },
+  toJSON(_: MsgChannelUpgradeCancelResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgChannelUpgradeCancelResponse>): MsgChannelUpgradeCancelResponse {
     const message = createBaseMsgChannelUpgradeCancelResponse();
@@ -4424,6 +5326,8 @@ export const MsgChannelUpgradeCancelResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgChannelUpgradeCancelResponse.typeUrl, MsgChannelUpgradeCancelResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgChannelUpgradeCancelResponse.aminoType, MsgChannelUpgradeCancelResponse.typeUrl);
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
     authority: "",
@@ -4432,6 +5336,16 @@ function createBaseMsgUpdateParams(): MsgUpdateParams {
 }
 export const MsgUpdateParams = {
   typeUrl: "/ibc.core.channel.v1.MsgUpdateParams",
+  aminoType: "cosmos-sdk/MsgUpdateParams",
+  is(o: any): o is MsgUpdateParams {
+    return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.is(o.params));
+  },
+  isSDK(o: any): o is MsgUpdateParamsSDKType {
+    return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is MsgUpdateParamsAmino {
+    return o && (o.$typeUrl === MsgUpdateParams.typeUrl || typeof o.authority === "string" && Params.isAmino(o.params));
+  },
   encode(message: MsgUpdateParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.authority !== "") {
       writer.uint32(10).string(message.authority);
@@ -4460,6 +5374,18 @@ export const MsgUpdateParams = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgUpdateParams {
+    return {
+      authority: isSet(object.authority) ? String(object.authority) : "",
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
+  },
+  toJSON(message: MsgUpdateParams): unknown {
+    const obj: any = {};
+    message.authority !== undefined && (obj.authority = message.authority);
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams {
     const message = createBaseMsgUpdateParams();
@@ -4505,11 +5431,23 @@ export const MsgUpdateParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUpdateParams.typeUrl, MsgUpdateParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUpdateParams.aminoType, MsgUpdateParams.typeUrl);
 function createBaseMsgUpdateParamsResponse(): MsgUpdateParamsResponse {
   return {};
 }
 export const MsgUpdateParamsResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgUpdateParamsResponse",
+  aminoType: "cosmos-sdk/MsgUpdateParamsResponse",
+  is(o: any): o is MsgUpdateParamsResponse {
+    return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgUpdateParamsResponseSDKType {
+    return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgUpdateParamsResponseAmino {
+    return o && o.$typeUrl === MsgUpdateParamsResponse.typeUrl;
+  },
   encode(_: MsgUpdateParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -4526,6 +5464,13 @@ export const MsgUpdateParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgUpdateParamsResponse {
+    return {};
+  },
+  toJSON(_: MsgUpdateParamsResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse {
     const message = createBaseMsgUpdateParamsResponse();
@@ -4561,6 +5506,8 @@ export const MsgUpdateParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUpdateParamsResponse.typeUrl, MsgUpdateParamsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUpdateParamsResponse.aminoType, MsgUpdateParamsResponse.typeUrl);
 function createBaseMsgPruneAcknowledgements(): MsgPruneAcknowledgements {
   return {
     portId: "",
@@ -4571,6 +5518,16 @@ function createBaseMsgPruneAcknowledgements(): MsgPruneAcknowledgements {
 }
 export const MsgPruneAcknowledgements = {
   typeUrl: "/ibc.core.channel.v1.MsgPruneAcknowledgements",
+  aminoType: "cosmos-sdk/MsgPruneAcknowledgements",
+  is(o: any): o is MsgPruneAcknowledgements {
+    return o && (o.$typeUrl === MsgPruneAcknowledgements.typeUrl || typeof o.portId === "string" && typeof o.channelId === "string" && typeof o.limit === "bigint" && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgPruneAcknowledgementsSDKType {
+    return o && (o.$typeUrl === MsgPruneAcknowledgements.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.limit === "bigint" && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgPruneAcknowledgementsAmino {
+    return o && (o.$typeUrl === MsgPruneAcknowledgements.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string" && typeof o.limit === "bigint" && typeof o.signer === "string");
+  },
   encode(message: MsgPruneAcknowledgements, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -4611,6 +5568,22 @@ export const MsgPruneAcknowledgements = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgPruneAcknowledgements {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      limit: isSet(object.limit) ? BigInt(object.limit.toString()) : BigInt(0),
+      signer: isSet(object.signer) ? String(object.signer) : ""
+    };
+  },
+  toJSON(message: MsgPruneAcknowledgements): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.limit !== undefined && (obj.limit = (message.limit || BigInt(0)).toString());
+    message.signer !== undefined && (obj.signer = message.signer);
+    return obj;
   },
   fromPartial(object: Partial<MsgPruneAcknowledgements>): MsgPruneAcknowledgements {
     const message = createBaseMsgPruneAcknowledgements();
@@ -4666,6 +5639,8 @@ export const MsgPruneAcknowledgements = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgPruneAcknowledgements.typeUrl, MsgPruneAcknowledgements);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgPruneAcknowledgements.aminoType, MsgPruneAcknowledgements.typeUrl);
 function createBaseMsgPruneAcknowledgementsResponse(): MsgPruneAcknowledgementsResponse {
   return {
     totalPrunedSequences: BigInt(0),
@@ -4674,6 +5649,16 @@ function createBaseMsgPruneAcknowledgementsResponse(): MsgPruneAcknowledgementsR
 }
 export const MsgPruneAcknowledgementsResponse = {
   typeUrl: "/ibc.core.channel.v1.MsgPruneAcknowledgementsResponse",
+  aminoType: "cosmos-sdk/MsgPruneAcknowledgementsResponse",
+  is(o: any): o is MsgPruneAcknowledgementsResponse {
+    return o && (o.$typeUrl === MsgPruneAcknowledgementsResponse.typeUrl || typeof o.totalPrunedSequences === "bigint" && typeof o.totalRemainingSequences === "bigint");
+  },
+  isSDK(o: any): o is MsgPruneAcknowledgementsResponseSDKType {
+    return o && (o.$typeUrl === MsgPruneAcknowledgementsResponse.typeUrl || typeof o.total_pruned_sequences === "bigint" && typeof o.total_remaining_sequences === "bigint");
+  },
+  isAmino(o: any): o is MsgPruneAcknowledgementsResponseAmino {
+    return o && (o.$typeUrl === MsgPruneAcknowledgementsResponse.typeUrl || typeof o.total_pruned_sequences === "bigint" && typeof o.total_remaining_sequences === "bigint");
+  },
   encode(message: MsgPruneAcknowledgementsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.totalPrunedSequences !== BigInt(0)) {
       writer.uint32(8).uint64(message.totalPrunedSequences);
@@ -4702,6 +5687,18 @@ export const MsgPruneAcknowledgementsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgPruneAcknowledgementsResponse {
+    return {
+      totalPrunedSequences: isSet(object.totalPrunedSequences) ? BigInt(object.totalPrunedSequences.toString()) : BigInt(0),
+      totalRemainingSequences: isSet(object.totalRemainingSequences) ? BigInt(object.totalRemainingSequences.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgPruneAcknowledgementsResponse): unknown {
+    const obj: any = {};
+    message.totalPrunedSequences !== undefined && (obj.totalPrunedSequences = (message.totalPrunedSequences || BigInt(0)).toString());
+    message.totalRemainingSequences !== undefined && (obj.totalRemainingSequences = (message.totalRemainingSequences || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgPruneAcknowledgementsResponse>): MsgPruneAcknowledgementsResponse {
     const message = createBaseMsgPruneAcknowledgementsResponse();
@@ -4747,3 +5744,5 @@ export const MsgPruneAcknowledgementsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgPruneAcknowledgementsResponse.typeUrl, MsgPruneAcknowledgementsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgPruneAcknowledgementsResponse.aminoType, MsgPruneAcknowledgementsResponse.typeUrl);

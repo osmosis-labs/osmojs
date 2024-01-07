@@ -1,6 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./mint";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
@@ -96,6 +97,16 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 export const QueryParamsRequest = {
   typeUrl: "/osmosis.mint.v1beta1.QueryParamsRequest",
+  aminoType: "osmosis/mint/query-params-request",
+  is(o: any): o is QueryParamsRequest {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryParamsRequestSDKType {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryParamsRequestAmino {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
   encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -112,6 +123,13 @@ export const QueryParamsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryParamsRequest {
+    return {};
+  },
+  toJSON(_: QueryParamsRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
@@ -147,6 +165,8 @@ export const QueryParamsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsRequest.aminoType, QueryParamsRequest.typeUrl);
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     params: Params.fromPartial({})
@@ -154,6 +174,16 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 export const QueryParamsResponse = {
   typeUrl: "/osmosis.mint.v1beta1.QueryParamsResponse",
+  aminoType: "osmosis/mint/query-params-response",
+  is(o: any): o is QueryParamsResponse {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.is(o.params));
+  },
+  isSDK(o: any): o is QueryParamsResponseSDKType {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is QueryParamsResponseAmino {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isAmino(o.params));
+  },
   encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -176,6 +206,16 @@ export const QueryParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
+  },
+  toJSON(message: QueryParamsResponse): unknown {
+    const obj: any = {};
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
@@ -216,11 +256,23 @@ export const QueryParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsResponse.aminoType, QueryParamsResponse.typeUrl);
 function createBaseQueryEpochProvisionsRequest(): QueryEpochProvisionsRequest {
   return {};
 }
 export const QueryEpochProvisionsRequest = {
   typeUrl: "/osmosis.mint.v1beta1.QueryEpochProvisionsRequest",
+  aminoType: "osmosis/mint/query-epoch-provisions-request",
+  is(o: any): o is QueryEpochProvisionsRequest {
+    return o && o.$typeUrl === QueryEpochProvisionsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryEpochProvisionsRequestSDKType {
+    return o && o.$typeUrl === QueryEpochProvisionsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryEpochProvisionsRequestAmino {
+    return o && o.$typeUrl === QueryEpochProvisionsRequest.typeUrl;
+  },
   encode(_: QueryEpochProvisionsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -237,6 +289,13 @@ export const QueryEpochProvisionsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryEpochProvisionsRequest {
+    return {};
+  },
+  toJSON(_: QueryEpochProvisionsRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<QueryEpochProvisionsRequest>): QueryEpochProvisionsRequest {
     const message = createBaseQueryEpochProvisionsRequest();
@@ -272,6 +331,8 @@ export const QueryEpochProvisionsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryEpochProvisionsRequest.typeUrl, QueryEpochProvisionsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryEpochProvisionsRequest.aminoType, QueryEpochProvisionsRequest.typeUrl);
 function createBaseQueryEpochProvisionsResponse(): QueryEpochProvisionsResponse {
   return {
     epochProvisions: new Uint8Array()
@@ -279,6 +340,16 @@ function createBaseQueryEpochProvisionsResponse(): QueryEpochProvisionsResponse 
 }
 export const QueryEpochProvisionsResponse = {
   typeUrl: "/osmosis.mint.v1beta1.QueryEpochProvisionsResponse",
+  aminoType: "osmosis/mint/query-epoch-provisions-response",
+  is(o: any): o is QueryEpochProvisionsResponse {
+    return o && (o.$typeUrl === QueryEpochProvisionsResponse.typeUrl || o.epochProvisions instanceof Uint8Array || typeof o.epochProvisions === "string");
+  },
+  isSDK(o: any): o is QueryEpochProvisionsResponseSDKType {
+    return o && (o.$typeUrl === QueryEpochProvisionsResponse.typeUrl || o.epoch_provisions instanceof Uint8Array || typeof o.epoch_provisions === "string");
+  },
+  isAmino(o: any): o is QueryEpochProvisionsResponseAmino {
+    return o && (o.$typeUrl === QueryEpochProvisionsResponse.typeUrl || o.epoch_provisions instanceof Uint8Array || typeof o.epoch_provisions === "string");
+  },
   encode(message: QueryEpochProvisionsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.epochProvisions.length !== 0) {
       writer.uint32(10).bytes(message.epochProvisions);
@@ -301,6 +372,16 @@ export const QueryEpochProvisionsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryEpochProvisionsResponse {
+    return {
+      epochProvisions: isSet(object.epochProvisions) ? bytesFromBase64(object.epochProvisions) : new Uint8Array()
+    };
+  },
+  toJSON(message: QueryEpochProvisionsResponse): unknown {
+    const obj: any = {};
+    message.epochProvisions !== undefined && (obj.epochProvisions = base64FromBytes(message.epochProvisions !== undefined ? message.epochProvisions : new Uint8Array()));
+    return obj;
   },
   fromPartial(object: Partial<QueryEpochProvisionsResponse>): QueryEpochProvisionsResponse {
     const message = createBaseQueryEpochProvisionsResponse();
@@ -341,3 +422,5 @@ export const QueryEpochProvisionsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryEpochProvisionsResponse.typeUrl, QueryEpochProvisionsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryEpochProvisionsResponse.aminoType, QueryEpochProvisionsResponse.typeUrl);

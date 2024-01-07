@@ -13,6 +13,8 @@ import { Pool as Pool3 } from "../../gamm/v1beta1/balancerPool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../../gamm/v1beta1/balancerPool";
 import { PoolSDKType as Pool3SDKType } from "../../gamm/v1beta1/balancerPool";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
+import { isSet } from "../../../helpers";
 import { Decimal } from "@cosmjs/math";
 /** =============================== Params */
 export interface ParamsRequest {}
@@ -293,7 +295,7 @@ export interface PoolRequestSDKType {
   pool_id: bigint;
 }
 export interface PoolResponse {
-  pool?: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any) | undefined;
+  pool?: Pool1 | CosmWasmPool | Pool2 | Pool3 | Any | undefined;
 }
 export interface PoolResponseProtoMsg {
   typeUrl: "/osmosis.poolmanager.v1beta1.PoolResponse";
@@ -327,7 +329,7 @@ export interface AllPoolsRequestAminoMsg {
 /** =============================== AllPools */
 export interface AllPoolsRequestSDKType {}
 export interface AllPoolsResponse {
-  pools: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any)[] | Any[];
+  pools: (Pool1 | CosmWasmPool | Pool2 | Pool3 | Any)[] | Any[];
 }
 export interface AllPoolsResponseProtoMsg {
   typeUrl: "/osmosis.poolmanager.v1beta1.AllPoolsResponse";
@@ -376,7 +378,7 @@ export interface ListPoolsByDenomRequestSDKType {
   denom: string;
 }
 export interface ListPoolsByDenomResponse {
-  pools: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any)[] | Any[];
+  pools: (Pool1 | CosmWasmPool | Pool2 | Pool3 | Any)[] | Any[];
 }
 export interface ListPoolsByDenomResponseProtoMsg {
   typeUrl: "/osmosis.poolmanager.v1beta1.ListPoolsByDenomResponse";
@@ -748,6 +750,16 @@ function createBaseParamsRequest(): ParamsRequest {
 }
 export const ParamsRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.ParamsRequest",
+  aminoType: "osmosis/poolmanager/params-request",
+  is(o: any): o is ParamsRequest {
+    return o && o.$typeUrl === ParamsRequest.typeUrl;
+  },
+  isSDK(o: any): o is ParamsRequestSDKType {
+    return o && o.$typeUrl === ParamsRequest.typeUrl;
+  },
+  isAmino(o: any): o is ParamsRequestAmino {
+    return o && o.$typeUrl === ParamsRequest.typeUrl;
+  },
   encode(_: ParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -764,6 +776,13 @@ export const ParamsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): ParamsRequest {
+    return {};
+  },
+  toJSON(_: ParamsRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<ParamsRequest>): ParamsRequest {
     const message = createBaseParamsRequest();
@@ -799,6 +818,8 @@ export const ParamsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(ParamsRequest.typeUrl, ParamsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(ParamsRequest.aminoType, ParamsRequest.typeUrl);
 function createBaseParamsResponse(): ParamsResponse {
   return {
     params: Params.fromPartial({})
@@ -806,6 +827,16 @@ function createBaseParamsResponse(): ParamsResponse {
 }
 export const ParamsResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.ParamsResponse",
+  aminoType: "osmosis/poolmanager/params-response",
+  is(o: any): o is ParamsResponse {
+    return o && (o.$typeUrl === ParamsResponse.typeUrl || Params.is(o.params));
+  },
+  isSDK(o: any): o is ParamsResponseSDKType {
+    return o && (o.$typeUrl === ParamsResponse.typeUrl || Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is ParamsResponseAmino {
+    return o && (o.$typeUrl === ParamsResponse.typeUrl || Params.isAmino(o.params));
+  },
   encode(message: ParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -828,6 +859,16 @@ export const ParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
+  },
+  toJSON(message: ParamsResponse): unknown {
+    const obj: any = {};
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<ParamsResponse>): ParamsResponse {
     const message = createBaseParamsResponse();
@@ -868,6 +909,8 @@ export const ParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(ParamsResponse.typeUrl, ParamsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(ParamsResponse.aminoType, ParamsResponse.typeUrl);
 function createBaseEstimateSwapExactAmountInRequest(): EstimateSwapExactAmountInRequest {
   return {
     poolId: BigInt(0),
@@ -877,6 +920,16 @@ function createBaseEstimateSwapExactAmountInRequest(): EstimateSwapExactAmountIn
 }
 export const EstimateSwapExactAmountInRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSwapExactAmountInRequest",
+  aminoType: "osmosis/poolmanager/estimate-swap-exact-amount-in-request",
+  is(o: any): o is EstimateSwapExactAmountInRequest {
+    return o && (o.$typeUrl === EstimateSwapExactAmountInRequest.typeUrl || typeof o.poolId === "bigint" && typeof o.tokenIn === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountInRoute.is(o.routes[0])));
+  },
+  isSDK(o: any): o is EstimateSwapExactAmountInRequestSDKType {
+    return o && (o.$typeUrl === EstimateSwapExactAmountInRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.token_in === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountInRoute.isSDK(o.routes[0])));
+  },
+  isAmino(o: any): o is EstimateSwapExactAmountInRequestAmino {
+    return o && (o.$typeUrl === EstimateSwapExactAmountInRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.token_in === "string" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountInRoute.isAmino(o.routes[0])));
+  },
   encode(message: EstimateSwapExactAmountInRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(16).uint64(message.poolId);
@@ -911,6 +964,24 @@ export const EstimateSwapExactAmountInRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): EstimateSwapExactAmountInRequest {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
+      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => SwapAmountInRoute.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: EstimateSwapExactAmountInRequest): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.tokenIn !== undefined && (obj.tokenIn = message.tokenIn);
+    if (message.routes) {
+      obj.routes = message.routes.map(e => e ? SwapAmountInRoute.toJSON(e) : undefined);
+    } else {
+      obj.routes = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<EstimateSwapExactAmountInRequest>): EstimateSwapExactAmountInRequest {
     const message = createBaseEstimateSwapExactAmountInRequest();
@@ -963,6 +1034,8 @@ export const EstimateSwapExactAmountInRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(EstimateSwapExactAmountInRequest.typeUrl, EstimateSwapExactAmountInRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(EstimateSwapExactAmountInRequest.aminoType, EstimateSwapExactAmountInRequest.typeUrl);
 function createBaseEstimateSwapExactAmountInWithPrimitiveTypesRequest(): EstimateSwapExactAmountInWithPrimitiveTypesRequest {
   return {
     poolId: BigInt(0),
@@ -973,6 +1046,16 @@ function createBaseEstimateSwapExactAmountInWithPrimitiveTypesRequest(): Estimat
 }
 export const EstimateSwapExactAmountInWithPrimitiveTypesRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSwapExactAmountInWithPrimitiveTypesRequest",
+  aminoType: "osmosis/poolmanager/estimate-swap-exact-amount-in-with-primitive-types-request",
+  is(o: any): o is EstimateSwapExactAmountInWithPrimitiveTypesRequest {
+    return o && (o.$typeUrl === EstimateSwapExactAmountInWithPrimitiveTypesRequest.typeUrl || typeof o.poolId === "bigint" && typeof o.tokenIn === "string" && Array.isArray(o.routesPoolId) && (!o.routesPoolId.length || typeof o.routesPoolId[0] === "bigint") && Array.isArray(o.routesTokenOutDenom) && (!o.routesTokenOutDenom.length || typeof o.routesTokenOutDenom[0] === "string"));
+  },
+  isSDK(o: any): o is EstimateSwapExactAmountInWithPrimitiveTypesRequestSDKType {
+    return o && (o.$typeUrl === EstimateSwapExactAmountInWithPrimitiveTypesRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.token_in === "string" && Array.isArray(o.routes_pool_id) && (!o.routes_pool_id.length || typeof o.routes_pool_id[0] === "bigint") && Array.isArray(o.routes_token_out_denom) && (!o.routes_token_out_denom.length || typeof o.routes_token_out_denom[0] === "string"));
+  },
+  isAmino(o: any): o is EstimateSwapExactAmountInWithPrimitiveTypesRequestAmino {
+    return o && (o.$typeUrl === EstimateSwapExactAmountInWithPrimitiveTypesRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.token_in === "string" && Array.isArray(o.routes_pool_id) && (!o.routes_pool_id.length || typeof o.routes_pool_id[0] === "bigint") && Array.isArray(o.routes_token_out_denom) && (!o.routes_token_out_denom.length || typeof o.routes_token_out_denom[0] === "string"));
+  },
   encode(message: EstimateSwapExactAmountInWithPrimitiveTypesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -1022,6 +1105,30 @@ export const EstimateSwapExactAmountInWithPrimitiveTypesRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): EstimateSwapExactAmountInWithPrimitiveTypesRequest {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
+      routesPoolId: Array.isArray(object?.routesPoolId) ? object.routesPoolId.map((e: any) => BigInt(e.toString())) : [],
+      routesTokenOutDenom: Array.isArray(object?.routesTokenOutDenom) ? object.routesTokenOutDenom.map((e: any) => String(e)) : []
+    };
+  },
+  toJSON(message: EstimateSwapExactAmountInWithPrimitiveTypesRequest): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.tokenIn !== undefined && (obj.tokenIn = message.tokenIn);
+    if (message.routesPoolId) {
+      obj.routesPoolId = message.routesPoolId.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.routesPoolId = [];
+    }
+    if (message.routesTokenOutDenom) {
+      obj.routesTokenOutDenom = message.routesTokenOutDenom.map(e => e);
+    } else {
+      obj.routesTokenOutDenom = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<EstimateSwapExactAmountInWithPrimitiveTypesRequest>): EstimateSwapExactAmountInWithPrimitiveTypesRequest {
     const message = createBaseEstimateSwapExactAmountInWithPrimitiveTypesRequest();
@@ -1081,6 +1188,8 @@ export const EstimateSwapExactAmountInWithPrimitiveTypesRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(EstimateSwapExactAmountInWithPrimitiveTypesRequest.typeUrl, EstimateSwapExactAmountInWithPrimitiveTypesRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(EstimateSwapExactAmountInWithPrimitiveTypesRequest.aminoType, EstimateSwapExactAmountInWithPrimitiveTypesRequest.typeUrl);
 function createBaseEstimateSinglePoolSwapExactAmountInRequest(): EstimateSinglePoolSwapExactAmountInRequest {
   return {
     poolId: BigInt(0),
@@ -1090,6 +1199,16 @@ function createBaseEstimateSinglePoolSwapExactAmountInRequest(): EstimateSingleP
 }
 export const EstimateSinglePoolSwapExactAmountInRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSinglePoolSwapExactAmountInRequest",
+  aminoType: "osmosis/poolmanager/estimate-single-pool-swap-exact-amount-in-request",
+  is(o: any): o is EstimateSinglePoolSwapExactAmountInRequest {
+    return o && (o.$typeUrl === EstimateSinglePoolSwapExactAmountInRequest.typeUrl || typeof o.poolId === "bigint" && typeof o.tokenIn === "string" && typeof o.tokenOutDenom === "string");
+  },
+  isSDK(o: any): o is EstimateSinglePoolSwapExactAmountInRequestSDKType {
+    return o && (o.$typeUrl === EstimateSinglePoolSwapExactAmountInRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.token_in === "string" && typeof o.token_out_denom === "string");
+  },
+  isAmino(o: any): o is EstimateSinglePoolSwapExactAmountInRequestAmino {
+    return o && (o.$typeUrl === EstimateSinglePoolSwapExactAmountInRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.token_in === "string" && typeof o.token_out_denom === "string");
+  },
   encode(message: EstimateSinglePoolSwapExactAmountInRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -1124,6 +1243,20 @@ export const EstimateSinglePoolSwapExactAmountInRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): EstimateSinglePoolSwapExactAmountInRequest {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
+      tokenOutDenom: isSet(object.tokenOutDenom) ? String(object.tokenOutDenom) : ""
+    };
+  },
+  toJSON(message: EstimateSinglePoolSwapExactAmountInRequest): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.tokenIn !== undefined && (obj.tokenIn = message.tokenIn);
+    message.tokenOutDenom !== undefined && (obj.tokenOutDenom = message.tokenOutDenom);
+    return obj;
   },
   fromPartial(object: Partial<EstimateSinglePoolSwapExactAmountInRequest>): EstimateSinglePoolSwapExactAmountInRequest {
     const message = createBaseEstimateSinglePoolSwapExactAmountInRequest();
@@ -1174,6 +1307,8 @@ export const EstimateSinglePoolSwapExactAmountInRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(EstimateSinglePoolSwapExactAmountInRequest.typeUrl, EstimateSinglePoolSwapExactAmountInRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(EstimateSinglePoolSwapExactAmountInRequest.aminoType, EstimateSinglePoolSwapExactAmountInRequest.typeUrl);
 function createBaseEstimateSwapExactAmountInResponse(): EstimateSwapExactAmountInResponse {
   return {
     tokenOutAmount: ""
@@ -1181,6 +1316,16 @@ function createBaseEstimateSwapExactAmountInResponse(): EstimateSwapExactAmountI
 }
 export const EstimateSwapExactAmountInResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSwapExactAmountInResponse",
+  aminoType: "osmosis/poolmanager/estimate-swap-exact-amount-in-response",
+  is(o: any): o is EstimateSwapExactAmountInResponse {
+    return o && (o.$typeUrl === EstimateSwapExactAmountInResponse.typeUrl || typeof o.tokenOutAmount === "string");
+  },
+  isSDK(o: any): o is EstimateSwapExactAmountInResponseSDKType {
+    return o && (o.$typeUrl === EstimateSwapExactAmountInResponse.typeUrl || typeof o.token_out_amount === "string");
+  },
+  isAmino(o: any): o is EstimateSwapExactAmountInResponseAmino {
+    return o && (o.$typeUrl === EstimateSwapExactAmountInResponse.typeUrl || typeof o.token_out_amount === "string");
+  },
   encode(message: EstimateSwapExactAmountInResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenOutAmount !== "") {
       writer.uint32(10).string(message.tokenOutAmount);
@@ -1203,6 +1348,16 @@ export const EstimateSwapExactAmountInResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): EstimateSwapExactAmountInResponse {
+    return {
+      tokenOutAmount: isSet(object.tokenOutAmount) ? String(object.tokenOutAmount) : ""
+    };
+  },
+  toJSON(message: EstimateSwapExactAmountInResponse): unknown {
+    const obj: any = {};
+    message.tokenOutAmount !== undefined && (obj.tokenOutAmount = message.tokenOutAmount);
+    return obj;
   },
   fromPartial(object: Partial<EstimateSwapExactAmountInResponse>): EstimateSwapExactAmountInResponse {
     const message = createBaseEstimateSwapExactAmountInResponse();
@@ -1243,6 +1398,8 @@ export const EstimateSwapExactAmountInResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(EstimateSwapExactAmountInResponse.typeUrl, EstimateSwapExactAmountInResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(EstimateSwapExactAmountInResponse.aminoType, EstimateSwapExactAmountInResponse.typeUrl);
 function createBaseEstimateSwapExactAmountOutRequest(): EstimateSwapExactAmountOutRequest {
   return {
     poolId: BigInt(0),
@@ -1252,6 +1409,16 @@ function createBaseEstimateSwapExactAmountOutRequest(): EstimateSwapExactAmountO
 }
 export const EstimateSwapExactAmountOutRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSwapExactAmountOutRequest",
+  aminoType: "osmosis/poolmanager/estimate-swap-exact-amount-out-request",
+  is(o: any): o is EstimateSwapExactAmountOutRequest {
+    return o && (o.$typeUrl === EstimateSwapExactAmountOutRequest.typeUrl || typeof o.poolId === "bigint" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountOutRoute.is(o.routes[0])) && typeof o.tokenOut === "string");
+  },
+  isSDK(o: any): o is EstimateSwapExactAmountOutRequestSDKType {
+    return o && (o.$typeUrl === EstimateSwapExactAmountOutRequest.typeUrl || typeof o.pool_id === "bigint" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountOutRoute.isSDK(o.routes[0])) && typeof o.token_out === "string");
+  },
+  isAmino(o: any): o is EstimateSwapExactAmountOutRequestAmino {
+    return o && (o.$typeUrl === EstimateSwapExactAmountOutRequest.typeUrl || typeof o.pool_id === "bigint" && Array.isArray(o.routes) && (!o.routes.length || SwapAmountOutRoute.isAmino(o.routes[0])) && typeof o.token_out === "string");
+  },
   encode(message: EstimateSwapExactAmountOutRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(16).uint64(message.poolId);
@@ -1286,6 +1453,24 @@ export const EstimateSwapExactAmountOutRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): EstimateSwapExactAmountOutRequest {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => SwapAmountOutRoute.fromJSON(e)) : [],
+      tokenOut: isSet(object.tokenOut) ? String(object.tokenOut) : ""
+    };
+  },
+  toJSON(message: EstimateSwapExactAmountOutRequest): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    if (message.routes) {
+      obj.routes = message.routes.map(e => e ? SwapAmountOutRoute.toJSON(e) : undefined);
+    } else {
+      obj.routes = [];
+    }
+    message.tokenOut !== undefined && (obj.tokenOut = message.tokenOut);
+    return obj;
   },
   fromPartial(object: Partial<EstimateSwapExactAmountOutRequest>): EstimateSwapExactAmountOutRequest {
     const message = createBaseEstimateSwapExactAmountOutRequest();
@@ -1338,6 +1523,8 @@ export const EstimateSwapExactAmountOutRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(EstimateSwapExactAmountOutRequest.typeUrl, EstimateSwapExactAmountOutRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(EstimateSwapExactAmountOutRequest.aminoType, EstimateSwapExactAmountOutRequest.typeUrl);
 function createBaseEstimateSwapExactAmountOutWithPrimitiveTypesRequest(): EstimateSwapExactAmountOutWithPrimitiveTypesRequest {
   return {
     poolId: BigInt(0),
@@ -1348,6 +1535,16 @@ function createBaseEstimateSwapExactAmountOutWithPrimitiveTypesRequest(): Estima
 }
 export const EstimateSwapExactAmountOutWithPrimitiveTypesRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSwapExactAmountOutWithPrimitiveTypesRequest",
+  aminoType: "osmosis/poolmanager/estimate-swap-exact-amount-out-with-primitive-types-request",
+  is(o: any): o is EstimateSwapExactAmountOutWithPrimitiveTypesRequest {
+    return o && (o.$typeUrl === EstimateSwapExactAmountOutWithPrimitiveTypesRequest.typeUrl || typeof o.poolId === "bigint" && Array.isArray(o.routesPoolId) && (!o.routesPoolId.length || typeof o.routesPoolId[0] === "bigint") && Array.isArray(o.routesTokenInDenom) && (!o.routesTokenInDenom.length || typeof o.routesTokenInDenom[0] === "string") && typeof o.tokenOut === "string");
+  },
+  isSDK(o: any): o is EstimateSwapExactAmountOutWithPrimitiveTypesRequestSDKType {
+    return o && (o.$typeUrl === EstimateSwapExactAmountOutWithPrimitiveTypesRequest.typeUrl || typeof o.pool_id === "bigint" && Array.isArray(o.routes_pool_id) && (!o.routes_pool_id.length || typeof o.routes_pool_id[0] === "bigint") && Array.isArray(o.routes_token_in_denom) && (!o.routes_token_in_denom.length || typeof o.routes_token_in_denom[0] === "string") && typeof o.token_out === "string");
+  },
+  isAmino(o: any): o is EstimateSwapExactAmountOutWithPrimitiveTypesRequestAmino {
+    return o && (o.$typeUrl === EstimateSwapExactAmountOutWithPrimitiveTypesRequest.typeUrl || typeof o.pool_id === "bigint" && Array.isArray(o.routes_pool_id) && (!o.routes_pool_id.length || typeof o.routes_pool_id[0] === "bigint") && Array.isArray(o.routes_token_in_denom) && (!o.routes_token_in_denom.length || typeof o.routes_token_in_denom[0] === "string") && typeof o.token_out === "string");
+  },
   encode(message: EstimateSwapExactAmountOutWithPrimitiveTypesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -1397,6 +1594,30 @@ export const EstimateSwapExactAmountOutWithPrimitiveTypesRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): EstimateSwapExactAmountOutWithPrimitiveTypesRequest {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      routesPoolId: Array.isArray(object?.routesPoolId) ? object.routesPoolId.map((e: any) => BigInt(e.toString())) : [],
+      routesTokenInDenom: Array.isArray(object?.routesTokenInDenom) ? object.routesTokenInDenom.map((e: any) => String(e)) : [],
+      tokenOut: isSet(object.tokenOut) ? String(object.tokenOut) : ""
+    };
+  },
+  toJSON(message: EstimateSwapExactAmountOutWithPrimitiveTypesRequest): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    if (message.routesPoolId) {
+      obj.routesPoolId = message.routesPoolId.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.routesPoolId = [];
+    }
+    if (message.routesTokenInDenom) {
+      obj.routesTokenInDenom = message.routesTokenInDenom.map(e => e);
+    } else {
+      obj.routesTokenInDenom = [];
+    }
+    message.tokenOut !== undefined && (obj.tokenOut = message.tokenOut);
+    return obj;
   },
   fromPartial(object: Partial<EstimateSwapExactAmountOutWithPrimitiveTypesRequest>): EstimateSwapExactAmountOutWithPrimitiveTypesRequest {
     const message = createBaseEstimateSwapExactAmountOutWithPrimitiveTypesRequest();
@@ -1456,6 +1677,8 @@ export const EstimateSwapExactAmountOutWithPrimitiveTypesRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(EstimateSwapExactAmountOutWithPrimitiveTypesRequest.typeUrl, EstimateSwapExactAmountOutWithPrimitiveTypesRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(EstimateSwapExactAmountOutWithPrimitiveTypesRequest.aminoType, EstimateSwapExactAmountOutWithPrimitiveTypesRequest.typeUrl);
 function createBaseEstimateSinglePoolSwapExactAmountOutRequest(): EstimateSinglePoolSwapExactAmountOutRequest {
   return {
     poolId: BigInt(0),
@@ -1465,6 +1688,16 @@ function createBaseEstimateSinglePoolSwapExactAmountOutRequest(): EstimateSingle
 }
 export const EstimateSinglePoolSwapExactAmountOutRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSinglePoolSwapExactAmountOutRequest",
+  aminoType: "osmosis/poolmanager/estimate-single-pool-swap-exact-amount-out-request",
+  is(o: any): o is EstimateSinglePoolSwapExactAmountOutRequest {
+    return o && (o.$typeUrl === EstimateSinglePoolSwapExactAmountOutRequest.typeUrl || typeof o.poolId === "bigint" && typeof o.tokenInDenom === "string" && typeof o.tokenOut === "string");
+  },
+  isSDK(o: any): o is EstimateSinglePoolSwapExactAmountOutRequestSDKType {
+    return o && (o.$typeUrl === EstimateSinglePoolSwapExactAmountOutRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.token_in_denom === "string" && typeof o.token_out === "string");
+  },
+  isAmino(o: any): o is EstimateSinglePoolSwapExactAmountOutRequestAmino {
+    return o && (o.$typeUrl === EstimateSinglePoolSwapExactAmountOutRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.token_in_denom === "string" && typeof o.token_out === "string");
+  },
   encode(message: EstimateSinglePoolSwapExactAmountOutRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -1499,6 +1732,20 @@ export const EstimateSinglePoolSwapExactAmountOutRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): EstimateSinglePoolSwapExactAmountOutRequest {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      tokenInDenom: isSet(object.tokenInDenom) ? String(object.tokenInDenom) : "",
+      tokenOut: isSet(object.tokenOut) ? String(object.tokenOut) : ""
+    };
+  },
+  toJSON(message: EstimateSinglePoolSwapExactAmountOutRequest): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.tokenInDenom !== undefined && (obj.tokenInDenom = message.tokenInDenom);
+    message.tokenOut !== undefined && (obj.tokenOut = message.tokenOut);
+    return obj;
   },
   fromPartial(object: Partial<EstimateSinglePoolSwapExactAmountOutRequest>): EstimateSinglePoolSwapExactAmountOutRequest {
     const message = createBaseEstimateSinglePoolSwapExactAmountOutRequest();
@@ -1549,6 +1796,8 @@ export const EstimateSinglePoolSwapExactAmountOutRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(EstimateSinglePoolSwapExactAmountOutRequest.typeUrl, EstimateSinglePoolSwapExactAmountOutRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(EstimateSinglePoolSwapExactAmountOutRequest.aminoType, EstimateSinglePoolSwapExactAmountOutRequest.typeUrl);
 function createBaseEstimateSwapExactAmountOutResponse(): EstimateSwapExactAmountOutResponse {
   return {
     tokenInAmount: ""
@@ -1556,6 +1805,16 @@ function createBaseEstimateSwapExactAmountOutResponse(): EstimateSwapExactAmount
 }
 export const EstimateSwapExactAmountOutResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.EstimateSwapExactAmountOutResponse",
+  aminoType: "osmosis/poolmanager/estimate-swap-exact-amount-out-response",
+  is(o: any): o is EstimateSwapExactAmountOutResponse {
+    return o && (o.$typeUrl === EstimateSwapExactAmountOutResponse.typeUrl || typeof o.tokenInAmount === "string");
+  },
+  isSDK(o: any): o is EstimateSwapExactAmountOutResponseSDKType {
+    return o && (o.$typeUrl === EstimateSwapExactAmountOutResponse.typeUrl || typeof o.token_in_amount === "string");
+  },
+  isAmino(o: any): o is EstimateSwapExactAmountOutResponseAmino {
+    return o && (o.$typeUrl === EstimateSwapExactAmountOutResponse.typeUrl || typeof o.token_in_amount === "string");
+  },
   encode(message: EstimateSwapExactAmountOutResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenInAmount !== "") {
       writer.uint32(10).string(message.tokenInAmount);
@@ -1578,6 +1837,16 @@ export const EstimateSwapExactAmountOutResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): EstimateSwapExactAmountOutResponse {
+    return {
+      tokenInAmount: isSet(object.tokenInAmount) ? String(object.tokenInAmount) : ""
+    };
+  },
+  toJSON(message: EstimateSwapExactAmountOutResponse): unknown {
+    const obj: any = {};
+    message.tokenInAmount !== undefined && (obj.tokenInAmount = message.tokenInAmount);
+    return obj;
   },
   fromPartial(object: Partial<EstimateSwapExactAmountOutResponse>): EstimateSwapExactAmountOutResponse {
     const message = createBaseEstimateSwapExactAmountOutResponse();
@@ -1618,11 +1887,23 @@ export const EstimateSwapExactAmountOutResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(EstimateSwapExactAmountOutResponse.typeUrl, EstimateSwapExactAmountOutResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(EstimateSwapExactAmountOutResponse.aminoType, EstimateSwapExactAmountOutResponse.typeUrl);
 function createBaseNumPoolsRequest(): NumPoolsRequest {
   return {};
 }
 export const NumPoolsRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.NumPoolsRequest",
+  aminoType: "osmosis/poolmanager/num-pools-request",
+  is(o: any): o is NumPoolsRequest {
+    return o && o.$typeUrl === NumPoolsRequest.typeUrl;
+  },
+  isSDK(o: any): o is NumPoolsRequestSDKType {
+    return o && o.$typeUrl === NumPoolsRequest.typeUrl;
+  },
+  isAmino(o: any): o is NumPoolsRequestAmino {
+    return o && o.$typeUrl === NumPoolsRequest.typeUrl;
+  },
   encode(_: NumPoolsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -1639,6 +1920,13 @@ export const NumPoolsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): NumPoolsRequest {
+    return {};
+  },
+  toJSON(_: NumPoolsRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<NumPoolsRequest>): NumPoolsRequest {
     const message = createBaseNumPoolsRequest();
@@ -1674,6 +1962,8 @@ export const NumPoolsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(NumPoolsRequest.typeUrl, NumPoolsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(NumPoolsRequest.aminoType, NumPoolsRequest.typeUrl);
 function createBaseNumPoolsResponse(): NumPoolsResponse {
   return {
     numPools: BigInt(0)
@@ -1681,6 +1971,16 @@ function createBaseNumPoolsResponse(): NumPoolsResponse {
 }
 export const NumPoolsResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.NumPoolsResponse",
+  aminoType: "osmosis/poolmanager/num-pools-response",
+  is(o: any): o is NumPoolsResponse {
+    return o && (o.$typeUrl === NumPoolsResponse.typeUrl || typeof o.numPools === "bigint");
+  },
+  isSDK(o: any): o is NumPoolsResponseSDKType {
+    return o && (o.$typeUrl === NumPoolsResponse.typeUrl || typeof o.num_pools === "bigint");
+  },
+  isAmino(o: any): o is NumPoolsResponseAmino {
+    return o && (o.$typeUrl === NumPoolsResponse.typeUrl || typeof o.num_pools === "bigint");
+  },
   encode(message: NumPoolsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.numPools !== BigInt(0)) {
       writer.uint32(8).uint64(message.numPools);
@@ -1703,6 +2003,16 @@ export const NumPoolsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): NumPoolsResponse {
+    return {
+      numPools: isSet(object.numPools) ? BigInt(object.numPools.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: NumPoolsResponse): unknown {
+    const obj: any = {};
+    message.numPools !== undefined && (obj.numPools = (message.numPools || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<NumPoolsResponse>): NumPoolsResponse {
     const message = createBaseNumPoolsResponse();
@@ -1743,6 +2053,8 @@ export const NumPoolsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(NumPoolsResponse.typeUrl, NumPoolsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(NumPoolsResponse.aminoType, NumPoolsResponse.typeUrl);
 function createBasePoolRequest(): PoolRequest {
   return {
     poolId: BigInt(0)
@@ -1750,6 +2062,16 @@ function createBasePoolRequest(): PoolRequest {
 }
 export const PoolRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.PoolRequest",
+  aminoType: "osmosis/poolmanager/pool-request",
+  is(o: any): o is PoolRequest {
+    return o && (o.$typeUrl === PoolRequest.typeUrl || typeof o.poolId === "bigint");
+  },
+  isSDK(o: any): o is PoolRequestSDKType {
+    return o && (o.$typeUrl === PoolRequest.typeUrl || typeof o.pool_id === "bigint");
+  },
+  isAmino(o: any): o is PoolRequestAmino {
+    return o && (o.$typeUrl === PoolRequest.typeUrl || typeof o.pool_id === "bigint");
+  },
   encode(message: PoolRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -1772,6 +2094,16 @@ export const PoolRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PoolRequest {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: PoolRequest): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<PoolRequest>): PoolRequest {
     const message = createBasePoolRequest();
@@ -1812,6 +2144,8 @@ export const PoolRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolRequest.typeUrl, PoolRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolRequest.aminoType, PoolRequest.typeUrl);
 function createBasePoolResponse(): PoolResponse {
   return {
     pool: undefined
@@ -1819,9 +2153,19 @@ function createBasePoolResponse(): PoolResponse {
 }
 export const PoolResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.PoolResponse",
+  aminoType: "osmosis/poolmanager/pool-response",
+  is(o: any): o is PoolResponse {
+    return o && o.$typeUrl === PoolResponse.typeUrl;
+  },
+  isSDK(o: any): o is PoolResponseSDKType {
+    return o && o.$typeUrl === PoolResponse.typeUrl;
+  },
+  isAmino(o: any): o is PoolResponseAmino {
+    return o && o.$typeUrl === PoolResponse.typeUrl;
+  },
   encode(message: PoolResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pool !== undefined) {
-      Any.encode((message.pool as Any), writer.uint32(10).fork()).ldelim();
+      Any.encode(GlobalDecoderRegistry.wrapAny(message.pool), writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
@@ -1833,7 +2177,7 @@ export const PoolResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.pool = (PoolI_InterfaceDecoder(reader) as Any);
+          message.pool = GlobalDecoderRegistry.unwrapAny(reader);
           break;
         default:
           reader.skipType(tag & 7);
@@ -1842,21 +2186,31 @@ export const PoolResponse = {
     }
     return message;
   },
+  fromJSON(object: any): PoolResponse {
+    return {
+      pool: isSet(object.pool) ? GlobalDecoderRegistry.fromJSON(object.pool) : undefined
+    };
+  },
+  toJSON(message: PoolResponse): unknown {
+    const obj: any = {};
+    message.pool !== undefined && (obj.pool = message.pool ? GlobalDecoderRegistry.toJSON(message.pool) : undefined);
+    return obj;
+  },
   fromPartial(object: Partial<PoolResponse>): PoolResponse {
     const message = createBasePoolResponse();
-    message.pool = object.pool !== undefined && object.pool !== null ? Any.fromPartial(object.pool) : undefined;
+    message.pool = object.pool !== undefined && object.pool !== null ? GlobalDecoderRegistry.fromPartial(object.pool) : undefined;
     return message;
   },
   fromAmino(object: PoolResponseAmino): PoolResponse {
     const message = createBasePoolResponse();
     if (object.pool !== undefined && object.pool !== null) {
-      message.pool = PoolI_FromAmino(object.pool);
+      message.pool = GlobalDecoderRegistry.fromAminoMsg(object.pool);
     }
     return message;
   },
   toAmino(message: PoolResponse): PoolResponseAmino {
     const obj: any = {};
-    obj.pool = message.pool ? PoolI_ToAmino((message.pool as Any)) : undefined;
+    obj.pool = message.pool ? GlobalDecoderRegistry.toAminoMsg(message.pool) : undefined;
     return obj;
   },
   fromAminoMsg(object: PoolResponseAminoMsg): PoolResponse {
@@ -1881,11 +2235,23 @@ export const PoolResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolResponse.typeUrl, PoolResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolResponse.aminoType, PoolResponse.typeUrl);
 function createBaseAllPoolsRequest(): AllPoolsRequest {
   return {};
 }
 export const AllPoolsRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.AllPoolsRequest",
+  aminoType: "osmosis/poolmanager/all-pools-request",
+  is(o: any): o is AllPoolsRequest {
+    return o && o.$typeUrl === AllPoolsRequest.typeUrl;
+  },
+  isSDK(o: any): o is AllPoolsRequestSDKType {
+    return o && o.$typeUrl === AllPoolsRequest.typeUrl;
+  },
+  isAmino(o: any): o is AllPoolsRequestAmino {
+    return o && o.$typeUrl === AllPoolsRequest.typeUrl;
+  },
   encode(_: AllPoolsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -1902,6 +2268,13 @@ export const AllPoolsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): AllPoolsRequest {
+    return {};
+  },
+  toJSON(_: AllPoolsRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<AllPoolsRequest>): AllPoolsRequest {
     const message = createBaseAllPoolsRequest();
@@ -1937,6 +2310,8 @@ export const AllPoolsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(AllPoolsRequest.typeUrl, AllPoolsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(AllPoolsRequest.aminoType, AllPoolsRequest.typeUrl);
 function createBaseAllPoolsResponse(): AllPoolsResponse {
   return {
     pools: []
@@ -1944,9 +2319,19 @@ function createBaseAllPoolsResponse(): AllPoolsResponse {
 }
 export const AllPoolsResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.AllPoolsResponse",
+  aminoType: "osmosis/poolmanager/all-pools-response",
+  is(o: any): o is AllPoolsResponse {
+    return o && (o.$typeUrl === AllPoolsResponse.typeUrl || Array.isArray(o.pools) && (!o.pools.length || Pool1.is(o.pools[0]) || CosmWasmPool.is(o.pools[0]) || Pool2.is(o.pools[0]) || Pool3.is(o.pools[0]) || Any.is(o.pools[0])));
+  },
+  isSDK(o: any): o is AllPoolsResponseSDKType {
+    return o && (o.$typeUrl === AllPoolsResponse.typeUrl || Array.isArray(o.pools) && (!o.pools.length || Pool1.isSDK(o.pools[0]) || CosmWasmPool.isSDK(o.pools[0]) || Pool2.isSDK(o.pools[0]) || Pool3.isSDK(o.pools[0]) || Any.isSDK(o.pools[0])));
+  },
+  isAmino(o: any): o is AllPoolsResponseAmino {
+    return o && (o.$typeUrl === AllPoolsResponse.typeUrl || Array.isArray(o.pools) && (!o.pools.length || Pool1.isAmino(o.pools[0]) || CosmWasmPool.isAmino(o.pools[0]) || Pool2.isAmino(o.pools[0]) || Pool3.isAmino(o.pools[0]) || Any.isAmino(o.pools[0])));
+  },
   encode(message: AllPoolsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.pools) {
-      Any.encode((v! as Any), writer.uint32(10).fork()).ldelim();
+      Any.encode(GlobalDecoderRegistry.wrapAny(v!), writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
@@ -1958,7 +2343,7 @@ export const AllPoolsResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.pools.push((Any(reader) as Any));
+          message.pools.push(GlobalDecoderRegistry.unwrapAny(reader));
           break;
         default:
           reader.skipType(tag & 7);
@@ -1967,20 +2352,34 @@ export const AllPoolsResponse = {
     }
     return message;
   },
+  fromJSON(object: any): AllPoolsResponse {
+    return {
+      pools: Array.isArray(object?.pools) ? object.pools.map((e: any) => GlobalDecoderRegistry.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: AllPoolsResponse): unknown {
+    const obj: any = {};
+    if (message.pools) {
+      obj.pools = message.pools.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
+    } else {
+      obj.pools = [];
+    }
+    return obj;
+  },
   fromPartial(object: Partial<AllPoolsResponse>): AllPoolsResponse {
     const message = createBaseAllPoolsResponse();
-    message.pools = object.pools?.map(e => Any.fromPartial(e)) || [];
+    message.pools = object.pools?.map(e => (Any.fromPartial(e) as any)) || [];
     return message;
   },
   fromAmino(object: AllPoolsResponseAmino): AllPoolsResponse {
     const message = createBaseAllPoolsResponse();
-    message.pools = object.pools?.map(e => PoolI_FromAmino(e)) || [];
+    message.pools = object.pools?.map(e => GlobalDecoderRegistry.fromAminoMsg(e)) || [];
     return message;
   },
   toAmino(message: AllPoolsResponse): AllPoolsResponseAmino {
     const obj: any = {};
     if (message.pools) {
-      obj.pools = message.pools.map(e => e ? PoolI_ToAmino((e as Any)) : undefined);
+      obj.pools = message.pools.map(e => e ? GlobalDecoderRegistry.toAminoMsg(e) : undefined);
     } else {
       obj.pools = [];
     }
@@ -2008,6 +2407,8 @@ export const AllPoolsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(AllPoolsResponse.typeUrl, AllPoolsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(AllPoolsResponse.aminoType, AllPoolsResponse.typeUrl);
 function createBaseListPoolsByDenomRequest(): ListPoolsByDenomRequest {
   return {
     denom: ""
@@ -2015,6 +2416,16 @@ function createBaseListPoolsByDenomRequest(): ListPoolsByDenomRequest {
 }
 export const ListPoolsByDenomRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.ListPoolsByDenomRequest",
+  aminoType: "osmosis/poolmanager/list-pools-by-denom-request",
+  is(o: any): o is ListPoolsByDenomRequest {
+    return o && (o.$typeUrl === ListPoolsByDenomRequest.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is ListPoolsByDenomRequestSDKType {
+    return o && (o.$typeUrl === ListPoolsByDenomRequest.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is ListPoolsByDenomRequestAmino {
+    return o && (o.$typeUrl === ListPoolsByDenomRequest.typeUrl || typeof o.denom === "string");
+  },
   encode(message: ListPoolsByDenomRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -2037,6 +2448,16 @@ export const ListPoolsByDenomRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ListPoolsByDenomRequest {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
+  },
+  toJSON(message: ListPoolsByDenomRequest): unknown {
+    const obj: any = {};
+    message.denom !== undefined && (obj.denom = message.denom);
+    return obj;
   },
   fromPartial(object: Partial<ListPoolsByDenomRequest>): ListPoolsByDenomRequest {
     const message = createBaseListPoolsByDenomRequest();
@@ -2077,6 +2498,8 @@ export const ListPoolsByDenomRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(ListPoolsByDenomRequest.typeUrl, ListPoolsByDenomRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(ListPoolsByDenomRequest.aminoType, ListPoolsByDenomRequest.typeUrl);
 function createBaseListPoolsByDenomResponse(): ListPoolsByDenomResponse {
   return {
     pools: []
@@ -2084,9 +2507,19 @@ function createBaseListPoolsByDenomResponse(): ListPoolsByDenomResponse {
 }
 export const ListPoolsByDenomResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.ListPoolsByDenomResponse",
+  aminoType: "osmosis/poolmanager/list-pools-by-denom-response",
+  is(o: any): o is ListPoolsByDenomResponse {
+    return o && (o.$typeUrl === ListPoolsByDenomResponse.typeUrl || Array.isArray(o.pools) && (!o.pools.length || Pool1.is(o.pools[0]) || CosmWasmPool.is(o.pools[0]) || Pool2.is(o.pools[0]) || Pool3.is(o.pools[0]) || Any.is(o.pools[0])));
+  },
+  isSDK(o: any): o is ListPoolsByDenomResponseSDKType {
+    return o && (o.$typeUrl === ListPoolsByDenomResponse.typeUrl || Array.isArray(o.pools) && (!o.pools.length || Pool1.isSDK(o.pools[0]) || CosmWasmPool.isSDK(o.pools[0]) || Pool2.isSDK(o.pools[0]) || Pool3.isSDK(o.pools[0]) || Any.isSDK(o.pools[0])));
+  },
+  isAmino(o: any): o is ListPoolsByDenomResponseAmino {
+    return o && (o.$typeUrl === ListPoolsByDenomResponse.typeUrl || Array.isArray(o.pools) && (!o.pools.length || Pool1.isAmino(o.pools[0]) || CosmWasmPool.isAmino(o.pools[0]) || Pool2.isAmino(o.pools[0]) || Pool3.isAmino(o.pools[0]) || Any.isAmino(o.pools[0])));
+  },
   encode(message: ListPoolsByDenomResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.pools) {
-      Any.encode((v! as Any), writer.uint32(10).fork()).ldelim();
+      Any.encode(GlobalDecoderRegistry.wrapAny(v!), writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
@@ -2098,7 +2531,7 @@ export const ListPoolsByDenomResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.pools.push((Any(reader) as Any));
+          message.pools.push(GlobalDecoderRegistry.unwrapAny(reader));
           break;
         default:
           reader.skipType(tag & 7);
@@ -2107,20 +2540,34 @@ export const ListPoolsByDenomResponse = {
     }
     return message;
   },
+  fromJSON(object: any): ListPoolsByDenomResponse {
+    return {
+      pools: Array.isArray(object?.pools) ? object.pools.map((e: any) => GlobalDecoderRegistry.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: ListPoolsByDenomResponse): unknown {
+    const obj: any = {};
+    if (message.pools) {
+      obj.pools = message.pools.map(e => e ? GlobalDecoderRegistry.toJSON(e) : undefined);
+    } else {
+      obj.pools = [];
+    }
+    return obj;
+  },
   fromPartial(object: Partial<ListPoolsByDenomResponse>): ListPoolsByDenomResponse {
     const message = createBaseListPoolsByDenomResponse();
-    message.pools = object.pools?.map(e => Any.fromPartial(e)) || [];
+    message.pools = object.pools?.map(e => (Any.fromPartial(e) as any)) || [];
     return message;
   },
   fromAmino(object: ListPoolsByDenomResponseAmino): ListPoolsByDenomResponse {
     const message = createBaseListPoolsByDenomResponse();
-    message.pools = object.pools?.map(e => PoolI_FromAmino(e)) || [];
+    message.pools = object.pools?.map(e => GlobalDecoderRegistry.fromAminoMsg(e)) || [];
     return message;
   },
   toAmino(message: ListPoolsByDenomResponse): ListPoolsByDenomResponseAmino {
     const obj: any = {};
     if (message.pools) {
-      obj.pools = message.pools.map(e => e ? PoolI_ToAmino((e as Any)) : undefined);
+      obj.pools = message.pools.map(e => e ? GlobalDecoderRegistry.toAminoMsg(e) : undefined);
     } else {
       obj.pools = [];
     }
@@ -2148,6 +2595,8 @@ export const ListPoolsByDenomResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(ListPoolsByDenomResponse.typeUrl, ListPoolsByDenomResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(ListPoolsByDenomResponse.aminoType, ListPoolsByDenomResponse.typeUrl);
 function createBaseSpotPriceRequest(): SpotPriceRequest {
   return {
     poolId: BigInt(0),
@@ -2157,6 +2606,16 @@ function createBaseSpotPriceRequest(): SpotPriceRequest {
 }
 export const SpotPriceRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.SpotPriceRequest",
+  aminoType: "osmosis/poolmanager/spot-price-request",
+  is(o: any): o is SpotPriceRequest {
+    return o && (o.$typeUrl === SpotPriceRequest.typeUrl || typeof o.poolId === "bigint" && typeof o.baseAssetDenom === "string" && typeof o.quoteAssetDenom === "string");
+  },
+  isSDK(o: any): o is SpotPriceRequestSDKType {
+    return o && (o.$typeUrl === SpotPriceRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.base_asset_denom === "string" && typeof o.quote_asset_denom === "string");
+  },
+  isAmino(o: any): o is SpotPriceRequestAmino {
+    return o && (o.$typeUrl === SpotPriceRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.base_asset_denom === "string" && typeof o.quote_asset_denom === "string");
+  },
   encode(message: SpotPriceRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -2191,6 +2650,20 @@ export const SpotPriceRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SpotPriceRequest {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      baseAssetDenom: isSet(object.baseAssetDenom) ? String(object.baseAssetDenom) : "",
+      quoteAssetDenom: isSet(object.quoteAssetDenom) ? String(object.quoteAssetDenom) : ""
+    };
+  },
+  toJSON(message: SpotPriceRequest): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.baseAssetDenom !== undefined && (obj.baseAssetDenom = message.baseAssetDenom);
+    message.quoteAssetDenom !== undefined && (obj.quoteAssetDenom = message.quoteAssetDenom);
+    return obj;
   },
   fromPartial(object: Partial<SpotPriceRequest>): SpotPriceRequest {
     const message = createBaseSpotPriceRequest();
@@ -2241,6 +2714,8 @@ export const SpotPriceRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(SpotPriceRequest.typeUrl, SpotPriceRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(SpotPriceRequest.aminoType, SpotPriceRequest.typeUrl);
 function createBaseSpotPriceResponse(): SpotPriceResponse {
   return {
     spotPrice: ""
@@ -2248,6 +2723,16 @@ function createBaseSpotPriceResponse(): SpotPriceResponse {
 }
 export const SpotPriceResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.SpotPriceResponse",
+  aminoType: "osmosis/poolmanager/spot-price-response",
+  is(o: any): o is SpotPriceResponse {
+    return o && (o.$typeUrl === SpotPriceResponse.typeUrl || typeof o.spotPrice === "string");
+  },
+  isSDK(o: any): o is SpotPriceResponseSDKType {
+    return o && (o.$typeUrl === SpotPriceResponse.typeUrl || typeof o.spot_price === "string");
+  },
+  isAmino(o: any): o is SpotPriceResponseAmino {
+    return o && (o.$typeUrl === SpotPriceResponse.typeUrl || typeof o.spot_price === "string");
+  },
   encode(message: SpotPriceResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.spotPrice !== "") {
       writer.uint32(10).string(message.spotPrice);
@@ -2270,6 +2755,16 @@ export const SpotPriceResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SpotPriceResponse {
+    return {
+      spotPrice: isSet(object.spotPrice) ? String(object.spotPrice) : ""
+    };
+  },
+  toJSON(message: SpotPriceResponse): unknown {
+    const obj: any = {};
+    message.spotPrice !== undefined && (obj.spotPrice = message.spotPrice);
+    return obj;
   },
   fromPartial(object: Partial<SpotPriceResponse>): SpotPriceResponse {
     const message = createBaseSpotPriceResponse();
@@ -2310,6 +2805,8 @@ export const SpotPriceResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(SpotPriceResponse.typeUrl, SpotPriceResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(SpotPriceResponse.aminoType, SpotPriceResponse.typeUrl);
 function createBaseTotalPoolLiquidityRequest(): TotalPoolLiquidityRequest {
   return {
     poolId: BigInt(0)
@@ -2317,6 +2814,16 @@ function createBaseTotalPoolLiquidityRequest(): TotalPoolLiquidityRequest {
 }
 export const TotalPoolLiquidityRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TotalPoolLiquidityRequest",
+  aminoType: "osmosis/poolmanager/total-pool-liquidity-request",
+  is(o: any): o is TotalPoolLiquidityRequest {
+    return o && (o.$typeUrl === TotalPoolLiquidityRequest.typeUrl || typeof o.poolId === "bigint");
+  },
+  isSDK(o: any): o is TotalPoolLiquidityRequestSDKType {
+    return o && (o.$typeUrl === TotalPoolLiquidityRequest.typeUrl || typeof o.pool_id === "bigint");
+  },
+  isAmino(o: any): o is TotalPoolLiquidityRequestAmino {
+    return o && (o.$typeUrl === TotalPoolLiquidityRequest.typeUrl || typeof o.pool_id === "bigint");
+  },
   encode(message: TotalPoolLiquidityRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -2339,6 +2846,16 @@ export const TotalPoolLiquidityRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TotalPoolLiquidityRequest {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: TotalPoolLiquidityRequest): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<TotalPoolLiquidityRequest>): TotalPoolLiquidityRequest {
     const message = createBaseTotalPoolLiquidityRequest();
@@ -2379,6 +2896,8 @@ export const TotalPoolLiquidityRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(TotalPoolLiquidityRequest.typeUrl, TotalPoolLiquidityRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(TotalPoolLiquidityRequest.aminoType, TotalPoolLiquidityRequest.typeUrl);
 function createBaseTotalPoolLiquidityResponse(): TotalPoolLiquidityResponse {
   return {
     liquidity: []
@@ -2386,6 +2905,16 @@ function createBaseTotalPoolLiquidityResponse(): TotalPoolLiquidityResponse {
 }
 export const TotalPoolLiquidityResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TotalPoolLiquidityResponse",
+  aminoType: "osmosis/poolmanager/total-pool-liquidity-response",
+  is(o: any): o is TotalPoolLiquidityResponse {
+    return o && (o.$typeUrl === TotalPoolLiquidityResponse.typeUrl || Array.isArray(o.liquidity) && (!o.liquidity.length || Coin.is(o.liquidity[0])));
+  },
+  isSDK(o: any): o is TotalPoolLiquidityResponseSDKType {
+    return o && (o.$typeUrl === TotalPoolLiquidityResponse.typeUrl || Array.isArray(o.liquidity) && (!o.liquidity.length || Coin.isSDK(o.liquidity[0])));
+  },
+  isAmino(o: any): o is TotalPoolLiquidityResponseAmino {
+    return o && (o.$typeUrl === TotalPoolLiquidityResponse.typeUrl || Array.isArray(o.liquidity) && (!o.liquidity.length || Coin.isAmino(o.liquidity[0])));
+  },
   encode(message: TotalPoolLiquidityResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.liquidity) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2408,6 +2937,20 @@ export const TotalPoolLiquidityResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TotalPoolLiquidityResponse {
+    return {
+      liquidity: Array.isArray(object?.liquidity) ? object.liquidity.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: TotalPoolLiquidityResponse): unknown {
+    const obj: any = {};
+    if (message.liquidity) {
+      obj.liquidity = message.liquidity.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.liquidity = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<TotalPoolLiquidityResponse>): TotalPoolLiquidityResponse {
     const message = createBaseTotalPoolLiquidityResponse();
@@ -2450,11 +2993,23 @@ export const TotalPoolLiquidityResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(TotalPoolLiquidityResponse.typeUrl, TotalPoolLiquidityResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(TotalPoolLiquidityResponse.aminoType, TotalPoolLiquidityResponse.typeUrl);
 function createBaseTotalLiquidityRequest(): TotalLiquidityRequest {
   return {};
 }
 export const TotalLiquidityRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TotalLiquidityRequest",
+  aminoType: "osmosis/poolmanager/total-liquidity-request",
+  is(o: any): o is TotalLiquidityRequest {
+    return o && o.$typeUrl === TotalLiquidityRequest.typeUrl;
+  },
+  isSDK(o: any): o is TotalLiquidityRequestSDKType {
+    return o && o.$typeUrl === TotalLiquidityRequest.typeUrl;
+  },
+  isAmino(o: any): o is TotalLiquidityRequestAmino {
+    return o && o.$typeUrl === TotalLiquidityRequest.typeUrl;
+  },
   encode(_: TotalLiquidityRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -2471,6 +3026,13 @@ export const TotalLiquidityRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): TotalLiquidityRequest {
+    return {};
+  },
+  toJSON(_: TotalLiquidityRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<TotalLiquidityRequest>): TotalLiquidityRequest {
     const message = createBaseTotalLiquidityRequest();
@@ -2506,6 +3068,8 @@ export const TotalLiquidityRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(TotalLiquidityRequest.typeUrl, TotalLiquidityRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(TotalLiquidityRequest.aminoType, TotalLiquidityRequest.typeUrl);
 function createBaseTotalLiquidityResponse(): TotalLiquidityResponse {
   return {
     liquidity: []
@@ -2513,6 +3077,16 @@ function createBaseTotalLiquidityResponse(): TotalLiquidityResponse {
 }
 export const TotalLiquidityResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TotalLiquidityResponse",
+  aminoType: "osmosis/poolmanager/total-liquidity-response",
+  is(o: any): o is TotalLiquidityResponse {
+    return o && (o.$typeUrl === TotalLiquidityResponse.typeUrl || Array.isArray(o.liquidity) && (!o.liquidity.length || Coin.is(o.liquidity[0])));
+  },
+  isSDK(o: any): o is TotalLiquidityResponseSDKType {
+    return o && (o.$typeUrl === TotalLiquidityResponse.typeUrl || Array.isArray(o.liquidity) && (!o.liquidity.length || Coin.isSDK(o.liquidity[0])));
+  },
+  isAmino(o: any): o is TotalLiquidityResponseAmino {
+    return o && (o.$typeUrl === TotalLiquidityResponse.typeUrl || Array.isArray(o.liquidity) && (!o.liquidity.length || Coin.isAmino(o.liquidity[0])));
+  },
   encode(message: TotalLiquidityResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.liquidity) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2535,6 +3109,20 @@ export const TotalLiquidityResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TotalLiquidityResponse {
+    return {
+      liquidity: Array.isArray(object?.liquidity) ? object.liquidity.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: TotalLiquidityResponse): unknown {
+    const obj: any = {};
+    if (message.liquidity) {
+      obj.liquidity = message.liquidity.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.liquidity = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<TotalLiquidityResponse>): TotalLiquidityResponse {
     const message = createBaseTotalLiquidityResponse();
@@ -2577,6 +3165,8 @@ export const TotalLiquidityResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(TotalLiquidityResponse.typeUrl, TotalLiquidityResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(TotalLiquidityResponse.aminoType, TotalLiquidityResponse.typeUrl);
 function createBaseTotalVolumeForPoolRequest(): TotalVolumeForPoolRequest {
   return {
     poolId: BigInt(0)
@@ -2584,6 +3174,16 @@ function createBaseTotalVolumeForPoolRequest(): TotalVolumeForPoolRequest {
 }
 export const TotalVolumeForPoolRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TotalVolumeForPoolRequest",
+  aminoType: "osmosis/poolmanager/total-volume-for-pool-request",
+  is(o: any): o is TotalVolumeForPoolRequest {
+    return o && (o.$typeUrl === TotalVolumeForPoolRequest.typeUrl || typeof o.poolId === "bigint");
+  },
+  isSDK(o: any): o is TotalVolumeForPoolRequestSDKType {
+    return o && (o.$typeUrl === TotalVolumeForPoolRequest.typeUrl || typeof o.pool_id === "bigint");
+  },
+  isAmino(o: any): o is TotalVolumeForPoolRequestAmino {
+    return o && (o.$typeUrl === TotalVolumeForPoolRequest.typeUrl || typeof o.pool_id === "bigint");
+  },
   encode(message: TotalVolumeForPoolRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -2606,6 +3206,16 @@ export const TotalVolumeForPoolRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TotalVolumeForPoolRequest {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: TotalVolumeForPoolRequest): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<TotalVolumeForPoolRequest>): TotalVolumeForPoolRequest {
     const message = createBaseTotalVolumeForPoolRequest();
@@ -2646,6 +3256,8 @@ export const TotalVolumeForPoolRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(TotalVolumeForPoolRequest.typeUrl, TotalVolumeForPoolRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(TotalVolumeForPoolRequest.aminoType, TotalVolumeForPoolRequest.typeUrl);
 function createBaseTotalVolumeForPoolResponse(): TotalVolumeForPoolResponse {
   return {
     volume: []
@@ -2653,6 +3265,16 @@ function createBaseTotalVolumeForPoolResponse(): TotalVolumeForPoolResponse {
 }
 export const TotalVolumeForPoolResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TotalVolumeForPoolResponse",
+  aminoType: "osmosis/poolmanager/total-volume-for-pool-response",
+  is(o: any): o is TotalVolumeForPoolResponse {
+    return o && (o.$typeUrl === TotalVolumeForPoolResponse.typeUrl || Array.isArray(o.volume) && (!o.volume.length || Coin.is(o.volume[0])));
+  },
+  isSDK(o: any): o is TotalVolumeForPoolResponseSDKType {
+    return o && (o.$typeUrl === TotalVolumeForPoolResponse.typeUrl || Array.isArray(o.volume) && (!o.volume.length || Coin.isSDK(o.volume[0])));
+  },
+  isAmino(o: any): o is TotalVolumeForPoolResponseAmino {
+    return o && (o.$typeUrl === TotalVolumeForPoolResponse.typeUrl || Array.isArray(o.volume) && (!o.volume.length || Coin.isAmino(o.volume[0])));
+  },
   encode(message: TotalVolumeForPoolResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.volume) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2675,6 +3297,20 @@ export const TotalVolumeForPoolResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TotalVolumeForPoolResponse {
+    return {
+      volume: Array.isArray(object?.volume) ? object.volume.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: TotalVolumeForPoolResponse): unknown {
+    const obj: any = {};
+    if (message.volume) {
+      obj.volume = message.volume.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.volume = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<TotalVolumeForPoolResponse>): TotalVolumeForPoolResponse {
     const message = createBaseTotalVolumeForPoolResponse();
@@ -2717,6 +3353,8 @@ export const TotalVolumeForPoolResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(TotalVolumeForPoolResponse.typeUrl, TotalVolumeForPoolResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(TotalVolumeForPoolResponse.aminoType, TotalVolumeForPoolResponse.typeUrl);
 function createBaseTradingPairTakerFeeRequest(): TradingPairTakerFeeRequest {
   return {
     denom0: "",
@@ -2725,6 +3363,16 @@ function createBaseTradingPairTakerFeeRequest(): TradingPairTakerFeeRequest {
 }
 export const TradingPairTakerFeeRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TradingPairTakerFeeRequest",
+  aminoType: "osmosis/poolmanager/trading-pair-taker-fee-request",
+  is(o: any): o is TradingPairTakerFeeRequest {
+    return o && (o.$typeUrl === TradingPairTakerFeeRequest.typeUrl || typeof o.denom0 === "string" && typeof o.denom1 === "string");
+  },
+  isSDK(o: any): o is TradingPairTakerFeeRequestSDKType {
+    return o && (o.$typeUrl === TradingPairTakerFeeRequest.typeUrl || typeof o.denom_0 === "string" && typeof o.denom_1 === "string");
+  },
+  isAmino(o: any): o is TradingPairTakerFeeRequestAmino {
+    return o && (o.$typeUrl === TradingPairTakerFeeRequest.typeUrl || typeof o.denom_0 === "string" && typeof o.denom_1 === "string");
+  },
   encode(message: TradingPairTakerFeeRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom0 !== "") {
       writer.uint32(10).string(message.denom0);
@@ -2753,6 +3401,18 @@ export const TradingPairTakerFeeRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TradingPairTakerFeeRequest {
+    return {
+      denom0: isSet(object.denom0) ? String(object.denom0) : "",
+      denom1: isSet(object.denom1) ? String(object.denom1) : ""
+    };
+  },
+  toJSON(message: TradingPairTakerFeeRequest): unknown {
+    const obj: any = {};
+    message.denom0 !== undefined && (obj.denom0 = message.denom0);
+    message.denom1 !== undefined && (obj.denom1 = message.denom1);
+    return obj;
   },
   fromPartial(object: Partial<TradingPairTakerFeeRequest>): TradingPairTakerFeeRequest {
     const message = createBaseTradingPairTakerFeeRequest();
@@ -2798,6 +3458,8 @@ export const TradingPairTakerFeeRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(TradingPairTakerFeeRequest.typeUrl, TradingPairTakerFeeRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(TradingPairTakerFeeRequest.aminoType, TradingPairTakerFeeRequest.typeUrl);
 function createBaseTradingPairTakerFeeResponse(): TradingPairTakerFeeResponse {
   return {
     takerFee: ""
@@ -2805,6 +3467,16 @@ function createBaseTradingPairTakerFeeResponse(): TradingPairTakerFeeResponse {
 }
 export const TradingPairTakerFeeResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TradingPairTakerFeeResponse",
+  aminoType: "osmosis/poolmanager/trading-pair-taker-fee-response",
+  is(o: any): o is TradingPairTakerFeeResponse {
+    return o && (o.$typeUrl === TradingPairTakerFeeResponse.typeUrl || typeof o.takerFee === "string");
+  },
+  isSDK(o: any): o is TradingPairTakerFeeResponseSDKType {
+    return o && (o.$typeUrl === TradingPairTakerFeeResponse.typeUrl || typeof o.taker_fee === "string");
+  },
+  isAmino(o: any): o is TradingPairTakerFeeResponseAmino {
+    return o && (o.$typeUrl === TradingPairTakerFeeResponse.typeUrl || typeof o.taker_fee === "string");
+  },
   encode(message: TradingPairTakerFeeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.takerFee !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.takerFee, 18).atomics);
@@ -2827,6 +3499,16 @@ export const TradingPairTakerFeeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TradingPairTakerFeeResponse {
+    return {
+      takerFee: isSet(object.takerFee) ? String(object.takerFee) : ""
+    };
+  },
+  toJSON(message: TradingPairTakerFeeResponse): unknown {
+    const obj: any = {};
+    message.takerFee !== undefined && (obj.takerFee = message.takerFee);
+    return obj;
   },
   fromPartial(object: Partial<TradingPairTakerFeeResponse>): TradingPairTakerFeeResponse {
     const message = createBaseTradingPairTakerFeeResponse();
@@ -2867,6 +3549,8 @@ export const TradingPairTakerFeeResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(TradingPairTakerFeeResponse.typeUrl, TradingPairTakerFeeResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(TradingPairTakerFeeResponse.aminoType, TradingPairTakerFeeResponse.typeUrl);
 function createBaseEstimateTradeBasedOnPriceImpactRequest(): EstimateTradeBasedOnPriceImpactRequest {
   return {
     fromCoin: Coin.fromPartial({}),
@@ -2878,6 +3562,16 @@ function createBaseEstimateTradeBasedOnPriceImpactRequest(): EstimateTradeBasedO
 }
 export const EstimateTradeBasedOnPriceImpactRequest = {
   typeUrl: "/osmosis.poolmanager.v1beta1.EstimateTradeBasedOnPriceImpactRequest",
+  aminoType: "osmosis/poolmanager/estimate-trade-based-on-price-impact-request",
+  is(o: any): o is EstimateTradeBasedOnPriceImpactRequest {
+    return o && (o.$typeUrl === EstimateTradeBasedOnPriceImpactRequest.typeUrl || Coin.is(o.fromCoin) && typeof o.toCoinDenom === "string" && typeof o.poolId === "bigint" && typeof o.maxPriceImpact === "string" && typeof o.externalPrice === "string");
+  },
+  isSDK(o: any): o is EstimateTradeBasedOnPriceImpactRequestSDKType {
+    return o && (o.$typeUrl === EstimateTradeBasedOnPriceImpactRequest.typeUrl || Coin.isSDK(o.from_coin) && typeof o.to_coin_denom === "string" && typeof o.pool_id === "bigint" && typeof o.max_price_impact === "string" && typeof o.external_price === "string");
+  },
+  isAmino(o: any): o is EstimateTradeBasedOnPriceImpactRequestAmino {
+    return o && (o.$typeUrl === EstimateTradeBasedOnPriceImpactRequest.typeUrl || Coin.isAmino(o.from_coin) && typeof o.to_coin_denom === "string" && typeof o.pool_id === "bigint" && typeof o.max_price_impact === "string" && typeof o.external_price === "string");
+  },
   encode(message: EstimateTradeBasedOnPriceImpactRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.fromCoin !== undefined) {
       Coin.encode(message.fromCoin, writer.uint32(10).fork()).ldelim();
@@ -2924,6 +3618,24 @@ export const EstimateTradeBasedOnPriceImpactRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): EstimateTradeBasedOnPriceImpactRequest {
+    return {
+      fromCoin: isSet(object.fromCoin) ? Coin.fromJSON(object.fromCoin) : undefined,
+      toCoinDenom: isSet(object.toCoinDenom) ? String(object.toCoinDenom) : "",
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      maxPriceImpact: isSet(object.maxPriceImpact) ? String(object.maxPriceImpact) : "",
+      externalPrice: isSet(object.externalPrice) ? String(object.externalPrice) : ""
+    };
+  },
+  toJSON(message: EstimateTradeBasedOnPriceImpactRequest): unknown {
+    const obj: any = {};
+    message.fromCoin !== undefined && (obj.fromCoin = message.fromCoin ? Coin.toJSON(message.fromCoin) : undefined);
+    message.toCoinDenom !== undefined && (obj.toCoinDenom = message.toCoinDenom);
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.maxPriceImpact !== undefined && (obj.maxPriceImpact = message.maxPriceImpact);
+    message.externalPrice !== undefined && (obj.externalPrice = message.externalPrice);
+    return obj;
   },
   fromPartial(object: Partial<EstimateTradeBasedOnPriceImpactRequest>): EstimateTradeBasedOnPriceImpactRequest {
     const message = createBaseEstimateTradeBasedOnPriceImpactRequest();
@@ -2984,6 +3696,8 @@ export const EstimateTradeBasedOnPriceImpactRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(EstimateTradeBasedOnPriceImpactRequest.typeUrl, EstimateTradeBasedOnPriceImpactRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(EstimateTradeBasedOnPriceImpactRequest.aminoType, EstimateTradeBasedOnPriceImpactRequest.typeUrl);
 function createBaseEstimateTradeBasedOnPriceImpactResponse(): EstimateTradeBasedOnPriceImpactResponse {
   return {
     inputCoin: Coin.fromPartial({}),
@@ -2992,6 +3706,16 @@ function createBaseEstimateTradeBasedOnPriceImpactResponse(): EstimateTradeBased
 }
 export const EstimateTradeBasedOnPriceImpactResponse = {
   typeUrl: "/osmosis.poolmanager.v1beta1.EstimateTradeBasedOnPriceImpactResponse",
+  aminoType: "osmosis/poolmanager/estimate-trade-based-on-price-impact-response",
+  is(o: any): o is EstimateTradeBasedOnPriceImpactResponse {
+    return o && (o.$typeUrl === EstimateTradeBasedOnPriceImpactResponse.typeUrl || Coin.is(o.inputCoin) && Coin.is(o.outputCoin));
+  },
+  isSDK(o: any): o is EstimateTradeBasedOnPriceImpactResponseSDKType {
+    return o && (o.$typeUrl === EstimateTradeBasedOnPriceImpactResponse.typeUrl || Coin.isSDK(o.input_coin) && Coin.isSDK(o.output_coin));
+  },
+  isAmino(o: any): o is EstimateTradeBasedOnPriceImpactResponseAmino {
+    return o && (o.$typeUrl === EstimateTradeBasedOnPriceImpactResponse.typeUrl || Coin.isAmino(o.input_coin) && Coin.isAmino(o.output_coin));
+  },
   encode(message: EstimateTradeBasedOnPriceImpactResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.inputCoin !== undefined) {
       Coin.encode(message.inputCoin, writer.uint32(10).fork()).ldelim();
@@ -3020,6 +3744,18 @@ export const EstimateTradeBasedOnPriceImpactResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): EstimateTradeBasedOnPriceImpactResponse {
+    return {
+      inputCoin: isSet(object.inputCoin) ? Coin.fromJSON(object.inputCoin) : undefined,
+      outputCoin: isSet(object.outputCoin) ? Coin.fromJSON(object.outputCoin) : undefined
+    };
+  },
+  toJSON(message: EstimateTradeBasedOnPriceImpactResponse): unknown {
+    const obj: any = {};
+    message.inputCoin !== undefined && (obj.inputCoin = message.inputCoin ? Coin.toJSON(message.inputCoin) : undefined);
+    message.outputCoin !== undefined && (obj.outputCoin = message.outputCoin ? Coin.toJSON(message.outputCoin) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<EstimateTradeBasedOnPriceImpactResponse>): EstimateTradeBasedOnPriceImpactResponse {
     const message = createBaseEstimateTradeBasedOnPriceImpactResponse();
@@ -3065,71 +3801,5 @@ export const EstimateTradeBasedOnPriceImpactResponse = {
     };
   }
 };
-export const PoolI_InterfaceDecoder = (input: BinaryReader | Uint8Array): Pool1 | CosmWasmPool | Pool2 | Pool3 | Any => {
-  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32(), true);
-  switch (data.typeUrl) {
-    case "/osmosis.concentratedliquidity.v1beta1.Pool":
-      return Pool1.decode(data.value, undefined, true);
-    case "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool":
-      return CosmWasmPool.decode(data.value, undefined, true);
-    case "/osmosis.gamm.poolmodels.stableswap.v1beta1.Pool":
-      return Pool2.decode(data.value, undefined, true);
-    case "/osmosis.gamm.v1beta1.Pool":
-      return Pool3.decode(data.value, undefined, true);
-    default:
-      return data;
-  }
-};
-export const PoolI_FromAmino = (content: AnyAmino) => {
-  switch (content.type) {
-    case "osmosis/concentratedliquidity/pool":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.concentratedliquidity.v1beta1.Pool",
-        value: Pool1.encode(Pool1.fromPartial(Pool1.fromAmino(content.value))).finish()
-      });
-    case "osmosis/cosmwasmpool/cosm-wasm-pool":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool",
-        value: CosmWasmPool.encode(CosmWasmPool.fromPartial(CosmWasmPool.fromAmino(content.value))).finish()
-      });
-    case "osmosis/gamm/StableswapPool":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.Pool",
-        value: Pool2.encode(Pool2.fromPartial(Pool2.fromAmino(content.value))).finish()
-      });
-    case "osmosis/gamm/BalancerPool":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.gamm.v1beta1.Pool",
-        value: Pool3.encode(Pool3.fromPartial(Pool3.fromAmino(content.value))).finish()
-      });
-    default:
-      return Any.fromAmino(content);
-  }
-};
-export const PoolI_ToAmino = (content: Any) => {
-  switch (content.typeUrl) {
-    case "/osmosis.concentratedliquidity.v1beta1.Pool":
-      return {
-        type: "osmosis/concentratedliquidity/pool",
-        value: Pool1.toAmino(Pool1.decode(content.value, undefined))
-      };
-    case "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool":
-      return {
-        type: "osmosis/cosmwasmpool/cosm-wasm-pool",
-        value: CosmWasmPool.toAmino(CosmWasmPool.decode(content.value, undefined))
-      };
-    case "/osmosis.gamm.poolmodels.stableswap.v1beta1.Pool":
-      return {
-        type: "osmosis/gamm/StableswapPool",
-        value: Pool2.toAmino(Pool2.decode(content.value, undefined))
-      };
-    case "/osmosis.gamm.v1beta1.Pool":
-      return {
-        type: "osmosis/gamm/BalancerPool",
-        value: Pool3.toAmino(Pool3.decode(content.value, undefined))
-      };
-    default:
-      return Any.toAmino(content);
-  }
-};
+GlobalDecoderRegistry.register(EstimateTradeBasedOnPriceImpactResponse.typeUrl, EstimateTradeBasedOnPriceImpactResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(EstimateTradeBasedOnPriceImpactResponse.aminoType, EstimateTradeBasedOnPriceImpactResponse.typeUrl);

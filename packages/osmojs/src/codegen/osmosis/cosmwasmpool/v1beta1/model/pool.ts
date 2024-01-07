@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * CosmWasmPool represents the data serialized into state for each CW pool.
  * 
@@ -93,6 +94,16 @@ function createBaseCosmWasmPool(): CosmWasmPool {
 }
 export const CosmWasmPool = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool",
+  aminoType: "osmosis/cosmwasmpool/cosm-wasm-pool",
+  is(o: any): o is CosmWasmPool {
+    return o && (o.$typeUrl === CosmWasmPool.typeUrl || typeof o.contractAddress === "string" && typeof o.poolId === "bigint" && typeof o.codeId === "bigint" && (o.instantiateMsg instanceof Uint8Array || typeof o.instantiateMsg === "string"));
+  },
+  isSDK(o: any): o is CosmWasmPoolSDKType {
+    return o && (o.$typeUrl === CosmWasmPool.typeUrl || typeof o.contract_address === "string" && typeof o.pool_id === "bigint" && typeof o.code_id === "bigint" && (o.instantiate_msg instanceof Uint8Array || typeof o.instantiate_msg === "string"));
+  },
+  isAmino(o: any): o is CosmWasmPoolAmino {
+    return o && (o.$typeUrl === CosmWasmPool.typeUrl || typeof o.contract_address === "string" && typeof o.pool_id === "bigint" && typeof o.code_id === "bigint" && (o.instantiate_msg instanceof Uint8Array || typeof o.instantiate_msg === "string"));
+  },
   encode(message: CosmWasmPool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.contractAddress !== "") {
       writer.uint32(10).string(message.contractAddress);
@@ -133,6 +144,22 @@ export const CosmWasmPool = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): CosmWasmPool {
+    return {
+      contractAddress: isSet(object.contractAddress) ? String(object.contractAddress) : "",
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      codeId: isSet(object.codeId) ? BigInt(object.codeId.toString()) : BigInt(0),
+      instantiateMsg: isSet(object.instantiateMsg) ? bytesFromBase64(object.instantiateMsg) : new Uint8Array()
+    };
+  },
+  toJSON(message: CosmWasmPool): unknown {
+    const obj: any = {};
+    message.contractAddress !== undefined && (obj.contractAddress = message.contractAddress);
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.codeId !== undefined && (obj.codeId = (message.codeId || BigInt(0)).toString());
+    message.instantiateMsg !== undefined && (obj.instantiateMsg = base64FromBytes(message.instantiateMsg !== undefined ? message.instantiateMsg : new Uint8Array()));
+    return obj;
   },
   fromPartial(object: Partial<CosmWasmPool>): CosmWasmPool {
     const message = createBaseCosmWasmPool();
@@ -188,3 +215,5 @@ export const CosmWasmPool = {
     };
   }
 };
+GlobalDecoderRegistry.register(CosmWasmPool.typeUrl, CosmWasmPool);
+GlobalDecoderRegistry.registerAminoProtoMapping(CosmWasmPool.aminoType, CosmWasmPool.typeUrl);

@@ -24,6 +24,22 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    createConcentratedPool(value: MsgCreateConcentratedPool) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.MsgCreateConcentratedPool",
+        value: MsgCreateConcentratedPool.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    createConcentratedPool(value: any) {
+      return {
+        typeUrl: "/osmosis.concentratedliquidity.poolmodel.concentrated.v1beta1.MsgCreateConcentratedPool",
+        value: MsgCreateConcentratedPool.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createConcentratedPool(value: MsgCreateConcentratedPool) {
       return {

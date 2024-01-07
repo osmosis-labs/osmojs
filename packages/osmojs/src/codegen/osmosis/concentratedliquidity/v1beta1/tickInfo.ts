@@ -1,6 +1,8 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface TickInfo {
   liquidityGross: string;
   liquidityNet: string;
@@ -83,6 +85,16 @@ function createBaseTickInfo(): TickInfo {
 }
 export const TickInfo = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.TickInfo",
+  aminoType: "osmosis/concentratedliquidity/tick-info",
+  is(o: any): o is TickInfo {
+    return o && (o.$typeUrl === TickInfo.typeUrl || typeof o.liquidityGross === "string" && typeof o.liquidityNet === "string" && Array.isArray(o.spreadRewardGrowthOppositeDirectionOfLastTraversal) && (!o.spreadRewardGrowthOppositeDirectionOfLastTraversal.length || DecCoin.is(o.spreadRewardGrowthOppositeDirectionOfLastTraversal[0])) && UptimeTrackers.is(o.uptimeTrackers));
+  },
+  isSDK(o: any): o is TickInfoSDKType {
+    return o && (o.$typeUrl === TickInfo.typeUrl || typeof o.liquidity_gross === "string" && typeof o.liquidity_net === "string" && Array.isArray(o.spread_reward_growth_opposite_direction_of_last_traversal) && (!o.spread_reward_growth_opposite_direction_of_last_traversal.length || DecCoin.isSDK(o.spread_reward_growth_opposite_direction_of_last_traversal[0])) && UptimeTrackers.isSDK(o.uptime_trackers));
+  },
+  isAmino(o: any): o is TickInfoAmino {
+    return o && (o.$typeUrl === TickInfo.typeUrl || typeof o.liquidity_gross === "string" && typeof o.liquidity_net === "string" && Array.isArray(o.spread_reward_growth_opposite_direction_of_last_traversal) && (!o.spread_reward_growth_opposite_direction_of_last_traversal.length || DecCoin.isAmino(o.spread_reward_growth_opposite_direction_of_last_traversal[0])) && UptimeTrackers.isAmino(o.uptime_trackers));
+  },
   encode(message: TickInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.liquidityGross !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.liquidityGross, 18).atomics);
@@ -123,6 +135,26 @@ export const TickInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TickInfo {
+    return {
+      liquidityGross: isSet(object.liquidityGross) ? String(object.liquidityGross) : "",
+      liquidityNet: isSet(object.liquidityNet) ? String(object.liquidityNet) : "",
+      spreadRewardGrowthOppositeDirectionOfLastTraversal: Array.isArray(object?.spreadRewardGrowthOppositeDirectionOfLastTraversal) ? object.spreadRewardGrowthOppositeDirectionOfLastTraversal.map((e: any) => DecCoin.fromJSON(e)) : [],
+      uptimeTrackers: isSet(object.uptimeTrackers) ? UptimeTrackers.fromJSON(object.uptimeTrackers) : undefined
+    };
+  },
+  toJSON(message: TickInfo): unknown {
+    const obj: any = {};
+    message.liquidityGross !== undefined && (obj.liquidityGross = message.liquidityGross);
+    message.liquidityNet !== undefined && (obj.liquidityNet = message.liquidityNet);
+    if (message.spreadRewardGrowthOppositeDirectionOfLastTraversal) {
+      obj.spreadRewardGrowthOppositeDirectionOfLastTraversal = message.spreadRewardGrowthOppositeDirectionOfLastTraversal.map(e => e ? DecCoin.toJSON(e) : undefined);
+    } else {
+      obj.spreadRewardGrowthOppositeDirectionOfLastTraversal = [];
+    }
+    message.uptimeTrackers !== undefined && (obj.uptimeTrackers = message.uptimeTrackers ? UptimeTrackers.toJSON(message.uptimeTrackers) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<TickInfo>): TickInfo {
     const message = createBaseTickInfo();
@@ -180,6 +212,8 @@ export const TickInfo = {
     };
   }
 };
+GlobalDecoderRegistry.register(TickInfo.typeUrl, TickInfo);
+GlobalDecoderRegistry.registerAminoProtoMapping(TickInfo.aminoType, TickInfo.typeUrl);
 function createBaseUptimeTrackers(): UptimeTrackers {
   return {
     list: []
@@ -187,6 +221,16 @@ function createBaseUptimeTrackers(): UptimeTrackers {
 }
 export const UptimeTrackers = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.UptimeTrackers",
+  aminoType: "osmosis/concentratedliquidity/uptime-trackers",
+  is(o: any): o is UptimeTrackers {
+    return o && (o.$typeUrl === UptimeTrackers.typeUrl || Array.isArray(o.list) && (!o.list.length || UptimeTracker.is(o.list[0])));
+  },
+  isSDK(o: any): o is UptimeTrackersSDKType {
+    return o && (o.$typeUrl === UptimeTrackers.typeUrl || Array.isArray(o.list) && (!o.list.length || UptimeTracker.isSDK(o.list[0])));
+  },
+  isAmino(o: any): o is UptimeTrackersAmino {
+    return o && (o.$typeUrl === UptimeTrackers.typeUrl || Array.isArray(o.list) && (!o.list.length || UptimeTracker.isAmino(o.list[0])));
+  },
   encode(message: UptimeTrackers, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.list) {
       UptimeTracker.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -209,6 +253,20 @@ export const UptimeTrackers = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): UptimeTrackers {
+    return {
+      list: Array.isArray(object?.list) ? object.list.map((e: any) => UptimeTracker.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: UptimeTrackers): unknown {
+    const obj: any = {};
+    if (message.list) {
+      obj.list = message.list.map(e => e ? UptimeTracker.toJSON(e) : undefined);
+    } else {
+      obj.list = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<UptimeTrackers>): UptimeTrackers {
     const message = createBaseUptimeTrackers();
@@ -251,6 +309,8 @@ export const UptimeTrackers = {
     };
   }
 };
+GlobalDecoderRegistry.register(UptimeTrackers.typeUrl, UptimeTrackers);
+GlobalDecoderRegistry.registerAminoProtoMapping(UptimeTrackers.aminoType, UptimeTrackers.typeUrl);
 function createBaseUptimeTracker(): UptimeTracker {
   return {
     uptimeGrowthOutside: []
@@ -258,6 +318,16 @@ function createBaseUptimeTracker(): UptimeTracker {
 }
 export const UptimeTracker = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.UptimeTracker",
+  aminoType: "osmosis/concentratedliquidity/uptime-tracker",
+  is(o: any): o is UptimeTracker {
+    return o && (o.$typeUrl === UptimeTracker.typeUrl || Array.isArray(o.uptimeGrowthOutside) && (!o.uptimeGrowthOutside.length || DecCoin.is(o.uptimeGrowthOutside[0])));
+  },
+  isSDK(o: any): o is UptimeTrackerSDKType {
+    return o && (o.$typeUrl === UptimeTracker.typeUrl || Array.isArray(o.uptime_growth_outside) && (!o.uptime_growth_outside.length || DecCoin.isSDK(o.uptime_growth_outside[0])));
+  },
+  isAmino(o: any): o is UptimeTrackerAmino {
+    return o && (o.$typeUrl === UptimeTracker.typeUrl || Array.isArray(o.uptime_growth_outside) && (!o.uptime_growth_outside.length || DecCoin.isAmino(o.uptime_growth_outside[0])));
+  },
   encode(message: UptimeTracker, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.uptimeGrowthOutside) {
       DecCoin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -280,6 +350,20 @@ export const UptimeTracker = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): UptimeTracker {
+    return {
+      uptimeGrowthOutside: Array.isArray(object?.uptimeGrowthOutside) ? object.uptimeGrowthOutside.map((e: any) => DecCoin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: UptimeTracker): unknown {
+    const obj: any = {};
+    if (message.uptimeGrowthOutside) {
+      obj.uptimeGrowthOutside = message.uptimeGrowthOutside.map(e => e ? DecCoin.toJSON(e) : undefined);
+    } else {
+      obj.uptimeGrowthOutside = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<UptimeTracker>): UptimeTracker {
     const message = createBaseUptimeTracker();
@@ -322,3 +406,5 @@ export const UptimeTracker = {
     };
   }
 };
+GlobalDecoderRegistry.register(UptimeTracker.typeUrl, UptimeTracker);
+GlobalDecoderRegistry.registerAminoProtoMapping(UptimeTracker.aminoType, UptimeTracker.typeUrl);

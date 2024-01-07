@@ -24,6 +24,22 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    updateParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/ibc.applications.interchain_accounts.host.v1.MsgUpdateParams",
+        value: MsgUpdateParams.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    updateParams(value: any) {
+      return {
+        typeUrl: "/ibc.applications.interchain_accounts.host.v1.MsgUpdateParams",
+        value: MsgUpdateParams.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     updateParams(value: MsgUpdateParams) {
       return {

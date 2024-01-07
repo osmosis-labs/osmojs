@@ -1,5 +1,7 @@
 import { BaseAccount, BaseAccountAmino, BaseAccountSDKType } from "../../../../cosmos/auth/v1beta1/auth";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { isSet } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** An InterchainAccount is defined as a BaseAccount & the address of the account owner on the controller chain */
 export interface InterchainAccount {
   $typeUrl?: "/ibc.applications.interchain_accounts.v1.InterchainAccount";
@@ -34,6 +36,16 @@ function createBaseInterchainAccount(): InterchainAccount {
 }
 export const InterchainAccount = {
   typeUrl: "/ibc.applications.interchain_accounts.v1.InterchainAccount",
+  aminoType: "cosmos-sdk/InterchainAccount",
+  is(o: any): o is InterchainAccount {
+    return o && (o.$typeUrl === InterchainAccount.typeUrl || typeof o.accountOwner === "string");
+  },
+  isSDK(o: any): o is InterchainAccountSDKType {
+    return o && (o.$typeUrl === InterchainAccount.typeUrl || typeof o.account_owner === "string");
+  },
+  isAmino(o: any): o is InterchainAccountAmino {
+    return o && (o.$typeUrl === InterchainAccount.typeUrl || typeof o.account_owner === "string");
+  },
   encode(message: InterchainAccount, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.baseAccount !== undefined) {
       BaseAccount.encode(message.baseAccount, writer.uint32(10).fork()).ldelim();
@@ -62,6 +74,18 @@ export const InterchainAccount = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): InterchainAccount {
+    return {
+      baseAccount: isSet(object.baseAccount) ? BaseAccount.fromJSON(object.baseAccount) : undefined,
+      accountOwner: isSet(object.accountOwner) ? String(object.accountOwner) : ""
+    };
+  },
+  toJSON(message: InterchainAccount): unknown {
+    const obj: any = {};
+    message.baseAccount !== undefined && (obj.baseAccount = message.baseAccount ? BaseAccount.toJSON(message.baseAccount) : undefined);
+    message.accountOwner !== undefined && (obj.accountOwner = message.accountOwner);
+    return obj;
   },
   fromPartial(object: Partial<InterchainAccount>): InterchainAccount {
     const message = createBaseInterchainAccount();
@@ -107,3 +131,5 @@ export const InterchainAccount = {
     };
   }
 };
+GlobalDecoderRegistry.register(InterchainAccount.typeUrl, InterchainAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(InterchainAccount.aminoType, InterchainAccount.typeUrl);

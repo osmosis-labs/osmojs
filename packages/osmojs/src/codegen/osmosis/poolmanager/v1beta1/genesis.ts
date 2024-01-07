@@ -2,6 +2,8 @@ import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin"
 import { ModuleRoute, ModuleRouteAmino, ModuleRouteSDKType } from "./module_route";
 import { DenomPairTakerFee, DenomPairTakerFeeAmino, DenomPairTakerFeeSDKType } from "./tx";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { Decimal } from "@cosmjs/math";
 /** Params holds parameters for the poolmanager module */
 export interface Params {
@@ -315,6 +317,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.poolmanager.v1beta1.Params",
+  aminoType: "osmosis/poolmanager/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.poolCreationFee) && (!o.poolCreationFee.length || Coin.is(o.poolCreationFee[0])) && TakerFeeParams.is(o.takerFeeParams) && Array.isArray(o.authorizedQuoteDenoms) && (!o.authorizedQuoteDenoms.length || typeof o.authorizedQuoteDenoms[0] === "string"));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.pool_creation_fee) && (!o.pool_creation_fee.length || Coin.isSDK(o.pool_creation_fee[0])) && TakerFeeParams.isSDK(o.taker_fee_params) && Array.isArray(o.authorized_quote_denoms) && (!o.authorized_quote_denoms.length || typeof o.authorized_quote_denoms[0] === "string"));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.pool_creation_fee) && (!o.pool_creation_fee.length || Coin.isAmino(o.pool_creation_fee[0])) && TakerFeeParams.isAmino(o.taker_fee_params) && Array.isArray(o.authorized_quote_denoms) && (!o.authorized_quote_denoms.length || typeof o.authorized_quote_denoms[0] === "string"));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.poolCreationFee) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -349,6 +361,28 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      poolCreationFee: Array.isArray(object?.poolCreationFee) ? object.poolCreationFee.map((e: any) => Coin.fromJSON(e)) : [],
+      takerFeeParams: isSet(object.takerFeeParams) ? TakerFeeParams.fromJSON(object.takerFeeParams) : undefined,
+      authorizedQuoteDenoms: Array.isArray(object?.authorizedQuoteDenoms) ? object.authorizedQuoteDenoms.map((e: any) => String(e)) : []
+    };
+  },
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    if (message.poolCreationFee) {
+      obj.poolCreationFee = message.poolCreationFee.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.poolCreationFee = [];
+    }
+    message.takerFeeParams !== undefined && (obj.takerFeeParams = message.takerFeeParams ? TakerFeeParams.toJSON(message.takerFeeParams) : undefined);
+    if (message.authorizedQuoteDenoms) {
+      obj.authorizedQuoteDenoms = message.authorizedQuoteDenoms.map(e => e);
+    } else {
+      obj.authorizedQuoteDenoms = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
@@ -403,6 +437,8 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);
 function createBaseGenesisState(): GenesisState {
   return {
     nextPoolId: BigInt(0),
@@ -415,6 +451,16 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/osmosis.poolmanager.v1beta1.GenesisState",
+  aminoType: "osmosis/poolmanager/genesis-state",
+  is(o: any): o is GenesisState {
+    return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.nextPoolId === "bigint" && Params.is(o.params) && Array.isArray(o.poolRoutes) && (!o.poolRoutes.length || ModuleRoute.is(o.poolRoutes[0])) && Array.isArray(o.poolVolumes) && (!o.poolVolumes.length || PoolVolume.is(o.poolVolumes[0])) && Array.isArray(o.denomPairTakerFeeStore) && (!o.denomPairTakerFeeStore.length || DenomPairTakerFee.is(o.denomPairTakerFeeStore[0])));
+  },
+  isSDK(o: any): o is GenesisStateSDKType {
+    return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.next_pool_id === "bigint" && Params.isSDK(o.params) && Array.isArray(o.pool_routes) && (!o.pool_routes.length || ModuleRoute.isSDK(o.pool_routes[0])) && Array.isArray(o.pool_volumes) && (!o.pool_volumes.length || PoolVolume.isSDK(o.pool_volumes[0])) && Array.isArray(o.denom_pair_taker_fee_store) && (!o.denom_pair_taker_fee_store.length || DenomPairTakerFee.isSDK(o.denom_pair_taker_fee_store[0])));
+  },
+  isAmino(o: any): o is GenesisStateAmino {
+    return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.next_pool_id === "bigint" && Params.isAmino(o.params) && Array.isArray(o.pool_routes) && (!o.pool_routes.length || ModuleRoute.isAmino(o.pool_routes[0])) && Array.isArray(o.pool_volumes) && (!o.pool_volumes.length || PoolVolume.isAmino(o.pool_volumes[0])) && Array.isArray(o.denom_pair_taker_fee_store) && (!o.denom_pair_taker_fee_store.length || DenomPairTakerFee.isAmino(o.denom_pair_taker_fee_store[0])));
+  },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.nextPoolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.nextPoolId);
@@ -467,6 +513,38 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GenesisState {
+    return {
+      nextPoolId: isSet(object.nextPoolId) ? BigInt(object.nextPoolId.toString()) : BigInt(0),
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      poolRoutes: Array.isArray(object?.poolRoutes) ? object.poolRoutes.map((e: any) => ModuleRoute.fromJSON(e)) : [],
+      takerFeesTracker: isSet(object.takerFeesTracker) ? TakerFeesTracker.fromJSON(object.takerFeesTracker) : undefined,
+      poolVolumes: Array.isArray(object?.poolVolumes) ? object.poolVolumes.map((e: any) => PoolVolume.fromJSON(e)) : [],
+      denomPairTakerFeeStore: Array.isArray(object?.denomPairTakerFeeStore) ? object.denomPairTakerFeeStore.map((e: any) => DenomPairTakerFee.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: GenesisState): unknown {
+    const obj: any = {};
+    message.nextPoolId !== undefined && (obj.nextPoolId = (message.nextPoolId || BigInt(0)).toString());
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    if (message.poolRoutes) {
+      obj.poolRoutes = message.poolRoutes.map(e => e ? ModuleRoute.toJSON(e) : undefined);
+    } else {
+      obj.poolRoutes = [];
+    }
+    message.takerFeesTracker !== undefined && (obj.takerFeesTracker = message.takerFeesTracker ? TakerFeesTracker.toJSON(message.takerFeesTracker) : undefined);
+    if (message.poolVolumes) {
+      obj.poolVolumes = message.poolVolumes.map(e => e ? PoolVolume.toJSON(e) : undefined);
+    } else {
+      obj.poolVolumes = [];
+    }
+    if (message.denomPairTakerFeeStore) {
+      obj.denomPairTakerFeeStore = message.denomPairTakerFeeStore.map(e => e ? DenomPairTakerFee.toJSON(e) : undefined);
+    } else {
+      obj.denomPairTakerFeeStore = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
@@ -538,6 +616,8 @@ export const GenesisState = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 function createBaseTakerFeeParams(): TakerFeeParams {
   return {
     defaultTakerFee: "",
@@ -550,6 +630,16 @@ function createBaseTakerFeeParams(): TakerFeeParams {
 }
 export const TakerFeeParams = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TakerFeeParams",
+  aminoType: "osmosis/poolmanager/taker-fee-params",
+  is(o: any): o is TakerFeeParams {
+    return o && (o.$typeUrl === TakerFeeParams.typeUrl || typeof o.defaultTakerFee === "string" && TakerFeeDistributionPercentage.is(o.osmoTakerFeeDistribution) && TakerFeeDistributionPercentage.is(o.nonOsmoTakerFeeDistribution) && Array.isArray(o.adminAddresses) && (!o.adminAddresses.length || typeof o.adminAddresses[0] === "string") && typeof o.communityPoolDenomToSwapNonWhitelistedAssetsTo === "string" && Array.isArray(o.reducedFeeWhitelist) && (!o.reducedFeeWhitelist.length || typeof o.reducedFeeWhitelist[0] === "string"));
+  },
+  isSDK(o: any): o is TakerFeeParamsSDKType {
+    return o && (o.$typeUrl === TakerFeeParams.typeUrl || typeof o.default_taker_fee === "string" && TakerFeeDistributionPercentage.isSDK(o.osmo_taker_fee_distribution) && TakerFeeDistributionPercentage.isSDK(o.non_osmo_taker_fee_distribution) && Array.isArray(o.admin_addresses) && (!o.admin_addresses.length || typeof o.admin_addresses[0] === "string") && typeof o.community_pool_denom_to_swap_non_whitelisted_assets_to === "string" && Array.isArray(o.reduced_fee_whitelist) && (!o.reduced_fee_whitelist.length || typeof o.reduced_fee_whitelist[0] === "string"));
+  },
+  isAmino(o: any): o is TakerFeeParamsAmino {
+    return o && (o.$typeUrl === TakerFeeParams.typeUrl || typeof o.default_taker_fee === "string" && TakerFeeDistributionPercentage.isAmino(o.osmo_taker_fee_distribution) && TakerFeeDistributionPercentage.isAmino(o.non_osmo_taker_fee_distribution) && Array.isArray(o.admin_addresses) && (!o.admin_addresses.length || typeof o.admin_addresses[0] === "string") && typeof o.community_pool_denom_to_swap_non_whitelisted_assets_to === "string" && Array.isArray(o.reduced_fee_whitelist) && (!o.reduced_fee_whitelist.length || typeof o.reduced_fee_whitelist[0] === "string"));
+  },
   encode(message: TakerFeeParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.defaultTakerFee !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.defaultTakerFee, 18).atomics);
@@ -602,6 +692,34 @@ export const TakerFeeParams = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TakerFeeParams {
+    return {
+      defaultTakerFee: isSet(object.defaultTakerFee) ? String(object.defaultTakerFee) : "",
+      osmoTakerFeeDistribution: isSet(object.osmoTakerFeeDistribution) ? TakerFeeDistributionPercentage.fromJSON(object.osmoTakerFeeDistribution) : undefined,
+      nonOsmoTakerFeeDistribution: isSet(object.nonOsmoTakerFeeDistribution) ? TakerFeeDistributionPercentage.fromJSON(object.nonOsmoTakerFeeDistribution) : undefined,
+      adminAddresses: Array.isArray(object?.adminAddresses) ? object.adminAddresses.map((e: any) => String(e)) : [],
+      communityPoolDenomToSwapNonWhitelistedAssetsTo: isSet(object.communityPoolDenomToSwapNonWhitelistedAssetsTo) ? String(object.communityPoolDenomToSwapNonWhitelistedAssetsTo) : "",
+      reducedFeeWhitelist: Array.isArray(object?.reducedFeeWhitelist) ? object.reducedFeeWhitelist.map((e: any) => String(e)) : []
+    };
+  },
+  toJSON(message: TakerFeeParams): unknown {
+    const obj: any = {};
+    message.defaultTakerFee !== undefined && (obj.defaultTakerFee = message.defaultTakerFee);
+    message.osmoTakerFeeDistribution !== undefined && (obj.osmoTakerFeeDistribution = message.osmoTakerFeeDistribution ? TakerFeeDistributionPercentage.toJSON(message.osmoTakerFeeDistribution) : undefined);
+    message.nonOsmoTakerFeeDistribution !== undefined && (obj.nonOsmoTakerFeeDistribution = message.nonOsmoTakerFeeDistribution ? TakerFeeDistributionPercentage.toJSON(message.nonOsmoTakerFeeDistribution) : undefined);
+    if (message.adminAddresses) {
+      obj.adminAddresses = message.adminAddresses.map(e => e);
+    } else {
+      obj.adminAddresses = [];
+    }
+    message.communityPoolDenomToSwapNonWhitelistedAssetsTo !== undefined && (obj.communityPoolDenomToSwapNonWhitelistedAssetsTo = message.communityPoolDenomToSwapNonWhitelistedAssetsTo);
+    if (message.reducedFeeWhitelist) {
+      obj.reducedFeeWhitelist = message.reducedFeeWhitelist.map(e => e);
+    } else {
+      obj.reducedFeeWhitelist = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<TakerFeeParams>): TakerFeeParams {
     const message = createBaseTakerFeeParams();
@@ -671,6 +789,8 @@ export const TakerFeeParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(TakerFeeParams.typeUrl, TakerFeeParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(TakerFeeParams.aminoType, TakerFeeParams.typeUrl);
 function createBaseTakerFeeDistributionPercentage(): TakerFeeDistributionPercentage {
   return {
     stakingRewards: "",
@@ -679,6 +799,16 @@ function createBaseTakerFeeDistributionPercentage(): TakerFeeDistributionPercent
 }
 export const TakerFeeDistributionPercentage = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TakerFeeDistributionPercentage",
+  aminoType: "osmosis/poolmanager/taker-fee-distribution-percentage",
+  is(o: any): o is TakerFeeDistributionPercentage {
+    return o && (o.$typeUrl === TakerFeeDistributionPercentage.typeUrl || typeof o.stakingRewards === "string" && typeof o.communityPool === "string");
+  },
+  isSDK(o: any): o is TakerFeeDistributionPercentageSDKType {
+    return o && (o.$typeUrl === TakerFeeDistributionPercentage.typeUrl || typeof o.staking_rewards === "string" && typeof o.community_pool === "string");
+  },
+  isAmino(o: any): o is TakerFeeDistributionPercentageAmino {
+    return o && (o.$typeUrl === TakerFeeDistributionPercentage.typeUrl || typeof o.staking_rewards === "string" && typeof o.community_pool === "string");
+  },
   encode(message: TakerFeeDistributionPercentage, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.stakingRewards !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.stakingRewards, 18).atomics);
@@ -707,6 +837,18 @@ export const TakerFeeDistributionPercentage = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TakerFeeDistributionPercentage {
+    return {
+      stakingRewards: isSet(object.stakingRewards) ? String(object.stakingRewards) : "",
+      communityPool: isSet(object.communityPool) ? String(object.communityPool) : ""
+    };
+  },
+  toJSON(message: TakerFeeDistributionPercentage): unknown {
+    const obj: any = {};
+    message.stakingRewards !== undefined && (obj.stakingRewards = message.stakingRewards);
+    message.communityPool !== undefined && (obj.communityPool = message.communityPool);
+    return obj;
   },
   fromPartial(object: Partial<TakerFeeDistributionPercentage>): TakerFeeDistributionPercentage {
     const message = createBaseTakerFeeDistributionPercentage();
@@ -752,6 +894,8 @@ export const TakerFeeDistributionPercentage = {
     };
   }
 };
+GlobalDecoderRegistry.register(TakerFeeDistributionPercentage.typeUrl, TakerFeeDistributionPercentage);
+GlobalDecoderRegistry.registerAminoProtoMapping(TakerFeeDistributionPercentage.aminoType, TakerFeeDistributionPercentage.typeUrl);
 function createBaseTakerFeesTracker(): TakerFeesTracker {
   return {
     takerFeesToStakers: [],
@@ -761,6 +905,16 @@ function createBaseTakerFeesTracker(): TakerFeesTracker {
 }
 export const TakerFeesTracker = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TakerFeesTracker",
+  aminoType: "osmosis/poolmanager/taker-fees-tracker",
+  is(o: any): o is TakerFeesTracker {
+    return o && (o.$typeUrl === TakerFeesTracker.typeUrl || Array.isArray(o.takerFeesToStakers) && (!o.takerFeesToStakers.length || Coin.is(o.takerFeesToStakers[0])) && Array.isArray(o.takerFeesToCommunityPool) && (!o.takerFeesToCommunityPool.length || Coin.is(o.takerFeesToCommunityPool[0])) && typeof o.heightAccountingStartsFrom === "bigint");
+  },
+  isSDK(o: any): o is TakerFeesTrackerSDKType {
+    return o && (o.$typeUrl === TakerFeesTracker.typeUrl || Array.isArray(o.taker_fees_to_stakers) && (!o.taker_fees_to_stakers.length || Coin.isSDK(o.taker_fees_to_stakers[0])) && Array.isArray(o.taker_fees_to_community_pool) && (!o.taker_fees_to_community_pool.length || Coin.isSDK(o.taker_fees_to_community_pool[0])) && typeof o.height_accounting_starts_from === "bigint");
+  },
+  isAmino(o: any): o is TakerFeesTrackerAmino {
+    return o && (o.$typeUrl === TakerFeesTracker.typeUrl || Array.isArray(o.taker_fees_to_stakers) && (!o.taker_fees_to_stakers.length || Coin.isAmino(o.taker_fees_to_stakers[0])) && Array.isArray(o.taker_fees_to_community_pool) && (!o.taker_fees_to_community_pool.length || Coin.isAmino(o.taker_fees_to_community_pool[0])) && typeof o.height_accounting_starts_from === "bigint");
+  },
   encode(message: TakerFeesTracker, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.takerFeesToStakers) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -795,6 +949,28 @@ export const TakerFeesTracker = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TakerFeesTracker {
+    return {
+      takerFeesToStakers: Array.isArray(object?.takerFeesToStakers) ? object.takerFeesToStakers.map((e: any) => Coin.fromJSON(e)) : [],
+      takerFeesToCommunityPool: Array.isArray(object?.takerFeesToCommunityPool) ? object.takerFeesToCommunityPool.map((e: any) => Coin.fromJSON(e)) : [],
+      heightAccountingStartsFrom: isSet(object.heightAccountingStartsFrom) ? BigInt(object.heightAccountingStartsFrom.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: TakerFeesTracker): unknown {
+    const obj: any = {};
+    if (message.takerFeesToStakers) {
+      obj.takerFeesToStakers = message.takerFeesToStakers.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.takerFeesToStakers = [];
+    }
+    if (message.takerFeesToCommunityPool) {
+      obj.takerFeesToCommunityPool = message.takerFeesToCommunityPool.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.takerFeesToCommunityPool = [];
+    }
+    message.heightAccountingStartsFrom !== undefined && (obj.heightAccountingStartsFrom = (message.heightAccountingStartsFrom || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<TakerFeesTracker>): TakerFeesTracker {
     const message = createBaseTakerFeesTracker();
@@ -849,6 +1025,8 @@ export const TakerFeesTracker = {
     };
   }
 };
+GlobalDecoderRegistry.register(TakerFeesTracker.typeUrl, TakerFeesTracker);
+GlobalDecoderRegistry.registerAminoProtoMapping(TakerFeesTracker.aminoType, TakerFeesTracker.typeUrl);
 function createBasePoolVolume(): PoolVolume {
   return {
     poolId: BigInt(0),
@@ -857,6 +1035,16 @@ function createBasePoolVolume(): PoolVolume {
 }
 export const PoolVolume = {
   typeUrl: "/osmosis.poolmanager.v1beta1.PoolVolume",
+  aminoType: "osmosis/poolmanager/pool-volume",
+  is(o: any): o is PoolVolume {
+    return o && (o.$typeUrl === PoolVolume.typeUrl || typeof o.poolId === "bigint" && Array.isArray(o.poolVolume) && (!o.poolVolume.length || Coin.is(o.poolVolume[0])));
+  },
+  isSDK(o: any): o is PoolVolumeSDKType {
+    return o && (o.$typeUrl === PoolVolume.typeUrl || typeof o.pool_id === "bigint" && Array.isArray(o.pool_volume) && (!o.pool_volume.length || Coin.isSDK(o.pool_volume[0])));
+  },
+  isAmino(o: any): o is PoolVolumeAmino {
+    return o && (o.$typeUrl === PoolVolume.typeUrl || typeof o.pool_id === "bigint" && Array.isArray(o.pool_volume) && (!o.pool_volume.length || Coin.isAmino(o.pool_volume[0])));
+  },
   encode(message: PoolVolume, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -885,6 +1073,22 @@ export const PoolVolume = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PoolVolume {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      poolVolume: Array.isArray(object?.poolVolume) ? object.poolVolume.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: PoolVolume): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    if (message.poolVolume) {
+      obj.poolVolume = message.poolVolume.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.poolVolume = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<PoolVolume>): PoolVolume {
     const message = createBasePoolVolume();
@@ -932,3 +1136,5 @@ export const PoolVolume = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolVolume.typeUrl, PoolVolume);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolVolume.aminoType, PoolVolume.typeUrl);

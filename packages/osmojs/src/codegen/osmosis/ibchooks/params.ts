@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { GlobalDecoderRegistry } from "../../registry";
 export interface Params {
   allowedAsyncAckContracts: string[];
 }
@@ -23,6 +24,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.ibchooks.Params",
+  aminoType: "osmosis/ibchooks/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.allowedAsyncAckContracts) && (!o.allowedAsyncAckContracts.length || typeof o.allowedAsyncAckContracts[0] === "string"));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.allowed_async_ack_contracts) && (!o.allowed_async_ack_contracts.length || typeof o.allowed_async_ack_contracts[0] === "string"));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.allowed_async_ack_contracts) && (!o.allowed_async_ack_contracts.length || typeof o.allowed_async_ack_contracts[0] === "string"));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.allowedAsyncAckContracts) {
       writer.uint32(10).string(v!);
@@ -45,6 +56,20 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      allowedAsyncAckContracts: Array.isArray(object?.allowedAsyncAckContracts) ? object.allowedAsyncAckContracts.map((e: any) => String(e)) : []
+    };
+  },
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    if (message.allowedAsyncAckContracts) {
+      obj.allowedAsyncAckContracts = message.allowedAsyncAckContracts.map(e => e);
+    } else {
+      obj.allowedAsyncAckContracts = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
@@ -87,3 +112,5 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);

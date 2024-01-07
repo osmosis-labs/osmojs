@@ -3,6 +3,8 @@ import { Gauge, GaugeAmino, GaugeSDKType } from "./gauge";
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { Group, GroupAmino, GroupSDKType } from "./group";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 /**
  * GenesisState defines the incentives module's various parameters when first
  * initialized
@@ -89,6 +91,16 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/osmosis.incentives.GenesisState",
+  aminoType: "osmosis/incentives/genesis-state",
+  is(o: any): o is GenesisState {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.gauges) && (!o.gauges.length || Gauge.is(o.gauges[0])) && Array.isArray(o.lockableDurations) && (!o.lockableDurations.length || Duration.is(o.lockableDurations[0])) && typeof o.lastGaugeId === "bigint" && Array.isArray(o.groupGauges) && (!o.groupGauges.length || Gauge.is(o.groupGauges[0])) && Array.isArray(o.groups) && (!o.groups.length || Group.is(o.groups[0])));
+  },
+  isSDK(o: any): o is GenesisStateSDKType {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.gauges) && (!o.gauges.length || Gauge.isSDK(o.gauges[0])) && Array.isArray(o.lockable_durations) && (!o.lockable_durations.length || Duration.isSDK(o.lockable_durations[0])) && typeof o.last_gauge_id === "bigint" && Array.isArray(o.group_gauges) && (!o.group_gauges.length || Gauge.isSDK(o.group_gauges[0])) && Array.isArray(o.groups) && (!o.groups.length || Group.isSDK(o.groups[0])));
+  },
+  isAmino(o: any): o is GenesisStateAmino {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.gauges) && (!o.gauges.length || Gauge.isAmino(o.gauges[0])) && Array.isArray(o.lockable_durations) && (!o.lockable_durations.length || Duration.isAmino(o.lockable_durations[0])) && typeof o.last_gauge_id === "bigint" && Array.isArray(o.group_gauges) && (!o.group_gauges.length || Gauge.isAmino(o.group_gauges[0])) && Array.isArray(o.groups) && (!o.groups.length || Group.isAmino(o.groups[0])));
+  },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -141,6 +153,42 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GenesisState {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      gauges: Array.isArray(object?.gauges) ? object.gauges.map((e: any) => Gauge.fromJSON(e)) : [],
+      lockableDurations: Array.isArray(object?.lockableDurations) ? object.lockableDurations.map((e: any) => Duration.fromJSON(e)) : [],
+      lastGaugeId: isSet(object.lastGaugeId) ? BigInt(object.lastGaugeId.toString()) : BigInt(0),
+      groupGauges: Array.isArray(object?.groupGauges) ? object.groupGauges.map((e: any) => Gauge.fromJSON(e)) : [],
+      groups: Array.isArray(object?.groups) ? object.groups.map((e: any) => Group.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: GenesisState): unknown {
+    const obj: any = {};
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    if (message.gauges) {
+      obj.gauges = message.gauges.map(e => e ? Gauge.toJSON(e) : undefined);
+    } else {
+      obj.gauges = [];
+    }
+    if (message.lockableDurations) {
+      obj.lockableDurations = message.lockableDurations.map(e => e ? Duration.toJSON(e) : undefined);
+    } else {
+      obj.lockableDurations = [];
+    }
+    message.lastGaugeId !== undefined && (obj.lastGaugeId = (message.lastGaugeId || BigInt(0)).toString());
+    if (message.groupGauges) {
+      obj.groupGauges = message.groupGauges.map(e => e ? Gauge.toJSON(e) : undefined);
+    } else {
+      obj.groupGauges = [];
+    }
+    if (message.groups) {
+      obj.groups = message.groups.map(e => e ? Group.toJSON(e) : undefined);
+    } else {
+      obj.groups = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
@@ -214,3 +262,5 @@ export const GenesisState = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);

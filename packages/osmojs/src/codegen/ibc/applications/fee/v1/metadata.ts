@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { isSet } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * Metadata defines the ICS29 channel specific metadata encoded into the channel version bytestring
  * See ICS004: https://github.com/cosmos/ibc/tree/master/spec/core/ics-004-channel-and-packet-semantics#Versioning
@@ -43,6 +45,16 @@ function createBaseMetadata(): Metadata {
 }
 export const Metadata = {
   typeUrl: "/ibc.applications.fee.v1.Metadata",
+  aminoType: "cosmos-sdk/Metadata",
+  is(o: any): o is Metadata {
+    return o && (o.$typeUrl === Metadata.typeUrl || typeof o.feeVersion === "string" && typeof o.appVersion === "string");
+  },
+  isSDK(o: any): o is MetadataSDKType {
+    return o && (o.$typeUrl === Metadata.typeUrl || typeof o.fee_version === "string" && typeof o.app_version === "string");
+  },
+  isAmino(o: any): o is MetadataAmino {
+    return o && (o.$typeUrl === Metadata.typeUrl || typeof o.fee_version === "string" && typeof o.app_version === "string");
+  },
   encode(message: Metadata, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.feeVersion !== "") {
       writer.uint32(10).string(message.feeVersion);
@@ -71,6 +83,18 @@ export const Metadata = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Metadata {
+    return {
+      feeVersion: isSet(object.feeVersion) ? String(object.feeVersion) : "",
+      appVersion: isSet(object.appVersion) ? String(object.appVersion) : ""
+    };
+  },
+  toJSON(message: Metadata): unknown {
+    const obj: any = {};
+    message.feeVersion !== undefined && (obj.feeVersion = message.feeVersion);
+    message.appVersion !== undefined && (obj.appVersion = message.appVersion);
+    return obj;
   },
   fromPartial(object: Partial<Metadata>): Metadata {
     const message = createBaseMetadata();
@@ -116,3 +140,5 @@ export const Metadata = {
     };
   }
 };
+GlobalDecoderRegistry.register(Metadata.typeUrl, Metadata);
+GlobalDecoderRegistry.registerAminoProtoMapping(Metadata.aminoType, Metadata.typeUrl);

@@ -1,5 +1,7 @@
 import { CreateGroup, CreateGroupAmino, CreateGroupSDKType } from "./group";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 /**
  * CreateGroupsProposal is a type for creating one or more groups via
  * governance. This is useful for creating groups without having to pay
@@ -47,6 +49,16 @@ function createBaseCreateGroupsProposal(): CreateGroupsProposal {
 }
 export const CreateGroupsProposal = {
   typeUrl: "/osmosis.incentives.CreateGroupsProposal",
+  aminoType: "osmosis/incentives/create-groups-proposal",
+  is(o: any): o is CreateGroupsProposal {
+    return o && (o.$typeUrl === CreateGroupsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.createGroups) && (!o.createGroups.length || CreateGroup.is(o.createGroups[0])));
+  },
+  isSDK(o: any): o is CreateGroupsProposalSDKType {
+    return o && (o.$typeUrl === CreateGroupsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.create_groups) && (!o.create_groups.length || CreateGroup.isSDK(o.create_groups[0])));
+  },
+  isAmino(o: any): o is CreateGroupsProposalAmino {
+    return o && (o.$typeUrl === CreateGroupsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.create_groups) && (!o.create_groups.length || CreateGroup.isAmino(o.create_groups[0])));
+  },
   encode(message: CreateGroupsProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -81,6 +93,24 @@ export const CreateGroupsProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): CreateGroupsProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      createGroups: Array.isArray(object?.createGroups) ? object.createGroups.map((e: any) => CreateGroup.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: CreateGroupsProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.createGroups) {
+      obj.createGroups = message.createGroups.map(e => e ? CreateGroup.toJSON(e) : undefined);
+    } else {
+      obj.createGroups = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<CreateGroupsProposal>): CreateGroupsProposal {
     const message = createBaseCreateGroupsProposal();
@@ -133,3 +163,5 @@ export const CreateGroupsProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(CreateGroupsProposal.typeUrl, CreateGroupsProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(CreateGroupsProposal.aminoType, CreateGroupsProposal.typeUrl);

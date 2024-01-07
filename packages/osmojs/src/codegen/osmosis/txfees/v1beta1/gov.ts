@@ -1,5 +1,7 @@
 import { FeeToken, FeeTokenAmino, FeeTokenSDKType } from "./feetoken";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * UpdateFeeTokenProposal is a gov Content type for adding new whitelisted fee
  * token(s). It must specify a denom along with gamm pool ID to use as a spot
@@ -56,6 +58,16 @@ function createBaseUpdateFeeTokenProposal(): UpdateFeeTokenProposal {
 }
 export const UpdateFeeTokenProposal = {
   typeUrl: "/osmosis.txfees.v1beta1.UpdateFeeTokenProposal",
+  aminoType: "osmosis/UpdateFeeTokenProposal",
+  is(o: any): o is UpdateFeeTokenProposal {
+    return o && (o.$typeUrl === UpdateFeeTokenProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.feetokens) && (!o.feetokens.length || FeeToken.is(o.feetokens[0])));
+  },
+  isSDK(o: any): o is UpdateFeeTokenProposalSDKType {
+    return o && (o.$typeUrl === UpdateFeeTokenProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.feetokens) && (!o.feetokens.length || FeeToken.isSDK(o.feetokens[0])));
+  },
+  isAmino(o: any): o is UpdateFeeTokenProposalAmino {
+    return o && (o.$typeUrl === UpdateFeeTokenProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.feetokens) && (!o.feetokens.length || FeeToken.isAmino(o.feetokens[0])));
+  },
   encode(message: UpdateFeeTokenProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -90,6 +102,24 @@ export const UpdateFeeTokenProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): UpdateFeeTokenProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      feetokens: Array.isArray(object?.feetokens) ? object.feetokens.map((e: any) => FeeToken.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: UpdateFeeTokenProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.feetokens) {
+      obj.feetokens = message.feetokens.map(e => e ? FeeToken.toJSON(e) : undefined);
+    } else {
+      obj.feetokens = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<UpdateFeeTokenProposal>): UpdateFeeTokenProposal {
     const message = createBaseUpdateFeeTokenProposal();
@@ -142,3 +172,5 @@ export const UpdateFeeTokenProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(UpdateFeeTokenProposal.typeUrl, UpdateFeeTokenProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(UpdateFeeTokenProposal.aminoType, UpdateFeeTokenProposal.typeUrl);

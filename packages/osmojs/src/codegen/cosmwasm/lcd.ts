@@ -46,6 +46,11 @@ export const createLCDClient = async ({
           requestClient
         })
       },
+      params: {
+        v1beta1: new (await import("../cosmos/params/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
       staking: {
         v1beta1: new (await import("../cosmos/staking/v1beta1/query.lcd")).LCDQueryClient({
           requestClient

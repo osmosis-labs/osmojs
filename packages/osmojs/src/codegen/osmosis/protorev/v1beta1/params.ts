@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** Params defines the parameters for the module. */
 export interface Params {
   /** Boolean whether the protorev module is enabled. */
@@ -34,6 +36,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.protorev.v1beta1.Params",
+  aminoType: "osmosis/protorev/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.enabled === "boolean" && typeof o.admin === "string");
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.enabled === "boolean" && typeof o.admin === "string");
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.enabled === "boolean" && typeof o.admin === "string");
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.enabled === true) {
       writer.uint32(8).bool(message.enabled);
@@ -62,6 +74,18 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      enabled: isSet(object.enabled) ? Boolean(object.enabled) : false,
+      admin: isSet(object.admin) ? String(object.admin) : ""
+    };
+  },
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    message.enabled !== undefined && (obj.enabled = message.enabled);
+    message.admin !== undefined && (obj.admin = message.admin);
+    return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
@@ -107,3 +131,5 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);

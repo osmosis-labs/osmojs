@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * FeeToken is a struct that specifies a coin denom, and pool ID pair.
  * This marks the token as eligible for use as a tx fee asset in Osmosis.
@@ -45,6 +47,16 @@ function createBaseFeeToken(): FeeToken {
 }
 export const FeeToken = {
   typeUrl: "/osmosis.txfees.v1beta1.FeeToken",
+  aminoType: "osmosis/txfees/fee-token",
+  is(o: any): o is FeeToken {
+    return o && (o.$typeUrl === FeeToken.typeUrl || typeof o.denom === "string" && typeof o.poolID === "bigint");
+  },
+  isSDK(o: any): o is FeeTokenSDKType {
+    return o && (o.$typeUrl === FeeToken.typeUrl || typeof o.denom === "string" && typeof o.poolID === "bigint");
+  },
+  isAmino(o: any): o is FeeTokenAmino {
+    return o && (o.$typeUrl === FeeToken.typeUrl || typeof o.denom === "string" && typeof o.poolID === "bigint");
+  },
   encode(message: FeeToken, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -73,6 +85,18 @@ export const FeeToken = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): FeeToken {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      poolID: isSet(object.poolID) ? BigInt(object.poolID.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: FeeToken): unknown {
+    const obj: any = {};
+    message.denom !== undefined && (obj.denom = message.denom);
+    message.poolID !== undefined && (obj.poolID = (message.poolID || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<FeeToken>): FeeToken {
     const message = createBaseFeeToken();
@@ -118,3 +142,5 @@ export const FeeToken = {
     };
   }
 };
+GlobalDecoderRegistry.register(FeeToken.typeUrl, FeeToken);
+GlobalDecoderRegistry.registerAminoProtoMapping(FeeToken.aminoType, FeeToken.typeUrl);

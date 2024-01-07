@@ -1,5 +1,7 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface Params {
   /**
    * minted_denom is the denomination of the coin expected to be minted by the
@@ -150,6 +152,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.poolincentives.v1beta1.Params",
+  aminoType: "osmosis/poolincentives/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.mintedDenom === "string");
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.minted_denom === "string");
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.minted_denom === "string");
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.mintedDenom !== "") {
       writer.uint32(10).string(message.mintedDenom);
@@ -172,6 +184,16 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      mintedDenom: isSet(object.mintedDenom) ? String(object.mintedDenom) : ""
+    };
+  },
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    message.mintedDenom !== undefined && (obj.mintedDenom = message.mintedDenom);
+    return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
@@ -212,6 +234,8 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);
 function createBaseLockableDurationsInfo(): LockableDurationsInfo {
   return {
     lockableDurations: []
@@ -219,6 +243,16 @@ function createBaseLockableDurationsInfo(): LockableDurationsInfo {
 }
 export const LockableDurationsInfo = {
   typeUrl: "/osmosis.poolincentives.v1beta1.LockableDurationsInfo",
+  aminoType: "osmosis/poolincentives/lockable-durations-info",
+  is(o: any): o is LockableDurationsInfo {
+    return o && (o.$typeUrl === LockableDurationsInfo.typeUrl || Array.isArray(o.lockableDurations) && (!o.lockableDurations.length || Duration.is(o.lockableDurations[0])));
+  },
+  isSDK(o: any): o is LockableDurationsInfoSDKType {
+    return o && (o.$typeUrl === LockableDurationsInfo.typeUrl || Array.isArray(o.lockable_durations) && (!o.lockable_durations.length || Duration.isSDK(o.lockable_durations[0])));
+  },
+  isAmino(o: any): o is LockableDurationsInfoAmino {
+    return o && (o.$typeUrl === LockableDurationsInfo.typeUrl || Array.isArray(o.lockable_durations) && (!o.lockable_durations.length || Duration.isAmino(o.lockable_durations[0])));
+  },
   encode(message: LockableDurationsInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.lockableDurations) {
       Duration.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -241,6 +275,20 @@ export const LockableDurationsInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): LockableDurationsInfo {
+    return {
+      lockableDurations: Array.isArray(object?.lockableDurations) ? object.lockableDurations.map((e: any) => Duration.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: LockableDurationsInfo): unknown {
+    const obj: any = {};
+    if (message.lockableDurations) {
+      obj.lockableDurations = message.lockableDurations.map(e => e ? Duration.toJSON(e) : undefined);
+    } else {
+      obj.lockableDurations = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<LockableDurationsInfo>): LockableDurationsInfo {
     const message = createBaseLockableDurationsInfo();
@@ -283,6 +331,8 @@ export const LockableDurationsInfo = {
     };
   }
 };
+GlobalDecoderRegistry.register(LockableDurationsInfo.typeUrl, LockableDurationsInfo);
+GlobalDecoderRegistry.registerAminoProtoMapping(LockableDurationsInfo.aminoType, LockableDurationsInfo.typeUrl);
 function createBaseDistrInfo(): DistrInfo {
   return {
     totalWeight: "",
@@ -291,6 +341,16 @@ function createBaseDistrInfo(): DistrInfo {
 }
 export const DistrInfo = {
   typeUrl: "/osmosis.poolincentives.v1beta1.DistrInfo",
+  aminoType: "osmosis/poolincentives/distr-info",
+  is(o: any): o is DistrInfo {
+    return o && (o.$typeUrl === DistrInfo.typeUrl || typeof o.totalWeight === "string" && Array.isArray(o.records) && (!o.records.length || DistrRecord.is(o.records[0])));
+  },
+  isSDK(o: any): o is DistrInfoSDKType {
+    return o && (o.$typeUrl === DistrInfo.typeUrl || typeof o.total_weight === "string" && Array.isArray(o.records) && (!o.records.length || DistrRecord.isSDK(o.records[0])));
+  },
+  isAmino(o: any): o is DistrInfoAmino {
+    return o && (o.$typeUrl === DistrInfo.typeUrl || typeof o.total_weight === "string" && Array.isArray(o.records) && (!o.records.length || DistrRecord.isAmino(o.records[0])));
+  },
   encode(message: DistrInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.totalWeight !== "") {
       writer.uint32(10).string(message.totalWeight);
@@ -319,6 +379,22 @@ export const DistrInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DistrInfo {
+    return {
+      totalWeight: isSet(object.totalWeight) ? String(object.totalWeight) : "",
+      records: Array.isArray(object?.records) ? object.records.map((e: any) => DistrRecord.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: DistrInfo): unknown {
+    const obj: any = {};
+    message.totalWeight !== undefined && (obj.totalWeight = message.totalWeight);
+    if (message.records) {
+      obj.records = message.records.map(e => e ? DistrRecord.toJSON(e) : undefined);
+    } else {
+      obj.records = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<DistrInfo>): DistrInfo {
     const message = createBaseDistrInfo();
@@ -366,6 +442,8 @@ export const DistrInfo = {
     };
   }
 };
+GlobalDecoderRegistry.register(DistrInfo.typeUrl, DistrInfo);
+GlobalDecoderRegistry.registerAminoProtoMapping(DistrInfo.aminoType, DistrInfo.typeUrl);
 function createBaseDistrRecord(): DistrRecord {
   return {
     gaugeId: BigInt(0),
@@ -374,6 +452,16 @@ function createBaseDistrRecord(): DistrRecord {
 }
 export const DistrRecord = {
   typeUrl: "/osmosis.poolincentives.v1beta1.DistrRecord",
+  aminoType: "osmosis/poolincentives/distr-record",
+  is(o: any): o is DistrRecord {
+    return o && (o.$typeUrl === DistrRecord.typeUrl || typeof o.gaugeId === "bigint" && typeof o.weight === "string");
+  },
+  isSDK(o: any): o is DistrRecordSDKType {
+    return o && (o.$typeUrl === DistrRecord.typeUrl || typeof o.gauge_id === "bigint" && typeof o.weight === "string");
+  },
+  isAmino(o: any): o is DistrRecordAmino {
+    return o && (o.$typeUrl === DistrRecord.typeUrl || typeof o.gauge_id === "bigint" && typeof o.weight === "string");
+  },
   encode(message: DistrRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.gaugeId !== BigInt(0)) {
       writer.uint32(8).uint64(message.gaugeId);
@@ -402,6 +490,18 @@ export const DistrRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DistrRecord {
+    return {
+      gaugeId: isSet(object.gaugeId) ? BigInt(object.gaugeId.toString()) : BigInt(0),
+      weight: isSet(object.weight) ? String(object.weight) : ""
+    };
+  },
+  toJSON(message: DistrRecord): unknown {
+    const obj: any = {};
+    message.gaugeId !== undefined && (obj.gaugeId = (message.gaugeId || BigInt(0)).toString());
+    message.weight !== undefined && (obj.weight = message.weight);
+    return obj;
   },
   fromPartial(object: Partial<DistrRecord>): DistrRecord {
     const message = createBaseDistrRecord();
@@ -447,6 +547,8 @@ export const DistrRecord = {
     };
   }
 };
+GlobalDecoderRegistry.register(DistrRecord.typeUrl, DistrRecord);
+GlobalDecoderRegistry.registerAminoProtoMapping(DistrRecord.aminoType, DistrRecord.typeUrl);
 function createBasePoolToGauge(): PoolToGauge {
   return {
     poolId: BigInt(0),
@@ -456,6 +558,16 @@ function createBasePoolToGauge(): PoolToGauge {
 }
 export const PoolToGauge = {
   typeUrl: "/osmosis.poolincentives.v1beta1.PoolToGauge",
+  aminoType: "osmosis/poolincentives/pool-to-gauge",
+  is(o: any): o is PoolToGauge {
+    return o && (o.$typeUrl === PoolToGauge.typeUrl || typeof o.poolId === "bigint" && typeof o.gaugeId === "bigint" && Duration.is(o.duration));
+  },
+  isSDK(o: any): o is PoolToGaugeSDKType {
+    return o && (o.$typeUrl === PoolToGauge.typeUrl || typeof o.pool_id === "bigint" && typeof o.gauge_id === "bigint" && Duration.isSDK(o.duration));
+  },
+  isAmino(o: any): o is PoolToGaugeAmino {
+    return o && (o.$typeUrl === PoolToGauge.typeUrl || typeof o.pool_id === "bigint" && typeof o.gauge_id === "bigint" && Duration.isAmino(o.duration));
+  },
   encode(message: PoolToGauge, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -490,6 +602,20 @@ export const PoolToGauge = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PoolToGauge {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      gaugeId: isSet(object.gaugeId) ? BigInt(object.gaugeId.toString()) : BigInt(0),
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined
+    };
+  },
+  toJSON(message: PoolToGauge): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.gaugeId !== undefined && (obj.gaugeId = (message.gaugeId || BigInt(0)).toString());
+    message.duration !== undefined && (obj.duration = message.duration ? Duration.toJSON(message.duration) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<PoolToGauge>): PoolToGauge {
     const message = createBasePoolToGauge();
@@ -540,6 +666,8 @@ export const PoolToGauge = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolToGauge.typeUrl, PoolToGauge);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolToGauge.aminoType, PoolToGauge.typeUrl);
 function createBaseAnyPoolToInternalGauges(): AnyPoolToInternalGauges {
   return {
     poolToGauge: []
@@ -547,6 +675,16 @@ function createBaseAnyPoolToInternalGauges(): AnyPoolToInternalGauges {
 }
 export const AnyPoolToInternalGauges = {
   typeUrl: "/osmosis.poolincentives.v1beta1.AnyPoolToInternalGauges",
+  aminoType: "osmosis/poolincentives/any-pool-to-internal-gauges",
+  is(o: any): o is AnyPoolToInternalGauges {
+    return o && (o.$typeUrl === AnyPoolToInternalGauges.typeUrl || Array.isArray(o.poolToGauge) && (!o.poolToGauge.length || PoolToGauge.is(o.poolToGauge[0])));
+  },
+  isSDK(o: any): o is AnyPoolToInternalGaugesSDKType {
+    return o && (o.$typeUrl === AnyPoolToInternalGauges.typeUrl || Array.isArray(o.pool_to_gauge) && (!o.pool_to_gauge.length || PoolToGauge.isSDK(o.pool_to_gauge[0])));
+  },
+  isAmino(o: any): o is AnyPoolToInternalGaugesAmino {
+    return o && (o.$typeUrl === AnyPoolToInternalGauges.typeUrl || Array.isArray(o.pool_to_gauge) && (!o.pool_to_gauge.length || PoolToGauge.isAmino(o.pool_to_gauge[0])));
+  },
   encode(message: AnyPoolToInternalGauges, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.poolToGauge) {
       PoolToGauge.encode(v!, writer.uint32(18).fork()).ldelim();
@@ -569,6 +707,20 @@ export const AnyPoolToInternalGauges = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): AnyPoolToInternalGauges {
+    return {
+      poolToGauge: Array.isArray(object?.poolToGauge) ? object.poolToGauge.map((e: any) => PoolToGauge.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: AnyPoolToInternalGauges): unknown {
+    const obj: any = {};
+    if (message.poolToGauge) {
+      obj.poolToGauge = message.poolToGauge.map(e => e ? PoolToGauge.toJSON(e) : undefined);
+    } else {
+      obj.poolToGauge = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<AnyPoolToInternalGauges>): AnyPoolToInternalGauges {
     const message = createBaseAnyPoolToInternalGauges();
@@ -611,6 +763,8 @@ export const AnyPoolToInternalGauges = {
     };
   }
 };
+GlobalDecoderRegistry.register(AnyPoolToInternalGauges.typeUrl, AnyPoolToInternalGauges);
+GlobalDecoderRegistry.registerAminoProtoMapping(AnyPoolToInternalGauges.aminoType, AnyPoolToInternalGauges.typeUrl);
 function createBaseConcentratedPoolToNoLockGauges(): ConcentratedPoolToNoLockGauges {
   return {
     poolToGauge: []
@@ -618,6 +772,16 @@ function createBaseConcentratedPoolToNoLockGauges(): ConcentratedPoolToNoLockGau
 }
 export const ConcentratedPoolToNoLockGauges = {
   typeUrl: "/osmosis.poolincentives.v1beta1.ConcentratedPoolToNoLockGauges",
+  aminoType: "osmosis/poolincentives/concentrated-pool-to-no-lock-gauges",
+  is(o: any): o is ConcentratedPoolToNoLockGauges {
+    return o && (o.$typeUrl === ConcentratedPoolToNoLockGauges.typeUrl || Array.isArray(o.poolToGauge) && (!o.poolToGauge.length || PoolToGauge.is(o.poolToGauge[0])));
+  },
+  isSDK(o: any): o is ConcentratedPoolToNoLockGaugesSDKType {
+    return o && (o.$typeUrl === ConcentratedPoolToNoLockGauges.typeUrl || Array.isArray(o.pool_to_gauge) && (!o.pool_to_gauge.length || PoolToGauge.isSDK(o.pool_to_gauge[0])));
+  },
+  isAmino(o: any): o is ConcentratedPoolToNoLockGaugesAmino {
+    return o && (o.$typeUrl === ConcentratedPoolToNoLockGauges.typeUrl || Array.isArray(o.pool_to_gauge) && (!o.pool_to_gauge.length || PoolToGauge.isAmino(o.pool_to_gauge[0])));
+  },
   encode(message: ConcentratedPoolToNoLockGauges, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.poolToGauge) {
       PoolToGauge.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -640,6 +804,20 @@ export const ConcentratedPoolToNoLockGauges = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ConcentratedPoolToNoLockGauges {
+    return {
+      poolToGauge: Array.isArray(object?.poolToGauge) ? object.poolToGauge.map((e: any) => PoolToGauge.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: ConcentratedPoolToNoLockGauges): unknown {
+    const obj: any = {};
+    if (message.poolToGauge) {
+      obj.poolToGauge = message.poolToGauge.map(e => e ? PoolToGauge.toJSON(e) : undefined);
+    } else {
+      obj.poolToGauge = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<ConcentratedPoolToNoLockGauges>): ConcentratedPoolToNoLockGauges {
     const message = createBaseConcentratedPoolToNoLockGauges();
@@ -682,3 +860,5 @@ export const ConcentratedPoolToNoLockGauges = {
     };
   }
 };
+GlobalDecoderRegistry.register(ConcentratedPoolToNoLockGauges.typeUrl, ConcentratedPoolToNoLockGauges);
+GlobalDecoderRegistry.registerAminoProtoMapping(ConcentratedPoolToNoLockGauges.aminoType, ConcentratedPoolToNoLockGauges.typeUrl);

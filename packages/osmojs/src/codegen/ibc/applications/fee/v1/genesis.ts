@@ -1,6 +1,8 @@
 import { IdentifiedPacketFees, IdentifiedPacketFeesAmino, IdentifiedPacketFeesSDKType } from "./fee";
 import { PacketId, PacketIdAmino, PacketIdSDKType } from "../../../core/channel/v1/channel";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { GlobalDecoderRegistry } from "../../../../registry";
+import { isSet } from "../../../../helpers";
 /** GenesisState defines the ICS29 fee middleware genesis state */
 export interface GenesisState {
   /** list of identified packet fees */
@@ -181,6 +183,16 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/ibc.applications.fee.v1.GenesisState",
+  aminoType: "cosmos-sdk/GenesisState",
+  is(o: any): o is GenesisState {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.identifiedFees) && (!o.identifiedFees.length || IdentifiedPacketFees.is(o.identifiedFees[0])) && Array.isArray(o.feeEnabledChannels) && (!o.feeEnabledChannels.length || FeeEnabledChannel.is(o.feeEnabledChannels[0])) && Array.isArray(o.registeredPayees) && (!o.registeredPayees.length || RegisteredPayee.is(o.registeredPayees[0])) && Array.isArray(o.registeredCounterpartyPayees) && (!o.registeredCounterpartyPayees.length || RegisteredCounterpartyPayee.is(o.registeredCounterpartyPayees[0])) && Array.isArray(o.forwardRelayers) && (!o.forwardRelayers.length || ForwardRelayerAddress.is(o.forwardRelayers[0])));
+  },
+  isSDK(o: any): o is GenesisStateSDKType {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.identified_fees) && (!o.identified_fees.length || IdentifiedPacketFees.isSDK(o.identified_fees[0])) && Array.isArray(o.fee_enabled_channels) && (!o.fee_enabled_channels.length || FeeEnabledChannel.isSDK(o.fee_enabled_channels[0])) && Array.isArray(o.registered_payees) && (!o.registered_payees.length || RegisteredPayee.isSDK(o.registered_payees[0])) && Array.isArray(o.registered_counterparty_payees) && (!o.registered_counterparty_payees.length || RegisteredCounterpartyPayee.isSDK(o.registered_counterparty_payees[0])) && Array.isArray(o.forward_relayers) && (!o.forward_relayers.length || ForwardRelayerAddress.isSDK(o.forward_relayers[0])));
+  },
+  isAmino(o: any): o is GenesisStateAmino {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.identified_fees) && (!o.identified_fees.length || IdentifiedPacketFees.isAmino(o.identified_fees[0])) && Array.isArray(o.fee_enabled_channels) && (!o.fee_enabled_channels.length || FeeEnabledChannel.isAmino(o.fee_enabled_channels[0])) && Array.isArray(o.registered_payees) && (!o.registered_payees.length || RegisteredPayee.isAmino(o.registered_payees[0])) && Array.isArray(o.registered_counterparty_payees) && (!o.registered_counterparty_payees.length || RegisteredCounterpartyPayee.isAmino(o.registered_counterparty_payees[0])) && Array.isArray(o.forward_relayers) && (!o.forward_relayers.length || ForwardRelayerAddress.isAmino(o.forward_relayers[0])));
+  },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.identifiedFees) {
       IdentifiedPacketFees.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -227,6 +239,44 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GenesisState {
+    return {
+      identifiedFees: Array.isArray(object?.identifiedFees) ? object.identifiedFees.map((e: any) => IdentifiedPacketFees.fromJSON(e)) : [],
+      feeEnabledChannels: Array.isArray(object?.feeEnabledChannels) ? object.feeEnabledChannels.map((e: any) => FeeEnabledChannel.fromJSON(e)) : [],
+      registeredPayees: Array.isArray(object?.registeredPayees) ? object.registeredPayees.map((e: any) => RegisteredPayee.fromJSON(e)) : [],
+      registeredCounterpartyPayees: Array.isArray(object?.registeredCounterpartyPayees) ? object.registeredCounterpartyPayees.map((e: any) => RegisteredCounterpartyPayee.fromJSON(e)) : [],
+      forwardRelayers: Array.isArray(object?.forwardRelayers) ? object.forwardRelayers.map((e: any) => ForwardRelayerAddress.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: GenesisState): unknown {
+    const obj: any = {};
+    if (message.identifiedFees) {
+      obj.identifiedFees = message.identifiedFees.map(e => e ? IdentifiedPacketFees.toJSON(e) : undefined);
+    } else {
+      obj.identifiedFees = [];
+    }
+    if (message.feeEnabledChannels) {
+      obj.feeEnabledChannels = message.feeEnabledChannels.map(e => e ? FeeEnabledChannel.toJSON(e) : undefined);
+    } else {
+      obj.feeEnabledChannels = [];
+    }
+    if (message.registeredPayees) {
+      obj.registeredPayees = message.registeredPayees.map(e => e ? RegisteredPayee.toJSON(e) : undefined);
+    } else {
+      obj.registeredPayees = [];
+    }
+    if (message.registeredCounterpartyPayees) {
+      obj.registeredCounterpartyPayees = message.registeredCounterpartyPayees.map(e => e ? RegisteredCounterpartyPayee.toJSON(e) : undefined);
+    } else {
+      obj.registeredCounterpartyPayees = [];
+    }
+    if (message.forwardRelayers) {
+      obj.forwardRelayers = message.forwardRelayers.map(e => e ? ForwardRelayerAddress.toJSON(e) : undefined);
+    } else {
+      obj.forwardRelayers = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
@@ -297,6 +347,8 @@ export const GenesisState = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 function createBaseFeeEnabledChannel(): FeeEnabledChannel {
   return {
     portId: "",
@@ -305,6 +357,16 @@ function createBaseFeeEnabledChannel(): FeeEnabledChannel {
 }
 export const FeeEnabledChannel = {
   typeUrl: "/ibc.applications.fee.v1.FeeEnabledChannel",
+  aminoType: "cosmos-sdk/FeeEnabledChannel",
+  is(o: any): o is FeeEnabledChannel {
+    return o && (o.$typeUrl === FeeEnabledChannel.typeUrl || typeof o.portId === "string" && typeof o.channelId === "string");
+  },
+  isSDK(o: any): o is FeeEnabledChannelSDKType {
+    return o && (o.$typeUrl === FeeEnabledChannel.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string");
+  },
+  isAmino(o: any): o is FeeEnabledChannelAmino {
+    return o && (o.$typeUrl === FeeEnabledChannel.typeUrl || typeof o.port_id === "string" && typeof o.channel_id === "string");
+  },
   encode(message: FeeEnabledChannel, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.portId !== "") {
       writer.uint32(10).string(message.portId);
@@ -333,6 +395,18 @@ export const FeeEnabledChannel = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): FeeEnabledChannel {
+    return {
+      portId: isSet(object.portId) ? String(object.portId) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : ""
+    };
+  },
+  toJSON(message: FeeEnabledChannel): unknown {
+    const obj: any = {};
+    message.portId !== undefined && (obj.portId = message.portId);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    return obj;
   },
   fromPartial(object: Partial<FeeEnabledChannel>): FeeEnabledChannel {
     const message = createBaseFeeEnabledChannel();
@@ -378,6 +452,8 @@ export const FeeEnabledChannel = {
     };
   }
 };
+GlobalDecoderRegistry.register(FeeEnabledChannel.typeUrl, FeeEnabledChannel);
+GlobalDecoderRegistry.registerAminoProtoMapping(FeeEnabledChannel.aminoType, FeeEnabledChannel.typeUrl);
 function createBaseRegisteredPayee(): RegisteredPayee {
   return {
     channelId: "",
@@ -387,6 +463,16 @@ function createBaseRegisteredPayee(): RegisteredPayee {
 }
 export const RegisteredPayee = {
   typeUrl: "/ibc.applications.fee.v1.RegisteredPayee",
+  aminoType: "cosmos-sdk/RegisteredPayee",
+  is(o: any): o is RegisteredPayee {
+    return o && (o.$typeUrl === RegisteredPayee.typeUrl || typeof o.channelId === "string" && typeof o.relayer === "string" && typeof o.payee === "string");
+  },
+  isSDK(o: any): o is RegisteredPayeeSDKType {
+    return o && (o.$typeUrl === RegisteredPayee.typeUrl || typeof o.channel_id === "string" && typeof o.relayer === "string" && typeof o.payee === "string");
+  },
+  isAmino(o: any): o is RegisteredPayeeAmino {
+    return o && (o.$typeUrl === RegisteredPayee.typeUrl || typeof o.channel_id === "string" && typeof o.relayer === "string" && typeof o.payee === "string");
+  },
   encode(message: RegisteredPayee, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.channelId !== "") {
       writer.uint32(10).string(message.channelId);
@@ -421,6 +507,20 @@ export const RegisteredPayee = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): RegisteredPayee {
+    return {
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      relayer: isSet(object.relayer) ? String(object.relayer) : "",
+      payee: isSet(object.payee) ? String(object.payee) : ""
+    };
+  },
+  toJSON(message: RegisteredPayee): unknown {
+    const obj: any = {};
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.relayer !== undefined && (obj.relayer = message.relayer);
+    message.payee !== undefined && (obj.payee = message.payee);
+    return obj;
   },
   fromPartial(object: Partial<RegisteredPayee>): RegisteredPayee {
     const message = createBaseRegisteredPayee();
@@ -471,6 +571,8 @@ export const RegisteredPayee = {
     };
   }
 };
+GlobalDecoderRegistry.register(RegisteredPayee.typeUrl, RegisteredPayee);
+GlobalDecoderRegistry.registerAminoProtoMapping(RegisteredPayee.aminoType, RegisteredPayee.typeUrl);
 function createBaseRegisteredCounterpartyPayee(): RegisteredCounterpartyPayee {
   return {
     channelId: "",
@@ -480,6 +582,16 @@ function createBaseRegisteredCounterpartyPayee(): RegisteredCounterpartyPayee {
 }
 export const RegisteredCounterpartyPayee = {
   typeUrl: "/ibc.applications.fee.v1.RegisteredCounterpartyPayee",
+  aminoType: "cosmos-sdk/RegisteredCounterpartyPayee",
+  is(o: any): o is RegisteredCounterpartyPayee {
+    return o && (o.$typeUrl === RegisteredCounterpartyPayee.typeUrl || typeof o.channelId === "string" && typeof o.relayer === "string" && typeof o.counterpartyPayee === "string");
+  },
+  isSDK(o: any): o is RegisteredCounterpartyPayeeSDKType {
+    return o && (o.$typeUrl === RegisteredCounterpartyPayee.typeUrl || typeof o.channel_id === "string" && typeof o.relayer === "string" && typeof o.counterparty_payee === "string");
+  },
+  isAmino(o: any): o is RegisteredCounterpartyPayeeAmino {
+    return o && (o.$typeUrl === RegisteredCounterpartyPayee.typeUrl || typeof o.channel_id === "string" && typeof o.relayer === "string" && typeof o.counterparty_payee === "string");
+  },
   encode(message: RegisteredCounterpartyPayee, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.channelId !== "") {
       writer.uint32(10).string(message.channelId);
@@ -514,6 +626,20 @@ export const RegisteredCounterpartyPayee = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): RegisteredCounterpartyPayee {
+    return {
+      channelId: isSet(object.channelId) ? String(object.channelId) : "",
+      relayer: isSet(object.relayer) ? String(object.relayer) : "",
+      counterpartyPayee: isSet(object.counterpartyPayee) ? String(object.counterpartyPayee) : ""
+    };
+  },
+  toJSON(message: RegisteredCounterpartyPayee): unknown {
+    const obj: any = {};
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.relayer !== undefined && (obj.relayer = message.relayer);
+    message.counterpartyPayee !== undefined && (obj.counterpartyPayee = message.counterpartyPayee);
+    return obj;
   },
   fromPartial(object: Partial<RegisteredCounterpartyPayee>): RegisteredCounterpartyPayee {
     const message = createBaseRegisteredCounterpartyPayee();
@@ -564,6 +690,8 @@ export const RegisteredCounterpartyPayee = {
     };
   }
 };
+GlobalDecoderRegistry.register(RegisteredCounterpartyPayee.typeUrl, RegisteredCounterpartyPayee);
+GlobalDecoderRegistry.registerAminoProtoMapping(RegisteredCounterpartyPayee.aminoType, RegisteredCounterpartyPayee.typeUrl);
 function createBaseForwardRelayerAddress(): ForwardRelayerAddress {
   return {
     address: "",
@@ -572,6 +700,16 @@ function createBaseForwardRelayerAddress(): ForwardRelayerAddress {
 }
 export const ForwardRelayerAddress = {
   typeUrl: "/ibc.applications.fee.v1.ForwardRelayerAddress",
+  aminoType: "cosmos-sdk/ForwardRelayerAddress",
+  is(o: any): o is ForwardRelayerAddress {
+    return o && (o.$typeUrl === ForwardRelayerAddress.typeUrl || typeof o.address === "string" && PacketId.is(o.packetId));
+  },
+  isSDK(o: any): o is ForwardRelayerAddressSDKType {
+    return o && (o.$typeUrl === ForwardRelayerAddress.typeUrl || typeof o.address === "string" && PacketId.isSDK(o.packet_id));
+  },
+  isAmino(o: any): o is ForwardRelayerAddressAmino {
+    return o && (o.$typeUrl === ForwardRelayerAddress.typeUrl || typeof o.address === "string" && PacketId.isAmino(o.packet_id));
+  },
   encode(message: ForwardRelayerAddress, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -600,6 +738,18 @@ export const ForwardRelayerAddress = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ForwardRelayerAddress {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      packetId: isSet(object.packetId) ? PacketId.fromJSON(object.packetId) : undefined
+    };
+  },
+  toJSON(message: ForwardRelayerAddress): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.packetId !== undefined && (obj.packetId = message.packetId ? PacketId.toJSON(message.packetId) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<ForwardRelayerAddress>): ForwardRelayerAddress {
     const message = createBaseForwardRelayerAddress();
@@ -645,3 +795,5 @@ export const ForwardRelayerAddress = {
     };
   }
 };
+GlobalDecoderRegistry.register(ForwardRelayerAddress.typeUrl, ForwardRelayerAddress);
+GlobalDecoderRegistry.registerAminoProtoMapping(ForwardRelayerAddress.aminoType, ForwardRelayerAddress.typeUrl);

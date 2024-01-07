@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { Decimal } from "@cosmjs/math";
 /**
  * CreateConcentratedLiquidityPoolsProposal is a gov Content type for creating
@@ -146,6 +148,16 @@ function createBaseCreateConcentratedLiquidityPoolsProposal(): CreateConcentrate
 }
 export const CreateConcentratedLiquidityPoolsProposal = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.CreateConcentratedLiquidityPoolsProposal",
+  aminoType: "osmosis/concentratedliquidity/create-concentrated-liquidity-pools-proposal",
+  is(o: any): o is CreateConcentratedLiquidityPoolsProposal {
+    return o && (o.$typeUrl === CreateConcentratedLiquidityPoolsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.poolRecords) && (!o.poolRecords.length || PoolRecord.is(o.poolRecords[0])));
+  },
+  isSDK(o: any): o is CreateConcentratedLiquidityPoolsProposalSDKType {
+    return o && (o.$typeUrl === CreateConcentratedLiquidityPoolsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.pool_records) && (!o.pool_records.length || PoolRecord.isSDK(o.pool_records[0])));
+  },
+  isAmino(o: any): o is CreateConcentratedLiquidityPoolsProposalAmino {
+    return o && (o.$typeUrl === CreateConcentratedLiquidityPoolsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.pool_records) && (!o.pool_records.length || PoolRecord.isAmino(o.pool_records[0])));
+  },
   encode(message: CreateConcentratedLiquidityPoolsProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -180,6 +192,24 @@ export const CreateConcentratedLiquidityPoolsProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): CreateConcentratedLiquidityPoolsProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      poolRecords: Array.isArray(object?.poolRecords) ? object.poolRecords.map((e: any) => PoolRecord.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: CreateConcentratedLiquidityPoolsProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.poolRecords) {
+      obj.poolRecords = message.poolRecords.map(e => e ? PoolRecord.toJSON(e) : undefined);
+    } else {
+      obj.poolRecords = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<CreateConcentratedLiquidityPoolsProposal>): CreateConcentratedLiquidityPoolsProposal {
     const message = createBaseCreateConcentratedLiquidityPoolsProposal();
@@ -232,6 +262,8 @@ export const CreateConcentratedLiquidityPoolsProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(CreateConcentratedLiquidityPoolsProposal.typeUrl, CreateConcentratedLiquidityPoolsProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(CreateConcentratedLiquidityPoolsProposal.aminoType, CreateConcentratedLiquidityPoolsProposal.typeUrl);
 function createBaseTickSpacingDecreaseProposal(): TickSpacingDecreaseProposal {
   return {
     title: "",
@@ -241,6 +273,16 @@ function createBaseTickSpacingDecreaseProposal(): TickSpacingDecreaseProposal {
 }
 export const TickSpacingDecreaseProposal = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.TickSpacingDecreaseProposal",
+  aminoType: "osmosis/concentratedliquidity/tick-spacing-decrease-proposal",
+  is(o: any): o is TickSpacingDecreaseProposal {
+    return o && (o.$typeUrl === TickSpacingDecreaseProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.poolIdToTickSpacingRecords) && (!o.poolIdToTickSpacingRecords.length || PoolIdToTickSpacingRecord.is(o.poolIdToTickSpacingRecords[0])));
+  },
+  isSDK(o: any): o is TickSpacingDecreaseProposalSDKType {
+    return o && (o.$typeUrl === TickSpacingDecreaseProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.pool_id_to_tick_spacing_records) && (!o.pool_id_to_tick_spacing_records.length || PoolIdToTickSpacingRecord.isSDK(o.pool_id_to_tick_spacing_records[0])));
+  },
+  isAmino(o: any): o is TickSpacingDecreaseProposalAmino {
+    return o && (o.$typeUrl === TickSpacingDecreaseProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.pool_id_to_tick_spacing_records) && (!o.pool_id_to_tick_spacing_records.length || PoolIdToTickSpacingRecord.isAmino(o.pool_id_to_tick_spacing_records[0])));
+  },
   encode(message: TickSpacingDecreaseProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -275,6 +317,24 @@ export const TickSpacingDecreaseProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TickSpacingDecreaseProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      poolIdToTickSpacingRecords: Array.isArray(object?.poolIdToTickSpacingRecords) ? object.poolIdToTickSpacingRecords.map((e: any) => PoolIdToTickSpacingRecord.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: TickSpacingDecreaseProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.poolIdToTickSpacingRecords) {
+      obj.poolIdToTickSpacingRecords = message.poolIdToTickSpacingRecords.map(e => e ? PoolIdToTickSpacingRecord.toJSON(e) : undefined);
+    } else {
+      obj.poolIdToTickSpacingRecords = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<TickSpacingDecreaseProposal>): TickSpacingDecreaseProposal {
     const message = createBaseTickSpacingDecreaseProposal();
@@ -327,6 +387,8 @@ export const TickSpacingDecreaseProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(TickSpacingDecreaseProposal.typeUrl, TickSpacingDecreaseProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(TickSpacingDecreaseProposal.aminoType, TickSpacingDecreaseProposal.typeUrl);
 function createBasePoolIdToTickSpacingRecord(): PoolIdToTickSpacingRecord {
   return {
     poolId: BigInt(0),
@@ -335,6 +397,16 @@ function createBasePoolIdToTickSpacingRecord(): PoolIdToTickSpacingRecord {
 }
 export const PoolIdToTickSpacingRecord = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolIdToTickSpacingRecord",
+  aminoType: "osmosis/concentratedliquidity/pool-id-to-tick-spacing-record",
+  is(o: any): o is PoolIdToTickSpacingRecord {
+    return o && (o.$typeUrl === PoolIdToTickSpacingRecord.typeUrl || typeof o.poolId === "bigint" && typeof o.newTickSpacing === "bigint");
+  },
+  isSDK(o: any): o is PoolIdToTickSpacingRecordSDKType {
+    return o && (o.$typeUrl === PoolIdToTickSpacingRecord.typeUrl || typeof o.pool_id === "bigint" && typeof o.new_tick_spacing === "bigint");
+  },
+  isAmino(o: any): o is PoolIdToTickSpacingRecordAmino {
+    return o && (o.$typeUrl === PoolIdToTickSpacingRecord.typeUrl || typeof o.pool_id === "bigint" && typeof o.new_tick_spacing === "bigint");
+  },
   encode(message: PoolIdToTickSpacingRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -363,6 +435,18 @@ export const PoolIdToTickSpacingRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PoolIdToTickSpacingRecord {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      newTickSpacing: isSet(object.newTickSpacing) ? BigInt(object.newTickSpacing.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: PoolIdToTickSpacingRecord): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.newTickSpacing !== undefined && (obj.newTickSpacing = (message.newTickSpacing || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<PoolIdToTickSpacingRecord>): PoolIdToTickSpacingRecord {
     const message = createBasePoolIdToTickSpacingRecord();
@@ -408,6 +492,8 @@ export const PoolIdToTickSpacingRecord = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolIdToTickSpacingRecord.typeUrl, PoolIdToTickSpacingRecord);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolIdToTickSpacingRecord.aminoType, PoolIdToTickSpacingRecord.typeUrl);
 function createBasePoolRecord(): PoolRecord {
   return {
     denom0: "",
@@ -418,6 +504,16 @@ function createBasePoolRecord(): PoolRecord {
 }
 export const PoolRecord = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolRecord",
+  aminoType: "osmosis/concentratedliquidity/pool-record",
+  is(o: any): o is PoolRecord {
+    return o && (o.$typeUrl === PoolRecord.typeUrl || typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.tickSpacing === "bigint" && typeof o.spreadFactor === "string");
+  },
+  isSDK(o: any): o is PoolRecordSDKType {
+    return o && (o.$typeUrl === PoolRecord.typeUrl || typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.tick_spacing === "bigint" && typeof o.spread_factor === "string");
+  },
+  isAmino(o: any): o is PoolRecordAmino {
+    return o && (o.$typeUrl === PoolRecord.typeUrl || typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.tick_spacing === "bigint" && typeof o.spread_factor === "string");
+  },
   encode(message: PoolRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom0 !== "") {
       writer.uint32(10).string(message.denom0);
@@ -458,6 +554,22 @@ export const PoolRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PoolRecord {
+    return {
+      denom0: isSet(object.denom0) ? String(object.denom0) : "",
+      denom1: isSet(object.denom1) ? String(object.denom1) : "",
+      tickSpacing: isSet(object.tickSpacing) ? BigInt(object.tickSpacing.toString()) : BigInt(0),
+      spreadFactor: isSet(object.spreadFactor) ? String(object.spreadFactor) : ""
+    };
+  },
+  toJSON(message: PoolRecord): unknown {
+    const obj: any = {};
+    message.denom0 !== undefined && (obj.denom0 = message.denom0);
+    message.denom1 !== undefined && (obj.denom1 = message.denom1);
+    message.tickSpacing !== undefined && (obj.tickSpacing = (message.tickSpacing || BigInt(0)).toString());
+    message.spreadFactor !== undefined && (obj.spreadFactor = message.spreadFactor);
+    return obj;
   },
   fromPartial(object: Partial<PoolRecord>): PoolRecord {
     const message = createBasePoolRecord();
@@ -513,3 +625,5 @@ export const PoolRecord = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolRecord.typeUrl, PoolRecord);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolRecord.aminoType, PoolRecord.typeUrl);

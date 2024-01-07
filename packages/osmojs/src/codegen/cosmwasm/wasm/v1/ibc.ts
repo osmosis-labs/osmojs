@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** MsgIBCSend */
 export interface MsgIBCSend {
   /** the channel by which the packet will be sent */
@@ -107,6 +108,16 @@ function createBaseMsgIBCSend(): MsgIBCSend {
 }
 export const MsgIBCSend = {
   typeUrl: "/cosmwasm.wasm.v1.MsgIBCSend",
+  aminoType: "wasm/MsgIBCSend",
+  is(o: any): o is MsgIBCSend {
+    return o && (o.$typeUrl === MsgIBCSend.typeUrl || typeof o.channel === "string" && typeof o.timeoutHeight === "bigint" && typeof o.timeoutTimestamp === "bigint" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
+  isSDK(o: any): o is MsgIBCSendSDKType {
+    return o && (o.$typeUrl === MsgIBCSend.typeUrl || typeof o.channel === "string" && typeof o.timeout_height === "bigint" && typeof o.timeout_timestamp === "bigint" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
+  isAmino(o: any): o is MsgIBCSendAmino {
+    return o && (o.$typeUrl === MsgIBCSend.typeUrl || typeof o.channel === "string" && typeof o.timeout_height === "bigint" && typeof o.timeout_timestamp === "bigint" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
   encode(message: MsgIBCSend, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.channel !== "") {
       writer.uint32(18).string(message.channel);
@@ -147,6 +158,22 @@ export const MsgIBCSend = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgIBCSend {
+    return {
+      channel: isSet(object.channel) ? String(object.channel) : "",
+      timeoutHeight: isSet(object.timeoutHeight) ? BigInt(object.timeoutHeight.toString()) : BigInt(0),
+      timeoutTimestamp: isSet(object.timeoutTimestamp) ? BigInt(object.timeoutTimestamp.toString()) : BigInt(0),
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
+    };
+  },
+  toJSON(message: MsgIBCSend): unknown {
+    const obj: any = {};
+    message.channel !== undefined && (obj.channel = message.channel);
+    message.timeoutHeight !== undefined && (obj.timeoutHeight = (message.timeoutHeight || BigInt(0)).toString());
+    message.timeoutTimestamp !== undefined && (obj.timeoutTimestamp = (message.timeoutTimestamp || BigInt(0)).toString());
+    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
+    return obj;
   },
   fromPartial(object: Partial<MsgIBCSend>): MsgIBCSend {
     const message = createBaseMsgIBCSend();
@@ -202,6 +229,8 @@ export const MsgIBCSend = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgIBCSend.typeUrl, MsgIBCSend);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgIBCSend.aminoType, MsgIBCSend.typeUrl);
 function createBaseMsgIBCSendResponse(): MsgIBCSendResponse {
   return {
     sequence: BigInt(0)
@@ -209,6 +238,16 @@ function createBaseMsgIBCSendResponse(): MsgIBCSendResponse {
 }
 export const MsgIBCSendResponse = {
   typeUrl: "/cosmwasm.wasm.v1.MsgIBCSendResponse",
+  aminoType: "wasm/MsgIBCSendResponse",
+  is(o: any): o is MsgIBCSendResponse {
+    return o && (o.$typeUrl === MsgIBCSendResponse.typeUrl || typeof o.sequence === "bigint");
+  },
+  isSDK(o: any): o is MsgIBCSendResponseSDKType {
+    return o && (o.$typeUrl === MsgIBCSendResponse.typeUrl || typeof o.sequence === "bigint");
+  },
+  isAmino(o: any): o is MsgIBCSendResponseAmino {
+    return o && (o.$typeUrl === MsgIBCSendResponse.typeUrl || typeof o.sequence === "bigint");
+  },
   encode(message: MsgIBCSendResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sequence !== BigInt(0)) {
       writer.uint32(8).uint64(message.sequence);
@@ -231,6 +270,16 @@ export const MsgIBCSendResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgIBCSendResponse {
+    return {
+      sequence: isSet(object.sequence) ? BigInt(object.sequence.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgIBCSendResponse): unknown {
+    const obj: any = {};
+    message.sequence !== undefined && (obj.sequence = (message.sequence || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgIBCSendResponse>): MsgIBCSendResponse {
     const message = createBaseMsgIBCSendResponse();
@@ -271,6 +320,8 @@ export const MsgIBCSendResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgIBCSendResponse.typeUrl, MsgIBCSendResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgIBCSendResponse.aminoType, MsgIBCSendResponse.typeUrl);
 function createBaseMsgIBCCloseChannel(): MsgIBCCloseChannel {
   return {
     channel: ""
@@ -278,6 +329,16 @@ function createBaseMsgIBCCloseChannel(): MsgIBCCloseChannel {
 }
 export const MsgIBCCloseChannel = {
   typeUrl: "/cosmwasm.wasm.v1.MsgIBCCloseChannel",
+  aminoType: "wasm/MsgIBCCloseChannel",
+  is(o: any): o is MsgIBCCloseChannel {
+    return o && (o.$typeUrl === MsgIBCCloseChannel.typeUrl || typeof o.channel === "string");
+  },
+  isSDK(o: any): o is MsgIBCCloseChannelSDKType {
+    return o && (o.$typeUrl === MsgIBCCloseChannel.typeUrl || typeof o.channel === "string");
+  },
+  isAmino(o: any): o is MsgIBCCloseChannelAmino {
+    return o && (o.$typeUrl === MsgIBCCloseChannel.typeUrl || typeof o.channel === "string");
+  },
   encode(message: MsgIBCCloseChannel, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.channel !== "") {
       writer.uint32(18).string(message.channel);
@@ -300,6 +361,16 @@ export const MsgIBCCloseChannel = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgIBCCloseChannel {
+    return {
+      channel: isSet(object.channel) ? String(object.channel) : ""
+    };
+  },
+  toJSON(message: MsgIBCCloseChannel): unknown {
+    const obj: any = {};
+    message.channel !== undefined && (obj.channel = message.channel);
+    return obj;
   },
   fromPartial(object: Partial<MsgIBCCloseChannel>): MsgIBCCloseChannel {
     const message = createBaseMsgIBCCloseChannel();
@@ -340,3 +411,5 @@ export const MsgIBCCloseChannel = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgIBCCloseChannel.typeUrl, MsgIBCCloseChannel);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgIBCCloseChannel.aminoType, MsgIBCCloseChannel.typeUrl);

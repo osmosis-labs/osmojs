@@ -2,7 +2,8 @@ import { QueryCondition, QueryConditionAmino, QueryConditionSDKType } from "../l
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../binary";
-import { toTimestamp, fromTimestamp } from "../../helpers";
+import { toTimestamp, fromTimestamp, isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 /** MsgCreateGauge creates a gague to distribute rewards to users */
 export interface MsgCreateGauge {
   /**
@@ -224,6 +225,16 @@ function createBaseMsgCreateGauge(): MsgCreateGauge {
 }
 export const MsgCreateGauge = {
   typeUrl: "/osmosis.incentives.MsgCreateGauge",
+  aminoType: "osmosis/incentives/create-gauge",
+  is(o: any): o is MsgCreateGauge {
+    return o && (o.$typeUrl === MsgCreateGauge.typeUrl || typeof o.isPerpetual === "boolean" && typeof o.owner === "string" && QueryCondition.is(o.distributeTo) && Array.isArray(o.coins) && (!o.coins.length || Coin.is(o.coins[0])) && Timestamp.is(o.startTime) && typeof o.numEpochsPaidOver === "bigint" && typeof o.poolId === "bigint");
+  },
+  isSDK(o: any): o is MsgCreateGaugeSDKType {
+    return o && (o.$typeUrl === MsgCreateGauge.typeUrl || typeof o.is_perpetual === "boolean" && typeof o.owner === "string" && QueryCondition.isSDK(o.distribute_to) && Array.isArray(o.coins) && (!o.coins.length || Coin.isSDK(o.coins[0])) && Timestamp.isSDK(o.start_time) && typeof o.num_epochs_paid_over === "bigint" && typeof o.pool_id === "bigint");
+  },
+  isAmino(o: any): o is MsgCreateGaugeAmino {
+    return o && (o.$typeUrl === MsgCreateGauge.typeUrl || typeof o.is_perpetual === "boolean" && typeof o.owner === "string" && QueryCondition.isAmino(o.distribute_to) && Array.isArray(o.coins) && (!o.coins.length || Coin.isAmino(o.coins[0])) && Timestamp.isAmino(o.start_time) && typeof o.num_epochs_paid_over === "bigint" && typeof o.pool_id === "bigint");
+  },
   encode(message: MsgCreateGauge, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.isPerpetual === true) {
       writer.uint32(8).bool(message.isPerpetual);
@@ -282,6 +293,32 @@ export const MsgCreateGauge = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCreateGauge {
+    return {
+      isPerpetual: isSet(object.isPerpetual) ? Boolean(object.isPerpetual) : false,
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      distributeTo: isSet(object.distributeTo) ? QueryCondition.fromJSON(object.distributeTo) : undefined,
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : [],
+      startTime: isSet(object.startTime) ? new Date(object.startTime) : undefined,
+      numEpochsPaidOver: isSet(object.numEpochsPaidOver) ? BigInt(object.numEpochsPaidOver.toString()) : BigInt(0),
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgCreateGauge): unknown {
+    const obj: any = {};
+    message.isPerpetual !== undefined && (obj.isPerpetual = message.isPerpetual);
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.distributeTo !== undefined && (obj.distributeTo = message.distributeTo ? QueryCondition.toJSON(message.distributeTo) : undefined);
+    if (message.coins) {
+      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.coins = [];
+    }
+    message.startTime !== undefined && (obj.startTime = message.startTime.toISOString());
+    message.numEpochsPaidOver !== undefined && (obj.numEpochsPaidOver = (message.numEpochsPaidOver || BigInt(0)).toString());
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgCreateGauge>): MsgCreateGauge {
     const message = createBaseMsgCreateGauge();
@@ -354,11 +391,23 @@ export const MsgCreateGauge = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateGauge.typeUrl, MsgCreateGauge);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreateGauge.aminoType, MsgCreateGauge.typeUrl);
 function createBaseMsgCreateGaugeResponse(): MsgCreateGaugeResponse {
   return {};
 }
 export const MsgCreateGaugeResponse = {
   typeUrl: "/osmosis.incentives.MsgCreateGaugeResponse",
+  aminoType: "osmosis/incentives/create-gauge-response",
+  is(o: any): o is MsgCreateGaugeResponse {
+    return o && o.$typeUrl === MsgCreateGaugeResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgCreateGaugeResponseSDKType {
+    return o && o.$typeUrl === MsgCreateGaugeResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgCreateGaugeResponseAmino {
+    return o && o.$typeUrl === MsgCreateGaugeResponse.typeUrl;
+  },
   encode(_: MsgCreateGaugeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -375,6 +424,13 @@ export const MsgCreateGaugeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgCreateGaugeResponse {
+    return {};
+  },
+  toJSON(_: MsgCreateGaugeResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgCreateGaugeResponse>): MsgCreateGaugeResponse {
     const message = createBaseMsgCreateGaugeResponse();
@@ -410,6 +466,8 @@ export const MsgCreateGaugeResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateGaugeResponse.typeUrl, MsgCreateGaugeResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreateGaugeResponse.aminoType, MsgCreateGaugeResponse.typeUrl);
 function createBaseMsgAddToGauge(): MsgAddToGauge {
   return {
     owner: "",
@@ -419,6 +477,16 @@ function createBaseMsgAddToGauge(): MsgAddToGauge {
 }
 export const MsgAddToGauge = {
   typeUrl: "/osmosis.incentives.MsgAddToGauge",
+  aminoType: "osmosis/incentives/add-to-gauge",
+  is(o: any): o is MsgAddToGauge {
+    return o && (o.$typeUrl === MsgAddToGauge.typeUrl || typeof o.owner === "string" && typeof o.gaugeId === "bigint" && Array.isArray(o.rewards) && (!o.rewards.length || Coin.is(o.rewards[0])));
+  },
+  isSDK(o: any): o is MsgAddToGaugeSDKType {
+    return o && (o.$typeUrl === MsgAddToGauge.typeUrl || typeof o.owner === "string" && typeof o.gauge_id === "bigint" && Array.isArray(o.rewards) && (!o.rewards.length || Coin.isSDK(o.rewards[0])));
+  },
+  isAmino(o: any): o is MsgAddToGaugeAmino {
+    return o && (o.$typeUrl === MsgAddToGauge.typeUrl || typeof o.owner === "string" && typeof o.gauge_id === "bigint" && Array.isArray(o.rewards) && (!o.rewards.length || Coin.isAmino(o.rewards[0])));
+  },
   encode(message: MsgAddToGauge, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.owner !== "") {
       writer.uint32(10).string(message.owner);
@@ -453,6 +521,24 @@ export const MsgAddToGauge = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgAddToGauge {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      gaugeId: isSet(object.gaugeId) ? BigInt(object.gaugeId.toString()) : BigInt(0),
+      rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgAddToGauge): unknown {
+    const obj: any = {};
+    message.owner !== undefined && (obj.owner = message.owner);
+    message.gaugeId !== undefined && (obj.gaugeId = (message.gaugeId || BigInt(0)).toString());
+    if (message.rewards) {
+      obj.rewards = message.rewards.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.rewards = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<MsgAddToGauge>): MsgAddToGauge {
     const message = createBaseMsgAddToGauge();
@@ -505,11 +591,23 @@ export const MsgAddToGauge = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgAddToGauge.typeUrl, MsgAddToGauge);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgAddToGauge.aminoType, MsgAddToGauge.typeUrl);
 function createBaseMsgAddToGaugeResponse(): MsgAddToGaugeResponse {
   return {};
 }
 export const MsgAddToGaugeResponse = {
   typeUrl: "/osmosis.incentives.MsgAddToGaugeResponse",
+  aminoType: "osmosis/incentives/add-to-gauge-response",
+  is(o: any): o is MsgAddToGaugeResponse {
+    return o && o.$typeUrl === MsgAddToGaugeResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgAddToGaugeResponseSDKType {
+    return o && o.$typeUrl === MsgAddToGaugeResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgAddToGaugeResponseAmino {
+    return o && o.$typeUrl === MsgAddToGaugeResponse.typeUrl;
+  },
   encode(_: MsgAddToGaugeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -526,6 +624,13 @@ export const MsgAddToGaugeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgAddToGaugeResponse {
+    return {};
+  },
+  toJSON(_: MsgAddToGaugeResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgAddToGaugeResponse>): MsgAddToGaugeResponse {
     const message = createBaseMsgAddToGaugeResponse();
@@ -561,6 +666,8 @@ export const MsgAddToGaugeResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgAddToGaugeResponse.typeUrl, MsgAddToGaugeResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgAddToGaugeResponse.aminoType, MsgAddToGaugeResponse.typeUrl);
 function createBaseMsgCreateGroup(): MsgCreateGroup {
   return {
     coins: [],
@@ -571,6 +678,16 @@ function createBaseMsgCreateGroup(): MsgCreateGroup {
 }
 export const MsgCreateGroup = {
   typeUrl: "/osmosis.incentives.MsgCreateGroup",
+  aminoType: "osmosis/incentives/create-group",
+  is(o: any): o is MsgCreateGroup {
+    return o && (o.$typeUrl === MsgCreateGroup.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.is(o.coins[0])) && typeof o.numEpochsPaidOver === "bigint" && typeof o.owner === "string" && Array.isArray(o.poolIds) && (!o.poolIds.length || typeof o.poolIds[0] === "bigint"));
+  },
+  isSDK(o: any): o is MsgCreateGroupSDKType {
+    return o && (o.$typeUrl === MsgCreateGroup.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.isSDK(o.coins[0])) && typeof o.num_epochs_paid_over === "bigint" && typeof o.owner === "string" && Array.isArray(o.pool_ids) && (!o.pool_ids.length || typeof o.pool_ids[0] === "bigint"));
+  },
+  isAmino(o: any): o is MsgCreateGroupAmino {
+    return o && (o.$typeUrl === MsgCreateGroup.typeUrl || Array.isArray(o.coins) && (!o.coins.length || Coin.isAmino(o.coins[0])) && typeof o.num_epochs_paid_over === "bigint" && typeof o.owner === "string" && Array.isArray(o.pool_ids) && (!o.pool_ids.length || typeof o.pool_ids[0] === "bigint"));
+  },
   encode(message: MsgCreateGroup, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.coins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -620,6 +737,30 @@ export const MsgCreateGroup = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCreateGroup {
+    return {
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : [],
+      numEpochsPaidOver: isSet(object.numEpochsPaidOver) ? BigInt(object.numEpochsPaidOver.toString()) : BigInt(0),
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      poolIds: Array.isArray(object?.poolIds) ? object.poolIds.map((e: any) => BigInt(e.toString())) : []
+    };
+  },
+  toJSON(message: MsgCreateGroup): unknown {
+    const obj: any = {};
+    if (message.coins) {
+      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.coins = [];
+    }
+    message.numEpochsPaidOver !== undefined && (obj.numEpochsPaidOver = (message.numEpochsPaidOver || BigInt(0)).toString());
+    message.owner !== undefined && (obj.owner = message.owner);
+    if (message.poolIds) {
+      obj.poolIds = message.poolIds.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.poolIds = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<MsgCreateGroup>): MsgCreateGroup {
     const message = createBaseMsgCreateGroup();
@@ -679,6 +820,8 @@ export const MsgCreateGroup = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateGroup.typeUrl, MsgCreateGroup);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreateGroup.aminoType, MsgCreateGroup.typeUrl);
 function createBaseMsgCreateGroupResponse(): MsgCreateGroupResponse {
   return {
     groupId: BigInt(0)
@@ -686,6 +829,16 @@ function createBaseMsgCreateGroupResponse(): MsgCreateGroupResponse {
 }
 export const MsgCreateGroupResponse = {
   typeUrl: "/osmosis.incentives.MsgCreateGroupResponse",
+  aminoType: "osmosis/incentives/create-group-response",
+  is(o: any): o is MsgCreateGroupResponse {
+    return o && (o.$typeUrl === MsgCreateGroupResponse.typeUrl || typeof o.groupId === "bigint");
+  },
+  isSDK(o: any): o is MsgCreateGroupResponseSDKType {
+    return o && (o.$typeUrl === MsgCreateGroupResponse.typeUrl || typeof o.group_id === "bigint");
+  },
+  isAmino(o: any): o is MsgCreateGroupResponseAmino {
+    return o && (o.$typeUrl === MsgCreateGroupResponse.typeUrl || typeof o.group_id === "bigint");
+  },
   encode(message: MsgCreateGroupResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.groupId !== BigInt(0)) {
       writer.uint32(8).uint64(message.groupId);
@@ -708,6 +861,16 @@ export const MsgCreateGroupResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCreateGroupResponse {
+    return {
+      groupId: isSet(object.groupId) ? BigInt(object.groupId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgCreateGroupResponse): unknown {
+    const obj: any = {};
+    message.groupId !== undefined && (obj.groupId = (message.groupId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgCreateGroupResponse>): MsgCreateGroupResponse {
     const message = createBaseMsgCreateGroupResponse();
@@ -748,3 +911,5 @@ export const MsgCreateGroupResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateGroupResponse.typeUrl, MsgCreateGroupResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreateGroupResponse.aminoType, MsgCreateGroupResponse.typeUrl);

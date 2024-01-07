@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 /**
  * A Duration represents a signed, fixed-length span of time represented
  * as a count of seconds and fractions of seconds at nanosecond
@@ -217,6 +219,15 @@ function createBaseDuration(): Duration {
 }
 export const Duration = {
   typeUrl: "/google.protobuf.Duration",
+  is(o: any): o is Duration {
+    return o && (o.$typeUrl === Duration.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+  },
+  isSDK(o: any): o is DurationSDKType {
+    return o && (o.$typeUrl === Duration.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+  },
+  isAmino(o: any): o is DurationAmino {
+    return o && (o.$typeUrl === Duration.typeUrl || typeof o.seconds === "bigint" && typeof o.nanos === "number");
+  },
   encode(message: Duration, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.seconds !== BigInt(0)) {
       writer.uint32(8).int64(message.seconds);
@@ -245,6 +256,18 @@ export const Duration = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Duration {
+    return {
+      seconds: isSet(object.seconds) ? BigInt(object.seconds.toString()) : BigInt(0),
+      nanos: isSet(object.nanos) ? Number(object.nanos) : 0
+    };
+  },
+  toJSON(message: Duration): unknown {
+    const obj: any = {};
+    message.seconds !== undefined && (obj.seconds = (message.seconds || BigInt(0)).toString());
+    message.nanos !== undefined && (obj.nanos = Math.round(message.nanos));
+    return obj;
   },
   fromPartial(object: Partial<Duration>): Duration {
     const message = createBaseDuration();
@@ -278,3 +301,4 @@ export const Duration = {
     };
   }
 };
+GlobalDecoderRegistry.register(Duration.typeUrl, Duration);

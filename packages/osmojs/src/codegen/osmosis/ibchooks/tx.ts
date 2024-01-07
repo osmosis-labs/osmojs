@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export interface MsgEmitIBCAck {
   sender: string;
   packetSequence: bigint;
@@ -51,6 +53,16 @@ function createBaseMsgEmitIBCAck(): MsgEmitIBCAck {
 }
 export const MsgEmitIBCAck = {
   typeUrl: "/osmosis.ibchooks.MsgEmitIBCAck",
+  aminoType: "osmosis/ibchooks/emit-ibc-ack",
+  is(o: any): o is MsgEmitIBCAck {
+    return o && (o.$typeUrl === MsgEmitIBCAck.typeUrl || typeof o.sender === "string" && typeof o.packetSequence === "bigint" && typeof o.channel === "string");
+  },
+  isSDK(o: any): o is MsgEmitIBCAckSDKType {
+    return o && (o.$typeUrl === MsgEmitIBCAck.typeUrl || typeof o.sender === "string" && typeof o.packet_sequence === "bigint" && typeof o.channel === "string");
+  },
+  isAmino(o: any): o is MsgEmitIBCAckAmino {
+    return o && (o.$typeUrl === MsgEmitIBCAck.typeUrl || typeof o.sender === "string" && typeof o.packet_sequence === "bigint" && typeof o.channel === "string");
+  },
   encode(message: MsgEmitIBCAck, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -85,6 +97,20 @@ export const MsgEmitIBCAck = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgEmitIBCAck {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      packetSequence: isSet(object.packetSequence) ? BigInt(object.packetSequence.toString()) : BigInt(0),
+      channel: isSet(object.channel) ? String(object.channel) : ""
+    };
+  },
+  toJSON(message: MsgEmitIBCAck): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.packetSequence !== undefined && (obj.packetSequence = (message.packetSequence || BigInt(0)).toString());
+    message.channel !== undefined && (obj.channel = message.channel);
+    return obj;
   },
   fromPartial(object: Partial<MsgEmitIBCAck>): MsgEmitIBCAck {
     const message = createBaseMsgEmitIBCAck();
@@ -135,6 +161,8 @@ export const MsgEmitIBCAck = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgEmitIBCAck.typeUrl, MsgEmitIBCAck);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgEmitIBCAck.aminoType, MsgEmitIBCAck.typeUrl);
 function createBaseMsgEmitIBCAckResponse(): MsgEmitIBCAckResponse {
   return {
     contractResult: "",
@@ -143,6 +171,16 @@ function createBaseMsgEmitIBCAckResponse(): MsgEmitIBCAckResponse {
 }
 export const MsgEmitIBCAckResponse = {
   typeUrl: "/osmosis.ibchooks.MsgEmitIBCAckResponse",
+  aminoType: "osmosis/ibchooks/emit-ibc-ack-response",
+  is(o: any): o is MsgEmitIBCAckResponse {
+    return o && (o.$typeUrl === MsgEmitIBCAckResponse.typeUrl || typeof o.contractResult === "string" && typeof o.ibcAck === "string");
+  },
+  isSDK(o: any): o is MsgEmitIBCAckResponseSDKType {
+    return o && (o.$typeUrl === MsgEmitIBCAckResponse.typeUrl || typeof o.contract_result === "string" && typeof o.ibc_ack === "string");
+  },
+  isAmino(o: any): o is MsgEmitIBCAckResponseAmino {
+    return o && (o.$typeUrl === MsgEmitIBCAckResponse.typeUrl || typeof o.contract_result === "string" && typeof o.ibc_ack === "string");
+  },
   encode(message: MsgEmitIBCAckResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.contractResult !== "") {
       writer.uint32(10).string(message.contractResult);
@@ -171,6 +209,18 @@ export const MsgEmitIBCAckResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgEmitIBCAckResponse {
+    return {
+      contractResult: isSet(object.contractResult) ? String(object.contractResult) : "",
+      ibcAck: isSet(object.ibcAck) ? String(object.ibcAck) : ""
+    };
+  },
+  toJSON(message: MsgEmitIBCAckResponse): unknown {
+    const obj: any = {};
+    message.contractResult !== undefined && (obj.contractResult = message.contractResult);
+    message.ibcAck !== undefined && (obj.ibcAck = message.ibcAck);
+    return obj;
   },
   fromPartial(object: Partial<MsgEmitIBCAckResponse>): MsgEmitIBCAckResponse {
     const message = createBaseMsgEmitIBCAckResponse();
@@ -216,3 +266,5 @@ export const MsgEmitIBCAckResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgEmitIBCAckResponse.typeUrl, MsgEmitIBCAckResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgEmitIBCAckResponse.aminoType, MsgEmitIBCAckResponse.typeUrl);

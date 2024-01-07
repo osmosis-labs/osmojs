@@ -1,8 +1,9 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { isSet, toTimestamp, fromTimestamp } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 import { Decimal } from "@cosmjs/math";
-import { toTimestamp, fromTimestamp } from "../../helpers";
 export interface MsgSuperfluidDelegate {
   sender: string;
   lockId: bigint;
@@ -553,6 +554,16 @@ function createBaseMsgSuperfluidDelegate(): MsgSuperfluidDelegate {
 }
 export const MsgSuperfluidDelegate = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidDelegate",
+  aminoType: "osmosis/superfluid-delegate",
+  is(o: any): o is MsgSuperfluidDelegate {
+    return o && (o.$typeUrl === MsgSuperfluidDelegate.typeUrl || typeof o.sender === "string" && typeof o.lockId === "bigint" && typeof o.valAddr === "string");
+  },
+  isSDK(o: any): o is MsgSuperfluidDelegateSDKType {
+    return o && (o.$typeUrl === MsgSuperfluidDelegate.typeUrl || typeof o.sender === "string" && typeof o.lock_id === "bigint" && typeof o.val_addr === "string");
+  },
+  isAmino(o: any): o is MsgSuperfluidDelegateAmino {
+    return o && (o.$typeUrl === MsgSuperfluidDelegate.typeUrl || typeof o.sender === "string" && typeof o.lock_id === "bigint" && typeof o.val_addr === "string");
+  },
   encode(message: MsgSuperfluidDelegate, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -587,6 +598,20 @@ export const MsgSuperfluidDelegate = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSuperfluidDelegate {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      lockId: isSet(object.lockId) ? BigInt(object.lockId.toString()) : BigInt(0),
+      valAddr: isSet(object.valAddr) ? String(object.valAddr) : ""
+    };
+  },
+  toJSON(message: MsgSuperfluidDelegate): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.lockId !== undefined && (obj.lockId = (message.lockId || BigInt(0)).toString());
+    message.valAddr !== undefined && (obj.valAddr = message.valAddr);
+    return obj;
   },
   fromPartial(object: Partial<MsgSuperfluidDelegate>): MsgSuperfluidDelegate {
     const message = createBaseMsgSuperfluidDelegate();
@@ -637,11 +662,23 @@ export const MsgSuperfluidDelegate = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSuperfluidDelegate.typeUrl, MsgSuperfluidDelegate);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSuperfluidDelegate.aminoType, MsgSuperfluidDelegate.typeUrl);
 function createBaseMsgSuperfluidDelegateResponse(): MsgSuperfluidDelegateResponse {
   return {};
 }
 export const MsgSuperfluidDelegateResponse = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidDelegateResponse",
+  aminoType: "osmosis/superfluid-delegate-response",
+  is(o: any): o is MsgSuperfluidDelegateResponse {
+    return o && o.$typeUrl === MsgSuperfluidDelegateResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSuperfluidDelegateResponseSDKType {
+    return o && o.$typeUrl === MsgSuperfluidDelegateResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSuperfluidDelegateResponseAmino {
+    return o && o.$typeUrl === MsgSuperfluidDelegateResponse.typeUrl;
+  },
   encode(_: MsgSuperfluidDelegateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -658,6 +695,13 @@ export const MsgSuperfluidDelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSuperfluidDelegateResponse {
+    return {};
+  },
+  toJSON(_: MsgSuperfluidDelegateResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgSuperfluidDelegateResponse>): MsgSuperfluidDelegateResponse {
     const message = createBaseMsgSuperfluidDelegateResponse();
@@ -693,6 +737,8 @@ export const MsgSuperfluidDelegateResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSuperfluidDelegateResponse.typeUrl, MsgSuperfluidDelegateResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSuperfluidDelegateResponse.aminoType, MsgSuperfluidDelegateResponse.typeUrl);
 function createBaseMsgSuperfluidUndelegate(): MsgSuperfluidUndelegate {
   return {
     sender: "",
@@ -701,6 +747,16 @@ function createBaseMsgSuperfluidUndelegate(): MsgSuperfluidUndelegate {
 }
 export const MsgSuperfluidUndelegate = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegate",
+  aminoType: "osmosis/superfluid-undelegate",
+  is(o: any): o is MsgSuperfluidUndelegate {
+    return o && (o.$typeUrl === MsgSuperfluidUndelegate.typeUrl || typeof o.sender === "string" && typeof o.lockId === "bigint");
+  },
+  isSDK(o: any): o is MsgSuperfluidUndelegateSDKType {
+    return o && (o.$typeUrl === MsgSuperfluidUndelegate.typeUrl || typeof o.sender === "string" && typeof o.lock_id === "bigint");
+  },
+  isAmino(o: any): o is MsgSuperfluidUndelegateAmino {
+    return o && (o.$typeUrl === MsgSuperfluidUndelegate.typeUrl || typeof o.sender === "string" && typeof o.lock_id === "bigint");
+  },
   encode(message: MsgSuperfluidUndelegate, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -729,6 +785,18 @@ export const MsgSuperfluidUndelegate = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSuperfluidUndelegate {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      lockId: isSet(object.lockId) ? BigInt(object.lockId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgSuperfluidUndelegate): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.lockId !== undefined && (obj.lockId = (message.lockId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgSuperfluidUndelegate>): MsgSuperfluidUndelegate {
     const message = createBaseMsgSuperfluidUndelegate();
@@ -774,11 +842,23 @@ export const MsgSuperfluidUndelegate = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSuperfluidUndelegate.typeUrl, MsgSuperfluidUndelegate);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSuperfluidUndelegate.aminoType, MsgSuperfluidUndelegate.typeUrl);
 function createBaseMsgSuperfluidUndelegateResponse(): MsgSuperfluidUndelegateResponse {
   return {};
 }
 export const MsgSuperfluidUndelegateResponse = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateResponse",
+  aminoType: "osmosis/superfluid-undelegate-response",
+  is(o: any): o is MsgSuperfluidUndelegateResponse {
+    return o && o.$typeUrl === MsgSuperfluidUndelegateResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSuperfluidUndelegateResponseSDKType {
+    return o && o.$typeUrl === MsgSuperfluidUndelegateResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSuperfluidUndelegateResponseAmino {
+    return o && o.$typeUrl === MsgSuperfluidUndelegateResponse.typeUrl;
+  },
   encode(_: MsgSuperfluidUndelegateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -795,6 +875,13 @@ export const MsgSuperfluidUndelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSuperfluidUndelegateResponse {
+    return {};
+  },
+  toJSON(_: MsgSuperfluidUndelegateResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgSuperfluidUndelegateResponse>): MsgSuperfluidUndelegateResponse {
     const message = createBaseMsgSuperfluidUndelegateResponse();
@@ -830,6 +917,8 @@ export const MsgSuperfluidUndelegateResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSuperfluidUndelegateResponse.typeUrl, MsgSuperfluidUndelegateResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSuperfluidUndelegateResponse.aminoType, MsgSuperfluidUndelegateResponse.typeUrl);
 function createBaseMsgSuperfluidUnbondLock(): MsgSuperfluidUnbondLock {
   return {
     sender: "",
@@ -838,6 +927,16 @@ function createBaseMsgSuperfluidUnbondLock(): MsgSuperfluidUnbondLock {
 }
 export const MsgSuperfluidUnbondLock = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUnbondLock",
+  aminoType: "osmosis/superfluid-unbond-lock",
+  is(o: any): o is MsgSuperfluidUnbondLock {
+    return o && (o.$typeUrl === MsgSuperfluidUnbondLock.typeUrl || typeof o.sender === "string" && typeof o.lockId === "bigint");
+  },
+  isSDK(o: any): o is MsgSuperfluidUnbondLockSDKType {
+    return o && (o.$typeUrl === MsgSuperfluidUnbondLock.typeUrl || typeof o.sender === "string" && typeof o.lock_id === "bigint");
+  },
+  isAmino(o: any): o is MsgSuperfluidUnbondLockAmino {
+    return o && (o.$typeUrl === MsgSuperfluidUnbondLock.typeUrl || typeof o.sender === "string" && typeof o.lock_id === "bigint");
+  },
   encode(message: MsgSuperfluidUnbondLock, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -866,6 +965,18 @@ export const MsgSuperfluidUnbondLock = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSuperfluidUnbondLock {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      lockId: isSet(object.lockId) ? BigInt(object.lockId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgSuperfluidUnbondLock): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.lockId !== undefined && (obj.lockId = (message.lockId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgSuperfluidUnbondLock>): MsgSuperfluidUnbondLock {
     const message = createBaseMsgSuperfluidUnbondLock();
@@ -911,11 +1022,23 @@ export const MsgSuperfluidUnbondLock = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSuperfluidUnbondLock.typeUrl, MsgSuperfluidUnbondLock);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSuperfluidUnbondLock.aminoType, MsgSuperfluidUnbondLock.typeUrl);
 function createBaseMsgSuperfluidUnbondLockResponse(): MsgSuperfluidUnbondLockResponse {
   return {};
 }
 export const MsgSuperfluidUnbondLockResponse = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUnbondLockResponse",
+  aminoType: "osmosis/superfluid-unbond-lock-response",
+  is(o: any): o is MsgSuperfluidUnbondLockResponse {
+    return o && o.$typeUrl === MsgSuperfluidUnbondLockResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSuperfluidUnbondLockResponseSDKType {
+    return o && o.$typeUrl === MsgSuperfluidUnbondLockResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSuperfluidUnbondLockResponseAmino {
+    return o && o.$typeUrl === MsgSuperfluidUnbondLockResponse.typeUrl;
+  },
   encode(_: MsgSuperfluidUnbondLockResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -932,6 +1055,13 @@ export const MsgSuperfluidUnbondLockResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSuperfluidUnbondLockResponse {
+    return {};
+  },
+  toJSON(_: MsgSuperfluidUnbondLockResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgSuperfluidUnbondLockResponse>): MsgSuperfluidUnbondLockResponse {
     const message = createBaseMsgSuperfluidUnbondLockResponse();
@@ -967,6 +1097,8 @@ export const MsgSuperfluidUnbondLockResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSuperfluidUnbondLockResponse.typeUrl, MsgSuperfluidUnbondLockResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSuperfluidUnbondLockResponse.aminoType, MsgSuperfluidUnbondLockResponse.typeUrl);
 function createBaseMsgSuperfluidUndelegateAndUnbondLock(): MsgSuperfluidUndelegateAndUnbondLock {
   return {
     sender: "",
@@ -976,6 +1108,16 @@ function createBaseMsgSuperfluidUndelegateAndUnbondLock(): MsgSuperfluidUndelega
 }
 export const MsgSuperfluidUndelegateAndUnbondLock = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLock",
+  aminoType: "osmosis/superfluid-undelegate-and-unbond-lock",
+  is(o: any): o is MsgSuperfluidUndelegateAndUnbondLock {
+    return o && (o.$typeUrl === MsgSuperfluidUndelegateAndUnbondLock.typeUrl || typeof o.sender === "string" && typeof o.lockId === "bigint" && Coin.is(o.coin));
+  },
+  isSDK(o: any): o is MsgSuperfluidUndelegateAndUnbondLockSDKType {
+    return o && (o.$typeUrl === MsgSuperfluidUndelegateAndUnbondLock.typeUrl || typeof o.sender === "string" && typeof o.lock_id === "bigint" && Coin.isSDK(o.coin));
+  },
+  isAmino(o: any): o is MsgSuperfluidUndelegateAndUnbondLockAmino {
+    return o && (o.$typeUrl === MsgSuperfluidUndelegateAndUnbondLock.typeUrl || typeof o.sender === "string" && typeof o.lock_id === "bigint" && Coin.isAmino(o.coin));
+  },
   encode(message: MsgSuperfluidUndelegateAndUnbondLock, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -1010,6 +1152,20 @@ export const MsgSuperfluidUndelegateAndUnbondLock = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSuperfluidUndelegateAndUnbondLock {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      lockId: isSet(object.lockId) ? BigInt(object.lockId.toString()) : BigInt(0),
+      coin: isSet(object.coin) ? Coin.fromJSON(object.coin) : undefined
+    };
+  },
+  toJSON(message: MsgSuperfluidUndelegateAndUnbondLock): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.lockId !== undefined && (obj.lockId = (message.lockId || BigInt(0)).toString());
+    message.coin !== undefined && (obj.coin = message.coin ? Coin.toJSON(message.coin) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<MsgSuperfluidUndelegateAndUnbondLock>): MsgSuperfluidUndelegateAndUnbondLock {
     const message = createBaseMsgSuperfluidUndelegateAndUnbondLock();
@@ -1060,6 +1216,8 @@ export const MsgSuperfluidUndelegateAndUnbondLock = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSuperfluidUndelegateAndUnbondLock.typeUrl, MsgSuperfluidUndelegateAndUnbondLock);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSuperfluidUndelegateAndUnbondLock.aminoType, MsgSuperfluidUndelegateAndUnbondLock.typeUrl);
 function createBaseMsgSuperfluidUndelegateAndUnbondLockResponse(): MsgSuperfluidUndelegateAndUnbondLockResponse {
   return {
     lockId: BigInt(0)
@@ -1067,6 +1225,16 @@ function createBaseMsgSuperfluidUndelegateAndUnbondLockResponse(): MsgSuperfluid
 }
 export const MsgSuperfluidUndelegateAndUnbondLockResponse = {
   typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLockResponse",
+  aminoType: "osmosis/superfluid-undelegate-and-unbond-lock-response",
+  is(o: any): o is MsgSuperfluidUndelegateAndUnbondLockResponse {
+    return o && (o.$typeUrl === MsgSuperfluidUndelegateAndUnbondLockResponse.typeUrl || typeof o.lockId === "bigint");
+  },
+  isSDK(o: any): o is MsgSuperfluidUndelegateAndUnbondLockResponseSDKType {
+    return o && (o.$typeUrl === MsgSuperfluidUndelegateAndUnbondLockResponse.typeUrl || typeof o.lock_id === "bigint");
+  },
+  isAmino(o: any): o is MsgSuperfluidUndelegateAndUnbondLockResponseAmino {
+    return o && (o.$typeUrl === MsgSuperfluidUndelegateAndUnbondLockResponse.typeUrl || typeof o.lock_id === "bigint");
+  },
   encode(message: MsgSuperfluidUndelegateAndUnbondLockResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.lockId !== BigInt(0)) {
       writer.uint32(8).uint64(message.lockId);
@@ -1089,6 +1257,16 @@ export const MsgSuperfluidUndelegateAndUnbondLockResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSuperfluidUndelegateAndUnbondLockResponse {
+    return {
+      lockId: isSet(object.lockId) ? BigInt(object.lockId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgSuperfluidUndelegateAndUnbondLockResponse): unknown {
+    const obj: any = {};
+    message.lockId !== undefined && (obj.lockId = (message.lockId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgSuperfluidUndelegateAndUnbondLockResponse>): MsgSuperfluidUndelegateAndUnbondLockResponse {
     const message = createBaseMsgSuperfluidUndelegateAndUnbondLockResponse();
@@ -1129,6 +1307,8 @@ export const MsgSuperfluidUndelegateAndUnbondLockResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSuperfluidUndelegateAndUnbondLockResponse.typeUrl, MsgSuperfluidUndelegateAndUnbondLockResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSuperfluidUndelegateAndUnbondLockResponse.aminoType, MsgSuperfluidUndelegateAndUnbondLockResponse.typeUrl);
 function createBaseMsgLockAndSuperfluidDelegate(): MsgLockAndSuperfluidDelegate {
   return {
     sender: "",
@@ -1138,6 +1318,16 @@ function createBaseMsgLockAndSuperfluidDelegate(): MsgLockAndSuperfluidDelegate 
 }
 export const MsgLockAndSuperfluidDelegate = {
   typeUrl: "/osmosis.superfluid.MsgLockAndSuperfluidDelegate",
+  aminoType: "osmosis/lock-and-superfluid-delegate",
+  is(o: any): o is MsgLockAndSuperfluidDelegate {
+    return o && (o.$typeUrl === MsgLockAndSuperfluidDelegate.typeUrl || typeof o.sender === "string" && Array.isArray(o.coins) && (!o.coins.length || Coin.is(o.coins[0])) && typeof o.valAddr === "string");
+  },
+  isSDK(o: any): o is MsgLockAndSuperfluidDelegateSDKType {
+    return o && (o.$typeUrl === MsgLockAndSuperfluidDelegate.typeUrl || typeof o.sender === "string" && Array.isArray(o.coins) && (!o.coins.length || Coin.isSDK(o.coins[0])) && typeof o.val_addr === "string");
+  },
+  isAmino(o: any): o is MsgLockAndSuperfluidDelegateAmino {
+    return o && (o.$typeUrl === MsgLockAndSuperfluidDelegate.typeUrl || typeof o.sender === "string" && Array.isArray(o.coins) && (!o.coins.length || Coin.isAmino(o.coins[0])) && typeof o.val_addr === "string");
+  },
   encode(message: MsgLockAndSuperfluidDelegate, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -1172,6 +1362,24 @@ export const MsgLockAndSuperfluidDelegate = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgLockAndSuperfluidDelegate {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : [],
+      valAddr: isSet(object.valAddr) ? String(object.valAddr) : ""
+    };
+  },
+  toJSON(message: MsgLockAndSuperfluidDelegate): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    if (message.coins) {
+      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.coins = [];
+    }
+    message.valAddr !== undefined && (obj.valAddr = message.valAddr);
+    return obj;
   },
   fromPartial(object: Partial<MsgLockAndSuperfluidDelegate>): MsgLockAndSuperfluidDelegate {
     const message = createBaseMsgLockAndSuperfluidDelegate();
@@ -1224,6 +1432,8 @@ export const MsgLockAndSuperfluidDelegate = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgLockAndSuperfluidDelegate.typeUrl, MsgLockAndSuperfluidDelegate);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgLockAndSuperfluidDelegate.aminoType, MsgLockAndSuperfluidDelegate.typeUrl);
 function createBaseMsgLockAndSuperfluidDelegateResponse(): MsgLockAndSuperfluidDelegateResponse {
   return {
     ID: BigInt(0)
@@ -1231,6 +1441,16 @@ function createBaseMsgLockAndSuperfluidDelegateResponse(): MsgLockAndSuperfluidD
 }
 export const MsgLockAndSuperfluidDelegateResponse = {
   typeUrl: "/osmosis.superfluid.MsgLockAndSuperfluidDelegateResponse",
+  aminoType: "osmosis/lock-and-superfluid-delegate-response",
+  is(o: any): o is MsgLockAndSuperfluidDelegateResponse {
+    return o && (o.$typeUrl === MsgLockAndSuperfluidDelegateResponse.typeUrl || typeof o.ID === "bigint");
+  },
+  isSDK(o: any): o is MsgLockAndSuperfluidDelegateResponseSDKType {
+    return o && (o.$typeUrl === MsgLockAndSuperfluidDelegateResponse.typeUrl || typeof o.ID === "bigint");
+  },
+  isAmino(o: any): o is MsgLockAndSuperfluidDelegateResponseAmino {
+    return o && (o.$typeUrl === MsgLockAndSuperfluidDelegateResponse.typeUrl || typeof o.ID === "bigint");
+  },
   encode(message: MsgLockAndSuperfluidDelegateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.ID !== BigInt(0)) {
       writer.uint32(8).uint64(message.ID);
@@ -1253,6 +1473,16 @@ export const MsgLockAndSuperfluidDelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgLockAndSuperfluidDelegateResponse {
+    return {
+      ID: isSet(object.ID) ? BigInt(object.ID.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgLockAndSuperfluidDelegateResponse): unknown {
+    const obj: any = {};
+    message.ID !== undefined && (obj.ID = (message.ID || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgLockAndSuperfluidDelegateResponse>): MsgLockAndSuperfluidDelegateResponse {
     const message = createBaseMsgLockAndSuperfluidDelegateResponse();
@@ -1293,6 +1523,8 @@ export const MsgLockAndSuperfluidDelegateResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgLockAndSuperfluidDelegateResponse.typeUrl, MsgLockAndSuperfluidDelegateResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgLockAndSuperfluidDelegateResponse.aminoType, MsgLockAndSuperfluidDelegateResponse.typeUrl);
 function createBaseMsgCreateFullRangePositionAndSuperfluidDelegate(): MsgCreateFullRangePositionAndSuperfluidDelegate {
   return {
     sender: "",
@@ -1303,6 +1535,16 @@ function createBaseMsgCreateFullRangePositionAndSuperfluidDelegate(): MsgCreateF
 }
 export const MsgCreateFullRangePositionAndSuperfluidDelegate = {
   typeUrl: "/osmosis.superfluid.MsgCreateFullRangePositionAndSuperfluidDelegate",
+  aminoType: "osmosis/full-range-and-sf-delegate",
+  is(o: any): o is MsgCreateFullRangePositionAndSuperfluidDelegate {
+    return o && (o.$typeUrl === MsgCreateFullRangePositionAndSuperfluidDelegate.typeUrl || typeof o.sender === "string" && Array.isArray(o.coins) && (!o.coins.length || Coin.is(o.coins[0])) && typeof o.valAddr === "string" && typeof o.poolId === "bigint");
+  },
+  isSDK(o: any): o is MsgCreateFullRangePositionAndSuperfluidDelegateSDKType {
+    return o && (o.$typeUrl === MsgCreateFullRangePositionAndSuperfluidDelegate.typeUrl || typeof o.sender === "string" && Array.isArray(o.coins) && (!o.coins.length || Coin.isSDK(o.coins[0])) && typeof o.val_addr === "string" && typeof o.pool_id === "bigint");
+  },
+  isAmino(o: any): o is MsgCreateFullRangePositionAndSuperfluidDelegateAmino {
+    return o && (o.$typeUrl === MsgCreateFullRangePositionAndSuperfluidDelegate.typeUrl || typeof o.sender === "string" && Array.isArray(o.coins) && (!o.coins.length || Coin.isAmino(o.coins[0])) && typeof o.val_addr === "string" && typeof o.pool_id === "bigint");
+  },
   encode(message: MsgCreateFullRangePositionAndSuperfluidDelegate, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -1343,6 +1585,26 @@ export const MsgCreateFullRangePositionAndSuperfluidDelegate = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCreateFullRangePositionAndSuperfluidDelegate {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : [],
+      valAddr: isSet(object.valAddr) ? String(object.valAddr) : "",
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgCreateFullRangePositionAndSuperfluidDelegate): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    if (message.coins) {
+      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.coins = [];
+    }
+    message.valAddr !== undefined && (obj.valAddr = message.valAddr);
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgCreateFullRangePositionAndSuperfluidDelegate>): MsgCreateFullRangePositionAndSuperfluidDelegate {
     const message = createBaseMsgCreateFullRangePositionAndSuperfluidDelegate();
@@ -1400,6 +1662,8 @@ export const MsgCreateFullRangePositionAndSuperfluidDelegate = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateFullRangePositionAndSuperfluidDelegate.typeUrl, MsgCreateFullRangePositionAndSuperfluidDelegate);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreateFullRangePositionAndSuperfluidDelegate.aminoType, MsgCreateFullRangePositionAndSuperfluidDelegate.typeUrl);
 function createBaseMsgCreateFullRangePositionAndSuperfluidDelegateResponse(): MsgCreateFullRangePositionAndSuperfluidDelegateResponse {
   return {
     lockID: BigInt(0),
@@ -1408,6 +1672,16 @@ function createBaseMsgCreateFullRangePositionAndSuperfluidDelegateResponse(): Ms
 }
 export const MsgCreateFullRangePositionAndSuperfluidDelegateResponse = {
   typeUrl: "/osmosis.superfluid.MsgCreateFullRangePositionAndSuperfluidDelegateResponse",
+  aminoType: "osmosis/create-full-range-position-and-superfluid-delegate-response",
+  is(o: any): o is MsgCreateFullRangePositionAndSuperfluidDelegateResponse {
+    return o && (o.$typeUrl === MsgCreateFullRangePositionAndSuperfluidDelegateResponse.typeUrl || typeof o.lockID === "bigint" && typeof o.positionID === "bigint");
+  },
+  isSDK(o: any): o is MsgCreateFullRangePositionAndSuperfluidDelegateResponseSDKType {
+    return o && (o.$typeUrl === MsgCreateFullRangePositionAndSuperfluidDelegateResponse.typeUrl || typeof o.lockID === "bigint" && typeof o.positionID === "bigint");
+  },
+  isAmino(o: any): o is MsgCreateFullRangePositionAndSuperfluidDelegateResponseAmino {
+    return o && (o.$typeUrl === MsgCreateFullRangePositionAndSuperfluidDelegateResponse.typeUrl || typeof o.lockID === "bigint" && typeof o.positionID === "bigint");
+  },
   encode(message: MsgCreateFullRangePositionAndSuperfluidDelegateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.lockID !== BigInt(0)) {
       writer.uint32(8).uint64(message.lockID);
@@ -1436,6 +1710,18 @@ export const MsgCreateFullRangePositionAndSuperfluidDelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCreateFullRangePositionAndSuperfluidDelegateResponse {
+    return {
+      lockID: isSet(object.lockID) ? BigInt(object.lockID.toString()) : BigInt(0),
+      positionID: isSet(object.positionID) ? BigInt(object.positionID.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgCreateFullRangePositionAndSuperfluidDelegateResponse): unknown {
+    const obj: any = {};
+    message.lockID !== undefined && (obj.lockID = (message.lockID || BigInt(0)).toString());
+    message.positionID !== undefined && (obj.positionID = (message.positionID || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgCreateFullRangePositionAndSuperfluidDelegateResponse>): MsgCreateFullRangePositionAndSuperfluidDelegateResponse {
     const message = createBaseMsgCreateFullRangePositionAndSuperfluidDelegateResponse();
@@ -1481,6 +1767,8 @@ export const MsgCreateFullRangePositionAndSuperfluidDelegateResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateFullRangePositionAndSuperfluidDelegateResponse.typeUrl, MsgCreateFullRangePositionAndSuperfluidDelegateResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreateFullRangePositionAndSuperfluidDelegateResponse.aminoType, MsgCreateFullRangePositionAndSuperfluidDelegateResponse.typeUrl);
 function createBaseMsgUnPoolWhitelistedPool(): MsgUnPoolWhitelistedPool {
   return {
     sender: "",
@@ -1489,6 +1777,16 @@ function createBaseMsgUnPoolWhitelistedPool(): MsgUnPoolWhitelistedPool {
 }
 export const MsgUnPoolWhitelistedPool = {
   typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPool",
+  aminoType: "osmosis/unpool-whitelisted-pool",
+  is(o: any): o is MsgUnPoolWhitelistedPool {
+    return o && (o.$typeUrl === MsgUnPoolWhitelistedPool.typeUrl || typeof o.sender === "string" && typeof o.poolId === "bigint");
+  },
+  isSDK(o: any): o is MsgUnPoolWhitelistedPoolSDKType {
+    return o && (o.$typeUrl === MsgUnPoolWhitelistedPool.typeUrl || typeof o.sender === "string" && typeof o.pool_id === "bigint");
+  },
+  isAmino(o: any): o is MsgUnPoolWhitelistedPoolAmino {
+    return o && (o.$typeUrl === MsgUnPoolWhitelistedPool.typeUrl || typeof o.sender === "string" && typeof o.pool_id === "bigint");
+  },
   encode(message: MsgUnPoolWhitelistedPool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -1517,6 +1815,18 @@ export const MsgUnPoolWhitelistedPool = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgUnPoolWhitelistedPool {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgUnPoolWhitelistedPool): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgUnPoolWhitelistedPool>): MsgUnPoolWhitelistedPool {
     const message = createBaseMsgUnPoolWhitelistedPool();
@@ -1562,6 +1872,8 @@ export const MsgUnPoolWhitelistedPool = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUnPoolWhitelistedPool.typeUrl, MsgUnPoolWhitelistedPool);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUnPoolWhitelistedPool.aminoType, MsgUnPoolWhitelistedPool.typeUrl);
 function createBaseMsgUnPoolWhitelistedPoolResponse(): MsgUnPoolWhitelistedPoolResponse {
   return {
     exitedLockIds: []
@@ -1569,6 +1881,16 @@ function createBaseMsgUnPoolWhitelistedPoolResponse(): MsgUnPoolWhitelistedPoolR
 }
 export const MsgUnPoolWhitelistedPoolResponse = {
   typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPoolResponse",
+  aminoType: "osmosis/un-pool-whitelisted-pool-response",
+  is(o: any): o is MsgUnPoolWhitelistedPoolResponse {
+    return o && (o.$typeUrl === MsgUnPoolWhitelistedPoolResponse.typeUrl || Array.isArray(o.exitedLockIds) && (!o.exitedLockIds.length || typeof o.exitedLockIds[0] === "bigint"));
+  },
+  isSDK(o: any): o is MsgUnPoolWhitelistedPoolResponseSDKType {
+    return o && (o.$typeUrl === MsgUnPoolWhitelistedPoolResponse.typeUrl || Array.isArray(o.exited_lock_ids) && (!o.exited_lock_ids.length || typeof o.exited_lock_ids[0] === "bigint"));
+  },
+  isAmino(o: any): o is MsgUnPoolWhitelistedPoolResponseAmino {
+    return o && (o.$typeUrl === MsgUnPoolWhitelistedPoolResponse.typeUrl || Array.isArray(o.exited_lock_ids) && (!o.exited_lock_ids.length || typeof o.exited_lock_ids[0] === "bigint"));
+  },
   encode(message: MsgUnPoolWhitelistedPoolResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.exitedLockIds) {
@@ -1600,6 +1922,20 @@ export const MsgUnPoolWhitelistedPoolResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgUnPoolWhitelistedPoolResponse {
+    return {
+      exitedLockIds: Array.isArray(object?.exitedLockIds) ? object.exitedLockIds.map((e: any) => BigInt(e.toString())) : []
+    };
+  },
+  toJSON(message: MsgUnPoolWhitelistedPoolResponse): unknown {
+    const obj: any = {};
+    if (message.exitedLockIds) {
+      obj.exitedLockIds = message.exitedLockIds.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.exitedLockIds = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<MsgUnPoolWhitelistedPoolResponse>): MsgUnPoolWhitelistedPoolResponse {
     const message = createBaseMsgUnPoolWhitelistedPoolResponse();
@@ -1642,6 +1978,8 @@ export const MsgUnPoolWhitelistedPoolResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUnPoolWhitelistedPoolResponse.typeUrl, MsgUnPoolWhitelistedPoolResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUnPoolWhitelistedPoolResponse.aminoType, MsgUnPoolWhitelistedPoolResponse.typeUrl);
 function createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition(): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
   return {
     sender: "",
@@ -1652,6 +1990,16 @@ function createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition(): M
 }
 export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition = {
   typeUrl: "/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition",
+  aminoType: "osmosis/unlock-and-migrate",
+  is(o: any): o is MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
+    return o && (o.$typeUrl === MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition.typeUrl || typeof o.sender === "string" && typeof o.lockId === "bigint" && Coin.is(o.sharesToMigrate) && Array.isArray(o.tokenOutMins) && (!o.tokenOutMins.length || Coin.is(o.tokenOutMins[0])));
+  },
+  isSDK(o: any): o is MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionSDKType {
+    return o && (o.$typeUrl === MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition.typeUrl || typeof o.sender === "string" && typeof o.lock_id === "bigint" && Coin.isSDK(o.shares_to_migrate) && Array.isArray(o.token_out_mins) && (!o.token_out_mins.length || Coin.isSDK(o.token_out_mins[0])));
+  },
+  isAmino(o: any): o is MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionAmino {
+    return o && (o.$typeUrl === MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition.typeUrl || typeof o.sender === "string" && typeof o.lock_id === "bigint" && Coin.isAmino(o.shares_to_migrate) && Array.isArray(o.token_out_mins) && (!o.token_out_mins.length || Coin.isAmino(o.token_out_mins[0])));
+  },
   encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -1692,6 +2040,26 @@ export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      lockId: isSet(object.lockId) ? BigInt(object.lockId.toString()) : BigInt(0),
+      sharesToMigrate: isSet(object.sharesToMigrate) ? Coin.fromJSON(object.sharesToMigrate) : undefined,
+      tokenOutMins: Array.isArray(object?.tokenOutMins) ? object.tokenOutMins.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition): unknown {
+    const obj: any = {};
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.lockId !== undefined && (obj.lockId = (message.lockId || BigInt(0)).toString());
+    message.sharesToMigrate !== undefined && (obj.sharesToMigrate = message.sharesToMigrate ? Coin.toJSON(message.sharesToMigrate) : undefined);
+    if (message.tokenOutMins) {
+      obj.tokenOutMins = message.tokenOutMins.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.tokenOutMins = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition>): MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
     const message = createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPosition();
@@ -1749,6 +2117,8 @@ export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition.typeUrl, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition.aminoType, MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition.typeUrl);
 function createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse(): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
   return {
     amount0: "",
@@ -1759,6 +2129,16 @@ function createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPositionRespo
 }
 export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse = {
   typeUrl: "/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse",
+  aminoType: "osmosis/unlock-and-migrate-shares-to-full-range-concentrated-position-response",
+  is(o: any): o is MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
+    return o && (o.$typeUrl === MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse.typeUrl || typeof o.amount0 === "string" && typeof o.amount1 === "string" && typeof o.liquidityCreated === "string" && Timestamp.is(o.joinTime));
+  },
+  isSDK(o: any): o is MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponseSDKType {
+    return o && (o.$typeUrl === MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse.typeUrl || typeof o.amount0 === "string" && typeof o.amount1 === "string" && typeof o.liquidity_created === "string" && Timestamp.isSDK(o.join_time));
+  },
+  isAmino(o: any): o is MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponseAmino {
+    return o && (o.$typeUrl === MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse.typeUrl || typeof o.amount0 === "string" && typeof o.amount1 === "string" && typeof o.liquidity_created === "string" && Timestamp.isAmino(o.join_time));
+  },
   encode(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.amount0 !== "") {
       writer.uint32(10).string(message.amount0);
@@ -1799,6 +2179,22 @@ export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse = 
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
+    return {
+      amount0: isSet(object.amount0) ? String(object.amount0) : "",
+      amount1: isSet(object.amount1) ? String(object.amount1) : "",
+      liquidityCreated: isSet(object.liquidityCreated) ? String(object.liquidityCreated) : "",
+      joinTime: isSet(object.joinTime) ? new Date(object.joinTime) : undefined
+    };
+  },
+  toJSON(message: MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse): unknown {
+    const obj: any = {};
+    message.amount0 !== undefined && (obj.amount0 = message.amount0);
+    message.amount1 !== undefined && (obj.amount1 = message.amount1);
+    message.liquidityCreated !== undefined && (obj.liquidityCreated = message.liquidityCreated);
+    message.joinTime !== undefined && (obj.joinTime = message.joinTime.toISOString());
+    return obj;
   },
   fromPartial(object: Partial<MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse>): MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
     const message = createBaseMsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse();
@@ -1854,6 +2250,8 @@ export const MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse = 
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse.typeUrl, MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse.aminoType, MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse.typeUrl);
 function createBaseMsgAddToConcentratedLiquiditySuperfluidPosition(): MsgAddToConcentratedLiquiditySuperfluidPosition {
   return {
     positionId: BigInt(0),
@@ -1864,6 +2262,16 @@ function createBaseMsgAddToConcentratedLiquiditySuperfluidPosition(): MsgAddToCo
 }
 export const MsgAddToConcentratedLiquiditySuperfluidPosition = {
   typeUrl: "/osmosis.superfluid.MsgAddToConcentratedLiquiditySuperfluidPosition",
+  aminoType: "osmosis/add-to-cl-superfluid-position",
+  is(o: any): o is MsgAddToConcentratedLiquiditySuperfluidPosition {
+    return o && (o.$typeUrl === MsgAddToConcentratedLiquiditySuperfluidPosition.typeUrl || typeof o.positionId === "bigint" && typeof o.sender === "string" && Coin.is(o.tokenDesired0) && Coin.is(o.tokenDesired1));
+  },
+  isSDK(o: any): o is MsgAddToConcentratedLiquiditySuperfluidPositionSDKType {
+    return o && (o.$typeUrl === MsgAddToConcentratedLiquiditySuperfluidPosition.typeUrl || typeof o.position_id === "bigint" && typeof o.sender === "string" && Coin.isSDK(o.token_desired0) && Coin.isSDK(o.token_desired1));
+  },
+  isAmino(o: any): o is MsgAddToConcentratedLiquiditySuperfluidPositionAmino {
+    return o && (o.$typeUrl === MsgAddToConcentratedLiquiditySuperfluidPosition.typeUrl || typeof o.position_id === "bigint" && typeof o.sender === "string" && Coin.isAmino(o.token_desired0) && Coin.isAmino(o.token_desired1));
+  },
   encode(message: MsgAddToConcentratedLiquiditySuperfluidPosition, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.positionId !== BigInt(0)) {
       writer.uint32(8).uint64(message.positionId);
@@ -1904,6 +2312,22 @@ export const MsgAddToConcentratedLiquiditySuperfluidPosition = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgAddToConcentratedLiquiditySuperfluidPosition {
+    return {
+      positionId: isSet(object.positionId) ? BigInt(object.positionId.toString()) : BigInt(0),
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      tokenDesired0: isSet(object.tokenDesired0) ? Coin.fromJSON(object.tokenDesired0) : undefined,
+      tokenDesired1: isSet(object.tokenDesired1) ? Coin.fromJSON(object.tokenDesired1) : undefined
+    };
+  },
+  toJSON(message: MsgAddToConcentratedLiquiditySuperfluidPosition): unknown {
+    const obj: any = {};
+    message.positionId !== undefined && (obj.positionId = (message.positionId || BigInt(0)).toString());
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.tokenDesired0 !== undefined && (obj.tokenDesired0 = message.tokenDesired0 ? Coin.toJSON(message.tokenDesired0) : undefined);
+    message.tokenDesired1 !== undefined && (obj.tokenDesired1 = message.tokenDesired1 ? Coin.toJSON(message.tokenDesired1) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<MsgAddToConcentratedLiquiditySuperfluidPosition>): MsgAddToConcentratedLiquiditySuperfluidPosition {
     const message = createBaseMsgAddToConcentratedLiquiditySuperfluidPosition();
@@ -1959,6 +2383,8 @@ export const MsgAddToConcentratedLiquiditySuperfluidPosition = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgAddToConcentratedLiquiditySuperfluidPosition.typeUrl, MsgAddToConcentratedLiquiditySuperfluidPosition);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgAddToConcentratedLiquiditySuperfluidPosition.aminoType, MsgAddToConcentratedLiquiditySuperfluidPosition.typeUrl);
 function createBaseMsgAddToConcentratedLiquiditySuperfluidPositionResponse(): MsgAddToConcentratedLiquiditySuperfluidPositionResponse {
   return {
     positionId: BigInt(0),
@@ -1970,6 +2396,16 @@ function createBaseMsgAddToConcentratedLiquiditySuperfluidPositionResponse(): Ms
 }
 export const MsgAddToConcentratedLiquiditySuperfluidPositionResponse = {
   typeUrl: "/osmosis.superfluid.MsgAddToConcentratedLiquiditySuperfluidPositionResponse",
+  aminoType: "osmosis/add-to-concentrated-liquidity-superfluid-position-response",
+  is(o: any): o is MsgAddToConcentratedLiquiditySuperfluidPositionResponse {
+    return o && (o.$typeUrl === MsgAddToConcentratedLiquiditySuperfluidPositionResponse.typeUrl || typeof o.positionId === "bigint" && typeof o.amount0 === "string" && typeof o.amount1 === "string" && typeof o.newLiquidity === "string" && typeof o.lockId === "bigint");
+  },
+  isSDK(o: any): o is MsgAddToConcentratedLiquiditySuperfluidPositionResponseSDKType {
+    return o && (o.$typeUrl === MsgAddToConcentratedLiquiditySuperfluidPositionResponse.typeUrl || typeof o.position_id === "bigint" && typeof o.amount0 === "string" && typeof o.amount1 === "string" && typeof o.new_liquidity === "string" && typeof o.lock_id === "bigint");
+  },
+  isAmino(o: any): o is MsgAddToConcentratedLiquiditySuperfluidPositionResponseAmino {
+    return o && (o.$typeUrl === MsgAddToConcentratedLiquiditySuperfluidPositionResponse.typeUrl || typeof o.position_id === "bigint" && typeof o.amount0 === "string" && typeof o.amount1 === "string" && typeof o.new_liquidity === "string" && typeof o.lock_id === "bigint");
+  },
   encode(message: MsgAddToConcentratedLiquiditySuperfluidPositionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.positionId !== BigInt(0)) {
       writer.uint32(8).uint64(message.positionId);
@@ -2016,6 +2452,24 @@ export const MsgAddToConcentratedLiquiditySuperfluidPositionResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgAddToConcentratedLiquiditySuperfluidPositionResponse {
+    return {
+      positionId: isSet(object.positionId) ? BigInt(object.positionId.toString()) : BigInt(0),
+      amount0: isSet(object.amount0) ? String(object.amount0) : "",
+      amount1: isSet(object.amount1) ? String(object.amount1) : "",
+      newLiquidity: isSet(object.newLiquidity) ? String(object.newLiquidity) : "",
+      lockId: isSet(object.lockId) ? BigInt(object.lockId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgAddToConcentratedLiquiditySuperfluidPositionResponse): unknown {
+    const obj: any = {};
+    message.positionId !== undefined && (obj.positionId = (message.positionId || BigInt(0)).toString());
+    message.amount0 !== undefined && (obj.amount0 = message.amount0);
+    message.amount1 !== undefined && (obj.amount1 = message.amount1);
+    message.newLiquidity !== undefined && (obj.newLiquidity = message.newLiquidity);
+    message.lockId !== undefined && (obj.lockId = (message.lockId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgAddToConcentratedLiquiditySuperfluidPositionResponse>): MsgAddToConcentratedLiquiditySuperfluidPositionResponse {
     const message = createBaseMsgAddToConcentratedLiquiditySuperfluidPositionResponse();
@@ -2076,6 +2530,8 @@ export const MsgAddToConcentratedLiquiditySuperfluidPositionResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgAddToConcentratedLiquiditySuperfluidPositionResponse.typeUrl, MsgAddToConcentratedLiquiditySuperfluidPositionResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgAddToConcentratedLiquiditySuperfluidPositionResponse.aminoType, MsgAddToConcentratedLiquiditySuperfluidPositionResponse.typeUrl);
 function createBaseMsgUnbondConvertAndStake(): MsgUnbondConvertAndStake {
   return {
     lockId: BigInt(0),
@@ -2087,6 +2543,16 @@ function createBaseMsgUnbondConvertAndStake(): MsgUnbondConvertAndStake {
 }
 export const MsgUnbondConvertAndStake = {
   typeUrl: "/osmosis.superfluid.MsgUnbondConvertAndStake",
+  aminoType: "osmosis/unbond-convert-and-stake",
+  is(o: any): o is MsgUnbondConvertAndStake {
+    return o && (o.$typeUrl === MsgUnbondConvertAndStake.typeUrl || typeof o.lockId === "bigint" && typeof o.sender === "string" && typeof o.valAddr === "string" && typeof o.minAmtToStake === "string" && Coin.is(o.sharesToConvert));
+  },
+  isSDK(o: any): o is MsgUnbondConvertAndStakeSDKType {
+    return o && (o.$typeUrl === MsgUnbondConvertAndStake.typeUrl || typeof o.lock_id === "bigint" && typeof o.sender === "string" && typeof o.val_addr === "string" && typeof o.min_amt_to_stake === "string" && Coin.isSDK(o.shares_to_convert));
+  },
+  isAmino(o: any): o is MsgUnbondConvertAndStakeAmino {
+    return o && (o.$typeUrl === MsgUnbondConvertAndStake.typeUrl || typeof o.lock_id === "bigint" && typeof o.sender === "string" && typeof o.val_addr === "string" && typeof o.min_amt_to_stake === "string" && Coin.isAmino(o.shares_to_convert));
+  },
   encode(message: MsgUnbondConvertAndStake, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.lockId !== BigInt(0)) {
       writer.uint32(8).uint64(message.lockId);
@@ -2133,6 +2599,24 @@ export const MsgUnbondConvertAndStake = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgUnbondConvertAndStake {
+    return {
+      lockId: isSet(object.lockId) ? BigInt(object.lockId.toString()) : BigInt(0),
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      valAddr: isSet(object.valAddr) ? String(object.valAddr) : "",
+      minAmtToStake: isSet(object.minAmtToStake) ? String(object.minAmtToStake) : "",
+      sharesToConvert: isSet(object.sharesToConvert) ? Coin.fromJSON(object.sharesToConvert) : undefined
+    };
+  },
+  toJSON(message: MsgUnbondConvertAndStake): unknown {
+    const obj: any = {};
+    message.lockId !== undefined && (obj.lockId = (message.lockId || BigInt(0)).toString());
+    message.sender !== undefined && (obj.sender = message.sender);
+    message.valAddr !== undefined && (obj.valAddr = message.valAddr);
+    message.minAmtToStake !== undefined && (obj.minAmtToStake = message.minAmtToStake);
+    message.sharesToConvert !== undefined && (obj.sharesToConvert = message.sharesToConvert ? Coin.toJSON(message.sharesToConvert) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<MsgUnbondConvertAndStake>): MsgUnbondConvertAndStake {
     const message = createBaseMsgUnbondConvertAndStake();
@@ -2193,6 +2677,8 @@ export const MsgUnbondConvertAndStake = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUnbondConvertAndStake.typeUrl, MsgUnbondConvertAndStake);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUnbondConvertAndStake.aminoType, MsgUnbondConvertAndStake.typeUrl);
 function createBaseMsgUnbondConvertAndStakeResponse(): MsgUnbondConvertAndStakeResponse {
   return {
     totalAmtStaked: ""
@@ -2200,6 +2686,16 @@ function createBaseMsgUnbondConvertAndStakeResponse(): MsgUnbondConvertAndStakeR
 }
 export const MsgUnbondConvertAndStakeResponse = {
   typeUrl: "/osmosis.superfluid.MsgUnbondConvertAndStakeResponse",
+  aminoType: "osmosis/unbond-convert-and-stake-response",
+  is(o: any): o is MsgUnbondConvertAndStakeResponse {
+    return o && (o.$typeUrl === MsgUnbondConvertAndStakeResponse.typeUrl || typeof o.totalAmtStaked === "string");
+  },
+  isSDK(o: any): o is MsgUnbondConvertAndStakeResponseSDKType {
+    return o && (o.$typeUrl === MsgUnbondConvertAndStakeResponse.typeUrl || typeof o.total_amt_staked === "string");
+  },
+  isAmino(o: any): o is MsgUnbondConvertAndStakeResponseAmino {
+    return o && (o.$typeUrl === MsgUnbondConvertAndStakeResponse.typeUrl || typeof o.total_amt_staked === "string");
+  },
   encode(message: MsgUnbondConvertAndStakeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.totalAmtStaked !== "") {
       writer.uint32(10).string(message.totalAmtStaked);
@@ -2222,6 +2718,16 @@ export const MsgUnbondConvertAndStakeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgUnbondConvertAndStakeResponse {
+    return {
+      totalAmtStaked: isSet(object.totalAmtStaked) ? String(object.totalAmtStaked) : ""
+    };
+  },
+  toJSON(message: MsgUnbondConvertAndStakeResponse): unknown {
+    const obj: any = {};
+    message.totalAmtStaked !== undefined && (obj.totalAmtStaked = message.totalAmtStaked);
+    return obj;
   },
   fromPartial(object: Partial<MsgUnbondConvertAndStakeResponse>): MsgUnbondConvertAndStakeResponse {
     const message = createBaseMsgUnbondConvertAndStakeResponse();
@@ -2262,3 +2768,5 @@ export const MsgUnbondConvertAndStakeResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgUnbondConvertAndStakeResponse.typeUrl, MsgUnbondConvertAndStakeResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgUnbondConvertAndStakeResponse.aminoType, MsgUnbondConvertAndStakeResponse.typeUrl);

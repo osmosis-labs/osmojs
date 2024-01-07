@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 /**
  * Capability defines an implementation of an object capability. The index
  * provided to a Capability must be globally unique.
@@ -96,6 +98,15 @@ function createBaseCapability(): Capability {
 }
 export const Capability = {
   typeUrl: "/capability.v1.Capability",
+  is(o: any): o is Capability {
+    return o && (o.$typeUrl === Capability.typeUrl || typeof o.index === "bigint");
+  },
+  isSDK(o: any): o is CapabilitySDKType {
+    return o && (o.$typeUrl === Capability.typeUrl || typeof o.index === "bigint");
+  },
+  isAmino(o: any): o is CapabilityAmino {
+    return o && (o.$typeUrl === Capability.typeUrl || typeof o.index === "bigint");
+  },
   encode(message: Capability, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.index !== BigInt(0)) {
       writer.uint32(8).uint64(message.index);
@@ -118,6 +129,16 @@ export const Capability = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Capability {
+    return {
+      index: isSet(object.index) ? BigInt(object.index.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: Capability): unknown {
+    const obj: any = {};
+    message.index !== undefined && (obj.index = (message.index || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<Capability>): Capability {
     const message = createBaseCapability();
@@ -152,6 +173,7 @@ export const Capability = {
     };
   }
 };
+GlobalDecoderRegistry.register(Capability.typeUrl, Capability);
 function createBaseOwner(): Owner {
   return {
     module: "",
@@ -160,6 +182,15 @@ function createBaseOwner(): Owner {
 }
 export const Owner = {
   typeUrl: "/capability.v1.Owner",
+  is(o: any): o is Owner {
+    return o && (o.$typeUrl === Owner.typeUrl || typeof o.module === "string" && typeof o.name === "string");
+  },
+  isSDK(o: any): o is OwnerSDKType {
+    return o && (o.$typeUrl === Owner.typeUrl || typeof o.module === "string" && typeof o.name === "string");
+  },
+  isAmino(o: any): o is OwnerAmino {
+    return o && (o.$typeUrl === Owner.typeUrl || typeof o.module === "string" && typeof o.name === "string");
+  },
   encode(message: Owner, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.module !== "") {
       writer.uint32(10).string(message.module);
@@ -188,6 +219,18 @@ export const Owner = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Owner {
+    return {
+      module: isSet(object.module) ? String(object.module) : "",
+      name: isSet(object.name) ? String(object.name) : ""
+    };
+  },
+  toJSON(message: Owner): unknown {
+    const obj: any = {};
+    message.module !== undefined && (obj.module = message.module);
+    message.name !== undefined && (obj.name = message.name);
+    return obj;
   },
   fromPartial(object: Partial<Owner>): Owner {
     const message = createBaseOwner();
@@ -227,6 +270,7 @@ export const Owner = {
     };
   }
 };
+GlobalDecoderRegistry.register(Owner.typeUrl, Owner);
 function createBaseCapabilityOwners(): CapabilityOwners {
   return {
     owners: []
@@ -234,6 +278,15 @@ function createBaseCapabilityOwners(): CapabilityOwners {
 }
 export const CapabilityOwners = {
   typeUrl: "/capability.v1.CapabilityOwners",
+  is(o: any): o is CapabilityOwners {
+    return o && (o.$typeUrl === CapabilityOwners.typeUrl || Array.isArray(o.owners) && (!o.owners.length || Owner.is(o.owners[0])));
+  },
+  isSDK(o: any): o is CapabilityOwnersSDKType {
+    return o && (o.$typeUrl === CapabilityOwners.typeUrl || Array.isArray(o.owners) && (!o.owners.length || Owner.isSDK(o.owners[0])));
+  },
+  isAmino(o: any): o is CapabilityOwnersAmino {
+    return o && (o.$typeUrl === CapabilityOwners.typeUrl || Array.isArray(o.owners) && (!o.owners.length || Owner.isAmino(o.owners[0])));
+  },
   encode(message: CapabilityOwners, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.owners) {
       Owner.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -256,6 +309,20 @@ export const CapabilityOwners = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): CapabilityOwners {
+    return {
+      owners: Array.isArray(object?.owners) ? object.owners.map((e: any) => Owner.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: CapabilityOwners): unknown {
+    const obj: any = {};
+    if (message.owners) {
+      obj.owners = message.owners.map(e => e ? Owner.toJSON(e) : undefined);
+    } else {
+      obj.owners = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<CapabilityOwners>): CapabilityOwners {
     const message = createBaseCapabilityOwners();
@@ -292,3 +359,4 @@ export const CapabilityOwners = {
     };
   }
 };
+GlobalDecoderRegistry.register(CapabilityOwners.typeUrl, CapabilityOwners);

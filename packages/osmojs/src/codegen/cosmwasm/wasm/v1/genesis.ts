@@ -1,6 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType, CodeInfo, CodeInfoAmino, CodeInfoSDKType, ContractInfo, ContractInfoAmino, ContractInfoSDKType, Model, ModelAmino, ModelSDKType, ContractCodeHistoryEntry, ContractCodeHistoryEntryAmino, ContractCodeHistoryEntrySDKType } from "./types";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** GenesisState - genesis state of x/wasm */
 export interface GenesisState {
   params: Params;
@@ -123,6 +124,16 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/cosmwasm.wasm.v1.GenesisState",
+  aminoType: "wasm/GenesisState",
+  is(o: any): o is GenesisState {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.codes) && (!o.codes.length || Code.is(o.codes[0])) && Array.isArray(o.contracts) && (!o.contracts.length || Contract.is(o.contracts[0])) && Array.isArray(o.sequences) && (!o.sequences.length || Sequence.is(o.sequences[0])));
+  },
+  isSDK(o: any): o is GenesisStateSDKType {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.codes) && (!o.codes.length || Code.isSDK(o.codes[0])) && Array.isArray(o.contracts) && (!o.contracts.length || Contract.isSDK(o.contracts[0])) && Array.isArray(o.sequences) && (!o.sequences.length || Sequence.isSDK(o.sequences[0])));
+  },
+  isAmino(o: any): o is GenesisStateAmino {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.codes) && (!o.codes.length || Code.isAmino(o.codes[0])) && Array.isArray(o.contracts) && (!o.contracts.length || Contract.isAmino(o.contracts[0])) && Array.isArray(o.sequences) && (!o.sequences.length || Sequence.isAmino(o.sequences[0])));
+  },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -163,6 +174,34 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GenesisState {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      codes: Array.isArray(object?.codes) ? object.codes.map((e: any) => Code.fromJSON(e)) : [],
+      contracts: Array.isArray(object?.contracts) ? object.contracts.map((e: any) => Contract.fromJSON(e)) : [],
+      sequences: Array.isArray(object?.sequences) ? object.sequences.map((e: any) => Sequence.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: GenesisState): unknown {
+    const obj: any = {};
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    if (message.codes) {
+      obj.codes = message.codes.map(e => e ? Code.toJSON(e) : undefined);
+    } else {
+      obj.codes = [];
+    }
+    if (message.contracts) {
+      obj.contracts = message.contracts.map(e => e ? Contract.toJSON(e) : undefined);
+    } else {
+      obj.contracts = [];
+    }
+    if (message.sequences) {
+      obj.sequences = message.sequences.map(e => e ? Sequence.toJSON(e) : undefined);
+    } else {
+      obj.sequences = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
@@ -224,6 +263,8 @@ export const GenesisState = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 function createBaseCode(): Code {
   return {
     codeId: BigInt(0),
@@ -234,6 +275,16 @@ function createBaseCode(): Code {
 }
 export const Code = {
   typeUrl: "/cosmwasm.wasm.v1.Code",
+  aminoType: "wasm/Code",
+  is(o: any): o is Code {
+    return o && (o.$typeUrl === Code.typeUrl || typeof o.codeId === "bigint" && CodeInfo.is(o.codeInfo) && (o.codeBytes instanceof Uint8Array || typeof o.codeBytes === "string") && typeof o.pinned === "boolean");
+  },
+  isSDK(o: any): o is CodeSDKType {
+    return o && (o.$typeUrl === Code.typeUrl || typeof o.code_id === "bigint" && CodeInfo.isSDK(o.code_info) && (o.code_bytes instanceof Uint8Array || typeof o.code_bytes === "string") && typeof o.pinned === "boolean");
+  },
+  isAmino(o: any): o is CodeAmino {
+    return o && (o.$typeUrl === Code.typeUrl || typeof o.code_id === "bigint" && CodeInfo.isAmino(o.code_info) && (o.code_bytes instanceof Uint8Array || typeof o.code_bytes === "string") && typeof o.pinned === "boolean");
+  },
   encode(message: Code, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.codeId !== BigInt(0)) {
       writer.uint32(8).uint64(message.codeId);
@@ -274,6 +325,22 @@ export const Code = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Code {
+    return {
+      codeId: isSet(object.codeId) ? BigInt(object.codeId.toString()) : BigInt(0),
+      codeInfo: isSet(object.codeInfo) ? CodeInfo.fromJSON(object.codeInfo) : undefined,
+      codeBytes: isSet(object.codeBytes) ? bytesFromBase64(object.codeBytes) : new Uint8Array(),
+      pinned: isSet(object.pinned) ? Boolean(object.pinned) : false
+    };
+  },
+  toJSON(message: Code): unknown {
+    const obj: any = {};
+    message.codeId !== undefined && (obj.codeId = (message.codeId || BigInt(0)).toString());
+    message.codeInfo !== undefined && (obj.codeInfo = message.codeInfo ? CodeInfo.toJSON(message.codeInfo) : undefined);
+    message.codeBytes !== undefined && (obj.codeBytes = base64FromBytes(message.codeBytes !== undefined ? message.codeBytes : new Uint8Array()));
+    message.pinned !== undefined && (obj.pinned = message.pinned);
+    return obj;
   },
   fromPartial(object: Partial<Code>): Code {
     const message = createBaseCode();
@@ -329,6 +396,8 @@ export const Code = {
     };
   }
 };
+GlobalDecoderRegistry.register(Code.typeUrl, Code);
+GlobalDecoderRegistry.registerAminoProtoMapping(Code.aminoType, Code.typeUrl);
 function createBaseContract(): Contract {
   return {
     contractAddress: "",
@@ -339,6 +408,16 @@ function createBaseContract(): Contract {
 }
 export const Contract = {
   typeUrl: "/cosmwasm.wasm.v1.Contract",
+  aminoType: "wasm/Contract",
+  is(o: any): o is Contract {
+    return o && (o.$typeUrl === Contract.typeUrl || typeof o.contractAddress === "string" && ContractInfo.is(o.contractInfo) && Array.isArray(o.contractState) && (!o.contractState.length || Model.is(o.contractState[0])) && Array.isArray(o.contractCodeHistory) && (!o.contractCodeHistory.length || ContractCodeHistoryEntry.is(o.contractCodeHistory[0])));
+  },
+  isSDK(o: any): o is ContractSDKType {
+    return o && (o.$typeUrl === Contract.typeUrl || typeof o.contract_address === "string" && ContractInfo.isSDK(o.contract_info) && Array.isArray(o.contract_state) && (!o.contract_state.length || Model.isSDK(o.contract_state[0])) && Array.isArray(o.contract_code_history) && (!o.contract_code_history.length || ContractCodeHistoryEntry.isSDK(o.contract_code_history[0])));
+  },
+  isAmino(o: any): o is ContractAmino {
+    return o && (o.$typeUrl === Contract.typeUrl || typeof o.contract_address === "string" && ContractInfo.isAmino(o.contract_info) && Array.isArray(o.contract_state) && (!o.contract_state.length || Model.isAmino(o.contract_state[0])) && Array.isArray(o.contract_code_history) && (!o.contract_code_history.length || ContractCodeHistoryEntry.isAmino(o.contract_code_history[0])));
+  },
   encode(message: Contract, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.contractAddress !== "") {
       writer.uint32(10).string(message.contractAddress);
@@ -379,6 +458,30 @@ export const Contract = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Contract {
+    return {
+      contractAddress: isSet(object.contractAddress) ? String(object.contractAddress) : "",
+      contractInfo: isSet(object.contractInfo) ? ContractInfo.fromJSON(object.contractInfo) : undefined,
+      contractState: Array.isArray(object?.contractState) ? object.contractState.map((e: any) => Model.fromJSON(e)) : [],
+      contractCodeHistory: Array.isArray(object?.contractCodeHistory) ? object.contractCodeHistory.map((e: any) => ContractCodeHistoryEntry.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: Contract): unknown {
+    const obj: any = {};
+    message.contractAddress !== undefined && (obj.contractAddress = message.contractAddress);
+    message.contractInfo !== undefined && (obj.contractInfo = message.contractInfo ? ContractInfo.toJSON(message.contractInfo) : undefined);
+    if (message.contractState) {
+      obj.contractState = message.contractState.map(e => e ? Model.toJSON(e) : undefined);
+    } else {
+      obj.contractState = [];
+    }
+    if (message.contractCodeHistory) {
+      obj.contractCodeHistory = message.contractCodeHistory.map(e => e ? ContractCodeHistoryEntry.toJSON(e) : undefined);
+    } else {
+      obj.contractCodeHistory = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<Contract>): Contract {
     const message = createBaseContract();
@@ -438,6 +541,8 @@ export const Contract = {
     };
   }
 };
+GlobalDecoderRegistry.register(Contract.typeUrl, Contract);
+GlobalDecoderRegistry.registerAminoProtoMapping(Contract.aminoType, Contract.typeUrl);
 function createBaseSequence(): Sequence {
   return {
     idKey: new Uint8Array(),
@@ -446,6 +551,16 @@ function createBaseSequence(): Sequence {
 }
 export const Sequence = {
   typeUrl: "/cosmwasm.wasm.v1.Sequence",
+  aminoType: "wasm/Sequence",
+  is(o: any): o is Sequence {
+    return o && (o.$typeUrl === Sequence.typeUrl || (o.idKey instanceof Uint8Array || typeof o.idKey === "string") && typeof o.value === "bigint");
+  },
+  isSDK(o: any): o is SequenceSDKType {
+    return o && (o.$typeUrl === Sequence.typeUrl || (o.id_key instanceof Uint8Array || typeof o.id_key === "string") && typeof o.value === "bigint");
+  },
+  isAmino(o: any): o is SequenceAmino {
+    return o && (o.$typeUrl === Sequence.typeUrl || (o.id_key instanceof Uint8Array || typeof o.id_key === "string") && typeof o.value === "bigint");
+  },
   encode(message: Sequence, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.idKey.length !== 0) {
       writer.uint32(10).bytes(message.idKey);
@@ -474,6 +589,18 @@ export const Sequence = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Sequence {
+    return {
+      idKey: isSet(object.idKey) ? bytesFromBase64(object.idKey) : new Uint8Array(),
+      value: isSet(object.value) ? BigInt(object.value.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: Sequence): unknown {
+    const obj: any = {};
+    message.idKey !== undefined && (obj.idKey = base64FromBytes(message.idKey !== undefined ? message.idKey : new Uint8Array()));
+    message.value !== undefined && (obj.value = (message.value || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<Sequence>): Sequence {
     const message = createBaseSequence();
@@ -519,3 +646,5 @@ export const Sequence = {
     };
   }
 };
+GlobalDecoderRegistry.register(Sequence.typeUrl, Sequence);
+GlobalDecoderRegistry.registerAminoProtoMapping(Sequence.aminoType, Sequence.typeUrl);

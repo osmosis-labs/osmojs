@@ -1,5 +1,7 @@
 import { SuperfluidAsset, SuperfluidAssetAmino, SuperfluidAssetSDKType } from "../superfluid";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * SetSuperfluidAssetsProposal is a gov Content type to update the superfluid
  * assets
@@ -124,6 +126,16 @@ function createBaseSetSuperfluidAssetsProposal(): SetSuperfluidAssetsProposal {
 }
 export const SetSuperfluidAssetsProposal = {
   typeUrl: "/osmosis.superfluid.v1beta1.SetSuperfluidAssetsProposal",
+  aminoType: "osmosis/set-superfluid-assets-proposal",
+  is(o: any): o is SetSuperfluidAssetsProposal {
+    return o && (o.$typeUrl === SetSuperfluidAssetsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.assets) && (!o.assets.length || SuperfluidAsset.is(o.assets[0])));
+  },
+  isSDK(o: any): o is SetSuperfluidAssetsProposalSDKType {
+    return o && (o.$typeUrl === SetSuperfluidAssetsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.assets) && (!o.assets.length || SuperfluidAsset.isSDK(o.assets[0])));
+  },
+  isAmino(o: any): o is SetSuperfluidAssetsProposalAmino {
+    return o && (o.$typeUrl === SetSuperfluidAssetsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.assets) && (!o.assets.length || SuperfluidAsset.isAmino(o.assets[0])));
+  },
   encode(message: SetSuperfluidAssetsProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -158,6 +170,24 @@ export const SetSuperfluidAssetsProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SetSuperfluidAssetsProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      assets: Array.isArray(object?.assets) ? object.assets.map((e: any) => SuperfluidAsset.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: SetSuperfluidAssetsProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.assets) {
+      obj.assets = message.assets.map(e => e ? SuperfluidAsset.toJSON(e) : undefined);
+    } else {
+      obj.assets = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<SetSuperfluidAssetsProposal>): SetSuperfluidAssetsProposal {
     const message = createBaseSetSuperfluidAssetsProposal();
@@ -210,6 +240,8 @@ export const SetSuperfluidAssetsProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(SetSuperfluidAssetsProposal.typeUrl, SetSuperfluidAssetsProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(SetSuperfluidAssetsProposal.aminoType, SetSuperfluidAssetsProposal.typeUrl);
 function createBaseRemoveSuperfluidAssetsProposal(): RemoveSuperfluidAssetsProposal {
   return {
     $typeUrl: "/osmosis.superfluid.v1beta1.RemoveSuperfluidAssetsProposal",
@@ -220,6 +252,16 @@ function createBaseRemoveSuperfluidAssetsProposal(): RemoveSuperfluidAssetsPropo
 }
 export const RemoveSuperfluidAssetsProposal = {
   typeUrl: "/osmosis.superfluid.v1beta1.RemoveSuperfluidAssetsProposal",
+  aminoType: "osmosis/del-superfluid-assets-proposal",
+  is(o: any): o is RemoveSuperfluidAssetsProposal {
+    return o && (o.$typeUrl === RemoveSuperfluidAssetsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.superfluidAssetDenoms) && (!o.superfluidAssetDenoms.length || typeof o.superfluidAssetDenoms[0] === "string"));
+  },
+  isSDK(o: any): o is RemoveSuperfluidAssetsProposalSDKType {
+    return o && (o.$typeUrl === RemoveSuperfluidAssetsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.superfluid_asset_denoms) && (!o.superfluid_asset_denoms.length || typeof o.superfluid_asset_denoms[0] === "string"));
+  },
+  isAmino(o: any): o is RemoveSuperfluidAssetsProposalAmino {
+    return o && (o.$typeUrl === RemoveSuperfluidAssetsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.superfluid_asset_denoms) && (!o.superfluid_asset_denoms.length || typeof o.superfluid_asset_denoms[0] === "string"));
+  },
   encode(message: RemoveSuperfluidAssetsProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -254,6 +296,24 @@ export const RemoveSuperfluidAssetsProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): RemoveSuperfluidAssetsProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      superfluidAssetDenoms: Array.isArray(object?.superfluidAssetDenoms) ? object.superfluidAssetDenoms.map((e: any) => String(e)) : []
+    };
+  },
+  toJSON(message: RemoveSuperfluidAssetsProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.superfluidAssetDenoms) {
+      obj.superfluidAssetDenoms = message.superfluidAssetDenoms.map(e => e);
+    } else {
+      obj.superfluidAssetDenoms = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<RemoveSuperfluidAssetsProposal>): RemoveSuperfluidAssetsProposal {
     const message = createBaseRemoveSuperfluidAssetsProposal();
@@ -306,6 +366,8 @@ export const RemoveSuperfluidAssetsProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(RemoveSuperfluidAssetsProposal.typeUrl, RemoveSuperfluidAssetsProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(RemoveSuperfluidAssetsProposal.aminoType, RemoveSuperfluidAssetsProposal.typeUrl);
 function createBaseUpdateUnpoolWhiteListProposal(): UpdateUnpoolWhiteListProposal {
   return {
     $typeUrl: "/osmosis.superfluid.v1beta1.UpdateUnpoolWhiteListProposal",
@@ -317,6 +379,16 @@ function createBaseUpdateUnpoolWhiteListProposal(): UpdateUnpoolWhiteListProposa
 }
 export const UpdateUnpoolWhiteListProposal = {
   typeUrl: "/osmosis.superfluid.v1beta1.UpdateUnpoolWhiteListProposal",
+  aminoType: "osmosis/update-unpool-whitelist",
+  is(o: any): o is UpdateUnpoolWhiteListProposal {
+    return o && (o.$typeUrl === UpdateUnpoolWhiteListProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.ids) && (!o.ids.length || typeof o.ids[0] === "bigint") && typeof o.isOverwrite === "boolean");
+  },
+  isSDK(o: any): o is UpdateUnpoolWhiteListProposalSDKType {
+    return o && (o.$typeUrl === UpdateUnpoolWhiteListProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.ids) && (!o.ids.length || typeof o.ids[0] === "bigint") && typeof o.is_overwrite === "boolean");
+  },
+  isAmino(o: any): o is UpdateUnpoolWhiteListProposalAmino {
+    return o && (o.$typeUrl === UpdateUnpoolWhiteListProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.ids) && (!o.ids.length || typeof o.ids[0] === "bigint") && typeof o.is_overwrite === "boolean");
+  },
   encode(message: UpdateUnpoolWhiteListProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -366,6 +438,26 @@ export const UpdateUnpoolWhiteListProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): UpdateUnpoolWhiteListProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      ids: Array.isArray(object?.ids) ? object.ids.map((e: any) => BigInt(e.toString())) : [],
+      isOverwrite: isSet(object.isOverwrite) ? Boolean(object.isOverwrite) : false
+    };
+  },
+  toJSON(message: UpdateUnpoolWhiteListProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.ids) {
+      obj.ids = message.ids.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.ids = [];
+    }
+    message.isOverwrite !== undefined && (obj.isOverwrite = message.isOverwrite);
+    return obj;
   },
   fromPartial(object: Partial<UpdateUnpoolWhiteListProposal>): UpdateUnpoolWhiteListProposal {
     const message = createBaseUpdateUnpoolWhiteListProposal();
@@ -423,3 +515,5 @@ export const UpdateUnpoolWhiteListProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(UpdateUnpoolWhiteListProposal.typeUrl, UpdateUnpoolWhiteListProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(UpdateUnpoolWhiteListProposal.aminoType, UpdateUnpoolWhiteListProposal.typeUrl);

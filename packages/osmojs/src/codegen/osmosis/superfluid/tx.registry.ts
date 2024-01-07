@@ -132,6 +132,130 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    superfluidDelegate(value: MsgSuperfluidDelegate) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidDelegate",
+        value: MsgSuperfluidDelegate.toJSON(value)
+      };
+    },
+    superfluidUndelegate(value: MsgSuperfluidUndelegate) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegate",
+        value: MsgSuperfluidUndelegate.toJSON(value)
+      };
+    },
+    superfluidUnbondLock(value: MsgSuperfluidUnbondLock) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidUnbondLock",
+        value: MsgSuperfluidUnbondLock.toJSON(value)
+      };
+    },
+    superfluidUndelegateAndUnbondLock(value: MsgSuperfluidUndelegateAndUnbondLock) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLock",
+        value: MsgSuperfluidUndelegateAndUnbondLock.toJSON(value)
+      };
+    },
+    lockAndSuperfluidDelegate(value: MsgLockAndSuperfluidDelegate) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgLockAndSuperfluidDelegate",
+        value: MsgLockAndSuperfluidDelegate.toJSON(value)
+      };
+    },
+    createFullRangePositionAndSuperfluidDelegate(value: MsgCreateFullRangePositionAndSuperfluidDelegate) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgCreateFullRangePositionAndSuperfluidDelegate",
+        value: MsgCreateFullRangePositionAndSuperfluidDelegate.toJSON(value)
+      };
+    },
+    unPoolWhitelistedPool(value: MsgUnPoolWhitelistedPool) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPool",
+        value: MsgUnPoolWhitelistedPool.toJSON(value)
+      };
+    },
+    unlockAndMigrateSharesToFullRangeConcentratedPosition(value: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition",
+        value: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition.toJSON(value)
+      };
+    },
+    addToConcentratedLiquiditySuperfluidPosition(value: MsgAddToConcentratedLiquiditySuperfluidPosition) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgAddToConcentratedLiquiditySuperfluidPosition",
+        value: MsgAddToConcentratedLiquiditySuperfluidPosition.toJSON(value)
+      };
+    },
+    unbondConvertAndStake(value: MsgUnbondConvertAndStake) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgUnbondConvertAndStake",
+        value: MsgUnbondConvertAndStake.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    superfluidDelegate(value: any) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidDelegate",
+        value: MsgSuperfluidDelegate.fromJSON(value)
+      };
+    },
+    superfluidUndelegate(value: any) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegate",
+        value: MsgSuperfluidUndelegate.fromJSON(value)
+      };
+    },
+    superfluidUnbondLock(value: any) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidUnbondLock",
+        value: MsgSuperfluidUnbondLock.fromJSON(value)
+      };
+    },
+    superfluidUndelegateAndUnbondLock(value: any) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLock",
+        value: MsgSuperfluidUndelegateAndUnbondLock.fromJSON(value)
+      };
+    },
+    lockAndSuperfluidDelegate(value: any) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgLockAndSuperfluidDelegate",
+        value: MsgLockAndSuperfluidDelegate.fromJSON(value)
+      };
+    },
+    createFullRangePositionAndSuperfluidDelegate(value: any) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgCreateFullRangePositionAndSuperfluidDelegate",
+        value: MsgCreateFullRangePositionAndSuperfluidDelegate.fromJSON(value)
+      };
+    },
+    unPoolWhitelistedPool(value: any) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPool",
+        value: MsgUnPoolWhitelistedPool.fromJSON(value)
+      };
+    },
+    unlockAndMigrateSharesToFullRangeConcentratedPosition(value: any) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition",
+        value: MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition.fromJSON(value)
+      };
+    },
+    addToConcentratedLiquiditySuperfluidPosition(value: any) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgAddToConcentratedLiquiditySuperfluidPosition",
+        value: MsgAddToConcentratedLiquiditySuperfluidPosition.fromJSON(value)
+      };
+    },
+    unbondConvertAndStake(value: any) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgUnbondConvertAndStake",
+        value: MsgUnbondConvertAndStake.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     superfluidDelegate(value: MsgSuperfluidDelegate) {
       return {

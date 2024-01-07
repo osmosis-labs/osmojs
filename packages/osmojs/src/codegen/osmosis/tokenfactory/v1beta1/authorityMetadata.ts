@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * DenomAuthorityMetadata specifies metadata for addresses that have specific
  * capabilities over a token factory denom. Right now there is only one Admin
@@ -40,6 +42,16 @@ function createBaseDenomAuthorityMetadata(): DenomAuthorityMetadata {
 }
 export const DenomAuthorityMetadata = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.DenomAuthorityMetadata",
+  aminoType: "osmosis/tokenfactory/denom-authority-metadata",
+  is(o: any): o is DenomAuthorityMetadata {
+    return o && (o.$typeUrl === DenomAuthorityMetadata.typeUrl || typeof o.admin === "string");
+  },
+  isSDK(o: any): o is DenomAuthorityMetadataSDKType {
+    return o && (o.$typeUrl === DenomAuthorityMetadata.typeUrl || typeof o.admin === "string");
+  },
+  isAmino(o: any): o is DenomAuthorityMetadataAmino {
+    return o && (o.$typeUrl === DenomAuthorityMetadata.typeUrl || typeof o.admin === "string");
+  },
   encode(message: DenomAuthorityMetadata, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
@@ -62,6 +74,16 @@ export const DenomAuthorityMetadata = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DenomAuthorityMetadata {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : ""
+    };
+  },
+  toJSON(message: DenomAuthorityMetadata): unknown {
+    const obj: any = {};
+    message.admin !== undefined && (obj.admin = message.admin);
+    return obj;
   },
   fromPartial(object: Partial<DenomAuthorityMetadata>): DenomAuthorityMetadata {
     const message = createBaseDenomAuthorityMetadata();
@@ -102,3 +124,5 @@ export const DenomAuthorityMetadata = {
     };
   }
 };
+GlobalDecoderRegistry.register(DenomAuthorityMetadata.typeUrl, DenomAuthorityMetadata);
+GlobalDecoderRegistry.registerAminoProtoMapping(DenomAuthorityMetadata.aminoType, DenomAuthorityMetadata.typeUrl);

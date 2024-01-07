@@ -84,6 +84,82 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    setHotRoutes(value: MsgSetHotRoutes) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetHotRoutes",
+        value: MsgSetHotRoutes.toJSON(value)
+      };
+    },
+    setDeveloperAccount(value: MsgSetDeveloperAccount) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetDeveloperAccount",
+        value: MsgSetDeveloperAccount.toJSON(value)
+      };
+    },
+    setMaxPoolPointsPerTx(value: MsgSetMaxPoolPointsPerTx) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx",
+        value: MsgSetMaxPoolPointsPerTx.toJSON(value)
+      };
+    },
+    setMaxPoolPointsPerBlock(value: MsgSetMaxPoolPointsPerBlock) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock",
+        value: MsgSetMaxPoolPointsPerBlock.toJSON(value)
+      };
+    },
+    setInfoByPoolType(value: MsgSetInfoByPoolType) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetInfoByPoolType",
+        value: MsgSetInfoByPoolType.toJSON(value)
+      };
+    },
+    setBaseDenoms(value: MsgSetBaseDenoms) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetBaseDenoms",
+        value: MsgSetBaseDenoms.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    setHotRoutes(value: any) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetHotRoutes",
+        value: MsgSetHotRoutes.fromJSON(value)
+      };
+    },
+    setDeveloperAccount(value: any) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetDeveloperAccount",
+        value: MsgSetDeveloperAccount.fromJSON(value)
+      };
+    },
+    setMaxPoolPointsPerTx(value: any) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx",
+        value: MsgSetMaxPoolPointsPerTx.fromJSON(value)
+      };
+    },
+    setMaxPoolPointsPerBlock(value: any) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock",
+        value: MsgSetMaxPoolPointsPerBlock.fromJSON(value)
+      };
+    },
+    setInfoByPoolType(value: any) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetInfoByPoolType",
+        value: MsgSetInfoByPoolType.fromJSON(value)
+      };
+    },
+    setBaseDenoms(value: any) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetBaseDenoms",
+        value: MsgSetBaseDenoms.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     setHotRoutes(value: MsgSetHotRoutes) {
       return {

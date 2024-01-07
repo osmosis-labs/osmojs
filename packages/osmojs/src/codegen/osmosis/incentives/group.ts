@@ -1,5 +1,7 @@
 import { Gauge, GaugeAmino, GaugeSDKType } from "./gauge";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 /** SplittingPolicy determines the way we want to split incentives in groupGauges */
 export enum SplittingPolicy {
   ByVolume = 0,
@@ -232,6 +234,16 @@ function createBaseInternalGaugeInfo(): InternalGaugeInfo {
 }
 export const InternalGaugeInfo = {
   typeUrl: "/osmosis.incentives.InternalGaugeInfo",
+  aminoType: "osmosis/incentives/internal-gauge-info",
+  is(o: any): o is InternalGaugeInfo {
+    return o && (o.$typeUrl === InternalGaugeInfo.typeUrl || typeof o.totalWeight === "string" && Array.isArray(o.gaugeRecords) && (!o.gaugeRecords.length || InternalGaugeRecord.is(o.gaugeRecords[0])));
+  },
+  isSDK(o: any): o is InternalGaugeInfoSDKType {
+    return o && (o.$typeUrl === InternalGaugeInfo.typeUrl || typeof o.total_weight === "string" && Array.isArray(o.gauge_records) && (!o.gauge_records.length || InternalGaugeRecord.isSDK(o.gauge_records[0])));
+  },
+  isAmino(o: any): o is InternalGaugeInfoAmino {
+    return o && (o.$typeUrl === InternalGaugeInfo.typeUrl || typeof o.total_weight === "string" && Array.isArray(o.gauge_records) && (!o.gauge_records.length || InternalGaugeRecord.isAmino(o.gauge_records[0])));
+  },
   encode(message: InternalGaugeInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.totalWeight !== "") {
       writer.uint32(10).string(message.totalWeight);
@@ -260,6 +272,22 @@ export const InternalGaugeInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): InternalGaugeInfo {
+    return {
+      totalWeight: isSet(object.totalWeight) ? String(object.totalWeight) : "",
+      gaugeRecords: Array.isArray(object?.gaugeRecords) ? object.gaugeRecords.map((e: any) => InternalGaugeRecord.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: InternalGaugeInfo): unknown {
+    const obj: any = {};
+    message.totalWeight !== undefined && (obj.totalWeight = message.totalWeight);
+    if (message.gaugeRecords) {
+      obj.gaugeRecords = message.gaugeRecords.map(e => e ? InternalGaugeRecord.toJSON(e) : undefined);
+    } else {
+      obj.gaugeRecords = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<InternalGaugeInfo>): InternalGaugeInfo {
     const message = createBaseInternalGaugeInfo();
@@ -307,6 +335,8 @@ export const InternalGaugeInfo = {
     };
   }
 };
+GlobalDecoderRegistry.register(InternalGaugeInfo.typeUrl, InternalGaugeInfo);
+GlobalDecoderRegistry.registerAminoProtoMapping(InternalGaugeInfo.aminoType, InternalGaugeInfo.typeUrl);
 function createBaseInternalGaugeRecord(): InternalGaugeRecord {
   return {
     gaugeId: BigInt(0),
@@ -316,6 +346,16 @@ function createBaseInternalGaugeRecord(): InternalGaugeRecord {
 }
 export const InternalGaugeRecord = {
   typeUrl: "/osmosis.incentives.InternalGaugeRecord",
+  aminoType: "osmosis/incentives/internal-gauge-record",
+  is(o: any): o is InternalGaugeRecord {
+    return o && (o.$typeUrl === InternalGaugeRecord.typeUrl || typeof o.gaugeId === "bigint" && typeof o.currentWeight === "string" && typeof o.cumulativeWeight === "string");
+  },
+  isSDK(o: any): o is InternalGaugeRecordSDKType {
+    return o && (o.$typeUrl === InternalGaugeRecord.typeUrl || typeof o.gauge_id === "bigint" && typeof o.current_weight === "string" && typeof o.cumulative_weight === "string");
+  },
+  isAmino(o: any): o is InternalGaugeRecordAmino {
+    return o && (o.$typeUrl === InternalGaugeRecord.typeUrl || typeof o.gauge_id === "bigint" && typeof o.current_weight === "string" && typeof o.cumulative_weight === "string");
+  },
   encode(message: InternalGaugeRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.gaugeId !== BigInt(0)) {
       writer.uint32(8).uint64(message.gaugeId);
@@ -350,6 +390,20 @@ export const InternalGaugeRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): InternalGaugeRecord {
+    return {
+      gaugeId: isSet(object.gaugeId) ? BigInt(object.gaugeId.toString()) : BigInt(0),
+      currentWeight: isSet(object.currentWeight) ? String(object.currentWeight) : "",
+      cumulativeWeight: isSet(object.cumulativeWeight) ? String(object.cumulativeWeight) : ""
+    };
+  },
+  toJSON(message: InternalGaugeRecord): unknown {
+    const obj: any = {};
+    message.gaugeId !== undefined && (obj.gaugeId = (message.gaugeId || BigInt(0)).toString());
+    message.currentWeight !== undefined && (obj.currentWeight = message.currentWeight);
+    message.cumulativeWeight !== undefined && (obj.cumulativeWeight = message.cumulativeWeight);
+    return obj;
   },
   fromPartial(object: Partial<InternalGaugeRecord>): InternalGaugeRecord {
     const message = createBaseInternalGaugeRecord();
@@ -400,6 +454,8 @@ export const InternalGaugeRecord = {
     };
   }
 };
+GlobalDecoderRegistry.register(InternalGaugeRecord.typeUrl, InternalGaugeRecord);
+GlobalDecoderRegistry.registerAminoProtoMapping(InternalGaugeRecord.aminoType, InternalGaugeRecord.typeUrl);
 function createBaseGroup(): Group {
   return {
     groupGaugeId: BigInt(0),
@@ -409,6 +465,16 @@ function createBaseGroup(): Group {
 }
 export const Group = {
   typeUrl: "/osmosis.incentives.Group",
+  aminoType: "osmosis/incentives/group",
+  is(o: any): o is Group {
+    return o && (o.$typeUrl === Group.typeUrl || typeof o.groupGaugeId === "bigint" && InternalGaugeInfo.is(o.internalGaugeInfo) && isSet(o.splittingPolicy));
+  },
+  isSDK(o: any): o is GroupSDKType {
+    return o && (o.$typeUrl === Group.typeUrl || typeof o.group_gauge_id === "bigint" && InternalGaugeInfo.isSDK(o.internal_gauge_info) && isSet(o.splitting_policy));
+  },
+  isAmino(o: any): o is GroupAmino {
+    return o && (o.$typeUrl === Group.typeUrl || typeof o.group_gauge_id === "bigint" && InternalGaugeInfo.isAmino(o.internal_gauge_info) && isSet(o.splitting_policy));
+  },
   encode(message: Group, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.groupGaugeId !== BigInt(0)) {
       writer.uint32(8).uint64(message.groupGaugeId);
@@ -443,6 +509,20 @@ export const Group = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Group {
+    return {
+      groupGaugeId: isSet(object.groupGaugeId) ? BigInt(object.groupGaugeId.toString()) : BigInt(0),
+      internalGaugeInfo: isSet(object.internalGaugeInfo) ? InternalGaugeInfo.fromJSON(object.internalGaugeInfo) : undefined,
+      splittingPolicy: isSet(object.splittingPolicy) ? splittingPolicyFromJSON(object.splittingPolicy) : -1
+    };
+  },
+  toJSON(message: Group): unknown {
+    const obj: any = {};
+    message.groupGaugeId !== undefined && (obj.groupGaugeId = (message.groupGaugeId || BigInt(0)).toString());
+    message.internalGaugeInfo !== undefined && (obj.internalGaugeInfo = message.internalGaugeInfo ? InternalGaugeInfo.toJSON(message.internalGaugeInfo) : undefined);
+    message.splittingPolicy !== undefined && (obj.splittingPolicy = splittingPolicyToJSON(message.splittingPolicy));
+    return obj;
   },
   fromPartial(object: Partial<Group>): Group {
     const message = createBaseGroup();
@@ -493,6 +573,8 @@ export const Group = {
     };
   }
 };
+GlobalDecoderRegistry.register(Group.typeUrl, Group);
+GlobalDecoderRegistry.registerAminoProtoMapping(Group.aminoType, Group.typeUrl);
 function createBaseCreateGroup(): CreateGroup {
   return {
     poolIds: []
@@ -500,6 +582,16 @@ function createBaseCreateGroup(): CreateGroup {
 }
 export const CreateGroup = {
   typeUrl: "/osmosis.incentives.CreateGroup",
+  aminoType: "osmosis/incentives/create-group",
+  is(o: any): o is CreateGroup {
+    return o && (o.$typeUrl === CreateGroup.typeUrl || Array.isArray(o.poolIds) && (!o.poolIds.length || typeof o.poolIds[0] === "bigint"));
+  },
+  isSDK(o: any): o is CreateGroupSDKType {
+    return o && (o.$typeUrl === CreateGroup.typeUrl || Array.isArray(o.pool_ids) && (!o.pool_ids.length || typeof o.pool_ids[0] === "bigint"));
+  },
+  isAmino(o: any): o is CreateGroupAmino {
+    return o && (o.$typeUrl === CreateGroup.typeUrl || Array.isArray(o.pool_ids) && (!o.pool_ids.length || typeof o.pool_ids[0] === "bigint"));
+  },
   encode(message: CreateGroup, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.poolIds) {
@@ -531,6 +623,20 @@ export const CreateGroup = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): CreateGroup {
+    return {
+      poolIds: Array.isArray(object?.poolIds) ? object.poolIds.map((e: any) => BigInt(e.toString())) : []
+    };
+  },
+  toJSON(message: CreateGroup): unknown {
+    const obj: any = {};
+    if (message.poolIds) {
+      obj.poolIds = message.poolIds.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.poolIds = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<CreateGroup>): CreateGroup {
     const message = createBaseCreateGroup();
@@ -573,6 +679,8 @@ export const CreateGroup = {
     };
   }
 };
+GlobalDecoderRegistry.register(CreateGroup.typeUrl, CreateGroup);
+GlobalDecoderRegistry.registerAminoProtoMapping(CreateGroup.aminoType, CreateGroup.typeUrl);
 function createBaseGroupsWithGauge(): GroupsWithGauge {
   return {
     group: Group.fromPartial({}),
@@ -581,6 +689,16 @@ function createBaseGroupsWithGauge(): GroupsWithGauge {
 }
 export const GroupsWithGauge = {
   typeUrl: "/osmosis.incentives.GroupsWithGauge",
+  aminoType: "osmosis/incentives/groups-with-gauge",
+  is(o: any): o is GroupsWithGauge {
+    return o && (o.$typeUrl === GroupsWithGauge.typeUrl || Group.is(o.group) && Gauge.is(o.gauge));
+  },
+  isSDK(o: any): o is GroupsWithGaugeSDKType {
+    return o && (o.$typeUrl === GroupsWithGauge.typeUrl || Group.isSDK(o.group) && Gauge.isSDK(o.gauge));
+  },
+  isAmino(o: any): o is GroupsWithGaugeAmino {
+    return o && (o.$typeUrl === GroupsWithGauge.typeUrl || Group.isAmino(o.group) && Gauge.isAmino(o.gauge));
+  },
   encode(message: GroupsWithGauge, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.group !== undefined) {
       Group.encode(message.group, writer.uint32(10).fork()).ldelim();
@@ -609,6 +727,18 @@ export const GroupsWithGauge = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GroupsWithGauge {
+    return {
+      group: isSet(object.group) ? Group.fromJSON(object.group) : undefined,
+      gauge: isSet(object.gauge) ? Gauge.fromJSON(object.gauge) : undefined
+    };
+  },
+  toJSON(message: GroupsWithGauge): unknown {
+    const obj: any = {};
+    message.group !== undefined && (obj.group = message.group ? Group.toJSON(message.group) : undefined);
+    message.gauge !== undefined && (obj.gauge = message.gauge ? Gauge.toJSON(message.gauge) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<GroupsWithGauge>): GroupsWithGauge {
     const message = createBaseGroupsWithGauge();
@@ -654,3 +784,5 @@ export const GroupsWithGauge = {
     };
   }
 };
+GlobalDecoderRegistry.register(GroupsWithGauge.typeUrl, GroupsWithGauge);
+GlobalDecoderRegistry.registerAminoProtoMapping(GroupsWithGauge.aminoType, GroupsWithGauge.typeUrl);

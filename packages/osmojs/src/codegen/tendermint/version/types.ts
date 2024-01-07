@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 /**
  * App includes the protocol and software version for the application.
  * This information is included in ResponseInfo. The App.Protocol can be
@@ -77,6 +79,15 @@ function createBaseApp(): App {
 }
 export const App = {
   typeUrl: "/tendermint.version.App",
+  is(o: any): o is App {
+    return o && (o.$typeUrl === App.typeUrl || typeof o.protocol === "bigint" && typeof o.software === "string");
+  },
+  isSDK(o: any): o is AppSDKType {
+    return o && (o.$typeUrl === App.typeUrl || typeof o.protocol === "bigint" && typeof o.software === "string");
+  },
+  isAmino(o: any): o is AppAmino {
+    return o && (o.$typeUrl === App.typeUrl || typeof o.protocol === "bigint" && typeof o.software === "string");
+  },
   encode(message: App, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.protocol !== BigInt(0)) {
       writer.uint32(8).uint64(message.protocol);
@@ -105,6 +116,18 @@ export const App = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): App {
+    return {
+      protocol: isSet(object.protocol) ? BigInt(object.protocol.toString()) : BigInt(0),
+      software: isSet(object.software) ? String(object.software) : ""
+    };
+  },
+  toJSON(message: App): unknown {
+    const obj: any = {};
+    message.protocol !== undefined && (obj.protocol = (message.protocol || BigInt(0)).toString());
+    message.software !== undefined && (obj.software = message.software);
+    return obj;
   },
   fromPartial(object: Partial<App>): App {
     const message = createBaseApp();
@@ -144,6 +167,7 @@ export const App = {
     };
   }
 };
+GlobalDecoderRegistry.register(App.typeUrl, App);
 function createBaseConsensus(): Consensus {
   return {
     block: BigInt(0),
@@ -152,6 +176,15 @@ function createBaseConsensus(): Consensus {
 }
 export const Consensus = {
   typeUrl: "/tendermint.version.Consensus",
+  is(o: any): o is Consensus {
+    return o && (o.$typeUrl === Consensus.typeUrl || typeof o.block === "bigint" && typeof o.app === "bigint");
+  },
+  isSDK(o: any): o is ConsensusSDKType {
+    return o && (o.$typeUrl === Consensus.typeUrl || typeof o.block === "bigint" && typeof o.app === "bigint");
+  },
+  isAmino(o: any): o is ConsensusAmino {
+    return o && (o.$typeUrl === Consensus.typeUrl || typeof o.block === "bigint" && typeof o.app === "bigint");
+  },
   encode(message: Consensus, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.block !== BigInt(0)) {
       writer.uint32(8).uint64(message.block);
@@ -180,6 +213,18 @@ export const Consensus = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Consensus {
+    return {
+      block: isSet(object.block) ? BigInt(object.block.toString()) : BigInt(0),
+      app: isSet(object.app) ? BigInt(object.app.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: Consensus): unknown {
+    const obj: any = {};
+    message.block !== undefined && (obj.block = (message.block || BigInt(0)).toString());
+    message.app !== undefined && (obj.app = (message.app || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<Consensus>): Consensus {
     const message = createBaseConsensus();
@@ -219,3 +264,4 @@ export const Consensus = {
     };
   }
 };
+GlobalDecoderRegistry.register(Consensus.typeUrl, Consensus);

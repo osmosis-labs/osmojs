@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { GlobalDecoderRegistry } from "../../../../registry";
+import { isSet } from "../../../../helpers";
 /** ===================== JoinPoolExecuteMsg */
 export interface EmptyRequest {}
 export interface EmptyRequestProtoMsg {
@@ -93,6 +95,16 @@ function createBaseEmptyRequest(): EmptyRequest {
 }
 export const EmptyRequest = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.EmptyRequest",
+  aminoType: "osmosis/cosmwasmpool/empty-request",
+  is(o: any): o is EmptyRequest {
+    return o && o.$typeUrl === EmptyRequest.typeUrl;
+  },
+  isSDK(o: any): o is EmptyRequestSDKType {
+    return o && o.$typeUrl === EmptyRequest.typeUrl;
+  },
+  isAmino(o: any): o is EmptyRequestAmino {
+    return o && o.$typeUrl === EmptyRequest.typeUrl;
+  },
   encode(_: EmptyRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -109,6 +121,13 @@ export const EmptyRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): EmptyRequest {
+    return {};
+  },
+  toJSON(_: EmptyRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<EmptyRequest>): EmptyRequest {
     const message = createBaseEmptyRequest();
@@ -144,6 +163,8 @@ export const EmptyRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(EmptyRequest.typeUrl, EmptyRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(EmptyRequest.aminoType, EmptyRequest.typeUrl);
 function createBaseJoinPoolExecuteMsgRequest(): JoinPoolExecuteMsgRequest {
   return {
     joinPool: EmptyRequest.fromPartial({})
@@ -151,6 +172,16 @@ function createBaseJoinPoolExecuteMsgRequest(): JoinPoolExecuteMsgRequest {
 }
 export const JoinPoolExecuteMsgRequest = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.JoinPoolExecuteMsgRequest",
+  aminoType: "osmosis/cosmwasmpool/join-pool-execute-msg-request",
+  is(o: any): o is JoinPoolExecuteMsgRequest {
+    return o && (o.$typeUrl === JoinPoolExecuteMsgRequest.typeUrl || EmptyRequest.is(o.joinPool));
+  },
+  isSDK(o: any): o is JoinPoolExecuteMsgRequestSDKType {
+    return o && (o.$typeUrl === JoinPoolExecuteMsgRequest.typeUrl || EmptyRequest.isSDK(o.join_pool));
+  },
+  isAmino(o: any): o is JoinPoolExecuteMsgRequestAmino {
+    return o && (o.$typeUrl === JoinPoolExecuteMsgRequest.typeUrl || EmptyRequest.isAmino(o.join_pool));
+  },
   encode(message: JoinPoolExecuteMsgRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.joinPool !== undefined) {
       EmptyRequest.encode(message.joinPool, writer.uint32(10).fork()).ldelim();
@@ -173,6 +204,16 @@ export const JoinPoolExecuteMsgRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): JoinPoolExecuteMsgRequest {
+    return {
+      joinPool: isSet(object.joinPool) ? EmptyRequest.fromJSON(object.joinPool) : undefined
+    };
+  },
+  toJSON(message: JoinPoolExecuteMsgRequest): unknown {
+    const obj: any = {};
+    message.joinPool !== undefined && (obj.joinPool = message.joinPool ? EmptyRequest.toJSON(message.joinPool) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<JoinPoolExecuteMsgRequest>): JoinPoolExecuteMsgRequest {
     const message = createBaseJoinPoolExecuteMsgRequest();
@@ -213,11 +254,23 @@ export const JoinPoolExecuteMsgRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(JoinPoolExecuteMsgRequest.typeUrl, JoinPoolExecuteMsgRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(JoinPoolExecuteMsgRequest.aminoType, JoinPoolExecuteMsgRequest.typeUrl);
 function createBaseJoinPoolExecuteMsgResponse(): JoinPoolExecuteMsgResponse {
   return {};
 }
 export const JoinPoolExecuteMsgResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.JoinPoolExecuteMsgResponse",
+  aminoType: "osmosis/cosmwasmpool/join-pool-execute-msg-response",
+  is(o: any): o is JoinPoolExecuteMsgResponse {
+    return o && o.$typeUrl === JoinPoolExecuteMsgResponse.typeUrl;
+  },
+  isSDK(o: any): o is JoinPoolExecuteMsgResponseSDKType {
+    return o && o.$typeUrl === JoinPoolExecuteMsgResponse.typeUrl;
+  },
+  isAmino(o: any): o is JoinPoolExecuteMsgResponseAmino {
+    return o && o.$typeUrl === JoinPoolExecuteMsgResponse.typeUrl;
+  },
   encode(_: JoinPoolExecuteMsgResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -234,6 +287,13 @@ export const JoinPoolExecuteMsgResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): JoinPoolExecuteMsgResponse {
+    return {};
+  },
+  toJSON(_: JoinPoolExecuteMsgResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<JoinPoolExecuteMsgResponse>): JoinPoolExecuteMsgResponse {
     const message = createBaseJoinPoolExecuteMsgResponse();
@@ -269,6 +329,8 @@ export const JoinPoolExecuteMsgResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(JoinPoolExecuteMsgResponse.typeUrl, JoinPoolExecuteMsgResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(JoinPoolExecuteMsgResponse.aminoType, JoinPoolExecuteMsgResponse.typeUrl);
 function createBaseExitPoolExecuteMsgRequest(): ExitPoolExecuteMsgRequest {
   return {
     exitPool: EmptyRequest.fromPartial({})
@@ -276,6 +338,16 @@ function createBaseExitPoolExecuteMsgRequest(): ExitPoolExecuteMsgRequest {
 }
 export const ExitPoolExecuteMsgRequest = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.ExitPoolExecuteMsgRequest",
+  aminoType: "osmosis/cosmwasmpool/exit-pool-execute-msg-request",
+  is(o: any): o is ExitPoolExecuteMsgRequest {
+    return o && (o.$typeUrl === ExitPoolExecuteMsgRequest.typeUrl || EmptyRequest.is(o.exitPool));
+  },
+  isSDK(o: any): o is ExitPoolExecuteMsgRequestSDKType {
+    return o && (o.$typeUrl === ExitPoolExecuteMsgRequest.typeUrl || EmptyRequest.isSDK(o.exit_pool));
+  },
+  isAmino(o: any): o is ExitPoolExecuteMsgRequestAmino {
+    return o && (o.$typeUrl === ExitPoolExecuteMsgRequest.typeUrl || EmptyRequest.isAmino(o.exit_pool));
+  },
   encode(message: ExitPoolExecuteMsgRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.exitPool !== undefined) {
       EmptyRequest.encode(message.exitPool, writer.uint32(10).fork()).ldelim();
@@ -298,6 +370,16 @@ export const ExitPoolExecuteMsgRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ExitPoolExecuteMsgRequest {
+    return {
+      exitPool: isSet(object.exitPool) ? EmptyRequest.fromJSON(object.exitPool) : undefined
+    };
+  },
+  toJSON(message: ExitPoolExecuteMsgRequest): unknown {
+    const obj: any = {};
+    message.exitPool !== undefined && (obj.exitPool = message.exitPool ? EmptyRequest.toJSON(message.exitPool) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<ExitPoolExecuteMsgRequest>): ExitPoolExecuteMsgRequest {
     const message = createBaseExitPoolExecuteMsgRequest();
@@ -338,11 +420,23 @@ export const ExitPoolExecuteMsgRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(ExitPoolExecuteMsgRequest.typeUrl, ExitPoolExecuteMsgRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(ExitPoolExecuteMsgRequest.aminoType, ExitPoolExecuteMsgRequest.typeUrl);
 function createBaseExitPoolExecuteMsgResponse(): ExitPoolExecuteMsgResponse {
   return {};
 }
 export const ExitPoolExecuteMsgResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.ExitPoolExecuteMsgResponse",
+  aminoType: "osmosis/cosmwasmpool/exit-pool-execute-msg-response",
+  is(o: any): o is ExitPoolExecuteMsgResponse {
+    return o && o.$typeUrl === ExitPoolExecuteMsgResponse.typeUrl;
+  },
+  isSDK(o: any): o is ExitPoolExecuteMsgResponseSDKType {
+    return o && o.$typeUrl === ExitPoolExecuteMsgResponse.typeUrl;
+  },
+  isAmino(o: any): o is ExitPoolExecuteMsgResponseAmino {
+    return o && o.$typeUrl === ExitPoolExecuteMsgResponse.typeUrl;
+  },
   encode(_: ExitPoolExecuteMsgResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -359,6 +453,13 @@ export const ExitPoolExecuteMsgResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): ExitPoolExecuteMsgResponse {
+    return {};
+  },
+  toJSON(_: ExitPoolExecuteMsgResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<ExitPoolExecuteMsgResponse>): ExitPoolExecuteMsgResponse {
     const message = createBaseExitPoolExecuteMsgResponse();
@@ -394,3 +495,5 @@ export const ExitPoolExecuteMsgResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(ExitPoolExecuteMsgResponse.typeUrl, ExitPoolExecuteMsgResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(ExitPoolExecuteMsgResponse.aminoType, ExitPoolExecuteMsgResponse.typeUrl);

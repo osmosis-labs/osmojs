@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** IncentivizedAcknowledgement is the acknowledgement format to be used by applications wrapped in the fee middleware */
 export interface IncentivizedAcknowledgement {
   /** the underlying app acknowledgement bytes */
@@ -41,6 +42,16 @@ function createBaseIncentivizedAcknowledgement(): IncentivizedAcknowledgement {
 }
 export const IncentivizedAcknowledgement = {
   typeUrl: "/ibc.applications.fee.v1.IncentivizedAcknowledgement",
+  aminoType: "cosmos-sdk/IncentivizedAcknowledgement",
+  is(o: any): o is IncentivizedAcknowledgement {
+    return o && (o.$typeUrl === IncentivizedAcknowledgement.typeUrl || (o.appAcknowledgement instanceof Uint8Array || typeof o.appAcknowledgement === "string") && typeof o.forwardRelayerAddress === "string" && typeof o.underlyingAppSuccess === "boolean");
+  },
+  isSDK(o: any): o is IncentivizedAcknowledgementSDKType {
+    return o && (o.$typeUrl === IncentivizedAcknowledgement.typeUrl || (o.app_acknowledgement instanceof Uint8Array || typeof o.app_acknowledgement === "string") && typeof o.forward_relayer_address === "string" && typeof o.underlying_app_success === "boolean");
+  },
+  isAmino(o: any): o is IncentivizedAcknowledgementAmino {
+    return o && (o.$typeUrl === IncentivizedAcknowledgement.typeUrl || (o.app_acknowledgement instanceof Uint8Array || typeof o.app_acknowledgement === "string") && typeof o.forward_relayer_address === "string" && typeof o.underlying_app_success === "boolean");
+  },
   encode(message: IncentivizedAcknowledgement, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.appAcknowledgement.length !== 0) {
       writer.uint32(10).bytes(message.appAcknowledgement);
@@ -75,6 +86,20 @@ export const IncentivizedAcknowledgement = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): IncentivizedAcknowledgement {
+    return {
+      appAcknowledgement: isSet(object.appAcknowledgement) ? bytesFromBase64(object.appAcknowledgement) : new Uint8Array(),
+      forwardRelayerAddress: isSet(object.forwardRelayerAddress) ? String(object.forwardRelayerAddress) : "",
+      underlyingAppSuccess: isSet(object.underlyingAppSuccess) ? Boolean(object.underlyingAppSuccess) : false
+    };
+  },
+  toJSON(message: IncentivizedAcknowledgement): unknown {
+    const obj: any = {};
+    message.appAcknowledgement !== undefined && (obj.appAcknowledgement = base64FromBytes(message.appAcknowledgement !== undefined ? message.appAcknowledgement : new Uint8Array()));
+    message.forwardRelayerAddress !== undefined && (obj.forwardRelayerAddress = message.forwardRelayerAddress);
+    message.underlyingAppSuccess !== undefined && (obj.underlyingAppSuccess = message.underlyingAppSuccess);
+    return obj;
   },
   fromPartial(object: Partial<IncentivizedAcknowledgement>): IncentivizedAcknowledgement {
     const message = createBaseIncentivizedAcknowledgement();
@@ -125,3 +150,5 @@ export const IncentivizedAcknowledgement = {
     };
   }
 };
+GlobalDecoderRegistry.register(IncentivizedAcknowledgement.typeUrl, IncentivizedAcknowledgement);
+GlobalDecoderRegistry.registerAminoProtoMapping(IncentivizedAcknowledgement.aminoType, IncentivizedAcknowledgement.typeUrl);

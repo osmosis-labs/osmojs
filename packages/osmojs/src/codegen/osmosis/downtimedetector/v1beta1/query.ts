@@ -1,6 +1,8 @@
 import { Downtime, downtimeFromJSON, downtimeToJSON } from "./downtime_duration";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
+import { isSet } from "../../../helpers";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * Query for has it been at least $RECOVERY_DURATION units of time,
  * since the chain has been down for $DOWNTIME_DURATION.
@@ -58,6 +60,16 @@ function createBaseRecoveredSinceDowntimeOfLengthRequest(): RecoveredSinceDownti
 }
 export const RecoveredSinceDowntimeOfLengthRequest = {
   typeUrl: "/osmosis.downtimedetector.v1beta1.RecoveredSinceDowntimeOfLengthRequest",
+  aminoType: "osmosis/downtimedetector/recovered-since-downtime-of-length-request",
+  is(o: any): o is RecoveredSinceDowntimeOfLengthRequest {
+    return o && (o.$typeUrl === RecoveredSinceDowntimeOfLengthRequest.typeUrl || isSet(o.downtime) && Duration.is(o.recovery));
+  },
+  isSDK(o: any): o is RecoveredSinceDowntimeOfLengthRequestSDKType {
+    return o && (o.$typeUrl === RecoveredSinceDowntimeOfLengthRequest.typeUrl || isSet(o.downtime) && Duration.isSDK(o.recovery));
+  },
+  isAmino(o: any): o is RecoveredSinceDowntimeOfLengthRequestAmino {
+    return o && (o.$typeUrl === RecoveredSinceDowntimeOfLengthRequest.typeUrl || isSet(o.downtime) && Duration.isAmino(o.recovery));
+  },
   encode(message: RecoveredSinceDowntimeOfLengthRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.downtime !== 0) {
       writer.uint32(8).int32(message.downtime);
@@ -86,6 +98,18 @@ export const RecoveredSinceDowntimeOfLengthRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): RecoveredSinceDowntimeOfLengthRequest {
+    return {
+      downtime: isSet(object.downtime) ? downtimeFromJSON(object.downtime) : -1,
+      recovery: isSet(object.recovery) ? Duration.fromJSON(object.recovery) : undefined
+    };
+  },
+  toJSON(message: RecoveredSinceDowntimeOfLengthRequest): unknown {
+    const obj: any = {};
+    message.downtime !== undefined && (obj.downtime = downtimeToJSON(message.downtime));
+    message.recovery !== undefined && (obj.recovery = message.recovery ? Duration.toJSON(message.recovery) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<RecoveredSinceDowntimeOfLengthRequest>): RecoveredSinceDowntimeOfLengthRequest {
     const message = createBaseRecoveredSinceDowntimeOfLengthRequest();
@@ -131,6 +155,8 @@ export const RecoveredSinceDowntimeOfLengthRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(RecoveredSinceDowntimeOfLengthRequest.typeUrl, RecoveredSinceDowntimeOfLengthRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(RecoveredSinceDowntimeOfLengthRequest.aminoType, RecoveredSinceDowntimeOfLengthRequest.typeUrl);
 function createBaseRecoveredSinceDowntimeOfLengthResponse(): RecoveredSinceDowntimeOfLengthResponse {
   return {
     succesfullyRecovered: false
@@ -138,6 +164,16 @@ function createBaseRecoveredSinceDowntimeOfLengthResponse(): RecoveredSinceDownt
 }
 export const RecoveredSinceDowntimeOfLengthResponse = {
   typeUrl: "/osmosis.downtimedetector.v1beta1.RecoveredSinceDowntimeOfLengthResponse",
+  aminoType: "osmosis/downtimedetector/recovered-since-downtime-of-length-response",
+  is(o: any): o is RecoveredSinceDowntimeOfLengthResponse {
+    return o && (o.$typeUrl === RecoveredSinceDowntimeOfLengthResponse.typeUrl || typeof o.succesfullyRecovered === "boolean");
+  },
+  isSDK(o: any): o is RecoveredSinceDowntimeOfLengthResponseSDKType {
+    return o && (o.$typeUrl === RecoveredSinceDowntimeOfLengthResponse.typeUrl || typeof o.succesfully_recovered === "boolean");
+  },
+  isAmino(o: any): o is RecoveredSinceDowntimeOfLengthResponseAmino {
+    return o && (o.$typeUrl === RecoveredSinceDowntimeOfLengthResponse.typeUrl || typeof o.succesfully_recovered === "boolean");
+  },
   encode(message: RecoveredSinceDowntimeOfLengthResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.succesfullyRecovered === true) {
       writer.uint32(8).bool(message.succesfullyRecovered);
@@ -160,6 +196,16 @@ export const RecoveredSinceDowntimeOfLengthResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): RecoveredSinceDowntimeOfLengthResponse {
+    return {
+      succesfullyRecovered: isSet(object.succesfullyRecovered) ? Boolean(object.succesfullyRecovered) : false
+    };
+  },
+  toJSON(message: RecoveredSinceDowntimeOfLengthResponse): unknown {
+    const obj: any = {};
+    message.succesfullyRecovered !== undefined && (obj.succesfullyRecovered = message.succesfullyRecovered);
+    return obj;
   },
   fromPartial(object: Partial<RecoveredSinceDowntimeOfLengthResponse>): RecoveredSinceDowntimeOfLengthResponse {
     const message = createBaseRecoveredSinceDowntimeOfLengthResponse();
@@ -200,3 +246,5 @@ export const RecoveredSinceDowntimeOfLengthResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(RecoveredSinceDowntimeOfLengthResponse.typeUrl, RecoveredSinceDowntimeOfLengthResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(RecoveredSinceDowntimeOfLengthResponse.aminoType, RecoveredSinceDowntimeOfLengthResponse.typeUrl);

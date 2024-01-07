@@ -96,6 +96,94 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    setValidatorSetPreference(value: MsgSetValidatorSetPreference) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgSetValidatorSetPreference",
+        value: MsgSetValidatorSetPreference.toJSON(value)
+      };
+    },
+    delegateToValidatorSet(value: MsgDelegateToValidatorSet) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateToValidatorSet",
+        value: MsgDelegateToValidatorSet.toJSON(value)
+      };
+    },
+    undelegateFromValidatorSet(value: MsgUndelegateFromValidatorSet) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromValidatorSet",
+        value: MsgUndelegateFromValidatorSet.toJSON(value)
+      };
+    },
+    undelegateFromRebalancedValidatorSet(value: MsgUndelegateFromRebalancedValidatorSet) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromRebalancedValidatorSet",
+        value: MsgUndelegateFromRebalancedValidatorSet.toJSON(value)
+      };
+    },
+    redelegateValidatorSet(value: MsgRedelegateValidatorSet) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgRedelegateValidatorSet",
+        value: MsgRedelegateValidatorSet.toJSON(value)
+      };
+    },
+    withdrawDelegationRewards(value: MsgWithdrawDelegationRewards) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgWithdrawDelegationRewards",
+        value: MsgWithdrawDelegationRewards.toJSON(value)
+      };
+    },
+    delegateBondedTokens(value: MsgDelegateBondedTokens) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateBondedTokens",
+        value: MsgDelegateBondedTokens.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    setValidatorSetPreference(value: any) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgSetValidatorSetPreference",
+        value: MsgSetValidatorSetPreference.fromJSON(value)
+      };
+    },
+    delegateToValidatorSet(value: any) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateToValidatorSet",
+        value: MsgDelegateToValidatorSet.fromJSON(value)
+      };
+    },
+    undelegateFromValidatorSet(value: any) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromValidatorSet",
+        value: MsgUndelegateFromValidatorSet.fromJSON(value)
+      };
+    },
+    undelegateFromRebalancedValidatorSet(value: any) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromRebalancedValidatorSet",
+        value: MsgUndelegateFromRebalancedValidatorSet.fromJSON(value)
+      };
+    },
+    redelegateValidatorSet(value: any) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgRedelegateValidatorSet",
+        value: MsgRedelegateValidatorSet.fromJSON(value)
+      };
+    },
+    withdrawDelegationRewards(value: any) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgWithdrawDelegationRewards",
+        value: MsgWithdrawDelegationRewards.fromJSON(value)
+      };
+    },
+    delegateBondedTokens(value: any) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateBondedTokens",
+        value: MsgDelegateBondedTokens.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     setValidatorSetPreference(value: MsgSetValidatorSetPreference) {
       return {

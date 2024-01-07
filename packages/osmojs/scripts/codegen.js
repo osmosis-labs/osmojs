@@ -24,7 +24,8 @@ telescope({
     },
     interfaces: {
       enabled: true,
-      useUnionTypes: false
+      useUnionTypes: true,
+      useGlobalDecoderRegistry: true
     },
     prototypes: {
       addTypeUrlToDecoders: true,
@@ -54,7 +55,6 @@ telescope({
           'cosmos.nft.v1beta1',
           'cosmos.orm.v1',
           'cosmos.orm.v1alpha1',
-          'cosmos.params.v1beta1',
           'cosmos.slashing.v1beta1',
           'cosmos.vesting.v1beta1',
           'google.api',
@@ -63,8 +63,8 @@ telescope({
         ]
       },
       methods: {
-        fromJSON: false,
-        toJSON: false,
+        fromJSON: true,
+        toJSON: true,
 
         encode: true,
         decode: true,

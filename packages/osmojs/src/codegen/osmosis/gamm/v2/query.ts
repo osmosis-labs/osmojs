@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** Deprecated: please use alternate in x/poolmanager */
 /** @deprecated */
 export interface QuerySpotPriceRequest {
@@ -62,6 +64,16 @@ function createBaseQuerySpotPriceRequest(): QuerySpotPriceRequest {
 }
 export const QuerySpotPriceRequest = {
   typeUrl: "/osmosis.gamm.v2.QuerySpotPriceRequest",
+  aminoType: "osmosis/gamm/v2/query-spot-price-request",
+  is(o: any): o is QuerySpotPriceRequest {
+    return o && (o.$typeUrl === QuerySpotPriceRequest.typeUrl || typeof o.poolId === "bigint" && typeof o.baseAssetDenom === "string" && typeof o.quoteAssetDenom === "string");
+  },
+  isSDK(o: any): o is QuerySpotPriceRequestSDKType {
+    return o && (o.$typeUrl === QuerySpotPriceRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.base_asset_denom === "string" && typeof o.quote_asset_denom === "string");
+  },
+  isAmino(o: any): o is QuerySpotPriceRequestAmino {
+    return o && (o.$typeUrl === QuerySpotPriceRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.base_asset_denom === "string" && typeof o.quote_asset_denom === "string");
+  },
   encode(message: QuerySpotPriceRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -96,6 +108,20 @@ export const QuerySpotPriceRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QuerySpotPriceRequest {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      baseAssetDenom: isSet(object.baseAssetDenom) ? String(object.baseAssetDenom) : "",
+      quoteAssetDenom: isSet(object.quoteAssetDenom) ? String(object.quoteAssetDenom) : ""
+    };
+  },
+  toJSON(message: QuerySpotPriceRequest): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.baseAssetDenom !== undefined && (obj.baseAssetDenom = message.baseAssetDenom);
+    message.quoteAssetDenom !== undefined && (obj.quoteAssetDenom = message.quoteAssetDenom);
+    return obj;
   },
   fromPartial(object: Partial<QuerySpotPriceRequest>): QuerySpotPriceRequest {
     const message = createBaseQuerySpotPriceRequest();
@@ -146,6 +172,8 @@ export const QuerySpotPriceRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QuerySpotPriceRequest.typeUrl, QuerySpotPriceRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QuerySpotPriceRequest.aminoType, QuerySpotPriceRequest.typeUrl);
 function createBaseQuerySpotPriceResponse(): QuerySpotPriceResponse {
   return {
     spotPrice: ""
@@ -153,6 +181,16 @@ function createBaseQuerySpotPriceResponse(): QuerySpotPriceResponse {
 }
 export const QuerySpotPriceResponse = {
   typeUrl: "/osmosis.gamm.v2.QuerySpotPriceResponse",
+  aminoType: "osmosis/gamm/v2/query-spot-price-response",
+  is(o: any): o is QuerySpotPriceResponse {
+    return o && (o.$typeUrl === QuerySpotPriceResponse.typeUrl || typeof o.spotPrice === "string");
+  },
+  isSDK(o: any): o is QuerySpotPriceResponseSDKType {
+    return o && (o.$typeUrl === QuerySpotPriceResponse.typeUrl || typeof o.spot_price === "string");
+  },
+  isAmino(o: any): o is QuerySpotPriceResponseAmino {
+    return o && (o.$typeUrl === QuerySpotPriceResponse.typeUrl || typeof o.spot_price === "string");
+  },
   encode(message: QuerySpotPriceResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.spotPrice !== "") {
       writer.uint32(10).string(message.spotPrice);
@@ -175,6 +213,16 @@ export const QuerySpotPriceResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QuerySpotPriceResponse {
+    return {
+      spotPrice: isSet(object.spotPrice) ? String(object.spotPrice) : ""
+    };
+  },
+  toJSON(message: QuerySpotPriceResponse): unknown {
+    const obj: any = {};
+    message.spotPrice !== undefined && (obj.spotPrice = message.spotPrice);
+    return obj;
   },
   fromPartial(object: Partial<QuerySpotPriceResponse>): QuerySpotPriceResponse {
     const message = createBaseQuerySpotPriceResponse();
@@ -215,3 +263,5 @@ export const QuerySpotPriceResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QuerySpotPriceResponse.typeUrl, QuerySpotPriceResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QuerySpotPriceResponse.aminoType, QuerySpotPriceResponse.typeUrl);

@@ -1,5 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { isSet } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 /** Params holds parameters for the incentives module */
 export interface Params {
   /**
@@ -73,6 +75,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.incentives.Params",
+  aminoType: "osmosis/incentives/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.distrEpochIdentifier === "string" && Array.isArray(o.groupCreationFee) && (!o.groupCreationFee.length || Coin.is(o.groupCreationFee[0])) && Array.isArray(o.unrestrictedCreatorWhitelist) && (!o.unrestrictedCreatorWhitelist.length || typeof o.unrestrictedCreatorWhitelist[0] === "string"));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.distr_epoch_identifier === "string" && Array.isArray(o.group_creation_fee) && (!o.group_creation_fee.length || Coin.isSDK(o.group_creation_fee[0])) && Array.isArray(o.unrestricted_creator_whitelist) && (!o.unrestricted_creator_whitelist.length || typeof o.unrestricted_creator_whitelist[0] === "string"));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.distr_epoch_identifier === "string" && Array.isArray(o.group_creation_fee) && (!o.group_creation_fee.length || Coin.isAmino(o.group_creation_fee[0])) && Array.isArray(o.unrestricted_creator_whitelist) && (!o.unrestricted_creator_whitelist.length || typeof o.unrestricted_creator_whitelist[0] === "string"));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.distrEpochIdentifier !== "") {
       writer.uint32(10).string(message.distrEpochIdentifier);
@@ -107,6 +119,28 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      distrEpochIdentifier: isSet(object.distrEpochIdentifier) ? String(object.distrEpochIdentifier) : "",
+      groupCreationFee: Array.isArray(object?.groupCreationFee) ? object.groupCreationFee.map((e: any) => Coin.fromJSON(e)) : [],
+      unrestrictedCreatorWhitelist: Array.isArray(object?.unrestrictedCreatorWhitelist) ? object.unrestrictedCreatorWhitelist.map((e: any) => String(e)) : []
+    };
+  },
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    message.distrEpochIdentifier !== undefined && (obj.distrEpochIdentifier = message.distrEpochIdentifier);
+    if (message.groupCreationFee) {
+      obj.groupCreationFee = message.groupCreationFee.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.groupCreationFee = [];
+    }
+    if (message.unrestrictedCreatorWhitelist) {
+      obj.unrestrictedCreatorWhitelist = message.unrestrictedCreatorWhitelist.map(e => e);
+    } else {
+      obj.unrestrictedCreatorWhitelist = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
@@ -161,3 +195,5 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);

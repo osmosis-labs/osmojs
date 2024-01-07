@@ -1,6 +1,8 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { isSet } from "../../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../../registry";
 /**
  * PoolParams defined the parameters that will be managed by the pool
  * governance in the future. This params are not managed by the chain
@@ -128,6 +130,16 @@ function createBasePoolParams(): PoolParams {
 }
 export const PoolParams = {
   typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.PoolParams",
+  aminoType: "osmosis/gamm/StableswapPoolParams",
+  is(o: any): o is PoolParams {
+    return o && (o.$typeUrl === PoolParams.typeUrl || typeof o.swapFee === "string" && typeof o.exitFee === "string");
+  },
+  isSDK(o: any): o is PoolParamsSDKType {
+    return o && (o.$typeUrl === PoolParams.typeUrl || typeof o.swap_fee === "string" && typeof o.exit_fee === "string");
+  },
+  isAmino(o: any): o is PoolParamsAmino {
+    return o && (o.$typeUrl === PoolParams.typeUrl || typeof o.swap_fee === "string" && typeof o.exit_fee === "string");
+  },
   encode(message: PoolParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.swapFee !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.swapFee, 18).atomics);
@@ -156,6 +168,18 @@ export const PoolParams = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PoolParams {
+    return {
+      swapFee: isSet(object.swapFee) ? String(object.swapFee) : "",
+      exitFee: isSet(object.exitFee) ? String(object.exitFee) : ""
+    };
+  },
+  toJSON(message: PoolParams): unknown {
+    const obj: any = {};
+    message.swapFee !== undefined && (obj.swapFee = message.swapFee);
+    message.exitFee !== undefined && (obj.exitFee = message.exitFee);
+    return obj;
   },
   fromPartial(object: Partial<PoolParams>): PoolParams {
     const message = createBasePoolParams();
@@ -201,6 +225,8 @@ export const PoolParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolParams.typeUrl, PoolParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolParams.aminoType, PoolParams.typeUrl);
 function createBasePool(): Pool {
   return {
     $typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.Pool",
@@ -216,6 +242,16 @@ function createBasePool(): Pool {
 }
 export const Pool = {
   typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.Pool",
+  aminoType: "osmosis/gamm/StableswapPool",
+  is(o: any): o is Pool {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.id === "bigint" && PoolParams.is(o.poolParams) && typeof o.futurePoolGovernor === "string" && Coin.is(o.totalShares) && Array.isArray(o.poolLiquidity) && (!o.poolLiquidity.length || Coin.is(o.poolLiquidity[0])) && Array.isArray(o.scalingFactors) && (!o.scalingFactors.length || typeof o.scalingFactors[0] === "bigint") && typeof o.scalingFactorController === "string");
+  },
+  isSDK(o: any): o is PoolSDKType {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.id === "bigint" && PoolParams.isSDK(o.pool_params) && typeof o.future_pool_governor === "string" && Coin.isSDK(o.total_shares) && Array.isArray(o.pool_liquidity) && (!o.pool_liquidity.length || Coin.isSDK(o.pool_liquidity[0])) && Array.isArray(o.scaling_factors) && (!o.scaling_factors.length || typeof o.scaling_factors[0] === "bigint") && typeof o.scaling_factor_controller === "string");
+  },
+  isAmino(o: any): o is PoolAmino {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.id === "bigint" && PoolParams.isAmino(o.pool_params) && typeof o.future_pool_governor === "string" && Coin.isAmino(o.total_shares) && Array.isArray(o.pool_liquidity) && (!o.pool_liquidity.length || Coin.isAmino(o.pool_liquidity[0])) && Array.isArray(o.scaling_factors) && (!o.scaling_factors.length || typeof o.scaling_factors[0] === "bigint") && typeof o.scaling_factor_controller === "string");
+  },
   encode(message: Pool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -289,6 +325,38 @@ export const Pool = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Pool {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0),
+      poolParams: isSet(object.poolParams) ? PoolParams.fromJSON(object.poolParams) : undefined,
+      futurePoolGovernor: isSet(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : "",
+      totalShares: isSet(object.totalShares) ? Coin.fromJSON(object.totalShares) : undefined,
+      poolLiquidity: Array.isArray(object?.poolLiquidity) ? object.poolLiquidity.map((e: any) => Coin.fromJSON(e)) : [],
+      scalingFactors: Array.isArray(object?.scalingFactors) ? object.scalingFactors.map((e: any) => BigInt(e.toString())) : [],
+      scalingFactorController: isSet(object.scalingFactorController) ? String(object.scalingFactorController) : ""
+    };
+  },
+  toJSON(message: Pool): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
+    message.poolParams !== undefined && (obj.poolParams = message.poolParams ? PoolParams.toJSON(message.poolParams) : undefined);
+    message.futurePoolGovernor !== undefined && (obj.futurePoolGovernor = message.futurePoolGovernor);
+    message.totalShares !== undefined && (obj.totalShares = message.totalShares ? Coin.toJSON(message.totalShares) : undefined);
+    if (message.poolLiquidity) {
+      obj.poolLiquidity = message.poolLiquidity.map(e => e ? Coin.toJSON(e) : undefined);
+    } else {
+      obj.poolLiquidity = [];
+    }
+    if (message.scalingFactors) {
+      obj.scalingFactors = message.scalingFactors.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.scalingFactors = [];
+    }
+    message.scalingFactorController !== undefined && (obj.scalingFactorController = message.scalingFactorController);
+    return obj;
   },
   fromPartial(object: Partial<Pool>): Pool {
     const message = createBasePool();
@@ -368,3 +436,5 @@ export const Pool = {
     };
   }
 };
+GlobalDecoderRegistry.register(Pool.typeUrl, Pool);
+GlobalDecoderRegistry.registerAminoProtoMapping(Pool.aminoType, Pool.typeUrl);

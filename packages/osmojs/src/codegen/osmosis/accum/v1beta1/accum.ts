@@ -1,6 +1,8 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * AccumulatorContent is the state-entry for the global accumulator.
  * It contains the name of the global accumulator and the total value of
@@ -153,6 +155,16 @@ function createBaseAccumulatorContent(): AccumulatorContent {
 }
 export const AccumulatorContent = {
   typeUrl: "/osmosis.accum.v1beta1.AccumulatorContent",
+  aminoType: "osmosis/accum/accumulator-content",
+  is(o: any): o is AccumulatorContent {
+    return o && (o.$typeUrl === AccumulatorContent.typeUrl || Array.isArray(o.accumValue) && (!o.accumValue.length || DecCoin.is(o.accumValue[0])) && typeof o.totalShares === "string");
+  },
+  isSDK(o: any): o is AccumulatorContentSDKType {
+    return o && (o.$typeUrl === AccumulatorContent.typeUrl || Array.isArray(o.accum_value) && (!o.accum_value.length || DecCoin.isSDK(o.accum_value[0])) && typeof o.total_shares === "string");
+  },
+  isAmino(o: any): o is AccumulatorContentAmino {
+    return o && (o.$typeUrl === AccumulatorContent.typeUrl || Array.isArray(o.accum_value) && (!o.accum_value.length || DecCoin.isAmino(o.accum_value[0])) && typeof o.total_shares === "string");
+  },
   encode(message: AccumulatorContent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.accumValue) {
       DecCoin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -181,6 +193,22 @@ export const AccumulatorContent = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): AccumulatorContent {
+    return {
+      accumValue: Array.isArray(object?.accumValue) ? object.accumValue.map((e: any) => DecCoin.fromJSON(e)) : [],
+      totalShares: isSet(object.totalShares) ? String(object.totalShares) : ""
+    };
+  },
+  toJSON(message: AccumulatorContent): unknown {
+    const obj: any = {};
+    if (message.accumValue) {
+      obj.accumValue = message.accumValue.map(e => e ? DecCoin.toJSON(e) : undefined);
+    } else {
+      obj.accumValue = [];
+    }
+    message.totalShares !== undefined && (obj.totalShares = message.totalShares);
+    return obj;
   },
   fromPartial(object: Partial<AccumulatorContent>): AccumulatorContent {
     const message = createBaseAccumulatorContent();
@@ -228,11 +256,23 @@ export const AccumulatorContent = {
     };
   }
 };
+GlobalDecoderRegistry.register(AccumulatorContent.typeUrl, AccumulatorContent);
+GlobalDecoderRegistry.registerAminoProtoMapping(AccumulatorContent.aminoType, AccumulatorContent.typeUrl);
 function createBaseOptions(): Options {
   return {};
 }
 export const Options = {
   typeUrl: "/osmosis.accum.v1beta1.Options",
+  aminoType: "osmosis/accum/options",
+  is(o: any): o is Options {
+    return o && o.$typeUrl === Options.typeUrl;
+  },
+  isSDK(o: any): o is OptionsSDKType {
+    return o && o.$typeUrl === Options.typeUrl;
+  },
+  isAmino(o: any): o is OptionsAmino {
+    return o && o.$typeUrl === Options.typeUrl;
+  },
   encode(_: Options, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -249,6 +289,13 @@ export const Options = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): Options {
+    return {};
+  },
+  toJSON(_: Options): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<Options>): Options {
     const message = createBaseOptions();
@@ -284,6 +331,8 @@ export const Options = {
     };
   }
 };
+GlobalDecoderRegistry.register(Options.typeUrl, Options);
+GlobalDecoderRegistry.registerAminoProtoMapping(Options.aminoType, Options.typeUrl);
 function createBaseRecord(): Record {
   return {
     numShares: "",
@@ -294,6 +343,16 @@ function createBaseRecord(): Record {
 }
 export const Record = {
   typeUrl: "/osmosis.accum.v1beta1.Record",
+  aminoType: "osmosis/accum/record",
+  is(o: any): o is Record {
+    return o && (o.$typeUrl === Record.typeUrl || typeof o.numShares === "string" && Array.isArray(o.accumValuePerShare) && (!o.accumValuePerShare.length || DecCoin.is(o.accumValuePerShare[0])) && Array.isArray(o.unclaimedRewardsTotal) && (!o.unclaimedRewardsTotal.length || DecCoin.is(o.unclaimedRewardsTotal[0])));
+  },
+  isSDK(o: any): o is RecordSDKType {
+    return o && (o.$typeUrl === Record.typeUrl || typeof o.num_shares === "string" && Array.isArray(o.accum_value_per_share) && (!o.accum_value_per_share.length || DecCoin.isSDK(o.accum_value_per_share[0])) && Array.isArray(o.unclaimed_rewards_total) && (!o.unclaimed_rewards_total.length || DecCoin.isSDK(o.unclaimed_rewards_total[0])));
+  },
+  isAmino(o: any): o is RecordAmino {
+    return o && (o.$typeUrl === Record.typeUrl || typeof o.num_shares === "string" && Array.isArray(o.accum_value_per_share) && (!o.accum_value_per_share.length || DecCoin.isAmino(o.accum_value_per_share[0])) && Array.isArray(o.unclaimed_rewards_total) && (!o.unclaimed_rewards_total.length || DecCoin.isAmino(o.unclaimed_rewards_total[0])));
+  },
   encode(message: Record, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.numShares !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.numShares, 18).atomics);
@@ -334,6 +393,30 @@ export const Record = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Record {
+    return {
+      numShares: isSet(object.numShares) ? String(object.numShares) : "",
+      accumValuePerShare: Array.isArray(object?.accumValuePerShare) ? object.accumValuePerShare.map((e: any) => DecCoin.fromJSON(e)) : [],
+      unclaimedRewardsTotal: Array.isArray(object?.unclaimedRewardsTotal) ? object.unclaimedRewardsTotal.map((e: any) => DecCoin.fromJSON(e)) : [],
+      options: isSet(object.options) ? Options.fromJSON(object.options) : undefined
+    };
+  },
+  toJSON(message: Record): unknown {
+    const obj: any = {};
+    message.numShares !== undefined && (obj.numShares = message.numShares);
+    if (message.accumValuePerShare) {
+      obj.accumValuePerShare = message.accumValuePerShare.map(e => e ? DecCoin.toJSON(e) : undefined);
+    } else {
+      obj.accumValuePerShare = [];
+    }
+    if (message.unclaimedRewardsTotal) {
+      obj.unclaimedRewardsTotal = message.unclaimedRewardsTotal.map(e => e ? DecCoin.toJSON(e) : undefined);
+    } else {
+      obj.unclaimedRewardsTotal = [];
+    }
+    message.options !== undefined && (obj.options = message.options ? Options.toJSON(message.options) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<Record>): Record {
     const message = createBaseRecord();
@@ -393,3 +476,5 @@ export const Record = {
     };
   }
 };
+GlobalDecoderRegistry.register(Record.typeUrl, Record);
+GlobalDecoderRegistry.registerAminoProtoMapping(Record.aminoType, Record.typeUrl);

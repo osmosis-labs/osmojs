@@ -2,7 +2,8 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { toTimestamp, fromTimestamp, isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { Decimal } from "@cosmjs/math";
 /**
  * Parameters for changing the weights in a balancer pool smoothly from
@@ -287,6 +288,16 @@ function createBaseSmoothWeightChangeParams(): SmoothWeightChangeParams {
 }
 export const SmoothWeightChangeParams = {
   typeUrl: "/osmosis.gamm.v1beta1.SmoothWeightChangeParams",
+  aminoType: "osmosis/gamm/smooth-weight-change-params",
+  is(o: any): o is SmoothWeightChangeParams {
+    return o && (o.$typeUrl === SmoothWeightChangeParams.typeUrl || Timestamp.is(o.startTime) && Duration.is(o.duration) && Array.isArray(o.initialPoolWeights) && (!o.initialPoolWeights.length || PoolAsset.is(o.initialPoolWeights[0])) && Array.isArray(o.targetPoolWeights) && (!o.targetPoolWeights.length || PoolAsset.is(o.targetPoolWeights[0])));
+  },
+  isSDK(o: any): o is SmoothWeightChangeParamsSDKType {
+    return o && (o.$typeUrl === SmoothWeightChangeParams.typeUrl || Timestamp.isSDK(o.start_time) && Duration.isSDK(o.duration) && Array.isArray(o.initial_pool_weights) && (!o.initial_pool_weights.length || PoolAsset.isSDK(o.initial_pool_weights[0])) && Array.isArray(o.target_pool_weights) && (!o.target_pool_weights.length || PoolAsset.isSDK(o.target_pool_weights[0])));
+  },
+  isAmino(o: any): o is SmoothWeightChangeParamsAmino {
+    return o && (o.$typeUrl === SmoothWeightChangeParams.typeUrl || Timestamp.isAmino(o.start_time) && Duration.isAmino(o.duration) && Array.isArray(o.initial_pool_weights) && (!o.initial_pool_weights.length || PoolAsset.isAmino(o.initial_pool_weights[0])) && Array.isArray(o.target_pool_weights) && (!o.target_pool_weights.length || PoolAsset.isAmino(o.target_pool_weights[0])));
+  },
   encode(message: SmoothWeightChangeParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.startTime !== undefined) {
       Timestamp.encode(toTimestamp(message.startTime), writer.uint32(10).fork()).ldelim();
@@ -327,6 +338,30 @@ export const SmoothWeightChangeParams = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SmoothWeightChangeParams {
+    return {
+      startTime: isSet(object.startTime) ? new Date(object.startTime) : undefined,
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
+      initialPoolWeights: Array.isArray(object?.initialPoolWeights) ? object.initialPoolWeights.map((e: any) => PoolAsset.fromJSON(e)) : [],
+      targetPoolWeights: Array.isArray(object?.targetPoolWeights) ? object.targetPoolWeights.map((e: any) => PoolAsset.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: SmoothWeightChangeParams): unknown {
+    const obj: any = {};
+    message.startTime !== undefined && (obj.startTime = message.startTime.toISOString());
+    message.duration !== undefined && (obj.duration = message.duration ? Duration.toJSON(message.duration) : undefined);
+    if (message.initialPoolWeights) {
+      obj.initialPoolWeights = message.initialPoolWeights.map(e => e ? PoolAsset.toJSON(e) : undefined);
+    } else {
+      obj.initialPoolWeights = [];
+    }
+    if (message.targetPoolWeights) {
+      obj.targetPoolWeights = message.targetPoolWeights.map(e => e ? PoolAsset.toJSON(e) : undefined);
+    } else {
+      obj.targetPoolWeights = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<SmoothWeightChangeParams>): SmoothWeightChangeParams {
     const message = createBaseSmoothWeightChangeParams();
@@ -386,6 +421,8 @@ export const SmoothWeightChangeParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(SmoothWeightChangeParams.typeUrl, SmoothWeightChangeParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(SmoothWeightChangeParams.aminoType, SmoothWeightChangeParams.typeUrl);
 function createBasePoolParams(): PoolParams {
   return {
     swapFee: "",
@@ -395,6 +432,16 @@ function createBasePoolParams(): PoolParams {
 }
 export const PoolParams = {
   typeUrl: "/osmosis.gamm.v1beta1.PoolParams",
+  aminoType: "osmosis/gamm/BalancerPoolParams",
+  is(o: any): o is PoolParams {
+    return o && (o.$typeUrl === PoolParams.typeUrl || typeof o.swapFee === "string" && typeof o.exitFee === "string");
+  },
+  isSDK(o: any): o is PoolParamsSDKType {
+    return o && (o.$typeUrl === PoolParams.typeUrl || typeof o.swap_fee === "string" && typeof o.exit_fee === "string");
+  },
+  isAmino(o: any): o is PoolParamsAmino {
+    return o && (o.$typeUrl === PoolParams.typeUrl || typeof o.swap_fee === "string" && typeof o.exit_fee === "string");
+  },
   encode(message: PoolParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.swapFee !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.swapFee, 18).atomics);
@@ -429,6 +476,20 @@ export const PoolParams = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PoolParams {
+    return {
+      swapFee: isSet(object.swapFee) ? String(object.swapFee) : "",
+      exitFee: isSet(object.exitFee) ? String(object.exitFee) : "",
+      smoothWeightChangeParams: isSet(object.smoothWeightChangeParams) ? SmoothWeightChangeParams.fromJSON(object.smoothWeightChangeParams) : undefined
+    };
+  },
+  toJSON(message: PoolParams): unknown {
+    const obj: any = {};
+    message.swapFee !== undefined && (obj.swapFee = message.swapFee);
+    message.exitFee !== undefined && (obj.exitFee = message.exitFee);
+    message.smoothWeightChangeParams !== undefined && (obj.smoothWeightChangeParams = message.smoothWeightChangeParams ? SmoothWeightChangeParams.toJSON(message.smoothWeightChangeParams) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<PoolParams>): PoolParams {
     const message = createBasePoolParams();
@@ -479,6 +540,8 @@ export const PoolParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolParams.typeUrl, PoolParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolParams.aminoType, PoolParams.typeUrl);
 function createBasePoolAsset(): PoolAsset {
   return {
     token: Coin.fromPartial({}),
@@ -487,6 +550,16 @@ function createBasePoolAsset(): PoolAsset {
 }
 export const PoolAsset = {
   typeUrl: "/osmosis.gamm.v1beta1.PoolAsset",
+  aminoType: "osmosis/gamm/pool-asset",
+  is(o: any): o is PoolAsset {
+    return o && (o.$typeUrl === PoolAsset.typeUrl || Coin.is(o.token) && typeof o.weight === "string");
+  },
+  isSDK(o: any): o is PoolAssetSDKType {
+    return o && (o.$typeUrl === PoolAsset.typeUrl || Coin.isSDK(o.token) && typeof o.weight === "string");
+  },
+  isAmino(o: any): o is PoolAssetAmino {
+    return o && (o.$typeUrl === PoolAsset.typeUrl || Coin.isAmino(o.token) && typeof o.weight === "string");
+  },
   encode(message: PoolAsset, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.token !== undefined) {
       Coin.encode(message.token, writer.uint32(10).fork()).ldelim();
@@ -515,6 +588,18 @@ export const PoolAsset = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PoolAsset {
+    return {
+      token: isSet(object.token) ? Coin.fromJSON(object.token) : undefined,
+      weight: isSet(object.weight) ? String(object.weight) : ""
+    };
+  },
+  toJSON(message: PoolAsset): unknown {
+    const obj: any = {};
+    message.token !== undefined && (obj.token = message.token ? Coin.toJSON(message.token) : undefined);
+    message.weight !== undefined && (obj.weight = message.weight);
+    return obj;
   },
   fromPartial(object: Partial<PoolAsset>): PoolAsset {
     const message = createBasePoolAsset();
@@ -560,6 +645,8 @@ export const PoolAsset = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolAsset.typeUrl, PoolAsset);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolAsset.aminoType, PoolAsset.typeUrl);
 function createBasePool(): Pool {
   return {
     $typeUrl: "/osmosis.gamm.v1beta1.Pool",
@@ -574,6 +661,16 @@ function createBasePool(): Pool {
 }
 export const Pool = {
   typeUrl: "/osmosis.gamm.v1beta1.Pool",
+  aminoType: "osmosis/gamm/BalancerPool",
+  is(o: any): o is Pool {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.id === "bigint" && PoolParams.is(o.poolParams) && typeof o.futurePoolGovernor === "string" && Coin.is(o.totalShares) && Array.isArray(o.poolAssets) && (!o.poolAssets.length || PoolAsset.is(o.poolAssets[0])) && typeof o.totalWeight === "string");
+  },
+  isSDK(o: any): o is PoolSDKType {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.id === "bigint" && PoolParams.isSDK(o.pool_params) && typeof o.future_pool_governor === "string" && Coin.isSDK(o.total_shares) && Array.isArray(o.pool_assets) && (!o.pool_assets.length || PoolAsset.isSDK(o.pool_assets[0])) && typeof o.total_weight === "string");
+  },
+  isAmino(o: any): o is PoolAmino {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.id === "bigint" && PoolParams.isAmino(o.pool_params) && typeof o.future_pool_governor === "string" && Coin.isAmino(o.total_shares) && Array.isArray(o.pool_assets) && (!o.pool_assets.length || PoolAsset.isAmino(o.pool_assets[0])) && typeof o.total_weight === "string");
+  },
   encode(message: Pool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -632,6 +729,32 @@ export const Pool = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Pool {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0),
+      poolParams: isSet(object.poolParams) ? PoolParams.fromJSON(object.poolParams) : undefined,
+      futurePoolGovernor: isSet(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : "",
+      totalShares: isSet(object.totalShares) ? Coin.fromJSON(object.totalShares) : undefined,
+      poolAssets: Array.isArray(object?.poolAssets) ? object.poolAssets.map((e: any) => PoolAsset.fromJSON(e)) : [],
+      totalWeight: isSet(object.totalWeight) ? String(object.totalWeight) : ""
+    };
+  },
+  toJSON(message: Pool): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
+    message.poolParams !== undefined && (obj.poolParams = message.poolParams ? PoolParams.toJSON(message.poolParams) : undefined);
+    message.futurePoolGovernor !== undefined && (obj.futurePoolGovernor = message.futurePoolGovernor);
+    message.totalShares !== undefined && (obj.totalShares = message.totalShares ? Coin.toJSON(message.totalShares) : undefined);
+    if (message.poolAssets) {
+      obj.poolAssets = message.poolAssets.map(e => e ? PoolAsset.toJSON(e) : undefined);
+    } else {
+      obj.poolAssets = [];
+    }
+    message.totalWeight !== undefined && (obj.totalWeight = message.totalWeight);
+    return obj;
   },
   fromPartial(object: Partial<Pool>): Pool {
     const message = createBasePool();
@@ -704,3 +827,5 @@ export const Pool = {
     };
   }
 };
+GlobalDecoderRegistry.register(Pool.typeUrl, Pool);
+GlobalDecoderRegistry.registerAminoProtoMapping(Pool.aminoType, Pool.typeUrl);

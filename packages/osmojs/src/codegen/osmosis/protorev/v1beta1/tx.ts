@@ -1,5 +1,7 @@
 import { TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, InfoByPoolType, InfoByPoolTypeAmino, InfoByPoolTypeSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType } from "./protorev";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** MsgSetHotRoutes defines the Msg/SetHotRoutes request type. */
 export interface MsgSetHotRoutes {
   /** admin is the account that is authorized to set the hot routes. */
@@ -314,6 +316,16 @@ function createBaseMsgSetHotRoutes(): MsgSetHotRoutes {
 }
 export const MsgSetHotRoutes = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetHotRoutes",
+  aminoType: "osmosis/MsgSetHotRoutes",
+  is(o: any): o is MsgSetHotRoutes {
+    return o && (o.$typeUrl === MsgSetHotRoutes.typeUrl || typeof o.admin === "string" && Array.isArray(o.hotRoutes) && (!o.hotRoutes.length || TokenPairArbRoutes.is(o.hotRoutes[0])));
+  },
+  isSDK(o: any): o is MsgSetHotRoutesSDKType {
+    return o && (o.$typeUrl === MsgSetHotRoutes.typeUrl || typeof o.admin === "string" && Array.isArray(o.hot_routes) && (!o.hot_routes.length || TokenPairArbRoutes.isSDK(o.hot_routes[0])));
+  },
+  isAmino(o: any): o is MsgSetHotRoutesAmino {
+    return o && (o.$typeUrl === MsgSetHotRoutes.typeUrl || typeof o.admin === "string" && Array.isArray(o.hot_routes) && (!o.hot_routes.length || TokenPairArbRoutes.isAmino(o.hot_routes[0])));
+  },
   encode(message: MsgSetHotRoutes, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
@@ -342,6 +354,22 @@ export const MsgSetHotRoutes = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSetHotRoutes {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      hotRoutes: Array.isArray(object?.hotRoutes) ? object.hotRoutes.map((e: any) => TokenPairArbRoutes.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgSetHotRoutes): unknown {
+    const obj: any = {};
+    message.admin !== undefined && (obj.admin = message.admin);
+    if (message.hotRoutes) {
+      obj.hotRoutes = message.hotRoutes.map(e => e ? TokenPairArbRoutes.toJSON(e) : undefined);
+    } else {
+      obj.hotRoutes = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<MsgSetHotRoutes>): MsgSetHotRoutes {
     const message = createBaseMsgSetHotRoutes();
@@ -389,11 +417,23 @@ export const MsgSetHotRoutes = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetHotRoutes.typeUrl, MsgSetHotRoutes);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetHotRoutes.aminoType, MsgSetHotRoutes.typeUrl);
 function createBaseMsgSetHotRoutesResponse(): MsgSetHotRoutesResponse {
   return {};
 }
 export const MsgSetHotRoutesResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetHotRoutesResponse",
+  aminoType: "osmosis/protorev/set-hot-routes-response",
+  is(o: any): o is MsgSetHotRoutesResponse {
+    return o && o.$typeUrl === MsgSetHotRoutesResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSetHotRoutesResponseSDKType {
+    return o && o.$typeUrl === MsgSetHotRoutesResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSetHotRoutesResponseAmino {
+    return o && o.$typeUrl === MsgSetHotRoutesResponse.typeUrl;
+  },
   encode(_: MsgSetHotRoutesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -410,6 +450,13 @@ export const MsgSetHotRoutesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetHotRoutesResponse {
+    return {};
+  },
+  toJSON(_: MsgSetHotRoutesResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgSetHotRoutesResponse>): MsgSetHotRoutesResponse {
     const message = createBaseMsgSetHotRoutesResponse();
@@ -445,6 +492,8 @@ export const MsgSetHotRoutesResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetHotRoutesResponse.typeUrl, MsgSetHotRoutesResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetHotRoutesResponse.aminoType, MsgSetHotRoutesResponse.typeUrl);
 function createBaseMsgSetDeveloperAccount(): MsgSetDeveloperAccount {
   return {
     admin: "",
@@ -453,6 +502,16 @@ function createBaseMsgSetDeveloperAccount(): MsgSetDeveloperAccount {
 }
 export const MsgSetDeveloperAccount = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetDeveloperAccount",
+  aminoType: "osmosis/MsgSetDeveloperAccount",
+  is(o: any): o is MsgSetDeveloperAccount {
+    return o && (o.$typeUrl === MsgSetDeveloperAccount.typeUrl || typeof o.admin === "string" && typeof o.developerAccount === "string");
+  },
+  isSDK(o: any): o is MsgSetDeveloperAccountSDKType {
+    return o && (o.$typeUrl === MsgSetDeveloperAccount.typeUrl || typeof o.admin === "string" && typeof o.developer_account === "string");
+  },
+  isAmino(o: any): o is MsgSetDeveloperAccountAmino {
+    return o && (o.$typeUrl === MsgSetDeveloperAccount.typeUrl || typeof o.admin === "string" && typeof o.developer_account === "string");
+  },
   encode(message: MsgSetDeveloperAccount, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
@@ -481,6 +540,18 @@ export const MsgSetDeveloperAccount = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSetDeveloperAccount {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      developerAccount: isSet(object.developerAccount) ? String(object.developerAccount) : ""
+    };
+  },
+  toJSON(message: MsgSetDeveloperAccount): unknown {
+    const obj: any = {};
+    message.admin !== undefined && (obj.admin = message.admin);
+    message.developerAccount !== undefined && (obj.developerAccount = message.developerAccount);
+    return obj;
   },
   fromPartial(object: Partial<MsgSetDeveloperAccount>): MsgSetDeveloperAccount {
     const message = createBaseMsgSetDeveloperAccount();
@@ -526,11 +597,23 @@ export const MsgSetDeveloperAccount = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetDeveloperAccount.typeUrl, MsgSetDeveloperAccount);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetDeveloperAccount.aminoType, MsgSetDeveloperAccount.typeUrl);
 function createBaseMsgSetDeveloperAccountResponse(): MsgSetDeveloperAccountResponse {
   return {};
 }
 export const MsgSetDeveloperAccountResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetDeveloperAccountResponse",
+  aminoType: "osmosis/protorev/set-developer-account-response",
+  is(o: any): o is MsgSetDeveloperAccountResponse {
+    return o && o.$typeUrl === MsgSetDeveloperAccountResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSetDeveloperAccountResponseSDKType {
+    return o && o.$typeUrl === MsgSetDeveloperAccountResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSetDeveloperAccountResponseAmino {
+    return o && o.$typeUrl === MsgSetDeveloperAccountResponse.typeUrl;
+  },
   encode(_: MsgSetDeveloperAccountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -547,6 +630,13 @@ export const MsgSetDeveloperAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetDeveloperAccountResponse {
+    return {};
+  },
+  toJSON(_: MsgSetDeveloperAccountResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgSetDeveloperAccountResponse>): MsgSetDeveloperAccountResponse {
     const message = createBaseMsgSetDeveloperAccountResponse();
@@ -582,6 +672,8 @@ export const MsgSetDeveloperAccountResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetDeveloperAccountResponse.typeUrl, MsgSetDeveloperAccountResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetDeveloperAccountResponse.aminoType, MsgSetDeveloperAccountResponse.typeUrl);
 function createBaseMsgSetInfoByPoolType(): MsgSetInfoByPoolType {
   return {
     admin: "",
@@ -590,6 +682,16 @@ function createBaseMsgSetInfoByPoolType(): MsgSetInfoByPoolType {
 }
 export const MsgSetInfoByPoolType = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetInfoByPoolType",
+  aminoType: "osmosis/MsgSetInfoByPoolType",
+  is(o: any): o is MsgSetInfoByPoolType {
+    return o && (o.$typeUrl === MsgSetInfoByPoolType.typeUrl || typeof o.admin === "string" && InfoByPoolType.is(o.infoByPoolType));
+  },
+  isSDK(o: any): o is MsgSetInfoByPoolTypeSDKType {
+    return o && (o.$typeUrl === MsgSetInfoByPoolType.typeUrl || typeof o.admin === "string" && InfoByPoolType.isSDK(o.info_by_pool_type));
+  },
+  isAmino(o: any): o is MsgSetInfoByPoolTypeAmino {
+    return o && (o.$typeUrl === MsgSetInfoByPoolType.typeUrl || typeof o.admin === "string" && InfoByPoolType.isAmino(o.info_by_pool_type));
+  },
   encode(message: MsgSetInfoByPoolType, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
@@ -618,6 +720,18 @@ export const MsgSetInfoByPoolType = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSetInfoByPoolType {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      infoByPoolType: isSet(object.infoByPoolType) ? InfoByPoolType.fromJSON(object.infoByPoolType) : undefined
+    };
+  },
+  toJSON(message: MsgSetInfoByPoolType): unknown {
+    const obj: any = {};
+    message.admin !== undefined && (obj.admin = message.admin);
+    message.infoByPoolType !== undefined && (obj.infoByPoolType = message.infoByPoolType ? InfoByPoolType.toJSON(message.infoByPoolType) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<MsgSetInfoByPoolType>): MsgSetInfoByPoolType {
     const message = createBaseMsgSetInfoByPoolType();
@@ -663,11 +777,23 @@ export const MsgSetInfoByPoolType = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetInfoByPoolType.typeUrl, MsgSetInfoByPoolType);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetInfoByPoolType.aminoType, MsgSetInfoByPoolType.typeUrl);
 function createBaseMsgSetInfoByPoolTypeResponse(): MsgSetInfoByPoolTypeResponse {
   return {};
 }
 export const MsgSetInfoByPoolTypeResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetInfoByPoolTypeResponse",
+  aminoType: "osmosis/protorev/set-info-by-pool-type-response",
+  is(o: any): o is MsgSetInfoByPoolTypeResponse {
+    return o && o.$typeUrl === MsgSetInfoByPoolTypeResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSetInfoByPoolTypeResponseSDKType {
+    return o && o.$typeUrl === MsgSetInfoByPoolTypeResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSetInfoByPoolTypeResponseAmino {
+    return o && o.$typeUrl === MsgSetInfoByPoolTypeResponse.typeUrl;
+  },
   encode(_: MsgSetInfoByPoolTypeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -684,6 +810,13 @@ export const MsgSetInfoByPoolTypeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetInfoByPoolTypeResponse {
+    return {};
+  },
+  toJSON(_: MsgSetInfoByPoolTypeResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgSetInfoByPoolTypeResponse>): MsgSetInfoByPoolTypeResponse {
     const message = createBaseMsgSetInfoByPoolTypeResponse();
@@ -719,6 +852,8 @@ export const MsgSetInfoByPoolTypeResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetInfoByPoolTypeResponse.typeUrl, MsgSetInfoByPoolTypeResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetInfoByPoolTypeResponse.aminoType, MsgSetInfoByPoolTypeResponse.typeUrl);
 function createBaseMsgSetMaxPoolPointsPerTx(): MsgSetMaxPoolPointsPerTx {
   return {
     admin: "",
@@ -727,6 +862,16 @@ function createBaseMsgSetMaxPoolPointsPerTx(): MsgSetMaxPoolPointsPerTx {
 }
 export const MsgSetMaxPoolPointsPerTx = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx",
+  aminoType: "osmosis/MsgSetMaxPoolPointsPerTx",
+  is(o: any): o is MsgSetMaxPoolPointsPerTx {
+    return o && (o.$typeUrl === MsgSetMaxPoolPointsPerTx.typeUrl || typeof o.admin === "string" && typeof o.maxPoolPointsPerTx === "bigint");
+  },
+  isSDK(o: any): o is MsgSetMaxPoolPointsPerTxSDKType {
+    return o && (o.$typeUrl === MsgSetMaxPoolPointsPerTx.typeUrl || typeof o.admin === "string" && typeof o.max_pool_points_per_tx === "bigint");
+  },
+  isAmino(o: any): o is MsgSetMaxPoolPointsPerTxAmino {
+    return o && (o.$typeUrl === MsgSetMaxPoolPointsPerTx.typeUrl || typeof o.admin === "string" && typeof o.max_pool_points_per_tx === "bigint");
+  },
   encode(message: MsgSetMaxPoolPointsPerTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
@@ -755,6 +900,18 @@ export const MsgSetMaxPoolPointsPerTx = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSetMaxPoolPointsPerTx {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      maxPoolPointsPerTx: isSet(object.maxPoolPointsPerTx) ? BigInt(object.maxPoolPointsPerTx.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgSetMaxPoolPointsPerTx): unknown {
+    const obj: any = {};
+    message.admin !== undefined && (obj.admin = message.admin);
+    message.maxPoolPointsPerTx !== undefined && (obj.maxPoolPointsPerTx = (message.maxPoolPointsPerTx || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgSetMaxPoolPointsPerTx>): MsgSetMaxPoolPointsPerTx {
     const message = createBaseMsgSetMaxPoolPointsPerTx();
@@ -800,11 +957,23 @@ export const MsgSetMaxPoolPointsPerTx = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetMaxPoolPointsPerTx.typeUrl, MsgSetMaxPoolPointsPerTx);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetMaxPoolPointsPerTx.aminoType, MsgSetMaxPoolPointsPerTx.typeUrl);
 function createBaseMsgSetMaxPoolPointsPerTxResponse(): MsgSetMaxPoolPointsPerTxResponse {
   return {};
 }
 export const MsgSetMaxPoolPointsPerTxResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTxResponse",
+  aminoType: "osmosis/protorev/set-max-pool-points-per-tx-response",
+  is(o: any): o is MsgSetMaxPoolPointsPerTxResponse {
+    return o && o.$typeUrl === MsgSetMaxPoolPointsPerTxResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSetMaxPoolPointsPerTxResponseSDKType {
+    return o && o.$typeUrl === MsgSetMaxPoolPointsPerTxResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSetMaxPoolPointsPerTxResponseAmino {
+    return o && o.$typeUrl === MsgSetMaxPoolPointsPerTxResponse.typeUrl;
+  },
   encode(_: MsgSetMaxPoolPointsPerTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -821,6 +990,13 @@ export const MsgSetMaxPoolPointsPerTxResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetMaxPoolPointsPerTxResponse {
+    return {};
+  },
+  toJSON(_: MsgSetMaxPoolPointsPerTxResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgSetMaxPoolPointsPerTxResponse>): MsgSetMaxPoolPointsPerTxResponse {
     const message = createBaseMsgSetMaxPoolPointsPerTxResponse();
@@ -856,6 +1032,8 @@ export const MsgSetMaxPoolPointsPerTxResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetMaxPoolPointsPerTxResponse.typeUrl, MsgSetMaxPoolPointsPerTxResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetMaxPoolPointsPerTxResponse.aminoType, MsgSetMaxPoolPointsPerTxResponse.typeUrl);
 function createBaseMsgSetMaxPoolPointsPerBlock(): MsgSetMaxPoolPointsPerBlock {
   return {
     admin: "",
@@ -864,6 +1042,16 @@ function createBaseMsgSetMaxPoolPointsPerBlock(): MsgSetMaxPoolPointsPerBlock {
 }
 export const MsgSetMaxPoolPointsPerBlock = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock",
+  aminoType: "osmosis/MsgSetPoolWeights",
+  is(o: any): o is MsgSetMaxPoolPointsPerBlock {
+    return o && (o.$typeUrl === MsgSetMaxPoolPointsPerBlock.typeUrl || typeof o.admin === "string" && typeof o.maxPoolPointsPerBlock === "bigint");
+  },
+  isSDK(o: any): o is MsgSetMaxPoolPointsPerBlockSDKType {
+    return o && (o.$typeUrl === MsgSetMaxPoolPointsPerBlock.typeUrl || typeof o.admin === "string" && typeof o.max_pool_points_per_block === "bigint");
+  },
+  isAmino(o: any): o is MsgSetMaxPoolPointsPerBlockAmino {
+    return o && (o.$typeUrl === MsgSetMaxPoolPointsPerBlock.typeUrl || typeof o.admin === "string" && typeof o.max_pool_points_per_block === "bigint");
+  },
   encode(message: MsgSetMaxPoolPointsPerBlock, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
@@ -892,6 +1080,18 @@ export const MsgSetMaxPoolPointsPerBlock = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSetMaxPoolPointsPerBlock {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      maxPoolPointsPerBlock: isSet(object.maxPoolPointsPerBlock) ? BigInt(object.maxPoolPointsPerBlock.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: MsgSetMaxPoolPointsPerBlock): unknown {
+    const obj: any = {};
+    message.admin !== undefined && (obj.admin = message.admin);
+    message.maxPoolPointsPerBlock !== undefined && (obj.maxPoolPointsPerBlock = (message.maxPoolPointsPerBlock || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<MsgSetMaxPoolPointsPerBlock>): MsgSetMaxPoolPointsPerBlock {
     const message = createBaseMsgSetMaxPoolPointsPerBlock();
@@ -937,11 +1137,23 @@ export const MsgSetMaxPoolPointsPerBlock = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetMaxPoolPointsPerBlock.typeUrl, MsgSetMaxPoolPointsPerBlock);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetMaxPoolPointsPerBlock.aminoType, MsgSetMaxPoolPointsPerBlock.typeUrl);
 function createBaseMsgSetMaxPoolPointsPerBlockResponse(): MsgSetMaxPoolPointsPerBlockResponse {
   return {};
 }
 export const MsgSetMaxPoolPointsPerBlockResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlockResponse",
+  aminoType: "osmosis/protorev/set-max-pool-points-per-block-response",
+  is(o: any): o is MsgSetMaxPoolPointsPerBlockResponse {
+    return o && o.$typeUrl === MsgSetMaxPoolPointsPerBlockResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSetMaxPoolPointsPerBlockResponseSDKType {
+    return o && o.$typeUrl === MsgSetMaxPoolPointsPerBlockResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSetMaxPoolPointsPerBlockResponseAmino {
+    return o && o.$typeUrl === MsgSetMaxPoolPointsPerBlockResponse.typeUrl;
+  },
   encode(_: MsgSetMaxPoolPointsPerBlockResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -958,6 +1170,13 @@ export const MsgSetMaxPoolPointsPerBlockResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetMaxPoolPointsPerBlockResponse {
+    return {};
+  },
+  toJSON(_: MsgSetMaxPoolPointsPerBlockResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgSetMaxPoolPointsPerBlockResponse>): MsgSetMaxPoolPointsPerBlockResponse {
     const message = createBaseMsgSetMaxPoolPointsPerBlockResponse();
@@ -993,6 +1212,8 @@ export const MsgSetMaxPoolPointsPerBlockResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetMaxPoolPointsPerBlockResponse.typeUrl, MsgSetMaxPoolPointsPerBlockResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetMaxPoolPointsPerBlockResponse.aminoType, MsgSetMaxPoolPointsPerBlockResponse.typeUrl);
 function createBaseMsgSetBaseDenoms(): MsgSetBaseDenoms {
   return {
     admin: "",
@@ -1001,6 +1222,16 @@ function createBaseMsgSetBaseDenoms(): MsgSetBaseDenoms {
 }
 export const MsgSetBaseDenoms = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetBaseDenoms",
+  aminoType: "osmosis/MsgSetBaseDenoms",
+  is(o: any): o is MsgSetBaseDenoms {
+    return o && (o.$typeUrl === MsgSetBaseDenoms.typeUrl || typeof o.admin === "string" && Array.isArray(o.baseDenoms) && (!o.baseDenoms.length || BaseDenom.is(o.baseDenoms[0])));
+  },
+  isSDK(o: any): o is MsgSetBaseDenomsSDKType {
+    return o && (o.$typeUrl === MsgSetBaseDenoms.typeUrl || typeof o.admin === "string" && Array.isArray(o.base_denoms) && (!o.base_denoms.length || BaseDenom.isSDK(o.base_denoms[0])));
+  },
+  isAmino(o: any): o is MsgSetBaseDenomsAmino {
+    return o && (o.$typeUrl === MsgSetBaseDenoms.typeUrl || typeof o.admin === "string" && Array.isArray(o.base_denoms) && (!o.base_denoms.length || BaseDenom.isAmino(o.base_denoms[0])));
+  },
   encode(message: MsgSetBaseDenoms, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
@@ -1029,6 +1260,22 @@ export const MsgSetBaseDenoms = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSetBaseDenoms {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      baseDenoms: Array.isArray(object?.baseDenoms) ? object.baseDenoms.map((e: any) => BaseDenom.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: MsgSetBaseDenoms): unknown {
+    const obj: any = {};
+    message.admin !== undefined && (obj.admin = message.admin);
+    if (message.baseDenoms) {
+      obj.baseDenoms = message.baseDenoms.map(e => e ? BaseDenom.toJSON(e) : undefined);
+    } else {
+      obj.baseDenoms = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<MsgSetBaseDenoms>): MsgSetBaseDenoms {
     const message = createBaseMsgSetBaseDenoms();
@@ -1076,11 +1323,23 @@ export const MsgSetBaseDenoms = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetBaseDenoms.typeUrl, MsgSetBaseDenoms);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetBaseDenoms.aminoType, MsgSetBaseDenoms.typeUrl);
 function createBaseMsgSetBaseDenomsResponse(): MsgSetBaseDenomsResponse {
   return {};
 }
 export const MsgSetBaseDenomsResponse = {
   typeUrl: "/osmosis.protorev.v1beta1.MsgSetBaseDenomsResponse",
+  aminoType: "osmosis/protorev/set-base-denoms-response",
+  is(o: any): o is MsgSetBaseDenomsResponse {
+    return o && o.$typeUrl === MsgSetBaseDenomsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSetBaseDenomsResponseSDKType {
+    return o && o.$typeUrl === MsgSetBaseDenomsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSetBaseDenomsResponseAmino {
+    return o && o.$typeUrl === MsgSetBaseDenomsResponse.typeUrl;
+  },
   encode(_: MsgSetBaseDenomsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -1097,6 +1356,13 @@ export const MsgSetBaseDenomsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetBaseDenomsResponse {
+    return {};
+  },
+  toJSON(_: MsgSetBaseDenomsResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
   fromPartial(_: Partial<MsgSetBaseDenomsResponse>): MsgSetBaseDenomsResponse {
     const message = createBaseMsgSetBaseDenomsResponse();
@@ -1132,3 +1398,5 @@ export const MsgSetBaseDenomsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgSetBaseDenomsResponse.typeUrl, MsgSetBaseDenomsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgSetBaseDenomsResponse.aminoType, MsgSetBaseDenomsResponse.typeUrl);

@@ -60,6 +60,58 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    registerPayee(value: MsgRegisterPayee) {
+      return {
+        typeUrl: "/ibc.applications.fee.v1.MsgRegisterPayee",
+        value: MsgRegisterPayee.toJSON(value)
+      };
+    },
+    registerCounterpartyPayee(value: MsgRegisterCounterpartyPayee) {
+      return {
+        typeUrl: "/ibc.applications.fee.v1.MsgRegisterCounterpartyPayee",
+        value: MsgRegisterCounterpartyPayee.toJSON(value)
+      };
+    },
+    payPacketFee(value: MsgPayPacketFee) {
+      return {
+        typeUrl: "/ibc.applications.fee.v1.MsgPayPacketFee",
+        value: MsgPayPacketFee.toJSON(value)
+      };
+    },
+    payPacketFeeAsync(value: MsgPayPacketFeeAsync) {
+      return {
+        typeUrl: "/ibc.applications.fee.v1.MsgPayPacketFeeAsync",
+        value: MsgPayPacketFeeAsync.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    registerPayee(value: any) {
+      return {
+        typeUrl: "/ibc.applications.fee.v1.MsgRegisterPayee",
+        value: MsgRegisterPayee.fromJSON(value)
+      };
+    },
+    registerCounterpartyPayee(value: any) {
+      return {
+        typeUrl: "/ibc.applications.fee.v1.MsgRegisterCounterpartyPayee",
+        value: MsgRegisterCounterpartyPayee.fromJSON(value)
+      };
+    },
+    payPacketFee(value: any) {
+      return {
+        typeUrl: "/ibc.applications.fee.v1.MsgPayPacketFee",
+        value: MsgPayPacketFee.fromJSON(value)
+      };
+    },
+    payPacketFeeAsync(value: any) {
+      return {
+        typeUrl: "/ibc.applications.fee.v1.MsgPayPacketFeeAsync",
+        value: MsgPayPacketFeeAsync.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     registerPayee(value: MsgRegisterPayee) {
       return {

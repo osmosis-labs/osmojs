@@ -1,5 +1,7 @@
 import { DistrRecord, DistrRecordAmino, DistrRecordSDKType } from "./incentives";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * ReplacePoolIncentivesProposal is a gov Content type for updating the pool
  * incentives. If a ReplacePoolIncentivesProposal passes, the proposal’s records
@@ -114,6 +116,16 @@ function createBaseReplacePoolIncentivesProposal(): ReplacePoolIncentivesProposa
 }
 export const ReplacePoolIncentivesProposal = {
   typeUrl: "/osmosis.poolincentives.v1beta1.ReplacePoolIncentivesProposal",
+  aminoType: "osmosis/ReplacePoolIncentivesProposal",
+  is(o: any): o is ReplacePoolIncentivesProposal {
+    return o && (o.$typeUrl === ReplacePoolIncentivesProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || DistrRecord.is(o.records[0])));
+  },
+  isSDK(o: any): o is ReplacePoolIncentivesProposalSDKType {
+    return o && (o.$typeUrl === ReplacePoolIncentivesProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || DistrRecord.isSDK(o.records[0])));
+  },
+  isAmino(o: any): o is ReplacePoolIncentivesProposalAmino {
+    return o && (o.$typeUrl === ReplacePoolIncentivesProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || DistrRecord.isAmino(o.records[0])));
+  },
   encode(message: ReplacePoolIncentivesProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -148,6 +160,24 @@ export const ReplacePoolIncentivesProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ReplacePoolIncentivesProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      records: Array.isArray(object?.records) ? object.records.map((e: any) => DistrRecord.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: ReplacePoolIncentivesProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.records) {
+      obj.records = message.records.map(e => e ? DistrRecord.toJSON(e) : undefined);
+    } else {
+      obj.records = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<ReplacePoolIncentivesProposal>): ReplacePoolIncentivesProposal {
     const message = createBaseReplacePoolIncentivesProposal();
@@ -200,6 +230,8 @@ export const ReplacePoolIncentivesProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(ReplacePoolIncentivesProposal.typeUrl, ReplacePoolIncentivesProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(ReplacePoolIncentivesProposal.aminoType, ReplacePoolIncentivesProposal.typeUrl);
 function createBaseUpdatePoolIncentivesProposal(): UpdatePoolIncentivesProposal {
   return {
     $typeUrl: "/osmosis.poolincentives.v1beta1.UpdatePoolIncentivesProposal",
@@ -210,6 +242,16 @@ function createBaseUpdatePoolIncentivesProposal(): UpdatePoolIncentivesProposal 
 }
 export const UpdatePoolIncentivesProposal = {
   typeUrl: "/osmosis.poolincentives.v1beta1.UpdatePoolIncentivesProposal",
+  aminoType: "osmosis/UpdatePoolIncentivesProposal",
+  is(o: any): o is UpdatePoolIncentivesProposal {
+    return o && (o.$typeUrl === UpdatePoolIncentivesProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || DistrRecord.is(o.records[0])));
+  },
+  isSDK(o: any): o is UpdatePoolIncentivesProposalSDKType {
+    return o && (o.$typeUrl === UpdatePoolIncentivesProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || DistrRecord.isSDK(o.records[0])));
+  },
+  isAmino(o: any): o is UpdatePoolIncentivesProposalAmino {
+    return o && (o.$typeUrl === UpdatePoolIncentivesProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || DistrRecord.isAmino(o.records[0])));
+  },
   encode(message: UpdatePoolIncentivesProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -244,6 +286,24 @@ export const UpdatePoolIncentivesProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): UpdatePoolIncentivesProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      records: Array.isArray(object?.records) ? object.records.map((e: any) => DistrRecord.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: UpdatePoolIncentivesProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.records) {
+      obj.records = message.records.map(e => e ? DistrRecord.toJSON(e) : undefined);
+    } else {
+      obj.records = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<UpdatePoolIncentivesProposal>): UpdatePoolIncentivesProposal {
     const message = createBaseUpdatePoolIncentivesProposal();
@@ -296,3 +356,5 @@ export const UpdatePoolIncentivesProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(UpdatePoolIncentivesProposal.typeUrl, UpdatePoolIncentivesProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(UpdatePoolIncentivesProposal.aminoType, UpdatePoolIncentivesProposal.typeUrl);

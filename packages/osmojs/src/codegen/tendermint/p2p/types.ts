@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../helpers";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../helpers";
+import { GlobalDecoderRegistry } from "../../registry";
 export interface NetAddress {
   id: string;
   ip: string;
@@ -113,6 +114,15 @@ function createBaseNetAddress(): NetAddress {
 }
 export const NetAddress = {
   typeUrl: "/tendermint.p2p.NetAddress",
+  is(o: any): o is NetAddress {
+    return o && (o.$typeUrl === NetAddress.typeUrl || typeof o.id === "string" && typeof o.ip === "string" && typeof o.port === "number");
+  },
+  isSDK(o: any): o is NetAddressSDKType {
+    return o && (o.$typeUrl === NetAddress.typeUrl || typeof o.id === "string" && typeof o.ip === "string" && typeof o.port === "number");
+  },
+  isAmino(o: any): o is NetAddressAmino {
+    return o && (o.$typeUrl === NetAddress.typeUrl || typeof o.id === "string" && typeof o.ip === "string" && typeof o.port === "number");
+  },
   encode(message: NetAddress, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
@@ -147,6 +157,20 @@ export const NetAddress = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): NetAddress {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      ip: isSet(object.ip) ? String(object.ip) : "",
+      port: isSet(object.port) ? Number(object.port) : 0
+    };
+  },
+  toJSON(message: NetAddress): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.ip !== undefined && (obj.ip = message.ip);
+    message.port !== undefined && (obj.port = Math.round(message.port));
+    return obj;
   },
   fromPartial(object: Partial<NetAddress>): NetAddress {
     const message = createBaseNetAddress();
@@ -191,6 +215,7 @@ export const NetAddress = {
     };
   }
 };
+GlobalDecoderRegistry.register(NetAddress.typeUrl, NetAddress);
 function createBaseProtocolVersion(): ProtocolVersion {
   return {
     p2p: BigInt(0),
@@ -200,6 +225,15 @@ function createBaseProtocolVersion(): ProtocolVersion {
 }
 export const ProtocolVersion = {
   typeUrl: "/tendermint.p2p.ProtocolVersion",
+  is(o: any): o is ProtocolVersion {
+    return o && (o.$typeUrl === ProtocolVersion.typeUrl || typeof o.p2p === "bigint" && typeof o.block === "bigint" && typeof o.app === "bigint");
+  },
+  isSDK(o: any): o is ProtocolVersionSDKType {
+    return o && (o.$typeUrl === ProtocolVersion.typeUrl || typeof o.p2p === "bigint" && typeof o.block === "bigint" && typeof o.app === "bigint");
+  },
+  isAmino(o: any): o is ProtocolVersionAmino {
+    return o && (o.$typeUrl === ProtocolVersion.typeUrl || typeof o.p2p === "bigint" && typeof o.block === "bigint" && typeof o.app === "bigint");
+  },
   encode(message: ProtocolVersion, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.p2p !== BigInt(0)) {
       writer.uint32(8).uint64(message.p2p);
@@ -234,6 +268,20 @@ export const ProtocolVersion = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ProtocolVersion {
+    return {
+      p2p: isSet(object.p2p) ? BigInt(object.p2p.toString()) : BigInt(0),
+      block: isSet(object.block) ? BigInt(object.block.toString()) : BigInt(0),
+      app: isSet(object.app) ? BigInt(object.app.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: ProtocolVersion): unknown {
+    const obj: any = {};
+    message.p2p !== undefined && (obj.p2p = (message.p2p || BigInt(0)).toString());
+    message.block !== undefined && (obj.block = (message.block || BigInt(0)).toString());
+    message.app !== undefined && (obj.app = (message.app || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<ProtocolVersion>): ProtocolVersion {
     const message = createBaseProtocolVersion();
@@ -278,6 +326,7 @@ export const ProtocolVersion = {
     };
   }
 };
+GlobalDecoderRegistry.register(ProtocolVersion.typeUrl, ProtocolVersion);
 function createBaseDefaultNodeInfo(): DefaultNodeInfo {
   return {
     protocolVersion: ProtocolVersion.fromPartial({}),
@@ -292,6 +341,15 @@ function createBaseDefaultNodeInfo(): DefaultNodeInfo {
 }
 export const DefaultNodeInfo = {
   typeUrl: "/tendermint.p2p.DefaultNodeInfo",
+  is(o: any): o is DefaultNodeInfo {
+    return o && (o.$typeUrl === DefaultNodeInfo.typeUrl || ProtocolVersion.is(o.protocolVersion) && typeof o.defaultNodeId === "string" && typeof o.listenAddr === "string" && typeof o.network === "string" && typeof o.version === "string" && (o.channels instanceof Uint8Array || typeof o.channels === "string") && typeof o.moniker === "string" && DefaultNodeInfoOther.is(o.other));
+  },
+  isSDK(o: any): o is DefaultNodeInfoSDKType {
+    return o && (o.$typeUrl === DefaultNodeInfo.typeUrl || ProtocolVersion.isSDK(o.protocol_version) && typeof o.default_node_id === "string" && typeof o.listen_addr === "string" && typeof o.network === "string" && typeof o.version === "string" && (o.channels instanceof Uint8Array || typeof o.channels === "string") && typeof o.moniker === "string" && DefaultNodeInfoOther.isSDK(o.other));
+  },
+  isAmino(o: any): o is DefaultNodeInfoAmino {
+    return o && (o.$typeUrl === DefaultNodeInfo.typeUrl || ProtocolVersion.isAmino(o.protocol_version) && typeof o.default_node_id === "string" && typeof o.listen_addr === "string" && typeof o.network === "string" && typeof o.version === "string" && (o.channels instanceof Uint8Array || typeof o.channels === "string") && typeof o.moniker === "string" && DefaultNodeInfoOther.isAmino(o.other));
+  },
   encode(message: DefaultNodeInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.protocolVersion !== undefined) {
       ProtocolVersion.encode(message.protocolVersion, writer.uint32(10).fork()).ldelim();
@@ -356,6 +414,30 @@ export const DefaultNodeInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DefaultNodeInfo {
+    return {
+      protocolVersion: isSet(object.protocolVersion) ? ProtocolVersion.fromJSON(object.protocolVersion) : undefined,
+      defaultNodeId: isSet(object.defaultNodeId) ? String(object.defaultNodeId) : "",
+      listenAddr: isSet(object.listenAddr) ? String(object.listenAddr) : "",
+      network: isSet(object.network) ? String(object.network) : "",
+      version: isSet(object.version) ? String(object.version) : "",
+      channels: isSet(object.channels) ? bytesFromBase64(object.channels) : new Uint8Array(),
+      moniker: isSet(object.moniker) ? String(object.moniker) : "",
+      other: isSet(object.other) ? DefaultNodeInfoOther.fromJSON(object.other) : undefined
+    };
+  },
+  toJSON(message: DefaultNodeInfo): unknown {
+    const obj: any = {};
+    message.protocolVersion !== undefined && (obj.protocolVersion = message.protocolVersion ? ProtocolVersion.toJSON(message.protocolVersion) : undefined);
+    message.defaultNodeId !== undefined && (obj.defaultNodeId = message.defaultNodeId);
+    message.listenAddr !== undefined && (obj.listenAddr = message.listenAddr);
+    message.network !== undefined && (obj.network = message.network);
+    message.version !== undefined && (obj.version = message.version);
+    message.channels !== undefined && (obj.channels = base64FromBytes(message.channels !== undefined ? message.channels : new Uint8Array()));
+    message.moniker !== undefined && (obj.moniker = message.moniker);
+    message.other !== undefined && (obj.other = message.other ? DefaultNodeInfoOther.toJSON(message.other) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<DefaultNodeInfo>): DefaultNodeInfo {
     const message = createBaseDefaultNodeInfo();
@@ -425,6 +507,7 @@ export const DefaultNodeInfo = {
     };
   }
 };
+GlobalDecoderRegistry.register(DefaultNodeInfo.typeUrl, DefaultNodeInfo);
 function createBaseDefaultNodeInfoOther(): DefaultNodeInfoOther {
   return {
     txIndex: "",
@@ -433,6 +516,15 @@ function createBaseDefaultNodeInfoOther(): DefaultNodeInfoOther {
 }
 export const DefaultNodeInfoOther = {
   typeUrl: "/tendermint.p2p.DefaultNodeInfoOther",
+  is(o: any): o is DefaultNodeInfoOther {
+    return o && (o.$typeUrl === DefaultNodeInfoOther.typeUrl || typeof o.txIndex === "string" && typeof o.rpcAddress === "string");
+  },
+  isSDK(o: any): o is DefaultNodeInfoOtherSDKType {
+    return o && (o.$typeUrl === DefaultNodeInfoOther.typeUrl || typeof o.tx_index === "string" && typeof o.rpc_address === "string");
+  },
+  isAmino(o: any): o is DefaultNodeInfoOtherAmino {
+    return o && (o.$typeUrl === DefaultNodeInfoOther.typeUrl || typeof o.tx_index === "string" && typeof o.rpc_address === "string");
+  },
   encode(message: DefaultNodeInfoOther, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.txIndex !== "") {
       writer.uint32(10).string(message.txIndex);
@@ -461,6 +553,18 @@ export const DefaultNodeInfoOther = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DefaultNodeInfoOther {
+    return {
+      txIndex: isSet(object.txIndex) ? String(object.txIndex) : "",
+      rpcAddress: isSet(object.rpcAddress) ? String(object.rpcAddress) : ""
+    };
+  },
+  toJSON(message: DefaultNodeInfoOther): unknown {
+    const obj: any = {};
+    message.txIndex !== undefined && (obj.txIndex = message.txIndex);
+    message.rpcAddress !== undefined && (obj.rpcAddress = message.rpcAddress);
+    return obj;
   },
   fromPartial(object: Partial<DefaultNodeInfoOther>): DefaultNodeInfoOther {
     const message = createBaseDefaultNodeInfoOther();
@@ -500,3 +604,4 @@ export const DefaultNodeInfoOther = {
     };
   }
 };
+GlobalDecoderRegistry.register(DefaultNodeInfoOther.typeUrl, DefaultNodeInfoOther);

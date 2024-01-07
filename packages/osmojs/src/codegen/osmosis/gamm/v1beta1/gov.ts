@@ -1,5 +1,7 @@
 import { BalancerToConcentratedPoolLink, BalancerToConcentratedPoolLinkAmino, BalancerToConcentratedPoolLinkSDKType } from "./shared";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { Decimal } from "@cosmjs/math";
 /**
  * ReplaceMigrationRecordsProposal is a gov Content type for updating the
@@ -221,6 +223,16 @@ function createBaseReplaceMigrationRecordsProposal(): ReplaceMigrationRecordsPro
 }
 export const ReplaceMigrationRecordsProposal = {
   typeUrl: "/osmosis.gamm.v1beta1.ReplaceMigrationRecordsProposal",
+  aminoType: "osmosis/ReplaceMigrationRecordsProposal",
+  is(o: any): o is ReplaceMigrationRecordsProposal {
+    return o && (o.$typeUrl === ReplaceMigrationRecordsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || BalancerToConcentratedPoolLink.is(o.records[0])));
+  },
+  isSDK(o: any): o is ReplaceMigrationRecordsProposalSDKType {
+    return o && (o.$typeUrl === ReplaceMigrationRecordsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || BalancerToConcentratedPoolLink.isSDK(o.records[0])));
+  },
+  isAmino(o: any): o is ReplaceMigrationRecordsProposalAmino {
+    return o && (o.$typeUrl === ReplaceMigrationRecordsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || BalancerToConcentratedPoolLink.isAmino(o.records[0])));
+  },
   encode(message: ReplaceMigrationRecordsProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -255,6 +267,24 @@ export const ReplaceMigrationRecordsProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ReplaceMigrationRecordsProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      records: Array.isArray(object?.records) ? object.records.map((e: any) => BalancerToConcentratedPoolLink.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: ReplaceMigrationRecordsProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.records) {
+      obj.records = message.records.map(e => e ? BalancerToConcentratedPoolLink.toJSON(e) : undefined);
+    } else {
+      obj.records = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<ReplaceMigrationRecordsProposal>): ReplaceMigrationRecordsProposal {
     const message = createBaseReplaceMigrationRecordsProposal();
@@ -307,6 +337,8 @@ export const ReplaceMigrationRecordsProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(ReplaceMigrationRecordsProposal.typeUrl, ReplaceMigrationRecordsProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(ReplaceMigrationRecordsProposal.aminoType, ReplaceMigrationRecordsProposal.typeUrl);
 function createBaseUpdateMigrationRecordsProposal(): UpdateMigrationRecordsProposal {
   return {
     $typeUrl: "/osmosis.gamm.v1beta1.UpdateMigrationRecordsProposal",
@@ -317,6 +349,16 @@ function createBaseUpdateMigrationRecordsProposal(): UpdateMigrationRecordsPropo
 }
 export const UpdateMigrationRecordsProposal = {
   typeUrl: "/osmosis.gamm.v1beta1.UpdateMigrationRecordsProposal",
+  aminoType: "osmosis/UpdateMigrationRecordsProposal",
+  is(o: any): o is UpdateMigrationRecordsProposal {
+    return o && (o.$typeUrl === UpdateMigrationRecordsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || BalancerToConcentratedPoolLink.is(o.records[0])));
+  },
+  isSDK(o: any): o is UpdateMigrationRecordsProposalSDKType {
+    return o && (o.$typeUrl === UpdateMigrationRecordsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || BalancerToConcentratedPoolLink.isSDK(o.records[0])));
+  },
+  isAmino(o: any): o is UpdateMigrationRecordsProposalAmino {
+    return o && (o.$typeUrl === UpdateMigrationRecordsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || BalancerToConcentratedPoolLink.isAmino(o.records[0])));
+  },
   encode(message: UpdateMigrationRecordsProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -351,6 +393,24 @@ export const UpdateMigrationRecordsProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): UpdateMigrationRecordsProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      records: Array.isArray(object?.records) ? object.records.map((e: any) => BalancerToConcentratedPoolLink.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: UpdateMigrationRecordsProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.records) {
+      obj.records = message.records.map(e => e ? BalancerToConcentratedPoolLink.toJSON(e) : undefined);
+    } else {
+      obj.records = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<UpdateMigrationRecordsProposal>): UpdateMigrationRecordsProposal {
     const message = createBaseUpdateMigrationRecordsProposal();
@@ -403,6 +463,8 @@ export const UpdateMigrationRecordsProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(UpdateMigrationRecordsProposal.typeUrl, UpdateMigrationRecordsProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(UpdateMigrationRecordsProposal.aminoType, UpdateMigrationRecordsProposal.typeUrl);
 function createBasePoolRecordWithCFMMLink(): PoolRecordWithCFMMLink {
   return {
     denom0: "",
@@ -415,6 +477,16 @@ function createBasePoolRecordWithCFMMLink(): PoolRecordWithCFMMLink {
 }
 export const PoolRecordWithCFMMLink = {
   typeUrl: "/osmosis.gamm.v1beta1.PoolRecordWithCFMMLink",
+  aminoType: "osmosis/gamm/pool-record-with-cfmm-link",
+  is(o: any): o is PoolRecordWithCFMMLink {
+    return o && (o.$typeUrl === PoolRecordWithCFMMLink.typeUrl || typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.tickSpacing === "bigint" && typeof o.exponentAtPriceOne === "string" && typeof o.spreadFactor === "string" && typeof o.balancerPoolId === "bigint");
+  },
+  isSDK(o: any): o is PoolRecordWithCFMMLinkSDKType {
+    return o && (o.$typeUrl === PoolRecordWithCFMMLink.typeUrl || typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.tick_spacing === "bigint" && typeof o.exponent_at_price_one === "string" && typeof o.spread_factor === "string" && typeof o.balancer_pool_id === "bigint");
+  },
+  isAmino(o: any): o is PoolRecordWithCFMMLinkAmino {
+    return o && (o.$typeUrl === PoolRecordWithCFMMLink.typeUrl || typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.tick_spacing === "bigint" && typeof o.exponent_at_price_one === "string" && typeof o.spread_factor === "string" && typeof o.balancer_pool_id === "bigint");
+  },
   encode(message: PoolRecordWithCFMMLink, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom0 !== "") {
       writer.uint32(10).string(message.denom0);
@@ -467,6 +539,26 @@ export const PoolRecordWithCFMMLink = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PoolRecordWithCFMMLink {
+    return {
+      denom0: isSet(object.denom0) ? String(object.denom0) : "",
+      denom1: isSet(object.denom1) ? String(object.denom1) : "",
+      tickSpacing: isSet(object.tickSpacing) ? BigInt(object.tickSpacing.toString()) : BigInt(0),
+      exponentAtPriceOne: isSet(object.exponentAtPriceOne) ? String(object.exponentAtPriceOne) : "",
+      spreadFactor: isSet(object.spreadFactor) ? String(object.spreadFactor) : "",
+      balancerPoolId: isSet(object.balancerPoolId) ? BigInt(object.balancerPoolId.toString()) : BigInt(0)
+    };
+  },
+  toJSON(message: PoolRecordWithCFMMLink): unknown {
+    const obj: any = {};
+    message.denom0 !== undefined && (obj.denom0 = message.denom0);
+    message.denom1 !== undefined && (obj.denom1 = message.denom1);
+    message.tickSpacing !== undefined && (obj.tickSpacing = (message.tickSpacing || BigInt(0)).toString());
+    message.exponentAtPriceOne !== undefined && (obj.exponentAtPriceOne = message.exponentAtPriceOne);
+    message.spreadFactor !== undefined && (obj.spreadFactor = message.spreadFactor);
+    message.balancerPoolId !== undefined && (obj.balancerPoolId = (message.balancerPoolId || BigInt(0)).toString());
+    return obj;
   },
   fromPartial(object: Partial<PoolRecordWithCFMMLink>): PoolRecordWithCFMMLink {
     const message = createBasePoolRecordWithCFMMLink();
@@ -532,6 +624,8 @@ export const PoolRecordWithCFMMLink = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolRecordWithCFMMLink.typeUrl, PoolRecordWithCFMMLink);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolRecordWithCFMMLink.aminoType, PoolRecordWithCFMMLink.typeUrl);
 function createBaseCreateConcentratedLiquidityPoolsAndLinktoCFMMProposal(): CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal {
   return {
     $typeUrl: "/osmosis.gamm.v1beta1.CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal",
@@ -542,6 +636,16 @@ function createBaseCreateConcentratedLiquidityPoolsAndLinktoCFMMProposal(): Crea
 }
 export const CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal = {
   typeUrl: "/osmosis.gamm.v1beta1.CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal",
+  aminoType: "osmosis/CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal",
+  is(o: any): o is CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal {
+    return o && (o.$typeUrl === CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.poolRecordsWithCfmmLink) && (!o.poolRecordsWithCfmmLink.length || PoolRecordWithCFMMLink.is(o.poolRecordsWithCfmmLink[0])));
+  },
+  isSDK(o: any): o is CreateConcentratedLiquidityPoolsAndLinktoCFMMProposalSDKType {
+    return o && (o.$typeUrl === CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.pool_records_with_cfmm_link) && (!o.pool_records_with_cfmm_link.length || PoolRecordWithCFMMLink.isSDK(o.pool_records_with_cfmm_link[0])));
+  },
+  isAmino(o: any): o is CreateConcentratedLiquidityPoolsAndLinktoCFMMProposalAmino {
+    return o && (o.$typeUrl === CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.pool_records_with_cfmm_link) && (!o.pool_records_with_cfmm_link.length || PoolRecordWithCFMMLink.isAmino(o.pool_records_with_cfmm_link[0])));
+  },
   encode(message: CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -576,6 +680,24 @@ export const CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      poolRecordsWithCfmmLink: Array.isArray(object?.poolRecordsWithCfmmLink) ? object.poolRecordsWithCfmmLink.map((e: any) => PoolRecordWithCFMMLink.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.poolRecordsWithCfmmLink) {
+      obj.poolRecordsWithCfmmLink = message.poolRecordsWithCfmmLink.map(e => e ? PoolRecordWithCFMMLink.toJSON(e) : undefined);
+    } else {
+      obj.poolRecordsWithCfmmLink = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal>): CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal {
     const message = createBaseCreateConcentratedLiquidityPoolsAndLinktoCFMMProposal();
@@ -628,6 +750,8 @@ export const CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal.typeUrl, CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal.aminoType, CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal.typeUrl);
 function createBaseSetScalingFactorControllerProposal(): SetScalingFactorControllerProposal {
   return {
     $typeUrl: "/osmosis.gamm.v1beta1.SetScalingFactorControllerProposal",
@@ -639,6 +763,16 @@ function createBaseSetScalingFactorControllerProposal(): SetScalingFactorControl
 }
 export const SetScalingFactorControllerProposal = {
   typeUrl: "/osmosis.gamm.v1beta1.SetScalingFactorControllerProposal",
+  aminoType: "osmosis/SetScalingFactorControllerProposal",
+  is(o: any): o is SetScalingFactorControllerProposal {
+    return o && (o.$typeUrl === SetScalingFactorControllerProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.poolId === "bigint" && typeof o.controllerAddress === "string");
+  },
+  isSDK(o: any): o is SetScalingFactorControllerProposalSDKType {
+    return o && (o.$typeUrl === SetScalingFactorControllerProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.pool_id === "bigint" && typeof o.controller_address === "string");
+  },
+  isAmino(o: any): o is SetScalingFactorControllerProposalAmino {
+    return o && (o.$typeUrl === SetScalingFactorControllerProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.pool_id === "bigint" && typeof o.controller_address === "string");
+  },
   encode(message: SetScalingFactorControllerProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -679,6 +813,22 @@ export const SetScalingFactorControllerProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SetScalingFactorControllerProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      controllerAddress: isSet(object.controllerAddress) ? String(object.controllerAddress) : ""
+    };
+  },
+  toJSON(message: SetScalingFactorControllerProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.controllerAddress !== undefined && (obj.controllerAddress = message.controllerAddress);
+    return obj;
   },
   fromPartial(object: Partial<SetScalingFactorControllerProposal>): SetScalingFactorControllerProposal {
     const message = createBaseSetScalingFactorControllerProposal();
@@ -734,3 +884,5 @@ export const SetScalingFactorControllerProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(SetScalingFactorControllerProposal.typeUrl, SetScalingFactorControllerProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(SetScalingFactorControllerProposal.aminoType, SetScalingFactorControllerProposal.typeUrl);

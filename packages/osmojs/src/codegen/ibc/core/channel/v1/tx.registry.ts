@@ -240,6 +240,238 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    channelOpenInit(value: MsgChannelOpenInit) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelOpenInit",
+        value: MsgChannelOpenInit.toJSON(value)
+      };
+    },
+    channelOpenTry(value: MsgChannelOpenTry) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelOpenTry",
+        value: MsgChannelOpenTry.toJSON(value)
+      };
+    },
+    channelOpenAck(value: MsgChannelOpenAck) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelOpenAck",
+        value: MsgChannelOpenAck.toJSON(value)
+      };
+    },
+    channelOpenConfirm(value: MsgChannelOpenConfirm) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelOpenConfirm",
+        value: MsgChannelOpenConfirm.toJSON(value)
+      };
+    },
+    channelCloseInit(value: MsgChannelCloseInit) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelCloseInit",
+        value: MsgChannelCloseInit.toJSON(value)
+      };
+    },
+    channelCloseConfirm(value: MsgChannelCloseConfirm) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelCloseConfirm",
+        value: MsgChannelCloseConfirm.toJSON(value)
+      };
+    },
+    recvPacket(value: MsgRecvPacket) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgRecvPacket",
+        value: MsgRecvPacket.toJSON(value)
+      };
+    },
+    timeout(value: MsgTimeout) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgTimeout",
+        value: MsgTimeout.toJSON(value)
+      };
+    },
+    timeoutOnClose(value: MsgTimeoutOnClose) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgTimeoutOnClose",
+        value: MsgTimeoutOnClose.toJSON(value)
+      };
+    },
+    acknowledgement(value: MsgAcknowledgement) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgAcknowledgement",
+        value: MsgAcknowledgement.toJSON(value)
+      };
+    },
+    channelUpgradeInit(value: MsgChannelUpgradeInit) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeInit",
+        value: MsgChannelUpgradeInit.toJSON(value)
+      };
+    },
+    channelUpgradeTry(value: MsgChannelUpgradeTry) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeTry",
+        value: MsgChannelUpgradeTry.toJSON(value)
+      };
+    },
+    channelUpgradeAck(value: MsgChannelUpgradeAck) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeAck",
+        value: MsgChannelUpgradeAck.toJSON(value)
+      };
+    },
+    channelUpgradeConfirm(value: MsgChannelUpgradeConfirm) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeConfirm",
+        value: MsgChannelUpgradeConfirm.toJSON(value)
+      };
+    },
+    channelUpgradeOpen(value: MsgChannelUpgradeOpen) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeOpen",
+        value: MsgChannelUpgradeOpen.toJSON(value)
+      };
+    },
+    channelUpgradeTimeout(value: MsgChannelUpgradeTimeout) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeTimeout",
+        value: MsgChannelUpgradeTimeout.toJSON(value)
+      };
+    },
+    channelUpgradeCancel(value: MsgChannelUpgradeCancel) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeCancel",
+        value: MsgChannelUpgradeCancel.toJSON(value)
+      };
+    },
+    updateChannelParams(value: MsgUpdateParams) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgUpdateParams",
+        value: MsgUpdateParams.toJSON(value)
+      };
+    },
+    pruneAcknowledgements(value: MsgPruneAcknowledgements) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgPruneAcknowledgements",
+        value: MsgPruneAcknowledgements.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    channelOpenInit(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelOpenInit",
+        value: MsgChannelOpenInit.fromJSON(value)
+      };
+    },
+    channelOpenTry(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelOpenTry",
+        value: MsgChannelOpenTry.fromJSON(value)
+      };
+    },
+    channelOpenAck(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelOpenAck",
+        value: MsgChannelOpenAck.fromJSON(value)
+      };
+    },
+    channelOpenConfirm(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelOpenConfirm",
+        value: MsgChannelOpenConfirm.fromJSON(value)
+      };
+    },
+    channelCloseInit(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelCloseInit",
+        value: MsgChannelCloseInit.fromJSON(value)
+      };
+    },
+    channelCloseConfirm(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelCloseConfirm",
+        value: MsgChannelCloseConfirm.fromJSON(value)
+      };
+    },
+    recvPacket(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgRecvPacket",
+        value: MsgRecvPacket.fromJSON(value)
+      };
+    },
+    timeout(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgTimeout",
+        value: MsgTimeout.fromJSON(value)
+      };
+    },
+    timeoutOnClose(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgTimeoutOnClose",
+        value: MsgTimeoutOnClose.fromJSON(value)
+      };
+    },
+    acknowledgement(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgAcknowledgement",
+        value: MsgAcknowledgement.fromJSON(value)
+      };
+    },
+    channelUpgradeInit(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeInit",
+        value: MsgChannelUpgradeInit.fromJSON(value)
+      };
+    },
+    channelUpgradeTry(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeTry",
+        value: MsgChannelUpgradeTry.fromJSON(value)
+      };
+    },
+    channelUpgradeAck(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeAck",
+        value: MsgChannelUpgradeAck.fromJSON(value)
+      };
+    },
+    channelUpgradeConfirm(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeConfirm",
+        value: MsgChannelUpgradeConfirm.fromJSON(value)
+      };
+    },
+    channelUpgradeOpen(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeOpen",
+        value: MsgChannelUpgradeOpen.fromJSON(value)
+      };
+    },
+    channelUpgradeTimeout(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeTimeout",
+        value: MsgChannelUpgradeTimeout.fromJSON(value)
+      };
+    },
+    channelUpgradeCancel(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeCancel",
+        value: MsgChannelUpgradeCancel.fromJSON(value)
+      };
+    },
+    updateChannelParams(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgUpdateParams",
+        value: MsgUpdateParams.fromJSON(value)
+      };
+    },
+    pruneAcknowledgements(value: any) {
+      return {
+        typeUrl: "/ibc.core.channel.v1.MsgPruneAcknowledgements",
+        value: MsgPruneAcknowledgements.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     channelOpenInit(value: MsgChannelOpenInit) {
       return {

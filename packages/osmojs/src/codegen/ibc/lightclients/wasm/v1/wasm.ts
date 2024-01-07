@@ -1,6 +1,7 @@
 import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** Wasm light client's Client state */
 export interface ClientState {
   /**
@@ -130,6 +131,16 @@ function createBaseClientState(): ClientState {
 }
 export const ClientState = {
   typeUrl: "/ibc.lightclients.wasm.v1.ClientState",
+  aminoType: "cosmos-sdk/ClientState",
+  is(o: any): o is ClientState {
+    return o && (o.$typeUrl === ClientState.typeUrl || (o.data instanceof Uint8Array || typeof o.data === "string") && (o.checksum instanceof Uint8Array || typeof o.checksum === "string") && Height.is(o.latestHeight));
+  },
+  isSDK(o: any): o is ClientStateSDKType {
+    return o && (o.$typeUrl === ClientState.typeUrl || (o.data instanceof Uint8Array || typeof o.data === "string") && (o.checksum instanceof Uint8Array || typeof o.checksum === "string") && Height.isSDK(o.latest_height));
+  },
+  isAmino(o: any): o is ClientStateAmino {
+    return o && (o.$typeUrl === ClientState.typeUrl || (o.data instanceof Uint8Array || typeof o.data === "string") && (o.checksum instanceof Uint8Array || typeof o.checksum === "string") && Height.isAmino(o.latest_height));
+  },
   encode(message: ClientState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
@@ -164,6 +175,20 @@ export const ClientState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ClientState {
+    return {
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
+      checksum: isSet(object.checksum) ? bytesFromBase64(object.checksum) : new Uint8Array(),
+      latestHeight: isSet(object.latestHeight) ? Height.fromJSON(object.latestHeight) : undefined
+    };
+  },
+  toJSON(message: ClientState): unknown {
+    const obj: any = {};
+    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
+    message.checksum !== undefined && (obj.checksum = base64FromBytes(message.checksum !== undefined ? message.checksum : new Uint8Array()));
+    message.latestHeight !== undefined && (obj.latestHeight = message.latestHeight ? Height.toJSON(message.latestHeight) : undefined);
+    return obj;
   },
   fromPartial(object: Partial<ClientState>): ClientState {
     const message = createBaseClientState();
@@ -214,6 +239,8 @@ export const ClientState = {
     };
   }
 };
+GlobalDecoderRegistry.register(ClientState.typeUrl, ClientState);
+GlobalDecoderRegistry.registerAminoProtoMapping(ClientState.aminoType, ClientState.typeUrl);
 function createBaseConsensusState(): ConsensusState {
   return {
     data: new Uint8Array()
@@ -221,6 +248,16 @@ function createBaseConsensusState(): ConsensusState {
 }
 export const ConsensusState = {
   typeUrl: "/ibc.lightclients.wasm.v1.ConsensusState",
+  aminoType: "cosmos-sdk/ConsensusState",
+  is(o: any): o is ConsensusState {
+    return o && (o.$typeUrl === ConsensusState.typeUrl || o.data instanceof Uint8Array || typeof o.data === "string");
+  },
+  isSDK(o: any): o is ConsensusStateSDKType {
+    return o && (o.$typeUrl === ConsensusState.typeUrl || o.data instanceof Uint8Array || typeof o.data === "string");
+  },
+  isAmino(o: any): o is ConsensusStateAmino {
+    return o && (o.$typeUrl === ConsensusState.typeUrl || o.data instanceof Uint8Array || typeof o.data === "string");
+  },
   encode(message: ConsensusState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
@@ -243,6 +280,16 @@ export const ConsensusState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ConsensusState {
+    return {
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
+    };
+  },
+  toJSON(message: ConsensusState): unknown {
+    const obj: any = {};
+    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
+    return obj;
   },
   fromPartial(object: Partial<ConsensusState>): ConsensusState {
     const message = createBaseConsensusState();
@@ -283,6 +330,8 @@ export const ConsensusState = {
     };
   }
 };
+GlobalDecoderRegistry.register(ConsensusState.typeUrl, ConsensusState);
+GlobalDecoderRegistry.registerAminoProtoMapping(ConsensusState.aminoType, ConsensusState.typeUrl);
 function createBaseClientMessage(): ClientMessage {
   return {
     data: new Uint8Array()
@@ -290,6 +339,16 @@ function createBaseClientMessage(): ClientMessage {
 }
 export const ClientMessage = {
   typeUrl: "/ibc.lightclients.wasm.v1.ClientMessage",
+  aminoType: "cosmos-sdk/ClientMessage",
+  is(o: any): o is ClientMessage {
+    return o && (o.$typeUrl === ClientMessage.typeUrl || o.data instanceof Uint8Array || typeof o.data === "string");
+  },
+  isSDK(o: any): o is ClientMessageSDKType {
+    return o && (o.$typeUrl === ClientMessage.typeUrl || o.data instanceof Uint8Array || typeof o.data === "string");
+  },
+  isAmino(o: any): o is ClientMessageAmino {
+    return o && (o.$typeUrl === ClientMessage.typeUrl || o.data instanceof Uint8Array || typeof o.data === "string");
+  },
   encode(message: ClientMessage, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
@@ -312,6 +371,16 @@ export const ClientMessage = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ClientMessage {
+    return {
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
+    };
+  },
+  toJSON(message: ClientMessage): unknown {
+    const obj: any = {};
+    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
+    return obj;
   },
   fromPartial(object: Partial<ClientMessage>): ClientMessage {
     const message = createBaseClientMessage();
@@ -352,6 +421,8 @@ export const ClientMessage = {
     };
   }
 };
+GlobalDecoderRegistry.register(ClientMessage.typeUrl, ClientMessage);
+GlobalDecoderRegistry.registerAminoProtoMapping(ClientMessage.aminoType, ClientMessage.typeUrl);
 function createBaseChecksums(): Checksums {
   return {
     checksums: []
@@ -359,6 +430,16 @@ function createBaseChecksums(): Checksums {
 }
 export const Checksums = {
   typeUrl: "/ibc.lightclients.wasm.v1.Checksums",
+  aminoType: "cosmos-sdk/Checksums",
+  is(o: any): o is Checksums {
+    return o && (o.$typeUrl === Checksums.typeUrl || Array.isArray(o.checksums) && (!o.checksums.length || o.checksums[0] instanceof Uint8Array || typeof o.checksums[0] === "string"));
+  },
+  isSDK(o: any): o is ChecksumsSDKType {
+    return o && (o.$typeUrl === Checksums.typeUrl || Array.isArray(o.checksums) && (!o.checksums.length || o.checksums[0] instanceof Uint8Array || typeof o.checksums[0] === "string"));
+  },
+  isAmino(o: any): o is ChecksumsAmino {
+    return o && (o.$typeUrl === Checksums.typeUrl || Array.isArray(o.checksums) && (!o.checksums.length || o.checksums[0] instanceof Uint8Array || typeof o.checksums[0] === "string"));
+  },
   encode(message: Checksums, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.checksums) {
       writer.uint32(10).bytes(v!);
@@ -381,6 +462,20 @@ export const Checksums = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Checksums {
+    return {
+      checksums: Array.isArray(object?.checksums) ? object.checksums.map((e: any) => bytesFromBase64(e)) : []
+    };
+  },
+  toJSON(message: Checksums): unknown {
+    const obj: any = {};
+    if (message.checksums) {
+      obj.checksums = message.checksums.map(e => base64FromBytes(e !== undefined ? e : new Uint8Array()));
+    } else {
+      obj.checksums = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<Checksums>): Checksums {
     const message = createBaseChecksums();
@@ -423,3 +518,5 @@ export const Checksums = {
     };
   }
 };
+GlobalDecoderRegistry.register(Checksums.typeUrl, Checksums);
+GlobalDecoderRegistry.registerAminoProtoMapping(Checksums.aminoType, Checksums.typeUrl);

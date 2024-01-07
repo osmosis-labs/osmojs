@@ -1,7 +1,8 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { toTimestamp, fromTimestamp, isSet } from "../../../helpers";
 import { Decimal } from "@cosmjs/math";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * A TWAP record should be indexed in state by pool_id, (asset pair), timestamp
  * The asset pair assets should be lexicographically sorted.
@@ -125,6 +126,16 @@ function createBaseTwapRecord(): TwapRecord {
 }
 export const TwapRecord = {
   typeUrl: "/osmosis.twap.v1beta1.TwapRecord",
+  aminoType: "osmosis/twap/twap-record",
+  is(o: any): o is TwapRecord {
+    return o && (o.$typeUrl === TwapRecord.typeUrl || typeof o.poolId === "bigint" && typeof o.asset0Denom === "string" && typeof o.asset1Denom === "string" && typeof o.height === "bigint" && Timestamp.is(o.time) && typeof o.p0LastSpotPrice === "string" && typeof o.p1LastSpotPrice === "string" && typeof o.p0ArithmeticTwapAccumulator === "string" && typeof o.p1ArithmeticTwapAccumulator === "string" && typeof o.geometricTwapAccumulator === "string" && Timestamp.is(o.lastErrorTime));
+  },
+  isSDK(o: any): o is TwapRecordSDKType {
+    return o && (o.$typeUrl === TwapRecord.typeUrl || typeof o.pool_id === "bigint" && typeof o.asset0_denom === "string" && typeof o.asset1_denom === "string" && typeof o.height === "bigint" && Timestamp.isSDK(o.time) && typeof o.p0_last_spot_price === "string" && typeof o.p1_last_spot_price === "string" && typeof o.p0_arithmetic_twap_accumulator === "string" && typeof o.p1_arithmetic_twap_accumulator === "string" && typeof o.geometric_twap_accumulator === "string" && Timestamp.isSDK(o.last_error_time));
+  },
+  isAmino(o: any): o is TwapRecordAmino {
+    return o && (o.$typeUrl === TwapRecord.typeUrl || typeof o.pool_id === "bigint" && typeof o.asset0_denom === "string" && typeof o.asset1_denom === "string" && typeof o.height === "bigint" && Timestamp.isAmino(o.time) && typeof o.p0_last_spot_price === "string" && typeof o.p1_last_spot_price === "string" && typeof o.p0_arithmetic_twap_accumulator === "string" && typeof o.p1_arithmetic_twap_accumulator === "string" && typeof o.geometric_twap_accumulator === "string" && Timestamp.isAmino(o.last_error_time));
+  },
   encode(message: TwapRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -207,6 +218,36 @@ export const TwapRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TwapRecord {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      asset0Denom: isSet(object.asset0Denom) ? String(object.asset0Denom) : "",
+      asset1Denom: isSet(object.asset1Denom) ? String(object.asset1Denom) : "",
+      height: isSet(object.height) ? BigInt(object.height.toString()) : BigInt(0),
+      time: isSet(object.time) ? new Date(object.time) : undefined,
+      p0LastSpotPrice: isSet(object.p0LastSpotPrice) ? String(object.p0LastSpotPrice) : "",
+      p1LastSpotPrice: isSet(object.p1LastSpotPrice) ? String(object.p1LastSpotPrice) : "",
+      p0ArithmeticTwapAccumulator: isSet(object.p0ArithmeticTwapAccumulator) ? String(object.p0ArithmeticTwapAccumulator) : "",
+      p1ArithmeticTwapAccumulator: isSet(object.p1ArithmeticTwapAccumulator) ? String(object.p1ArithmeticTwapAccumulator) : "",
+      geometricTwapAccumulator: isSet(object.geometricTwapAccumulator) ? String(object.geometricTwapAccumulator) : "",
+      lastErrorTime: isSet(object.lastErrorTime) ? new Date(object.lastErrorTime) : undefined
+    };
+  },
+  toJSON(message: TwapRecord): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.asset0Denom !== undefined && (obj.asset0Denom = message.asset0Denom);
+    message.asset1Denom !== undefined && (obj.asset1Denom = message.asset1Denom);
+    message.height !== undefined && (obj.height = (message.height || BigInt(0)).toString());
+    message.time !== undefined && (obj.time = message.time.toISOString());
+    message.p0LastSpotPrice !== undefined && (obj.p0LastSpotPrice = message.p0LastSpotPrice);
+    message.p1LastSpotPrice !== undefined && (obj.p1LastSpotPrice = message.p1LastSpotPrice);
+    message.p0ArithmeticTwapAccumulator !== undefined && (obj.p0ArithmeticTwapAccumulator = message.p0ArithmeticTwapAccumulator);
+    message.p1ArithmeticTwapAccumulator !== undefined && (obj.p1ArithmeticTwapAccumulator = message.p1ArithmeticTwapAccumulator);
+    message.geometricTwapAccumulator !== undefined && (obj.geometricTwapAccumulator = message.geometricTwapAccumulator);
+    message.lastErrorTime !== undefined && (obj.lastErrorTime = message.lastErrorTime.toISOString());
+    return obj;
   },
   fromPartial(object: Partial<TwapRecord>): TwapRecord {
     const message = createBaseTwapRecord();
@@ -297,3 +338,5 @@ export const TwapRecord = {
     };
   }
 };
+GlobalDecoderRegistry.register(TwapRecord.typeUrl, TwapRecord);
+GlobalDecoderRegistry.registerAminoProtoMapping(TwapRecord.aminoType, TwapRecord.typeUrl);

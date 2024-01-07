@@ -1,4 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * SpotPriceRequest defines the gRPC request structure for a SpotPrice
  * query.
@@ -74,6 +76,16 @@ function createBaseSpotPriceRequest(): SpotPriceRequest {
 }
 export const SpotPriceRequest = {
   typeUrl: "/osmosis.poolmanager.v2.SpotPriceRequest",
+  aminoType: "osmosis/poolmanager/v2/spot-price-request",
+  is(o: any): o is SpotPriceRequest {
+    return o && (o.$typeUrl === SpotPriceRequest.typeUrl || typeof o.poolId === "bigint" && typeof o.baseAssetDenom === "string" && typeof o.quoteAssetDenom === "string");
+  },
+  isSDK(o: any): o is SpotPriceRequestSDKType {
+    return o && (o.$typeUrl === SpotPriceRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.base_asset_denom === "string" && typeof o.quote_asset_denom === "string");
+  },
+  isAmino(o: any): o is SpotPriceRequestAmino {
+    return o && (o.$typeUrl === SpotPriceRequest.typeUrl || typeof o.pool_id === "bigint" && typeof o.base_asset_denom === "string" && typeof o.quote_asset_denom === "string");
+  },
   encode(message: SpotPriceRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -108,6 +120,20 @@ export const SpotPriceRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SpotPriceRequest {
+    return {
+      poolId: isSet(object.poolId) ? BigInt(object.poolId.toString()) : BigInt(0),
+      baseAssetDenom: isSet(object.baseAssetDenom) ? String(object.baseAssetDenom) : "",
+      quoteAssetDenom: isSet(object.quoteAssetDenom) ? String(object.quoteAssetDenom) : ""
+    };
+  },
+  toJSON(message: SpotPriceRequest): unknown {
+    const obj: any = {};
+    message.poolId !== undefined && (obj.poolId = (message.poolId || BigInt(0)).toString());
+    message.baseAssetDenom !== undefined && (obj.baseAssetDenom = message.baseAssetDenom);
+    message.quoteAssetDenom !== undefined && (obj.quoteAssetDenom = message.quoteAssetDenom);
+    return obj;
   },
   fromPartial(object: Partial<SpotPriceRequest>): SpotPriceRequest {
     const message = createBaseSpotPriceRequest();
@@ -158,6 +184,8 @@ export const SpotPriceRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(SpotPriceRequest.typeUrl, SpotPriceRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(SpotPriceRequest.aminoType, SpotPriceRequest.typeUrl);
 function createBaseSpotPriceResponse(): SpotPriceResponse {
   return {
     spotPrice: ""
@@ -165,6 +193,16 @@ function createBaseSpotPriceResponse(): SpotPriceResponse {
 }
 export const SpotPriceResponse = {
   typeUrl: "/osmosis.poolmanager.v2.SpotPriceResponse",
+  aminoType: "osmosis/poolmanager/v2/spot-price-response",
+  is(o: any): o is SpotPriceResponse {
+    return o && (o.$typeUrl === SpotPriceResponse.typeUrl || typeof o.spotPrice === "string");
+  },
+  isSDK(o: any): o is SpotPriceResponseSDKType {
+    return o && (o.$typeUrl === SpotPriceResponse.typeUrl || typeof o.spot_price === "string");
+  },
+  isAmino(o: any): o is SpotPriceResponseAmino {
+    return o && (o.$typeUrl === SpotPriceResponse.typeUrl || typeof o.spot_price === "string");
+  },
   encode(message: SpotPriceResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.spotPrice !== "") {
       writer.uint32(10).string(message.spotPrice);
@@ -187,6 +225,16 @@ export const SpotPriceResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SpotPriceResponse {
+    return {
+      spotPrice: isSet(object.spotPrice) ? String(object.spotPrice) : ""
+    };
+  },
+  toJSON(message: SpotPriceResponse): unknown {
+    const obj: any = {};
+    message.spotPrice !== undefined && (obj.spotPrice = message.spotPrice);
+    return obj;
   },
   fromPartial(object: Partial<SpotPriceResponse>): SpotPriceResponse {
     const message = createBaseSpotPriceResponse();
@@ -227,3 +275,5 @@ export const SpotPriceResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(SpotPriceResponse.typeUrl, SpotPriceResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(SpotPriceResponse.aminoType, SpotPriceResponse.typeUrl);

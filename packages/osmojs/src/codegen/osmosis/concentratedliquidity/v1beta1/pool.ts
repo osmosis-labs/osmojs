@@ -1,7 +1,8 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { toTimestamp, fromTimestamp, isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface Pool {
   $typeUrl?: "/osmosis.concentratedliquidity.v1beta1.Pool";
   /** pool's address holding all liquidity tokens. */
@@ -103,6 +104,16 @@ function createBasePool(): Pool {
 }
 export const Pool = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.Pool",
+  aminoType: "osmosis/concentratedliquidity/pool",
+  is(o: any): o is Pool {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.incentivesAddress === "string" && typeof o.spreadRewardsAddress === "string" && typeof o.id === "bigint" && typeof o.currentTickLiquidity === "string" && typeof o.token0 === "string" && typeof o.token1 === "string" && typeof o.currentSqrtPrice === "string" && typeof o.currentTick === "bigint" && typeof o.tickSpacing === "bigint" && typeof o.exponentAtPriceOne === "bigint" && typeof o.spreadFactor === "string" && Timestamp.is(o.lastLiquidityUpdate));
+  },
+  isSDK(o: any): o is PoolSDKType {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.incentives_address === "string" && typeof o.spread_rewards_address === "string" && typeof o.id === "bigint" && typeof o.current_tick_liquidity === "string" && typeof o.token0 === "string" && typeof o.token1 === "string" && typeof o.current_sqrt_price === "string" && typeof o.current_tick === "bigint" && typeof o.tick_spacing === "bigint" && typeof o.exponent_at_price_one === "bigint" && typeof o.spread_factor === "string" && Timestamp.isSDK(o.last_liquidity_update));
+  },
+  isAmino(o: any): o is PoolAmino {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.incentives_address === "string" && typeof o.spread_rewards_address === "string" && typeof o.id === "bigint" && typeof o.current_tick_liquidity === "string" && typeof o.token0 === "string" && typeof o.token1 === "string" && typeof o.current_sqrt_price === "string" && typeof o.current_tick === "bigint" && typeof o.tick_spacing === "bigint" && typeof o.exponent_at_price_one === "bigint" && typeof o.spread_factor === "string" && Timestamp.isAmino(o.last_liquidity_update));
+  },
   encode(message: Pool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -197,6 +208,40 @@ export const Pool = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Pool {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      incentivesAddress: isSet(object.incentivesAddress) ? String(object.incentivesAddress) : "",
+      spreadRewardsAddress: isSet(object.spreadRewardsAddress) ? String(object.spreadRewardsAddress) : "",
+      id: isSet(object.id) ? BigInt(object.id.toString()) : BigInt(0),
+      currentTickLiquidity: isSet(object.currentTickLiquidity) ? String(object.currentTickLiquidity) : "",
+      token0: isSet(object.token0) ? String(object.token0) : "",
+      token1: isSet(object.token1) ? String(object.token1) : "",
+      currentSqrtPrice: isSet(object.currentSqrtPrice) ? String(object.currentSqrtPrice) : "",
+      currentTick: isSet(object.currentTick) ? BigInt(object.currentTick.toString()) : BigInt(0),
+      tickSpacing: isSet(object.tickSpacing) ? BigInt(object.tickSpacing.toString()) : BigInt(0),
+      exponentAtPriceOne: isSet(object.exponentAtPriceOne) ? BigInt(object.exponentAtPriceOne.toString()) : BigInt(0),
+      spreadFactor: isSet(object.spreadFactor) ? String(object.spreadFactor) : "",
+      lastLiquidityUpdate: isSet(object.lastLiquidityUpdate) ? new Date(object.lastLiquidityUpdate) : undefined
+    };
+  },
+  toJSON(message: Pool): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.incentivesAddress !== undefined && (obj.incentivesAddress = message.incentivesAddress);
+    message.spreadRewardsAddress !== undefined && (obj.spreadRewardsAddress = message.spreadRewardsAddress);
+    message.id !== undefined && (obj.id = (message.id || BigInt(0)).toString());
+    message.currentTickLiquidity !== undefined && (obj.currentTickLiquidity = message.currentTickLiquidity);
+    message.token0 !== undefined && (obj.token0 = message.token0);
+    message.token1 !== undefined && (obj.token1 = message.token1);
+    message.currentSqrtPrice !== undefined && (obj.currentSqrtPrice = message.currentSqrtPrice);
+    message.currentTick !== undefined && (obj.currentTick = (message.currentTick || BigInt(0)).toString());
+    message.tickSpacing !== undefined && (obj.tickSpacing = (message.tickSpacing || BigInt(0)).toString());
+    message.exponentAtPriceOne !== undefined && (obj.exponentAtPriceOne = (message.exponentAtPriceOne || BigInt(0)).toString());
+    message.spreadFactor !== undefined && (obj.spreadFactor = message.spreadFactor);
+    message.lastLiquidityUpdate !== undefined && (obj.lastLiquidityUpdate = message.lastLiquidityUpdate.toISOString());
+    return obj;
   },
   fromPartial(object: Partial<Pool>): Pool {
     const message = createBasePool();
@@ -297,3 +342,5 @@ export const Pool = {
     };
   }
 };
+GlobalDecoderRegistry.register(Pool.typeUrl, Pool);
+GlobalDecoderRegistry.registerAminoProtoMapping(Pool.aminoType, Pool.typeUrl);

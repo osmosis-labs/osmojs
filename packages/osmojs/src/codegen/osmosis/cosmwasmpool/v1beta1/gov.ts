@@ -1,6 +1,7 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { fromBase64, toBase64 } from "@cosmjs/encoding";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * UploadCosmWasmPoolCodeAndWhiteListProposal is a gov Content type for
  * uploading coswasm pool code and adding it to internal whitelist. Only the
@@ -198,6 +199,16 @@ function createBaseUploadCosmWasmPoolCodeAndWhiteListProposal(): UploadCosmWasmP
 }
 export const UploadCosmWasmPoolCodeAndWhiteListProposal = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.UploadCosmWasmPoolCodeAndWhiteListProposal",
+  aminoType: "osmosis/cosmwasmpool/upload-cosm-wasm-pool-code-and-white-list-proposal",
+  is(o: any): o is UploadCosmWasmPoolCodeAndWhiteListProposal {
+    return o && (o.$typeUrl === UploadCosmWasmPoolCodeAndWhiteListProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && (o.wasmByteCode instanceof Uint8Array || typeof o.wasmByteCode === "string"));
+  },
+  isSDK(o: any): o is UploadCosmWasmPoolCodeAndWhiteListProposalSDKType {
+    return o && (o.$typeUrl === UploadCosmWasmPoolCodeAndWhiteListProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && (o.wasm_byte_code instanceof Uint8Array || typeof o.wasm_byte_code === "string"));
+  },
+  isAmino(o: any): o is UploadCosmWasmPoolCodeAndWhiteListProposalAmino {
+    return o && (o.$typeUrl === UploadCosmWasmPoolCodeAndWhiteListProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && (o.wasm_byte_code instanceof Uint8Array || typeof o.wasm_byte_code === "string"));
+  },
   encode(message: UploadCosmWasmPoolCodeAndWhiteListProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -232,6 +243,20 @@ export const UploadCosmWasmPoolCodeAndWhiteListProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): UploadCosmWasmPoolCodeAndWhiteListProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      wasmByteCode: isSet(object.wasmByteCode) ? bytesFromBase64(object.wasmByteCode) : new Uint8Array()
+    };
+  },
+  toJSON(message: UploadCosmWasmPoolCodeAndWhiteListProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.wasmByteCode !== undefined && (obj.wasmByteCode = base64FromBytes(message.wasmByteCode !== undefined ? message.wasmByteCode : new Uint8Array()));
+    return obj;
   },
   fromPartial(object: Partial<UploadCosmWasmPoolCodeAndWhiteListProposal>): UploadCosmWasmPoolCodeAndWhiteListProposal {
     const message = createBaseUploadCosmWasmPoolCodeAndWhiteListProposal();
@@ -282,6 +307,8 @@ export const UploadCosmWasmPoolCodeAndWhiteListProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(UploadCosmWasmPoolCodeAndWhiteListProposal.typeUrl, UploadCosmWasmPoolCodeAndWhiteListProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(UploadCosmWasmPoolCodeAndWhiteListProposal.aminoType, UploadCosmWasmPoolCodeAndWhiteListProposal.typeUrl);
 function createBaseMigratePoolContractsProposal(): MigratePoolContractsProposal {
   return {
     title: "",
@@ -294,6 +321,16 @@ function createBaseMigratePoolContractsProposal(): MigratePoolContractsProposal 
 }
 export const MigratePoolContractsProposal = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.MigratePoolContractsProposal",
+  aminoType: "osmosis/cosmwasmpool/migrate-pool-contracts-proposal",
+  is(o: any): o is MigratePoolContractsProposal {
+    return o && (o.$typeUrl === MigratePoolContractsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.poolIds) && (!o.poolIds.length || typeof o.poolIds[0] === "bigint") && typeof o.newCodeId === "bigint" && (o.wasmByteCode instanceof Uint8Array || typeof o.wasmByteCode === "string") && (o.migrateMsg instanceof Uint8Array || typeof o.migrateMsg === "string"));
+  },
+  isSDK(o: any): o is MigratePoolContractsProposalSDKType {
+    return o && (o.$typeUrl === MigratePoolContractsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.pool_ids) && (!o.pool_ids.length || typeof o.pool_ids[0] === "bigint") && typeof o.new_code_id === "bigint" && (o.wasm_byte_code instanceof Uint8Array || typeof o.wasm_byte_code === "string") && (o.migrate_msg instanceof Uint8Array || typeof o.migrate_msg === "string"));
+  },
+  isAmino(o: any): o is MigratePoolContractsProposalAmino {
+    return o && (o.$typeUrl === MigratePoolContractsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.pool_ids) && (!o.pool_ids.length || typeof o.pool_ids[0] === "bigint") && typeof o.new_code_id === "bigint" && (o.wasm_byte_code instanceof Uint8Array || typeof o.wasm_byte_code === "string") && (o.migrate_msg instanceof Uint8Array || typeof o.migrate_msg === "string"));
+  },
   encode(message: MigratePoolContractsProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -355,6 +392,30 @@ export const MigratePoolContractsProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MigratePoolContractsProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      poolIds: Array.isArray(object?.poolIds) ? object.poolIds.map((e: any) => BigInt(e.toString())) : [],
+      newCodeId: isSet(object.newCodeId) ? BigInt(object.newCodeId.toString()) : BigInt(0),
+      wasmByteCode: isSet(object.wasmByteCode) ? bytesFromBase64(object.wasmByteCode) : new Uint8Array(),
+      migrateMsg: isSet(object.migrateMsg) ? bytesFromBase64(object.migrateMsg) : new Uint8Array()
+    };
+  },
+  toJSON(message: MigratePoolContractsProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.poolIds) {
+      obj.poolIds = message.poolIds.map(e => (e || BigInt(0)).toString());
+    } else {
+      obj.poolIds = [];
+    }
+    message.newCodeId !== undefined && (obj.newCodeId = (message.newCodeId || BigInt(0)).toString());
+    message.wasmByteCode !== undefined && (obj.wasmByteCode = base64FromBytes(message.wasmByteCode !== undefined ? message.wasmByteCode : new Uint8Array()));
+    message.migrateMsg !== undefined && (obj.migrateMsg = base64FromBytes(message.migrateMsg !== undefined ? message.migrateMsg : new Uint8Array()));
+    return obj;
   },
   fromPartial(object: Partial<MigratePoolContractsProposal>): MigratePoolContractsProposal {
     const message = createBaseMigratePoolContractsProposal();
@@ -422,3 +483,5 @@ export const MigratePoolContractsProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(MigratePoolContractsProposal.typeUrl, MigratePoolContractsProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(MigratePoolContractsProposal.aminoType, MigratePoolContractsProposal.typeUrl);

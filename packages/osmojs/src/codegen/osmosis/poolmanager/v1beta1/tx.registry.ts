@@ -72,6 +72,70 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    swapExactAmountIn(value: MsgSwapExactAmountIn) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountIn",
+        value: MsgSwapExactAmountIn.toJSON(value)
+      };
+    },
+    swapExactAmountOut(value: MsgSwapExactAmountOut) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOut",
+        value: MsgSwapExactAmountOut.toJSON(value)
+      };
+    },
+    splitRouteSwapExactAmountIn(value: MsgSplitRouteSwapExactAmountIn) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountIn",
+        value: MsgSplitRouteSwapExactAmountIn.toJSON(value)
+      };
+    },
+    splitRouteSwapExactAmountOut(value: MsgSplitRouteSwapExactAmountOut) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountOut",
+        value: MsgSplitRouteSwapExactAmountOut.toJSON(value)
+      };
+    },
+    setDenomPairTakerFee(value: MsgSetDenomPairTakerFee) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSetDenomPairTakerFee",
+        value: MsgSetDenomPairTakerFee.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    swapExactAmountIn(value: any) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountIn",
+        value: MsgSwapExactAmountIn.fromJSON(value)
+      };
+    },
+    swapExactAmountOut(value: any) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOut",
+        value: MsgSwapExactAmountOut.fromJSON(value)
+      };
+    },
+    splitRouteSwapExactAmountIn(value: any) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountIn",
+        value: MsgSplitRouteSwapExactAmountIn.fromJSON(value)
+      };
+    },
+    splitRouteSwapExactAmountOut(value: any) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSplitRouteSwapExactAmountOut",
+        value: MsgSplitRouteSwapExactAmountOut.fromJSON(value)
+      };
+    },
+    setDenomPairTakerFee(value: any) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSetDenomPairTakerFee",
+        value: MsgSetDenomPairTakerFee.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     swapExactAmountIn(value: MsgSwapExactAmountIn) {
       return {

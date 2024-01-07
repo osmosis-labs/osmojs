@@ -48,6 +48,46 @@ export const MessageComposer = {
       };
     }
   },
+  toJSON: {
+    storeCode(value: MsgStoreCode) {
+      return {
+        typeUrl: "/ibc.lightclients.wasm.v1.MsgStoreCode",
+        value: MsgStoreCode.toJSON(value)
+      };
+    },
+    removeChecksum(value: MsgRemoveChecksum) {
+      return {
+        typeUrl: "/ibc.lightclients.wasm.v1.MsgRemoveChecksum",
+        value: MsgRemoveChecksum.toJSON(value)
+      };
+    },
+    migrateContract(value: MsgMigrateContract) {
+      return {
+        typeUrl: "/ibc.lightclients.wasm.v1.MsgMigrateContract",
+        value: MsgMigrateContract.toJSON(value)
+      };
+    }
+  },
+  fromJSON: {
+    storeCode(value: any) {
+      return {
+        typeUrl: "/ibc.lightclients.wasm.v1.MsgStoreCode",
+        value: MsgStoreCode.fromJSON(value)
+      };
+    },
+    removeChecksum(value: any) {
+      return {
+        typeUrl: "/ibc.lightclients.wasm.v1.MsgRemoveChecksum",
+        value: MsgRemoveChecksum.fromJSON(value)
+      };
+    },
+    migrateContract(value: any) {
+      return {
+        typeUrl: "/ibc.lightclients.wasm.v1.MsgMigrateContract",
+        value: MsgMigrateContract.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     storeCode(value: MsgStoreCode) {
       return {

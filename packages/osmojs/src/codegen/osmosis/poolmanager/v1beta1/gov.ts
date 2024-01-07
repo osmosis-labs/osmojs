@@ -1,5 +1,7 @@
 import { DenomPairTakerFee, DenomPairTakerFeeAmino, DenomPairTakerFeeSDKType } from "./tx";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { isSet } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * DenomPairTakerFeeProposal is a type for adding/removing a custom taker fee(s)
  * for one or more denom pairs.
@@ -44,6 +46,16 @@ function createBaseDenomPairTakerFeeProposal(): DenomPairTakerFeeProposal {
 }
 export const DenomPairTakerFeeProposal = {
   typeUrl: "/osmosis.poolmanager.v1beta1.DenomPairTakerFeeProposal",
+  aminoType: "osmosis/poolmanager/denom-pair-taker-fee-proposal",
+  is(o: any): o is DenomPairTakerFeeProposal {
+    return o && (o.$typeUrl === DenomPairTakerFeeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.denomPairTakerFee) && (!o.denomPairTakerFee.length || DenomPairTakerFee.is(o.denomPairTakerFee[0])));
+  },
+  isSDK(o: any): o is DenomPairTakerFeeProposalSDKType {
+    return o && (o.$typeUrl === DenomPairTakerFeeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.denom_pair_taker_fee) && (!o.denom_pair_taker_fee.length || DenomPairTakerFee.isSDK(o.denom_pair_taker_fee[0])));
+  },
+  isAmino(o: any): o is DenomPairTakerFeeProposalAmino {
+    return o && (o.$typeUrl === DenomPairTakerFeeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.denom_pair_taker_fee) && (!o.denom_pair_taker_fee.length || DenomPairTakerFee.isAmino(o.denom_pair_taker_fee[0])));
+  },
   encode(message: DenomPairTakerFeeProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -78,6 +90,24 @@ export const DenomPairTakerFeeProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DenomPairTakerFeeProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      denomPairTakerFee: Array.isArray(object?.denomPairTakerFee) ? object.denomPairTakerFee.map((e: any) => DenomPairTakerFee.fromJSON(e)) : []
+    };
+  },
+  toJSON(message: DenomPairTakerFeeProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.denomPairTakerFee) {
+      obj.denomPairTakerFee = message.denomPairTakerFee.map(e => e ? DenomPairTakerFee.toJSON(e) : undefined);
+    } else {
+      obj.denomPairTakerFee = [];
+    }
+    return obj;
   },
   fromPartial(object: Partial<DenomPairTakerFeeProposal>): DenomPairTakerFeeProposal {
     const message = createBaseDenomPairTakerFeeProposal();
@@ -130,3 +160,5 @@ export const DenomPairTakerFeeProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(DenomPairTakerFeeProposal.typeUrl, DenomPairTakerFeeProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(DenomPairTakerFeeProposal.aminoType, DenomPairTakerFeeProposal.typeUrl);
