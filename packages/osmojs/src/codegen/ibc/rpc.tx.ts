@@ -5,11 +5,17 @@ export const createRPCMsgClient = async ({
   rpc: Rpc;
 }) => ({
   cosmos: {
+    auth: {
+      v1beta1: new (await import("../cosmos/auth/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
     authz: {
       v1beta1: new (await import("../cosmos/authz/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     bank: {
       v1beta1: new (await import("../cosmos/bank/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    consensus: {
+      v1: new (await import("../cosmos/consensus/v1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     distribution: {
       v1beta1: new (await import("../cosmos/distribution/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
@@ -19,6 +25,9 @@ export const createRPCMsgClient = async ({
     },
     staking: {
       v1beta1: new (await import("../cosmos/staking/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    upgrade: {
+      v1beta1: new (await import("../cosmos/upgrade/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     }
   },
   ibc: {
@@ -29,6 +38,9 @@ export const createRPCMsgClient = async ({
       interchain_accounts: {
         controller: {
           v1: new (await import("./applications/interchain_accounts/controller/v1/tx.rpc.msg")).MsgClientImpl(rpc)
+        },
+        host: {
+          v1: new (await import("./applications/interchain_accounts/host/v1/tx.rpc.msg")).MsgClientImpl(rpc)
         }
       },
       transfer: {
@@ -44,6 +56,11 @@ export const createRPCMsgClient = async ({
       },
       connection: {
         v1: new (await import("./core/connection/v1/tx.rpc.msg")).MsgClientImpl(rpc)
+      }
+    },
+    lightclients: {
+      wasm: {
+        v1: new (await import("./lightclients/wasm/v1/tx.rpc.msg")).MsgClientImpl(rpc)
       }
     }
   }

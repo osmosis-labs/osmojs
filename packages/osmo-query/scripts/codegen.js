@@ -18,11 +18,11 @@ telescope({
   outPath,
   options: {
 
+    env: "v-next",
     removeUnusedImports: true,
     tsDisable: {
       patterns: ['**/*amino.ts', '**/*registry.ts']
     },
-    experimentalGlobalProtoNamespace: true, //  [ 'v1beta1' ] concentratedliquidity
     interfaces: {
       enabled: true,
       useUnionTypes: false
@@ -109,7 +109,8 @@ telescope({
     },
     rpcClients: {
       enabled: true,
-      camelCase: true
+      camelCase: true,
+      useConnectComet: true
     },
     reactQuery: {
       enabled: true

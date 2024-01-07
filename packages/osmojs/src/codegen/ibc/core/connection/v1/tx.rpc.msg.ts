@@ -1,6 +1,6 @@
 import { Rpc } from "../../../../helpers";
 import { BinaryReader } from "../../../../binary";
-import { MsgConnectionOpenInit, MsgConnectionOpenInitResponse, MsgConnectionOpenTry, MsgConnectionOpenTryResponse, MsgConnectionOpenAck, MsgConnectionOpenAckResponse, MsgConnectionOpenConfirm, MsgConnectionOpenConfirmResponse } from "./tx";
+import { MsgConnectionOpenInit, MsgConnectionOpenInitResponse, MsgConnectionOpenTry, MsgConnectionOpenTryResponse, MsgConnectionOpenAck, MsgConnectionOpenAckResponse, MsgConnectionOpenConfirm, MsgConnectionOpenConfirmResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
 /** Msg defines the ibc/connection Msg service. */
 export interface Msg {
   /** ConnectionOpenInit defines a rpc handler method for MsgConnectionOpenInit. */
@@ -14,6 +14,11 @@ export interface Msg {
    * MsgConnectionOpenConfirm.
    */
   connectionOpenConfirm(request: MsgConnectionOpenConfirm): Promise<MsgConnectionOpenConfirmResponse>;
+  /**
+   * UpdateConnectionParams defines a rpc handler method for
+   * MsgUpdateParams.
+   */
+  updateConnectionParams(request: MsgUpdateParams): Promise<MsgUpdateParamsResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -23,6 +28,7 @@ export class MsgClientImpl implements Msg {
     this.connectionOpenTry = this.connectionOpenTry.bind(this);
     this.connectionOpenAck = this.connectionOpenAck.bind(this);
     this.connectionOpenConfirm = this.connectionOpenConfirm.bind(this);
+    this.updateConnectionParams = this.updateConnectionParams.bind(this);
   }
   connectionOpenInit(request: MsgConnectionOpenInit): Promise<MsgConnectionOpenInitResponse> {
     const data = MsgConnectionOpenInit.encode(request).finish();
@@ -44,4 +50,12 @@ export class MsgClientImpl implements Msg {
     const promise = this.rpc.request("ibc.core.connection.v1.Msg", "ConnectionOpenConfirm", data);
     return promise.then(data => MsgConnectionOpenConfirmResponse.decode(new BinaryReader(data)));
   }
+  updateConnectionParams(request: MsgUpdateParams): Promise<MsgUpdateParamsResponse> {
+    const data = MsgUpdateParams.encode(request).finish();
+    const promise = this.rpc.request("ibc.core.connection.v1.Msg", "UpdateConnectionParams", data);
+    return promise.then(data => MsgUpdateParamsResponse.decode(new BinaryReader(data)));
+  }
 }
+export const createClientImpl = (rpc: Rpc) => {
+  return new MsgClientImpl(rpc);
+};

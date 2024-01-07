@@ -15,11 +15,11 @@ export interface EventGrantProtoMsg {
 /** EventGrant is emitted on Msg/Grant */
 export interface EventGrantAmino {
   /** Msg type URL for which an autorization is granted */
-  msg_type_url: string;
+  msg_type_url?: string;
   /** Granter account address */
-  granter: string;
+  granter?: string;
   /** Grantee account address */
-  grantee: string;
+  grantee?: string;
 }
 export interface EventGrantAminoMsg {
   type: "cosmos-sdk/EventGrant";
@@ -47,11 +47,11 @@ export interface EventRevokeProtoMsg {
 /** EventRevoke is emitted on Msg/Revoke */
 export interface EventRevokeAmino {
   /** Msg type URL for which an autorization is revoked */
-  msg_type_url: string;
+  msg_type_url?: string;
   /** Granter account address */
-  granter: string;
+  granter?: string;
   /** Grantee account address */
-  grantee: string;
+  grantee?: string;
 }
 export interface EventRevokeAminoMsg {
   type: "cosmos-sdk/EventRevoke";
@@ -115,11 +115,17 @@ export const EventGrant = {
     return message;
   },
   fromAmino(object: EventGrantAmino): EventGrant {
-    return {
-      msgTypeUrl: object.msg_type_url,
-      granter: object.granter,
-      grantee: object.grantee
-    };
+    const message = createBaseEventGrant();
+    if (object.msg_type_url !== undefined && object.msg_type_url !== null) {
+      message.msgTypeUrl = object.msg_type_url;
+    }
+    if (object.granter !== undefined && object.granter !== null) {
+      message.granter = object.granter;
+    }
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    return message;
   },
   toAmino(message: EventGrant): EventGrantAmino {
     const obj: any = {};
@@ -202,11 +208,17 @@ export const EventRevoke = {
     return message;
   },
   fromAmino(object: EventRevokeAmino): EventRevoke {
-    return {
-      msgTypeUrl: object.msg_type_url,
-      granter: object.granter,
-      grantee: object.grantee
-    };
+    const message = createBaseEventRevoke();
+    if (object.msg_type_url !== undefined && object.msg_type_url !== null) {
+      message.msgTypeUrl = object.msg_type_url;
+    }
+    if (object.granter !== undefined && object.granter !== null) {
+      message.granter = object.granter;
+    }
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    return message;
   },
   toAmino(message: EventRevoke): EventRevokeAmino {
     const obj: any = {};

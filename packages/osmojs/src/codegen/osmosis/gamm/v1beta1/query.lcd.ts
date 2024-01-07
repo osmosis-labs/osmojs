@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryPoolsRequest, QueryPoolsResponseSDKType, QueryNumPoolsRequest, QueryNumPoolsResponseSDKType, QueryTotalLiquidityRequest, QueryTotalLiquidityResponseSDKType, QueryPoolsWithFilterRequest, QueryPoolsWithFilterResponseSDKType, QueryPoolRequest, QueryPoolResponseSDKType, QueryPoolTypeRequest, QueryPoolTypeResponseSDKType, QueryCalcJoinPoolSharesRequest, QueryCalcJoinPoolSharesResponseSDKType, QueryCalcExitPoolCoinsFromSharesRequest, QueryCalcExitPoolCoinsFromSharesResponseSDKType, QueryPoolParamsRequest, QueryPoolParamsResponseSDKType, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponseSDKType, QueryTotalSharesRequest, QueryTotalSharesResponseSDKType, QuerySpotPriceRequest, QuerySpotPriceResponseSDKType, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponseSDKType, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponseSDKType, QueryConcentratedPoolIdLinkFromCFMMRequest, QueryConcentratedPoolIdLinkFromCFMMResponseSDKType } from "./query";
+import { QueryPoolsRequest, QueryPoolsResponseSDKType, QueryNumPoolsRequest, QueryNumPoolsResponseSDKType, QueryTotalLiquidityRequest, QueryTotalLiquidityResponseSDKType, QueryPoolsWithFilterRequest, QueryPoolsWithFilterResponseSDKType, QueryPoolRequest, QueryPoolResponseSDKType, QueryPoolTypeRequest, QueryPoolTypeResponseSDKType, QueryCalcJoinPoolSharesRequest, QueryCalcJoinPoolSharesResponseSDKType, QueryCalcExitPoolCoinsFromSharesRequest, QueryCalcExitPoolCoinsFromSharesResponseSDKType, QueryPoolParamsRequest, QueryPoolParamsResponseSDKType, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponseSDKType, QueryTotalSharesRequest, QueryTotalSharesResponseSDKType, QuerySpotPriceRequest, QuerySpotPriceResponseSDKType, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponseSDKType, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponseSDKType, QueryConcentratedPoolIdLinkFromCFMMRequest, QueryConcentratedPoolIdLinkFromCFMMResponseSDKType, QueryCFMMConcentratedPoolLinksRequest, QueryCFMMConcentratedPoolLinksResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -24,6 +24,7 @@ export class LCDQueryClient {
     this.estimateSwapExactAmountIn = this.estimateSwapExactAmountIn.bind(this);
     this.estimateSwapExactAmountOut = this.estimateSwapExactAmountOut.bind(this);
     this.concentratedPoolIdLinkFromCFMM = this.concentratedPoolIdLinkFromCFMM.bind(this);
+    this.cFMMConcentratedPoolLinks = this.cFMMConcentratedPoolLinks.bind(this);
   }
   /* Pools */
   async pools(params: QueryPoolsRequest = {
@@ -169,5 +170,11 @@ export class LCDQueryClient {
   async concentratedPoolIdLinkFromCFMM(params: QueryConcentratedPoolIdLinkFromCFMMRequest): Promise<QueryConcentratedPoolIdLinkFromCFMMResponseSDKType> {
     const endpoint = `osmosis/gamm/v1beta1/concentrated_pool_id_link_from_cfmm/${params.cfmmPoolId}`;
     return await this.req.get<QueryConcentratedPoolIdLinkFromCFMMResponseSDKType>(endpoint);
+  }
+  /* CFMMConcentratedPoolLinks returns migration links between CFMM and
+   Concentrated pools. */
+  async cFMMConcentratedPoolLinks(_params: QueryCFMMConcentratedPoolLinksRequest = {}): Promise<QueryCFMMConcentratedPoolLinksResponseSDKType> {
+    const endpoint = `osmosis/gamm/v1beta1/cfmm_concentrated_pool_links`;
+    return await this.req.get<QueryCFMMConcentratedPoolLinksResponseSDKType>(endpoint);
   }
 }

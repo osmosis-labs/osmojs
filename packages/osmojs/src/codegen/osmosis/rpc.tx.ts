@@ -5,11 +5,17 @@ export const createRPCMsgClient = async ({
   rpc: Rpc;
 }) => ({
   cosmos: {
+    auth: {
+      v1beta1: new (await import("../cosmos/auth/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
     authz: {
       v1beta1: new (await import("../cosmos/authz/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     bank: {
       v1beta1: new (await import("../cosmos/bank/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    consensus: {
+      v1: new (await import("../cosmos/consensus/v1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     distribution: {
       v1beta1: new (await import("../cosmos/distribution/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
@@ -19,28 +25,32 @@ export const createRPCMsgClient = async ({
     },
     staking: {
       v1beta1: new (await import("../cosmos/staking/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    upgrade: {
+      v1beta1: new (await import("../cosmos/upgrade/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     }
   },
   osmosis: {
     concentratedliquidity: {
       poolmodel: {
         concentrated: {
-          v1beta1: new (await import("./concentrated-liquidity/pool-model/concentrated/tx.rpc.msg")).MsgClientImpl(rpc)
+          v1beta1: new (await import("./concentratedliquidity/poolmodel/concentrated/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
         }
       },
-      v1beta1: new (await import("./concentrated-liquidity/tx.rpc.msg")).MsgClientImpl(rpc)
+      v1beta1: new (await import("./concentratedliquidity/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     gamm: {
       poolmodels: {
         balancer: {
-          v1beta1: new (await import("./gamm/pool-models/balancer/tx/tx.rpc.msg")).MsgClientImpl(rpc)
+          v1beta1: new (await import("./gamm/poolmodels/balancer/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
         },
         stableswap: {
-          v1beta1: new (await import("./gamm/pool-models/stableswap/tx.rpc.msg")).MsgClientImpl(rpc)
+          v1beta1: new (await import("./gamm/poolmodels/stableswap/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
         }
       },
       v1beta1: new (await import("./gamm/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
+    ibchooks: new (await import("./ibchooks/tx.rpc.msg")).MsgClientImpl(rpc),
     incentives: new (await import("./incentives/tx.rpc.msg")).MsgClientImpl(rpc),
     lockup: new (await import("./lockup/tx.rpc.msg")).MsgClientImpl(rpc),
     poolmanager: {
@@ -54,7 +64,7 @@ export const createRPCMsgClient = async ({
       v1beta1: new (await import("./tokenfactory/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
     valsetpref: {
-      v1beta1: new (await import("./valset-pref/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+      v1beta1: new (await import("./valsetpref/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     }
   }
 });

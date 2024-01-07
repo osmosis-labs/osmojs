@@ -30,20 +30,20 @@ export interface MetadataProtoMsg {
  */
 export interface MetadataAmino {
   /** version defines the ICS27 protocol version */
-  version: string;
+  version?: string;
   /** controller_connection_id is the connection identifier associated with the controller chain */
-  controller_connection_id: string;
+  controller_connection_id?: string;
   /** host_connection_id is the connection identifier associated with the host chain */
-  host_connection_id: string;
+  host_connection_id?: string;
   /**
    * address defines the interchain account address to be fulfilled upon the OnChanOpenTry handshake step
    * NOTE: the address field is empty on the OnChanOpenInit handshake step
    */
-  address: string;
+  address?: string;
   /** encoding defines the supported codec format */
-  encoding: string;
+  encoding?: string;
   /** tx_type defines the type of transactions the interchain account can execute */
-  tx_type: string;
+  tx_type?: string;
 }
 export interface MetadataAminoMsg {
   type: "cosmos-sdk/Metadata";
@@ -137,14 +137,26 @@ export const Metadata = {
     return message;
   },
   fromAmino(object: MetadataAmino): Metadata {
-    return {
-      version: object.version,
-      controllerConnectionId: object.controller_connection_id,
-      hostConnectionId: object.host_connection_id,
-      address: object.address,
-      encoding: object.encoding,
-      txType: object.tx_type
-    };
+    const message = createBaseMetadata();
+    if (object.version !== undefined && object.version !== null) {
+      message.version = object.version;
+    }
+    if (object.controller_connection_id !== undefined && object.controller_connection_id !== null) {
+      message.controllerConnectionId = object.controller_connection_id;
+    }
+    if (object.host_connection_id !== undefined && object.host_connection_id !== null) {
+      message.hostConnectionId = object.host_connection_id;
+    }
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.encoding !== undefined && object.encoding !== null) {
+      message.encoding = object.encoding;
+    }
+    if (object.tx_type !== undefined && object.tx_type !== null) {
+      message.txType = object.tx_type;
+    }
+    return message;
   },
   toAmino(message: Metadata): MetadataAmino {
     const obj: any = {};

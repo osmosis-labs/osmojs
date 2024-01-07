@@ -17,7 +17,7 @@ export interface ParamsProtoMsg {
  */
 export interface ParamsAmino {
   /** controller_enabled enables or disables the controller submodule. */
-  controller_enabled: boolean;
+  controller_enabled?: boolean;
 }
 export interface ParamsAminoMsg {
   type: "cosmos-sdk/Params";
@@ -66,9 +66,11 @@ export const Params = {
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
-    return {
-      controllerEnabled: object.controller_enabled
-    };
+    const message = createBaseParams();
+    if (object.controller_enabled !== undefined && object.controller_enabled !== null) {
+      message.controllerEnabled = object.controller_enabled;
+    }
+    return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};

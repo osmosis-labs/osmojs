@@ -3,7 +3,7 @@ import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from "@cosmjs/stargate";
 import { ReactQueryParams } from "../../../react-query";
 import { useQuery } from "@tanstack/react-query";
-import { QueryParamsRequest, QueryParamsResponse, QueryDenomAuthorityMetadataRequest, QueryDenomAuthorityMetadataResponse, QueryDenomsFromCreatorRequest, QueryDenomsFromCreatorResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryDenomAuthorityMetadataRequest, QueryDenomAuthorityMetadataResponse, QueryDenomsFromCreatorRequest, QueryDenomsFromCreatorResponse, QueryBeforeSendHookAddressRequest, QueryBeforeSendHookAddressResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
   /**
@@ -21,6 +21,11 @@ export interface Query {
    * denominations created by a specific admin/creator.
    */
   denomsFromCreator(request: QueryDenomsFromCreatorRequest): Promise<QueryDenomsFromCreatorResponse>;
+  /**
+   * BeforeSendHookAddress defines a gRPC query method for
+   * getting the address registered for the before send hook.
+   */
+  beforeSendHookAddress(request: QueryBeforeSendHookAddressRequest): Promise<QueryBeforeSendHookAddressResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -29,6 +34,7 @@ export class QueryClientImpl implements Query {
     this.params = this.params.bind(this);
     this.denomAuthorityMetadata = this.denomAuthorityMetadata.bind(this);
     this.denomsFromCreator = this.denomsFromCreator.bind(this);
+    this.beforeSendHookAddress = this.beforeSendHookAddress.bind(this);
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
@@ -45,6 +51,11 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("osmosis.tokenfactory.v1beta1.Query", "DenomsFromCreator", data);
     return promise.then(data => QueryDenomsFromCreatorResponse.decode(new BinaryReader(data)));
   }
+  beforeSendHookAddress(request: QueryBeforeSendHookAddressRequest): Promise<QueryBeforeSendHookAddressResponse> {
+    const data = QueryBeforeSendHookAddressRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.tokenfactory.v1beta1.Query", "BeforeSendHookAddress", data);
+    return promise.then(data => QueryBeforeSendHookAddressResponse.decode(new BinaryReader(data)));
+  }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -58,6 +69,9 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     denomsFromCreator(request: QueryDenomsFromCreatorRequest): Promise<QueryDenomsFromCreatorResponse> {
       return queryService.denomsFromCreator(request);
+    },
+    beforeSendHookAddress(request: QueryBeforeSendHookAddressRequest): Promise<QueryBeforeSendHookAddressResponse> {
+      return queryService.beforeSendHookAddress(request);
     }
   };
 };
@@ -69,6 +83,9 @@ export interface UseDenomAuthorityMetadataQuery<TData> extends ReactQueryParams<
 }
 export interface UseDenomsFromCreatorQuery<TData> extends ReactQueryParams<QueryDenomsFromCreatorResponse, TData> {
   request: QueryDenomsFromCreatorRequest;
+}
+export interface UseBeforeSendHookAddressQuery<TData> extends ReactQueryParams<QueryBeforeSendHookAddressResponse, TData> {
+  request: QueryBeforeSendHookAddressRequest;
 }
 const _queryClients: WeakMap<ProtobufRpcClient, QueryClientImpl> = new WeakMap();
 const getQueryService = (rpc: ProtobufRpcClient | undefined): QueryClientImpl | undefined => {
@@ -109,6 +126,15 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
       return queryService.denomsFromCreator(request);
     }, options);
   };
+  const useBeforeSendHookAddress = <TData = QueryBeforeSendHookAddressResponse,>({
+    request,
+    options
+  }: UseBeforeSendHookAddressQuery<TData>) => {
+    return useQuery<QueryBeforeSendHookAddressResponse, Error, TData>(["beforeSendHookAddressQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.beforeSendHookAddress(request);
+    }, options);
+  };
   return {
     /**
      * Params defines a gRPC query method that returns the tokenfactory module's
@@ -124,6 +150,11 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
      * DenomsFromCreator defines a gRPC query method for fetching all
      * denominations created by a specific admin/creator.
      */
-    useDenomsFromCreator
+    useDenomsFromCreator,
+    /**
+     * BeforeSendHookAddress defines a gRPC query method for
+     * getting the address registered for the before send hook.
+     */
+    useBeforeSendHookAddress
   };
 };

@@ -1,7 +1,7 @@
 import { Rpc } from "../../helpers";
 import { BinaryReader } from "../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, RewardsEstRequest, RewardsEstResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse } from "./query";
+import { ModuleToDistributeCoinsRequest, ModuleToDistributeCoinsResponse, GaugeByIDRequest, GaugeByIDResponse, GaugesRequest, GaugesResponse, ActiveGaugesRequest, ActiveGaugesResponse, ActiveGaugesPerDenomRequest, ActiveGaugesPerDenomResponse, UpcomingGaugesRequest, UpcomingGaugesResponse, UpcomingGaugesPerDenomRequest, UpcomingGaugesPerDenomResponse, RewardsEstRequest, RewardsEstResponse, QueryLockableDurationsRequest, QueryLockableDurationsResponse, QueryAllGroupsRequest, QueryAllGroupsResponse, QueryAllGroupsGaugesRequest, QueryAllGroupsGaugesResponse, QueryAllGroupsWithGaugeRequest, QueryAllGroupsWithGaugeResponse, QueryGroupByGroupGaugeIDRequest, QueryGroupByGroupGaugeIDResponse, QueryCurrentWeightByGroupGaugeIDRequest, QueryCurrentWeightByGroupGaugeIDResponse } from "./query";
 /** Query defines the gRPC querier service */
 export interface Query {
   /** ModuleToDistributeCoins returns coins that are going to be distributed */
@@ -14,10 +14,10 @@ export interface Query {
   activeGauges(request?: ActiveGaugesRequest): Promise<ActiveGaugesResponse>;
   /** ActiveGaugesPerDenom returns active gauges by denom */
   activeGaugesPerDenom(request: ActiveGaugesPerDenomRequest): Promise<ActiveGaugesPerDenomResponse>;
-  /** Returns scheduled gauges that have not yet occured */
+  /** Returns scheduled gauges that have not yet occurred */
   upcomingGauges(request?: UpcomingGaugesRequest): Promise<UpcomingGaugesResponse>;
   /**
-   * UpcomingGaugesPerDenom returns scheduled gauges that have not yet occured
+   * UpcomingGaugesPerDenom returns scheduled gauges that have not yet occurred
    * by denom
    */
   upcomingGaugesPerDenom(request: UpcomingGaugesPerDenomRequest): Promise<UpcomingGaugesPerDenomResponse>;
@@ -32,6 +32,19 @@ export interface Query {
    * incentives for
    */
   lockableDurations(request?: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponse>;
+  /** AllGroups returns all groups */
+  allGroups(request?: QueryAllGroupsRequest): Promise<QueryAllGroupsResponse>;
+  /** AllGroupsGauges returns all group gauges */
+  allGroupsGauges(request?: QueryAllGroupsGaugesRequest): Promise<QueryAllGroupsGaugesResponse>;
+  /** AllGroupsWithGauge returns all groups with their group gauge */
+  allGroupsWithGauge(request?: QueryAllGroupsWithGaugeRequest): Promise<QueryAllGroupsWithGaugeResponse>;
+  /** GroupByGroupGaugeID returns a group given its group gauge ID */
+  groupByGroupGaugeID(request: QueryGroupByGroupGaugeIDRequest): Promise<QueryGroupByGroupGaugeIDResponse>;
+  /**
+   * CurrentWeightByGroupGaugeID returns the current weight since the
+   * the last epoch given a group gauge ID
+   */
+  currentWeightByGroupGaugeID(request: QueryCurrentWeightByGroupGaugeIDRequest): Promise<QueryCurrentWeightByGroupGaugeIDResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -46,6 +59,11 @@ export class QueryClientImpl implements Query {
     this.upcomingGaugesPerDenom = this.upcomingGaugesPerDenom.bind(this);
     this.rewardsEst = this.rewardsEst.bind(this);
     this.lockableDurations = this.lockableDurations.bind(this);
+    this.allGroups = this.allGroups.bind(this);
+    this.allGroupsGauges = this.allGroupsGauges.bind(this);
+    this.allGroupsWithGauge = this.allGroupsWithGauge.bind(this);
+    this.groupByGroupGaugeID = this.groupByGroupGaugeID.bind(this);
+    this.currentWeightByGroupGaugeID = this.currentWeightByGroupGaugeID.bind(this);
   }
   moduleToDistributeCoins(request: ModuleToDistributeCoinsRequest = {}): Promise<ModuleToDistributeCoinsResponse> {
     const data = ModuleToDistributeCoinsRequest.encode(request).finish();
@@ -98,6 +116,31 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("osmosis.incentives.Query", "LockableDurations", data);
     return promise.then(data => QueryLockableDurationsResponse.decode(new BinaryReader(data)));
   }
+  allGroups(request: QueryAllGroupsRequest = {}): Promise<QueryAllGroupsResponse> {
+    const data = QueryAllGroupsRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.incentives.Query", "AllGroups", data);
+    return promise.then(data => QueryAllGroupsResponse.decode(new BinaryReader(data)));
+  }
+  allGroupsGauges(request: QueryAllGroupsGaugesRequest = {}): Promise<QueryAllGroupsGaugesResponse> {
+    const data = QueryAllGroupsGaugesRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.incentives.Query", "AllGroupsGauges", data);
+    return promise.then(data => QueryAllGroupsGaugesResponse.decode(new BinaryReader(data)));
+  }
+  allGroupsWithGauge(request: QueryAllGroupsWithGaugeRequest = {}): Promise<QueryAllGroupsWithGaugeResponse> {
+    const data = QueryAllGroupsWithGaugeRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.incentives.Query", "AllGroupsWithGauge", data);
+    return promise.then(data => QueryAllGroupsWithGaugeResponse.decode(new BinaryReader(data)));
+  }
+  groupByGroupGaugeID(request: QueryGroupByGroupGaugeIDRequest): Promise<QueryGroupByGroupGaugeIDResponse> {
+    const data = QueryGroupByGroupGaugeIDRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.incentives.Query", "GroupByGroupGaugeID", data);
+    return promise.then(data => QueryGroupByGroupGaugeIDResponse.decode(new BinaryReader(data)));
+  }
+  currentWeightByGroupGaugeID(request: QueryCurrentWeightByGroupGaugeIDRequest): Promise<QueryCurrentWeightByGroupGaugeIDResponse> {
+    const data = QueryCurrentWeightByGroupGaugeIDRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.incentives.Query", "CurrentWeightByGroupGaugeID", data);
+    return promise.then(data => QueryCurrentWeightByGroupGaugeIDResponse.decode(new BinaryReader(data)));
+  }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -129,6 +172,21 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     lockableDurations(request?: QueryLockableDurationsRequest): Promise<QueryLockableDurationsResponse> {
       return queryService.lockableDurations(request);
+    },
+    allGroups(request?: QueryAllGroupsRequest): Promise<QueryAllGroupsResponse> {
+      return queryService.allGroups(request);
+    },
+    allGroupsGauges(request?: QueryAllGroupsGaugesRequest): Promise<QueryAllGroupsGaugesResponse> {
+      return queryService.allGroupsGauges(request);
+    },
+    allGroupsWithGauge(request?: QueryAllGroupsWithGaugeRequest): Promise<QueryAllGroupsWithGaugeResponse> {
+      return queryService.allGroupsWithGauge(request);
+    },
+    groupByGroupGaugeID(request: QueryGroupByGroupGaugeIDRequest): Promise<QueryGroupByGroupGaugeIDResponse> {
+      return queryService.groupByGroupGaugeID(request);
+    },
+    currentWeightByGroupGaugeID(request: QueryCurrentWeightByGroupGaugeIDRequest): Promise<QueryCurrentWeightByGroupGaugeIDResponse> {
+      return queryService.currentWeightByGroupGaugeID(request);
     }
   };
 };

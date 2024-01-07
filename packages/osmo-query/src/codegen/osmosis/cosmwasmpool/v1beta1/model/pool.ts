@@ -1,6 +1,25 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
+/**
+ * CosmWasmPool represents the data serialized into state for each CW pool.
+ * 
+ * Note: CW Pool has 2 pool models:
+ * - CosmWasmPool which is a proto-generated store model used for serialization
+ * into state.
+ * - Pool struct that encapsulates the CosmWasmPool and wasmKeeper for calling
+ * the contract.
+ * 
+ * CosmWasmPool implements the poolmanager.PoolI interface but it panics on all
+ * methods. The reason is that access to wasmKeeper is required to call the
+ * contract.
+ * 
+ * Instead, all interactions and poolmanager.PoolI methods are to be performed
+ * on the Pool struct. The reason why we cannot have a Pool struct only is
+ * because it cannot be serialized into state due to having a non-serializable
+ * wasmKeeper field.
+ */
 export interface CosmWasmPool {
-  $typeUrl?: string;
+  $typeUrl?: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool";
   contractAddress: string;
   poolId: bigint;
   codeId: bigint;
@@ -10,18 +29,54 @@ export interface CosmWasmPoolProtoMsg {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool";
   value: Uint8Array;
 }
+/**
+ * CosmWasmPool represents the data serialized into state for each CW pool.
+ * 
+ * Note: CW Pool has 2 pool models:
+ * - CosmWasmPool which is a proto-generated store model used for serialization
+ * into state.
+ * - Pool struct that encapsulates the CosmWasmPool and wasmKeeper for calling
+ * the contract.
+ * 
+ * CosmWasmPool implements the poolmanager.PoolI interface but it panics on all
+ * methods. The reason is that access to wasmKeeper is required to call the
+ * contract.
+ * 
+ * Instead, all interactions and poolmanager.PoolI methods are to be performed
+ * on the Pool struct. The reason why we cannot have a Pool struct only is
+ * because it cannot be serialized into state due to having a non-serializable
+ * wasmKeeper field.
+ */
 export interface CosmWasmPoolAmino {
-  contract_address: string;
-  pool_id: string;
-  code_id: string;
-  instantiate_msg: Uint8Array;
+  contract_address?: string;
+  pool_id?: string;
+  code_id?: string;
+  instantiate_msg?: string;
 }
 export interface CosmWasmPoolAminoMsg {
   type: "osmosis/cosmwasmpool/cosm-wasm-pool";
   value: CosmWasmPoolAmino;
 }
+/**
+ * CosmWasmPool represents the data serialized into state for each CW pool.
+ * 
+ * Note: CW Pool has 2 pool models:
+ * - CosmWasmPool which is a proto-generated store model used for serialization
+ * into state.
+ * - Pool struct that encapsulates the CosmWasmPool and wasmKeeper for calling
+ * the contract.
+ * 
+ * CosmWasmPool implements the poolmanager.PoolI interface but it panics on all
+ * methods. The reason is that access to wasmKeeper is required to call the
+ * contract.
+ * 
+ * Instead, all interactions and poolmanager.PoolI methods are to be performed
+ * on the Pool struct. The reason why we cannot have a Pool struct only is
+ * because it cannot be serialized into state due to having a non-serializable
+ * wasmKeeper field.
+ */
 export interface CosmWasmPoolSDKType {
-  $typeUrl?: string;
+  $typeUrl?: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool";
   contract_address: string;
   pool_id: bigint;
   code_id: bigint;
@@ -88,19 +143,27 @@ export const CosmWasmPool = {
     return message;
   },
   fromAmino(object: CosmWasmPoolAmino): CosmWasmPool {
-    return {
-      contractAddress: object.contract_address,
-      poolId: BigInt(object.pool_id),
-      codeId: BigInt(object.code_id),
-      instantiateMsg: object.instantiate_msg
-    };
+    const message = createBaseCosmWasmPool();
+    if (object.contract_address !== undefined && object.contract_address !== null) {
+      message.contractAddress = object.contract_address;
+    }
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = BigInt(object.pool_id);
+    }
+    if (object.code_id !== undefined && object.code_id !== null) {
+      message.codeId = BigInt(object.code_id);
+    }
+    if (object.instantiate_msg !== undefined && object.instantiate_msg !== null) {
+      message.instantiateMsg = bytesFromBase64(object.instantiate_msg);
+    }
+    return message;
   },
   toAmino(message: CosmWasmPool): CosmWasmPoolAmino {
     const obj: any = {};
     obj.contract_address = message.contractAddress;
     obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
     obj.code_id = message.codeId ? message.codeId.toString() : undefined;
-    obj.instantiate_msg = message.instantiateMsg;
+    obj.instantiate_msg = message.instantiateMsg ? base64FromBytes(message.instantiateMsg) : undefined;
     return obj;
   },
   fromAminoMsg(object: CosmWasmPoolAminoMsg): CosmWasmPool {

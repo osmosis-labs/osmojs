@@ -1,6 +1,6 @@
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
-import { MsgSetHotRoutes, MsgSetHotRoutesResponse, MsgSetDeveloperAccount, MsgSetDeveloperAccountResponse, MsgSetMaxPoolPointsPerTx, MsgSetMaxPoolPointsPerTxResponse, MsgSetMaxPoolPointsPerBlock, MsgSetMaxPoolPointsPerBlockResponse, MsgSetPoolWeights, MsgSetPoolWeightsResponse, MsgSetBaseDenoms, MsgSetBaseDenomsResponse } from "./tx";
+import { MsgSetHotRoutes, MsgSetHotRoutesResponse, MsgSetDeveloperAccount, MsgSetDeveloperAccountResponse, MsgSetMaxPoolPointsPerTx, MsgSetMaxPoolPointsPerTxResponse, MsgSetMaxPoolPointsPerBlock, MsgSetMaxPoolPointsPerBlockResponse, MsgSetInfoByPoolType, MsgSetInfoByPoolTypeResponse, MsgSetBaseDenoms, MsgSetBaseDenomsResponse } from "./tx";
 export interface Msg {
   /**
    * SetHotRoutes sets the hot routes that will be explored when creating
@@ -23,10 +23,10 @@ export interface Msg {
    */
   setMaxPoolPointsPerBlock(request: MsgSetMaxPoolPointsPerBlock): Promise<MsgSetMaxPoolPointsPerBlockResponse>;
   /**
-   * SetPoolWeights sets the weights of each pool type in the store. Can only be
-   * called by the admin account.
+   * SetInfoByPoolType sets the pool type information needed to make smart
+   * assumptions about swapping on different pool types
    */
-  setPoolWeights(request: MsgSetPoolWeights): Promise<MsgSetPoolWeightsResponse>;
+  setInfoByPoolType(request: MsgSetInfoByPoolType): Promise<MsgSetInfoByPoolTypeResponse>;
   /**
    * SetBaseDenoms sets the base denoms that will be used to create cyclic
    * arbitrage routes. Can only be called by the admin account.
@@ -41,7 +41,7 @@ export class MsgClientImpl implements Msg {
     this.setDeveloperAccount = this.setDeveloperAccount.bind(this);
     this.setMaxPoolPointsPerTx = this.setMaxPoolPointsPerTx.bind(this);
     this.setMaxPoolPointsPerBlock = this.setMaxPoolPointsPerBlock.bind(this);
-    this.setPoolWeights = this.setPoolWeights.bind(this);
+    this.setInfoByPoolType = this.setInfoByPoolType.bind(this);
     this.setBaseDenoms = this.setBaseDenoms.bind(this);
   }
   setHotRoutes(request: MsgSetHotRoutes): Promise<MsgSetHotRoutesResponse> {
@@ -64,10 +64,10 @@ export class MsgClientImpl implements Msg {
     const promise = this.rpc.request("osmosis.protorev.v1beta1.Msg", "SetMaxPoolPointsPerBlock", data);
     return promise.then(data => MsgSetMaxPoolPointsPerBlockResponse.decode(new BinaryReader(data)));
   }
-  setPoolWeights(request: MsgSetPoolWeights): Promise<MsgSetPoolWeightsResponse> {
-    const data = MsgSetPoolWeights.encode(request).finish();
-    const promise = this.rpc.request("osmosis.protorev.v1beta1.Msg", "SetPoolWeights", data);
-    return promise.then(data => MsgSetPoolWeightsResponse.decode(new BinaryReader(data)));
+  setInfoByPoolType(request: MsgSetInfoByPoolType): Promise<MsgSetInfoByPoolTypeResponse> {
+    const data = MsgSetInfoByPoolType.encode(request).finish();
+    const promise = this.rpc.request("osmosis.protorev.v1beta1.Msg", "SetInfoByPoolType", data);
+    return promise.then(data => MsgSetInfoByPoolTypeResponse.decode(new BinaryReader(data)));
   }
   setBaseDenoms(request: MsgSetBaseDenoms): Promise<MsgSetBaseDenomsResponse> {
     const data = MsgSetBaseDenoms.encode(request).finish();
@@ -75,3 +75,6 @@ export class MsgClientImpl implements Msg {
     return promise.then(data => MsgSetBaseDenomsResponse.decode(new BinaryReader(data)));
   }
 }
+export const createClientImpl = (rpc: Rpc) => {
+  return new MsgClientImpl(rpc);
+};

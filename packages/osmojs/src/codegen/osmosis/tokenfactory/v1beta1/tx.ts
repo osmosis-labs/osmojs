@@ -33,9 +33,9 @@ export interface MsgCreateDenomProtoMsg {
  * denom does not indicate the current admin.
  */
 export interface MsgCreateDenomAmino {
-  sender: string;
+  sender?: string;
   /** subdenom can be up to 44 "alphanumeric" characters long. */
-  subdenom: string;
+  subdenom?: string;
 }
 export interface MsgCreateDenomAminoMsg {
   type: "osmosis/tokenfactory/create-denom";
@@ -72,7 +72,7 @@ export interface MsgCreateDenomResponseProtoMsg {
  * It returns the full string of the newly created denom
  */
 export interface MsgCreateDenomResponseAmino {
-  new_token_denom: string;
+  new_token_denom?: string;
 }
 export interface MsgCreateDenomResponseAminoMsg {
   type: "osmosis/tokenfactory/create-denom-response";
@@ -87,7 +87,9 @@ export interface MsgCreateDenomResponseSDKType {
 }
 /**
  * MsgMint is the sdk.Msg type for allowing an admin account to mint
- * more of a token.  For now, we only support minting to the sender account
+ * more of a token.
+ * Only the admin of the token factory denom has permission to mint unless
+ * the denom does not have any admin.
  */
 export interface MsgMint {
   sender: string;
@@ -100,10 +102,12 @@ export interface MsgMintProtoMsg {
 }
 /**
  * MsgMint is the sdk.Msg type for allowing an admin account to mint
- * more of a token.  For now, we only support minting to the sender account
+ * more of a token.
+ * Only the admin of the token factory denom has permission to mint unless
+ * the denom does not have any admin.
  */
 export interface MsgMintAmino {
-  sender: string;
+  sender?: string;
   amount?: CoinAmino;
   mintToAddress: string;
 }
@@ -113,7 +117,9 @@ export interface MsgMintAminoMsg {
 }
 /**
  * MsgMint is the sdk.Msg type for allowing an admin account to mint
- * more of a token.  For now, we only support minting to the sender account
+ * more of a token.
+ * Only the admin of the token factory denom has permission to mint unless
+ * the denom does not have any admin.
  */
 export interface MsgMintSDKType {
   sender: string;
@@ -133,7 +139,9 @@ export interface MsgMintResponseAminoMsg {
 export interface MsgMintResponseSDKType {}
 /**
  * MsgBurn is the sdk.Msg type for allowing an admin account to burn
- * a token.  For now, we only support burning from the sender account.
+ * a token.
+ * Only the admin of the token factory denom has permission to burn unless
+ * the denom does not have any admin.
  */
 export interface MsgBurn {
   sender: string;
@@ -146,10 +154,12 @@ export interface MsgBurnProtoMsg {
 }
 /**
  * MsgBurn is the sdk.Msg type for allowing an admin account to burn
- * a token.  For now, we only support burning from the sender account.
+ * a token.
+ * Only the admin of the token factory denom has permission to burn unless
+ * the denom does not have any admin.
  */
 export interface MsgBurnAmino {
-  sender: string;
+  sender?: string;
   amount?: CoinAmino;
   burnFromAddress: string;
 }
@@ -159,7 +169,9 @@ export interface MsgBurnAminoMsg {
 }
 /**
  * MsgBurn is the sdk.Msg type for allowing an admin account to burn
- * a token.  For now, we only support burning from the sender account.
+ * a token.
+ * Only the admin of the token factory denom has permission to burn unless
+ * the denom does not have any admin.
  */
 export interface MsgBurnSDKType {
   sender: string;
@@ -195,9 +207,9 @@ export interface MsgChangeAdminProtoMsg {
  * adminship of a denom to a new account
  */
 export interface MsgChangeAdminAmino {
-  sender: string;
-  denom: string;
-  new_admin: string;
+  sender?: string;
+  denom?: string;
+  new_admin?: string;
 }
 export interface MsgChangeAdminAminoMsg {
   type: "osmosis/tokenfactory/change-admin";
@@ -236,6 +248,64 @@ export interface MsgChangeAdminResponseAminoMsg {
  */
 export interface MsgChangeAdminResponseSDKType {}
 /**
+ * MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
+ * assign a CosmWasm contract to call with a BeforeSend hook
+ */
+export interface MsgSetBeforeSendHook {
+  sender: string;
+  denom: string;
+  cosmwasmAddress: string;
+}
+export interface MsgSetBeforeSendHookProtoMsg {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHook";
+  value: Uint8Array;
+}
+/**
+ * MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
+ * assign a CosmWasm contract to call with a BeforeSend hook
+ */
+export interface MsgSetBeforeSendHookAmino {
+  sender?: string;
+  denom?: string;
+  cosmwasm_address: string;
+}
+export interface MsgSetBeforeSendHookAminoMsg {
+  type: "osmosis/tokenfactory/set-bef-send-hook";
+  value: MsgSetBeforeSendHookAmino;
+}
+/**
+ * MsgSetBeforeSendHook is the sdk.Msg type for allowing an admin account to
+ * assign a CosmWasm contract to call with a BeforeSend hook
+ */
+export interface MsgSetBeforeSendHookSDKType {
+  sender: string;
+  denom: string;
+  cosmwasm_address: string;
+}
+/**
+ * MsgSetBeforeSendHookResponse defines the response structure for an executed
+ * MsgSetBeforeSendHook message.
+ */
+export interface MsgSetBeforeSendHookResponse {}
+export interface MsgSetBeforeSendHookResponseProtoMsg {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHookResponse";
+  value: Uint8Array;
+}
+/**
+ * MsgSetBeforeSendHookResponse defines the response structure for an executed
+ * MsgSetBeforeSendHook message.
+ */
+export interface MsgSetBeforeSendHookResponseAmino {}
+export interface MsgSetBeforeSendHookResponseAminoMsg {
+  type: "osmosis/tokenfactory/set-before-send-hook-response";
+  value: MsgSetBeforeSendHookResponseAmino;
+}
+/**
+ * MsgSetBeforeSendHookResponse defines the response structure for an executed
+ * MsgSetBeforeSendHook message.
+ */
+export interface MsgSetBeforeSendHookResponseSDKType {}
+/**
  * MsgSetDenomMetadata is the sdk.Msg type for allowing an admin account to set
  * the denom's bank metadata
  */
@@ -252,7 +322,7 @@ export interface MsgSetDenomMetadataProtoMsg {
  * the denom's bank metadata
  */
 export interface MsgSetDenomMetadataAmino {
-  sender: string;
+  sender?: string;
   metadata?: MetadataAmino;
 }
 export interface MsgSetDenomMetadataAminoMsg {
@@ -301,10 +371,10 @@ export interface MsgForceTransferProtoMsg {
   value: Uint8Array;
 }
 export interface MsgForceTransferAmino {
-  sender: string;
+  sender?: string;
   amount?: CoinAmino;
-  transferFromAddress: string;
-  transferToAddress: string;
+  transferFromAddress?: string;
+  transferToAddress?: string;
 }
 export interface MsgForceTransferAminoMsg {
   type: "osmosis/tokenfactory/force-transfer";
@@ -371,10 +441,14 @@ export const MsgCreateDenom = {
     return message;
   },
   fromAmino(object: MsgCreateDenomAmino): MsgCreateDenom {
-    return {
-      sender: object.sender,
-      subdenom: object.subdenom
-    };
+    const message = createBaseMsgCreateDenom();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    if (object.subdenom !== undefined && object.subdenom !== null) {
+      message.subdenom = object.subdenom;
+    }
+    return message;
   },
   toAmino(message: MsgCreateDenom): MsgCreateDenomAmino {
     const obj: any = {};
@@ -440,9 +514,11 @@ export const MsgCreateDenomResponse = {
     return message;
   },
   fromAmino(object: MsgCreateDenomResponseAmino): MsgCreateDenomResponse {
-    return {
-      newTokenDenom: object.new_token_denom
-    };
+    const message = createBaseMsgCreateDenomResponse();
+    if (object.new_token_denom !== undefined && object.new_token_denom !== null) {
+      message.newTokenDenom = object.new_token_denom;
+    }
+    return message;
   },
   toAmino(message: MsgCreateDenomResponse): MsgCreateDenomResponseAmino {
     const obj: any = {};
@@ -474,7 +550,7 @@ export const MsgCreateDenomResponse = {
 function createBaseMsgMint(): MsgMint {
   return {
     sender: "",
-    amount: undefined,
+    amount: Coin.fromPartial({}),
     mintToAddress: ""
   };
 }
@@ -523,17 +599,23 @@ export const MsgMint = {
     return message;
   },
   fromAmino(object: MsgMintAmino): MsgMint {
-    return {
-      sender: object.sender,
-      amount: object?.amount ? Coin.fromAmino(object.amount) : undefined,
-      mintToAddress: object.mintToAddress
-    };
+    const message = createBaseMsgMint();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = Coin.fromAmino(object.amount);
+    }
+    if (object.mintToAddress !== undefined && object.mintToAddress !== null) {
+      message.mintToAddress = object.mintToAddress;
+    }
+    return message;
   },
   toAmino(message: MsgMint): MsgMintAmino {
     const obj: any = {};
     obj.sender = message.sender;
     obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
-    obj.mintToAddress = message.mintToAddress;
+    obj.mintToAddress = message.mintToAddress ?? "";
     return obj;
   },
   fromAminoMsg(object: MsgMintAminoMsg): MsgMint {
@@ -585,7 +667,8 @@ export const MsgMintResponse = {
     return message;
   },
   fromAmino(_: MsgMintResponseAmino): MsgMintResponse {
-    return {};
+    const message = createBaseMsgMintResponse();
+    return message;
   },
   toAmino(_: MsgMintResponse): MsgMintResponseAmino {
     const obj: any = {};
@@ -616,7 +699,7 @@ export const MsgMintResponse = {
 function createBaseMsgBurn(): MsgBurn {
   return {
     sender: "",
-    amount: undefined,
+    amount: Coin.fromPartial({}),
     burnFromAddress: ""
   };
 }
@@ -665,17 +748,23 @@ export const MsgBurn = {
     return message;
   },
   fromAmino(object: MsgBurnAmino): MsgBurn {
-    return {
-      sender: object.sender,
-      amount: object?.amount ? Coin.fromAmino(object.amount) : undefined,
-      burnFromAddress: object.burnFromAddress
-    };
+    const message = createBaseMsgBurn();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = Coin.fromAmino(object.amount);
+    }
+    if (object.burnFromAddress !== undefined && object.burnFromAddress !== null) {
+      message.burnFromAddress = object.burnFromAddress;
+    }
+    return message;
   },
   toAmino(message: MsgBurn): MsgBurnAmino {
     const obj: any = {};
     obj.sender = message.sender;
     obj.amount = message.amount ? Coin.toAmino(message.amount) : undefined;
-    obj.burnFromAddress = message.burnFromAddress;
+    obj.burnFromAddress = message.burnFromAddress ?? "";
     return obj;
   },
   fromAminoMsg(object: MsgBurnAminoMsg): MsgBurn {
@@ -727,7 +816,8 @@ export const MsgBurnResponse = {
     return message;
   },
   fromAmino(_: MsgBurnResponseAmino): MsgBurnResponse {
-    return {};
+    const message = createBaseMsgBurnResponse();
+    return message;
   },
   toAmino(_: MsgBurnResponse): MsgBurnResponseAmino {
     const obj: any = {};
@@ -807,11 +897,17 @@ export const MsgChangeAdmin = {
     return message;
   },
   fromAmino(object: MsgChangeAdminAmino): MsgChangeAdmin {
-    return {
-      sender: object.sender,
-      denom: object.denom,
-      newAdmin: object.new_admin
-    };
+    const message = createBaseMsgChangeAdmin();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.new_admin !== undefined && object.new_admin !== null) {
+      message.newAdmin = object.new_admin;
+    }
+    return message;
   },
   toAmino(message: MsgChangeAdmin): MsgChangeAdminAmino {
     const obj: any = {};
@@ -869,7 +965,8 @@ export const MsgChangeAdminResponse = {
     return message;
   },
   fromAmino(_: MsgChangeAdminResponseAmino): MsgChangeAdminResponse {
-    return {};
+    const message = createBaseMsgChangeAdminResponse();
+    return message;
   },
   toAmino(_: MsgChangeAdminResponse): MsgChangeAdminResponseAmino {
     const obj: any = {};
@@ -894,6 +991,155 @@ export const MsgChangeAdminResponse = {
     return {
       typeUrl: "/osmosis.tokenfactory.v1beta1.MsgChangeAdminResponse",
       value: MsgChangeAdminResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSetBeforeSendHook(): MsgSetBeforeSendHook {
+  return {
+    sender: "",
+    denom: "",
+    cosmwasmAddress: ""
+  };
+}
+export const MsgSetBeforeSendHook = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHook",
+  encode(message: MsgSetBeforeSendHook, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.sender !== "") {
+      writer.uint32(10).string(message.sender);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    if (message.cosmwasmAddress !== "") {
+      writer.uint32(26).string(message.cosmwasmAddress);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetBeforeSendHook {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetBeforeSendHook();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.sender = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        case 3:
+          message.cosmwasmAddress = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetBeforeSendHook>): MsgSetBeforeSendHook {
+    const message = createBaseMsgSetBeforeSendHook();
+    message.sender = object.sender ?? "";
+    message.denom = object.denom ?? "";
+    message.cosmwasmAddress = object.cosmwasmAddress ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSetBeforeSendHookAmino): MsgSetBeforeSendHook {
+    const message = createBaseMsgSetBeforeSendHook();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.cosmwasm_address !== undefined && object.cosmwasm_address !== null) {
+      message.cosmwasmAddress = object.cosmwasm_address;
+    }
+    return message;
+  },
+  toAmino(message: MsgSetBeforeSendHook): MsgSetBeforeSendHookAmino {
+    const obj: any = {};
+    obj.sender = message.sender;
+    obj.denom = message.denom;
+    obj.cosmwasm_address = message.cosmwasmAddress ?? "";
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetBeforeSendHookAminoMsg): MsgSetBeforeSendHook {
+    return MsgSetBeforeSendHook.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgSetBeforeSendHook): MsgSetBeforeSendHookAminoMsg {
+    return {
+      type: "osmosis/tokenfactory/set-bef-send-hook",
+      value: MsgSetBeforeSendHook.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgSetBeforeSendHookProtoMsg): MsgSetBeforeSendHook {
+    return MsgSetBeforeSendHook.decode(message.value);
+  },
+  toProto(message: MsgSetBeforeSendHook): Uint8Array {
+    return MsgSetBeforeSendHook.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetBeforeSendHook): MsgSetBeforeSendHookProtoMsg {
+    return {
+      typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHook",
+      value: MsgSetBeforeSendHook.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgSetBeforeSendHookResponse(): MsgSetBeforeSendHookResponse {
+  return {};
+}
+export const MsgSetBeforeSendHookResponse = {
+  typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHookResponse",
+  encode(_: MsgSetBeforeSendHookResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetBeforeSendHookResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetBeforeSendHookResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgSetBeforeSendHookResponse>): MsgSetBeforeSendHookResponse {
+    const message = createBaseMsgSetBeforeSendHookResponse();
+    return message;
+  },
+  fromAmino(_: MsgSetBeforeSendHookResponseAmino): MsgSetBeforeSendHookResponse {
+    const message = createBaseMsgSetBeforeSendHookResponse();
+    return message;
+  },
+  toAmino(_: MsgSetBeforeSendHookResponse): MsgSetBeforeSendHookResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetBeforeSendHookResponseAminoMsg): MsgSetBeforeSendHookResponse {
+    return MsgSetBeforeSendHookResponse.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgSetBeforeSendHookResponse): MsgSetBeforeSendHookResponseAminoMsg {
+    return {
+      type: "osmosis/tokenfactory/set-before-send-hook-response",
+      value: MsgSetBeforeSendHookResponse.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgSetBeforeSendHookResponseProtoMsg): MsgSetBeforeSendHookResponse {
+    return MsgSetBeforeSendHookResponse.decode(message.value);
+  },
+  toProto(message: MsgSetBeforeSendHookResponse): Uint8Array {
+    return MsgSetBeforeSendHookResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetBeforeSendHookResponse): MsgSetBeforeSendHookResponseProtoMsg {
+    return {
+      typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetBeforeSendHookResponse",
+      value: MsgSetBeforeSendHookResponse.encode(message).finish()
     };
   }
 };
@@ -941,10 +1187,14 @@ export const MsgSetDenomMetadata = {
     return message;
   },
   fromAmino(object: MsgSetDenomMetadataAmino): MsgSetDenomMetadata {
-    return {
-      sender: object.sender,
-      metadata: object?.metadata ? Metadata.fromAmino(object.metadata) : undefined
-    };
+    const message = createBaseMsgSetDenomMetadata();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    if (object.metadata !== undefined && object.metadata !== null) {
+      message.metadata = Metadata.fromAmino(object.metadata);
+    }
+    return message;
   },
   toAmino(message: MsgSetDenomMetadata): MsgSetDenomMetadataAmino {
     const obj: any = {};
@@ -1001,7 +1251,8 @@ export const MsgSetDenomMetadataResponse = {
     return message;
   },
   fromAmino(_: MsgSetDenomMetadataResponseAmino): MsgSetDenomMetadataResponse {
-    return {};
+    const message = createBaseMsgSetDenomMetadataResponse();
+    return message;
   },
   toAmino(_: MsgSetDenomMetadataResponse): MsgSetDenomMetadataResponseAmino {
     const obj: any = {};
@@ -1032,7 +1283,7 @@ export const MsgSetDenomMetadataResponse = {
 function createBaseMsgForceTransfer(): MsgForceTransfer {
   return {
     sender: "",
-    amount: undefined,
+    amount: Coin.fromPartial({}),
     transferFromAddress: "",
     transferToAddress: ""
   };
@@ -1089,12 +1340,20 @@ export const MsgForceTransfer = {
     return message;
   },
   fromAmino(object: MsgForceTransferAmino): MsgForceTransfer {
-    return {
-      sender: object.sender,
-      amount: object?.amount ? Coin.fromAmino(object.amount) : undefined,
-      transferFromAddress: object.transferFromAddress,
-      transferToAddress: object.transferToAddress
-    };
+    const message = createBaseMsgForceTransfer();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = Coin.fromAmino(object.amount);
+    }
+    if (object.transferFromAddress !== undefined && object.transferFromAddress !== null) {
+      message.transferFromAddress = object.transferFromAddress;
+    }
+    if (object.transferToAddress !== undefined && object.transferToAddress !== null) {
+      message.transferToAddress = object.transferToAddress;
+    }
+    return message;
   },
   toAmino(message: MsgForceTransfer): MsgForceTransferAmino {
     const obj: any = {};
@@ -1153,7 +1412,8 @@ export const MsgForceTransferResponse = {
     return message;
   },
   fromAmino(_: MsgForceTransferResponseAmino): MsgForceTransferResponse {
-    return {};
+    const message = createBaseMsgForceTransferResponse();
+    return message;
   },
   toAmino(_: MsgForceTransferResponse): MsgForceTransferResponseAmino {
     const obj: any = {};

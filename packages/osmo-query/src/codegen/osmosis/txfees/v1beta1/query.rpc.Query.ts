@@ -3,7 +3,7 @@ import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from "@cosmjs/stargate";
 import { ReactQueryParams } from "../../../react-query";
 import { useQuery } from "@tanstack/react-query";
-import { QueryFeeTokensRequest, QueryFeeTokensResponse, QueryDenomSpotPriceRequest, QueryDenomSpotPriceResponse, QueryDenomPoolIdRequest, QueryDenomPoolIdResponse, QueryBaseDenomRequest, QueryBaseDenomResponse } from "./query";
+import { QueryFeeTokensRequest, QueryFeeTokensResponse, QueryDenomSpotPriceRequest, QueryDenomSpotPriceResponse, QueryDenomPoolIdRequest, QueryDenomPoolIdResponse, QueryBaseDenomRequest, QueryBaseDenomResponse, QueryEipBaseFeeRequest, QueryEipBaseFeeResponse } from "./query";
 export interface Query {
   /**
    * FeeTokens returns a list of all the whitelisted fee tokens and their
@@ -17,6 +17,8 @@ export interface Query {
   denomPoolId(request: QueryDenomPoolIdRequest): Promise<QueryDenomPoolIdResponse>;
   /** Returns a list of all base denom tokens and their corresponding pools. */
   baseDenom(request?: QueryBaseDenomRequest): Promise<QueryBaseDenomResponse>;
+  /** Returns a list of all base denom tokens and their corresponding pools. */
+  getEipBaseFee(request?: QueryEipBaseFeeRequest): Promise<QueryEipBaseFeeResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -26,6 +28,7 @@ export class QueryClientImpl implements Query {
     this.denomSpotPrice = this.denomSpotPrice.bind(this);
     this.denomPoolId = this.denomPoolId.bind(this);
     this.baseDenom = this.baseDenom.bind(this);
+    this.getEipBaseFee = this.getEipBaseFee.bind(this);
   }
   feeTokens(request: QueryFeeTokensRequest = {}): Promise<QueryFeeTokensResponse> {
     const data = QueryFeeTokensRequest.encode(request).finish();
@@ -47,6 +50,11 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("osmosis.txfees.v1beta1.Query", "BaseDenom", data);
     return promise.then(data => QueryBaseDenomResponse.decode(new BinaryReader(data)));
   }
+  getEipBaseFee(request: QueryEipBaseFeeRequest = {}): Promise<QueryEipBaseFeeResponse> {
+    const data = QueryEipBaseFeeRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.txfees.v1beta1.Query", "GetEipBaseFee", data);
+    return promise.then(data => QueryEipBaseFeeResponse.decode(new BinaryReader(data)));
+  }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -63,6 +71,9 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     baseDenom(request?: QueryBaseDenomRequest): Promise<QueryBaseDenomResponse> {
       return queryService.baseDenom(request);
+    },
+    getEipBaseFee(request?: QueryEipBaseFeeRequest): Promise<QueryEipBaseFeeResponse> {
+      return queryService.getEipBaseFee(request);
     }
   };
 };
@@ -77,6 +88,9 @@ export interface UseDenomPoolIdQuery<TData> extends ReactQueryParams<QueryDenomP
 }
 export interface UseBaseDenomQuery<TData> extends ReactQueryParams<QueryBaseDenomResponse, TData> {
   request?: QueryBaseDenomRequest;
+}
+export interface UseGetEipBaseFeeQuery<TData> extends ReactQueryParams<QueryEipBaseFeeResponse, TData> {
+  request?: QueryEipBaseFeeRequest;
 }
 const _queryClients: WeakMap<ProtobufRpcClient, QueryClientImpl> = new WeakMap();
 const getQueryService = (rpc: ProtobufRpcClient | undefined): QueryClientImpl | undefined => {
@@ -126,6 +140,15 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
       return queryService.baseDenom(request);
     }, options);
   };
+  const useGetEipBaseFee = <TData = QueryEipBaseFeeResponse,>({
+    request,
+    options
+  }: UseGetEipBaseFeeQuery<TData>) => {
+    return useQuery<QueryEipBaseFeeResponse, Error, TData>(["getEipBaseFeeQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.getEipBaseFee(request);
+    }, options);
+  };
   return {
     /**
      * FeeTokens returns a list of all the whitelisted fee tokens and their
@@ -135,6 +158,7 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     useFeeTokens,
     /** DenomSpotPrice returns all spot prices by each registered token denom. */useDenomSpotPrice,
     /** Returns the poolID for a specified denom input. */useDenomPoolId,
-    /** Returns a list of all base denom tokens and their corresponding pools. */useBaseDenom
+    /** Returns a list of all base denom tokens and their corresponding pools. */useBaseDenom,
+    /** Returns a list of all base denom tokens and their corresponding pools. */useGetEipBaseFee
   };
 };

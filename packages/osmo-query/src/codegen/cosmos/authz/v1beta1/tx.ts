@@ -1,6 +1,7 @@
 import { Grant, GrantAmino, GrantSDKType } from "./authz";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /**
  * MsgGrant is a request type for Grant method. It declares authorization to the grantee
  * on behalf of the granter with the provided expiration time.
@@ -19,9 +20,9 @@ export interface MsgGrantProtoMsg {
  * on behalf of the granter with the provided expiration time.
  */
 export interface MsgGrantAmino {
-  granter: string;
-  grantee: string;
-  grant?: GrantAmino;
+  granter?: string;
+  grantee?: string;
+  grant: GrantAmino;
 }
 export interface MsgGrantAminoMsg {
   type: "cosmos-sdk/MsgGrant";
@@ -46,7 +47,7 @@ export interface MsgExecResponseProtoMsg {
 }
 /** MsgExecResponse defines the Msg/MsgExecResponse response type. */
 export interface MsgExecResponseAmino {
-  results: Uint8Array[];
+  results?: string[];
 }
 export interface MsgExecResponseAminoMsg {
   type: "cosmos-sdk/MsgExecResponse";
@@ -64,7 +65,7 @@ export interface MsgExecResponseSDKType {
 export interface MsgExec {
   grantee: string;
   /**
-   * Authorization Msg requests to execute. Each msg must implement Authorization interface
+   * Execute Msg.
    * The x/authz will try to find a grant matching (msg.signers[0], grantee, MsgTypeURL(msg))
    * triple and validate it.
    */
@@ -76,7 +77,7 @@ export interface MsgExecProtoMsg {
 }
 export type MsgExecEncoded = Omit<MsgExec, "msgs"> & {
   /**
-   * Authorization Msg requests to execute. Each msg must implement Authorization interface
+   * Execute Msg.
    * The x/authz will try to find a grant matching (msg.signers[0], grantee, MsgTypeURL(msg))
    * triple and validate it.
    */
@@ -88,13 +89,13 @@ export type MsgExecEncoded = Omit<MsgExec, "msgs"> & {
  * one signer corresponding to the granter of the authorization.
  */
 export interface MsgExecAmino {
-  grantee: string;
+  grantee?: string;
   /**
-   * Authorization Msg requests to execute. Each msg must implement Authorization interface
+   * Execute Msg.
    * The x/authz will try to find a grant matching (msg.signers[0], grantee, MsgTypeURL(msg))
    * triple and validate it.
    */
-  msgs: AnyAmino[];
+  msgs?: AnyAmino[];
 }
 export interface MsgExecAminoMsg {
   type: "cosmos-sdk/MsgExec";
@@ -141,9 +142,9 @@ export interface MsgRevokeProtoMsg {
  * granter's account with that has been granted to the grantee.
  */
 export interface MsgRevokeAmino {
-  granter: string;
-  grantee: string;
-  msg_type_url: string;
+  granter?: string;
+  grantee?: string;
+  msg_type_url?: string;
 }
 export interface MsgRevokeAminoMsg {
   type: "cosmos-sdk/MsgRevoke";
@@ -224,17 +225,23 @@ export const MsgGrant = {
     return message;
   },
   fromAmino(object: MsgGrantAmino): MsgGrant {
-    return {
-      granter: object.granter,
-      grantee: object.grantee,
-      grant: object?.grant ? Grant.fromAmino(object.grant) : undefined
-    };
+    const message = createBaseMsgGrant();
+    if (object.granter !== undefined && object.granter !== null) {
+      message.granter = object.granter;
+    }
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    if (object.grant !== undefined && object.grant !== null) {
+      message.grant = Grant.fromAmino(object.grant);
+    }
+    return message;
   },
   toAmino(message: MsgGrant): MsgGrantAmino {
     const obj: any = {};
     obj.granter = message.granter;
     obj.grantee = message.grantee;
-    obj.grant = message.grant ? Grant.toAmino(message.grant) : undefined;
+    obj.grant = message.grant ? Grant.toAmino(message.grant) : Grant.fromPartial({});
     return obj;
   },
   fromAminoMsg(object: MsgGrantAminoMsg): MsgGrant {
@@ -295,14 +302,14 @@ export const MsgExecResponse = {
     return message;
   },
   fromAmino(object: MsgExecResponseAmino): MsgExecResponse {
-    return {
-      results: Array.isArray(object?.results) ? object.results.map((e: any) => e) : []
-    };
+    const message = createBaseMsgExecResponse();
+    message.results = object.results?.map(e => bytesFromBase64(e)) || [];
+    return message;
   },
   toAmino(message: MsgExecResponse): MsgExecResponseAmino {
     const obj: any = {};
     if (message.results) {
-      obj.results = message.results.map(e => e);
+      obj.results = message.results.map(e => base64FromBytes(e));
     } else {
       obj.results = [];
     }
@@ -358,7 +365,7 @@ export const MsgExec = {
           message.grantee = reader.string();
           break;
         case 2:
-          message.msgs.push((Sdk_MsgauthzAuthorization_InterfaceDecoder(reader) as Any));
+          message.msgs.push((Any(reader) as Any));
           break;
         default:
           reader.skipType(tag & 7);
@@ -374,16 +381,18 @@ export const MsgExec = {
     return message;
   },
   fromAmino(object: MsgExecAmino): MsgExec {
-    return {
-      grantee: object.grantee,
-      msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Sdk_MsgauthzAuthorization_FromAmino(e)) : []
-    };
+    const message = createBaseMsgExec();
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    message.msgs = object.msgs?.map(e => Cosmos_basev1beta1Msg_FromAmino(e)) || [];
+    return message;
   },
   toAmino(message: MsgExec): MsgExecAmino {
     const obj: any = {};
     obj.grantee = message.grantee;
     if (message.msgs) {
-      obj.msgs = message.msgs.map(e => e ? Sdk_MsgauthzAuthorization_ToAmino((e as Any)) : undefined);
+      obj.msgs = message.msgs.map(e => e ? Cosmos_basev1beta1Msg_ToAmino((e as Any)) : undefined);
     } else {
       obj.msgs = [];
     }
@@ -438,7 +447,8 @@ export const MsgGrantResponse = {
     return message;
   },
   fromAmino(_: MsgGrantResponseAmino): MsgGrantResponse {
-    return {};
+    const message = createBaseMsgGrantResponse();
+    return message;
   },
   toAmino(_: MsgGrantResponse): MsgGrantResponseAmino {
     const obj: any = {};
@@ -518,11 +528,17 @@ export const MsgRevoke = {
     return message;
   },
   fromAmino(object: MsgRevokeAmino): MsgRevoke {
-    return {
-      granter: object.granter,
-      grantee: object.grantee,
-      msgTypeUrl: object.msg_type_url
-    };
+    const message = createBaseMsgRevoke();
+    if (object.granter !== undefined && object.granter !== null) {
+      message.granter = object.granter;
+    }
+    if (object.grantee !== undefined && object.grantee !== null) {
+      message.grantee = object.grantee;
+    }
+    if (object.msg_type_url !== undefined && object.msg_type_url !== null) {
+      message.msgTypeUrl = object.msg_type_url;
+    }
+    return message;
   },
   toAmino(message: MsgRevoke): MsgRevokeAmino {
     const obj: any = {};
@@ -580,7 +596,8 @@ export const MsgRevokeResponse = {
     return message;
   },
   fromAmino(_: MsgRevokeResponseAmino): MsgRevokeResponse {
-    return {};
+    const message = createBaseMsgRevokeResponse();
+    return message;
   },
   toAmino(_: MsgRevokeResponse): MsgRevokeResponseAmino {
     const obj: any = {};
@@ -608,31 +625,17 @@ export const MsgRevokeResponse = {
     };
   }
 };
-export const Sdk_Msg_InterfaceDecoder = (input: BinaryReader | Uint8Array): Any => {
+export const Cosmos_basev1beta1Msg_InterfaceDecoder = (input: BinaryReader | Uint8Array): Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32());
+  const data = Any.decode(reader, reader.uint32(), true);
   switch (data.typeUrl) {
     default:
       return data;
   }
 };
-export const Sdk_Msg_FromAmino = (content: AnyAmino) => {
+export const Cosmos_basev1beta1Msg_FromAmino = (content: AnyAmino) => {
   return Any.fromAmino(content);
 };
-export const Sdk_Msg_ToAmino = (content: Any) => {
-  return Any.toAmino(content);
-};
-export const Authz_Authorization_InterfaceDecoder = (input: BinaryReader | Uint8Array): Any => {
-  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32());
-  switch (data.typeUrl) {
-    default:
-      return data;
-  }
-};
-export const Authz_Authorization_FromAmino = (content: AnyAmino) => {
-  return Any.fromAmino(content);
-};
-export const Authz_Authorization_ToAmino = (content: Any) => {
+export const Cosmos_basev1beta1Msg_ToAmino = (content: Any) => {
   return Any.toAmino(content);
 };
