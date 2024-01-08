@@ -1864,10 +1864,10 @@
   resolved "https://registry.npmmirror.com/@cosmjs/utils/-/utils-0.32.2.tgz#324304aa85bfa6f10561cc17781d824d02130897"
   integrity sha512-Gg5t+eR7vPJMAmhkFt6CZrzPd0EKpAslWwk5rFVYZpJsM8JG5KT9XQ99hgNM3Ov6ScNoIWbXkpX27F6A9cXR4Q==
 
-"@cosmology/ast@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.npmmirror.com/@cosmology/ast/-/ast-1.4.1.tgz#d895ecc87071a77cb238503c9505770498720d1b"
-  integrity sha512-isWUqDqie12PhpN5+ow5ut+4d/I7s/X/fDy5hyKkt5apUbo/AjcQL0UFJeF7yyoty2HCyG/b1YJylRwRHi8jgA==
+"@cosmology/ast@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.npmjs.org/@cosmology/ast/-/ast-1.4.2.tgz#adeceef0e956dc2fba96c6d26eb6afd6442444fd"
+  integrity sha512-pHIsahNp2hlUIqiMBfafwupGjMdMHMfU8b1d1IJvmgmS8kV+0zGI360+W4UiMn6/302/mA+WV94HtQpB0wGmtw==
   dependencies:
     "@babel/parser" "^7.23.6"
     "@babel/types" "7.23.6"
@@ -1884,10 +1884,10 @@
     "@babel/runtime" "^7.21.0"
     axios "0.27.2"
 
-"@cosmology/proto-parser@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.npmmirror.com/@cosmology/proto-parser/-/proto-parser-1.4.0.tgz#1173e81031158ff715f336935666ae3b1f75d861"
-  integrity sha512-TVyoUmPnISzXVuegNOYKuvNTwrZwsz/8sGWB6T4/JxKyBOZBn/GuGCnQeMlz+IS0Spr2FExvs//BrjchixvnYQ==
+"@cosmology/proto-parser@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.npmjs.org/@cosmology/proto-parser/-/proto-parser-1.4.1.tgz#04442a52515ff28e014aad08baaf76a96b6dc248"
+  integrity sha512-SAh7WgtMui2PdoSvV6mrYxGb/0qkcJ1GQgWSMz2Loy5FwvA5k2fdWPnHpfjpSf7i9/cIe6YtOsit15RheCOZeQ==
   dependencies:
     "@cosmology/protobufjs" "6.11.6"
     "@cosmology/types" "^1.4.0"
@@ -1916,17 +1916,17 @@
     "@types/node" ">=13.7.0"
     long "^4.0.0"
 
-"@cosmology/telescope@1.4.1":
-  version "1.4.1"
-  resolved "https://registry.npmmirror.com/@cosmology/telescope/-/telescope-1.4.1.tgz#7b9ce9092982221ab3015ecd1ba4e1bc4aebc490"
-  integrity sha512-DZpRyag1epExwfqhQndZ7AVn8tnZ7noV5wKpMFHKQT0jXtJNSI4k/G/lCg9rUMQQTgB85YRwunQdOkwJhtj2/A==
+"@cosmology/telescope@1.4.3":
+  version "1.4.3"
+  resolved "https://registry.npmmirror.com/@cosmology/telescope/-/telescope-1.4.3.tgz#8f9b613162d1bee9336cf36d701180ab2b287b26"
+  integrity sha512-9uc4JWcZj0ctgTt6vMYmUOJeNR6rPEr+O5YqpJdiWaMNCA8ap2Csne5HRmI1JKGJ0slHV+BuIjZHMZmoUdeQeA==
   dependencies:
     "@babel/generator" "^7.23.6"
     "@babel/parser" "^7.23.6"
     "@babel/traverse" "7.23.6"
     "@babel/types" "7.23.6"
-    "@cosmology/ast" "^1.4.1"
-    "@cosmology/proto-parser" "^1.4.0"
+    "@cosmology/ast" "^1.4.2"
+    "@cosmology/proto-parser" "^1.4.1"
     "@cosmology/types" "^1.4.0"
     "@cosmology/utils" "^1.4.0"
     "@cosmwasm/ts-codegen" "0.34.0"

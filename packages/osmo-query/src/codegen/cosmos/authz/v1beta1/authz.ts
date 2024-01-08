@@ -476,22 +476,22 @@ export const GrantQueueItem = {
 };
 export const Cosmos_authzv1beta1Authorization_InterfaceDecoder = (input: BinaryReader | Uint8Array): GenericAuthorization | SendAuthorization | StakeAuthorization | TransferAuthorization | StoreCodeAuthorization | ContractExecutionAuthorization | ContractMigrationAuthorization | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32(), true);
+  const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
     case "/cosmos.authz.v1beta1.GenericAuthorization":
-      return GenericAuthorization.decode(data.value, undefined, true);
+      return GenericAuthorization.decode(data.value);
     case "/cosmos.bank.v1beta1.SendAuthorization":
-      return SendAuthorization.decode(data.value, undefined, true);
+      return SendAuthorization.decode(data.value);
     case "/cosmos.staking.v1beta1.StakeAuthorization":
-      return StakeAuthorization.decode(data.value, undefined, true);
+      return StakeAuthorization.decode(data.value);
     case "/ibc.applications.transfer.v1.TransferAuthorization":
-      return TransferAuthorization.decode(data.value, undefined, true);
+      return TransferAuthorization.decode(data.value);
     case "/cosmwasm.wasm.v1.StoreCodeAuthorization":
-      return StoreCodeAuthorization.decode(data.value, undefined, true);
+      return StoreCodeAuthorization.decode(data.value);
     case "/cosmwasm.wasm.v1.ContractExecutionAuthorization":
-      return ContractExecutionAuthorization.decode(data.value, undefined, true);
+      return ContractExecutionAuthorization.decode(data.value);
     case "/cosmwasm.wasm.v1.ContractMigrationAuthorization":
-      return ContractMigrationAuthorization.decode(data.value, undefined, true);
+      return ContractMigrationAuthorization.decode(data.value);
     default:
       return data;
   }

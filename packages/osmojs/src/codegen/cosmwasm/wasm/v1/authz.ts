@@ -1241,14 +1241,14 @@ export const AcceptedMessagesFilter = {
 };
 export const Cosmwasm_wasmv1ContractAuthzLimitX_InterfaceDecoder = (input: BinaryReader | Uint8Array): MaxCallsLimit | MaxFundsLimit | CombinedLimit | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32(), true);
+  const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
     case "/cosmwasm.wasm.v1.MaxCallsLimit":
-      return MaxCallsLimit.decode(data.value, undefined, true);
+      return MaxCallsLimit.decode(data.value);
     case "/cosmwasm.wasm.v1.MaxFundsLimit":
-      return MaxFundsLimit.decode(data.value, undefined, true);
+      return MaxFundsLimit.decode(data.value);
     case "/cosmwasm.wasm.v1.CombinedLimit":
-      return CombinedLimit.decode(data.value, undefined, true);
+      return CombinedLimit.decode(data.value);
     default:
       return data;
   }
@@ -1297,14 +1297,14 @@ export const Cosmwasm_wasmv1ContractAuthzLimitX_ToAmino = (content: Any) => {
 };
 export const Cosmwasm_wasmv1ContractAuthzFilterX_InterfaceDecoder = (input: BinaryReader | Uint8Array): AllowAllMessagesFilter | AcceptedMessageKeysFilter | AcceptedMessagesFilter | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32(), true);
+  const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
     case "/cosmwasm.wasm.v1.AllowAllMessagesFilter":
-      return AllowAllMessagesFilter.decode(data.value, undefined, true);
+      return AllowAllMessagesFilter.decode(data.value);
     case "/cosmwasm.wasm.v1.AcceptedMessageKeysFilter":
-      return AcceptedMessageKeysFilter.decode(data.value, undefined, true);
+      return AcceptedMessageKeysFilter.decode(data.value);
     case "/cosmwasm.wasm.v1.AcceptedMessagesFilter":
-      return AcceptedMessagesFilter.decode(data.value, undefined, true);
+      return AcceptedMessagesFilter.decode(data.value);
     default:
       return data;
   }
