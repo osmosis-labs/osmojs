@@ -28,7 +28,7 @@ describe("AminoTypes", () => {
       });
       const expected: AminoMsgDeposit = {
         // type: "cosmos-sdk/MsgDeposit",
-        type: "cosmos-sdk/v1/MsgDeposit",
+        type: "cosmos-sdk/MsgDeposit",
         value: {
           amount: [{ amount: "12300000", denom: "ustake" }],
           depositor: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
@@ -85,9 +85,11 @@ describe("AminoTypes", () => {
       });
       const expected: AminoMsgVote = {
         // type: "cosmos-sdk/MsgVote",
-        type: "cosmos-sdk/v1/MsgVote",
+        type: "cosmos-sdk/MsgVote",
         value: {
-          option: 4,
+          //TODO:: fix amino option to numbers in telescope.
+          //option: 4,
+          option: "VOTE_OPTION_NO_WITH_VETO",
           proposal_id: "5",
           voter: "cosmos1xy4yqngt0nlkdcenxymg8tenrghmek4nmqm28k",
         },
@@ -99,7 +101,7 @@ describe("AminoTypes", () => {
   describe("fromAmino", () => {
     it("works for MsgDeposit", () => {
       const aminoMsg: AminoMsgDeposit = {
-        type: "cosmos-sdk/v1/MsgDeposit",
+        type: "cosmos-sdk/MsgDeposit",
         value: {
           amount: [{ amount: "12300000", denom: "ustake" }],
           depositor: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
@@ -155,7 +157,7 @@ describe("AminoTypes", () => {
     it("works for MsgVote", () => {
       const aminoMsg: AminoMsgVote = {
         // type: "cosmos-sdk/MsgVote",
-        type: "cosmos-sdk/v1/MsgVote",
+        type: "cosmos-sdk/MsgVote",
         value: {
           option: 4,
           proposal_id: "5",

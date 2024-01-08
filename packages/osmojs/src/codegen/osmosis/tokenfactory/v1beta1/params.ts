@@ -27,14 +27,14 @@ export interface ParamsAmino {
    * denom. The fee is drawn from the MsgCreateDenom's sender account, and
    * transferred to the community pool.
    */
-  denom_creation_fee: CoinAmino[];
+  denom_creation_fee?: CoinAmino[];
   /**
    * DenomCreationGasConsume defines the gas cost for creating a new denom.
    * This is intended as a spam deterrence mechanism.
    * 
    * See: https://github.com/CosmWasm/token-factory/issues/11
    */
-  denom_creation_gas_consume: string;
+  denom_creation_gas_consume?: string;
 }
 export interface ParamsAminoMsg {
   type: "osmosis/tokenfactory/params";
@@ -89,10 +89,12 @@ export const Params = {
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
-    return {
-      denomCreationFee: Array.isArray(object?.denom_creation_fee) ? object.denom_creation_fee.map((e: any) => Coin.fromAmino(e)) : [],
-      denomCreationGasConsume: object?.denom_creation_gas_consume ? BigInt(object.denom_creation_gas_consume) : undefined
-    };
+    const message = createBaseParams();
+    message.denomCreationFee = object.denom_creation_fee?.map(e => Coin.fromAmino(e)) || [];
+    if (object.denom_creation_gas_consume !== undefined && object.denom_creation_gas_consume !== null) {
+      message.denomCreationGasConsume = BigInt(object.denom_creation_gas_consume);
+    }
+    return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};

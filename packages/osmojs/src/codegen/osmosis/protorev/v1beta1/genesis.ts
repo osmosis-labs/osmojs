@@ -1,5 +1,5 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType, PoolWeights, PoolWeightsAmino, PoolWeightsSDKType } from "./protorev";
+import { TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType, PoolWeights, PoolWeightsAmino, PoolWeightsSDKType, InfoByPoolType, InfoByPoolTypeAmino, InfoByPoolTypeSDKType, CyclicArbTracker, CyclicArbTrackerAmino, CyclicArbTrackerSDKType } from "./protorev";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** GenesisState defines the protorev module's genesis state. */
@@ -16,6 +16,9 @@ export interface GenesisState {
   /**
    * The pool weights that are being used to calculate the weight (compute cost)
    * of each route.
+   * 
+   * DEPRECATED: This field is deprecated and will be removed in the next
+   * release. It is replaced by the `info_by_pool_type` field.
    */
   poolWeights: PoolWeights;
   /** The number of days since module genesis. */
@@ -40,6 +43,12 @@ export interface GenesisState {
   pointCountForBlock: bigint;
   /** All of the profits that have been accumulated by the module. */
   profits: Coin[];
+  /**
+   * Information that is used to estimate execution time / gas
+   * consumption of a swap on a given pool type.
+   */
+  infoByPoolType: InfoByPoolType;
+  cyclicArbTracker?: CyclicArbTracker;
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/osmosis.protorev.v1beta1.GenesisState";
@@ -50,39 +59,48 @@ export interface GenesisStateAmino {
   /** Parameters for the protorev module. */
   params?: ParamsAmino;
   /** Token pair arb routes for the protorev module (hot routes). */
-  token_pair_arb_routes: TokenPairArbRoutesAmino[];
+  token_pair_arb_routes?: TokenPairArbRoutesAmino[];
   /**
    * The base denominations being used to create cyclic arbitrage routes via the
    * highest liquidity method.
    */
-  base_denoms: BaseDenomAmino[];
+  base_denoms?: BaseDenomAmino[];
   /**
    * The pool weights that are being used to calculate the weight (compute cost)
    * of each route.
+   * 
+   * DEPRECATED: This field is deprecated and will be removed in the next
+   * release. It is replaced by the `info_by_pool_type` field.
    */
   pool_weights?: PoolWeightsAmino;
   /** The number of days since module genesis. */
-  days_since_module_genesis: string;
+  days_since_module_genesis?: string;
   /** The fees the developer account has accumulated over time. */
-  developer_fees: CoinAmino[];
+  developer_fees?: CoinAmino[];
   /** The latest block height that the module has processed. */
-  latest_block_height: string;
+  latest_block_height?: string;
   /** The developer account address of the module. */
-  developer_address: string;
+  developer_address?: string;
   /**
    * Max pool points per block i.e. the maximum compute time (in ms)
    * that protorev can use per block.
    */
-  max_pool_points_per_block: string;
+  max_pool_points_per_block?: string;
   /**
    * Max pool points per tx i.e. the maximum compute time (in ms) that
    * protorev can use per tx.
    */
-  max_pool_points_per_tx: string;
+  max_pool_points_per_tx?: string;
   /** The number of pool points that have been consumed in the current block. */
-  point_count_for_block: string;
+  point_count_for_block?: string;
   /** All of the profits that have been accumulated by the module. */
-  profits: CoinAmino[];
+  profits?: CoinAmino[];
+  /**
+   * Information that is used to estimate execution time / gas
+   * consumption of a swap on a given pool type.
+   */
+  info_by_pool_type?: InfoByPoolTypeAmino;
+  cyclic_arb_tracker?: CyclicArbTrackerAmino;
 }
 export interface GenesisStateAminoMsg {
   type: "osmosis/protorev/genesis-state";
@@ -102,6 +120,8 @@ export interface GenesisStateSDKType {
   max_pool_points_per_tx: bigint;
   point_count_for_block: bigint;
   profits: CoinSDKType[];
+  info_by_pool_type: InfoByPoolTypeSDKType;
+  cyclic_arb_tracker?: CyclicArbTrackerSDKType;
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -116,7 +136,9 @@ function createBaseGenesisState(): GenesisState {
     maxPoolPointsPerBlock: BigInt(0),
     maxPoolPointsPerTx: BigInt(0),
     pointCountForBlock: BigInt(0),
-    profits: []
+    profits: [],
+    infoByPoolType: InfoByPoolType.fromPartial({}),
+    cyclicArbTracker: undefined
   };
 }
 export const GenesisState = {
@@ -157,6 +179,12 @@ export const GenesisState = {
     }
     for (const v of message.profits) {
       Coin.encode(v!, writer.uint32(98).fork()).ldelim();
+    }
+    if (message.infoByPoolType !== undefined) {
+      InfoByPoolType.encode(message.infoByPoolType, writer.uint32(106).fork()).ldelim();
+    }
+    if (message.cyclicArbTracker !== undefined) {
+      CyclicArbTracker.encode(message.cyclicArbTracker, writer.uint32(114).fork()).ldelim();
     }
     return writer;
   },
@@ -203,6 +231,12 @@ export const GenesisState = {
         case 12:
           message.profits.push(Coin.decode(reader, reader.uint32()));
           break;
+        case 13:
+          message.infoByPoolType = InfoByPoolType.decode(reader, reader.uint32());
+          break;
+        case 14:
+          message.cyclicArbTracker = CyclicArbTracker.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -224,23 +258,47 @@ export const GenesisState = {
     message.maxPoolPointsPerTx = object.maxPoolPointsPerTx !== undefined && object.maxPoolPointsPerTx !== null ? BigInt(object.maxPoolPointsPerTx.toString()) : BigInt(0);
     message.pointCountForBlock = object.pointCountForBlock !== undefined && object.pointCountForBlock !== null ? BigInt(object.pointCountForBlock.toString()) : BigInt(0);
     message.profits = object.profits?.map(e => Coin.fromPartial(e)) || [];
+    message.infoByPoolType = object.infoByPoolType !== undefined && object.infoByPoolType !== null ? InfoByPoolType.fromPartial(object.infoByPoolType) : undefined;
+    message.cyclicArbTracker = object.cyclicArbTracker !== undefined && object.cyclicArbTracker !== null ? CyclicArbTracker.fromPartial(object.cyclicArbTracker) : undefined;
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
-    return {
-      params: object?.params ? Params.fromAmino(object.params) : undefined,
-      tokenPairArbRoutes: Array.isArray(object?.token_pair_arb_routes) ? object.token_pair_arb_routes.map((e: any) => TokenPairArbRoutes.fromAmino(e)) : [],
-      baseDenoms: Array.isArray(object?.base_denoms) ? object.base_denoms.map((e: any) => BaseDenom.fromAmino(e)) : [],
-      poolWeights: object?.pool_weights ? PoolWeights.fromAmino(object.pool_weights) : undefined,
-      daysSinceModuleGenesis: BigInt(object.days_since_module_genesis),
-      developerFees: Array.isArray(object?.developer_fees) ? object.developer_fees.map((e: any) => Coin.fromAmino(e)) : [],
-      latestBlockHeight: BigInt(object.latest_block_height),
-      developerAddress: object.developer_address,
-      maxPoolPointsPerBlock: BigInt(object.max_pool_points_per_block),
-      maxPoolPointsPerTx: BigInt(object.max_pool_points_per_tx),
-      pointCountForBlock: BigInt(object.point_count_for_block),
-      profits: Array.isArray(object?.profits) ? object.profits.map((e: any) => Coin.fromAmino(e)) : []
-    };
+    const message = createBaseGenesisState();
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    message.tokenPairArbRoutes = object.token_pair_arb_routes?.map(e => TokenPairArbRoutes.fromAmino(e)) || [];
+    message.baseDenoms = object.base_denoms?.map(e => BaseDenom.fromAmino(e)) || [];
+    if (object.pool_weights !== undefined && object.pool_weights !== null) {
+      message.poolWeights = PoolWeights.fromAmino(object.pool_weights);
+    }
+    if (object.days_since_module_genesis !== undefined && object.days_since_module_genesis !== null) {
+      message.daysSinceModuleGenesis = BigInt(object.days_since_module_genesis);
+    }
+    message.developerFees = object.developer_fees?.map(e => Coin.fromAmino(e)) || [];
+    if (object.latest_block_height !== undefined && object.latest_block_height !== null) {
+      message.latestBlockHeight = BigInt(object.latest_block_height);
+    }
+    if (object.developer_address !== undefined && object.developer_address !== null) {
+      message.developerAddress = object.developer_address;
+    }
+    if (object.max_pool_points_per_block !== undefined && object.max_pool_points_per_block !== null) {
+      message.maxPoolPointsPerBlock = BigInt(object.max_pool_points_per_block);
+    }
+    if (object.max_pool_points_per_tx !== undefined && object.max_pool_points_per_tx !== null) {
+      message.maxPoolPointsPerTx = BigInt(object.max_pool_points_per_tx);
+    }
+    if (object.point_count_for_block !== undefined && object.point_count_for_block !== null) {
+      message.pointCountForBlock = BigInt(object.point_count_for_block);
+    }
+    message.profits = object.profits?.map(e => Coin.fromAmino(e)) || [];
+    if (object.info_by_pool_type !== undefined && object.info_by_pool_type !== null) {
+      message.infoByPoolType = InfoByPoolType.fromAmino(object.info_by_pool_type);
+    }
+    if (object.cyclic_arb_tracker !== undefined && object.cyclic_arb_tracker !== null) {
+      message.cyclicArbTracker = CyclicArbTracker.fromAmino(object.cyclic_arb_tracker);
+    }
+    return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
@@ -272,6 +330,8 @@ export const GenesisState = {
     } else {
       obj.profits = [];
     }
+    obj.info_by_pool_type = message.infoByPoolType ? InfoByPoolType.toAmino(message.infoByPoolType) : undefined;
+    obj.cyclic_arb_tracker = message.cyclicArbTracker ? CyclicArbTracker.toAmino(message.cyclicArbTracker) : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {

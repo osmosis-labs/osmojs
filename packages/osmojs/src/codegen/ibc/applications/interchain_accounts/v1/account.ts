@@ -2,8 +2,8 @@ import { BaseAccount, BaseAccountAmino, BaseAccountSDKType } from "../../../../c
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 /** An InterchainAccount is defined as a BaseAccount & the address of the account owner on the controller chain */
 export interface InterchainAccount {
-  $typeUrl?: string;
-  baseAccount: BaseAccount;
+  $typeUrl?: "/ibc.applications.interchain_accounts.v1.InterchainAccount";
+  baseAccount?: BaseAccount;
   accountOwner: string;
 }
 export interface InterchainAccountProtoMsg {
@@ -13,7 +13,7 @@ export interface InterchainAccountProtoMsg {
 /** An InterchainAccount is defined as a BaseAccount & the address of the account owner on the controller chain */
 export interface InterchainAccountAmino {
   base_account?: BaseAccountAmino;
-  account_owner: string;
+  account_owner?: string;
 }
 export interface InterchainAccountAminoMsg {
   type: "cosmos-sdk/InterchainAccount";
@@ -21,14 +21,14 @@ export interface InterchainAccountAminoMsg {
 }
 /** An InterchainAccount is defined as a BaseAccount & the address of the account owner on the controller chain */
 export interface InterchainAccountSDKType {
-  $typeUrl?: string;
-  base_account: BaseAccountSDKType;
+  $typeUrl?: "/ibc.applications.interchain_accounts.v1.InterchainAccount";
+  base_account?: BaseAccountSDKType;
   account_owner: string;
 }
 function createBaseInterchainAccount(): InterchainAccount {
   return {
     $typeUrl: "/ibc.applications.interchain_accounts.v1.InterchainAccount",
-    baseAccount: BaseAccount.fromPartial({}),
+    baseAccount: undefined,
     accountOwner: ""
   };
 }
@@ -70,10 +70,14 @@ export const InterchainAccount = {
     return message;
   },
   fromAmino(object: InterchainAccountAmino): InterchainAccount {
-    return {
-      baseAccount: object?.base_account ? BaseAccount.fromAmino(object.base_account) : undefined,
-      accountOwner: object.account_owner
-    };
+    const message = createBaseInterchainAccount();
+    if (object.base_account !== undefined && object.base_account !== null) {
+      message.baseAccount = BaseAccount.fromAmino(object.base_account);
+    }
+    if (object.account_owner !== undefined && object.account_owner !== null) {
+      message.accountOwner = object.account_owner;
+    }
+    return message;
   },
   toAmino(message: InterchainAccount): InterchainAccountAmino {
     const obj: any = {};

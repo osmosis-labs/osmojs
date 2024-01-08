@@ -20,7 +20,7 @@ export interface QueryFeeTokensResponseProtoMsg {
   value: Uint8Array;
 }
 export interface QueryFeeTokensResponseAmino {
-  fee_tokens: FeeTokenAmino[];
+  fee_tokens?: FeeTokenAmino[];
 }
 export interface QueryFeeTokensResponseAminoMsg {
   type: "osmosis/txfees/query-fee-tokens-response";
@@ -45,7 +45,7 @@ export interface QueryDenomSpotPriceRequestProtoMsg {
  * price for the specified tx fee denom
  */
 export interface QueryDenomSpotPriceRequestAmino {
-  denom: string;
+  denom?: string;
 }
 export interface QueryDenomSpotPriceRequestAminoMsg {
   type: "osmosis/txfees/query-denom-spot-price-request";
@@ -75,8 +75,8 @@ export interface QueryDenomSpotPriceResponseProtoMsg {
  * price for the specified tx fee denom
  */
 export interface QueryDenomSpotPriceResponseAmino {
-  poolID: string;
-  spot_price: string;
+  poolID?: string;
+  spot_price?: string;
 }
 export interface QueryDenomSpotPriceResponseAminoMsg {
   type: "osmosis/txfees/query-denom-spot-price-response";
@@ -98,7 +98,7 @@ export interface QueryDenomPoolIdRequestProtoMsg {
   value: Uint8Array;
 }
 export interface QueryDenomPoolIdRequestAmino {
-  denom: string;
+  denom?: string;
 }
 export interface QueryDenomPoolIdRequestAminoMsg {
   type: "osmosis/txfees/query-denom-pool-id-request";
@@ -115,7 +115,7 @@ export interface QueryDenomPoolIdResponseProtoMsg {
   value: Uint8Array;
 }
 export interface QueryDenomPoolIdResponseAmino {
-  poolID: string;
+  poolID?: string;
 }
 export interface QueryDenomPoolIdResponseAminoMsg {
   type: "osmosis/txfees/query-denom-pool-id-response";
@@ -143,7 +143,7 @@ export interface QueryBaseDenomResponseProtoMsg {
   value: Uint8Array;
 }
 export interface QueryBaseDenomResponseAmino {
-  base_denom: string;
+  base_denom?: string;
 }
 export interface QueryBaseDenomResponseAminoMsg {
   type: "osmosis/txfees/query-base-denom-response";
@@ -151,6 +151,34 @@ export interface QueryBaseDenomResponseAminoMsg {
 }
 export interface QueryBaseDenomResponseSDKType {
   base_denom: string;
+}
+export interface QueryEipBaseFeeRequest {}
+export interface QueryEipBaseFeeRequestProtoMsg {
+  typeUrl: "/osmosis.txfees.v1beta1.QueryEipBaseFeeRequest";
+  value: Uint8Array;
+}
+export interface QueryEipBaseFeeRequestAmino {}
+export interface QueryEipBaseFeeRequestAminoMsg {
+  type: "osmosis/txfees/query-eip-base-fee-request";
+  value: QueryEipBaseFeeRequestAmino;
+}
+export interface QueryEipBaseFeeRequestSDKType {}
+export interface QueryEipBaseFeeResponse {
+  baseFee: string;
+}
+export interface QueryEipBaseFeeResponseProtoMsg {
+  typeUrl: "/osmosis.txfees.v1beta1.QueryEipBaseFeeResponse";
+  value: Uint8Array;
+}
+export interface QueryEipBaseFeeResponseAmino {
+  base_fee?: string;
+}
+export interface QueryEipBaseFeeResponseAminoMsg {
+  type: "osmosis/txfees/query-eip-base-fee-response";
+  value: QueryEipBaseFeeResponseAmino;
+}
+export interface QueryEipBaseFeeResponseSDKType {
+  base_fee: string;
 }
 function createBaseQueryFeeTokensRequest(): QueryFeeTokensRequest {
   return {};
@@ -179,7 +207,8 @@ export const QueryFeeTokensRequest = {
     return message;
   },
   fromAmino(_: QueryFeeTokensRequestAmino): QueryFeeTokensRequest {
-    return {};
+    const message = createBaseQueryFeeTokensRequest();
+    return message;
   },
   toAmino(_: QueryFeeTokensRequest): QueryFeeTokensRequestAmino {
     const obj: any = {};
@@ -243,9 +272,9 @@ export const QueryFeeTokensResponse = {
     return message;
   },
   fromAmino(object: QueryFeeTokensResponseAmino): QueryFeeTokensResponse {
-    return {
-      feeTokens: Array.isArray(object?.fee_tokens) ? object.fee_tokens.map((e: any) => FeeToken.fromAmino(e)) : []
-    };
+    const message = createBaseQueryFeeTokensResponse();
+    message.feeTokens = object.fee_tokens?.map(e => FeeToken.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: QueryFeeTokensResponse): QueryFeeTokensResponseAmino {
     const obj: any = {};
@@ -314,9 +343,11 @@ export const QueryDenomSpotPriceRequest = {
     return message;
   },
   fromAmino(object: QueryDenomSpotPriceRequestAmino): QueryDenomSpotPriceRequest {
-    return {
-      denom: object.denom
-    };
+    const message = createBaseQueryDenomSpotPriceRequest();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
   },
   toAmino(message: QueryDenomSpotPriceRequest): QueryDenomSpotPriceRequestAmino {
     const obj: any = {};
@@ -389,10 +420,14 @@ export const QueryDenomSpotPriceResponse = {
     return message;
   },
   fromAmino(object: QueryDenomSpotPriceResponseAmino): QueryDenomSpotPriceResponse {
-    return {
-      poolID: BigInt(object.poolID),
-      spotPrice: object.spot_price
-    };
+    const message = createBaseQueryDenomSpotPriceResponse();
+    if (object.poolID !== undefined && object.poolID !== null) {
+      message.poolID = BigInt(object.poolID);
+    }
+    if (object.spot_price !== undefined && object.spot_price !== null) {
+      message.spotPrice = object.spot_price;
+    }
+    return message;
   },
   toAmino(message: QueryDenomSpotPriceResponse): QueryDenomSpotPriceResponseAmino {
     const obj: any = {};
@@ -458,9 +493,11 @@ export const QueryDenomPoolIdRequest = {
     return message;
   },
   fromAmino(object: QueryDenomPoolIdRequestAmino): QueryDenomPoolIdRequest {
-    return {
-      denom: object.denom
-    };
+    const message = createBaseQueryDenomPoolIdRequest();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
   },
   toAmino(message: QueryDenomPoolIdRequest): QueryDenomPoolIdRequestAmino {
     const obj: any = {};
@@ -525,9 +562,11 @@ export const QueryDenomPoolIdResponse = {
     return message;
   },
   fromAmino(object: QueryDenomPoolIdResponseAmino): QueryDenomPoolIdResponse {
-    return {
-      poolID: BigInt(object.poolID)
-    };
+    const message = createBaseQueryDenomPoolIdResponse();
+    if (object.poolID !== undefined && object.poolID !== null) {
+      message.poolID = BigInt(object.poolID);
+    }
+    return message;
   },
   toAmino(message: QueryDenomPoolIdResponse): QueryDenomPoolIdResponseAmino {
     const obj: any = {};
@@ -583,7 +622,8 @@ export const QueryBaseDenomRequest = {
     return message;
   },
   fromAmino(_: QueryBaseDenomRequestAmino): QueryBaseDenomRequest {
-    return {};
+    const message = createBaseQueryBaseDenomRequest();
+    return message;
   },
   toAmino(_: QueryBaseDenomRequest): QueryBaseDenomRequestAmino {
     const obj: any = {};
@@ -647,9 +687,11 @@ export const QueryBaseDenomResponse = {
     return message;
   },
   fromAmino(object: QueryBaseDenomResponseAmino): QueryBaseDenomResponse {
-    return {
-      baseDenom: object.base_denom
-    };
+    const message = createBaseQueryBaseDenomResponse();
+    if (object.base_denom !== undefined && object.base_denom !== null) {
+      message.baseDenom = object.base_denom;
+    }
+    return message;
   },
   toAmino(message: QueryBaseDenomResponse): QueryBaseDenomResponseAmino {
     const obj: any = {};
@@ -675,6 +717,131 @@ export const QueryBaseDenomResponse = {
     return {
       typeUrl: "/osmosis.txfees.v1beta1.QueryBaseDenomResponse",
       value: QueryBaseDenomResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryEipBaseFeeRequest(): QueryEipBaseFeeRequest {
+  return {};
+}
+export const QueryEipBaseFeeRequest = {
+  typeUrl: "/osmosis.txfees.v1beta1.QueryEipBaseFeeRequest",
+  encode(_: QueryEipBaseFeeRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryEipBaseFeeRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryEipBaseFeeRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<QueryEipBaseFeeRequest>): QueryEipBaseFeeRequest {
+    const message = createBaseQueryEipBaseFeeRequest();
+    return message;
+  },
+  fromAmino(_: QueryEipBaseFeeRequestAmino): QueryEipBaseFeeRequest {
+    const message = createBaseQueryEipBaseFeeRequest();
+    return message;
+  },
+  toAmino(_: QueryEipBaseFeeRequest): QueryEipBaseFeeRequestAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: QueryEipBaseFeeRequestAminoMsg): QueryEipBaseFeeRequest {
+    return QueryEipBaseFeeRequest.fromAmino(object.value);
+  },
+  toAminoMsg(message: QueryEipBaseFeeRequest): QueryEipBaseFeeRequestAminoMsg {
+    return {
+      type: "osmosis/txfees/query-eip-base-fee-request",
+      value: QueryEipBaseFeeRequest.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: QueryEipBaseFeeRequestProtoMsg): QueryEipBaseFeeRequest {
+    return QueryEipBaseFeeRequest.decode(message.value);
+  },
+  toProto(message: QueryEipBaseFeeRequest): Uint8Array {
+    return QueryEipBaseFeeRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryEipBaseFeeRequest): QueryEipBaseFeeRequestProtoMsg {
+    return {
+      typeUrl: "/osmosis.txfees.v1beta1.QueryEipBaseFeeRequest",
+      value: QueryEipBaseFeeRequest.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryEipBaseFeeResponse(): QueryEipBaseFeeResponse {
+  return {
+    baseFee: ""
+  };
+}
+export const QueryEipBaseFeeResponse = {
+  typeUrl: "/osmosis.txfees.v1beta1.QueryEipBaseFeeResponse",
+  encode(message: QueryEipBaseFeeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.baseFee !== "") {
+      writer.uint32(10).string(Decimal.fromUserInput(message.baseFee, 18).atomics);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryEipBaseFeeResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryEipBaseFeeResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.baseFee = Decimal.fromAtomics(reader.string(), 18).toString();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryEipBaseFeeResponse>): QueryEipBaseFeeResponse {
+    const message = createBaseQueryEipBaseFeeResponse();
+    message.baseFee = object.baseFee ?? "";
+    return message;
+  },
+  fromAmino(object: QueryEipBaseFeeResponseAmino): QueryEipBaseFeeResponse {
+    const message = createBaseQueryEipBaseFeeResponse();
+    if (object.base_fee !== undefined && object.base_fee !== null) {
+      message.baseFee = object.base_fee;
+    }
+    return message;
+  },
+  toAmino(message: QueryEipBaseFeeResponse): QueryEipBaseFeeResponseAmino {
+    const obj: any = {};
+    obj.base_fee = message.baseFee;
+    return obj;
+  },
+  fromAminoMsg(object: QueryEipBaseFeeResponseAminoMsg): QueryEipBaseFeeResponse {
+    return QueryEipBaseFeeResponse.fromAmino(object.value);
+  },
+  toAminoMsg(message: QueryEipBaseFeeResponse): QueryEipBaseFeeResponseAminoMsg {
+    return {
+      type: "osmosis/txfees/query-eip-base-fee-response",
+      value: QueryEipBaseFeeResponse.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: QueryEipBaseFeeResponseProtoMsg): QueryEipBaseFeeResponse {
+    return QueryEipBaseFeeResponse.decode(message.value);
+  },
+  toProto(message: QueryEipBaseFeeResponse): Uint8Array {
+    return QueryEipBaseFeeResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryEipBaseFeeResponse): QueryEipBaseFeeResponseProtoMsg {
+    return {
+      typeUrl: "/osmosis.txfees.v1beta1.QueryEipBaseFeeResponse",
+      value: QueryEipBaseFeeResponse.encode(message).finish()
     };
   }
 };

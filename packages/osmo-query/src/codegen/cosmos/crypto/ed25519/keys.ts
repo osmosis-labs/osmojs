@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /**
  * PubKey is an ed25519 public key for handling Tendermint keys in SDK.
  * It's needed for Any serialization and SDK compatibility.
@@ -21,7 +22,7 @@ export interface PubKeyProtoMsg {
  * then you must create a new proto message and follow ADR-28 for Address construction.
  */
 export interface PubKeyAmino {
-  key: Uint8Array;
+  key?: string;
 }
 export interface PubKeyAminoMsg {
   type: "tendermint/PubKeyEd25519";
@@ -53,7 +54,7 @@ export interface PrivKeyProtoMsg {
  * NOTE: ed25519 keys must not be used in SDK apps except in a tendermint validator context.
  */
 export interface PrivKeyAmino {
-  key: Uint8Array;
+  key?: string;
 }
 export interface PrivKeyAminoMsg {
   type: "tendermint/PrivKeyEd25519";
@@ -102,13 +103,15 @@ export const PubKey = {
     return message;
   },
   fromAmino(object: PubKeyAmino): PubKey {
-    return {
-      key: object.key
-    };
+    const message = createBasePubKey();
+    if (object.key !== undefined && object.key !== null) {
+      message.key = bytesFromBase64(object.key);
+    }
+    return message;
   },
   toAmino(message: PubKey): PubKeyAmino {
     const obj: any = {};
-    obj.key = message.key;
+    obj.key = message.key ? base64FromBytes(message.key) : undefined;
     return obj;
   },
   fromAminoMsg(object: PubKeyAminoMsg): PubKey {
@@ -169,13 +172,15 @@ export const PrivKey = {
     return message;
   },
   fromAmino(object: PrivKeyAmino): PrivKey {
-    return {
-      key: object.key
-    };
+    const message = createBasePrivKey();
+    if (object.key !== undefined && object.key !== null) {
+      message.key = bytesFromBase64(object.key);
+    }
+    return message;
   },
   toAmino(message: PrivKey): PrivKeyAmino {
     const obj: any = {};
-    obj.key = message.key;
+    obj.key = message.key ? base64FromBytes(message.key) : undefined;
     return obj;
   },
   fromAminoMsg(object: PrivKeyAminoMsg): PrivKey {

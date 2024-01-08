@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreateGauge, MsgAddToGauge } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.incentives.MsgCreateGauge", MsgCreateGauge], ["/osmosis.incentives.MsgAddToGauge", MsgAddToGauge]];
+import { MsgCreateGauge, MsgAddToGauge, MsgCreateGroup } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/osmosis.incentives.MsgCreateGauge", MsgCreateGauge], ["/osmosis.incentives.MsgAddToGauge", MsgAddToGauge], ["/osmosis.incentives.MsgCreateGroup", MsgCreateGroup]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -20,6 +20,12 @@ export const MessageComposer = {
         typeUrl: "/osmosis.incentives.MsgAddToGauge",
         value: MsgAddToGauge.encode(value).finish()
       };
+    },
+    createGroup(value: MsgCreateGroup) {
+      return {
+        typeUrl: "/osmosis.incentives.MsgCreateGroup",
+        value: MsgCreateGroup.encode(value).finish()
+      };
     }
   },
   withTypeUrl: {
@@ -32,6 +38,12 @@ export const MessageComposer = {
     addToGauge(value: MsgAddToGauge) {
       return {
         typeUrl: "/osmosis.incentives.MsgAddToGauge",
+        value
+      };
+    },
+    createGroup(value: MsgCreateGroup) {
+      return {
+        typeUrl: "/osmosis.incentives.MsgCreateGroup",
         value
       };
     }
@@ -47,6 +59,12 @@ export const MessageComposer = {
       return {
         typeUrl: "/osmosis.incentives.MsgAddToGauge",
         value: MsgAddToGauge.fromPartial(value)
+      };
+    },
+    createGroup(value: MsgCreateGroup) {
+      return {
+        typeUrl: "/osmosis.incentives.MsgCreateGroup",
+        value: MsgCreateGroup.fromPartial(value)
       };
     }
   }

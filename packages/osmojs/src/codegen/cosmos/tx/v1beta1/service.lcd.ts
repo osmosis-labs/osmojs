@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { GetTxRequest, GetTxResponseSDKType, GetTxsEventRequest, GetTxsEventResponseSDKType } from "./service";
+import { GetTxRequest, GetTxResponseSDKType, GetTxsEventRequest, GetTxsEventResponseSDKType, GetBlockWithTxsRequest, GetBlockWithTxsResponseSDKType } from "./service";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -11,6 +11,7 @@ export class LCDQueryClient {
     this.req = requestClient;
     this.getTx = this.getTx.bind(this);
     this.getTxsEvent = this.getTxsEvent.bind(this);
+    this.getBlockWithTxs = this.getBlockWithTxs.bind(this);
   }
   /* GetTx fetches a tx by hash. */
   async getTx(params: GetTxRequest): Promise<GetTxResponseSDKType> {
@@ -31,7 +32,26 @@ export class LCDQueryClient {
     if (typeof params?.orderBy !== "undefined") {
       options.params.order_by = params.orderBy;
     }
+    if (typeof params?.page !== "undefined") {
+      options.params.page = params.page;
+    }
+    if (typeof params?.limit !== "undefined") {
+      options.params.limit = params.limit;
+    }
     const endpoint = `cosmos/tx/v1beta1/txs`;
     return await this.req.get<GetTxsEventResponseSDKType>(endpoint, options);
+  }
+  /* GetBlockWithTxs fetches a block with decoded txs.
+  
+   Since: cosmos-sdk 0.45.2 */
+  async getBlockWithTxs(params: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+    if (typeof params?.pagination !== "undefined") {
+      setPaginationParams(options, params.pagination);
+    }
+    const endpoint = `cosmos/tx/v1beta1/txs/block/${params.height}`;
+    return await this.req.get<GetBlockWithTxsResponseSDKType>(endpoint, options);
   }
 }

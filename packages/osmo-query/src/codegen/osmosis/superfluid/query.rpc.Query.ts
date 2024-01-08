@@ -3,7 +3,7 @@ import { BinaryReader } from "../../binary";
 import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from "@cosmjs/stargate";
 import { ReactQueryParams } from "../../react-query";
 import { useQuery } from "@tanstack/react-query";
-import { QueryParamsRequest, QueryParamsResponse, AssetTypeRequest, AssetTypeResponse, AllAssetsRequest, AllAssetsResponse, AssetMultiplierRequest, AssetMultiplierResponse, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponse, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponse, QueryTotalDelegationByValidatorForDenomRequest, QueryTotalDelegationByValidatorForDenomResponse, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponse, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponse, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponse, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponse, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponse, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponse, QueryUnpoolWhitelistRequest, QueryUnpoolWhitelistResponse, UserConcentratedSuperfluidPositionsDelegatedRequest, UserConcentratedSuperfluidPositionsDelegatedResponse, UserConcentratedSuperfluidPositionsUndelegatingRequest, UserConcentratedSuperfluidPositionsUndelegatingResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, AssetTypeRequest, AssetTypeResponse, AllAssetsRequest, AllAssetsResponse, AssetMultiplierRequest, AssetMultiplierResponse, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponse, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponse, QueryTotalDelegationByValidatorForDenomRequest, QueryTotalDelegationByValidatorForDenomResponse, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponse, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponse, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponse, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponse, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponse, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponse, QueryUnpoolWhitelistRequest, QueryUnpoolWhitelistResponse, UserConcentratedSuperfluidPositionsDelegatedRequest, UserConcentratedSuperfluidPositionsDelegatedResponse, UserConcentratedSuperfluidPositionsUndelegatingRequest, UserConcentratedSuperfluidPositionsUndelegatingResponse, QueryRestSupplyRequest, QueryRestSupplyResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Params returns the total set of superfluid parameters. */
@@ -33,9 +33,9 @@ export interface Query {
    * triplet
    */
   superfluidDelegationAmount(request: SuperfluidDelegationAmountRequest): Promise<SuperfluidDelegationAmountResponse>;
-  /** Returns all the delegated superfluid poistions for a specific delegator. */
+  /** Returns all the delegated superfluid positions for a specific delegator. */
   superfluidDelegationsByDelegator(request: SuperfluidDelegationsByDelegatorRequest): Promise<SuperfluidDelegationsByDelegatorResponse>;
-  /** Returns all the undelegating superfluid poistions for a specific delegator. */
+  /** Returns all the undelegating superfluid positions for a specific delegator. */
   superfluidUndelegationsByDelegator(request: SuperfluidUndelegationsByDelegatorRequest): Promise<SuperfluidUndelegationsByDelegatorResponse>;
   /**
    * Returns all the superfluid positions of a specific denom delegated to one
@@ -52,8 +52,10 @@ export interface Query {
   totalDelegationByDelegator(request: QueryTotalDelegationByDelegatorRequest): Promise<QueryTotalDelegationByDelegatorResponse>;
   /** Returns a list of whitelisted pool ids to unpool. */
   unpoolWhitelist(request?: QueryUnpoolWhitelistRequest): Promise<QueryUnpoolWhitelistResponse>;
+  /** Returns all of a user's full range CL positions that are superfluid staked. */
   userConcentratedSuperfluidPositionsDelegated(request: UserConcentratedSuperfluidPositionsDelegatedRequest): Promise<UserConcentratedSuperfluidPositionsDelegatedResponse>;
   userConcentratedSuperfluidPositionsUndelegating(request: UserConcentratedSuperfluidPositionsUndelegatingRequest): Promise<UserConcentratedSuperfluidPositionsUndelegatingResponse>;
+  restSupply(request: QueryRestSupplyRequest): Promise<QueryRestSupplyResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -76,6 +78,7 @@ export class QueryClientImpl implements Query {
     this.unpoolWhitelist = this.unpoolWhitelist.bind(this);
     this.userConcentratedSuperfluidPositionsDelegated = this.userConcentratedSuperfluidPositionsDelegated.bind(this);
     this.userConcentratedSuperfluidPositionsUndelegating = this.userConcentratedSuperfluidPositionsUndelegating.bind(this);
+    this.restSupply = this.restSupply.bind(this);
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
@@ -164,6 +167,11 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("osmosis.superfluid.Query", "UserConcentratedSuperfluidPositionsUndelegating", data);
     return promise.then(data => UserConcentratedSuperfluidPositionsUndelegatingResponse.decode(new BinaryReader(data)));
   }
+  restSupply(request: QueryRestSupplyRequest): Promise<QueryRestSupplyResponse> {
+    const data = QueryRestSupplyRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.superfluid.Query", "RestSupply", data);
+    return promise.then(data => QueryRestSupplyResponse.decode(new BinaryReader(data)));
+  }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -219,6 +227,9 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     userConcentratedSuperfluidPositionsUndelegating(request: UserConcentratedSuperfluidPositionsUndelegatingRequest): Promise<UserConcentratedSuperfluidPositionsUndelegatingResponse> {
       return queryService.userConcentratedSuperfluidPositionsUndelegating(request);
+    },
+    restSupply(request: QueryRestSupplyRequest): Promise<QueryRestSupplyResponse> {
+      return queryService.restSupply(request);
     }
   };
 };
@@ -272,6 +283,9 @@ export interface UseUserConcentratedSuperfluidPositionsDelegatedQuery<TData> ext
 }
 export interface UseUserConcentratedSuperfluidPositionsUndelegatingQuery<TData> extends ReactQueryParams<UserConcentratedSuperfluidPositionsUndelegatingResponse, TData> {
   request: UserConcentratedSuperfluidPositionsUndelegatingRequest;
+}
+export interface UseRestSupplyQuery<TData> extends ReactQueryParams<QueryRestSupplyResponse, TData> {
+  request: QueryRestSupplyRequest;
 }
 const _queryClients: WeakMap<ProtobufRpcClient, QueryClientImpl> = new WeakMap();
 const getQueryService = (rpc: ProtobufRpcClient | undefined): QueryClientImpl | undefined => {
@@ -438,6 +452,15 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
       return queryService.userConcentratedSuperfluidPositionsUndelegating(request);
     }, options);
   };
+  const useRestSupply = <TData = QueryRestSupplyResponse,>({
+    request,
+    options
+  }: UseRestSupplyQuery<TData>) => {
+    return useQuery<QueryRestSupplyResponse, Error, TData>(["restSupplyQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.restSupply(request);
+    }, options);
+  };
   return {
     /** Params returns the total set of superfluid parameters. */useParams,
     /**
@@ -460,8 +483,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
      * triplet
      */
     useSuperfluidDelegationAmount,
-    /** Returns all the delegated superfluid poistions for a specific delegator. */useSuperfluidDelegationsByDelegator,
-    /** Returns all the undelegating superfluid poistions for a specific delegator. */useSuperfluidUndelegationsByDelegator,
+    /** Returns all the delegated superfluid positions for a specific delegator. */useSuperfluidDelegationsByDelegator,
+    /** Returns all the undelegating superfluid positions for a specific delegator. */useSuperfluidUndelegationsByDelegator,
     /**
      * Returns all the superfluid positions of a specific denom delegated to one
      * validator
@@ -475,7 +498,8 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
     useEstimateSuperfluidDelegatedAmountByValidatorDenom,
     /** Returns the specified delegations for a specific delegator */useTotalDelegationByDelegator,
     /** Returns a list of whitelisted pool ids to unpool. */useUnpoolWhitelist,
-    useUserConcentratedSuperfluidPositionsDelegated,
-    useUserConcentratedSuperfluidPositionsUndelegating
+    /** Returns all of a user's full range CL positions that are superfluid staked. */useUserConcentratedSuperfluidPositionsDelegated,
+    useUserConcentratedSuperfluidPositionsUndelegating,
+    useRestSupply
   };
 };

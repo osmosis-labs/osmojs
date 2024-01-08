@@ -1,5 +1,5 @@
 import { LCDClient } from "@cosmology/lcd";
-import { QueryFeeTokensRequest, QueryFeeTokensResponseSDKType, QueryDenomSpotPriceRequest, QueryDenomSpotPriceResponseSDKType, QueryDenomPoolIdRequest, QueryDenomPoolIdResponseSDKType, QueryBaseDenomRequest, QueryBaseDenomResponseSDKType } from "./query";
+import { QueryFeeTokensRequest, QueryFeeTokensResponseSDKType, QueryDenomSpotPriceRequest, QueryDenomSpotPriceResponseSDKType, QueryDenomPoolIdRequest, QueryDenomPoolIdResponseSDKType, QueryBaseDenomRequest, QueryBaseDenomResponseSDKType, QueryEipBaseFeeRequest, QueryEipBaseFeeResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -12,6 +12,7 @@ export class LCDQueryClient {
     this.denomSpotPrice = this.denomSpotPrice.bind(this);
     this.denomPoolId = this.denomPoolId.bind(this);
     this.baseDenom = this.baseDenom.bind(this);
+    this.getEipBaseFee = this.getEipBaseFee.bind(this);
   }
   /* FeeTokens returns a list of all the whitelisted fee tokens and their
    corresponding pools. It does not include the BaseDenom, which has its own
@@ -40,5 +41,10 @@ export class LCDQueryClient {
   async baseDenom(_params: QueryBaseDenomRequest = {}): Promise<QueryBaseDenomResponseSDKType> {
     const endpoint = `osmosis/txfees/v1beta1/base_denom`;
     return await this.req.get<QueryBaseDenomResponseSDKType>(endpoint);
+  }
+  /* Returns a list of all base denom tokens and their corresponding pools. */
+  async getEipBaseFee(_params: QueryEipBaseFeeRequest = {}): Promise<QueryEipBaseFeeResponseSDKType> {
+    const endpoint = `osmosis/txfees/v1beta1/cur_eip_base_fee`;
+    return await this.req.get<QueryEipBaseFeeResponseSDKType>(endpoint);
   }
 }

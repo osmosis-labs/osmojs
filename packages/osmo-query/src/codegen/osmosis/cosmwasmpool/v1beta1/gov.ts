@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { fromBase64, toBase64 } from "@cosmjs/encoding";
+import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /**
  * UploadCosmWasmPoolCodeAndWhiteListProposal is a gov Content type for
  * uploading coswasm pool code and adding it to internal whitelist. Only the
@@ -21,10 +22,10 @@ export interface UploadCosmWasmPoolCodeAndWhiteListProposalProtoMsg {
  * code ids created by this message are eligible for being x/cosmwasmpool pools.
  */
 export interface UploadCosmWasmPoolCodeAndWhiteListProposalAmino {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   /** WASMByteCode can be raw or gzip compressed */
-  wasm_byte_code: string;
+  wasm_byte_code?: string;
 }
 export interface UploadCosmWasmPoolCodeAndWhiteListProposalAminoMsg {
   type: "osmosis/cosmwasmpool/upload-cosm-wasm-pool-code-and-white-list-proposal";
@@ -125,28 +126,28 @@ export interface MigratePoolContractsProposalProtoMsg {
  * be configured by a module parameter so it can be changed by a constant.
  */
 export interface MigratePoolContractsProposalAmino {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   /**
    * pool_ids are the pool ids of the contracts to be migrated
    * either to the new_code_id that is already uploaded to chain or to
    * the given wasm_byte_code.
    */
-  pool_ids: string[];
+  pool_ids?: string[];
   /**
    * new_code_id is the code id of the contract code to migrate to.
    * Assumes that the code is already uploaded to chain. Only one of
    * new_code_id and wasm_byte_code should be set.
    */
-  new_code_id: string;
+  new_code_id?: string;
   /**
    * WASMByteCode can be raw or gzip compressed. Assumes that the code id
    * has not been uploaded yet so uploads the given code and migrates to it.
    * Only one of new_code_id and wasm_byte_code should be set.
    */
-  wasm_byte_code: string;
+  wasm_byte_code?: string;
   /** MigrateMsg migrate message to be used for migrating the pool contracts. */
-  migrate_msg: Uint8Array;
+  migrate_msg?: string;
 }
 export interface MigratePoolContractsProposalAminoMsg {
   type: "osmosis/cosmwasmpool/migrate-pool-contracts-proposal";
@@ -240,11 +241,17 @@ export const UploadCosmWasmPoolCodeAndWhiteListProposal = {
     return message;
   },
   fromAmino(object: UploadCosmWasmPoolCodeAndWhiteListProposalAmino): UploadCosmWasmPoolCodeAndWhiteListProposal {
-    return {
-      title: object.title,
-      description: object.description,
-      wasmByteCode: fromBase64(object.wasm_byte_code)
-    };
+    const message = createBaseUploadCosmWasmPoolCodeAndWhiteListProposal();
+    if (object.title !== undefined && object.title !== null) {
+      message.title = object.title;
+    }
+    if (object.description !== undefined && object.description !== null) {
+      message.description = object.description;
+    }
+    if (object.wasm_byte_code !== undefined && object.wasm_byte_code !== null) {
+      message.wasmByteCode = fromBase64(object.wasm_byte_code);
+    }
+    return message;
   },
   toAmino(message: UploadCosmWasmPoolCodeAndWhiteListProposal): UploadCosmWasmPoolCodeAndWhiteListProposalAmino {
     const obj: any = {};
@@ -360,14 +367,24 @@ export const MigratePoolContractsProposal = {
     return message;
   },
   fromAmino(object: MigratePoolContractsProposalAmino): MigratePoolContractsProposal {
-    return {
-      title: object.title,
-      description: object.description,
-      poolIds: Array.isArray(object?.pool_ids) ? object.pool_ids.map((e: any) => BigInt(e)) : [],
-      newCodeId: BigInt(object.new_code_id),
-      wasmByteCode: fromBase64(object.wasm_byte_code),
-      migrateMsg: object.migrate_msg
-    };
+    const message = createBaseMigratePoolContractsProposal();
+    if (object.title !== undefined && object.title !== null) {
+      message.title = object.title;
+    }
+    if (object.description !== undefined && object.description !== null) {
+      message.description = object.description;
+    }
+    message.poolIds = object.pool_ids?.map(e => BigInt(e)) || [];
+    if (object.new_code_id !== undefined && object.new_code_id !== null) {
+      message.newCodeId = BigInt(object.new_code_id);
+    }
+    if (object.wasm_byte_code !== undefined && object.wasm_byte_code !== null) {
+      message.wasmByteCode = fromBase64(object.wasm_byte_code);
+    }
+    if (object.migrate_msg !== undefined && object.migrate_msg !== null) {
+      message.migrateMsg = bytesFromBase64(object.migrate_msg);
+    }
+    return message;
   },
   toAmino(message: MigratePoolContractsProposal): MigratePoolContractsProposalAmino {
     const obj: any = {};
@@ -380,7 +397,7 @@ export const MigratePoolContractsProposal = {
     }
     obj.new_code_id = message.newCodeId ? message.newCodeId.toString() : undefined;
     obj.wasm_byte_code = message.wasmByteCode ? toBase64(message.wasmByteCode) : undefined;
-    obj.migrate_msg = message.migrateMsg;
+    obj.migrate_msg = message.migrateMsg ? base64FromBytes(message.migrateMsg) : undefined;
     return obj;
   },
   fromAminoMsg(object: MigratePoolContractsProposalAminoMsg): MigratePoolContractsProposal {
