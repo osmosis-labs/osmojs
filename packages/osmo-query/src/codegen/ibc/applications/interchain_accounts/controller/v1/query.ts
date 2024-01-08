@@ -11,8 +11,8 @@ export interface QueryInterchainAccountRequestProtoMsg {
 }
 /** QueryInterchainAccountRequest is the request type for the Query/InterchainAccount RPC method. */
 export interface QueryInterchainAccountRequestAmino {
-  owner: string;
-  connection_id: string;
+  owner?: string;
+  connection_id?: string;
 }
 export interface QueryInterchainAccountRequestAminoMsg {
   type: "cosmos-sdk/QueryInterchainAccountRequest";
@@ -33,7 +33,7 @@ export interface QueryInterchainAccountResponseProtoMsg {
 }
 /** QueryInterchainAccountResponse the response type for the Query/InterchainAccount RPC method. */
 export interface QueryInterchainAccountResponseAmino {
-  address: string;
+  address?: string;
 }
 export interface QueryInterchainAccountResponseAminoMsg {
   type: "cosmos-sdk/QueryInterchainAccountResponse";
@@ -60,7 +60,7 @@ export interface QueryParamsRequestSDKType {}
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
-  params: Params;
+  params?: Params;
 }
 export interface QueryParamsResponseProtoMsg {
   typeUrl: "/ibc.applications.interchain_accounts.controller.v1.QueryParamsResponse";
@@ -77,7 +77,7 @@ export interface QueryParamsResponseAminoMsg {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
-  params: ParamsSDKType;
+  params?: ParamsSDKType;
 }
 function createBaseQueryInterchainAccountRequest(): QueryInterchainAccountRequest {
   return {
@@ -123,10 +123,14 @@ export const QueryInterchainAccountRequest = {
     return message;
   },
   fromAmino(object: QueryInterchainAccountRequestAmino): QueryInterchainAccountRequest {
-    return {
-      owner: object.owner,
-      connectionId: object.connection_id
-    };
+    const message = createBaseQueryInterchainAccountRequest();
+    if (object.owner !== undefined && object.owner !== null) {
+      message.owner = object.owner;
+    }
+    if (object.connection_id !== undefined && object.connection_id !== null) {
+      message.connectionId = object.connection_id;
+    }
+    return message;
   },
   toAmino(message: QueryInterchainAccountRequest): QueryInterchainAccountRequestAmino {
     const obj: any = {};
@@ -192,9 +196,11 @@ export const QueryInterchainAccountResponse = {
     return message;
   },
   fromAmino(object: QueryInterchainAccountResponseAmino): QueryInterchainAccountResponse {
-    return {
-      address: object.address
-    };
+    const message = createBaseQueryInterchainAccountResponse();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    return message;
   },
   toAmino(message: QueryInterchainAccountResponse): QueryInterchainAccountResponseAmino {
     const obj: any = {};
@@ -250,7 +256,8 @@ export const QueryParamsRequest = {
     return message;
   },
   fromAmino(_: QueryParamsRequestAmino): QueryParamsRequest {
-    return {};
+    const message = createBaseQueryParamsRequest();
+    return message;
   },
   toAmino(_: QueryParamsRequest): QueryParamsRequestAmino {
     const obj: any = {};
@@ -280,7 +287,7 @@ export const QueryParamsRequest = {
 };
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
-    params: Params.fromPartial({})
+    params: undefined
   };
 }
 export const QueryParamsResponse = {
@@ -314,9 +321,11 @@ export const QueryParamsResponse = {
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
-    return {
-      params: object?.params ? Params.fromAmino(object.params) : undefined
-    };
+    const message = createBaseQueryParamsResponse();
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    return message;
   },
   toAmino(message: QueryParamsResponse): QueryParamsResponseAmino {
     const obj: any = {};

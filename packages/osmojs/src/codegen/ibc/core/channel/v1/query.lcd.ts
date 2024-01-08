@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryChannelRequest, QueryChannelResponseSDKType, QueryChannelsRequest, QueryChannelsResponseSDKType, QueryConnectionChannelsRequest, QueryConnectionChannelsResponseSDKType, QueryChannelClientStateRequest, QueryChannelClientStateResponseSDKType, QueryChannelConsensusStateRequest, QueryChannelConsensusStateResponseSDKType, QueryPacketCommitmentRequest, QueryPacketCommitmentResponseSDKType, QueryPacketCommitmentsRequest, QueryPacketCommitmentsResponseSDKType, QueryPacketReceiptRequest, QueryPacketReceiptResponseSDKType, QueryPacketAcknowledgementRequest, QueryPacketAcknowledgementResponseSDKType, QueryPacketAcknowledgementsRequest, QueryPacketAcknowledgementsResponseSDKType, QueryUnreceivedPacketsRequest, QueryUnreceivedPacketsResponseSDKType, QueryUnreceivedAcksRequest, QueryUnreceivedAcksResponseSDKType, QueryNextSequenceReceiveRequest, QueryNextSequenceReceiveResponseSDKType } from "./query";
+import { QueryChannelRequest, QueryChannelResponseSDKType, QueryChannelsRequest, QueryChannelsResponseSDKType, QueryConnectionChannelsRequest, QueryConnectionChannelsResponseSDKType, QueryChannelClientStateRequest, QueryChannelClientStateResponseSDKType, QueryChannelConsensusStateRequest, QueryChannelConsensusStateResponseSDKType, QueryPacketCommitmentRequest, QueryPacketCommitmentResponseSDKType, QueryPacketCommitmentsRequest, QueryPacketCommitmentsResponseSDKType, QueryPacketReceiptRequest, QueryPacketReceiptResponseSDKType, QueryPacketAcknowledgementRequest, QueryPacketAcknowledgementResponseSDKType, QueryPacketAcknowledgementsRequest, QueryPacketAcknowledgementsResponseSDKType, QueryUnreceivedPacketsRequest, QueryUnreceivedPacketsResponseSDKType, QueryUnreceivedAcksRequest, QueryUnreceivedAcksResponseSDKType, QueryNextSequenceReceiveRequest, QueryNextSequenceReceiveResponseSDKType, QueryNextSequenceSendRequest, QueryNextSequenceSendResponseSDKType, QueryUpgradeErrorRequest, QueryUpgradeErrorResponseSDKType, QueryUpgradeRequest, QueryUpgradeResponseSDKType, QueryChannelParamsRequest, QueryChannelParamsResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -22,6 +22,10 @@ export class LCDQueryClient {
     this.unreceivedPackets = this.unreceivedPackets.bind(this);
     this.unreceivedAcks = this.unreceivedAcks.bind(this);
     this.nextSequenceReceive = this.nextSequenceReceive.bind(this);
+    this.nextSequenceSend = this.nextSequenceSend.bind(this);
+    this.upgradeError = this.upgradeError.bind(this);
+    this.upgrade = this.upgrade.bind(this);
+    this.channelParams = this.channelParams.bind(this);
   }
   /* Channel queries an IBC Channel. */
   async channel(params: QueryChannelRequest): Promise<QueryChannelResponseSDKType> {
@@ -124,5 +128,25 @@ export class LCDQueryClient {
   async nextSequenceReceive(params: QueryNextSequenceReceiveRequest): Promise<QueryNextSequenceReceiveResponseSDKType> {
     const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/next_sequence`;
     return await this.req.get<QueryNextSequenceReceiveResponseSDKType>(endpoint);
+  }
+  /* NextSequenceSend returns the next send sequence for a given channel. */
+  async nextSequenceSend(params: QueryNextSequenceSendRequest): Promise<QueryNextSequenceSendResponseSDKType> {
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/next_sequence_send`;
+    return await this.req.get<QueryNextSequenceSendResponseSDKType>(endpoint);
+  }
+  /* UpgradeError returns the error receipt if the upgrade handshake failed. */
+  async upgradeError(params: QueryUpgradeErrorRequest): Promise<QueryUpgradeErrorResponseSDKType> {
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/upgrade_error`;
+    return await this.req.get<QueryUpgradeErrorResponseSDKType>(endpoint);
+  }
+  /* Upgrade returns the upgrade for a given port and channel id. */
+  async upgrade(params: QueryUpgradeRequest): Promise<QueryUpgradeResponseSDKType> {
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/upgrade`;
+    return await this.req.get<QueryUpgradeResponseSDKType>(endpoint);
+  }
+  /* ChannelParams queries all parameters of the ibc channel submodule. */
+  async channelParams(_params: QueryChannelParamsRequest = {}): Promise<QueryChannelParamsResponseSDKType> {
+    const endpoint = `ibc/core/channel/v1/params`;
+    return await this.req.get<QueryChannelParamsResponseSDKType>(endpoint);
   }
 }

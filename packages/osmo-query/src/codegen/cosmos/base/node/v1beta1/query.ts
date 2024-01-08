@@ -23,7 +23,7 @@ export interface ConfigResponseProtoMsg {
 }
 /** ConfigResponse defines the response structure for the Config gRPC query. */
 export interface ConfigResponseAmino {
-  minimum_gas_price: string;
+  minimum_gas_price?: string;
 }
 export interface ConfigResponseAminoMsg {
   type: "cosmos-sdk/ConfigResponse";
@@ -60,7 +60,8 @@ export const ConfigRequest = {
     return message;
   },
   fromAmino(_: ConfigRequestAmino): ConfigRequest {
-    return {};
+    const message = createBaseConfigRequest();
+    return message;
   },
   toAmino(_: ConfigRequest): ConfigRequestAmino {
     const obj: any = {};
@@ -124,9 +125,11 @@ export const ConfigResponse = {
     return message;
   },
   fromAmino(object: ConfigResponseAmino): ConfigResponse {
-    return {
-      minimumGasPrice: object.minimum_gas_price
-    };
+    const message = createBaseConfigResponse();
+    if (object.minimum_gas_price !== undefined && object.minimum_gas_price !== null) {
+      message.minimumGasPrice = object.minimum_gas_price;
+    }
+    return message;
   },
   toAmino(message: ConfigResponse): ConfigResponseAmino {
     const obj: any = {};

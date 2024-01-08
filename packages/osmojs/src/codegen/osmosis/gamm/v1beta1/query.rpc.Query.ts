@@ -1,7 +1,7 @@
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryPoolsRequest, QueryPoolsResponse, QueryNumPoolsRequest, QueryNumPoolsResponse, QueryTotalLiquidityRequest, QueryTotalLiquidityResponse, QueryPoolsWithFilterRequest, QueryPoolsWithFilterResponse, QueryPoolRequest, QueryPoolResponse, QueryPoolTypeRequest, QueryPoolTypeResponse, QueryCalcJoinPoolNoSwapSharesRequest, QueryCalcJoinPoolNoSwapSharesResponse, QueryCalcJoinPoolSharesRequest, QueryCalcJoinPoolSharesResponse, QueryCalcExitPoolCoinsFromSharesRequest, QueryCalcExitPoolCoinsFromSharesResponse, QueryPoolParamsRequest, QueryPoolParamsResponse, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponse, QueryTotalSharesRequest, QueryTotalSharesResponse, QuerySpotPriceRequest, QuerySpotPriceResponse, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponse, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponse, QueryConcentratedPoolIdLinkFromCFMMRequest, QueryConcentratedPoolIdLinkFromCFMMResponse } from "./query";
+import { QueryPoolsRequest, QueryPoolsResponse, QueryNumPoolsRequest, QueryNumPoolsResponse, QueryTotalLiquidityRequest, QueryTotalLiquidityResponse, QueryPoolsWithFilterRequest, QueryPoolsWithFilterResponse, QueryPoolRequest, QueryPoolResponse, QueryPoolTypeRequest, QueryPoolTypeResponse, QueryCalcJoinPoolNoSwapSharesRequest, QueryCalcJoinPoolNoSwapSharesResponse, QueryCalcJoinPoolSharesRequest, QueryCalcJoinPoolSharesResponse, QueryCalcExitPoolCoinsFromSharesRequest, QueryCalcExitPoolCoinsFromSharesResponse, QueryPoolParamsRequest, QueryPoolParamsResponse, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponse, QueryTotalSharesRequest, QueryTotalSharesResponse, QuerySpotPriceRequest, QuerySpotPriceResponse, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponse, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponse, QueryConcentratedPoolIdLinkFromCFMMRequest, QueryConcentratedPoolIdLinkFromCFMMResponse, QueryCFMMConcentratedPoolLinksRequest, QueryCFMMConcentratedPoolLinksResponse } from "./query";
 export interface Query {
   pools(request?: QueryPoolsRequest): Promise<QueryPoolsResponse>;
   /** Deprecated: please use the alternative in x/poolmanager */
@@ -45,6 +45,11 @@ export interface Query {
    * pool that is linked with the given CFMM pool.
    */
   concentratedPoolIdLinkFromCFMM(request: QueryConcentratedPoolIdLinkFromCFMMRequest): Promise<QueryConcentratedPoolIdLinkFromCFMMResponse>;
+  /**
+   * CFMMConcentratedPoolLinks returns migration links between CFMM and
+   * Concentrated pools.
+   */
+  cFMMConcentratedPoolLinks(request?: QueryCFMMConcentratedPoolLinksRequest): Promise<QueryCFMMConcentratedPoolLinksResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -66,6 +71,7 @@ export class QueryClientImpl implements Query {
     this.estimateSwapExactAmountIn = this.estimateSwapExactAmountIn.bind(this);
     this.estimateSwapExactAmountOut = this.estimateSwapExactAmountOut.bind(this);
     this.concentratedPoolIdLinkFromCFMM = this.concentratedPoolIdLinkFromCFMM.bind(this);
+    this.cFMMConcentratedPoolLinks = this.cFMMConcentratedPoolLinks.bind(this);
   }
   pools(request: QueryPoolsRequest = {
     pagination: undefined
@@ -149,6 +155,11 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("osmosis.gamm.v1beta1.Query", "ConcentratedPoolIdLinkFromCFMM", data);
     return promise.then(data => QueryConcentratedPoolIdLinkFromCFMMResponse.decode(new BinaryReader(data)));
   }
+  cFMMConcentratedPoolLinks(request: QueryCFMMConcentratedPoolLinksRequest = {}): Promise<QueryCFMMConcentratedPoolLinksResponse> {
+    const data = QueryCFMMConcentratedPoolLinksRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.gamm.v1beta1.Query", "CFMMConcentratedPoolLinks", data);
+    return promise.then(data => QueryCFMMConcentratedPoolLinksResponse.decode(new BinaryReader(data)));
+  }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -201,6 +212,9 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     concentratedPoolIdLinkFromCFMM(request: QueryConcentratedPoolIdLinkFromCFMMRequest): Promise<QueryConcentratedPoolIdLinkFromCFMMResponse> {
       return queryService.concentratedPoolIdLinkFromCFMM(request);
+    },
+    cFMMConcentratedPoolLinks(request?: QueryCFMMConcentratedPoolLinksRequest): Promise<QueryCFMMConcentratedPoolLinksResponse> {
+      return queryService.cFMMConcentratedPoolLinks(request);
     }
   };
 };

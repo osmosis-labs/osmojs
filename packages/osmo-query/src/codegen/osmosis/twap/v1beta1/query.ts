@@ -15,11 +15,11 @@ export interface ArithmeticTwapRequestProtoMsg {
   value: Uint8Array;
 }
 export interface ArithmeticTwapRequestAmino {
-  pool_id: string;
-  base_asset: string;
-  quote_asset: string;
-  start_time?: Date;
-  end_time?: Date;
+  pool_id?: string;
+  base_asset?: string;
+  quote_asset?: string;
+  start_time?: string;
+  end_time?: string;
 }
 export interface ArithmeticTwapRequestAminoMsg {
   type: "osmosis/twap/arithmetic-twap-request";
@@ -40,7 +40,7 @@ export interface ArithmeticTwapResponseProtoMsg {
   value: Uint8Array;
 }
 export interface ArithmeticTwapResponseAmino {
-  arithmetic_twap: string;
+  arithmetic_twap?: string;
 }
 export interface ArithmeticTwapResponseAminoMsg {
   type: "osmosis/twap/arithmetic-twap-response";
@@ -60,10 +60,10 @@ export interface ArithmeticTwapToNowRequestProtoMsg {
   value: Uint8Array;
 }
 export interface ArithmeticTwapToNowRequestAmino {
-  pool_id: string;
-  base_asset: string;
-  quote_asset: string;
-  start_time?: Date;
+  pool_id?: string;
+  base_asset?: string;
+  quote_asset?: string;
+  start_time?: string;
 }
 export interface ArithmeticTwapToNowRequestAminoMsg {
   type: "osmosis/twap/arithmetic-twap-to-now-request";
@@ -83,7 +83,7 @@ export interface ArithmeticTwapToNowResponseProtoMsg {
   value: Uint8Array;
 }
 export interface ArithmeticTwapToNowResponseAmino {
-  arithmetic_twap: string;
+  arithmetic_twap?: string;
 }
 export interface ArithmeticTwapToNowResponseAminoMsg {
   type: "osmosis/twap/arithmetic-twap-to-now-response";
@@ -104,11 +104,11 @@ export interface GeometricTwapRequestProtoMsg {
   value: Uint8Array;
 }
 export interface GeometricTwapRequestAmino {
-  pool_id: string;
-  base_asset: string;
-  quote_asset: string;
-  start_time?: Date;
-  end_time?: Date;
+  pool_id?: string;
+  base_asset?: string;
+  quote_asset?: string;
+  start_time?: string;
+  end_time?: string;
 }
 export interface GeometricTwapRequestAminoMsg {
   type: "osmosis/twap/geometric-twap-request";
@@ -129,7 +129,7 @@ export interface GeometricTwapResponseProtoMsg {
   value: Uint8Array;
 }
 export interface GeometricTwapResponseAmino {
-  geometric_twap: string;
+  geometric_twap?: string;
 }
 export interface GeometricTwapResponseAminoMsg {
   type: "osmosis/twap/geometric-twap-response";
@@ -149,10 +149,10 @@ export interface GeometricTwapToNowRequestProtoMsg {
   value: Uint8Array;
 }
 export interface GeometricTwapToNowRequestAmino {
-  pool_id: string;
-  base_asset: string;
-  quote_asset: string;
-  start_time?: Date;
+  pool_id?: string;
+  base_asset?: string;
+  quote_asset?: string;
+  start_time?: string;
 }
 export interface GeometricTwapToNowRequestAminoMsg {
   type: "osmosis/twap/geometric-twap-to-now-request";
@@ -172,7 +172,7 @@ export interface GeometricTwapToNowResponseProtoMsg {
   value: Uint8Array;
 }
 export interface GeometricTwapToNowResponseAmino {
-  geometric_twap: string;
+  geometric_twap?: string;
 }
 export interface GeometricTwapToNowResponseAminoMsg {
   type: "osmosis/twap/geometric-twap-to-now-response";
@@ -277,21 +277,31 @@ export const ArithmeticTwapRequest = {
     return message;
   },
   fromAmino(object: ArithmeticTwapRequestAmino): ArithmeticTwapRequest {
-    return {
-      poolId: BigInt(object.pool_id),
-      baseAsset: object.base_asset,
-      quoteAsset: object.quote_asset,
-      startTime: object.start_time,
-      endTime: object?.end_time
-    };
+    const message = createBaseArithmeticTwapRequest();
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = BigInt(object.pool_id);
+    }
+    if (object.base_asset !== undefined && object.base_asset !== null) {
+      message.baseAsset = object.base_asset;
+    }
+    if (object.quote_asset !== undefined && object.quote_asset !== null) {
+      message.quoteAsset = object.quote_asset;
+    }
+    if (object.start_time !== undefined && object.start_time !== null) {
+      message.startTime = fromTimestamp(Timestamp.fromAmino(object.start_time));
+    }
+    if (object.end_time !== undefined && object.end_time !== null) {
+      message.endTime = fromTimestamp(Timestamp.fromAmino(object.end_time));
+    }
+    return message;
   },
   toAmino(message: ArithmeticTwapRequest): ArithmeticTwapRequestAmino {
     const obj: any = {};
     obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
     obj.base_asset = message.baseAsset;
     obj.quote_asset = message.quoteAsset;
-    obj.start_time = message.startTime;
-    obj.end_time = message.endTime;
+    obj.start_time = message.startTime ? Timestamp.toAmino(toTimestamp(message.startTime)) : undefined;
+    obj.end_time = message.endTime ? Timestamp.toAmino(toTimestamp(message.endTime)) : undefined;
     return obj;
   },
   fromAminoMsg(object: ArithmeticTwapRequestAminoMsg): ArithmeticTwapRequest {
@@ -352,9 +362,11 @@ export const ArithmeticTwapResponse = {
     return message;
   },
   fromAmino(object: ArithmeticTwapResponseAmino): ArithmeticTwapResponse {
-    return {
-      arithmeticTwap: object.arithmetic_twap
-    };
+    const message = createBaseArithmeticTwapResponse();
+    if (object.arithmetic_twap !== undefined && object.arithmetic_twap !== null) {
+      message.arithmeticTwap = object.arithmetic_twap;
+    }
+    return message;
   },
   toAmino(message: ArithmeticTwapResponse): ArithmeticTwapResponseAmino {
     const obj: any = {};
@@ -443,19 +455,27 @@ export const ArithmeticTwapToNowRequest = {
     return message;
   },
   fromAmino(object: ArithmeticTwapToNowRequestAmino): ArithmeticTwapToNowRequest {
-    return {
-      poolId: BigInt(object.pool_id),
-      baseAsset: object.base_asset,
-      quoteAsset: object.quote_asset,
-      startTime: object.start_time
-    };
+    const message = createBaseArithmeticTwapToNowRequest();
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = BigInt(object.pool_id);
+    }
+    if (object.base_asset !== undefined && object.base_asset !== null) {
+      message.baseAsset = object.base_asset;
+    }
+    if (object.quote_asset !== undefined && object.quote_asset !== null) {
+      message.quoteAsset = object.quote_asset;
+    }
+    if (object.start_time !== undefined && object.start_time !== null) {
+      message.startTime = fromTimestamp(Timestamp.fromAmino(object.start_time));
+    }
+    return message;
   },
   toAmino(message: ArithmeticTwapToNowRequest): ArithmeticTwapToNowRequestAmino {
     const obj: any = {};
     obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
     obj.base_asset = message.baseAsset;
     obj.quote_asset = message.quoteAsset;
-    obj.start_time = message.startTime;
+    obj.start_time = message.startTime ? Timestamp.toAmino(toTimestamp(message.startTime)) : undefined;
     return obj;
   },
   fromAminoMsg(object: ArithmeticTwapToNowRequestAminoMsg): ArithmeticTwapToNowRequest {
@@ -516,9 +536,11 @@ export const ArithmeticTwapToNowResponse = {
     return message;
   },
   fromAmino(object: ArithmeticTwapToNowResponseAmino): ArithmeticTwapToNowResponse {
-    return {
-      arithmeticTwap: object.arithmetic_twap
-    };
+    const message = createBaseArithmeticTwapToNowResponse();
+    if (object.arithmetic_twap !== undefined && object.arithmetic_twap !== null) {
+      message.arithmeticTwap = object.arithmetic_twap;
+    }
+    return message;
   },
   toAmino(message: ArithmeticTwapToNowResponse): ArithmeticTwapToNowResponseAmino {
     const obj: any = {};
@@ -615,21 +637,31 @@ export const GeometricTwapRequest = {
     return message;
   },
   fromAmino(object: GeometricTwapRequestAmino): GeometricTwapRequest {
-    return {
-      poolId: BigInt(object.pool_id),
-      baseAsset: object.base_asset,
-      quoteAsset: object.quote_asset,
-      startTime: object.start_time,
-      endTime: object?.end_time
-    };
+    const message = createBaseGeometricTwapRequest();
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = BigInt(object.pool_id);
+    }
+    if (object.base_asset !== undefined && object.base_asset !== null) {
+      message.baseAsset = object.base_asset;
+    }
+    if (object.quote_asset !== undefined && object.quote_asset !== null) {
+      message.quoteAsset = object.quote_asset;
+    }
+    if (object.start_time !== undefined && object.start_time !== null) {
+      message.startTime = fromTimestamp(Timestamp.fromAmino(object.start_time));
+    }
+    if (object.end_time !== undefined && object.end_time !== null) {
+      message.endTime = fromTimestamp(Timestamp.fromAmino(object.end_time));
+    }
+    return message;
   },
   toAmino(message: GeometricTwapRequest): GeometricTwapRequestAmino {
     const obj: any = {};
     obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
     obj.base_asset = message.baseAsset;
     obj.quote_asset = message.quoteAsset;
-    obj.start_time = message.startTime;
-    obj.end_time = message.endTime;
+    obj.start_time = message.startTime ? Timestamp.toAmino(toTimestamp(message.startTime)) : undefined;
+    obj.end_time = message.endTime ? Timestamp.toAmino(toTimestamp(message.endTime)) : undefined;
     return obj;
   },
   fromAminoMsg(object: GeometricTwapRequestAminoMsg): GeometricTwapRequest {
@@ -690,9 +722,11 @@ export const GeometricTwapResponse = {
     return message;
   },
   fromAmino(object: GeometricTwapResponseAmino): GeometricTwapResponse {
-    return {
-      geometricTwap: object.geometric_twap
-    };
+    const message = createBaseGeometricTwapResponse();
+    if (object.geometric_twap !== undefined && object.geometric_twap !== null) {
+      message.geometricTwap = object.geometric_twap;
+    }
+    return message;
   },
   toAmino(message: GeometricTwapResponse): GeometricTwapResponseAmino {
     const obj: any = {};
@@ -781,19 +815,27 @@ export const GeometricTwapToNowRequest = {
     return message;
   },
   fromAmino(object: GeometricTwapToNowRequestAmino): GeometricTwapToNowRequest {
-    return {
-      poolId: BigInt(object.pool_id),
-      baseAsset: object.base_asset,
-      quoteAsset: object.quote_asset,
-      startTime: object.start_time
-    };
+    const message = createBaseGeometricTwapToNowRequest();
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = BigInt(object.pool_id);
+    }
+    if (object.base_asset !== undefined && object.base_asset !== null) {
+      message.baseAsset = object.base_asset;
+    }
+    if (object.quote_asset !== undefined && object.quote_asset !== null) {
+      message.quoteAsset = object.quote_asset;
+    }
+    if (object.start_time !== undefined && object.start_time !== null) {
+      message.startTime = fromTimestamp(Timestamp.fromAmino(object.start_time));
+    }
+    return message;
   },
   toAmino(message: GeometricTwapToNowRequest): GeometricTwapToNowRequestAmino {
     const obj: any = {};
     obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
     obj.base_asset = message.baseAsset;
     obj.quote_asset = message.quoteAsset;
-    obj.start_time = message.startTime;
+    obj.start_time = message.startTime ? Timestamp.toAmino(toTimestamp(message.startTime)) : undefined;
     return obj;
   },
   fromAminoMsg(object: GeometricTwapToNowRequestAminoMsg): GeometricTwapToNowRequest {
@@ -854,9 +896,11 @@ export const GeometricTwapToNowResponse = {
     return message;
   },
   fromAmino(object: GeometricTwapToNowResponseAmino): GeometricTwapToNowResponse {
-    return {
-      geometricTwap: object.geometric_twap
-    };
+    const message = createBaseGeometricTwapToNowResponse();
+    if (object.geometric_twap !== undefined && object.geometric_twap !== null) {
+      message.geometricTwap = object.geometric_twap;
+    }
+    return message;
   },
   toAmino(message: GeometricTwapToNowResponse): GeometricTwapToNowResponseAmino {
     const obj: any = {};
@@ -912,7 +956,8 @@ export const ParamsRequest = {
     return message;
   },
   fromAmino(_: ParamsRequestAmino): ParamsRequest {
-    return {};
+    const message = createBaseParamsRequest();
+    return message;
   },
   toAmino(_: ParamsRequest): ParamsRequestAmino {
     const obj: any = {};
@@ -976,9 +1021,11 @@ export const ParamsResponse = {
     return message;
   },
   fromAmino(object: ParamsResponseAmino): ParamsResponse {
-    return {
-      params: object?.params ? Params.fromAmino(object.params) : undefined
-    };
+    const message = createBaseParamsResponse();
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    return message;
   },
   toAmino(message: ParamsResponse): ParamsResponseAmino {
     const obj: any = {};

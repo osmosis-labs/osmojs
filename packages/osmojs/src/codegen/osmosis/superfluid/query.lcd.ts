@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, AssetTypeRequest, AssetTypeResponseSDKType, AllAssetsRequest, AllAssetsResponseSDKType, AssetMultiplierRequest, AssetMultiplierResponseSDKType, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponseSDKType, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponseSDKType, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponseSDKType, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponseSDKType, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponseSDKType, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponseSDKType, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponseSDKType, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponseSDKType, QueryUnpoolWhitelistRequest, QueryUnpoolWhitelistResponseSDKType, UserConcentratedSuperfluidPositionsDelegatedRequest, UserConcentratedSuperfluidPositionsDelegatedResponseSDKType, UserConcentratedSuperfluidPositionsUndelegatingRequest, UserConcentratedSuperfluidPositionsUndelegatingResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, AssetTypeRequest, AssetTypeResponseSDKType, AllAssetsRequest, AllAssetsResponseSDKType, AssetMultiplierRequest, AssetMultiplierResponseSDKType, AllIntermediaryAccountsRequest, AllIntermediaryAccountsResponseSDKType, ConnectedIntermediaryAccountRequest, ConnectedIntermediaryAccountResponseSDKType, TotalSuperfluidDelegationsRequest, TotalSuperfluidDelegationsResponseSDKType, SuperfluidDelegationAmountRequest, SuperfluidDelegationAmountResponseSDKType, SuperfluidDelegationsByDelegatorRequest, SuperfluidDelegationsByDelegatorResponseSDKType, SuperfluidUndelegationsByDelegatorRequest, SuperfluidUndelegationsByDelegatorResponseSDKType, SuperfluidDelegationsByValidatorDenomRequest, SuperfluidDelegationsByValidatorDenomResponseSDKType, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType, QueryTotalDelegationByDelegatorRequest, QueryTotalDelegationByDelegatorResponseSDKType, QueryUnpoolWhitelistRequest, QueryUnpoolWhitelistResponseSDKType, UserConcentratedSuperfluidPositionsDelegatedRequest, UserConcentratedSuperfluidPositionsDelegatedResponseSDKType, UserConcentratedSuperfluidPositionsUndelegatingRequest, UserConcentratedSuperfluidPositionsUndelegatingResponseSDKType, QueryRestSupplyRequest, QueryRestSupplyResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -25,6 +25,7 @@ export class LCDQueryClient {
     this.unpoolWhitelist = this.unpoolWhitelist.bind(this);
     this.userConcentratedSuperfluidPositionsDelegated = this.userConcentratedSuperfluidPositionsDelegated.bind(this);
     this.userConcentratedSuperfluidPositionsUndelegating = this.userConcentratedSuperfluidPositionsUndelegating.bind(this);
+    this.restSupply = this.restSupply.bind(this);
   }
   /* Params returns the total set of superfluid parameters. */
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
@@ -101,12 +102,12 @@ export class LCDQueryClient {
     const endpoint = `osmosis/superfluid/v1beta1/superfluid_delegation_amount`;
     return await this.req.get<SuperfluidDelegationAmountResponseSDKType>(endpoint, options);
   }
-  /* Returns all the delegated superfluid poistions for a specific delegator. */
+  /* Returns all the delegated superfluid positions for a specific delegator. */
   async superfluidDelegationsByDelegator(params: SuperfluidDelegationsByDelegatorRequest): Promise<SuperfluidDelegationsByDelegatorResponseSDKType> {
     const endpoint = `osmosis/superfluid/v1beta1/superfluid_delegations/${params.delegatorAddress}`;
     return await this.req.get<SuperfluidDelegationsByDelegatorResponseSDKType>(endpoint);
   }
-  /* Returns all the undelegating superfluid poistions for a specific delegator. */
+  /* Returns all the undelegating superfluid positions for a specific delegator. */
   async superfluidUndelegationsByDelegator(params: SuperfluidUndelegationsByDelegatorRequest): Promise<SuperfluidUndelegationsByDelegatorResponseSDKType> {
     const options: any = {
       params: {}
@@ -158,7 +159,7 @@ export class LCDQueryClient {
     const endpoint = `osmosis/superfluid/v1beta1/unpool_whitelist`;
     return await this.req.get<QueryUnpoolWhitelistResponseSDKType>(endpoint);
   }
-  /* UserConcentratedSuperfluidPositionsDelegated */
+  /* Returns all of a user's full range CL positions that are superfluid staked. */
   async userConcentratedSuperfluidPositionsDelegated(params: UserConcentratedSuperfluidPositionsDelegatedRequest): Promise<UserConcentratedSuperfluidPositionsDelegatedResponseSDKType> {
     const endpoint = `osmosis/superfluid/v1beta1/account_delegated_cl_positions/${params.delegatorAddress}`;
     return await this.req.get<UserConcentratedSuperfluidPositionsDelegatedResponseSDKType>(endpoint);
@@ -167,5 +168,16 @@ export class LCDQueryClient {
   async userConcentratedSuperfluidPositionsUndelegating(params: UserConcentratedSuperfluidPositionsUndelegatingRequest): Promise<UserConcentratedSuperfluidPositionsUndelegatingResponseSDKType> {
     const endpoint = `osmosis/superfluid/v1beta1/account_undelegating_cl_positions/${params.delegatorAddress}`;
     return await this.req.get<UserConcentratedSuperfluidPositionsUndelegatingResponseSDKType>(endpoint);
+  }
+  /* RestSupply */
+  async restSupply(params: QueryRestSupplyRequest): Promise<QueryRestSupplyResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+    if (typeof params?.denom !== "undefined") {
+      options.params.denom = params.denom;
+    }
+    const endpoint = `osmosis/superfluid/v1beta1/supply`;
+    return await this.req.get<QueryRestSupplyResponseSDKType>(endpoint, options);
   }
 }

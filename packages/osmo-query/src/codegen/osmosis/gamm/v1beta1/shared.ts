@@ -15,7 +15,7 @@ export interface MigrationRecordsProtoMsg {
  * pools
  */
 export interface MigrationRecordsAmino {
-  balancer_to_concentrated_pool_links: BalancerToConcentratedPoolLinkAmino[];
+  balancer_to_concentrated_pool_links?: BalancerToConcentratedPoolLinkAmino[];
 }
 export interface MigrationRecordsAminoMsg {
   type: "osmosis/gamm/migration-records";
@@ -53,8 +53,8 @@ export interface BalancerToConcentratedPoolLinkProtoMsg {
  * be linked to a maximum of one balancer pool.
  */
 export interface BalancerToConcentratedPoolLinkAmino {
-  balancer_pool_id: string;
-  cl_pool_id: string;
+  balancer_pool_id?: string;
+  cl_pool_id?: string;
 }
 export interface BalancerToConcentratedPoolLinkAminoMsg {
   type: "osmosis/gamm/balancer-to-concentrated-pool-link";
@@ -108,9 +108,9 @@ export const MigrationRecords = {
     return message;
   },
   fromAmino(object: MigrationRecordsAmino): MigrationRecords {
-    return {
-      balancerToConcentratedPoolLinks: Array.isArray(object?.balancer_to_concentrated_pool_links) ? object.balancer_to_concentrated_pool_links.map((e: any) => BalancerToConcentratedPoolLink.fromAmino(e)) : []
-    };
+    const message = createBaseMigrationRecords();
+    message.balancerToConcentratedPoolLinks = object.balancer_to_concentrated_pool_links?.map(e => BalancerToConcentratedPoolLink.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: MigrationRecords): MigrationRecordsAmino {
     const obj: any = {};
@@ -187,10 +187,14 @@ export const BalancerToConcentratedPoolLink = {
     return message;
   },
   fromAmino(object: BalancerToConcentratedPoolLinkAmino): BalancerToConcentratedPoolLink {
-    return {
-      balancerPoolId: BigInt(object.balancer_pool_id),
-      clPoolId: BigInt(object.cl_pool_id)
-    };
+    const message = createBaseBalancerToConcentratedPoolLink();
+    if (object.balancer_pool_id !== undefined && object.balancer_pool_id !== null) {
+      message.balancerPoolId = BigInt(object.balancer_pool_id);
+    }
+    if (object.cl_pool_id !== undefined && object.cl_pool_id !== null) {
+      message.clPoolId = BigInt(object.cl_pool_id);
+    }
+    return message;
   },
   toAmino(message: BalancerToConcentratedPoolLink): BalancerToConcentratedPoolLinkAmino {
     const obj: any = {};

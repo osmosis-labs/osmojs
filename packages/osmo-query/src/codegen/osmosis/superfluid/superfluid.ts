@@ -1,7 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { SyntheticLock, SyntheticLockAmino, SyntheticLockSDKType } from "../lockup/lock";
 import { BinaryReader, BinaryWriter } from "../../binary";
-import { isSet } from "../../helpers";
 import { Decimal } from "@cosmjs/math";
 /**
  * SuperfluidAssetType indicates whether the superfluid asset is
@@ -60,12 +59,12 @@ export interface SuperfluidAssetProtoMsg {
 }
 /** SuperfluidAsset stores the pair of superfluid asset type and denom pair */
 export interface SuperfluidAssetAmino {
-  denom: string;
+  denom?: string;
   /**
    * AssetType indicates whether the superfluid asset is a native token or an lp
    * share
    */
-  asset_type: SuperfluidAssetType;
+  asset_type?: SuperfluidAssetType;
 }
 export interface SuperfluidAssetAminoMsg {
   type: "osmosis/superfluid-asset";
@@ -99,10 +98,10 @@ export interface SuperfluidIntermediaryAccountProtoMsg {
  */
 export interface SuperfluidIntermediaryAccountAmino {
   /** Denom indicates the denom of the superfluid asset. */
-  denom: string;
-  val_addr: string;
+  denom?: string;
+  val_addr?: string;
   /** perpetual gauge for rewards distribution */
-  gauge_id: string;
+  gauge_id?: string;
 }
 export interface SuperfluidIntermediaryAccountAminoMsg {
   type: "osmosis/superfluid-intermediary-account";
@@ -122,10 +121,10 @@ export interface SuperfluidIntermediaryAccountSDKType {
  * The Osmo-Equivalent-Multiplier Record for epoch N refers to the osmo worth we
  * treat an LP share as having, for all of epoch N. Eventually this is intended
  * to be set as the Time-weighted-average-osmo-backing for the entire duration
- * of epoch N-1. (Thereby locking whats in use for epoch N as based on the prior
- * epochs rewards) However for now, this is not the TWAP but instead the spot
- * price at the boundary. For different types of assets in the future, it could
- * change.
+ * of epoch N-1. (Thereby locking what's in use for epoch N as based on the
+ * prior epochs rewards) However for now, this is not the TWAP but instead the
+ * spot price at the boundary. For different types of assets in the future, it
+ * could change.
  */
 export interface OsmoEquivalentMultiplierRecord {
   epochNumber: bigint;
@@ -141,16 +140,16 @@ export interface OsmoEquivalentMultiplierRecordProtoMsg {
  * The Osmo-Equivalent-Multiplier Record for epoch N refers to the osmo worth we
  * treat an LP share as having, for all of epoch N. Eventually this is intended
  * to be set as the Time-weighted-average-osmo-backing for the entire duration
- * of epoch N-1. (Thereby locking whats in use for epoch N as based on the prior
- * epochs rewards) However for now, this is not the TWAP but instead the spot
- * price at the boundary. For different types of assets in the future, it could
- * change.
+ * of epoch N-1. (Thereby locking what's in use for epoch N as based on the
+ * prior epochs rewards) However for now, this is not the TWAP but instead the
+ * spot price at the boundary. For different types of assets in the future, it
+ * could change.
  */
 export interface OsmoEquivalentMultiplierRecordAmino {
-  epoch_number: string;
+  epoch_number?: string;
   /** superfluid asset denom, can be LP token or native token */
-  denom: string;
-  multiplier: string;
+  denom?: string;
+  multiplier?: string;
 }
 export interface OsmoEquivalentMultiplierRecordAminoMsg {
   type: "osmosis/osmo-equivalent-multiplier-record";
@@ -160,10 +159,10 @@ export interface OsmoEquivalentMultiplierRecordAminoMsg {
  * The Osmo-Equivalent-Multiplier Record for epoch N refers to the osmo worth we
  * treat an LP share as having, for all of epoch N. Eventually this is intended
  * to be set as the Time-weighted-average-osmo-backing for the entire duration
- * of epoch N-1. (Thereby locking whats in use for epoch N as based on the prior
- * epochs rewards) However for now, this is not the TWAP but instead the spot
- * price at the boundary. For different types of assets in the future, it could
- * change.
+ * of epoch N-1. (Thereby locking what's in use for epoch N as based on the
+ * prior epochs rewards) However for now, this is not the TWAP but instead the
+ * spot price at the boundary. For different types of assets in the future, it
+ * could change.
  */
 export interface OsmoEquivalentMultiplierRecordSDKType {
   epoch_number: bigint;
@@ -178,7 +177,7 @@ export interface SuperfluidDelegationRecord {
   delegatorAddress: string;
   validatorAddress: string;
   delegationAmount: Coin;
-  equivalentStakedAmount: Coin;
+  equivalentStakedAmount?: Coin;
 }
 export interface SuperfluidDelegationRecordProtoMsg {
   typeUrl: "/osmosis.superfluid.SuperfluidDelegationRecord";
@@ -189,8 +188,8 @@ export interface SuperfluidDelegationRecordProtoMsg {
  * delegations of an account in the state machine in a user friendly form.
  */
 export interface SuperfluidDelegationRecordAmino {
-  delegator_address: string;
-  validator_address: string;
+  delegator_address?: string;
+  validator_address?: string;
   delegation_amount?: CoinAmino;
   equivalent_staked_amount?: CoinAmino;
 }
@@ -206,7 +205,7 @@ export interface SuperfluidDelegationRecordSDKType {
   delegator_address: string;
   validator_address: string;
   delegation_amount: CoinSDKType;
-  equivalent_staked_amount: CoinSDKType;
+  equivalent_staked_amount?: CoinSDKType;
 }
 /**
  * LockIdIntermediaryAccountConnection is a struct used to indicate the
@@ -227,8 +226,8 @@ export interface LockIdIntermediaryAccountConnectionProtoMsg {
  * via lp shares.
  */
 export interface LockIdIntermediaryAccountConnectionAmino {
-  lock_id: string;
-  intermediary_account: string;
+  lock_id?: string;
+  intermediary_account?: string;
 }
 export interface LockIdIntermediaryAccountConnectionAminoMsg {
   type: "osmosis/lock-id-intermediary-account-connection";
@@ -251,7 +250,7 @@ export interface UnpoolWhitelistedPoolsProtoMsg {
   value: Uint8Array;
 }
 export interface UnpoolWhitelistedPoolsAmino {
-  ids: string[];
+  ids?: string[];
 }
 export interface UnpoolWhitelistedPoolsAminoMsg {
   type: "osmosis/unpool-whitelisted-pools";
@@ -266,16 +265,16 @@ export interface ConcentratedPoolUserPositionRecord {
   lockId: bigint;
   syntheticLock: SyntheticLock;
   delegationAmount: Coin;
-  equivalentStakedAmount: Coin;
+  equivalentStakedAmount?: Coin;
 }
 export interface ConcentratedPoolUserPositionRecordProtoMsg {
   typeUrl: "/osmosis.superfluid.ConcentratedPoolUserPositionRecord";
   value: Uint8Array;
 }
 export interface ConcentratedPoolUserPositionRecordAmino {
-  validator_address: string;
-  position_id: string;
-  lock_id: string;
+  validator_address?: string;
+  position_id?: string;
+  lock_id?: string;
   synthetic_lock?: SyntheticLockAmino;
   delegation_amount?: CoinAmino;
   equivalent_staked_amount?: CoinAmino;
@@ -290,7 +289,7 @@ export interface ConcentratedPoolUserPositionRecordSDKType {
   lock_id: bigint;
   synthetic_lock: SyntheticLockSDKType;
   delegation_amount: CoinSDKType;
-  equivalent_staked_amount: CoinSDKType;
+  equivalent_staked_amount?: CoinSDKType;
 }
 function createBaseSuperfluidAsset(): SuperfluidAsset {
   return {
@@ -336,15 +335,19 @@ export const SuperfluidAsset = {
     return message;
   },
   fromAmino(object: SuperfluidAssetAmino): SuperfluidAsset {
-    return {
-      denom: object.denom,
-      assetType: isSet(object.asset_type) ? superfluidAssetTypeFromJSON(object.asset_type) : -1
-    };
+    const message = createBaseSuperfluidAsset();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.asset_type !== undefined && object.asset_type !== null) {
+      message.assetType = superfluidAssetTypeFromJSON(object.asset_type);
+    }
+    return message;
   },
   toAmino(message: SuperfluidAsset): SuperfluidAssetAmino {
     const obj: any = {};
     obj.denom = message.denom;
-    obj.asset_type = message.assetType;
+    obj.asset_type = superfluidAssetTypeToJSON(message.assetType);
     return obj;
   },
   fromAminoMsg(object: SuperfluidAssetAminoMsg): SuperfluidAsset {
@@ -421,11 +424,17 @@ export const SuperfluidIntermediaryAccount = {
     return message;
   },
   fromAmino(object: SuperfluidIntermediaryAccountAmino): SuperfluidIntermediaryAccount {
-    return {
-      denom: object.denom,
-      valAddr: object.val_addr,
-      gaugeId: BigInt(object.gauge_id)
-    };
+    const message = createBaseSuperfluidIntermediaryAccount();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.val_addr !== undefined && object.val_addr !== null) {
+      message.valAddr = object.val_addr;
+    }
+    if (object.gauge_id !== undefined && object.gauge_id !== null) {
+      message.gaugeId = BigInt(object.gauge_id);
+    }
+    return message;
   },
   toAmino(message: SuperfluidIntermediaryAccount): SuperfluidIntermediaryAccountAmino {
     const obj: any = {};
@@ -508,11 +517,17 @@ export const OsmoEquivalentMultiplierRecord = {
     return message;
   },
   fromAmino(object: OsmoEquivalentMultiplierRecordAmino): OsmoEquivalentMultiplierRecord {
-    return {
-      epochNumber: BigInt(object.epoch_number),
-      denom: object.denom,
-      multiplier: object.multiplier
-    };
+    const message = createBaseOsmoEquivalentMultiplierRecord();
+    if (object.epoch_number !== undefined && object.epoch_number !== null) {
+      message.epochNumber = BigInt(object.epoch_number);
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.multiplier !== undefined && object.multiplier !== null) {
+      message.multiplier = object.multiplier;
+    }
+    return message;
   },
   toAmino(message: OsmoEquivalentMultiplierRecord): OsmoEquivalentMultiplierRecordAmino {
     const obj: any = {};
@@ -548,7 +563,7 @@ function createBaseSuperfluidDelegationRecord(): SuperfluidDelegationRecord {
     delegatorAddress: "",
     validatorAddress: "",
     delegationAmount: Coin.fromPartial({}),
-    equivalentStakedAmount: Coin.fromPartial({})
+    equivalentStakedAmount: undefined
   };
 }
 export const SuperfluidDelegationRecord = {
@@ -603,12 +618,20 @@ export const SuperfluidDelegationRecord = {
     return message;
   },
   fromAmino(object: SuperfluidDelegationRecordAmino): SuperfluidDelegationRecord {
-    return {
-      delegatorAddress: object.delegator_address,
-      validatorAddress: object.validator_address,
-      delegationAmount: object?.delegation_amount ? Coin.fromAmino(object.delegation_amount) : undefined,
-      equivalentStakedAmount: object?.equivalent_staked_amount ? Coin.fromAmino(object.equivalent_staked_amount) : undefined
-    };
+    const message = createBaseSuperfluidDelegationRecord();
+    if (object.delegator_address !== undefined && object.delegator_address !== null) {
+      message.delegatorAddress = object.delegator_address;
+    }
+    if (object.validator_address !== undefined && object.validator_address !== null) {
+      message.validatorAddress = object.validator_address;
+    }
+    if (object.delegation_amount !== undefined && object.delegation_amount !== null) {
+      message.delegationAmount = Coin.fromAmino(object.delegation_amount);
+    }
+    if (object.equivalent_staked_amount !== undefined && object.equivalent_staked_amount !== null) {
+      message.equivalentStakedAmount = Coin.fromAmino(object.equivalent_staked_amount);
+    }
+    return message;
   },
   toAmino(message: SuperfluidDelegationRecord): SuperfluidDelegationRecordAmino {
     const obj: any = {};
@@ -684,10 +707,14 @@ export const LockIdIntermediaryAccountConnection = {
     return message;
   },
   fromAmino(object: LockIdIntermediaryAccountConnectionAmino): LockIdIntermediaryAccountConnection {
-    return {
-      lockId: BigInt(object.lock_id),
-      intermediaryAccount: object.intermediary_account
-    };
+    const message = createBaseLockIdIntermediaryAccountConnection();
+    if (object.lock_id !== undefined && object.lock_id !== null) {
+      message.lockId = BigInt(object.lock_id);
+    }
+    if (object.intermediary_account !== undefined && object.intermediary_account !== null) {
+      message.intermediaryAccount = object.intermediary_account;
+    }
+    return message;
   },
   toAmino(message: LockIdIntermediaryAccountConnection): LockIdIntermediaryAccountConnectionAmino {
     const obj: any = {};
@@ -762,9 +789,9 @@ export const UnpoolWhitelistedPools = {
     return message;
   },
   fromAmino(object: UnpoolWhitelistedPoolsAmino): UnpoolWhitelistedPools {
-    return {
-      ids: Array.isArray(object?.ids) ? object.ids.map((e: any) => BigInt(e)) : []
-    };
+    const message = createBaseUnpoolWhitelistedPools();
+    message.ids = object.ids?.map(e => BigInt(e)) || [];
+    return message;
   },
   toAmino(message: UnpoolWhitelistedPools): UnpoolWhitelistedPoolsAmino {
     const obj: any = {};
@@ -804,7 +831,7 @@ function createBaseConcentratedPoolUserPositionRecord(): ConcentratedPoolUserPos
     lockId: BigInt(0),
     syntheticLock: SyntheticLock.fromPartial({}),
     delegationAmount: Coin.fromPartial({}),
-    equivalentStakedAmount: Coin.fromPartial({})
+    equivalentStakedAmount: undefined
   };
 }
 export const ConcentratedPoolUserPositionRecord = {
@@ -873,14 +900,26 @@ export const ConcentratedPoolUserPositionRecord = {
     return message;
   },
   fromAmino(object: ConcentratedPoolUserPositionRecordAmino): ConcentratedPoolUserPositionRecord {
-    return {
-      validatorAddress: object.validator_address,
-      positionId: BigInt(object.position_id),
-      lockId: BigInt(object.lock_id),
-      syntheticLock: object?.synthetic_lock ? SyntheticLock.fromAmino(object.synthetic_lock) : undefined,
-      delegationAmount: object?.delegation_amount ? Coin.fromAmino(object.delegation_amount) : undefined,
-      equivalentStakedAmount: object?.equivalent_staked_amount ? Coin.fromAmino(object.equivalent_staked_amount) : undefined
-    };
+    const message = createBaseConcentratedPoolUserPositionRecord();
+    if (object.validator_address !== undefined && object.validator_address !== null) {
+      message.validatorAddress = object.validator_address;
+    }
+    if (object.position_id !== undefined && object.position_id !== null) {
+      message.positionId = BigInt(object.position_id);
+    }
+    if (object.lock_id !== undefined && object.lock_id !== null) {
+      message.lockId = BigInt(object.lock_id);
+    }
+    if (object.synthetic_lock !== undefined && object.synthetic_lock !== null) {
+      message.syntheticLock = SyntheticLock.fromAmino(object.synthetic_lock);
+    }
+    if (object.delegation_amount !== undefined && object.delegation_amount !== null) {
+      message.delegationAmount = Coin.fromAmino(object.delegation_amount);
+    }
+    if (object.equivalent_staked_amount !== undefined && object.equivalent_staked_amount !== null) {
+      message.equivalentStakedAmount = Coin.fromAmino(object.equivalent_staked_amount);
+    }
+    return message;
   },
   toAmino(message: ConcentratedPoolUserPositionRecord): ConcentratedPoolUserPositionRecordAmino {
     const obj: any = {};

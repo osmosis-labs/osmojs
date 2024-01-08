@@ -9,7 +9,7 @@ export interface IdentifiedClientState {
   /** client identifier */
   clientId: string;
   /** client state */
-  clientState: Any;
+  clientState?: Any;
 }
 export interface IdentifiedClientStateProtoMsg {
   typeUrl: "/ibc.core.client.v1.IdentifiedClientState";
@@ -21,7 +21,7 @@ export interface IdentifiedClientStateProtoMsg {
  */
 export interface IdentifiedClientStateAmino {
   /** client identifier */
-  client_id: string;
+  client_id?: string;
   /** client state */
   client_state?: AnyAmino;
 }
@@ -35,7 +35,7 @@ export interface IdentifiedClientStateAminoMsg {
  */
 export interface IdentifiedClientStateSDKType {
   client_id: string;
-  client_state: AnySDKType;
+  client_state?: AnySDKType;
 }
 /**
  * ConsensusStateWithHeight defines a consensus state with an additional height
@@ -45,7 +45,7 @@ export interface ConsensusStateWithHeight {
   /** consensus state height */
   height: Height;
   /** consensus state */
-  consensusState: Any;
+  consensusState?: Any;
 }
 export interface ConsensusStateWithHeightProtoMsg {
   typeUrl: "/ibc.core.client.v1.ConsensusStateWithHeight";
@@ -71,7 +71,7 @@ export interface ConsensusStateWithHeightAminoMsg {
  */
 export interface ConsensusStateWithHeightSDKType {
   height: HeightSDKType;
-  consensus_state: AnySDKType;
+  consensus_state?: AnySDKType;
 }
 /**
  * ClientConsensusStates defines all the stored consensus states for a given
@@ -93,9 +93,9 @@ export interface ClientConsensusStatesProtoMsg {
  */
 export interface ClientConsensusStatesAmino {
   /** client identifier */
-  client_id: string;
+  client_id?: string;
   /** consensus states and their heights associated with the client */
-  consensus_states: ConsensusStateWithHeightAmino[];
+  consensus_states?: ConsensusStateWithHeightAmino[];
 }
 export interface ClientConsensusStatesAminoMsg {
   type: "cosmos-sdk/ClientConsensusStates";
@@ -108,122 +108,6 @@ export interface ClientConsensusStatesAminoMsg {
 export interface ClientConsensusStatesSDKType {
   client_id: string;
   consensus_states: ConsensusStateWithHeightSDKType[];
-}
-/**
- * ClientUpdateProposal is a governance proposal. If it passes, the substitute
- * client's latest consensus state is copied over to the subject client. The proposal
- * handler may fail if the subject and the substitute do not match in client and
- * chain parameters (with exception to latest height, frozen height, and chain-id).
- */
-export interface ClientUpdateProposal {
-  $typeUrl?: string;
-  /** the title of the update proposal */
-  title: string;
-  /** the description of the proposal */
-  description: string;
-  /** the client identifier for the client to be updated if the proposal passes */
-  subjectClientId: string;
-  /**
-   * the substitute client identifier for the client standing in for the subject
-   * client
-   */
-  substituteClientId: string;
-}
-export interface ClientUpdateProposalProtoMsg {
-  typeUrl: "/ibc.core.client.v1.ClientUpdateProposal";
-  value: Uint8Array;
-}
-/**
- * ClientUpdateProposal is a governance proposal. If it passes, the substitute
- * client's latest consensus state is copied over to the subject client. The proposal
- * handler may fail if the subject and the substitute do not match in client and
- * chain parameters (with exception to latest height, frozen height, and chain-id).
- */
-export interface ClientUpdateProposalAmino {
-  /** the title of the update proposal */
-  title: string;
-  /** the description of the proposal */
-  description: string;
-  /** the client identifier for the client to be updated if the proposal passes */
-  subject_client_id: string;
-  /**
-   * the substitute client identifier for the client standing in for the subject
-   * client
-   */
-  substitute_client_id: string;
-}
-export interface ClientUpdateProposalAminoMsg {
-  type: "cosmos-sdk/ClientUpdateProposal";
-  value: ClientUpdateProposalAmino;
-}
-/**
- * ClientUpdateProposal is a governance proposal. If it passes, the substitute
- * client's latest consensus state is copied over to the subject client. The proposal
- * handler may fail if the subject and the substitute do not match in client and
- * chain parameters (with exception to latest height, frozen height, and chain-id).
- */
-export interface ClientUpdateProposalSDKType {
-  $typeUrl?: string;
-  title: string;
-  description: string;
-  subject_client_id: string;
-  substitute_client_id: string;
-}
-/**
- * UpgradeProposal is a gov Content type for initiating an IBC breaking
- * upgrade.
- */
-export interface UpgradeProposal {
-  $typeUrl?: string;
-  title: string;
-  description: string;
-  plan: Plan;
-  /**
-   * An UpgradedClientState must be provided to perform an IBC breaking upgrade.
-   * This will make the chain commit to the correct upgraded (self) client state
-   * before the upgrade occurs, so that connecting chains can verify that the
-   * new upgraded client is valid by verifying a proof on the previous version
-   * of the chain. This will allow IBC connections to persist smoothly across
-   * planned chain upgrades
-   */
-  upgradedClientState: Any;
-}
-export interface UpgradeProposalProtoMsg {
-  typeUrl: "/ibc.core.client.v1.UpgradeProposal";
-  value: Uint8Array;
-}
-/**
- * UpgradeProposal is a gov Content type for initiating an IBC breaking
- * upgrade.
- */
-export interface UpgradeProposalAmino {
-  title: string;
-  description: string;
-  plan?: PlanAmino;
-  /**
-   * An UpgradedClientState must be provided to perform an IBC breaking upgrade.
-   * This will make the chain commit to the correct upgraded (self) client state
-   * before the upgrade occurs, so that connecting chains can verify that the
-   * new upgraded client is valid by verifying a proof on the previous version
-   * of the chain. This will allow IBC connections to persist smoothly across
-   * planned chain upgrades
-   */
-  upgraded_client_state?: AnyAmino;
-}
-export interface UpgradeProposalAminoMsg {
-  type: "cosmos-sdk/UpgradeProposal";
-  value: UpgradeProposalAmino;
-}
-/**
- * UpgradeProposal is a gov Content type for initiating an IBC breaking
- * upgrade.
- */
-export interface UpgradeProposalSDKType {
-  $typeUrl?: string;
-  title: string;
-  description: string;
-  plan: PlanSDKType;
-  upgraded_client_state: AnySDKType;
 }
 /**
  * Height is a monotonically increasing data type
@@ -261,9 +145,9 @@ export interface HeightProtoMsg {
  */
 export interface HeightAmino {
   /** the revision that the client is currently on */
-  revision_number: string;
+  revision_number?: string;
   /** the height within the given revision */
-  revision_height: string;
+  revision_height?: string;
 }
 export interface HeightAminoMsg {
   type: "cosmos-sdk/Height";
@@ -305,7 +189,7 @@ export interface ParamsAmino {
    * and interacted with. If a client type is removed from the allowed clients list, usage
    * of this client will be disabled until it is added again to the list.
    */
-  allowed_clients: string[];
+  allowed_clients?: string[];
 }
 export interface ParamsAminoMsg {
   type: "cosmos-sdk/Params";
@@ -315,10 +199,144 @@ export interface ParamsAminoMsg {
 export interface ParamsSDKType {
   allowed_clients: string[];
 }
+/**
+ * ClientUpdateProposal is a legacy governance proposal. If it passes, the substitute
+ * client's latest consensus state is copied over to the subject client. The proposal
+ * handler may fail if the subject and the substitute do not match in client and
+ * chain parameters (with exception to latest height, frozen height, and chain-id).
+ * 
+ * Deprecated: Please use MsgRecoverClient in favour of this message type.
+ */
+/** @deprecated */
+export interface ClientUpdateProposal {
+  $typeUrl?: "/ibc.core.client.v1.ClientUpdateProposal";
+  /** the title of the update proposal */
+  title: string;
+  /** the description of the proposal */
+  description: string;
+  /** the client identifier for the client to be updated if the proposal passes */
+  subjectClientId: string;
+  /**
+   * the substitute client identifier for the client standing in for the subject
+   * client
+   */
+  substituteClientId: string;
+}
+export interface ClientUpdateProposalProtoMsg {
+  typeUrl: "/ibc.core.client.v1.ClientUpdateProposal";
+  value: Uint8Array;
+}
+/**
+ * ClientUpdateProposal is a legacy governance proposal. If it passes, the substitute
+ * client's latest consensus state is copied over to the subject client. The proposal
+ * handler may fail if the subject and the substitute do not match in client and
+ * chain parameters (with exception to latest height, frozen height, and chain-id).
+ * 
+ * Deprecated: Please use MsgRecoverClient in favour of this message type.
+ */
+/** @deprecated */
+export interface ClientUpdateProposalAmino {
+  /** the title of the update proposal */
+  title?: string;
+  /** the description of the proposal */
+  description?: string;
+  /** the client identifier for the client to be updated if the proposal passes */
+  subject_client_id?: string;
+  /**
+   * the substitute client identifier for the client standing in for the subject
+   * client
+   */
+  substitute_client_id?: string;
+}
+export interface ClientUpdateProposalAminoMsg {
+  type: "cosmos-sdk/ClientUpdateProposal";
+  value: ClientUpdateProposalAmino;
+}
+/**
+ * ClientUpdateProposal is a legacy governance proposal. If it passes, the substitute
+ * client's latest consensus state is copied over to the subject client. The proposal
+ * handler may fail if the subject and the substitute do not match in client and
+ * chain parameters (with exception to latest height, frozen height, and chain-id).
+ * 
+ * Deprecated: Please use MsgRecoverClient in favour of this message type.
+ */
+/** @deprecated */
+export interface ClientUpdateProposalSDKType {
+  $typeUrl?: "/ibc.core.client.v1.ClientUpdateProposal";
+  title: string;
+  description: string;
+  subject_client_id: string;
+  substitute_client_id: string;
+}
+/**
+ * UpgradeProposal is a gov Content type for initiating an IBC breaking
+ * upgrade.
+ * 
+ * Deprecated: Please use MsgIBCSoftwareUpgrade in favour of this message type.
+ */
+/** @deprecated */
+export interface UpgradeProposal {
+  $typeUrl?: "/ibc.core.client.v1.UpgradeProposal";
+  title: string;
+  description: string;
+  plan: Plan;
+  /**
+   * An UpgradedClientState must be provided to perform an IBC breaking upgrade.
+   * This will make the chain commit to the correct upgraded (self) client state
+   * before the upgrade occurs, so that connecting chains can verify that the
+   * new upgraded client is valid by verifying a proof on the previous version
+   * of the chain. This will allow IBC connections to persist smoothly across
+   * planned chain upgrades
+   */
+  upgradedClientState?: Any;
+}
+export interface UpgradeProposalProtoMsg {
+  typeUrl: "/ibc.core.client.v1.UpgradeProposal";
+  value: Uint8Array;
+}
+/**
+ * UpgradeProposal is a gov Content type for initiating an IBC breaking
+ * upgrade.
+ * 
+ * Deprecated: Please use MsgIBCSoftwareUpgrade in favour of this message type.
+ */
+/** @deprecated */
+export interface UpgradeProposalAmino {
+  title?: string;
+  description?: string;
+  plan?: PlanAmino;
+  /**
+   * An UpgradedClientState must be provided to perform an IBC breaking upgrade.
+   * This will make the chain commit to the correct upgraded (self) client state
+   * before the upgrade occurs, so that connecting chains can verify that the
+   * new upgraded client is valid by verifying a proof on the previous version
+   * of the chain. This will allow IBC connections to persist smoothly across
+   * planned chain upgrades
+   */
+  upgraded_client_state?: AnyAmino;
+}
+export interface UpgradeProposalAminoMsg {
+  type: "cosmos-sdk/UpgradeProposal";
+  value: UpgradeProposalAmino;
+}
+/**
+ * UpgradeProposal is a gov Content type for initiating an IBC breaking
+ * upgrade.
+ * 
+ * Deprecated: Please use MsgIBCSoftwareUpgrade in favour of this message type.
+ */
+/** @deprecated */
+export interface UpgradeProposalSDKType {
+  $typeUrl?: "/ibc.core.client.v1.UpgradeProposal";
+  title: string;
+  description: string;
+  plan: PlanSDKType;
+  upgraded_client_state?: AnySDKType;
+}
 function createBaseIdentifiedClientState(): IdentifiedClientState {
   return {
     clientId: "",
-    clientState: Any.fromPartial({})
+    clientState: undefined
   };
 }
 export const IdentifiedClientState = {
@@ -359,10 +377,14 @@ export const IdentifiedClientState = {
     return message;
   },
   fromAmino(object: IdentifiedClientStateAmino): IdentifiedClientState {
-    return {
-      clientId: object.client_id,
-      clientState: object?.client_state ? Any.fromAmino(object.client_state) : undefined
-    };
+    const message = createBaseIdentifiedClientState();
+    if (object.client_id !== undefined && object.client_id !== null) {
+      message.clientId = object.client_id;
+    }
+    if (object.client_state !== undefined && object.client_state !== null) {
+      message.clientState = Any.fromAmino(object.client_state);
+    }
+    return message;
   },
   toAmino(message: IdentifiedClientState): IdentifiedClientStateAmino {
     const obj: any = {};
@@ -395,7 +417,7 @@ export const IdentifiedClientState = {
 function createBaseConsensusStateWithHeight(): ConsensusStateWithHeight {
   return {
     height: Height.fromPartial({}),
-    consensusState: Any.fromPartial({})
+    consensusState: undefined
   };
 }
 export const ConsensusStateWithHeight = {
@@ -436,10 +458,14 @@ export const ConsensusStateWithHeight = {
     return message;
   },
   fromAmino(object: ConsensusStateWithHeightAmino): ConsensusStateWithHeight {
-    return {
-      height: object?.height ? Height.fromAmino(object.height) : undefined,
-      consensusState: object?.consensus_state ? Any.fromAmino(object.consensus_state) : undefined
-    };
+    const message = createBaseConsensusStateWithHeight();
+    if (object.height !== undefined && object.height !== null) {
+      message.height = Height.fromAmino(object.height);
+    }
+    if (object.consensus_state !== undefined && object.consensus_state !== null) {
+      message.consensusState = Any.fromAmino(object.consensus_state);
+    }
+    return message;
   },
   toAmino(message: ConsensusStateWithHeight): ConsensusStateWithHeightAmino {
     const obj: any = {};
@@ -513,10 +539,12 @@ export const ClientConsensusStates = {
     return message;
   },
   fromAmino(object: ClientConsensusStatesAmino): ClientConsensusStates {
-    return {
-      clientId: object.client_id,
-      consensusStates: Array.isArray(object?.consensus_states) ? object.consensus_states.map((e: any) => ConsensusStateWithHeight.fromAmino(e)) : []
-    };
+    const message = createBaseClientConsensusStates();
+    if (object.client_id !== undefined && object.client_id !== null) {
+      message.clientId = object.client_id;
+    }
+    message.consensusStates = object.consensus_states?.map(e => ConsensusStateWithHeight.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: ClientConsensusStates): ClientConsensusStatesAmino {
     const obj: any = {};
@@ -547,202 +575,6 @@ export const ClientConsensusStates = {
     return {
       typeUrl: "/ibc.core.client.v1.ClientConsensusStates",
       value: ClientConsensusStates.encode(message).finish()
-    };
-  }
-};
-function createBaseClientUpdateProposal(): ClientUpdateProposal {
-  return {
-    $typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
-    title: "",
-    description: "",
-    subjectClientId: "",
-    substituteClientId: ""
-  };
-}
-export const ClientUpdateProposal = {
-  typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
-  encode(message: ClientUpdateProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.title !== "") {
-      writer.uint32(10).string(message.title);
-    }
-    if (message.description !== "") {
-      writer.uint32(18).string(message.description);
-    }
-    if (message.subjectClientId !== "") {
-      writer.uint32(26).string(message.subjectClientId);
-    }
-    if (message.substituteClientId !== "") {
-      writer.uint32(34).string(message.substituteClientId);
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): ClientUpdateProposal {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseClientUpdateProposal();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.title = reader.string();
-          break;
-        case 2:
-          message.description = reader.string();
-          break;
-        case 3:
-          message.subjectClientId = reader.string();
-          break;
-        case 4:
-          message.substituteClientId = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<ClientUpdateProposal>): ClientUpdateProposal {
-    const message = createBaseClientUpdateProposal();
-    message.title = object.title ?? "";
-    message.description = object.description ?? "";
-    message.subjectClientId = object.subjectClientId ?? "";
-    message.substituteClientId = object.substituteClientId ?? "";
-    return message;
-  },
-  fromAmino(object: ClientUpdateProposalAmino): ClientUpdateProposal {
-    return {
-      title: object.title,
-      description: object.description,
-      subjectClientId: object.subject_client_id,
-      substituteClientId: object.substitute_client_id
-    };
-  },
-  toAmino(message: ClientUpdateProposal): ClientUpdateProposalAmino {
-    const obj: any = {};
-    obj.title = message.title;
-    obj.description = message.description;
-    obj.subject_client_id = message.subjectClientId;
-    obj.substitute_client_id = message.substituteClientId;
-    return obj;
-  },
-  fromAminoMsg(object: ClientUpdateProposalAminoMsg): ClientUpdateProposal {
-    return ClientUpdateProposal.fromAmino(object.value);
-  },
-  toAminoMsg(message: ClientUpdateProposal): ClientUpdateProposalAminoMsg {
-    return {
-      type: "cosmos-sdk/ClientUpdateProposal",
-      value: ClientUpdateProposal.toAmino(message)
-    };
-  },
-  fromProtoMsg(message: ClientUpdateProposalProtoMsg): ClientUpdateProposal {
-    return ClientUpdateProposal.decode(message.value);
-  },
-  toProto(message: ClientUpdateProposal): Uint8Array {
-    return ClientUpdateProposal.encode(message).finish();
-  },
-  toProtoMsg(message: ClientUpdateProposal): ClientUpdateProposalProtoMsg {
-    return {
-      typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
-      value: ClientUpdateProposal.encode(message).finish()
-    };
-  }
-};
-function createBaseUpgradeProposal(): UpgradeProposal {
-  return {
-    $typeUrl: "/ibc.core.client.v1.UpgradeProposal",
-    title: "",
-    description: "",
-    plan: Plan.fromPartial({}),
-    upgradedClientState: Any.fromPartial({})
-  };
-}
-export const UpgradeProposal = {
-  typeUrl: "/ibc.core.client.v1.UpgradeProposal",
-  encode(message: UpgradeProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.title !== "") {
-      writer.uint32(10).string(message.title);
-    }
-    if (message.description !== "") {
-      writer.uint32(18).string(message.description);
-    }
-    if (message.plan !== undefined) {
-      Plan.encode(message.plan, writer.uint32(26).fork()).ldelim();
-    }
-    if (message.upgradedClientState !== undefined) {
-      Any.encode(message.upgradedClientState, writer.uint32(34).fork()).ldelim();
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): UpgradeProposal {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUpgradeProposal();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.title = reader.string();
-          break;
-        case 2:
-          message.description = reader.string();
-          break;
-        case 3:
-          message.plan = Plan.decode(reader, reader.uint32());
-          break;
-        case 4:
-          message.upgradedClientState = Any.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<UpgradeProposal>): UpgradeProposal {
-    const message = createBaseUpgradeProposal();
-    message.title = object.title ?? "";
-    message.description = object.description ?? "";
-    message.plan = object.plan !== undefined && object.plan !== null ? Plan.fromPartial(object.plan) : undefined;
-    message.upgradedClientState = object.upgradedClientState !== undefined && object.upgradedClientState !== null ? Any.fromPartial(object.upgradedClientState) : undefined;
-    return message;
-  },
-  fromAmino(object: UpgradeProposalAmino): UpgradeProposal {
-    return {
-      title: object.title,
-      description: object.description,
-      plan: object?.plan ? Plan.fromAmino(object.plan) : undefined,
-      upgradedClientState: object?.upgraded_client_state ? Any.fromAmino(object.upgraded_client_state) : undefined
-    };
-  },
-  toAmino(message: UpgradeProposal): UpgradeProposalAmino {
-    const obj: any = {};
-    obj.title = message.title;
-    obj.description = message.description;
-    obj.plan = message.plan ? Plan.toAmino(message.plan) : undefined;
-    obj.upgraded_client_state = message.upgradedClientState ? Any.toAmino(message.upgradedClientState) : undefined;
-    return obj;
-  },
-  fromAminoMsg(object: UpgradeProposalAminoMsg): UpgradeProposal {
-    return UpgradeProposal.fromAmino(object.value);
-  },
-  toAminoMsg(message: UpgradeProposal): UpgradeProposalAminoMsg {
-    return {
-      type: "cosmos-sdk/UpgradeProposal",
-      value: UpgradeProposal.toAmino(message)
-    };
-  },
-  fromProtoMsg(message: UpgradeProposalProtoMsg): UpgradeProposal {
-    return UpgradeProposal.decode(message.value);
-  },
-  toProto(message: UpgradeProposal): Uint8Array {
-    return UpgradeProposal.encode(message).finish();
-  },
-  toProtoMsg(message: UpgradeProposal): UpgradeProposalProtoMsg {
-    return {
-      typeUrl: "/ibc.core.client.v1.UpgradeProposal",
-      value: UpgradeProposal.encode(message).finish()
     };
   }
 };
@@ -859,9 +691,9 @@ export const Params = {
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
-    return {
-      allowedClients: Array.isArray(object?.allowed_clients) ? object.allowed_clients.map((e: any) => e) : []
-    };
+    const message = createBaseParams();
+    message.allowedClients = object.allowed_clients?.map(e => e) || [];
+    return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
@@ -891,6 +723,218 @@ export const Params = {
     return {
       typeUrl: "/ibc.core.client.v1.Params",
       value: Params.encode(message).finish()
+    };
+  }
+};
+function createBaseClientUpdateProposal(): ClientUpdateProposal {
+  return {
+    $typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
+    title: "",
+    description: "",
+    subjectClientId: "",
+    substituteClientId: ""
+  };
+}
+export const ClientUpdateProposal = {
+  typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
+  encode(message: ClientUpdateProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.title !== "") {
+      writer.uint32(10).string(message.title);
+    }
+    if (message.description !== "") {
+      writer.uint32(18).string(message.description);
+    }
+    if (message.subjectClientId !== "") {
+      writer.uint32(26).string(message.subjectClientId);
+    }
+    if (message.substituteClientId !== "") {
+      writer.uint32(34).string(message.substituteClientId);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): ClientUpdateProposal {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseClientUpdateProposal();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.title = reader.string();
+          break;
+        case 2:
+          message.description = reader.string();
+          break;
+        case 3:
+          message.subjectClientId = reader.string();
+          break;
+        case 4:
+          message.substituteClientId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<ClientUpdateProposal>): ClientUpdateProposal {
+    const message = createBaseClientUpdateProposal();
+    message.title = object.title ?? "";
+    message.description = object.description ?? "";
+    message.subjectClientId = object.subjectClientId ?? "";
+    message.substituteClientId = object.substituteClientId ?? "";
+    return message;
+  },
+  fromAmino(object: ClientUpdateProposalAmino): ClientUpdateProposal {
+    const message = createBaseClientUpdateProposal();
+    if (object.title !== undefined && object.title !== null) {
+      message.title = object.title;
+    }
+    if (object.description !== undefined && object.description !== null) {
+      message.description = object.description;
+    }
+    if (object.subject_client_id !== undefined && object.subject_client_id !== null) {
+      message.subjectClientId = object.subject_client_id;
+    }
+    if (object.substitute_client_id !== undefined && object.substitute_client_id !== null) {
+      message.substituteClientId = object.substitute_client_id;
+    }
+    return message;
+  },
+  toAmino(message: ClientUpdateProposal): ClientUpdateProposalAmino {
+    const obj: any = {};
+    obj.title = message.title;
+    obj.description = message.description;
+    obj.subject_client_id = message.subjectClientId;
+    obj.substitute_client_id = message.substituteClientId;
+    return obj;
+  },
+  fromAminoMsg(object: ClientUpdateProposalAminoMsg): ClientUpdateProposal {
+    return ClientUpdateProposal.fromAmino(object.value);
+  },
+  toAminoMsg(message: ClientUpdateProposal): ClientUpdateProposalAminoMsg {
+    return {
+      type: "cosmos-sdk/ClientUpdateProposal",
+      value: ClientUpdateProposal.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: ClientUpdateProposalProtoMsg): ClientUpdateProposal {
+    return ClientUpdateProposal.decode(message.value);
+  },
+  toProto(message: ClientUpdateProposal): Uint8Array {
+    return ClientUpdateProposal.encode(message).finish();
+  },
+  toProtoMsg(message: ClientUpdateProposal): ClientUpdateProposalProtoMsg {
+    return {
+      typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
+      value: ClientUpdateProposal.encode(message).finish()
+    };
+  }
+};
+function createBaseUpgradeProposal(): UpgradeProposal {
+  return {
+    $typeUrl: "/ibc.core.client.v1.UpgradeProposal",
+    title: "",
+    description: "",
+    plan: Plan.fromPartial({}),
+    upgradedClientState: undefined
+  };
+}
+export const UpgradeProposal = {
+  typeUrl: "/ibc.core.client.v1.UpgradeProposal",
+  encode(message: UpgradeProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.title !== "") {
+      writer.uint32(10).string(message.title);
+    }
+    if (message.description !== "") {
+      writer.uint32(18).string(message.description);
+    }
+    if (message.plan !== undefined) {
+      Plan.encode(message.plan, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.upgradedClientState !== undefined) {
+      Any.encode(message.upgradedClientState, writer.uint32(34).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): UpgradeProposal {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUpgradeProposal();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.title = reader.string();
+          break;
+        case 2:
+          message.description = reader.string();
+          break;
+        case 3:
+          message.plan = Plan.decode(reader, reader.uint32());
+          break;
+        case 4:
+          message.upgradedClientState = Any.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<UpgradeProposal>): UpgradeProposal {
+    const message = createBaseUpgradeProposal();
+    message.title = object.title ?? "";
+    message.description = object.description ?? "";
+    message.plan = object.plan !== undefined && object.plan !== null ? Plan.fromPartial(object.plan) : undefined;
+    message.upgradedClientState = object.upgradedClientState !== undefined && object.upgradedClientState !== null ? Any.fromPartial(object.upgradedClientState) : undefined;
+    return message;
+  },
+  fromAmino(object: UpgradeProposalAmino): UpgradeProposal {
+    const message = createBaseUpgradeProposal();
+    if (object.title !== undefined && object.title !== null) {
+      message.title = object.title;
+    }
+    if (object.description !== undefined && object.description !== null) {
+      message.description = object.description;
+    }
+    if (object.plan !== undefined && object.plan !== null) {
+      message.plan = Plan.fromAmino(object.plan);
+    }
+    if (object.upgraded_client_state !== undefined && object.upgraded_client_state !== null) {
+      message.upgradedClientState = Any.fromAmino(object.upgraded_client_state);
+    }
+    return message;
+  },
+  toAmino(message: UpgradeProposal): UpgradeProposalAmino {
+    const obj: any = {};
+    obj.title = message.title;
+    obj.description = message.description;
+    obj.plan = message.plan ? Plan.toAmino(message.plan) : undefined;
+    obj.upgraded_client_state = message.upgradedClientState ? Any.toAmino(message.upgradedClientState) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: UpgradeProposalAminoMsg): UpgradeProposal {
+    return UpgradeProposal.fromAmino(object.value);
+  },
+  toAminoMsg(message: UpgradeProposal): UpgradeProposalAminoMsg {
+    return {
+      type: "cosmos-sdk/UpgradeProposal",
+      value: UpgradeProposal.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: UpgradeProposalProtoMsg): UpgradeProposal {
+    return UpgradeProposal.decode(message.value);
+  },
+  toProto(message: UpgradeProposal): Uint8Array {
+    return UpgradeProposal.encode(message).finish();
+  },
+  toProtoMsg(message: UpgradeProposal): UpgradeProposalProtoMsg {
+    return {
+      typeUrl: "/ibc.core.client.v1.UpgradeProposal",
+      value: UpgradeProposal.encode(message).finish()
     };
   }
 };

@@ -3,7 +3,7 @@ import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient, ProtobufRpcClient } from "@cosmjs/stargate";
 import { ReactQueryParams } from "../../../react-query";
 import { useQuery } from "@tanstack/react-query";
-import { QueryPoolsRequest, QueryPoolsResponse, QueryNumPoolsRequest, QueryNumPoolsResponse, QueryTotalLiquidityRequest, QueryTotalLiquidityResponse, QueryPoolsWithFilterRequest, QueryPoolsWithFilterResponse, QueryPoolRequest, QueryPoolResponse, QueryPoolTypeRequest, QueryPoolTypeResponse, QueryCalcJoinPoolNoSwapSharesRequest, QueryCalcJoinPoolNoSwapSharesResponse, QueryCalcJoinPoolSharesRequest, QueryCalcJoinPoolSharesResponse, QueryCalcExitPoolCoinsFromSharesRequest, QueryCalcExitPoolCoinsFromSharesResponse, QueryPoolParamsRequest, QueryPoolParamsResponse, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponse, QueryTotalSharesRequest, QueryTotalSharesResponse, QuerySpotPriceRequest, QuerySpotPriceResponse, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponse, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponse, QueryConcentratedPoolIdLinkFromCFMMRequest, QueryConcentratedPoolIdLinkFromCFMMResponse } from "./query";
+import { QueryPoolsRequest, QueryPoolsResponse, QueryNumPoolsRequest, QueryNumPoolsResponse, QueryTotalLiquidityRequest, QueryTotalLiquidityResponse, QueryPoolsWithFilterRequest, QueryPoolsWithFilterResponse, QueryPoolRequest, QueryPoolResponse, QueryPoolTypeRequest, QueryPoolTypeResponse, QueryCalcJoinPoolNoSwapSharesRequest, QueryCalcJoinPoolNoSwapSharesResponse, QueryCalcJoinPoolSharesRequest, QueryCalcJoinPoolSharesResponse, QueryCalcExitPoolCoinsFromSharesRequest, QueryCalcExitPoolCoinsFromSharesResponse, QueryPoolParamsRequest, QueryPoolParamsResponse, QueryTotalPoolLiquidityRequest, QueryTotalPoolLiquidityResponse, QueryTotalSharesRequest, QueryTotalSharesResponse, QuerySpotPriceRequest, QuerySpotPriceResponse, QuerySwapExactAmountInRequest, QuerySwapExactAmountInResponse, QuerySwapExactAmountOutRequest, QuerySwapExactAmountOutResponse, QueryConcentratedPoolIdLinkFromCFMMRequest, QueryConcentratedPoolIdLinkFromCFMMResponse, QueryCFMMConcentratedPoolLinksRequest, QueryCFMMConcentratedPoolLinksResponse } from "./query";
 export interface Query {
   pools(request?: QueryPoolsRequest): Promise<QueryPoolsResponse>;
   /** Deprecated: please use the alternative in x/poolmanager */
@@ -47,6 +47,11 @@ export interface Query {
    * pool that is linked with the given CFMM pool.
    */
   concentratedPoolIdLinkFromCFMM(request: QueryConcentratedPoolIdLinkFromCFMMRequest): Promise<QueryConcentratedPoolIdLinkFromCFMMResponse>;
+  /**
+   * CFMMConcentratedPoolLinks returns migration links between CFMM and
+   * Concentrated pools.
+   */
+  cFMMConcentratedPoolLinks(request?: QueryCFMMConcentratedPoolLinksRequest): Promise<QueryCFMMConcentratedPoolLinksResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -68,6 +73,7 @@ export class QueryClientImpl implements Query {
     this.estimateSwapExactAmountIn = this.estimateSwapExactAmountIn.bind(this);
     this.estimateSwapExactAmountOut = this.estimateSwapExactAmountOut.bind(this);
     this.concentratedPoolIdLinkFromCFMM = this.concentratedPoolIdLinkFromCFMM.bind(this);
+    this.cFMMConcentratedPoolLinks = this.cFMMConcentratedPoolLinks.bind(this);
   }
   pools(request: QueryPoolsRequest = {
     pagination: undefined
@@ -151,6 +157,11 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("osmosis.gamm.v1beta1.Query", "ConcentratedPoolIdLinkFromCFMM", data);
     return promise.then(data => QueryConcentratedPoolIdLinkFromCFMMResponse.decode(new BinaryReader(data)));
   }
+  cFMMConcentratedPoolLinks(request: QueryCFMMConcentratedPoolLinksRequest = {}): Promise<QueryCFMMConcentratedPoolLinksResponse> {
+    const data = QueryCFMMConcentratedPoolLinksRequest.encode(request).finish();
+    const promise = this.rpc.request("osmosis.gamm.v1beta1.Query", "CFMMConcentratedPoolLinks", data);
+    return promise.then(data => QueryCFMMConcentratedPoolLinksResponse.decode(new BinaryReader(data)));
+  }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -203,6 +214,9 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     concentratedPoolIdLinkFromCFMM(request: QueryConcentratedPoolIdLinkFromCFMMRequest): Promise<QueryConcentratedPoolIdLinkFromCFMMResponse> {
       return queryService.concentratedPoolIdLinkFromCFMM(request);
+    },
+    cFMMConcentratedPoolLinks(request?: QueryCFMMConcentratedPoolLinksRequest): Promise<QueryCFMMConcentratedPoolLinksResponse> {
+      return queryService.cFMMConcentratedPoolLinks(request);
     }
   };
 };
@@ -253,6 +267,9 @@ export interface UseEstimateSwapExactAmountOutQuery<TData> extends ReactQueryPar
 }
 export interface UseConcentratedPoolIdLinkFromCFMMQuery<TData> extends ReactQueryParams<QueryConcentratedPoolIdLinkFromCFMMResponse, TData> {
   request: QueryConcentratedPoolIdLinkFromCFMMRequest;
+}
+export interface UseCFMMConcentratedPoolLinksQuery<TData> extends ReactQueryParams<QueryCFMMConcentratedPoolLinksResponse, TData> {
+  request?: QueryCFMMConcentratedPoolLinksRequest;
 }
 const _queryClients: WeakMap<ProtobufRpcClient, QueryClientImpl> = new WeakMap();
 const getQueryService = (rpc: ProtobufRpcClient | undefined): QueryClientImpl | undefined => {
@@ -410,6 +427,15 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
       return queryService.concentratedPoolIdLinkFromCFMM(request);
     }, options);
   };
+  const useCFMMConcentratedPoolLinks = <TData = QueryCFMMConcentratedPoolLinksResponse,>({
+    request,
+    options
+  }: UseCFMMConcentratedPoolLinksQuery<TData>) => {
+    return useQuery<QueryCFMMConcentratedPoolLinksResponse, Error, TData>(["cFMMConcentratedPoolLinksQuery", request], () => {
+      if (!queryService) throw new Error("Query Service not initialized");
+      return queryService.cFMMConcentratedPoolLinks(request);
+    }, options);
+  };
   return {
     usePools,
     /** Deprecated: please use the alternative in x/poolmanager */useNumPools,
@@ -447,6 +473,11 @@ export const createRpcQueryHooks = (rpc: ProtobufRpcClient | undefined) => {
      * ConcentratedPoolIdLinkFromBalancer returns the pool id of the concentrated
      * pool that is linked with the given CFMM pool.
      */
-    useConcentratedPoolIdLinkFromCFMM
+    useConcentratedPoolIdLinkFromCFMM,
+    /**
+     * CFMMConcentratedPoolLinks returns migration links between CFMM and
+     * Concentrated pools.
+     */
+    useCFMMConcentratedPoolLinks
   };
 };

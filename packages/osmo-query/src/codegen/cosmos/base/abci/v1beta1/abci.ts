@@ -1,6 +1,7 @@
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Event, EventAmino, EventSDKType } from "../../../../tendermint/abci/types";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
 /**
  * TxResponse defines a structure containing relevant tx data and metadata. The
  * tags are stringified and the log is JSON decoded.
@@ -30,7 +31,7 @@ export interface TxResponse {
   /** Amount of gas consumed by transaction. */
   gasUsed: bigint;
   /** The request transaction bytes. */
-  tx: Any;
+  tx?: Any;
   /**
    * Time of the previous block. For heights > 1, it's the weighted median of
    * the timestamps of the valid votes in the block.LastCommit. For height == 1,
@@ -40,7 +41,7 @@ export interface TxResponse {
   /**
    * Events defines all the events emitted by processing a transaction. Note,
    * these events include those emitted by processing all the messages and those
-   * emitted from the ante handler. Whereas Logs contains the events, with
+   * emitted from the ante. Whereas Logs contains the events, with
    * additional metadata, emitted only by processing the messages.
    * 
    * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
@@ -57,28 +58,28 @@ export interface TxResponseProtoMsg {
  */
 export interface TxResponseAmino {
   /** The block height */
-  height: string;
+  height?: string;
   /** The transaction hash. */
-  txhash: string;
+  txhash?: string;
   /** Namespace for the Code */
-  codespace: string;
+  codespace?: string;
   /** Response code. */
-  code: number;
+  code?: number;
   /** Result bytes, if any. */
-  data: string;
+  data?: string;
   /**
    * The output of the application's logger (raw string). May be
    * non-deterministic.
    */
-  raw_log: string;
+  raw_log?: string;
   /** The output of the application's logger (typed). May be non-deterministic. */
-  logs: ABCIMessageLogAmino[];
+  logs?: ABCIMessageLogAmino[];
   /** Additional information. May be non-deterministic. */
-  info: string;
+  info?: string;
   /** Amount of gas requested for transaction. */
-  gas_wanted: string;
+  gas_wanted?: string;
   /** Amount of gas consumed by transaction. */
-  gas_used: string;
+  gas_used?: string;
   /** The request transaction bytes. */
   tx?: AnyAmino;
   /**
@@ -86,16 +87,16 @@ export interface TxResponseAmino {
    * the timestamps of the valid votes in the block.LastCommit. For height == 1,
    * it's genesis time.
    */
-  timestamp: string;
+  timestamp?: string;
   /**
    * Events defines all the events emitted by processing a transaction. Note,
    * these events include those emitted by processing all the messages and those
-   * emitted from the ante handler. Whereas Logs contains the events, with
+   * emitted from the ante. Whereas Logs contains the events, with
    * additional metadata, emitted only by processing the messages.
    * 
    * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
    */
-  events: EventAmino[];
+  events?: EventAmino[];
 }
 export interface TxResponseAminoMsg {
   type: "cosmos-sdk/TxResponse";
@@ -116,7 +117,7 @@ export interface TxResponseSDKType {
   info: string;
   gas_wanted: bigint;
   gas_used: bigint;
-  tx: AnySDKType;
+  tx?: AnySDKType;
   timestamp: string;
   events: EventSDKType[];
 }
@@ -136,13 +137,13 @@ export interface ABCIMessageLogProtoMsg {
 }
 /** ABCIMessageLog defines a structure containing an indexed tx ABCI message log. */
 export interface ABCIMessageLogAmino {
-  msg_index: number;
-  log: string;
+  msg_index?: number;
+  log?: string;
   /**
    * Events contains a slice of Event objects that were emitted during some
    * execution.
    */
-  events: StringEventAmino[];
+  events?: StringEventAmino[];
 }
 export interface ABCIMessageLogAminoMsg {
   type: "cosmos-sdk/ABCIMessageLog";
@@ -171,8 +172,8 @@ export interface StringEventProtoMsg {
  * contain key/value pairs that are strings instead of raw bytes.
  */
 export interface StringEventAmino {
-  type: string;
-  attributes: AttributeAmino[];
+  type?: string;
+  attributes?: AttributeAmino[];
 }
 export interface StringEventAminoMsg {
   type: "cosmos-sdk/StringEvent";
@@ -203,8 +204,8 @@ export interface AttributeProtoMsg {
  * strings instead of raw bytes.
  */
 export interface AttributeAmino {
-  key: string;
-  value: string;
+  key?: string;
+  value?: string;
 }
 export interface AttributeAminoMsg {
   type: "cosmos-sdk/Attribute";
@@ -232,9 +233,9 @@ export interface GasInfoProtoMsg {
 /** GasInfo defines tx execution gas context. */
 export interface GasInfoAmino {
   /** GasWanted is the maximum units of work we allow this tx to perform. */
-  gas_wanted: string;
+  gas_wanted?: string;
   /** GasUsed is the amount of gas actually consumed. */
-  gas_used: string;
+  gas_used?: string;
 }
 export interface GasInfoAminoMsg {
   type: "cosmos-sdk/GasInfo";
@@ -250,7 +251,10 @@ export interface Result {
   /**
    * Data is any data returned from message or handler execution. It MUST be
    * length prefixed in order to separate data from multiple message executions.
+   * Deprecated. This field is still populated, but prefer msg_response instead
+   * because it also contains the Msg response typeURL.
    */
+  /** @deprecated */
   data: Uint8Array;
   /** Log contains the log information from message or handler execution. */
   log: string;
@@ -259,6 +263,12 @@ export interface Result {
    * or handler execution.
    */
   events: Event[];
+  /**
+   * msg_responses contains the Msg handler responses type packed in Anys.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+  msgResponses: Any[];
 }
 export interface ResultProtoMsg {
   typeUrl: "/cosmos.base.abci.v1beta1.Result";
@@ -269,15 +279,24 @@ export interface ResultAmino {
   /**
    * Data is any data returned from message or handler execution. It MUST be
    * length prefixed in order to separate data from multiple message executions.
+   * Deprecated. This field is still populated, but prefer msg_response instead
+   * because it also contains the Msg response typeURL.
    */
-  data: Uint8Array;
+  /** @deprecated */
+  data?: string;
   /** Log contains the log information from message or handler execution. */
-  log: string;
+  log?: string;
   /**
    * Events contains a slice of Event objects that were emitted during message
    * or handler execution.
    */
-  events: EventAmino[];
+  events?: EventAmino[];
+  /**
+   * msg_responses contains the Msg handler responses type packed in Anys.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+  msg_responses?: AnyAmino[];
 }
 export interface ResultAminoMsg {
   type: "cosmos-sdk/Result";
@@ -285,9 +304,11 @@ export interface ResultAminoMsg {
 }
 /** Result is the union of ResponseFormat and ResponseCheckTx. */
 export interface ResultSDKType {
+  /** @deprecated */
   data: Uint8Array;
   log: string;
   events: EventSDKType[];
+  msg_responses: AnySDKType[];
 }
 /**
  * SimulationResponse defines the response generated when a transaction is
@@ -295,7 +316,7 @@ export interface ResultSDKType {
  */
 export interface SimulationResponse {
   gasInfo: GasInfo;
-  result: Result;
+  result?: Result;
 }
 export interface SimulationResponseProtoMsg {
   typeUrl: "/cosmos.base.abci.v1beta1.SimulationResponse";
@@ -319,12 +340,13 @@ export interface SimulationResponseAminoMsg {
  */
 export interface SimulationResponseSDKType {
   gas_info: GasInfoSDKType;
-  result: ResultSDKType;
+  result?: ResultSDKType;
 }
 /**
  * MsgData defines the data returned in a Result object during message
  * execution.
  */
+/** @deprecated */
 export interface MsgData {
   msgType: string;
   data: Uint8Array;
@@ -337,9 +359,10 @@ export interface MsgDataProtoMsg {
  * MsgData defines the data returned in a Result object during message
  * execution.
  */
+/** @deprecated */
 export interface MsgDataAmino {
-  msg_type: string;
-  data: Uint8Array;
+  msg_type?: string;
+  data?: string;
 }
 export interface MsgDataAminoMsg {
   type: "cosmos-sdk/MsgData";
@@ -349,6 +372,7 @@ export interface MsgDataAminoMsg {
  * MsgData defines the data returned in a Result object during message
  * execution.
  */
+/** @deprecated */
 export interface MsgDataSDKType {
   msg_type: string;
   data: Uint8Array;
@@ -358,7 +382,15 @@ export interface MsgDataSDKType {
  * for each message.
  */
 export interface TxMsgData {
+  /** data field is deprecated and not populated. */
+  /** @deprecated */
   data: MsgData[];
+  /**
+   * msg_responses contains the Msg handler responses packed into Anys.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+  msgResponses: Any[];
 }
 export interface TxMsgDataProtoMsg {
   typeUrl: "/cosmos.base.abci.v1beta1.TxMsgData";
@@ -369,7 +401,15 @@ export interface TxMsgDataProtoMsg {
  * for each message.
  */
 export interface TxMsgDataAmino {
-  data: MsgDataAmino[];
+  /** data field is deprecated and not populated. */
+  /** @deprecated */
+  data?: MsgDataAmino[];
+  /**
+   * msg_responses contains the Msg handler responses packed into Anys.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+  msg_responses?: AnyAmino[];
 }
 export interface TxMsgDataAminoMsg {
   type: "cosmos-sdk/TxMsgData";
@@ -380,7 +420,9 @@ export interface TxMsgDataAminoMsg {
  * for each message.
  */
 export interface TxMsgDataSDKType {
+  /** @deprecated */
   data: MsgDataSDKType[];
+  msg_responses: AnySDKType[];
 }
 /** SearchTxsResult defines a structure for querying txs pageable */
 export interface SearchTxsResult {
@@ -404,17 +446,17 @@ export interface SearchTxsResultProtoMsg {
 /** SearchTxsResult defines a structure for querying txs pageable */
 export interface SearchTxsResultAmino {
   /** Count of all txs */
-  total_count: string;
+  total_count?: string;
   /** Count of txs in current page */
-  count: string;
+  count?: string;
   /** Index of current page, start from 1 */
-  page_number: string;
+  page_number?: string;
   /** Count of total pages */
-  page_total: string;
+  page_total?: string;
   /** Max count txs per page */
-  limit: string;
+  limit?: string;
   /** List of txs in current page */
-  txs: TxResponseAmino[];
+  txs?: TxResponseAmino[];
 }
 export interface SearchTxsResultAminoMsg {
   type: "cosmos-sdk/SearchTxsResult";
@@ -441,7 +483,7 @@ function createBaseTxResponse(): TxResponse {
     info: "",
     gasWanted: BigInt(0),
     gasUsed: BigInt(0),
-    tx: Any.fromPartial({}),
+    tx: undefined,
     timestamp: "",
     events: []
   };
@@ -561,21 +603,43 @@ export const TxResponse = {
     return message;
   },
   fromAmino(object: TxResponseAmino): TxResponse {
-    return {
-      height: BigInt(object.height),
-      txhash: object.txhash,
-      codespace: object.codespace,
-      code: object.code,
-      data: object.data,
-      rawLog: object.raw_log,
-      logs: Array.isArray(object?.logs) ? object.logs.map((e: any) => ABCIMessageLog.fromAmino(e)) : [],
-      info: object.info,
-      gasWanted: BigInt(object.gas_wanted),
-      gasUsed: BigInt(object.gas_used),
-      tx: object?.tx ? Any.fromAmino(object.tx) : undefined,
-      timestamp: object.timestamp,
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => Event.fromAmino(e)) : []
-    };
+    const message = createBaseTxResponse();
+    if (object.height !== undefined && object.height !== null) {
+      message.height = BigInt(object.height);
+    }
+    if (object.txhash !== undefined && object.txhash !== null) {
+      message.txhash = object.txhash;
+    }
+    if (object.codespace !== undefined && object.codespace !== null) {
+      message.codespace = object.codespace;
+    }
+    if (object.code !== undefined && object.code !== null) {
+      message.code = object.code;
+    }
+    if (object.data !== undefined && object.data !== null) {
+      message.data = object.data;
+    }
+    if (object.raw_log !== undefined && object.raw_log !== null) {
+      message.rawLog = object.raw_log;
+    }
+    message.logs = object.logs?.map(e => ABCIMessageLog.fromAmino(e)) || [];
+    if (object.info !== undefined && object.info !== null) {
+      message.info = object.info;
+    }
+    if (object.gas_wanted !== undefined && object.gas_wanted !== null) {
+      message.gasWanted = BigInt(object.gas_wanted);
+    }
+    if (object.gas_used !== undefined && object.gas_used !== null) {
+      message.gasUsed = BigInt(object.gas_used);
+    }
+    if (object.tx !== undefined && object.tx !== null) {
+      message.tx = Any.fromAmino(object.tx);
+    }
+    if (object.timestamp !== undefined && object.timestamp !== null) {
+      message.timestamp = object.timestamp;
+    }
+    message.events = object.events?.map(e => Event.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: TxResponse): TxResponseAmino {
     const obj: any = {};
@@ -676,11 +740,15 @@ export const ABCIMessageLog = {
     return message;
   },
   fromAmino(object: ABCIMessageLogAmino): ABCIMessageLog {
-    return {
-      msgIndex: object.msg_index,
-      log: object.log,
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => StringEvent.fromAmino(e)) : []
-    };
+    const message = createBaseABCIMessageLog();
+    if (object.msg_index !== undefined && object.msg_index !== null) {
+      message.msgIndex = object.msg_index;
+    }
+    if (object.log !== undefined && object.log !== null) {
+      message.log = object.log;
+    }
+    message.events = object.events?.map(e => StringEvent.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: ABCIMessageLog): ABCIMessageLogAmino {
     const obj: any = {};
@@ -759,10 +827,12 @@ export const StringEvent = {
     return message;
   },
   fromAmino(object: StringEventAmino): StringEvent {
-    return {
-      type: object.type,
-      attributes: Array.isArray(object?.attributes) ? object.attributes.map((e: any) => Attribute.fromAmino(e)) : []
-    };
+    const message = createBaseStringEvent();
+    if (object.type !== undefined && object.type !== null) {
+      message.type = object.type;
+    }
+    message.attributes = object.attributes?.map(e => Attribute.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: StringEvent): StringEventAmino {
     const obj: any = {};
@@ -840,10 +910,14 @@ export const Attribute = {
     return message;
   },
   fromAmino(object: AttributeAmino): Attribute {
-    return {
-      key: object.key,
-      value: object.value
-    };
+    const message = createBaseAttribute();
+    if (object.key !== undefined && object.key !== null) {
+      message.key = object.key;
+    }
+    if (object.value !== undefined && object.value !== null) {
+      message.value = object.value;
+    }
+    return message;
   },
   toAmino(message: Attribute): AttributeAmino {
     const obj: any = {};
@@ -917,10 +991,14 @@ export const GasInfo = {
     return message;
   },
   fromAmino(object: GasInfoAmino): GasInfo {
-    return {
-      gasWanted: BigInt(object.gas_wanted),
-      gasUsed: BigInt(object.gas_used)
-    };
+    const message = createBaseGasInfo();
+    if (object.gas_wanted !== undefined && object.gas_wanted !== null) {
+      message.gasWanted = BigInt(object.gas_wanted);
+    }
+    if (object.gas_used !== undefined && object.gas_used !== null) {
+      message.gasUsed = BigInt(object.gas_used);
+    }
+    return message;
   },
   toAmino(message: GasInfo): GasInfoAmino {
     const obj: any = {};
@@ -954,7 +1032,8 @@ function createBaseResult(): Result {
   return {
     data: new Uint8Array(),
     log: "",
-    events: []
+    events: [],
+    msgResponses: []
   };
 }
 export const Result = {
@@ -968,6 +1047,9 @@ export const Result = {
     }
     for (const v of message.events) {
       Event.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
+    for (const v of message.msgResponses) {
+      Any.encode(v!, writer.uint32(34).fork()).ldelim();
     }
     return writer;
   },
@@ -987,6 +1069,9 @@ export const Result = {
         case 3:
           message.events.push(Event.decode(reader, reader.uint32()));
           break;
+        case 4:
+          message.msgResponses.push(Any.decode(reader, reader.uint32()));
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -999,23 +1084,34 @@ export const Result = {
     message.data = object.data ?? new Uint8Array();
     message.log = object.log ?? "";
     message.events = object.events?.map(e => Event.fromPartial(e)) || [];
+    message.msgResponses = object.msgResponses?.map(e => Any.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: ResultAmino): Result {
-    return {
-      data: object.data,
-      log: object.log,
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => Event.fromAmino(e)) : []
-    };
+    const message = createBaseResult();
+    if (object.data !== undefined && object.data !== null) {
+      message.data = bytesFromBase64(object.data);
+    }
+    if (object.log !== undefined && object.log !== null) {
+      message.log = object.log;
+    }
+    message.events = object.events?.map(e => Event.fromAmino(e)) || [];
+    message.msgResponses = object.msg_responses?.map(e => Any.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: Result): ResultAmino {
     const obj: any = {};
-    obj.data = message.data;
+    obj.data = message.data ? base64FromBytes(message.data) : undefined;
     obj.log = message.log;
     if (message.events) {
       obj.events = message.events.map(e => e ? Event.toAmino(e) : undefined);
     } else {
       obj.events = [];
+    }
+    if (message.msgResponses) {
+      obj.msg_responses = message.msgResponses.map(e => e ? Any.toAmino(e) : undefined);
+    } else {
+      obj.msg_responses = [];
     }
     return obj;
   },
@@ -1044,7 +1140,7 @@ export const Result = {
 function createBaseSimulationResponse(): SimulationResponse {
   return {
     gasInfo: GasInfo.fromPartial({}),
-    result: Result.fromPartial({})
+    result: undefined
   };
 }
 export const SimulationResponse = {
@@ -1085,10 +1181,14 @@ export const SimulationResponse = {
     return message;
   },
   fromAmino(object: SimulationResponseAmino): SimulationResponse {
-    return {
-      gasInfo: object?.gas_info ? GasInfo.fromAmino(object.gas_info) : undefined,
-      result: object?.result ? Result.fromAmino(object.result) : undefined
-    };
+    const message = createBaseSimulationResponse();
+    if (object.gas_info !== undefined && object.gas_info !== null) {
+      message.gasInfo = GasInfo.fromAmino(object.gas_info);
+    }
+    if (object.result !== undefined && object.result !== null) {
+      message.result = Result.fromAmino(object.result);
+    }
+    return message;
   },
   toAmino(message: SimulationResponse): SimulationResponseAmino {
     const obj: any = {};
@@ -1162,15 +1262,19 @@ export const MsgData = {
     return message;
   },
   fromAmino(object: MsgDataAmino): MsgData {
-    return {
-      msgType: object.msg_type,
-      data: object.data
-    };
+    const message = createBaseMsgData();
+    if (object.msg_type !== undefined && object.msg_type !== null) {
+      message.msgType = object.msg_type;
+    }
+    if (object.data !== undefined && object.data !== null) {
+      message.data = bytesFromBase64(object.data);
+    }
+    return message;
   },
   toAmino(message: MsgData): MsgDataAmino {
     const obj: any = {};
     obj.msg_type = message.msgType;
-    obj.data = message.data;
+    obj.data = message.data ? base64FromBytes(message.data) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgDataAminoMsg): MsgData {
@@ -1197,7 +1301,8 @@ export const MsgData = {
 };
 function createBaseTxMsgData(): TxMsgData {
   return {
-    data: []
+    data: [],
+    msgResponses: []
   };
 }
 export const TxMsgData = {
@@ -1205,6 +1310,9 @@ export const TxMsgData = {
   encode(message: TxMsgData, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.data) {
       MsgData.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    for (const v of message.msgResponses) {
+      Any.encode(v!, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
@@ -1218,6 +1326,9 @@ export const TxMsgData = {
         case 1:
           message.data.push(MsgData.decode(reader, reader.uint32()));
           break;
+        case 2:
+          message.msgResponses.push(Any.decode(reader, reader.uint32()));
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1228,12 +1339,14 @@ export const TxMsgData = {
   fromPartial(object: Partial<TxMsgData>): TxMsgData {
     const message = createBaseTxMsgData();
     message.data = object.data?.map(e => MsgData.fromPartial(e)) || [];
+    message.msgResponses = object.msgResponses?.map(e => Any.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: TxMsgDataAmino): TxMsgData {
-    return {
-      data: Array.isArray(object?.data) ? object.data.map((e: any) => MsgData.fromAmino(e)) : []
-    };
+    const message = createBaseTxMsgData();
+    message.data = object.data?.map(e => MsgData.fromAmino(e)) || [];
+    message.msgResponses = object.msg_responses?.map(e => Any.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: TxMsgData): TxMsgDataAmino {
     const obj: any = {};
@@ -1241,6 +1354,11 @@ export const TxMsgData = {
       obj.data = message.data.map(e => e ? MsgData.toAmino(e) : undefined);
     } else {
       obj.data = [];
+    }
+    if (message.msgResponses) {
+      obj.msg_responses = message.msgResponses.map(e => e ? Any.toAmino(e) : undefined);
+    } else {
+      obj.msg_responses = [];
     }
     return obj;
   },
@@ -1342,14 +1460,24 @@ export const SearchTxsResult = {
     return message;
   },
   fromAmino(object: SearchTxsResultAmino): SearchTxsResult {
-    return {
-      totalCount: BigInt(object.total_count),
-      count: BigInt(object.count),
-      pageNumber: BigInt(object.page_number),
-      pageTotal: BigInt(object.page_total),
-      limit: BigInt(object.limit),
-      txs: Array.isArray(object?.txs) ? object.txs.map((e: any) => TxResponse.fromAmino(e)) : []
-    };
+    const message = createBaseSearchTxsResult();
+    if (object.total_count !== undefined && object.total_count !== null) {
+      message.totalCount = BigInt(object.total_count);
+    }
+    if (object.count !== undefined && object.count !== null) {
+      message.count = BigInt(object.count);
+    }
+    if (object.page_number !== undefined && object.page_number !== null) {
+      message.pageNumber = BigInt(object.page_number);
+    }
+    if (object.page_total !== undefined && object.page_total !== null) {
+      message.pageTotal = BigInt(object.page_total);
+    }
+    if (object.limit !== undefined && object.limit !== null) {
+      message.limit = BigInt(object.limit);
+    }
+    message.txs = object.txs?.map(e => TxResponse.fromAmino(e)) || [];
+    return message;
   },
   toAmino(message: SearchTxsResult): SearchTxsResultAmino {
     const obj: any = {};
