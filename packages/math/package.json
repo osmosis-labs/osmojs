@@ -1,6 +1,6 @@
 {
   "name": "@osmonauts/math",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "description": "Math calculations for Osmosis",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs/tree/master/packages/osmojs#readme",
@@ -89,6 +89,6 @@
     "@chain-registry/utils": "1.13.1",
     "bignumber.js": "9.1.1",
     "decimal.js-light": "^2.5.1",
-    "osmojs": "^16.6.0"
+    "osmojs": "^16.7.0"
   }
 }
