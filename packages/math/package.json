@@ -61,7 +61,7 @@
     "@babel/preset-typescript": "^7.22.5",
     "@babel/traverse": "7.22.8",
     "@babel/types": "7.22.5",
-    "@chain-registry/assets": "1.19.0",
+    "@chain-registry/assets": "1.26.1",
     "@types/jest": "^29.5.3",
     "@types/jest-in-case": "^1.0.6",
     "axios": "^0.27.2",
@@ -69,7 +69,7 @@
     "babel-jest": "29.6.1",
     "babel-watch": "^7.8.1",
     "case": "1.6.3",
-    "chain-registry": "1.18.0",
+    "chain-registry": "1.25.1",
     "cross-env": "^7.0.2",
     "eslint": "8.45.0",
     "eslint-config-prettier": "^8.8.0",
@@ -85,9 +85,9 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@chain-registry/types": "0.16.0",
-    "@chain-registry/utils": "1.13.1",
-    "bignumber.js": "9.1.1",
+    "@chain-registry/types": "0.17.1",
+    "@chain-registry/utils": "1.17.0",
+    "bignumber.js": "9.1.2",
     "decimal.js-light": "^2.5.1",
     "osmojs": "^16.7.0"
   }
