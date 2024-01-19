@@ -36,7 +36,7 @@
     "regenerator-runtime": "0.13.11",
     "rimraf": "3.0.2",
     "ts-jest": "29.1.1",
-    "typescript": "5.1.6"
+    "typescript": "5.3.3"
   },
   "workspaces": [
     "packages/*"
