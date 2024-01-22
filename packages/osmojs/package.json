@@ -1,12 +1,11 @@
 {
   "name": "osmojs",
-  "version": "16.8.3",
+  "version": "16.8.5",
   "description": "Typescript Protobuf Messages for Osmosis",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs/tree/master/packages/osmojs#readme",
   "license": "SEE LICENSE IN LICENSE",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
   "directories": {
     "lib": "src",
@@ -18,12 +17,9 @@
   ],
   "scripts": {
     "build:cjs": "yarn tsc -p tsconfig.json --outDir dist --module commonjs || true",
-    "build:mjs": "yarn tsc -p tsconfig.json --outDir mjs --module es2022 --declaration false || true",
-    "clean:mjs": "rimraf mjs",
     "clean:dist": "rimraf dist",
-    "clean": "npm run clean:mjs && npm run clean:dist",
-    "build:rename": "publish-scripts --cmd rename --srcDir mjs --outDir dist --findExt js --replaceExt mjs --no-rmDir",
-    "build": "npm run clean && npm run build:cjs && npm run build:mjs && npm run build:rename",
+    "clean": "npm run clean:dist",
+    "build": "npm run clean && npm run build:cjs",
     "codegen": "cross-env NODE_ENV=development babel-node scripts/codegen.js",
     "prepare": "npm run build",
     "lint": "eslint .",
