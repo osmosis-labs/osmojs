@@ -87,9 +87,7 @@ describe("AminoTypes", () => {
         // type: "cosmos-sdk/MsgVote",
         type: "cosmos-sdk/MsgVote",
         value: {
-          //TODO:: fix amino option to numbers in telescope.
-          //option: 4,
-          option: "VOTE_OPTION_NO_WITH_VETO",
+          option: 4,
           proposal_id: "5",
           voter: "cosmos1xy4yqngt0nlkdcenxymg8tenrghmek4nmqm28k",
         },
