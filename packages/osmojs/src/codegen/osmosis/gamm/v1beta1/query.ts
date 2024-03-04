@@ -1008,7 +1008,7 @@ export const QueryPoolsResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.pools.push((Any(reader) as Any));
+          message.pools.push((Any.decode(reader, reader.uint32()) as Any));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -2440,7 +2440,7 @@ export const QueryPoolsWithFilterResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.pools.push((Any(reader) as Any));
+          message.pools.push((Any.decode(reader, reader.uint32()) as Any));
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());

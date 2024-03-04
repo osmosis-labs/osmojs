@@ -407,7 +407,7 @@ export const AccessTypeParam = {
   },
   toAmino(message: AccessTypeParam): AccessTypeParamAmino {
     const obj: any = {};
-    obj.value = accessTypeToJSON(message.value);
+    obj.value = message.value;
     return obj;
   },
   fromAminoMsg(object: AccessTypeParamAminoMsg): AccessTypeParam {
@@ -485,7 +485,7 @@ export const AccessConfig = {
   },
   toAmino(message: AccessConfig): AccessConfigAmino {
     const obj: any = {};
-    obj.permission = accessTypeToJSON(message.permission);
+    obj.permission = message.permission;
     if (message.addresses) {
       obj.addresses = message.addresses.map(e => e);
     } else {
@@ -571,7 +571,7 @@ export const Params = {
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
     obj.code_upload_access = message.codeUploadAccess ? AccessConfig.toAmino(message.codeUploadAccess) : AccessConfig.fromPartial({});
-    obj.instantiate_default_permission = accessTypeToJSON(message.instantiateDefaultPermission);
+    obj.instantiate_default_permission = message.instantiateDefaultPermission;
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {
@@ -907,7 +907,7 @@ export const ContractCodeHistoryEntry = {
   },
   toAmino(message: ContractCodeHistoryEntry): ContractCodeHistoryEntryAmino {
     const obj: any = {};
-    obj.operation = contractCodeHistoryOperationTypeToJSON(message.operation);
+    obj.operation = message.operation;
     obj.code_id = message.codeId ? message.codeId.toString() : undefined;
     obj.updated = message.updated ? AbsoluteTxPosition.toAmino(message.updated) : undefined;
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;

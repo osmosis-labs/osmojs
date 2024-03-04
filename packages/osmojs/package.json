@@ -1,11 +1,12 @@
 {
   "name": "osmojs",
-  "version": "16.8.5",
+  "version": "16.8.6",
   "description": "Typescript Protobuf Messages for Osmosis",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs/tree/master/packages/osmojs#readme",
   "license": "SEE LICENSE IN LICENSE",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/index.js",
   "typings": "dist/index.d.ts",
   "directories": {
     "lib": "src",
@@ -16,10 +17,11 @@
     "!CHANGELOG.md"
   ],
   "scripts": {
-    "build:cjs": "yarn tsc -p tsconfig.json --outDir dist --module commonjs || true",
+    "build:cjs": "yarn tsc -p tsconfig.json --outDir dist/cjs --module commonjs --declaration false || true",
+    "build:mjs": "yarn tsc -p tsconfig.json --outDir dist --module es2022  || true",
     "clean:dist": "rimraf dist",
     "clean": "npm run clean:dist",
-    "build": "npm run clean && npm run build:cjs",
+    "build": "npm run clean && npm run build:mjs && npm run build:cjs",
     "codegen": "cross-env NODE_ENV=development babel-node scripts/codegen.js",
     "prepare": "npm run build",
     "lint": "eslint .",
@@ -71,7 +73,7 @@
     "@confio/relayer": "0.11.2",
     "@cosmjs/cosmwasm-stargate": "0.32.2",
     "@cosmjs/crypto": "0.32.2",
-    "@cosmology/telescope": "1.4.6",
+    "@cosmology/telescope": "1.4.12",
     "@protobufs/confio": "^0.0.6",
     "@protobufs/cosmos": "^0.1.0",
     "@protobufs/cosmos_proto": "^0.0.10",
