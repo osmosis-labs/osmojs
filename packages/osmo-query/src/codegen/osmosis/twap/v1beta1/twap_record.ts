@@ -1,6 +1,6 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../binary";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { toTimestamp, fromTimestamp, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { Decimal } from "@cosmjs/math";
 /**
  * A TWAP record should be indexed in state by pool_id, (asset pair), timestamp
@@ -107,6 +107,81 @@ export interface TwapRecordSDKType {
   p1_arithmetic_twap_accumulator: string;
   geometric_twap_accumulator: string;
   last_error_time: Date;
+}
+/**
+ * PruningState allows us to spread out the pruning of TWAP records over time,
+ * instead of pruning all at once at the end of the epoch.
+ */
+export interface PruningState {
+  /**
+   * is_pruning is true if the pruning process is ongoing.
+   * This tells the module to continue pruning the TWAP records
+   * at the EndBlock.
+   */
+  isPruning: boolean;
+  /**
+   * last_kept_time is the time of the last kept TWAP record.
+   * This is used to determine all TWAP records that are older than
+   * last_kept_time and should be pruned.
+   */
+  lastKeptTime: Date;
+  /** Deprecated: This field is deprecated. */
+  /** @deprecated */
+  lastKeySeen: Uint8Array;
+  /**
+   * last_seen_pool_id is the pool_id that we will begin pruning in the next
+   * block. This value starts at the highest pool_id at time of epoch, and
+   * decreases until it reaches 1. When it reaches 1, the pruning
+   * process is complete.
+   */
+  lastSeenPoolId: bigint;
+}
+export interface PruningStateProtoMsg {
+  typeUrl: "/osmosis.twap.v1beta1.PruningState";
+  value: Uint8Array;
+}
+/**
+ * PruningState allows us to spread out the pruning of TWAP records over time,
+ * instead of pruning all at once at the end of the epoch.
+ */
+export interface PruningStateAmino {
+  /**
+   * is_pruning is true if the pruning process is ongoing.
+   * This tells the module to continue pruning the TWAP records
+   * at the EndBlock.
+   */
+  is_pruning?: boolean;
+  /**
+   * last_kept_time is the time of the last kept TWAP record.
+   * This is used to determine all TWAP records that are older than
+   * last_kept_time and should be pruned.
+   */
+  last_kept_time?: string;
+  /** Deprecated: This field is deprecated. */
+  /** @deprecated */
+  last_key_seen?: string;
+  /**
+   * last_seen_pool_id is the pool_id that we will begin pruning in the next
+   * block. This value starts at the highest pool_id at time of epoch, and
+   * decreases until it reaches 1. When it reaches 1, the pruning
+   * process is complete.
+   */
+  last_seen_pool_id?: string;
+}
+export interface PruningStateAminoMsg {
+  type: "osmosis/twap/pruning-state";
+  value: PruningStateAmino;
+}
+/**
+ * PruningState allows us to spread out the pruning of TWAP records over time,
+ * instead of pruning all at once at the end of the epoch.
+ */
+export interface PruningStateSDKType {
+  is_pruning: boolean;
+  last_kept_time: Date;
+  /** @deprecated */
+  last_key_seen: Uint8Array;
+  last_seen_pool_id: bigint;
 }
 function createBaseTwapRecord(): TwapRecord {
   return {
@@ -294,6 +369,111 @@ export const TwapRecord = {
     return {
       typeUrl: "/osmosis.twap.v1beta1.TwapRecord",
       value: TwapRecord.encode(message).finish()
+    };
+  }
+};
+function createBasePruningState(): PruningState {
+  return {
+    isPruning: false,
+    lastKeptTime: new Date(),
+    lastKeySeen: new Uint8Array(),
+    lastSeenPoolId: BigInt(0)
+  };
+}
+export const PruningState = {
+  typeUrl: "/osmosis.twap.v1beta1.PruningState",
+  encode(message: PruningState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.isPruning === true) {
+      writer.uint32(8).bool(message.isPruning);
+    }
+    if (message.lastKeptTime !== undefined) {
+      Timestamp.encode(toTimestamp(message.lastKeptTime), writer.uint32(18).fork()).ldelim();
+    }
+    if (message.lastKeySeen.length !== 0) {
+      writer.uint32(26).bytes(message.lastKeySeen);
+    }
+    if (message.lastSeenPoolId !== BigInt(0)) {
+      writer.uint32(32).uint64(message.lastSeenPoolId);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): PruningState {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBasePruningState();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.isPruning = reader.bool();
+          break;
+        case 2:
+          message.lastKeptTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          break;
+        case 3:
+          message.lastKeySeen = reader.bytes();
+          break;
+        case 4:
+          message.lastSeenPoolId = reader.uint64();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<PruningState>): PruningState {
+    const message = createBasePruningState();
+    message.isPruning = object.isPruning ?? false;
+    message.lastKeptTime = object.lastKeptTime ?? undefined;
+    message.lastKeySeen = object.lastKeySeen ?? new Uint8Array();
+    message.lastSeenPoolId = object.lastSeenPoolId !== undefined && object.lastSeenPoolId !== null ? BigInt(object.lastSeenPoolId.toString()) : BigInt(0);
+    return message;
+  },
+  fromAmino(object: PruningStateAmino): PruningState {
+    const message = createBasePruningState();
+    if (object.is_pruning !== undefined && object.is_pruning !== null) {
+      message.isPruning = object.is_pruning;
+    }
+    if (object.last_kept_time !== undefined && object.last_kept_time !== null) {
+      message.lastKeptTime = fromTimestamp(Timestamp.fromAmino(object.last_kept_time));
+    }
+    if (object.last_key_seen !== undefined && object.last_key_seen !== null) {
+      message.lastKeySeen = bytesFromBase64(object.last_key_seen);
+    }
+    if (object.last_seen_pool_id !== undefined && object.last_seen_pool_id !== null) {
+      message.lastSeenPoolId = BigInt(object.last_seen_pool_id);
+    }
+    return message;
+  },
+  toAmino(message: PruningState): PruningStateAmino {
+    const obj: any = {};
+    obj.is_pruning = message.isPruning;
+    obj.last_kept_time = message.lastKeptTime ? Timestamp.toAmino(toTimestamp(message.lastKeptTime)) : undefined;
+    obj.last_key_seen = message.lastKeySeen ? base64FromBytes(message.lastKeySeen) : undefined;
+    obj.last_seen_pool_id = message.lastSeenPoolId ? message.lastSeenPoolId.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: PruningStateAminoMsg): PruningState {
+    return PruningState.fromAmino(object.value);
+  },
+  toAminoMsg(message: PruningState): PruningStateAminoMsg {
+    return {
+      type: "osmosis/twap/pruning-state",
+      value: PruningState.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: PruningStateProtoMsg): PruningState {
+    return PruningState.decode(message.value);
+  },
+  toProto(message: PruningState): Uint8Array {
+    return PruningState.encode(message).finish();
+  },
+  toProtoMsg(message: PruningState): PruningStateProtoMsg {
+    return {
+      typeUrl: "/osmosis.twap.v1beta1.PruningState",
+      value: PruningState.encode(message).finish()
     };
   }
 };

@@ -15,7 +15,7 @@ export interface ClientState {
   chainId: string;
   trustLevel: Fraction;
   /**
-   * duration of the period since the LastestTimestamp during which the
+   * duration of the period since the LatestTimestamp during which the
    * submitted headers are valid for upgrade
    */
   trustingPeriod: Duration;
@@ -58,7 +58,7 @@ export interface ClientStateAmino {
   chain_id?: string;
   trust_level?: FractionAmino;
   /**
-   * duration of the period since the LastestTimestamp during which the
+   * duration of the period since the LatestTimestamp during which the
    * submitted headers are valid for upgrade
    */
   trusting_period?: DurationAmino;

@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryContractInfoRequest, QueryContractInfoResponseSDKType, QueryContractHistoryRequest, QueryContractHistoryResponseSDKType, QueryContractsByCodeRequest, QueryContractsByCodeResponseSDKType, QueryAllContractStateRequest, QueryAllContractStateResponseSDKType, QueryRawContractStateRequest, QueryRawContractStateResponseSDKType, QuerySmartContractStateRequest, QuerySmartContractStateResponseSDKType, QueryCodeRequest, QueryCodeResponseSDKType, QueryCodesRequest, QueryCodesResponseSDKType, QueryPinnedCodesRequest, QueryPinnedCodesResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryContractsByCreatorRequest, QueryContractsByCreatorResponseSDKType } from "./query";
+import { QueryContractInfoRequest, QueryContractInfoResponseSDKType, QueryContractHistoryRequest, QueryContractHistoryResponseSDKType, QueryContractsByCodeRequest, QueryContractsByCodeResponseSDKType, QueryAllContractStateRequest, QueryAllContractStateResponseSDKType, QueryRawContractStateRequest, QueryRawContractStateResponseSDKType, QuerySmartContractStateRequest, QuerySmartContractStateResponseSDKType, QueryCodeRequest, QueryCodeResponseSDKType, QueryCodesRequest, QueryCodesResponseSDKType, QueryPinnedCodesRequest, QueryPinnedCodesResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryContractsByCreatorRequest, QueryContractsByCreatorResponseSDKType, QueryBuildAddressRequest, QueryBuildAddressResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -20,6 +20,7 @@ export class LCDQueryClient {
     this.pinnedCodes = this.pinnedCodes.bind(this);
     this.params = this.params.bind(this);
     this.contractsByCreator = this.contractsByCreator.bind(this);
+    this.buildAddress = this.buildAddress.bind(this);
   }
   /* ContractInfo gets the contract meta data */
   async contractInfo(params: QueryContractInfoRequest): Promise<QueryContractInfoResponseSDKType> {
@@ -115,5 +116,25 @@ export class LCDQueryClient {
     }
     const endpoint = `cosmwasm/wasm/v1/contracts/creator/${params.creatorAddress}`;
     return await this.req.get<QueryContractsByCreatorResponseSDKType>(endpoint, options);
+  }
+  /* BuildAddress builds a contract address */
+  async buildAddress(params: QueryBuildAddressRequest): Promise<QueryBuildAddressResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+    if (typeof params?.codeHash !== "undefined") {
+      options.params.code_hash = params.codeHash;
+    }
+    if (typeof params?.creatorAddress !== "undefined") {
+      options.params.creator_address = params.creatorAddress;
+    }
+    if (typeof params?.salt !== "undefined") {
+      options.params.salt = params.salt;
+    }
+    if (typeof params?.initArgs !== "undefined") {
+      options.params.init_args = params.initArgs;
+    }
+    const endpoint = `cosmwasm/wasm/v1/contract/build_address`;
+    return await this.req.get<QueryBuildAddressResponseSDKType>(endpoint, options);
   }
 }

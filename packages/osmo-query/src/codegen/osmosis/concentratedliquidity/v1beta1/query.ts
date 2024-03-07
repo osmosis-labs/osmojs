@@ -3,7 +3,7 @@ import { FullPositionBreakdown, FullPositionBreakdownAmino, FullPositionBreakdow
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Params, ParamsAmino, ParamsSDKType } from "../params";
 import { Coin, CoinAmino, CoinSDKType, DecCoin, DecCoinAmino, DecCoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { UptimeTracker, UptimeTrackerAmino, UptimeTrackerSDKType } from "./tickInfo";
+import { UptimeTracker, UptimeTrackerAmino, UptimeTrackerSDKType } from "./tick_info";
 import { IncentiveRecord, IncentiveRecordAmino, IncentiveRecordSDKType } from "./incentive_record";
 import { Pool as Pool1 } from "./pool";
 import { PoolProtoMsg as Pool1ProtoMsg } from "./pool";
@@ -99,6 +99,40 @@ export interface PositionByIdResponseAminoMsg {
 }
 export interface PositionByIdResponseSDKType {
   position: FullPositionBreakdownSDKType;
+}
+export interface NumPoolPositionsRequest {
+  poolId: bigint;
+}
+export interface NumPoolPositionsRequestProtoMsg {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.NumPoolPositionsRequest";
+  value: Uint8Array;
+}
+export interface NumPoolPositionsRequestAmino {
+  pool_id?: string;
+}
+export interface NumPoolPositionsRequestAminoMsg {
+  type: "osmosis/concentratedliquidity/num-pool-positions-request";
+  value: NumPoolPositionsRequestAmino;
+}
+export interface NumPoolPositionsRequestSDKType {
+  pool_id: bigint;
+}
+export interface NumPoolPositionsResponse {
+  positionCount: bigint;
+}
+export interface NumPoolPositionsResponseProtoMsg {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.NumPoolPositionsResponse";
+  value: Uint8Array;
+}
+export interface NumPoolPositionsResponseAmino {
+  position_count?: string;
+}
+export interface NumPoolPositionsResponseAminoMsg {
+  type: "osmosis/concentratedliquidity/num-pool-positions-response";
+  value: NumPoolPositionsResponseAmino;
+}
+export interface NumPoolPositionsResponseSDKType {
+  position_count: bigint;
 }
 /** =============================== Pools */
 export interface PoolsRequest {
@@ -992,6 +1026,144 @@ export const PositionByIdResponse = {
     return {
       typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionByIdResponse",
       value: PositionByIdResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseNumPoolPositionsRequest(): NumPoolPositionsRequest {
+  return {
+    poolId: BigInt(0)
+  };
+}
+export const NumPoolPositionsRequest = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.NumPoolPositionsRequest",
+  encode(message: NumPoolPositionsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== BigInt(0)) {
+      writer.uint32(8).uint64(message.poolId);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): NumPoolPositionsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseNumPoolPositionsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.poolId = reader.uint64();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<NumPoolPositionsRequest>): NumPoolPositionsRequest {
+    const message = createBaseNumPoolPositionsRequest();
+    message.poolId = object.poolId !== undefined && object.poolId !== null ? BigInt(object.poolId.toString()) : BigInt(0);
+    return message;
+  },
+  fromAmino(object: NumPoolPositionsRequestAmino): NumPoolPositionsRequest {
+    const message = createBaseNumPoolPositionsRequest();
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = BigInt(object.pool_id);
+    }
+    return message;
+  },
+  toAmino(message: NumPoolPositionsRequest): NumPoolPositionsRequestAmino {
+    const obj: any = {};
+    obj.pool_id = message.poolId ? message.poolId.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: NumPoolPositionsRequestAminoMsg): NumPoolPositionsRequest {
+    return NumPoolPositionsRequest.fromAmino(object.value);
+  },
+  toAminoMsg(message: NumPoolPositionsRequest): NumPoolPositionsRequestAminoMsg {
+    return {
+      type: "osmosis/concentratedliquidity/num-pool-positions-request",
+      value: NumPoolPositionsRequest.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: NumPoolPositionsRequestProtoMsg): NumPoolPositionsRequest {
+    return NumPoolPositionsRequest.decode(message.value);
+  },
+  toProto(message: NumPoolPositionsRequest): Uint8Array {
+    return NumPoolPositionsRequest.encode(message).finish();
+  },
+  toProtoMsg(message: NumPoolPositionsRequest): NumPoolPositionsRequestProtoMsg {
+    return {
+      typeUrl: "/osmosis.concentratedliquidity.v1beta1.NumPoolPositionsRequest",
+      value: NumPoolPositionsRequest.encode(message).finish()
+    };
+  }
+};
+function createBaseNumPoolPositionsResponse(): NumPoolPositionsResponse {
+  return {
+    positionCount: BigInt(0)
+  };
+}
+export const NumPoolPositionsResponse = {
+  typeUrl: "/osmosis.concentratedliquidity.v1beta1.NumPoolPositionsResponse",
+  encode(message: NumPoolPositionsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.positionCount !== BigInt(0)) {
+      writer.uint32(8).uint64(message.positionCount);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): NumPoolPositionsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseNumPoolPositionsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.positionCount = reader.uint64();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<NumPoolPositionsResponse>): NumPoolPositionsResponse {
+    const message = createBaseNumPoolPositionsResponse();
+    message.positionCount = object.positionCount !== undefined && object.positionCount !== null ? BigInt(object.positionCount.toString()) : BigInt(0);
+    return message;
+  },
+  fromAmino(object: NumPoolPositionsResponseAmino): NumPoolPositionsResponse {
+    const message = createBaseNumPoolPositionsResponse();
+    if (object.position_count !== undefined && object.position_count !== null) {
+      message.positionCount = BigInt(object.position_count);
+    }
+    return message;
+  },
+  toAmino(message: NumPoolPositionsResponse): NumPoolPositionsResponseAmino {
+    const obj: any = {};
+    obj.position_count = message.positionCount ? message.positionCount.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: NumPoolPositionsResponseAminoMsg): NumPoolPositionsResponse {
+    return NumPoolPositionsResponse.fromAmino(object.value);
+  },
+  toAminoMsg(message: NumPoolPositionsResponse): NumPoolPositionsResponseAminoMsg {
+    return {
+      type: "osmosis/concentratedliquidity/num-pool-positions-response",
+      value: NumPoolPositionsResponse.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: NumPoolPositionsResponseProtoMsg): NumPoolPositionsResponse {
+    return NumPoolPositionsResponse.decode(message.value);
+  },
+  toProto(message: NumPoolPositionsResponse): Uint8Array {
+    return NumPoolPositionsResponse.encode(message).finish();
+  },
+  toProtoMsg(message: NumPoolPositionsResponse): NumPoolPositionsResponseProtoMsg {
+    return {
+      typeUrl: "/osmosis.concentratedliquidity.v1beta1.NumPoolPositionsResponse",
+      value: NumPoolPositionsResponse.encode(message).finish()
     };
   }
 };

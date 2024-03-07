@@ -1,4 +1,4 @@
-import { TickInfo, TickInfoAmino, TickInfoSDKType } from "./tickInfo";
+import { TickInfo, TickInfoAmino, TickInfoSDKType } from "./tick_info";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { IncentiveRecord, IncentiveRecordAmino, IncentiveRecordSDKType } from "./incentive_record";
 import { Position, PositionAmino, PositionSDKType } from "./position";
@@ -141,6 +141,7 @@ export interface GenesisState {
   positionData: PositionData[];
   nextPositionId: bigint;
   nextIncentiveRecordId: bigint;
+  incentivesAccumulatorPoolIdMigrationThreshold: bigint;
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.GenesisState";
@@ -155,6 +156,7 @@ export interface GenesisStateAmino {
   position_data?: PositionDataAmino[];
   next_position_id?: string;
   next_incentive_record_id?: string;
+  incentives_accumulator_pool_id_migration_threshold?: string;
 }
 export interface GenesisStateAminoMsg {
   type: "osmosis/concentratedliquidity/genesis-state";
@@ -167,6 +169,7 @@ export interface GenesisStateSDKType {
   position_data: PositionDataSDKType[];
   next_position_id: bigint;
   next_incentive_record_id: bigint;
+  incentives_accumulator_pool_id_migration_threshold: bigint;
 }
 export interface AccumObject {
   /** Accumulator's name (pulled from AccumulatorContent) */
@@ -519,7 +522,8 @@ function createBaseGenesisState(): GenesisState {
     poolData: [],
     positionData: [],
     nextPositionId: BigInt(0),
-    nextIncentiveRecordId: BigInt(0)
+    nextIncentiveRecordId: BigInt(0),
+    incentivesAccumulatorPoolIdMigrationThreshold: BigInt(0)
   };
 }
 export const GenesisState = {
@@ -539,6 +543,9 @@ export const GenesisState = {
     }
     if (message.nextIncentiveRecordId !== BigInt(0)) {
       writer.uint32(40).uint64(message.nextIncentiveRecordId);
+    }
+    if (message.incentivesAccumulatorPoolIdMigrationThreshold !== BigInt(0)) {
+      writer.uint32(48).uint64(message.incentivesAccumulatorPoolIdMigrationThreshold);
     }
     return writer;
   },
@@ -564,6 +571,9 @@ export const GenesisState = {
         case 5:
           message.nextIncentiveRecordId = reader.uint64();
           break;
+        case 6:
+          message.incentivesAccumulatorPoolIdMigrationThreshold = reader.uint64();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -578,6 +588,7 @@ export const GenesisState = {
     message.positionData = object.positionData?.map(e => PositionData.fromPartial(e)) || [];
     message.nextPositionId = object.nextPositionId !== undefined && object.nextPositionId !== null ? BigInt(object.nextPositionId.toString()) : BigInt(0);
     message.nextIncentiveRecordId = object.nextIncentiveRecordId !== undefined && object.nextIncentiveRecordId !== null ? BigInt(object.nextIncentiveRecordId.toString()) : BigInt(0);
+    message.incentivesAccumulatorPoolIdMigrationThreshold = object.incentivesAccumulatorPoolIdMigrationThreshold !== undefined && object.incentivesAccumulatorPoolIdMigrationThreshold !== null ? BigInt(object.incentivesAccumulatorPoolIdMigrationThreshold.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -592,6 +603,9 @@ export const GenesisState = {
     }
     if (object.next_incentive_record_id !== undefined && object.next_incentive_record_id !== null) {
       message.nextIncentiveRecordId = BigInt(object.next_incentive_record_id);
+    }
+    if (object.incentives_accumulator_pool_id_migration_threshold !== undefined && object.incentives_accumulator_pool_id_migration_threshold !== null) {
+      message.incentivesAccumulatorPoolIdMigrationThreshold = BigInt(object.incentives_accumulator_pool_id_migration_threshold);
     }
     return message;
   },
@@ -610,6 +624,7 @@ export const GenesisState = {
     }
     obj.next_position_id = message.nextPositionId ? message.nextPositionId.toString() : undefined;
     obj.next_incentive_record_id = message.nextIncentiveRecordId ? message.nextIncentiveRecordId.toString() : undefined;
+    obj.incentives_accumulator_pool_id_migration_threshold = message.incentivesAccumulatorPoolIdMigrationThreshold ? message.incentivesAccumulatorPoolIdMigrationThreshold.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {

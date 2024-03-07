@@ -1,5 +1,5 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType, PoolWeights, PoolWeightsAmino, PoolWeightsSDKType, InfoByPoolType, InfoByPoolTypeAmino, InfoByPoolTypeSDKType, CyclicArbTracker, CyclicArbTrackerAmino, CyclicArbTrackerSDKType } from "./protorev";
+import { TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType, InfoByPoolType, InfoByPoolTypeAmino, InfoByPoolTypeSDKType, CyclicArbTracker, CyclicArbTrackerAmino, CyclicArbTrackerSDKType } from "./protorev";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** GenesisState defines the protorev module's genesis state. */
@@ -13,14 +13,6 @@ export interface GenesisState {
    * highest liquidity method.
    */
   baseDenoms: BaseDenom[];
-  /**
-   * The pool weights that are being used to calculate the weight (compute cost)
-   * of each route.
-   * 
-   * DEPRECATED: This field is deprecated and will be removed in the next
-   * release. It is replaced by the `info_by_pool_type` field.
-   */
-  poolWeights: PoolWeights;
   /** The number of days since module genesis. */
   daysSinceModuleGenesis: bigint;
   /** The fees the developer account has accumulated over time. */
@@ -65,14 +57,6 @@ export interface GenesisStateAmino {
    * highest liquidity method.
    */
   base_denoms?: BaseDenomAmino[];
-  /**
-   * The pool weights that are being used to calculate the weight (compute cost)
-   * of each route.
-   * 
-   * DEPRECATED: This field is deprecated and will be removed in the next
-   * release. It is replaced by the `info_by_pool_type` field.
-   */
-  pool_weights?: PoolWeightsAmino;
   /** The number of days since module genesis. */
   days_since_module_genesis?: string;
   /** The fees the developer account has accumulated over time. */
@@ -111,7 +95,6 @@ export interface GenesisStateSDKType {
   params: ParamsSDKType;
   token_pair_arb_routes: TokenPairArbRoutesSDKType[];
   base_denoms: BaseDenomSDKType[];
-  pool_weights: PoolWeightsSDKType;
   days_since_module_genesis: bigint;
   developer_fees: CoinSDKType[];
   latest_block_height: bigint;
@@ -128,7 +111,6 @@ function createBaseGenesisState(): GenesisState {
     params: Params.fromPartial({}),
     tokenPairArbRoutes: [],
     baseDenoms: [],
-    poolWeights: PoolWeights.fromPartial({}),
     daysSinceModuleGenesis: BigInt(0),
     developerFees: [],
     latestBlockHeight: BigInt(0),
@@ -152,9 +134,6 @@ export const GenesisState = {
     }
     for (const v of message.baseDenoms) {
       BaseDenom.encode(v!, writer.uint32(26).fork()).ldelim();
-    }
-    if (message.poolWeights !== undefined) {
-      PoolWeights.encode(message.poolWeights, writer.uint32(34).fork()).ldelim();
     }
     if (message.daysSinceModuleGenesis !== BigInt(0)) {
       writer.uint32(40).uint64(message.daysSinceModuleGenesis);
@@ -204,9 +183,6 @@ export const GenesisState = {
         case 3:
           message.baseDenoms.push(BaseDenom.decode(reader, reader.uint32()));
           break;
-        case 4:
-          message.poolWeights = PoolWeights.decode(reader, reader.uint32());
-          break;
         case 5:
           message.daysSinceModuleGenesis = reader.uint64();
           break;
@@ -249,7 +225,6 @@ export const GenesisState = {
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.tokenPairArbRoutes = object.tokenPairArbRoutes?.map(e => TokenPairArbRoutes.fromPartial(e)) || [];
     message.baseDenoms = object.baseDenoms?.map(e => BaseDenom.fromPartial(e)) || [];
-    message.poolWeights = object.poolWeights !== undefined && object.poolWeights !== null ? PoolWeights.fromPartial(object.poolWeights) : undefined;
     message.daysSinceModuleGenesis = object.daysSinceModuleGenesis !== undefined && object.daysSinceModuleGenesis !== null ? BigInt(object.daysSinceModuleGenesis.toString()) : BigInt(0);
     message.developerFees = object.developerFees?.map(e => Coin.fromPartial(e)) || [];
     message.latestBlockHeight = object.latestBlockHeight !== undefined && object.latestBlockHeight !== null ? BigInt(object.latestBlockHeight.toString()) : BigInt(0);
@@ -269,9 +244,6 @@ export const GenesisState = {
     }
     message.tokenPairArbRoutes = object.token_pair_arb_routes?.map(e => TokenPairArbRoutes.fromAmino(e)) || [];
     message.baseDenoms = object.base_denoms?.map(e => BaseDenom.fromAmino(e)) || [];
-    if (object.pool_weights !== undefined && object.pool_weights !== null) {
-      message.poolWeights = PoolWeights.fromAmino(object.pool_weights);
-    }
     if (object.days_since_module_genesis !== undefined && object.days_since_module_genesis !== null) {
       message.daysSinceModuleGenesis = BigInt(object.days_since_module_genesis);
     }
@@ -313,7 +285,6 @@ export const GenesisState = {
     } else {
       obj.base_denoms = [];
     }
-    obj.pool_weights = message.poolWeights ? PoolWeights.toAmino(message.poolWeights) : undefined;
     obj.days_since_module_genesis = message.daysSinceModuleGenesis ? message.daysSinceModuleGenesis.toString() : undefined;
     if (message.developerFees) {
       obj.developer_fees = message.developerFees.map(e => e ? Coin.toAmino(e) : undefined);

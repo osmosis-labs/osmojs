@@ -193,6 +193,9 @@ export interface MsgChannelOpenTryResponseSDKType {
 /**
  * MsgChannelOpenAck defines a msg sent by a Relayer to Chain A to acknowledge
  * the change of channel state to TRYOPEN on Chain B.
+ * WARNING: a channel upgrade MUST NOT initialize an upgrade for this channel
+ * in the same block as executing this message otherwise the counterparty will
+ * be incapable of opening.
  */
 export interface MsgChannelOpenAck {
   portId: string;
@@ -210,6 +213,9 @@ export interface MsgChannelOpenAckProtoMsg {
 /**
  * MsgChannelOpenAck defines a msg sent by a Relayer to Chain A to acknowledge
  * the change of channel state to TRYOPEN on Chain B.
+ * WARNING: a channel upgrade MUST NOT initialize an upgrade for this channel
+ * in the same block as executing this message otherwise the counterparty will
+ * be incapable of opening.
  */
 export interface MsgChannelOpenAckAmino {
   port_id?: string;
@@ -227,6 +233,9 @@ export interface MsgChannelOpenAckAminoMsg {
 /**
  * MsgChannelOpenAck defines a msg sent by a Relayer to Chain A to acknowledge
  * the change of channel state to TRYOPEN on Chain B.
+ * WARNING: a channel upgrade MUST NOT initialize an upgrade for this channel
+ * in the same block as executing this message otherwise the counterparty will
+ * be incapable of opening.
  */
 export interface MsgChannelOpenAckSDKType {
   port_id: string;
@@ -642,7 +651,11 @@ export interface MsgAcknowledgementResponseAminoMsg {
 export interface MsgAcknowledgementResponseSDKType {
   result: ResponseResultType;
 }
-/** MsgChannelUpgradeInit defines the request type for the ChannelUpgradeInit rpc */
+/**
+ * MsgChannelUpgradeInit defines the request type for the ChannelUpgradeInit rpc
+ * WARNING: Initializing a channel upgrade in the same block as opening the channel
+ * may result in the counterparty being incapable of opening.
+ */
 export interface MsgChannelUpgradeInit {
   portId: string;
   channelId: string;
@@ -653,7 +666,11 @@ export interface MsgChannelUpgradeInitProtoMsg {
   typeUrl: "/ibc.core.channel.v1.MsgChannelUpgradeInit";
   value: Uint8Array;
 }
-/** MsgChannelUpgradeInit defines the request type for the ChannelUpgradeInit rpc */
+/**
+ * MsgChannelUpgradeInit defines the request type for the ChannelUpgradeInit rpc
+ * WARNING: Initializing a channel upgrade in the same block as opening the channel
+ * may result in the counterparty being incapable of opening.
+ */
 export interface MsgChannelUpgradeInitAmino {
   port_id?: string;
   channel_id?: string;
@@ -664,7 +681,11 @@ export interface MsgChannelUpgradeInitAminoMsg {
   type: "cosmos-sdk/MsgChannelUpgradeInit";
   value: MsgChannelUpgradeInitAmino;
 }
-/** MsgChannelUpgradeInit defines the request type for the ChannelUpgradeInit rpc */
+/**
+ * MsgChannelUpgradeInit defines the request type for the ChannelUpgradeInit rpc
+ * WARNING: Initializing a channel upgrade in the same block as opening the channel
+ * may result in the counterparty being incapable of opening.
+ */
 export interface MsgChannelUpgradeInitSDKType {
   port_id: string;
   channel_id: string;
@@ -888,6 +909,7 @@ export interface MsgChannelUpgradeOpen {
   portId: string;
   channelId: string;
   counterpartyChannelState: State;
+  counterpartyUpgradeSequence: bigint;
   proofChannel: Uint8Array;
   proofHeight: Height;
   signer: string;
@@ -901,6 +923,7 @@ export interface MsgChannelUpgradeOpenAmino {
   port_id?: string;
   channel_id?: string;
   counterparty_channel_state?: State;
+  counterparty_upgrade_sequence?: string;
   proof_channel?: string;
   proof_height?: HeightAmino;
   signer?: string;
@@ -914,6 +937,7 @@ export interface MsgChannelUpgradeOpenSDKType {
   port_id: string;
   channel_id: string;
   counterparty_channel_state: State;
+  counterparty_upgrade_sequence: bigint;
   proof_channel: Uint8Array;
   proof_height: HeightSDKType;
   signer: string;
@@ -3874,6 +3898,7 @@ function createBaseMsgChannelUpgradeOpen(): MsgChannelUpgradeOpen {
     portId: "",
     channelId: "",
     counterpartyChannelState: 0,
+    counterpartyUpgradeSequence: BigInt(0),
     proofChannel: new Uint8Array(),
     proofHeight: Height.fromPartial({}),
     signer: ""
@@ -3891,14 +3916,17 @@ export const MsgChannelUpgradeOpen = {
     if (message.counterpartyChannelState !== 0) {
       writer.uint32(24).int32(message.counterpartyChannelState);
     }
+    if (message.counterpartyUpgradeSequence !== BigInt(0)) {
+      writer.uint32(32).uint64(message.counterpartyUpgradeSequence);
+    }
     if (message.proofChannel.length !== 0) {
-      writer.uint32(34).bytes(message.proofChannel);
+      writer.uint32(42).bytes(message.proofChannel);
     }
     if (message.proofHeight !== undefined) {
-      Height.encode(message.proofHeight, writer.uint32(42).fork()).ldelim();
+      Height.encode(message.proofHeight, writer.uint32(50).fork()).ldelim();
     }
     if (message.signer !== "") {
-      writer.uint32(50).string(message.signer);
+      writer.uint32(58).string(message.signer);
     }
     return writer;
   },
@@ -3919,12 +3947,15 @@ export const MsgChannelUpgradeOpen = {
           message.counterpartyChannelState = (reader.int32() as any);
           break;
         case 4:
-          message.proofChannel = reader.bytes();
+          message.counterpartyUpgradeSequence = reader.uint64();
           break;
         case 5:
-          message.proofHeight = Height.decode(reader, reader.uint32());
+          message.proofChannel = reader.bytes();
           break;
         case 6:
+          message.proofHeight = Height.decode(reader, reader.uint32());
+          break;
+        case 7:
           message.signer = reader.string();
           break;
         default:
@@ -3939,6 +3970,7 @@ export const MsgChannelUpgradeOpen = {
     message.portId = object.portId ?? "";
     message.channelId = object.channelId ?? "";
     message.counterpartyChannelState = object.counterpartyChannelState ?? 0;
+    message.counterpartyUpgradeSequence = object.counterpartyUpgradeSequence !== undefined && object.counterpartyUpgradeSequence !== null ? BigInt(object.counterpartyUpgradeSequence.toString()) : BigInt(0);
     message.proofChannel = object.proofChannel ?? new Uint8Array();
     message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     message.signer = object.signer ?? "";
@@ -3954,6 +3986,9 @@ export const MsgChannelUpgradeOpen = {
     }
     if (object.counterparty_channel_state !== undefined && object.counterparty_channel_state !== null) {
       message.counterpartyChannelState = stateFromJSON(object.counterparty_channel_state);
+    }
+    if (object.counterparty_upgrade_sequence !== undefined && object.counterparty_upgrade_sequence !== null) {
+      message.counterpartyUpgradeSequence = BigInt(object.counterparty_upgrade_sequence);
     }
     if (object.proof_channel !== undefined && object.proof_channel !== null) {
       message.proofChannel = bytesFromBase64(object.proof_channel);
@@ -3971,6 +4006,7 @@ export const MsgChannelUpgradeOpen = {
     obj.port_id = message.portId;
     obj.channel_id = message.channelId;
     obj.counterparty_channel_state = message.counterpartyChannelState;
+    obj.counterparty_upgrade_sequence = message.counterpartyUpgradeSequence ? message.counterpartyUpgradeSequence.toString() : undefined;
     obj.proof_channel = message.proofChannel ? base64FromBytes(message.proofChannel) : undefined;
     obj.proof_height = message.proofHeight ? Height.toAmino(message.proofHeight) : {};
     obj.signer = message.signer;

@@ -1,5 +1,5 @@
 import { Asset } from '@chain-registry/types';
-import { Pool } from "osmojs/dist/codegen/osmosis/gamm/pool-models/balancer/balancerPool";
+import { Pool } from "osmojs/dist/codegen/osmosis/gamm/v1beta1/balancerPool";
 import { Coin } from "osmojs/dist/codegen/cosmos/base/v1beta1/coin";
 import {
   PriceHash,

@@ -4,7 +4,7 @@ import { CoinDenom, Trade, PrettyPair } from "./types";
 import { symbolToOsmoDenom } from "./utils";
 import { Decimal } from "decimal.js-light";
 import { SwapAmountInRoute } from "osmojs/dist/codegen/osmosis/poolmanager/v1beta1/swap_route";
-import { Pool } from "osmojs/dist/codegen/osmosis/gamm/pool-models/balancer/balancerPool";
+import { Pool } from "osmojs/dist/codegen/osmosis/gamm/v1beta1/balancerPool";
 import { Coin } from "osmojs/dist/codegen/cosmos/base/v1beta1/coin";
 
 export const routesThroughPools = ({

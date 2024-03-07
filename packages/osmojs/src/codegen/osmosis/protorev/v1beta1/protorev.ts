@@ -452,6 +452,35 @@ export interface BaseDenomSDKType {
   denom: string;
   step_size: string;
 }
+/**
+ * BaseDenoms represents all of the base denoms that the module uses for its
+ * arbitrage trades.
+ */
+export interface BaseDenoms {
+  baseDenoms: BaseDenom[];
+}
+export interface BaseDenomsProtoMsg {
+  typeUrl: "/osmosis.protorev.v1beta1.BaseDenoms";
+  value: Uint8Array;
+}
+/**
+ * BaseDenoms represents all of the base denoms that the module uses for its
+ * arbitrage trades.
+ */
+export interface BaseDenomsAmino {
+  base_denoms?: BaseDenomAmino[];
+}
+export interface BaseDenomsAminoMsg {
+  type: "osmosis/protorev/base-denoms";
+  value: BaseDenomsAmino;
+}
+/**
+ * BaseDenoms represents all of the base denoms that the module uses for its
+ * arbitrage trades.
+ */
+export interface BaseDenomsSDKType {
+  base_denoms: BaseDenomSDKType[];
+}
 export interface AllProtocolRevenue {
   takerFeesTracker: TakerFeesTracker;
   cyclicArbTracker: CyclicArbTracker;
@@ -1528,6 +1557,77 @@ export const BaseDenom = {
     return {
       typeUrl: "/osmosis.protorev.v1beta1.BaseDenom",
       value: BaseDenom.encode(message).finish()
+    };
+  }
+};
+function createBaseBaseDenoms(): BaseDenoms {
+  return {
+    baseDenoms: []
+  };
+}
+export const BaseDenoms = {
+  typeUrl: "/osmosis.protorev.v1beta1.BaseDenoms",
+  encode(message: BaseDenoms, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.baseDenoms) {
+      BaseDenom.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): BaseDenoms {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseBaseDenoms();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.baseDenoms.push(BaseDenom.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<BaseDenoms>): BaseDenoms {
+    const message = createBaseBaseDenoms();
+    message.baseDenoms = object.baseDenoms?.map(e => BaseDenom.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: BaseDenomsAmino): BaseDenoms {
+    const message = createBaseBaseDenoms();
+    message.baseDenoms = object.base_denoms?.map(e => BaseDenom.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: BaseDenoms): BaseDenomsAmino {
+    const obj: any = {};
+    if (message.baseDenoms) {
+      obj.base_denoms = message.baseDenoms.map(e => e ? BaseDenom.toAmino(e) : undefined);
+    } else {
+      obj.base_denoms = [];
+    }
+    return obj;
+  },
+  fromAminoMsg(object: BaseDenomsAminoMsg): BaseDenoms {
+    return BaseDenoms.fromAmino(object.value);
+  },
+  toAminoMsg(message: BaseDenoms): BaseDenomsAminoMsg {
+    return {
+      type: "osmosis/protorev/base-denoms",
+      value: BaseDenoms.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: BaseDenomsProtoMsg): BaseDenoms {
+    return BaseDenoms.decode(message.value);
+  },
+  toProto(message: BaseDenoms): Uint8Array {
+    return BaseDenoms.encode(message).finish();
+  },
+  toProtoMsg(message: BaseDenoms): BaseDenomsProtoMsg {
+    return {
+      typeUrl: "/osmosis.protorev.v1beta1.BaseDenoms",
+      value: BaseDenoms.encode(message).finish()
     };
   }
 };

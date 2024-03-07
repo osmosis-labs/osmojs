@@ -1,5 +1,5 @@
 import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomAuthorityMetadataRequest, QueryDenomAuthorityMetadataResponseSDKType, QueryDenomsFromCreatorRequest, QueryDenomsFromCreatorResponseSDKType, QueryBeforeSendHookAddressRequest, QueryBeforeSendHookAddressResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomAuthorityMetadataRequest, QueryDenomAuthorityMetadataResponseSDKType, QueryDenomsFromCreatorRequest, QueryDenomsFromCreatorResponseSDKType, QueryBeforeSendHookAddressRequest, QueryBeforeSendHookAddressResponseSDKType, QueryAllBeforeSendHooksAddressesRequest, QueryAllBeforeSendHooksAddressesResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -12,6 +12,7 @@ export class LCDQueryClient {
     this.denomAuthorityMetadata = this.denomAuthorityMetadata.bind(this);
     this.denomsFromCreator = this.denomsFromCreator.bind(this);
     this.beforeSendHookAddress = this.beforeSendHookAddress.bind(this);
+    this.allBeforeSendHooksAddresses = this.allBeforeSendHooksAddresses.bind(this);
   }
   /* Params defines a gRPC query method that returns the tokenfactory module's
    parameters. */
@@ -36,5 +37,14 @@ export class LCDQueryClient {
   async beforeSendHookAddress(params: QueryBeforeSendHookAddressRequest): Promise<QueryBeforeSendHookAddressResponseSDKType> {
     const endpoint = `osmosis/tokenfactory/v1beta1/denoms/${params.denom}/before_send_hook`;
     return await this.req.get<QueryBeforeSendHookAddressResponseSDKType>(endpoint);
+  }
+  /* AllBeforeSendHooksAddresses defines a gRPC query method for
+   getting all addresses with before send hook registered.
+   The response returns two arrays, an array with a list of denom and an array
+   of before send hook addresses. The idx of denom corresponds to before send
+   hook addresse's idx. */
+  async allBeforeSendHooksAddresses(_params: QueryAllBeforeSendHooksAddressesRequest = {}): Promise<QueryAllBeforeSendHooksAddressesResponseSDKType> {
+    const endpoint = `osmosis/tokenfactory/v1beta1/all_before_send_hooks`;
+    return await this.req.get<QueryAllBeforeSendHooksAddressesResponseSDKType>(endpoint);
   }
 }
