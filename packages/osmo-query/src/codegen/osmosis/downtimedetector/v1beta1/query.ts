@@ -1,4 +1,4 @@
-import { Downtime, downtimeFromJSON, downtimeToJSON } from "./downtime_duration";
+import { Downtime, downtimeFromJSON } from "./downtime_duration";
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
@@ -105,7 +105,7 @@ export const RecoveredSinceDowntimeOfLengthRequest = {
   },
   toAmino(message: RecoveredSinceDowntimeOfLengthRequest): RecoveredSinceDowntimeOfLengthRequestAmino {
     const obj: any = {};
-    obj.downtime = downtimeToJSON(message.downtime);
+    obj.downtime = message.downtime;
     obj.recovery = message.recovery ? Duration.toAmino(message.recovery) : undefined;
     return obj;
   },

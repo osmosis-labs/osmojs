@@ -1,4 +1,4 @@
-import { Channel, ChannelAmino, ChannelSDKType, Packet, PacketAmino, PacketSDKType, State, stateFromJSON, stateToJSON } from "./channel";
+import { Channel, ChannelAmino, ChannelSDKType, Packet, PacketAmino, PacketSDKType, State, stateFromJSON } from "./channel";
 import { Height, HeightAmino, HeightSDKType, Params, ParamsAmino, ParamsSDKType } from "../../client/v1/client";
 import { UpgradeFields, UpgradeFieldsAmino, UpgradeFieldsSDKType, Upgrade, UpgradeAmino, UpgradeSDKType, ErrorReceipt, ErrorReceiptAmino, ErrorReceiptSDKType } from "./upgrade";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
@@ -2384,7 +2384,7 @@ export const MsgRecvPacketResponse = {
   },
   toAmino(message: MsgRecvPacketResponse): MsgRecvPacketResponseAmino {
     const obj: any = {};
-    obj.result = responseResultTypeToJSON(message.result);
+    obj.result = message.result;
     return obj;
   },
   fromAminoMsg(object: MsgRecvPacketResponseAminoMsg): MsgRecvPacketResponse {
@@ -2570,7 +2570,7 @@ export const MsgTimeoutResponse = {
   },
   toAmino(message: MsgTimeoutResponse): MsgTimeoutResponseAmino {
     const obj: any = {};
-    obj.result = responseResultTypeToJSON(message.result);
+    obj.result = message.result;
     return obj;
   },
   fromAminoMsg(object: MsgTimeoutResponseAminoMsg): MsgTimeoutResponse {
@@ -2780,7 +2780,7 @@ export const MsgTimeoutOnCloseResponse = {
   },
   toAmino(message: MsgTimeoutOnCloseResponse): MsgTimeoutOnCloseResponseAmino {
     const obj: any = {};
-    obj.result = responseResultTypeToJSON(message.result);
+    obj.result = message.result;
     return obj;
   },
   fromAminoMsg(object: MsgTimeoutOnCloseResponseAminoMsg): MsgTimeoutOnCloseResponse {
@@ -2966,7 +2966,7 @@ export const MsgAcknowledgementResponse = {
   },
   toAmino(message: MsgAcknowledgementResponse): MsgAcknowledgementResponseAmino {
     const obj: any = {};
-    obj.result = responseResultTypeToJSON(message.result);
+    obj.result = message.result;
     return obj;
   },
   fromAminoMsg(object: MsgAcknowledgementResponseAminoMsg): MsgAcknowledgementResponse {
@@ -3412,7 +3412,7 @@ export const MsgChannelUpgradeTryResponse = {
     const obj: any = {};
     obj.upgrade = message.upgrade ? Upgrade.toAmino(message.upgrade) : undefined;
     obj.upgrade_sequence = message.upgradeSequence ? message.upgradeSequence.toString() : undefined;
-    obj.result = responseResultTypeToJSON(message.result);
+    obj.result = message.result;
     return obj;
   },
   fromAminoMsg(object: MsgChannelUpgradeTryResponseAminoMsg): MsgChannelUpgradeTryResponse {
@@ -3622,7 +3622,7 @@ export const MsgChannelUpgradeAckResponse = {
   },
   toAmino(message: MsgChannelUpgradeAckResponse): MsgChannelUpgradeAckResponseAmino {
     const obj: any = {};
-    obj.result = responseResultTypeToJSON(message.result);
+    obj.result = message.result;
     return obj;
   },
   fromAminoMsg(object: MsgChannelUpgradeAckResponseAminoMsg): MsgChannelUpgradeAckResponse {
@@ -3770,7 +3770,7 @@ export const MsgChannelUpgradeConfirm = {
     const obj: any = {};
     obj.port_id = message.portId;
     obj.channel_id = message.channelId;
-    obj.counterparty_channel_state = stateToJSON(message.counterpartyChannelState);
+    obj.counterparty_channel_state = message.counterpartyChannelState;
     obj.counterparty_upgrade = message.counterpartyUpgrade ? Upgrade.toAmino(message.counterpartyUpgrade) : undefined;
     obj.proof_channel = message.proofChannel ? base64FromBytes(message.proofChannel) : undefined;
     obj.proof_upgrade = message.proofUpgrade ? base64FromBytes(message.proofUpgrade) : undefined;
@@ -3844,7 +3844,7 @@ export const MsgChannelUpgradeConfirmResponse = {
   },
   toAmino(message: MsgChannelUpgradeConfirmResponse): MsgChannelUpgradeConfirmResponseAmino {
     const obj: any = {};
-    obj.result = responseResultTypeToJSON(message.result);
+    obj.result = message.result;
     return obj;
   },
   fromAminoMsg(object: MsgChannelUpgradeConfirmResponseAminoMsg): MsgChannelUpgradeConfirmResponse {
@@ -3970,7 +3970,7 @@ export const MsgChannelUpgradeOpen = {
     const obj: any = {};
     obj.port_id = message.portId;
     obj.channel_id = message.channelId;
-    obj.counterparty_channel_state = stateToJSON(message.counterpartyChannelState);
+    obj.counterparty_channel_state = message.counterpartyChannelState;
     obj.proof_channel = message.proofChannel ? base64FromBytes(message.proofChannel) : undefined;
     obj.proof_height = message.proofHeight ? Height.toAmino(message.proofHeight) : {};
     obj.signer = message.signer;

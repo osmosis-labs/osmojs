@@ -1,4 +1,4 @@
-import { Timeout, TimeoutAmino, TimeoutSDKType, Order, orderFromJSON, orderToJSON } from "./channel";
+import { Timeout, TimeoutAmino, TimeoutSDKType, Order, orderFromJSON } from "./channel";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 /**
  * Upgrade is a verifiable type which contains the relevant information
@@ -275,7 +275,7 @@ export const UpgradeFields = {
   },
   toAmino(message: UpgradeFields): UpgradeFieldsAmino {
     const obj: any = {};
-    obj.ordering = orderToJSON(message.ordering);
+    obj.ordering = message.ordering;
     if (message.connectionHops) {
       obj.connection_hops = message.connectionHops.map(e => e);
     } else {

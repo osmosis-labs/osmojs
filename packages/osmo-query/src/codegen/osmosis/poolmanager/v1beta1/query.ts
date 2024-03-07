@@ -1958,7 +1958,7 @@ export const AllPoolsResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.pools.push((Any(reader) as Any));
+          message.pools.push((Any.decode(reader, reader.uint32()) as Any));
           break;
         default:
           reader.skipType(tag & 7);
@@ -2098,7 +2098,7 @@ export const ListPoolsByDenomResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.pools.push((Any(reader) as Any));
+          message.pools.push((Any.decode(reader, reader.uint32()) as Any));
           break;
         default:
           reader.skipType(tag & 7);

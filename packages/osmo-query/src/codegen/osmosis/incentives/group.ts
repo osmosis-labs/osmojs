@@ -468,7 +468,7 @@ export const Group = {
     const obj: any = {};
     obj.group_gauge_id = message.groupGaugeId ? message.groupGaugeId.toString() : undefined;
     obj.internal_gauge_info = message.internalGaugeInfo ? InternalGaugeInfo.toAmino(message.internalGaugeInfo) : undefined;
-    obj.splitting_policy = splittingPolicyToJSON(message.splittingPolicy);
+    obj.splitting_policy = message.splittingPolicy;
     return obj;
   },
   fromAminoMsg(object: GroupAminoMsg): Group {
