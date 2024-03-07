@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.9.2](https://github.com/osmosis-labs/osmojs/compare/osmo-query@16.9.1...osmo-query@16.9.2) (2024-03-07)
+
+**Note:** Version bump only for package osmo-query
+
 ## [16.9.1](https://github.com/osmosis-labs/osmojs/compare/osmo-query@16.9.0...osmo-query@16.9.1) (2024-03-07)
 
 **Note:** Version bump only for package osmo-query
