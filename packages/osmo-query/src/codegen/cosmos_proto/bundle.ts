@@ -1,4 +1,4 @@
-import * as _228 from "./cosmos";
+import * as _233 from "./cosmos";
 export const cosmos_proto = {
-  ..._228
+  ..._233
 };

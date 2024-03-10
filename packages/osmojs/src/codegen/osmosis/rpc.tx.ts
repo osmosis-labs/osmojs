@@ -31,6 +31,9 @@ export const createRPCMsgClient = async ({
     }
   },
   osmosis: {
+    bridge: {
+      v1beta1: new (await import("./bridge/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
     concentratedliquidity: {
       poolmodel: {
         concentrated: {

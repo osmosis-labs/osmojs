@@ -15,6 +15,7 @@ import { Pool as Pool3 } from "../../gamm/v1beta1/balancerPool";
 import { PoolProtoMsg as Pool3ProtoMsg } from "../../gamm/v1beta1/balancerPool";
 import { PoolSDKType as Pool3SDKType } from "../../gamm/v1beta1/balancerPool";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * FullTick contains tick index and pool id along with other tick model
  * information.
@@ -62,7 +63,7 @@ export interface FullTickSDKType {
  */
 export interface PoolData {
   /** pool struct */
-  pool?: (Pool1 & CosmWasmPool & Pool2 & Pool3 & Any) | undefined;
+  pool?: Pool1 | CosmWasmPool | Pool2 | Pool3 | Any | undefined;
   /** pool's ticks */
   ticks: FullTick[];
   spreadRewardAccumulator: AccumObject;
@@ -202,6 +203,16 @@ function createBaseFullTick(): FullTick {
 }
 export const FullTick = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.FullTick",
+  aminoType: "osmosis/concentratedliquidity/full-tick",
+  is(o: any): o is FullTick {
+    return o && (o.$typeUrl === FullTick.typeUrl || typeof o.poolId === "bigint" && typeof o.tickIndex === "bigint" && TickInfo.is(o.info));
+  },
+  isSDK(o: any): o is FullTickSDKType {
+    return o && (o.$typeUrl === FullTick.typeUrl || typeof o.pool_id === "bigint" && typeof o.tick_index === "bigint" && TickInfo.isSDK(o.info));
+  },
+  isAmino(o: any): o is FullTickAmino {
+    return o && (o.$typeUrl === FullTick.typeUrl || typeof o.pool_id === "bigint" && typeof o.tick_index === "bigint" && TickInfo.isAmino(o.info));
+  },
   encode(message: FullTick, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -286,6 +297,8 @@ export const FullTick = {
     };
   }
 };
+GlobalDecoderRegistry.register(FullTick.typeUrl, FullTick);
+GlobalDecoderRegistry.registerAminoProtoMapping(FullTick.aminoType, FullTick.typeUrl);
 function createBasePoolData(): PoolData {
   return {
     pool: undefined,
@@ -297,9 +310,19 @@ function createBasePoolData(): PoolData {
 }
 export const PoolData = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.PoolData",
+  aminoType: "osmosis/concentratedliquidity/pool-data",
+  is(o: any): o is PoolData {
+    return o && (o.$typeUrl === PoolData.typeUrl || Array.isArray(o.ticks) && (!o.ticks.length || FullTick.is(o.ticks[0])) && AccumObject.is(o.spreadRewardAccumulator) && Array.isArray(o.incentivesAccumulators) && (!o.incentivesAccumulators.length || AccumObject.is(o.incentivesAccumulators[0])) && Array.isArray(o.incentiveRecords) && (!o.incentiveRecords.length || IncentiveRecord.is(o.incentiveRecords[0])));
+  },
+  isSDK(o: any): o is PoolDataSDKType {
+    return o && (o.$typeUrl === PoolData.typeUrl || Array.isArray(o.ticks) && (!o.ticks.length || FullTick.isSDK(o.ticks[0])) && AccumObject.isSDK(o.spread_reward_accumulator) && Array.isArray(o.incentives_accumulators) && (!o.incentives_accumulators.length || AccumObject.isSDK(o.incentives_accumulators[0])) && Array.isArray(o.incentive_records) && (!o.incentive_records.length || IncentiveRecord.isSDK(o.incentive_records[0])));
+  },
+  isAmino(o: any): o is PoolDataAmino {
+    return o && (o.$typeUrl === PoolData.typeUrl || Array.isArray(o.ticks) && (!o.ticks.length || FullTick.isAmino(o.ticks[0])) && AccumObject.isAmino(o.spread_reward_accumulator) && Array.isArray(o.incentives_accumulators) && (!o.incentives_accumulators.length || AccumObject.isAmino(o.incentives_accumulators[0])) && Array.isArray(o.incentive_records) && (!o.incentive_records.length || IncentiveRecord.isAmino(o.incentive_records[0])));
+  },
   encode(message: PoolData, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pool !== undefined) {
-      Any.encode((message.pool as Any), writer.uint32(10).fork()).ldelim();
+      Any.encode(GlobalDecoderRegistry.wrapAny(message.pool), writer.uint32(10).fork()).ldelim();
     }
     for (const v of message.ticks) {
       FullTick.encode(v!, writer.uint32(18).fork()).ldelim();
@@ -323,7 +346,7 @@ export const PoolData = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.pool = (PoolI_InterfaceDecoder(reader) as Any);
+          message.pool = GlobalDecoderRegistry.unwrapAny(reader);
           break;
         case 2:
           message.ticks.push(FullTick.decode(reader, reader.uint32()));
@@ -346,7 +369,7 @@ export const PoolData = {
   },
   fromPartial(object: Partial<PoolData>): PoolData {
     const message = createBasePoolData();
-    message.pool = object.pool !== undefined && object.pool !== null ? Any.fromPartial(object.pool) : undefined;
+    message.pool = object.pool !== undefined && object.pool !== null ? GlobalDecoderRegistry.fromPartial(object.pool) : undefined;
     message.ticks = object.ticks?.map(e => FullTick.fromPartial(e)) || [];
     message.spreadRewardAccumulator = object.spreadRewardAccumulator !== undefined && object.spreadRewardAccumulator !== null ? AccumObject.fromPartial(object.spreadRewardAccumulator) : undefined;
     message.incentivesAccumulators = object.incentivesAccumulators?.map(e => AccumObject.fromPartial(e)) || [];
@@ -356,7 +379,7 @@ export const PoolData = {
   fromAmino(object: PoolDataAmino): PoolData {
     const message = createBasePoolData();
     if (object.pool !== undefined && object.pool !== null) {
-      message.pool = PoolI_FromAmino(object.pool);
+      message.pool = GlobalDecoderRegistry.fromAminoMsg(object.pool);
     }
     message.ticks = object.ticks?.map(e => FullTick.fromAmino(e)) || [];
     if (object.spread_reward_accumulator !== undefined && object.spread_reward_accumulator !== null) {
@@ -368,7 +391,7 @@ export const PoolData = {
   },
   toAmino(message: PoolData): PoolDataAmino {
     const obj: any = {};
-    obj.pool = message.pool ? PoolI_ToAmino((message.pool as Any)) : undefined;
+    obj.pool = message.pool ? GlobalDecoderRegistry.toAminoMsg(message.pool) : undefined;
     if (message.ticks) {
       obj.ticks = message.ticks.map(e => e ? FullTick.toAmino(e) : undefined);
     } else {
@@ -409,6 +432,8 @@ export const PoolData = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolData.typeUrl, PoolData);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolData.aminoType, PoolData.typeUrl);
 function createBasePositionData(): PositionData {
   return {
     position: undefined,
@@ -419,6 +444,16 @@ function createBasePositionData(): PositionData {
 }
 export const PositionData = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.PositionData",
+  aminoType: "osmosis/concentratedliquidity/position-data",
+  is(o: any): o is PositionData {
+    return o && (o.$typeUrl === PositionData.typeUrl || typeof o.lockId === "bigint" && Record.is(o.spreadRewardAccumRecord) && Array.isArray(o.uptimeAccumRecords) && (!o.uptimeAccumRecords.length || Record.is(o.uptimeAccumRecords[0])));
+  },
+  isSDK(o: any): o is PositionDataSDKType {
+    return o && (o.$typeUrl === PositionData.typeUrl || typeof o.lock_id === "bigint" && Record.isSDK(o.spread_reward_accum_record) && Array.isArray(o.uptime_accum_records) && (!o.uptime_accum_records.length || Record.isSDK(o.uptime_accum_records[0])));
+  },
+  isAmino(o: any): o is PositionDataAmino {
+    return o && (o.$typeUrl === PositionData.typeUrl || typeof o.lock_id === "bigint" && Record.isAmino(o.spread_reward_accum_record) && Array.isArray(o.uptime_accum_records) && (!o.uptime_accum_records.length || Record.isAmino(o.uptime_accum_records[0])));
+  },
   encode(message: PositionData, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.position !== undefined) {
       Position.encode(message.position, writer.uint32(10).fork()).ldelim();
@@ -516,6 +551,8 @@ export const PositionData = {
     };
   }
 };
+GlobalDecoderRegistry.register(PositionData.typeUrl, PositionData);
+GlobalDecoderRegistry.registerAminoProtoMapping(PositionData.aminoType, PositionData.typeUrl);
 function createBaseGenesisState(): GenesisState {
   return {
     params: Params.fromPartial({}),
@@ -528,6 +565,16 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.GenesisState",
+  aminoType: "osmosis/concentratedliquidity/genesis-state",
+  is(o: any): o is GenesisState {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.poolData) && (!o.poolData.length || PoolData.is(o.poolData[0])) && Array.isArray(o.positionData) && (!o.positionData.length || PositionData.is(o.positionData[0])) && typeof o.nextPositionId === "bigint" && typeof o.nextIncentiveRecordId === "bigint" && typeof o.incentivesAccumulatorPoolIdMigrationThreshold === "bigint");
+  },
+  isSDK(o: any): o is GenesisStateSDKType {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.pool_data) && (!o.pool_data.length || PoolData.isSDK(o.pool_data[0])) && Array.isArray(o.position_data) && (!o.position_data.length || PositionData.isSDK(o.position_data[0])) && typeof o.next_position_id === "bigint" && typeof o.next_incentive_record_id === "bigint" && typeof o.incentives_accumulator_pool_id_migration_threshold === "bigint");
+  },
+  isAmino(o: any): o is GenesisStateAmino {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.pool_data) && (!o.pool_data.length || PoolData.isAmino(o.pool_data[0])) && Array.isArray(o.position_data) && (!o.position_data.length || PositionData.isAmino(o.position_data[0])) && typeof o.next_position_id === "bigint" && typeof o.next_incentive_record_id === "bigint" && typeof o.incentives_accumulator_pool_id_migration_threshold === "bigint");
+  },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -649,6 +696,8 @@ export const GenesisState = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 function createBaseAccumObject(): AccumObject {
   return {
     name: "",
@@ -657,6 +706,16 @@ function createBaseAccumObject(): AccumObject {
 }
 export const AccumObject = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.AccumObject",
+  aminoType: "osmosis/concentratedliquidity/accum-object",
+  is(o: any): o is AccumObject {
+    return o && (o.$typeUrl === AccumObject.typeUrl || typeof o.name === "string");
+  },
+  isSDK(o: any): o is AccumObjectSDKType {
+    return o && (o.$typeUrl === AccumObject.typeUrl || typeof o.name === "string");
+  },
+  isAmino(o: any): o is AccumObjectAmino {
+    return o && (o.$typeUrl === AccumObject.typeUrl || typeof o.name === "string");
+  },
   encode(message: AccumObject, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
@@ -730,71 +789,5 @@ export const AccumObject = {
     };
   }
 };
-export const PoolI_InterfaceDecoder = (input: BinaryReader | Uint8Array): Pool1 | CosmWasmPool | Pool2 | Pool3 | Any => {
-  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-  const data = Any.decode(reader, reader.uint32());
-  switch (data.typeUrl) {
-    case "/osmosis.concentratedliquidity.v1beta1.Pool":
-      return Pool1.decode(data.value);
-    case "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool":
-      return CosmWasmPool.decode(data.value);
-    case "/osmosis.gamm.poolmodels.stableswap.v1beta1.Pool":
-      return Pool2.decode(data.value);
-    case "/osmosis.gamm.v1beta1.Pool":
-      return Pool3.decode(data.value);
-    default:
-      return data;
-  }
-};
-export const PoolI_FromAmino = (content: AnyAmino) => {
-  switch (content.type) {
-    case "osmosis/concentratedliquidity/pool":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.concentratedliquidity.v1beta1.Pool",
-        value: Pool1.encode(Pool1.fromPartial(Pool1.fromAmino(content.value))).finish()
-      });
-    case "osmosis/cosmwasmpool/cosm-wasm-pool":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool",
-        value: CosmWasmPool.encode(CosmWasmPool.fromPartial(CosmWasmPool.fromAmino(content.value))).finish()
-      });
-    case "osmosis/gamm/StableswapPool":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.Pool",
-        value: Pool2.encode(Pool2.fromPartial(Pool2.fromAmino(content.value))).finish()
-      });
-    case "osmosis/gamm/BalancerPool":
-      return Any.fromPartial({
-        typeUrl: "/osmosis.gamm.v1beta1.Pool",
-        value: Pool3.encode(Pool3.fromPartial(Pool3.fromAmino(content.value))).finish()
-      });
-    default:
-      return Any.fromAmino(content);
-  }
-};
-export const PoolI_ToAmino = (content: Any) => {
-  switch (content.typeUrl) {
-    case "/osmosis.concentratedliquidity.v1beta1.Pool":
-      return {
-        type: "osmosis/concentratedliquidity/pool",
-        value: Pool1.toAmino(Pool1.decode(content.value, undefined))
-      };
-    case "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool":
-      return {
-        type: "osmosis/cosmwasmpool/cosm-wasm-pool",
-        value: CosmWasmPool.toAmino(CosmWasmPool.decode(content.value, undefined))
-      };
-    case "/osmosis.gamm.poolmodels.stableswap.v1beta1.Pool":
-      return {
-        type: "osmosis/gamm/StableswapPool",
-        value: Pool2.toAmino(Pool2.decode(content.value, undefined))
-      };
-    case "/osmosis.gamm.v1beta1.Pool":
-      return {
-        type: "osmosis/gamm/BalancerPool",
-        value: Pool3.toAmino(Pool3.decode(content.value, undefined))
-      };
-    default:
-      return Any.toAmino(content);
-  }
-};
+GlobalDecoderRegistry.register(AccumObject.typeUrl, AccumObject);
+GlobalDecoderRegistry.registerAminoProtoMapping(AccumObject.aminoType, AccumObject.typeUrl);

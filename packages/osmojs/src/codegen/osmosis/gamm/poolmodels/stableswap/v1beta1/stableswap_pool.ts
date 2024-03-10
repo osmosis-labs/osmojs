@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { GlobalDecoderRegistry } from "../../../../../registry";
 /**
  * PoolParams defined the parameters that will be managed by the pool
  * governance in the future. This params are not managed by the chain
@@ -128,6 +129,16 @@ function createBasePoolParams(): PoolParams {
 }
 export const PoolParams = {
   typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.PoolParams",
+  aminoType: "osmosis/gamm/StableswapPoolParams",
+  is(o: any): o is PoolParams {
+    return o && (o.$typeUrl === PoolParams.typeUrl || typeof o.swapFee === "string" && typeof o.exitFee === "string");
+  },
+  isSDK(o: any): o is PoolParamsSDKType {
+    return o && (o.$typeUrl === PoolParams.typeUrl || typeof o.swap_fee === "string" && typeof o.exit_fee === "string");
+  },
+  isAmino(o: any): o is PoolParamsAmino {
+    return o && (o.$typeUrl === PoolParams.typeUrl || typeof o.swap_fee === "string" && typeof o.exit_fee === "string");
+  },
   encode(message: PoolParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.swapFee !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.swapFee, 18).atomics);
@@ -201,6 +212,8 @@ export const PoolParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolParams.typeUrl, PoolParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolParams.aminoType, PoolParams.typeUrl);
 function createBasePool(): Pool {
   return {
     $typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.Pool",
@@ -216,6 +229,16 @@ function createBasePool(): Pool {
 }
 export const Pool = {
   typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.Pool",
+  aminoType: "osmosis/gamm/StableswapPool",
+  is(o: any): o is Pool {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.id === "bigint" && PoolParams.is(o.poolParams) && typeof o.futurePoolGovernor === "string" && Coin.is(o.totalShares) && Array.isArray(o.poolLiquidity) && (!o.poolLiquidity.length || Coin.is(o.poolLiquidity[0])) && Array.isArray(o.scalingFactors) && (!o.scalingFactors.length || typeof o.scalingFactors[0] === "bigint") && typeof o.scalingFactorController === "string");
+  },
+  isSDK(o: any): o is PoolSDKType {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.id === "bigint" && PoolParams.isSDK(o.pool_params) && typeof o.future_pool_governor === "string" && Coin.isSDK(o.total_shares) && Array.isArray(o.pool_liquidity) && (!o.pool_liquidity.length || Coin.isSDK(o.pool_liquidity[0])) && Array.isArray(o.scaling_factors) && (!o.scaling_factors.length || typeof o.scaling_factors[0] === "bigint") && typeof o.scaling_factor_controller === "string");
+  },
+  isAmino(o: any): o is PoolAmino {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.id === "bigint" && PoolParams.isAmino(o.pool_params) && typeof o.future_pool_governor === "string" && Coin.isAmino(o.total_shares) && Array.isArray(o.pool_liquidity) && (!o.pool_liquidity.length || Coin.isAmino(o.pool_liquidity[0])) && Array.isArray(o.scaling_factors) && (!o.scaling_factors.length || typeof o.scaling_factors[0] === "bigint") && typeof o.scaling_factor_controller === "string");
+  },
   encode(message: Pool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -368,3 +391,5 @@ export const Pool = {
     };
   }
 };
+GlobalDecoderRegistry.register(Pool.typeUrl, Pool);
+GlobalDecoderRegistry.registerAminoProtoMapping(Pool.aminoType, Pool.typeUrl);

@@ -2,6 +2,7 @@ import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin"
 import { ModuleRoute, ModuleRouteAmino, ModuleRouteSDKType } from "./module_route";
 import { DenomPairTakerFee, DenomPairTakerFeeAmino, DenomPairTakerFeeSDKType } from "./tx";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { Decimal } from "@cosmjs/math";
 /** Params holds parameters for the poolmanager module */
 export interface Params {
@@ -315,6 +316,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.poolmanager.v1beta1.Params",
+  aminoType: "osmosis/poolmanager/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.poolCreationFee) && (!o.poolCreationFee.length || Coin.is(o.poolCreationFee[0])) && TakerFeeParams.is(o.takerFeeParams) && Array.isArray(o.authorizedQuoteDenoms) && (!o.authorizedQuoteDenoms.length || typeof o.authorizedQuoteDenoms[0] === "string"));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.pool_creation_fee) && (!o.pool_creation_fee.length || Coin.isSDK(o.pool_creation_fee[0])) && TakerFeeParams.isSDK(o.taker_fee_params) && Array.isArray(o.authorized_quote_denoms) && (!o.authorized_quote_denoms.length || typeof o.authorized_quote_denoms[0] === "string"));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.pool_creation_fee) && (!o.pool_creation_fee.length || Coin.isAmino(o.pool_creation_fee[0])) && TakerFeeParams.isAmino(o.taker_fee_params) && Array.isArray(o.authorized_quote_denoms) && (!o.authorized_quote_denoms.length || typeof o.authorized_quote_denoms[0] === "string"));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.poolCreationFee) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -403,6 +414,8 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);
 function createBaseGenesisState(): GenesisState {
   return {
     nextPoolId: BigInt(0),
@@ -415,6 +428,16 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/osmosis.poolmanager.v1beta1.GenesisState",
+  aminoType: "osmosis/poolmanager/genesis-state",
+  is(o: any): o is GenesisState {
+    return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.nextPoolId === "bigint" && Params.is(o.params) && Array.isArray(o.poolRoutes) && (!o.poolRoutes.length || ModuleRoute.is(o.poolRoutes[0])) && Array.isArray(o.poolVolumes) && (!o.poolVolumes.length || PoolVolume.is(o.poolVolumes[0])) && Array.isArray(o.denomPairTakerFeeStore) && (!o.denomPairTakerFeeStore.length || DenomPairTakerFee.is(o.denomPairTakerFeeStore[0])));
+  },
+  isSDK(o: any): o is GenesisStateSDKType {
+    return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.next_pool_id === "bigint" && Params.isSDK(o.params) && Array.isArray(o.pool_routes) && (!o.pool_routes.length || ModuleRoute.isSDK(o.pool_routes[0])) && Array.isArray(o.pool_volumes) && (!o.pool_volumes.length || PoolVolume.isSDK(o.pool_volumes[0])) && Array.isArray(o.denom_pair_taker_fee_store) && (!o.denom_pair_taker_fee_store.length || DenomPairTakerFee.isSDK(o.denom_pair_taker_fee_store[0])));
+  },
+  isAmino(o: any): o is GenesisStateAmino {
+    return o && (o.$typeUrl === GenesisState.typeUrl || typeof o.next_pool_id === "bigint" && Params.isAmino(o.params) && Array.isArray(o.pool_routes) && (!o.pool_routes.length || ModuleRoute.isAmino(o.pool_routes[0])) && Array.isArray(o.pool_volumes) && (!o.pool_volumes.length || PoolVolume.isAmino(o.pool_volumes[0])) && Array.isArray(o.denom_pair_taker_fee_store) && (!o.denom_pair_taker_fee_store.length || DenomPairTakerFee.isAmino(o.denom_pair_taker_fee_store[0])));
+  },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.nextPoolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.nextPoolId);
@@ -538,6 +561,8 @@ export const GenesisState = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 function createBaseTakerFeeParams(): TakerFeeParams {
   return {
     defaultTakerFee: "",
@@ -550,6 +575,16 @@ function createBaseTakerFeeParams(): TakerFeeParams {
 }
 export const TakerFeeParams = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TakerFeeParams",
+  aminoType: "osmosis/poolmanager/taker-fee-params",
+  is(o: any): o is TakerFeeParams {
+    return o && (o.$typeUrl === TakerFeeParams.typeUrl || typeof o.defaultTakerFee === "string" && TakerFeeDistributionPercentage.is(o.osmoTakerFeeDistribution) && TakerFeeDistributionPercentage.is(o.nonOsmoTakerFeeDistribution) && Array.isArray(o.adminAddresses) && (!o.adminAddresses.length || typeof o.adminAddresses[0] === "string") && typeof o.communityPoolDenomToSwapNonWhitelistedAssetsTo === "string" && Array.isArray(o.reducedFeeWhitelist) && (!o.reducedFeeWhitelist.length || typeof o.reducedFeeWhitelist[0] === "string"));
+  },
+  isSDK(o: any): o is TakerFeeParamsSDKType {
+    return o && (o.$typeUrl === TakerFeeParams.typeUrl || typeof o.default_taker_fee === "string" && TakerFeeDistributionPercentage.isSDK(o.osmo_taker_fee_distribution) && TakerFeeDistributionPercentage.isSDK(o.non_osmo_taker_fee_distribution) && Array.isArray(o.admin_addresses) && (!o.admin_addresses.length || typeof o.admin_addresses[0] === "string") && typeof o.community_pool_denom_to_swap_non_whitelisted_assets_to === "string" && Array.isArray(o.reduced_fee_whitelist) && (!o.reduced_fee_whitelist.length || typeof o.reduced_fee_whitelist[0] === "string"));
+  },
+  isAmino(o: any): o is TakerFeeParamsAmino {
+    return o && (o.$typeUrl === TakerFeeParams.typeUrl || typeof o.default_taker_fee === "string" && TakerFeeDistributionPercentage.isAmino(o.osmo_taker_fee_distribution) && TakerFeeDistributionPercentage.isAmino(o.non_osmo_taker_fee_distribution) && Array.isArray(o.admin_addresses) && (!o.admin_addresses.length || typeof o.admin_addresses[0] === "string") && typeof o.community_pool_denom_to_swap_non_whitelisted_assets_to === "string" && Array.isArray(o.reduced_fee_whitelist) && (!o.reduced_fee_whitelist.length || typeof o.reduced_fee_whitelist[0] === "string"));
+  },
   encode(message: TakerFeeParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.defaultTakerFee !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.defaultTakerFee, 18).atomics);
@@ -671,6 +706,8 @@ export const TakerFeeParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(TakerFeeParams.typeUrl, TakerFeeParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(TakerFeeParams.aminoType, TakerFeeParams.typeUrl);
 function createBaseTakerFeeDistributionPercentage(): TakerFeeDistributionPercentage {
   return {
     stakingRewards: "",
@@ -679,6 +716,16 @@ function createBaseTakerFeeDistributionPercentage(): TakerFeeDistributionPercent
 }
 export const TakerFeeDistributionPercentage = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TakerFeeDistributionPercentage",
+  aminoType: "osmosis/poolmanager/taker-fee-distribution-percentage",
+  is(o: any): o is TakerFeeDistributionPercentage {
+    return o && (o.$typeUrl === TakerFeeDistributionPercentage.typeUrl || typeof o.stakingRewards === "string" && typeof o.communityPool === "string");
+  },
+  isSDK(o: any): o is TakerFeeDistributionPercentageSDKType {
+    return o && (o.$typeUrl === TakerFeeDistributionPercentage.typeUrl || typeof o.staking_rewards === "string" && typeof o.community_pool === "string");
+  },
+  isAmino(o: any): o is TakerFeeDistributionPercentageAmino {
+    return o && (o.$typeUrl === TakerFeeDistributionPercentage.typeUrl || typeof o.staking_rewards === "string" && typeof o.community_pool === "string");
+  },
   encode(message: TakerFeeDistributionPercentage, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.stakingRewards !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.stakingRewards, 18).atomics);
@@ -752,6 +799,8 @@ export const TakerFeeDistributionPercentage = {
     };
   }
 };
+GlobalDecoderRegistry.register(TakerFeeDistributionPercentage.typeUrl, TakerFeeDistributionPercentage);
+GlobalDecoderRegistry.registerAminoProtoMapping(TakerFeeDistributionPercentage.aminoType, TakerFeeDistributionPercentage.typeUrl);
 function createBaseTakerFeesTracker(): TakerFeesTracker {
   return {
     takerFeesToStakers: [],
@@ -761,6 +810,16 @@ function createBaseTakerFeesTracker(): TakerFeesTracker {
 }
 export const TakerFeesTracker = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TakerFeesTracker",
+  aminoType: "osmosis/poolmanager/taker-fees-tracker",
+  is(o: any): o is TakerFeesTracker {
+    return o && (o.$typeUrl === TakerFeesTracker.typeUrl || Array.isArray(o.takerFeesToStakers) && (!o.takerFeesToStakers.length || Coin.is(o.takerFeesToStakers[0])) && Array.isArray(o.takerFeesToCommunityPool) && (!o.takerFeesToCommunityPool.length || Coin.is(o.takerFeesToCommunityPool[0])) && typeof o.heightAccountingStartsFrom === "bigint");
+  },
+  isSDK(o: any): o is TakerFeesTrackerSDKType {
+    return o && (o.$typeUrl === TakerFeesTracker.typeUrl || Array.isArray(o.taker_fees_to_stakers) && (!o.taker_fees_to_stakers.length || Coin.isSDK(o.taker_fees_to_stakers[0])) && Array.isArray(o.taker_fees_to_community_pool) && (!o.taker_fees_to_community_pool.length || Coin.isSDK(o.taker_fees_to_community_pool[0])) && typeof o.height_accounting_starts_from === "bigint");
+  },
+  isAmino(o: any): o is TakerFeesTrackerAmino {
+    return o && (o.$typeUrl === TakerFeesTracker.typeUrl || Array.isArray(o.taker_fees_to_stakers) && (!o.taker_fees_to_stakers.length || Coin.isAmino(o.taker_fees_to_stakers[0])) && Array.isArray(o.taker_fees_to_community_pool) && (!o.taker_fees_to_community_pool.length || Coin.isAmino(o.taker_fees_to_community_pool[0])) && typeof o.height_accounting_starts_from === "bigint");
+  },
   encode(message: TakerFeesTracker, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.takerFeesToStakers) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -849,6 +908,8 @@ export const TakerFeesTracker = {
     };
   }
 };
+GlobalDecoderRegistry.register(TakerFeesTracker.typeUrl, TakerFeesTracker);
+GlobalDecoderRegistry.registerAminoProtoMapping(TakerFeesTracker.aminoType, TakerFeesTracker.typeUrl);
 function createBasePoolVolume(): PoolVolume {
   return {
     poolId: BigInt(0),
@@ -857,6 +918,16 @@ function createBasePoolVolume(): PoolVolume {
 }
 export const PoolVolume = {
   typeUrl: "/osmosis.poolmanager.v1beta1.PoolVolume",
+  aminoType: "osmosis/poolmanager/pool-volume",
+  is(o: any): o is PoolVolume {
+    return o && (o.$typeUrl === PoolVolume.typeUrl || typeof o.poolId === "bigint" && Array.isArray(o.poolVolume) && (!o.poolVolume.length || Coin.is(o.poolVolume[0])));
+  },
+  isSDK(o: any): o is PoolVolumeSDKType {
+    return o && (o.$typeUrl === PoolVolume.typeUrl || typeof o.pool_id === "bigint" && Array.isArray(o.pool_volume) && (!o.pool_volume.length || Coin.isSDK(o.pool_volume[0])));
+  },
+  isAmino(o: any): o is PoolVolumeAmino {
+    return o && (o.$typeUrl === PoolVolume.typeUrl || typeof o.pool_id === "bigint" && Array.isArray(o.pool_volume) && (!o.pool_volume.length || Coin.isAmino(o.pool_volume[0])));
+  },
   encode(message: PoolVolume, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -932,3 +1003,5 @@ export const PoolVolume = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolVolume.typeUrl, PoolVolume);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolVolume.aminoType, PoolVolume.typeUrl);

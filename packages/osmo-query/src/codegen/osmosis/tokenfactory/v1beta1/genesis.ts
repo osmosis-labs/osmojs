@@ -1,6 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { DenomAuthorityMetadata, DenomAuthorityMetadataAmino, DenomAuthorityMetadataSDKType } from "./authorityMetadata";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** GenesisState defines the tokenfactory module's genesis state. */
 export interface GenesisState {
   /** params defines the parameters of the module. */
@@ -69,6 +70,16 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.GenesisState",
+  aminoType: "osmosis/tokenfactory/genesis-state",
+  is(o: any): o is GenesisState {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.factoryDenoms) && (!o.factoryDenoms.length || GenesisDenom.is(o.factoryDenoms[0])));
+  },
+  isSDK(o: any): o is GenesisStateSDKType {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.factory_denoms) && (!o.factory_denoms.length || GenesisDenom.isSDK(o.factory_denoms[0])));
+  },
+  isAmino(o: any): o is GenesisStateAmino {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.factory_denoms) && (!o.factory_denoms.length || GenesisDenom.isAmino(o.factory_denoms[0])));
+  },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -144,6 +155,8 @@ export const GenesisState = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);
 function createBaseGenesisDenom(): GenesisDenom {
   return {
     denom: "",
@@ -152,6 +165,16 @@ function createBaseGenesisDenom(): GenesisDenom {
 }
 export const GenesisDenom = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.GenesisDenom",
+  aminoType: "osmosis/tokenfactory/genesis-denom",
+  is(o: any): o is GenesisDenom {
+    return o && (o.$typeUrl === GenesisDenom.typeUrl || typeof o.denom === "string" && DenomAuthorityMetadata.is(o.authorityMetadata));
+  },
+  isSDK(o: any): o is GenesisDenomSDKType {
+    return o && (o.$typeUrl === GenesisDenom.typeUrl || typeof o.denom === "string" && DenomAuthorityMetadata.isSDK(o.authority_metadata));
+  },
+  isAmino(o: any): o is GenesisDenomAmino {
+    return o && (o.$typeUrl === GenesisDenom.typeUrl || typeof o.denom === "string" && DenomAuthorityMetadata.isAmino(o.authority_metadata));
+  },
   encode(message: GenesisDenom, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -225,3 +248,5 @@ export const GenesisDenom = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisDenom.typeUrl, GenesisDenom);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisDenom.aminoType, GenesisDenom.typeUrl);

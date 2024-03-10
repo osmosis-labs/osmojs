@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** Minter represents the minting state. */
 export interface Minter {
   /** epoch_provisions represent rewards for the current epoch. */
@@ -230,6 +231,16 @@ function createBaseMinter(): Minter {
 }
 export const Minter = {
   typeUrl: "/osmosis.mint.v1beta1.Minter",
+  aminoType: "osmosis/mint/minter",
+  is(o: any): o is Minter {
+    return o && (o.$typeUrl === Minter.typeUrl || typeof o.epochProvisions === "string");
+  },
+  isSDK(o: any): o is MinterSDKType {
+    return o && (o.$typeUrl === Minter.typeUrl || typeof o.epoch_provisions === "string");
+  },
+  isAmino(o: any): o is MinterAmino {
+    return o && (o.$typeUrl === Minter.typeUrl || typeof o.epoch_provisions === "string");
+  },
   encode(message: Minter, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.epochProvisions !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.epochProvisions, 18).atomics);
@@ -292,6 +303,8 @@ export const Minter = {
     };
   }
 };
+GlobalDecoderRegistry.register(Minter.typeUrl, Minter);
+GlobalDecoderRegistry.registerAminoProtoMapping(Minter.aminoType, Minter.typeUrl);
 function createBaseWeightedAddress(): WeightedAddress {
   return {
     address: "",
@@ -300,6 +313,16 @@ function createBaseWeightedAddress(): WeightedAddress {
 }
 export const WeightedAddress = {
   typeUrl: "/osmosis.mint.v1beta1.WeightedAddress",
+  aminoType: "osmosis/mint/weighted-address",
+  is(o: any): o is WeightedAddress {
+    return o && (o.$typeUrl === WeightedAddress.typeUrl || typeof o.address === "string" && typeof o.weight === "string");
+  },
+  isSDK(o: any): o is WeightedAddressSDKType {
+    return o && (o.$typeUrl === WeightedAddress.typeUrl || typeof o.address === "string" && typeof o.weight === "string");
+  },
+  isAmino(o: any): o is WeightedAddressAmino {
+    return o && (o.$typeUrl === WeightedAddress.typeUrl || typeof o.address === "string" && typeof o.weight === "string");
+  },
   encode(message: WeightedAddress, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -373,6 +396,8 @@ export const WeightedAddress = {
     };
   }
 };
+GlobalDecoderRegistry.register(WeightedAddress.typeUrl, WeightedAddress);
+GlobalDecoderRegistry.registerAminoProtoMapping(WeightedAddress.aminoType, WeightedAddress.typeUrl);
 function createBaseDistributionProportions(): DistributionProportions {
   return {
     staking: "",
@@ -383,6 +408,16 @@ function createBaseDistributionProportions(): DistributionProportions {
 }
 export const DistributionProportions = {
   typeUrl: "/osmosis.mint.v1beta1.DistributionProportions",
+  aminoType: "osmosis/mint/distribution-proportions",
+  is(o: any): o is DistributionProportions {
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.staking === "string" && typeof o.poolIncentives === "string" && typeof o.developerRewards === "string" && typeof o.communityPool === "string");
+  },
+  isSDK(o: any): o is DistributionProportionsSDKType {
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.staking === "string" && typeof o.pool_incentives === "string" && typeof o.developer_rewards === "string" && typeof o.community_pool === "string");
+  },
+  isAmino(o: any): o is DistributionProportionsAmino {
+    return o && (o.$typeUrl === DistributionProportions.typeUrl || typeof o.staking === "string" && typeof o.pool_incentives === "string" && typeof o.developer_rewards === "string" && typeof o.community_pool === "string");
+  },
   encode(message: DistributionProportions, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.staking !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.staking, 18).atomics);
@@ -478,6 +513,8 @@ export const DistributionProportions = {
     };
   }
 };
+GlobalDecoderRegistry.register(DistributionProportions.typeUrl, DistributionProportions);
+GlobalDecoderRegistry.registerAminoProtoMapping(DistributionProportions.aminoType, DistributionProportions.typeUrl);
 function createBaseParams(): Params {
   return {
     mintDenom: "",
@@ -492,6 +529,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.mint.v1beta1.Params",
+  aminoType: "osmosis/mint/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.mintDenom === "string" && typeof o.genesisEpochProvisions === "string" && typeof o.epochIdentifier === "string" && typeof o.reductionPeriodInEpochs === "bigint" && typeof o.reductionFactor === "string" && DistributionProportions.is(o.distributionProportions) && Array.isArray(o.weightedDeveloperRewardsReceivers) && (!o.weightedDeveloperRewardsReceivers.length || WeightedAddress.is(o.weightedDeveloperRewardsReceivers[0])) && typeof o.mintingRewardsDistributionStartEpoch === "bigint");
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.mint_denom === "string" && typeof o.genesis_epoch_provisions === "string" && typeof o.epoch_identifier === "string" && typeof o.reduction_period_in_epochs === "bigint" && typeof o.reduction_factor === "string" && DistributionProportions.isSDK(o.distribution_proportions) && Array.isArray(o.weighted_developer_rewards_receivers) && (!o.weighted_developer_rewards_receivers.length || WeightedAddress.isSDK(o.weighted_developer_rewards_receivers[0])) && typeof o.minting_rewards_distribution_start_epoch === "bigint");
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.mint_denom === "string" && typeof o.genesis_epoch_provisions === "string" && typeof o.epoch_identifier === "string" && typeof o.reduction_period_in_epochs === "bigint" && typeof o.reduction_factor === "string" && DistributionProportions.isAmino(o.distribution_proportions) && Array.isArray(o.weighted_developer_rewards_receivers) && (!o.weighted_developer_rewards_receivers.length || WeightedAddress.isAmino(o.weighted_developer_rewards_receivers[0])) && typeof o.minting_rewards_distribution_start_epoch === "bigint");
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.mintDenom !== "") {
       writer.uint32(10).string(message.mintDenom);
@@ -633,3 +680,5 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);

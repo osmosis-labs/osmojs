@@ -1,5 +1,7 @@
 import { Timeout, TimeoutAmino, TimeoutSDKType, Order, orderFromJSON } from "./channel";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { GlobalDecoderRegistry } from "../../../../registry";
+import { isSet } from "../../../../helpers";
 /**
  * Upgrade is a verifiable type which contains the relevant information
  * for an attempted upgrade. It provides the proposed changes to the channel
@@ -127,6 +129,16 @@ function createBaseUpgrade(): Upgrade {
 }
 export const Upgrade = {
   typeUrl: "/ibc.core.channel.v1.Upgrade",
+  aminoType: "cosmos-sdk/Upgrade",
+  is(o: any): o is Upgrade {
+    return o && (o.$typeUrl === Upgrade.typeUrl || UpgradeFields.is(o.fields) && Timeout.is(o.timeout) && typeof o.nextSequenceSend === "bigint");
+  },
+  isSDK(o: any): o is UpgradeSDKType {
+    return o && (o.$typeUrl === Upgrade.typeUrl || UpgradeFields.isSDK(o.fields) && Timeout.isSDK(o.timeout) && typeof o.next_sequence_send === "bigint");
+  },
+  isAmino(o: any): o is UpgradeAmino {
+    return o && (o.$typeUrl === Upgrade.typeUrl || UpgradeFields.isAmino(o.fields) && Timeout.isAmino(o.timeout) && typeof o.next_sequence_send === "bigint");
+  },
   encode(message: Upgrade, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.fields !== undefined) {
       UpgradeFields.encode(message.fields, writer.uint32(10).fork()).ldelim();
@@ -211,6 +223,8 @@ export const Upgrade = {
     };
   }
 };
+GlobalDecoderRegistry.register(Upgrade.typeUrl, Upgrade);
+GlobalDecoderRegistry.registerAminoProtoMapping(Upgrade.aminoType, Upgrade.typeUrl);
 function createBaseUpgradeFields(): UpgradeFields {
   return {
     ordering: 0,
@@ -220,6 +234,16 @@ function createBaseUpgradeFields(): UpgradeFields {
 }
 export const UpgradeFields = {
   typeUrl: "/ibc.core.channel.v1.UpgradeFields",
+  aminoType: "cosmos-sdk/UpgradeFields",
+  is(o: any): o is UpgradeFields {
+    return o && (o.$typeUrl === UpgradeFields.typeUrl || isSet(o.ordering) && Array.isArray(o.connectionHops) && (!o.connectionHops.length || typeof o.connectionHops[0] === "string") && typeof o.version === "string");
+  },
+  isSDK(o: any): o is UpgradeFieldsSDKType {
+    return o && (o.$typeUrl === UpgradeFields.typeUrl || isSet(o.ordering) && Array.isArray(o.connection_hops) && (!o.connection_hops.length || typeof o.connection_hops[0] === "string") && typeof o.version === "string");
+  },
+  isAmino(o: any): o is UpgradeFieldsAmino {
+    return o && (o.$typeUrl === UpgradeFields.typeUrl || isSet(o.ordering) && Array.isArray(o.connection_hops) && (!o.connection_hops.length || typeof o.connection_hops[0] === "string") && typeof o.version === "string");
+  },
   encode(message: UpgradeFields, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.ordering !== 0) {
       writer.uint32(8).int32(message.ordering);
@@ -306,6 +330,8 @@ export const UpgradeFields = {
     };
   }
 };
+GlobalDecoderRegistry.register(UpgradeFields.typeUrl, UpgradeFields);
+GlobalDecoderRegistry.registerAminoProtoMapping(UpgradeFields.aminoType, UpgradeFields.typeUrl);
 function createBaseErrorReceipt(): ErrorReceipt {
   return {
     sequence: BigInt(0),
@@ -314,6 +340,16 @@ function createBaseErrorReceipt(): ErrorReceipt {
 }
 export const ErrorReceipt = {
   typeUrl: "/ibc.core.channel.v1.ErrorReceipt",
+  aminoType: "cosmos-sdk/ErrorReceipt",
+  is(o: any): o is ErrorReceipt {
+    return o && (o.$typeUrl === ErrorReceipt.typeUrl || typeof o.sequence === "bigint" && typeof o.message === "string");
+  },
+  isSDK(o: any): o is ErrorReceiptSDKType {
+    return o && (o.$typeUrl === ErrorReceipt.typeUrl || typeof o.sequence === "bigint" && typeof o.message === "string");
+  },
+  isAmino(o: any): o is ErrorReceiptAmino {
+    return o && (o.$typeUrl === ErrorReceipt.typeUrl || typeof o.sequence === "bigint" && typeof o.message === "string");
+  },
   encode(message: ErrorReceipt, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sequence !== BigInt(0)) {
       writer.uint32(8).uint64(message.sequence);
@@ -387,3 +423,5 @@ export const ErrorReceipt = {
     };
   }
 };
+GlobalDecoderRegistry.register(ErrorReceipt.typeUrl, ErrorReceipt);
+GlobalDecoderRegistry.registerAminoProtoMapping(ErrorReceipt.aminoType, ErrorReceipt.typeUrl);

@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { GlobalDecoderRegistry } from "../../../../registry";
 import { Decimal } from "@cosmjs/math";
 /** ===================== GetSwapFeeQueryMsg */
 export interface GetSwapFeeQueryMsg {
@@ -231,6 +232,16 @@ function createBaseGetSwapFeeQueryMsg(): GetSwapFeeQueryMsg {
 }
 export const GetSwapFeeQueryMsg = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.GetSwapFeeQueryMsg",
+  aminoType: "osmosis/cosmwasmpool/get-swap-fee-query-msg",
+  is(o: any): o is GetSwapFeeQueryMsg {
+    return o && (o.$typeUrl === GetSwapFeeQueryMsg.typeUrl || EmptyStruct.is(o.getSwapFee));
+  },
+  isSDK(o: any): o is GetSwapFeeQueryMsgSDKType {
+    return o && (o.$typeUrl === GetSwapFeeQueryMsg.typeUrl || EmptyStruct.isSDK(o.get_swap_fee));
+  },
+  isAmino(o: any): o is GetSwapFeeQueryMsgAmino {
+    return o && (o.$typeUrl === GetSwapFeeQueryMsg.typeUrl || EmptyStruct.isAmino(o.get_swap_fee));
+  },
   encode(message: GetSwapFeeQueryMsg, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.getSwapFee !== undefined) {
       EmptyStruct.encode(message.getSwapFee, writer.uint32(10).fork()).ldelim();
@@ -293,6 +304,8 @@ export const GetSwapFeeQueryMsg = {
     };
   }
 };
+GlobalDecoderRegistry.register(GetSwapFeeQueryMsg.typeUrl, GetSwapFeeQueryMsg);
+GlobalDecoderRegistry.registerAminoProtoMapping(GetSwapFeeQueryMsg.aminoType, GetSwapFeeQueryMsg.typeUrl);
 function createBaseGetSwapFeeQueryMsgResponse(): GetSwapFeeQueryMsgResponse {
   return {
     swapFee: ""
@@ -300,6 +313,16 @@ function createBaseGetSwapFeeQueryMsgResponse(): GetSwapFeeQueryMsgResponse {
 }
 export const GetSwapFeeQueryMsgResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.GetSwapFeeQueryMsgResponse",
+  aminoType: "osmosis/cosmwasmpool/get-swap-fee-query-msg-response",
+  is(o: any): o is GetSwapFeeQueryMsgResponse {
+    return o && (o.$typeUrl === GetSwapFeeQueryMsgResponse.typeUrl || typeof o.swapFee === "string");
+  },
+  isSDK(o: any): o is GetSwapFeeQueryMsgResponseSDKType {
+    return o && (o.$typeUrl === GetSwapFeeQueryMsgResponse.typeUrl || typeof o.swap_fee === "string");
+  },
+  isAmino(o: any): o is GetSwapFeeQueryMsgResponseAmino {
+    return o && (o.$typeUrl === GetSwapFeeQueryMsgResponse.typeUrl || typeof o.swap_fee === "string");
+  },
   encode(message: GetSwapFeeQueryMsgResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.swapFee !== "") {
       writer.uint32(26).string(Decimal.fromUserInput(message.swapFee, 18).atomics);
@@ -362,6 +385,8 @@ export const GetSwapFeeQueryMsgResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(GetSwapFeeQueryMsgResponse.typeUrl, GetSwapFeeQueryMsgResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(GetSwapFeeQueryMsgResponse.aminoType, GetSwapFeeQueryMsgResponse.typeUrl);
 function createBaseSpotPrice(): SpotPrice {
   return {
     quoteAssetDenom: "",
@@ -370,6 +395,16 @@ function createBaseSpotPrice(): SpotPrice {
 }
 export const SpotPrice = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SpotPrice",
+  aminoType: "osmosis/cosmwasmpool/spot-price",
+  is(o: any): o is SpotPrice {
+    return o && (o.$typeUrl === SpotPrice.typeUrl || typeof o.quoteAssetDenom === "string" && typeof o.baseAssetDenom === "string");
+  },
+  isSDK(o: any): o is SpotPriceSDKType {
+    return o && (o.$typeUrl === SpotPrice.typeUrl || typeof o.quote_asset_denom === "string" && typeof o.base_asset_denom === "string");
+  },
+  isAmino(o: any): o is SpotPriceAmino {
+    return o && (o.$typeUrl === SpotPrice.typeUrl || typeof o.quote_asset_denom === "string" && typeof o.base_asset_denom === "string");
+  },
   encode(message: SpotPrice, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.quoteAssetDenom !== "") {
       writer.uint32(10).string(message.quoteAssetDenom);
@@ -443,6 +478,8 @@ export const SpotPrice = {
     };
   }
 };
+GlobalDecoderRegistry.register(SpotPrice.typeUrl, SpotPrice);
+GlobalDecoderRegistry.registerAminoProtoMapping(SpotPrice.aminoType, SpotPrice.typeUrl);
 function createBaseSpotPriceQueryMsg(): SpotPriceQueryMsg {
   return {
     spotPrice: SpotPrice.fromPartial({})
@@ -450,6 +487,16 @@ function createBaseSpotPriceQueryMsg(): SpotPriceQueryMsg {
 }
 export const SpotPriceQueryMsg = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SpotPriceQueryMsg",
+  aminoType: "osmosis/cosmwasmpool/spot-price-query-msg",
+  is(o: any): o is SpotPriceQueryMsg {
+    return o && (o.$typeUrl === SpotPriceQueryMsg.typeUrl || SpotPrice.is(o.spotPrice));
+  },
+  isSDK(o: any): o is SpotPriceQueryMsgSDKType {
+    return o && (o.$typeUrl === SpotPriceQueryMsg.typeUrl || SpotPrice.isSDK(o.spot_price));
+  },
+  isAmino(o: any): o is SpotPriceQueryMsgAmino {
+    return o && (o.$typeUrl === SpotPriceQueryMsg.typeUrl || SpotPrice.isAmino(o.spot_price));
+  },
   encode(message: SpotPriceQueryMsg, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.spotPrice !== undefined) {
       SpotPrice.encode(message.spotPrice, writer.uint32(10).fork()).ldelim();
@@ -512,6 +559,8 @@ export const SpotPriceQueryMsg = {
     };
   }
 };
+GlobalDecoderRegistry.register(SpotPriceQueryMsg.typeUrl, SpotPriceQueryMsg);
+GlobalDecoderRegistry.registerAminoProtoMapping(SpotPriceQueryMsg.aminoType, SpotPriceQueryMsg.typeUrl);
 function createBaseSpotPriceQueryMsgResponse(): SpotPriceQueryMsgResponse {
   return {
     spotPrice: ""
@@ -519,6 +568,16 @@ function createBaseSpotPriceQueryMsgResponse(): SpotPriceQueryMsgResponse {
 }
 export const SpotPriceQueryMsgResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SpotPriceQueryMsgResponse",
+  aminoType: "osmosis/cosmwasmpool/spot-price-query-msg-response",
+  is(o: any): o is SpotPriceQueryMsgResponse {
+    return o && (o.$typeUrl === SpotPriceQueryMsgResponse.typeUrl || typeof o.spotPrice === "string");
+  },
+  isSDK(o: any): o is SpotPriceQueryMsgResponseSDKType {
+    return o && (o.$typeUrl === SpotPriceQueryMsgResponse.typeUrl || typeof o.spot_price === "string");
+  },
+  isAmino(o: any): o is SpotPriceQueryMsgResponseAmino {
+    return o && (o.$typeUrl === SpotPriceQueryMsgResponse.typeUrl || typeof o.spot_price === "string");
+  },
   encode(message: SpotPriceQueryMsgResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.spotPrice !== "") {
       writer.uint32(10).string(message.spotPrice);
@@ -581,11 +640,23 @@ export const SpotPriceQueryMsgResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(SpotPriceQueryMsgResponse.typeUrl, SpotPriceQueryMsgResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(SpotPriceQueryMsgResponse.aminoType, SpotPriceQueryMsgResponse.typeUrl);
 function createBaseEmptyStruct(): EmptyStruct {
   return {};
 }
 export const EmptyStruct = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.EmptyStruct",
+  aminoType: "osmosis/cosmwasmpool/empty-struct",
+  is(o: any): o is EmptyStruct {
+    return o && o.$typeUrl === EmptyStruct.typeUrl;
+  },
+  isSDK(o: any): o is EmptyStructSDKType {
+    return o && o.$typeUrl === EmptyStruct.typeUrl;
+  },
+  isAmino(o: any): o is EmptyStructAmino {
+    return o && o.$typeUrl === EmptyStruct.typeUrl;
+  },
   encode(_: EmptyStruct, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -637,6 +708,8 @@ export const EmptyStruct = {
     };
   }
 };
+GlobalDecoderRegistry.register(EmptyStruct.typeUrl, EmptyStruct);
+GlobalDecoderRegistry.registerAminoProtoMapping(EmptyStruct.aminoType, EmptyStruct.typeUrl);
 function createBaseGetTotalPoolLiquidityQueryMsg(): GetTotalPoolLiquidityQueryMsg {
   return {
     getTotalPoolLiquidity: EmptyStruct.fromPartial({})
@@ -644,6 +717,16 @@ function createBaseGetTotalPoolLiquidityQueryMsg(): GetTotalPoolLiquidityQueryMs
 }
 export const GetTotalPoolLiquidityQueryMsg = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.GetTotalPoolLiquidityQueryMsg",
+  aminoType: "osmosis/cosmwasmpool/get-total-pool-liquidity-query-msg",
+  is(o: any): o is GetTotalPoolLiquidityQueryMsg {
+    return o && (o.$typeUrl === GetTotalPoolLiquidityQueryMsg.typeUrl || EmptyStruct.is(o.getTotalPoolLiquidity));
+  },
+  isSDK(o: any): o is GetTotalPoolLiquidityQueryMsgSDKType {
+    return o && (o.$typeUrl === GetTotalPoolLiquidityQueryMsg.typeUrl || EmptyStruct.isSDK(o.get_total_pool_liquidity));
+  },
+  isAmino(o: any): o is GetTotalPoolLiquidityQueryMsgAmino {
+    return o && (o.$typeUrl === GetTotalPoolLiquidityQueryMsg.typeUrl || EmptyStruct.isAmino(o.get_total_pool_liquidity));
+  },
   encode(message: GetTotalPoolLiquidityQueryMsg, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.getTotalPoolLiquidity !== undefined) {
       EmptyStruct.encode(message.getTotalPoolLiquidity, writer.uint32(10).fork()).ldelim();
@@ -706,6 +789,8 @@ export const GetTotalPoolLiquidityQueryMsg = {
     };
   }
 };
+GlobalDecoderRegistry.register(GetTotalPoolLiquidityQueryMsg.typeUrl, GetTotalPoolLiquidityQueryMsg);
+GlobalDecoderRegistry.registerAminoProtoMapping(GetTotalPoolLiquidityQueryMsg.aminoType, GetTotalPoolLiquidityQueryMsg.typeUrl);
 function createBaseGetTotalPoolLiquidityQueryMsgResponse(): GetTotalPoolLiquidityQueryMsgResponse {
   return {
     totalPoolLiquidity: []
@@ -713,6 +798,16 @@ function createBaseGetTotalPoolLiquidityQueryMsgResponse(): GetTotalPoolLiquidit
 }
 export const GetTotalPoolLiquidityQueryMsgResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.GetTotalPoolLiquidityQueryMsgResponse",
+  aminoType: "osmosis/cosmwasmpool/get-total-pool-liquidity-query-msg-response",
+  is(o: any): o is GetTotalPoolLiquidityQueryMsgResponse {
+    return o && (o.$typeUrl === GetTotalPoolLiquidityQueryMsgResponse.typeUrl || Array.isArray(o.totalPoolLiquidity) && (!o.totalPoolLiquidity.length || Coin.is(o.totalPoolLiquidity[0])));
+  },
+  isSDK(o: any): o is GetTotalPoolLiquidityQueryMsgResponseSDKType {
+    return o && (o.$typeUrl === GetTotalPoolLiquidityQueryMsgResponse.typeUrl || Array.isArray(o.total_pool_liquidity) && (!o.total_pool_liquidity.length || Coin.isSDK(o.total_pool_liquidity[0])));
+  },
+  isAmino(o: any): o is GetTotalPoolLiquidityQueryMsgResponseAmino {
+    return o && (o.$typeUrl === GetTotalPoolLiquidityQueryMsgResponse.typeUrl || Array.isArray(o.total_pool_liquidity) && (!o.total_pool_liquidity.length || Coin.isAmino(o.total_pool_liquidity[0])));
+  },
   encode(message: GetTotalPoolLiquidityQueryMsgResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.totalPoolLiquidity) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -777,6 +872,8 @@ export const GetTotalPoolLiquidityQueryMsgResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(GetTotalPoolLiquidityQueryMsgResponse.typeUrl, GetTotalPoolLiquidityQueryMsgResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(GetTotalPoolLiquidityQueryMsgResponse.aminoType, GetTotalPoolLiquidityQueryMsgResponse.typeUrl);
 function createBaseGetTotalSharesQueryMsg(): GetTotalSharesQueryMsg {
   return {
     getTotalShares: EmptyStruct.fromPartial({})
@@ -784,6 +881,16 @@ function createBaseGetTotalSharesQueryMsg(): GetTotalSharesQueryMsg {
 }
 export const GetTotalSharesQueryMsg = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.GetTotalSharesQueryMsg",
+  aminoType: "osmosis/cosmwasmpool/get-total-shares-query-msg",
+  is(o: any): o is GetTotalSharesQueryMsg {
+    return o && (o.$typeUrl === GetTotalSharesQueryMsg.typeUrl || EmptyStruct.is(o.getTotalShares));
+  },
+  isSDK(o: any): o is GetTotalSharesQueryMsgSDKType {
+    return o && (o.$typeUrl === GetTotalSharesQueryMsg.typeUrl || EmptyStruct.isSDK(o.get_total_shares));
+  },
+  isAmino(o: any): o is GetTotalSharesQueryMsgAmino {
+    return o && (o.$typeUrl === GetTotalSharesQueryMsg.typeUrl || EmptyStruct.isAmino(o.get_total_shares));
+  },
   encode(message: GetTotalSharesQueryMsg, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.getTotalShares !== undefined) {
       EmptyStruct.encode(message.getTotalShares, writer.uint32(10).fork()).ldelim();
@@ -846,6 +953,8 @@ export const GetTotalSharesQueryMsg = {
     };
   }
 };
+GlobalDecoderRegistry.register(GetTotalSharesQueryMsg.typeUrl, GetTotalSharesQueryMsg);
+GlobalDecoderRegistry.registerAminoProtoMapping(GetTotalSharesQueryMsg.aminoType, GetTotalSharesQueryMsg.typeUrl);
 function createBaseGetTotalSharesQueryMsgResponse(): GetTotalSharesQueryMsgResponse {
   return {
     totalShares: ""
@@ -853,6 +962,16 @@ function createBaseGetTotalSharesQueryMsgResponse(): GetTotalSharesQueryMsgRespo
 }
 export const GetTotalSharesQueryMsgResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.GetTotalSharesQueryMsgResponse",
+  aminoType: "osmosis/cosmwasmpool/get-total-shares-query-msg-response",
+  is(o: any): o is GetTotalSharesQueryMsgResponse {
+    return o && (o.$typeUrl === GetTotalSharesQueryMsgResponse.typeUrl || typeof o.totalShares === "string");
+  },
+  isSDK(o: any): o is GetTotalSharesQueryMsgResponseSDKType {
+    return o && (o.$typeUrl === GetTotalSharesQueryMsgResponse.typeUrl || typeof o.total_shares === "string");
+  },
+  isAmino(o: any): o is GetTotalSharesQueryMsgResponseAmino {
+    return o && (o.$typeUrl === GetTotalSharesQueryMsgResponse.typeUrl || typeof o.total_shares === "string");
+  },
   encode(message: GetTotalSharesQueryMsgResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.totalShares !== "") {
       writer.uint32(10).string(message.totalShares);
@@ -915,3 +1034,5 @@ export const GetTotalSharesQueryMsgResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(GetTotalSharesQueryMsgResponse.typeUrl, GetTotalSharesQueryMsgResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(GetTotalSharesQueryMsgResponse.aminoType, GetTotalSharesQueryMsgResponse.typeUrl);

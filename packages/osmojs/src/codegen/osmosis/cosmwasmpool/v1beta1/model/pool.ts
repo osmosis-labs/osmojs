@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /**
  * CosmWasmPool represents the data serialized into state for each CW pool.
  * 
@@ -93,6 +94,16 @@ function createBaseCosmWasmPool(): CosmWasmPool {
 }
 export const CosmWasmPool = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool",
+  aminoType: "osmosis/cosmwasmpool/cosm-wasm-pool",
+  is(o: any): o is CosmWasmPool {
+    return o && (o.$typeUrl === CosmWasmPool.typeUrl || typeof o.contractAddress === "string" && typeof o.poolId === "bigint" && typeof o.codeId === "bigint" && (o.instantiateMsg instanceof Uint8Array || typeof o.instantiateMsg === "string"));
+  },
+  isSDK(o: any): o is CosmWasmPoolSDKType {
+    return o && (o.$typeUrl === CosmWasmPool.typeUrl || typeof o.contract_address === "string" && typeof o.pool_id === "bigint" && typeof o.code_id === "bigint" && (o.instantiate_msg instanceof Uint8Array || typeof o.instantiate_msg === "string"));
+  },
+  isAmino(o: any): o is CosmWasmPoolAmino {
+    return o && (o.$typeUrl === CosmWasmPool.typeUrl || typeof o.contract_address === "string" && typeof o.pool_id === "bigint" && typeof o.code_id === "bigint" && (o.instantiate_msg instanceof Uint8Array || typeof o.instantiate_msg === "string"));
+  },
   encode(message: CosmWasmPool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.contractAddress !== "") {
       writer.uint32(10).string(message.contractAddress);
@@ -188,3 +199,5 @@ export const CosmWasmPool = {
     };
   }
 };
+GlobalDecoderRegistry.register(CosmWasmPool.typeUrl, CosmWasmPool);
+GlobalDecoderRegistry.registerAminoProtoMapping(CosmWasmPool.aminoType, CosmWasmPool.typeUrl);

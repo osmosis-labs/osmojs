@@ -63,6 +63,11 @@ export const createLCDClient = async ({
       }
     },
     osmosis: {
+      bridge: {
+        v1beta1: new (await import("./bridge/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
       concentratedliquidity: {
         v1beta1: new (await import("./concentratedliquidity/v1beta1/query.lcd")).LCDQueryClient({
           requestClient

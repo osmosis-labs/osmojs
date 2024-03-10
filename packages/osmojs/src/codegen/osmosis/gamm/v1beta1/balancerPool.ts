@@ -3,6 +3,7 @@ import { Duration, DurationAmino, DurationSDKType } from "../../../google/protob
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { Decimal } from "@cosmjs/math";
 /**
  * Parameters for changing the weights in a balancer pool smoothly from
@@ -287,6 +288,16 @@ function createBaseSmoothWeightChangeParams(): SmoothWeightChangeParams {
 }
 export const SmoothWeightChangeParams = {
   typeUrl: "/osmosis.gamm.v1beta1.SmoothWeightChangeParams",
+  aminoType: "osmosis/gamm/smooth-weight-change-params",
+  is(o: any): o is SmoothWeightChangeParams {
+    return o && (o.$typeUrl === SmoothWeightChangeParams.typeUrl || Timestamp.is(o.startTime) && Duration.is(o.duration) && Array.isArray(o.initialPoolWeights) && (!o.initialPoolWeights.length || PoolAsset.is(o.initialPoolWeights[0])) && Array.isArray(o.targetPoolWeights) && (!o.targetPoolWeights.length || PoolAsset.is(o.targetPoolWeights[0])));
+  },
+  isSDK(o: any): o is SmoothWeightChangeParamsSDKType {
+    return o && (o.$typeUrl === SmoothWeightChangeParams.typeUrl || Timestamp.isSDK(o.start_time) && Duration.isSDK(o.duration) && Array.isArray(o.initial_pool_weights) && (!o.initial_pool_weights.length || PoolAsset.isSDK(o.initial_pool_weights[0])) && Array.isArray(o.target_pool_weights) && (!o.target_pool_weights.length || PoolAsset.isSDK(o.target_pool_weights[0])));
+  },
+  isAmino(o: any): o is SmoothWeightChangeParamsAmino {
+    return o && (o.$typeUrl === SmoothWeightChangeParams.typeUrl || Timestamp.isAmino(o.start_time) && Duration.isAmino(o.duration) && Array.isArray(o.initial_pool_weights) && (!o.initial_pool_weights.length || PoolAsset.isAmino(o.initial_pool_weights[0])) && Array.isArray(o.target_pool_weights) && (!o.target_pool_weights.length || PoolAsset.isAmino(o.target_pool_weights[0])));
+  },
   encode(message: SmoothWeightChangeParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.startTime !== undefined) {
       Timestamp.encode(toTimestamp(message.startTime), writer.uint32(10).fork()).ldelim();
@@ -386,6 +397,8 @@ export const SmoothWeightChangeParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(SmoothWeightChangeParams.typeUrl, SmoothWeightChangeParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(SmoothWeightChangeParams.aminoType, SmoothWeightChangeParams.typeUrl);
 function createBasePoolParams(): PoolParams {
   return {
     swapFee: "",
@@ -395,6 +408,16 @@ function createBasePoolParams(): PoolParams {
 }
 export const PoolParams = {
   typeUrl: "/osmosis.gamm.v1beta1.PoolParams",
+  aminoType: "osmosis/gamm/BalancerPoolParams",
+  is(o: any): o is PoolParams {
+    return o && (o.$typeUrl === PoolParams.typeUrl || typeof o.swapFee === "string" && typeof o.exitFee === "string");
+  },
+  isSDK(o: any): o is PoolParamsSDKType {
+    return o && (o.$typeUrl === PoolParams.typeUrl || typeof o.swap_fee === "string" && typeof o.exit_fee === "string");
+  },
+  isAmino(o: any): o is PoolParamsAmino {
+    return o && (o.$typeUrl === PoolParams.typeUrl || typeof o.swap_fee === "string" && typeof o.exit_fee === "string");
+  },
   encode(message: PoolParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.swapFee !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.swapFee, 18).atomics);
@@ -479,6 +502,8 @@ export const PoolParams = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolParams.typeUrl, PoolParams);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolParams.aminoType, PoolParams.typeUrl);
 function createBasePoolAsset(): PoolAsset {
   return {
     token: Coin.fromPartial({}),
@@ -487,6 +512,16 @@ function createBasePoolAsset(): PoolAsset {
 }
 export const PoolAsset = {
   typeUrl: "/osmosis.gamm.v1beta1.PoolAsset",
+  aminoType: "osmosis/gamm/pool-asset",
+  is(o: any): o is PoolAsset {
+    return o && (o.$typeUrl === PoolAsset.typeUrl || Coin.is(o.token) && typeof o.weight === "string");
+  },
+  isSDK(o: any): o is PoolAssetSDKType {
+    return o && (o.$typeUrl === PoolAsset.typeUrl || Coin.isSDK(o.token) && typeof o.weight === "string");
+  },
+  isAmino(o: any): o is PoolAssetAmino {
+    return o && (o.$typeUrl === PoolAsset.typeUrl || Coin.isAmino(o.token) && typeof o.weight === "string");
+  },
   encode(message: PoolAsset, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.token !== undefined) {
       Coin.encode(message.token, writer.uint32(10).fork()).ldelim();
@@ -560,6 +595,8 @@ export const PoolAsset = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolAsset.typeUrl, PoolAsset);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolAsset.aminoType, PoolAsset.typeUrl);
 function createBasePool(): Pool {
   return {
     $typeUrl: "/osmosis.gamm.v1beta1.Pool",
@@ -574,6 +611,16 @@ function createBasePool(): Pool {
 }
 export const Pool = {
   typeUrl: "/osmosis.gamm.v1beta1.Pool",
+  aminoType: "osmosis/gamm/BalancerPool",
+  is(o: any): o is Pool {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.id === "bigint" && PoolParams.is(o.poolParams) && typeof o.futurePoolGovernor === "string" && Coin.is(o.totalShares) && Array.isArray(o.poolAssets) && (!o.poolAssets.length || PoolAsset.is(o.poolAssets[0])) && typeof o.totalWeight === "string");
+  },
+  isSDK(o: any): o is PoolSDKType {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.id === "bigint" && PoolParams.isSDK(o.pool_params) && typeof o.future_pool_governor === "string" && Coin.isSDK(o.total_shares) && Array.isArray(o.pool_assets) && (!o.pool_assets.length || PoolAsset.isSDK(o.pool_assets[0])) && typeof o.total_weight === "string");
+  },
+  isAmino(o: any): o is PoolAmino {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.id === "bigint" && PoolParams.isAmino(o.pool_params) && typeof o.future_pool_governor === "string" && Coin.isAmino(o.total_shares) && Array.isArray(o.pool_assets) && (!o.pool_assets.length || PoolAsset.isAmino(o.pool_assets[0])) && typeof o.total_weight === "string");
+  },
   encode(message: Pool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -704,3 +751,5 @@ export const Pool = {
     };
   }
 };
+GlobalDecoderRegistry.register(Pool.typeUrl, Pool);
+GlobalDecoderRegistry.registerAminoProtoMapping(Pool.aminoType, Pool.typeUrl);

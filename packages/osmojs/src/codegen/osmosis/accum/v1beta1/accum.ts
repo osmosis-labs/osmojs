@@ -1,6 +1,7 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * AccumulatorContent is the state-entry for the global accumulator.
  * It contains the name of the global accumulator and the total value of
@@ -153,6 +154,16 @@ function createBaseAccumulatorContent(): AccumulatorContent {
 }
 export const AccumulatorContent = {
   typeUrl: "/osmosis.accum.v1beta1.AccumulatorContent",
+  aminoType: "osmosis/accum/accumulator-content",
+  is(o: any): o is AccumulatorContent {
+    return o && (o.$typeUrl === AccumulatorContent.typeUrl || Array.isArray(o.accumValue) && (!o.accumValue.length || DecCoin.is(o.accumValue[0])) && typeof o.totalShares === "string");
+  },
+  isSDK(o: any): o is AccumulatorContentSDKType {
+    return o && (o.$typeUrl === AccumulatorContent.typeUrl || Array.isArray(o.accum_value) && (!o.accum_value.length || DecCoin.isSDK(o.accum_value[0])) && typeof o.total_shares === "string");
+  },
+  isAmino(o: any): o is AccumulatorContentAmino {
+    return o && (o.$typeUrl === AccumulatorContent.typeUrl || Array.isArray(o.accum_value) && (!o.accum_value.length || DecCoin.isAmino(o.accum_value[0])) && typeof o.total_shares === "string");
+  },
   encode(message: AccumulatorContent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.accumValue) {
       DecCoin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -228,11 +239,23 @@ export const AccumulatorContent = {
     };
   }
 };
+GlobalDecoderRegistry.register(AccumulatorContent.typeUrl, AccumulatorContent);
+GlobalDecoderRegistry.registerAminoProtoMapping(AccumulatorContent.aminoType, AccumulatorContent.typeUrl);
 function createBaseOptions(): Options {
   return {};
 }
 export const Options = {
   typeUrl: "/osmosis.accum.v1beta1.Options",
+  aminoType: "osmosis/accum/options",
+  is(o: any): o is Options {
+    return o && o.$typeUrl === Options.typeUrl;
+  },
+  isSDK(o: any): o is OptionsSDKType {
+    return o && o.$typeUrl === Options.typeUrl;
+  },
+  isAmino(o: any): o is OptionsAmino {
+    return o && o.$typeUrl === Options.typeUrl;
+  },
   encode(_: Options, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -284,6 +307,8 @@ export const Options = {
     };
   }
 };
+GlobalDecoderRegistry.register(Options.typeUrl, Options);
+GlobalDecoderRegistry.registerAminoProtoMapping(Options.aminoType, Options.typeUrl);
 function createBaseRecord(): Record {
   return {
     numShares: "",
@@ -294,6 +319,16 @@ function createBaseRecord(): Record {
 }
 export const Record = {
   typeUrl: "/osmosis.accum.v1beta1.Record",
+  aminoType: "osmosis/accum/record",
+  is(o: any): o is Record {
+    return o && (o.$typeUrl === Record.typeUrl || typeof o.numShares === "string" && Array.isArray(o.accumValuePerShare) && (!o.accumValuePerShare.length || DecCoin.is(o.accumValuePerShare[0])) && Array.isArray(o.unclaimedRewardsTotal) && (!o.unclaimedRewardsTotal.length || DecCoin.is(o.unclaimedRewardsTotal[0])));
+  },
+  isSDK(o: any): o is RecordSDKType {
+    return o && (o.$typeUrl === Record.typeUrl || typeof o.num_shares === "string" && Array.isArray(o.accum_value_per_share) && (!o.accum_value_per_share.length || DecCoin.isSDK(o.accum_value_per_share[0])) && Array.isArray(o.unclaimed_rewards_total) && (!o.unclaimed_rewards_total.length || DecCoin.isSDK(o.unclaimed_rewards_total[0])));
+  },
+  isAmino(o: any): o is RecordAmino {
+    return o && (o.$typeUrl === Record.typeUrl || typeof o.num_shares === "string" && Array.isArray(o.accum_value_per_share) && (!o.accum_value_per_share.length || DecCoin.isAmino(o.accum_value_per_share[0])) && Array.isArray(o.unclaimed_rewards_total) && (!o.unclaimed_rewards_total.length || DecCoin.isAmino(o.unclaimed_rewards_total[0])));
+  },
   encode(message: Record, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.numShares !== "") {
       writer.uint32(10).string(Decimal.fromUserInput(message.numShares, 18).atomics);
@@ -393,3 +428,5 @@ export const Record = {
     };
   }
 };
+GlobalDecoderRegistry.register(Record.typeUrl, Record);
+GlobalDecoderRegistry.registerAminoProtoMapping(Record.aminoType, Record.typeUrl);

@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { PacketId, PacketIdAmino, PacketIdSDKType } from "../../../core/channel/v1/channel";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** Fee defines the ICS29 receive, acknowledgement and timeout fees */
 export interface Fee {
   /** the packet receive fee */
@@ -123,6 +124,16 @@ function createBaseFee(): Fee {
 }
 export const Fee = {
   typeUrl: "/ibc.applications.fee.v1.Fee",
+  aminoType: "cosmos-sdk/Fee",
+  is(o: any): o is Fee {
+    return o && (o.$typeUrl === Fee.typeUrl || Array.isArray(o.recvFee) && (!o.recvFee.length || Coin.is(o.recvFee[0])) && Array.isArray(o.ackFee) && (!o.ackFee.length || Coin.is(o.ackFee[0])) && Array.isArray(o.timeoutFee) && (!o.timeoutFee.length || Coin.is(o.timeoutFee[0])));
+  },
+  isSDK(o: any): o is FeeSDKType {
+    return o && (o.$typeUrl === Fee.typeUrl || Array.isArray(o.recv_fee) && (!o.recv_fee.length || Coin.isSDK(o.recv_fee[0])) && Array.isArray(o.ack_fee) && (!o.ack_fee.length || Coin.isSDK(o.ack_fee[0])) && Array.isArray(o.timeout_fee) && (!o.timeout_fee.length || Coin.isSDK(o.timeout_fee[0])));
+  },
+  isAmino(o: any): o is FeeAmino {
+    return o && (o.$typeUrl === Fee.typeUrl || Array.isArray(o.recv_fee) && (!o.recv_fee.length || Coin.isAmino(o.recv_fee[0])) && Array.isArray(o.ack_fee) && (!o.ack_fee.length || Coin.isAmino(o.ack_fee[0])) && Array.isArray(o.timeout_fee) && (!o.timeout_fee.length || Coin.isAmino(o.timeout_fee[0])));
+  },
   encode(message: Fee, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.recvFee) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -213,6 +224,8 @@ export const Fee = {
     };
   }
 };
+GlobalDecoderRegistry.register(Fee.typeUrl, Fee);
+GlobalDecoderRegistry.registerAminoProtoMapping(Fee.aminoType, Fee.typeUrl);
 function createBasePacketFee(): PacketFee {
   return {
     fee: Fee.fromPartial({}),
@@ -222,6 +235,16 @@ function createBasePacketFee(): PacketFee {
 }
 export const PacketFee = {
   typeUrl: "/ibc.applications.fee.v1.PacketFee",
+  aminoType: "cosmos-sdk/PacketFee",
+  is(o: any): o is PacketFee {
+    return o && (o.$typeUrl === PacketFee.typeUrl || Fee.is(o.fee) && typeof o.refundAddress === "string" && Array.isArray(o.relayers) && (!o.relayers.length || typeof o.relayers[0] === "string"));
+  },
+  isSDK(o: any): o is PacketFeeSDKType {
+    return o && (o.$typeUrl === PacketFee.typeUrl || Fee.isSDK(o.fee) && typeof o.refund_address === "string" && Array.isArray(o.relayers) && (!o.relayers.length || typeof o.relayers[0] === "string"));
+  },
+  isAmino(o: any): o is PacketFeeAmino {
+    return o && (o.$typeUrl === PacketFee.typeUrl || Fee.isAmino(o.fee) && typeof o.refund_address === "string" && Array.isArray(o.relayers) && (!o.relayers.length || typeof o.relayers[0] === "string"));
+  },
   encode(message: PacketFee, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.fee !== undefined) {
       Fee.encode(message.fee, writer.uint32(10).fork()).ldelim();
@@ -308,6 +331,8 @@ export const PacketFee = {
     };
   }
 };
+GlobalDecoderRegistry.register(PacketFee.typeUrl, PacketFee);
+GlobalDecoderRegistry.registerAminoProtoMapping(PacketFee.aminoType, PacketFee.typeUrl);
 function createBasePacketFees(): PacketFees {
   return {
     packetFees: []
@@ -315,6 +340,16 @@ function createBasePacketFees(): PacketFees {
 }
 export const PacketFees = {
   typeUrl: "/ibc.applications.fee.v1.PacketFees",
+  aminoType: "cosmos-sdk/PacketFees",
+  is(o: any): o is PacketFees {
+    return o && (o.$typeUrl === PacketFees.typeUrl || Array.isArray(o.packetFees) && (!o.packetFees.length || PacketFee.is(o.packetFees[0])));
+  },
+  isSDK(o: any): o is PacketFeesSDKType {
+    return o && (o.$typeUrl === PacketFees.typeUrl || Array.isArray(o.packet_fees) && (!o.packet_fees.length || PacketFee.isSDK(o.packet_fees[0])));
+  },
+  isAmino(o: any): o is PacketFeesAmino {
+    return o && (o.$typeUrl === PacketFees.typeUrl || Array.isArray(o.packet_fees) && (!o.packet_fees.length || PacketFee.isAmino(o.packet_fees[0])));
+  },
   encode(message: PacketFees, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.packetFees) {
       PacketFee.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -379,6 +414,8 @@ export const PacketFees = {
     };
   }
 };
+GlobalDecoderRegistry.register(PacketFees.typeUrl, PacketFees);
+GlobalDecoderRegistry.registerAminoProtoMapping(PacketFees.aminoType, PacketFees.typeUrl);
 function createBaseIdentifiedPacketFees(): IdentifiedPacketFees {
   return {
     packetId: PacketId.fromPartial({}),
@@ -387,6 +424,16 @@ function createBaseIdentifiedPacketFees(): IdentifiedPacketFees {
 }
 export const IdentifiedPacketFees = {
   typeUrl: "/ibc.applications.fee.v1.IdentifiedPacketFees",
+  aminoType: "cosmos-sdk/IdentifiedPacketFees",
+  is(o: any): o is IdentifiedPacketFees {
+    return o && (o.$typeUrl === IdentifiedPacketFees.typeUrl || PacketId.is(o.packetId) && Array.isArray(o.packetFees) && (!o.packetFees.length || PacketFee.is(o.packetFees[0])));
+  },
+  isSDK(o: any): o is IdentifiedPacketFeesSDKType {
+    return o && (o.$typeUrl === IdentifiedPacketFees.typeUrl || PacketId.isSDK(o.packet_id) && Array.isArray(o.packet_fees) && (!o.packet_fees.length || PacketFee.isSDK(o.packet_fees[0])));
+  },
+  isAmino(o: any): o is IdentifiedPacketFeesAmino {
+    return o && (o.$typeUrl === IdentifiedPacketFees.typeUrl || PacketId.isAmino(o.packet_id) && Array.isArray(o.packet_fees) && (!o.packet_fees.length || PacketFee.isAmino(o.packet_fees[0])));
+  },
   encode(message: IdentifiedPacketFees, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.packetId !== undefined) {
       PacketId.encode(message.packetId, writer.uint32(10).fork()).ldelim();
@@ -462,3 +509,5 @@ export const IdentifiedPacketFees = {
     };
   }
 };
+GlobalDecoderRegistry.register(IdentifiedPacketFees.typeUrl, IdentifiedPacketFees);
+GlobalDecoderRegistry.registerAminoProtoMapping(IdentifiedPacketFees.aminoType, IdentifiedPacketFees.typeUrl);

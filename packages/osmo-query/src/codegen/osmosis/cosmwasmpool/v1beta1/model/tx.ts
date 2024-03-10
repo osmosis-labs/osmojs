@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** ===================== MsgCreateCosmwasmPool */
 export interface MsgCreateCosmWasmPool {
   codeId: bigint;
@@ -55,6 +56,16 @@ function createBaseMsgCreateCosmWasmPool(): MsgCreateCosmWasmPool {
 }
 export const MsgCreateCosmWasmPool = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.MsgCreateCosmWasmPool",
+  aminoType: "osmosis/cosmwasmpool/create-cosm-wasm-pool",
+  is(o: any): o is MsgCreateCosmWasmPool {
+    return o && (o.$typeUrl === MsgCreateCosmWasmPool.typeUrl || typeof o.codeId === "bigint" && (o.instantiateMsg instanceof Uint8Array || typeof o.instantiateMsg === "string") && typeof o.sender === "string");
+  },
+  isSDK(o: any): o is MsgCreateCosmWasmPoolSDKType {
+    return o && (o.$typeUrl === MsgCreateCosmWasmPool.typeUrl || typeof o.code_id === "bigint" && (o.instantiate_msg instanceof Uint8Array || typeof o.instantiate_msg === "string") && typeof o.sender === "string");
+  },
+  isAmino(o: any): o is MsgCreateCosmWasmPoolAmino {
+    return o && (o.$typeUrl === MsgCreateCosmWasmPool.typeUrl || typeof o.code_id === "bigint" && (o.instantiate_msg instanceof Uint8Array || typeof o.instantiate_msg === "string") && typeof o.sender === "string");
+  },
   encode(message: MsgCreateCosmWasmPool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.codeId !== BigInt(0)) {
       writer.uint32(8).uint64(message.codeId);
@@ -139,6 +150,8 @@ export const MsgCreateCosmWasmPool = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateCosmWasmPool.typeUrl, MsgCreateCosmWasmPool);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreateCosmWasmPool.aminoType, MsgCreateCosmWasmPool.typeUrl);
 function createBaseMsgCreateCosmWasmPoolResponse(): MsgCreateCosmWasmPoolResponse {
   return {
     poolId: BigInt(0)
@@ -146,6 +159,16 @@ function createBaseMsgCreateCosmWasmPoolResponse(): MsgCreateCosmWasmPoolRespons
 }
 export const MsgCreateCosmWasmPoolResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.MsgCreateCosmWasmPoolResponse",
+  aminoType: "osmosis/cosmwasmpool/create-cosm-wasm-pool-response",
+  is(o: any): o is MsgCreateCosmWasmPoolResponse {
+    return o && (o.$typeUrl === MsgCreateCosmWasmPoolResponse.typeUrl || typeof o.poolId === "bigint");
+  },
+  isSDK(o: any): o is MsgCreateCosmWasmPoolResponseSDKType {
+    return o && (o.$typeUrl === MsgCreateCosmWasmPoolResponse.typeUrl || typeof o.pool_id === "bigint");
+  },
+  isAmino(o: any): o is MsgCreateCosmWasmPoolResponseAmino {
+    return o && (o.$typeUrl === MsgCreateCosmWasmPoolResponse.typeUrl || typeof o.pool_id === "bigint");
+  },
   encode(message: MsgCreateCosmWasmPoolResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -208,3 +231,5 @@ export const MsgCreateCosmWasmPoolResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgCreateCosmWasmPoolResponse.typeUrl, MsgCreateCosmWasmPoolResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgCreateCosmWasmPoolResponse.aminoType, MsgCreateCosmWasmPoolResponse.typeUrl);

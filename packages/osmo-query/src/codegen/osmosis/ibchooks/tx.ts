@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { GlobalDecoderRegistry } from "../../registry";
 export interface MsgEmitIBCAck {
   sender: string;
   packetSequence: bigint;
@@ -51,6 +52,16 @@ function createBaseMsgEmitIBCAck(): MsgEmitIBCAck {
 }
 export const MsgEmitIBCAck = {
   typeUrl: "/osmosis.ibchooks.MsgEmitIBCAck",
+  aminoType: "osmosis/ibchooks/emit-ibc-ack",
+  is(o: any): o is MsgEmitIBCAck {
+    return o && (o.$typeUrl === MsgEmitIBCAck.typeUrl || typeof o.sender === "string" && typeof o.packetSequence === "bigint" && typeof o.channel === "string");
+  },
+  isSDK(o: any): o is MsgEmitIBCAckSDKType {
+    return o && (o.$typeUrl === MsgEmitIBCAck.typeUrl || typeof o.sender === "string" && typeof o.packet_sequence === "bigint" && typeof o.channel === "string");
+  },
+  isAmino(o: any): o is MsgEmitIBCAckAmino {
+    return o && (o.$typeUrl === MsgEmitIBCAck.typeUrl || typeof o.sender === "string" && typeof o.packet_sequence === "bigint" && typeof o.channel === "string");
+  },
   encode(message: MsgEmitIBCAck, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -135,6 +146,8 @@ export const MsgEmitIBCAck = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgEmitIBCAck.typeUrl, MsgEmitIBCAck);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgEmitIBCAck.aminoType, MsgEmitIBCAck.typeUrl);
 function createBaseMsgEmitIBCAckResponse(): MsgEmitIBCAckResponse {
   return {
     contractResult: "",
@@ -143,6 +156,16 @@ function createBaseMsgEmitIBCAckResponse(): MsgEmitIBCAckResponse {
 }
 export const MsgEmitIBCAckResponse = {
   typeUrl: "/osmosis.ibchooks.MsgEmitIBCAckResponse",
+  aminoType: "osmosis/ibchooks/emit-ibc-ack-response",
+  is(o: any): o is MsgEmitIBCAckResponse {
+    return o && (o.$typeUrl === MsgEmitIBCAckResponse.typeUrl || typeof o.contractResult === "string" && typeof o.ibcAck === "string");
+  },
+  isSDK(o: any): o is MsgEmitIBCAckResponseSDKType {
+    return o && (o.$typeUrl === MsgEmitIBCAckResponse.typeUrl || typeof o.contract_result === "string" && typeof o.ibc_ack === "string");
+  },
+  isAmino(o: any): o is MsgEmitIBCAckResponseAmino {
+    return o && (o.$typeUrl === MsgEmitIBCAckResponse.typeUrl || typeof o.contract_result === "string" && typeof o.ibc_ack === "string");
+  },
   encode(message: MsgEmitIBCAckResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.contractResult !== "") {
       writer.uint32(10).string(message.contractResult);
@@ -216,3 +239,5 @@ export const MsgEmitIBCAckResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgEmitIBCAckResponse.typeUrl, MsgEmitIBCAckResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgEmitIBCAckResponse.aminoType, MsgEmitIBCAckResponse.typeUrl);

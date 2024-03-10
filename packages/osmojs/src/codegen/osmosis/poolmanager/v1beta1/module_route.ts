@@ -1,4 +1,6 @@
+import { isSet } from "../../../helpers";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** PoolType is an enumeration of all supported pool types. */
 export enum PoolType {
   /** Balancer - Balancer is the standard xy=k curve. Its pool model is defined in x/gamm. */
@@ -105,6 +107,16 @@ function createBaseModuleRoute(): ModuleRoute {
 }
 export const ModuleRoute = {
   typeUrl: "/osmosis.poolmanager.v1beta1.ModuleRoute",
+  aminoType: "osmosis/poolmanager/module-route",
+  is(o: any): o is ModuleRoute {
+    return o && (o.$typeUrl === ModuleRoute.typeUrl || isSet(o.poolType));
+  },
+  isSDK(o: any): o is ModuleRouteSDKType {
+    return o && (o.$typeUrl === ModuleRoute.typeUrl || isSet(o.pool_type));
+  },
+  isAmino(o: any): o is ModuleRouteAmino {
+    return o && (o.$typeUrl === ModuleRoute.typeUrl || isSet(o.pool_type));
+  },
   encode(message: ModuleRoute, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolType !== 0) {
       writer.uint32(8).int32(message.poolType);
@@ -178,3 +190,5 @@ export const ModuleRoute = {
     };
   }
 };
+GlobalDecoderRegistry.register(ModuleRoute.typeUrl, ModuleRoute);
+GlobalDecoderRegistry.registerAminoProtoMapping(ModuleRoute.aminoType, ModuleRoute.typeUrl);

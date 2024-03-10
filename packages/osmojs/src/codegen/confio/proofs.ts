@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../binary";
-import { bytesFromBase64, base64FromBytes } from "../helpers";
+import { bytesFromBase64, base64FromBytes, isSet } from "../helpers";
+import { GlobalDecoderRegistry } from "../registry";
 export enum HashOp {
   /** NO_HASH - NO_HASH is the default if no data passed. Note this is an illegal argument some places. */
   NO_HASH = 0,
@@ -763,6 +764,15 @@ function createBaseExistenceProof(): ExistenceProof {
 }
 export const ExistenceProof = {
   typeUrl: "/ics23.ExistenceProof",
+  is(o: any): o is ExistenceProof {
+    return o && (o.$typeUrl === ExistenceProof.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && Array.isArray(o.path) && (!o.path.length || InnerOp.is(o.path[0])));
+  },
+  isSDK(o: any): o is ExistenceProofSDKType {
+    return o && (o.$typeUrl === ExistenceProof.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && Array.isArray(o.path) && (!o.path.length || InnerOp.isSDK(o.path[0])));
+  },
+  isAmino(o: any): o is ExistenceProofAmino {
+    return o && (o.$typeUrl === ExistenceProof.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && Array.isArray(o.path) && (!o.path.length || InnerOp.isAmino(o.path[0])));
+  },
   encode(message: ExistenceProof, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
@@ -854,6 +864,7 @@ export const ExistenceProof = {
     };
   }
 };
+GlobalDecoderRegistry.register(ExistenceProof.typeUrl, ExistenceProof);
 function createBaseNonExistenceProof(): NonExistenceProof {
   return {
     key: new Uint8Array(),
@@ -863,6 +874,15 @@ function createBaseNonExistenceProof(): NonExistenceProof {
 }
 export const NonExistenceProof = {
   typeUrl: "/ics23.NonExistenceProof",
+  is(o: any): o is NonExistenceProof {
+    return o && (o.$typeUrl === NonExistenceProof.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+  },
+  isSDK(o: any): o is NonExistenceProofSDKType {
+    return o && (o.$typeUrl === NonExistenceProof.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+  },
+  isAmino(o: any): o is NonExistenceProofAmino {
+    return o && (o.$typeUrl === NonExistenceProof.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+  },
   encode(message: NonExistenceProof, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
@@ -941,6 +961,7 @@ export const NonExistenceProof = {
     };
   }
 };
+GlobalDecoderRegistry.register(NonExistenceProof.typeUrl, NonExistenceProof);
 function createBaseCommitmentProof(): CommitmentProof {
   return {
     exist: undefined,
@@ -951,6 +972,15 @@ function createBaseCommitmentProof(): CommitmentProof {
 }
 export const CommitmentProof = {
   typeUrl: "/ics23.CommitmentProof",
+  is(o: any): o is CommitmentProof {
+    return o && o.$typeUrl === CommitmentProof.typeUrl;
+  },
+  isSDK(o: any): o is CommitmentProofSDKType {
+    return o && o.$typeUrl === CommitmentProof.typeUrl;
+  },
+  isAmino(o: any): o is CommitmentProofAmino {
+    return o && o.$typeUrl === CommitmentProof.typeUrl;
+  },
   encode(message: CommitmentProof, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.exist !== undefined) {
       ExistenceProof.encode(message.exist, writer.uint32(10).fork()).ldelim();
@@ -1040,6 +1070,7 @@ export const CommitmentProof = {
     };
   }
 };
+GlobalDecoderRegistry.register(CommitmentProof.typeUrl, CommitmentProof);
 function createBaseLeafOp(): LeafOp {
   return {
     hash: 0,
@@ -1051,6 +1082,15 @@ function createBaseLeafOp(): LeafOp {
 }
 export const LeafOp = {
   typeUrl: "/ics23.LeafOp",
+  is(o: any): o is LeafOp {
+    return o && (o.$typeUrl === LeafOp.typeUrl || isSet(o.hash) && isSet(o.prehashKey) && isSet(o.prehashValue) && isSet(o.length) && (o.prefix instanceof Uint8Array || typeof o.prefix === "string"));
+  },
+  isSDK(o: any): o is LeafOpSDKType {
+    return o && (o.$typeUrl === LeafOp.typeUrl || isSet(o.hash) && isSet(o.prehash_key) && isSet(o.prehash_value) && isSet(o.length) && (o.prefix instanceof Uint8Array || typeof o.prefix === "string"));
+  },
+  isAmino(o: any): o is LeafOpAmino {
+    return o && (o.$typeUrl === LeafOp.typeUrl || isSet(o.hash) && isSet(o.prehash_key) && isSet(o.prehash_value) && isSet(o.length) && (o.prefix instanceof Uint8Array || typeof o.prefix === "string"));
+  },
   encode(message: LeafOp, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.hash !== 0) {
       writer.uint32(8).int32(message.hash);
@@ -1151,6 +1191,7 @@ export const LeafOp = {
     };
   }
 };
+GlobalDecoderRegistry.register(LeafOp.typeUrl, LeafOp);
 function createBaseInnerOp(): InnerOp {
   return {
     hash: 0,
@@ -1160,6 +1201,15 @@ function createBaseInnerOp(): InnerOp {
 }
 export const InnerOp = {
   typeUrl: "/ics23.InnerOp",
+  is(o: any): o is InnerOp {
+    return o && (o.$typeUrl === InnerOp.typeUrl || isSet(o.hash) && (o.prefix instanceof Uint8Array || typeof o.prefix === "string") && (o.suffix instanceof Uint8Array || typeof o.suffix === "string"));
+  },
+  isSDK(o: any): o is InnerOpSDKType {
+    return o && (o.$typeUrl === InnerOp.typeUrl || isSet(o.hash) && (o.prefix instanceof Uint8Array || typeof o.prefix === "string") && (o.suffix instanceof Uint8Array || typeof o.suffix === "string"));
+  },
+  isAmino(o: any): o is InnerOpAmino {
+    return o && (o.$typeUrl === InnerOp.typeUrl || isSet(o.hash) && (o.prefix instanceof Uint8Array || typeof o.prefix === "string") && (o.suffix instanceof Uint8Array || typeof o.suffix === "string"));
+  },
   encode(message: InnerOp, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.hash !== 0) {
       writer.uint32(8).int32(message.hash);
@@ -1238,6 +1288,7 @@ export const InnerOp = {
     };
   }
 };
+GlobalDecoderRegistry.register(InnerOp.typeUrl, InnerOp);
 function createBaseProofSpec(): ProofSpec {
   return {
     leafSpec: undefined,
@@ -1248,6 +1299,15 @@ function createBaseProofSpec(): ProofSpec {
 }
 export const ProofSpec = {
   typeUrl: "/ics23.ProofSpec",
+  is(o: any): o is ProofSpec {
+    return o && (o.$typeUrl === ProofSpec.typeUrl || typeof o.maxDepth === "number" && typeof o.minDepth === "number");
+  },
+  isSDK(o: any): o is ProofSpecSDKType {
+    return o && (o.$typeUrl === ProofSpec.typeUrl || typeof o.max_depth === "number" && typeof o.min_depth === "number");
+  },
+  isAmino(o: any): o is ProofSpecAmino {
+    return o && (o.$typeUrl === ProofSpec.typeUrl || typeof o.max_depth === "number" && typeof o.min_depth === "number");
+  },
   encode(message: ProofSpec, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.leafSpec !== undefined) {
       LeafOp.encode(message.leafSpec, writer.uint32(10).fork()).ldelim();
@@ -1337,6 +1397,7 @@ export const ProofSpec = {
     };
   }
 };
+GlobalDecoderRegistry.register(ProofSpec.typeUrl, ProofSpec);
 function createBaseInnerSpec(): InnerSpec {
   return {
     childOrder: [],
@@ -1349,6 +1410,15 @@ function createBaseInnerSpec(): InnerSpec {
 }
 export const InnerSpec = {
   typeUrl: "/ics23.InnerSpec",
+  is(o: any): o is InnerSpec {
+    return o && (o.$typeUrl === InnerSpec.typeUrl || Array.isArray(o.childOrder) && (!o.childOrder.length || typeof o.childOrder[0] === "number") && typeof o.childSize === "number" && typeof o.minPrefixLength === "number" && typeof o.maxPrefixLength === "number" && (o.emptyChild instanceof Uint8Array || typeof o.emptyChild === "string") && isSet(o.hash));
+  },
+  isSDK(o: any): o is InnerSpecSDKType {
+    return o && (o.$typeUrl === InnerSpec.typeUrl || Array.isArray(o.child_order) && (!o.child_order.length || typeof o.child_order[0] === "number") && typeof o.child_size === "number" && typeof o.min_prefix_length === "number" && typeof o.max_prefix_length === "number" && (o.empty_child instanceof Uint8Array || typeof o.empty_child === "string") && isSet(o.hash));
+  },
+  isAmino(o: any): o is InnerSpecAmino {
+    return o && (o.$typeUrl === InnerSpec.typeUrl || Array.isArray(o.child_order) && (!o.child_order.length || typeof o.child_order[0] === "number") && typeof o.child_size === "number" && typeof o.min_prefix_length === "number" && typeof o.max_prefix_length === "number" && (o.empty_child instanceof Uint8Array || typeof o.empty_child === "string") && isSet(o.hash));
+  },
   encode(message: InnerSpec, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.childOrder) {
@@ -1471,6 +1541,7 @@ export const InnerSpec = {
     };
   }
 };
+GlobalDecoderRegistry.register(InnerSpec.typeUrl, InnerSpec);
 function createBaseBatchProof(): BatchProof {
   return {
     entries: []
@@ -1478,6 +1549,15 @@ function createBaseBatchProof(): BatchProof {
 }
 export const BatchProof = {
   typeUrl: "/ics23.BatchProof",
+  is(o: any): o is BatchProof {
+    return o && (o.$typeUrl === BatchProof.typeUrl || Array.isArray(o.entries) && (!o.entries.length || BatchEntry.is(o.entries[0])));
+  },
+  isSDK(o: any): o is BatchProofSDKType {
+    return o && (o.$typeUrl === BatchProof.typeUrl || Array.isArray(o.entries) && (!o.entries.length || BatchEntry.isSDK(o.entries[0])));
+  },
+  isAmino(o: any): o is BatchProofAmino {
+    return o && (o.$typeUrl === BatchProof.typeUrl || Array.isArray(o.entries) && (!o.entries.length || BatchEntry.isAmino(o.entries[0])));
+  },
   encode(message: BatchProof, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.entries) {
       BatchEntry.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1536,6 +1616,7 @@ export const BatchProof = {
     };
   }
 };
+GlobalDecoderRegistry.register(BatchProof.typeUrl, BatchProof);
 function createBaseBatchEntry(): BatchEntry {
   return {
     exist: undefined,
@@ -1544,6 +1625,15 @@ function createBaseBatchEntry(): BatchEntry {
 }
 export const BatchEntry = {
   typeUrl: "/ics23.BatchEntry",
+  is(o: any): o is BatchEntry {
+    return o && o.$typeUrl === BatchEntry.typeUrl;
+  },
+  isSDK(o: any): o is BatchEntrySDKType {
+    return o && o.$typeUrl === BatchEntry.typeUrl;
+  },
+  isAmino(o: any): o is BatchEntryAmino {
+    return o && o.$typeUrl === BatchEntry.typeUrl;
+  },
   encode(message: BatchEntry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.exist !== undefined) {
       ExistenceProof.encode(message.exist, writer.uint32(10).fork()).ldelim();
@@ -1611,6 +1701,7 @@ export const BatchEntry = {
     };
   }
 };
+GlobalDecoderRegistry.register(BatchEntry.typeUrl, BatchEntry);
 function createBaseCompressedBatchProof(): CompressedBatchProof {
   return {
     entries: [],
@@ -1619,6 +1710,15 @@ function createBaseCompressedBatchProof(): CompressedBatchProof {
 }
 export const CompressedBatchProof = {
   typeUrl: "/ics23.CompressedBatchProof",
+  is(o: any): o is CompressedBatchProof {
+    return o && (o.$typeUrl === CompressedBatchProof.typeUrl || Array.isArray(o.entries) && (!o.entries.length || CompressedBatchEntry.is(o.entries[0])) && Array.isArray(o.lookupInners) && (!o.lookupInners.length || InnerOp.is(o.lookupInners[0])));
+  },
+  isSDK(o: any): o is CompressedBatchProofSDKType {
+    return o && (o.$typeUrl === CompressedBatchProof.typeUrl || Array.isArray(o.entries) && (!o.entries.length || CompressedBatchEntry.isSDK(o.entries[0])) && Array.isArray(o.lookup_inners) && (!o.lookup_inners.length || InnerOp.isSDK(o.lookup_inners[0])));
+  },
+  isAmino(o: any): o is CompressedBatchProofAmino {
+    return o && (o.$typeUrl === CompressedBatchProof.typeUrl || Array.isArray(o.entries) && (!o.entries.length || CompressedBatchEntry.isAmino(o.entries[0])) && Array.isArray(o.lookup_inners) && (!o.lookup_inners.length || InnerOp.isAmino(o.lookup_inners[0])));
+  },
   encode(message: CompressedBatchProof, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.entries) {
       CompressedBatchEntry.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1690,6 +1790,7 @@ export const CompressedBatchProof = {
     };
   }
 };
+GlobalDecoderRegistry.register(CompressedBatchProof.typeUrl, CompressedBatchProof);
 function createBaseCompressedBatchEntry(): CompressedBatchEntry {
   return {
     exist: undefined,
@@ -1698,6 +1799,15 @@ function createBaseCompressedBatchEntry(): CompressedBatchEntry {
 }
 export const CompressedBatchEntry = {
   typeUrl: "/ics23.CompressedBatchEntry",
+  is(o: any): o is CompressedBatchEntry {
+    return o && o.$typeUrl === CompressedBatchEntry.typeUrl;
+  },
+  isSDK(o: any): o is CompressedBatchEntrySDKType {
+    return o && o.$typeUrl === CompressedBatchEntry.typeUrl;
+  },
+  isAmino(o: any): o is CompressedBatchEntryAmino {
+    return o && o.$typeUrl === CompressedBatchEntry.typeUrl;
+  },
   encode(message: CompressedBatchEntry, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.exist !== undefined) {
       CompressedExistenceProof.encode(message.exist, writer.uint32(10).fork()).ldelim();
@@ -1765,6 +1875,7 @@ export const CompressedBatchEntry = {
     };
   }
 };
+GlobalDecoderRegistry.register(CompressedBatchEntry.typeUrl, CompressedBatchEntry);
 function createBaseCompressedExistenceProof(): CompressedExistenceProof {
   return {
     key: new Uint8Array(),
@@ -1775,6 +1886,15 @@ function createBaseCompressedExistenceProof(): CompressedExistenceProof {
 }
 export const CompressedExistenceProof = {
   typeUrl: "/ics23.CompressedExistenceProof",
+  is(o: any): o is CompressedExistenceProof {
+    return o && (o.$typeUrl === CompressedExistenceProof.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && Array.isArray(o.path) && (!o.path.length || typeof o.path[0] === "number"));
+  },
+  isSDK(o: any): o is CompressedExistenceProofSDKType {
+    return o && (o.$typeUrl === CompressedExistenceProof.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && Array.isArray(o.path) && (!o.path.length || typeof o.path[0] === "number"));
+  },
+  isAmino(o: any): o is CompressedExistenceProofAmino {
+    return o && (o.$typeUrl === CompressedExistenceProof.typeUrl || (o.key instanceof Uint8Array || typeof o.key === "string") && (o.value instanceof Uint8Array || typeof o.value === "string") && Array.isArray(o.path) && (!o.path.length || typeof o.path[0] === "number"));
+  },
   encode(message: CompressedExistenceProof, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
@@ -1875,6 +1995,7 @@ export const CompressedExistenceProof = {
     };
   }
 };
+GlobalDecoderRegistry.register(CompressedExistenceProof.typeUrl, CompressedExistenceProof);
 function createBaseCompressedNonExistenceProof(): CompressedNonExistenceProof {
   return {
     key: new Uint8Array(),
@@ -1884,6 +2005,15 @@ function createBaseCompressedNonExistenceProof(): CompressedNonExistenceProof {
 }
 export const CompressedNonExistenceProof = {
   typeUrl: "/ics23.CompressedNonExistenceProof",
+  is(o: any): o is CompressedNonExistenceProof {
+    return o && (o.$typeUrl === CompressedNonExistenceProof.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+  },
+  isSDK(o: any): o is CompressedNonExistenceProofSDKType {
+    return o && (o.$typeUrl === CompressedNonExistenceProof.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+  },
+  isAmino(o: any): o is CompressedNonExistenceProofAmino {
+    return o && (o.$typeUrl === CompressedNonExistenceProof.typeUrl || o.key instanceof Uint8Array || typeof o.key === "string");
+  },
   encode(message: CompressedNonExistenceProof, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
@@ -1962,3 +2092,4 @@ export const CompressedNonExistenceProof = {
     };
   }
 };
+GlobalDecoderRegistry.register(CompressedNonExistenceProof.typeUrl, CompressedNonExistenceProof);

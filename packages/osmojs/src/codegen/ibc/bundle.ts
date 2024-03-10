@@ -42,49 +42,49 @@ import * as _126 from "./lightclients/wasm/v1/genesis";
 import * as _127 from "./lightclients/wasm/v1/query";
 import * as _128 from "./lightclients/wasm/v1/tx";
 import * as _129 from "./lightclients/wasm/v1/wasm";
-import * as _280 from "./applications/fee/v1/tx.amino";
-import * as _281 from "./applications/interchain_accounts/controller/v1/tx.amino";
-import * as _282 from "./applications/interchain_accounts/host/v1/tx.amino";
-import * as _283 from "./applications/transfer/v1/tx.amino";
-import * as _284 from "./core/channel/v1/tx.amino";
-import * as _285 from "./core/client/v1/tx.amino";
-import * as _286 from "./core/connection/v1/tx.amino";
-import * as _287 from "./lightclients/wasm/v1/tx.amino";
-import * as _288 from "./applications/fee/v1/tx.registry";
-import * as _289 from "./applications/interchain_accounts/controller/v1/tx.registry";
-import * as _290 from "./applications/interchain_accounts/host/v1/tx.registry";
-import * as _291 from "./applications/transfer/v1/tx.registry";
-import * as _292 from "./core/channel/v1/tx.registry";
-import * as _293 from "./core/client/v1/tx.registry";
-import * as _294 from "./core/connection/v1/tx.registry";
-import * as _295 from "./lightclients/wasm/v1/tx.registry";
-import * as _296 from "./applications/fee/v1/query.lcd";
-import * as _297 from "./applications/interchain_accounts/controller/v1/query.lcd";
-import * as _298 from "./applications/interchain_accounts/host/v1/query.lcd";
-import * as _299 from "./applications/transfer/v1/query.lcd";
-import * as _300 from "./core/channel/v1/query.lcd";
-import * as _301 from "./core/client/v1/query.lcd";
-import * as _302 from "./core/connection/v1/query.lcd";
-import * as _303 from "./lightclients/wasm/v1/query.lcd";
-import * as _304 from "./applications/fee/v1/query.rpc.Query";
-import * as _305 from "./applications/interchain_accounts/controller/v1/query.rpc.Query";
-import * as _306 from "./applications/interchain_accounts/host/v1/query.rpc.Query";
-import * as _307 from "./applications/transfer/v1/query.rpc.Query";
-import * as _308 from "./core/channel/v1/query.rpc.Query";
-import * as _309 from "./core/client/v1/query.rpc.Query";
-import * as _310 from "./core/connection/v1/query.rpc.Query";
-import * as _311 from "./lightclients/wasm/v1/query.rpc.Query";
-import * as _312 from "./applications/fee/v1/tx.rpc.msg";
-import * as _313 from "./applications/interchain_accounts/controller/v1/tx.rpc.msg";
-import * as _314 from "./applications/interchain_accounts/host/v1/tx.rpc.msg";
-import * as _315 from "./applications/transfer/v1/tx.rpc.msg";
-import * as _316 from "./core/channel/v1/tx.rpc.msg";
-import * as _317 from "./core/client/v1/tx.rpc.msg";
-import * as _318 from "./core/connection/v1/tx.rpc.msg";
-import * as _319 from "./lightclients/wasm/v1/tx.rpc.msg";
-import * as _405 from "./lcd";
-import * as _406 from "./rpc.query";
-import * as _407 from "./rpc.tx";
+import * as _285 from "./applications/fee/v1/tx.amino";
+import * as _286 from "./applications/interchain_accounts/controller/v1/tx.amino";
+import * as _287 from "./applications/interchain_accounts/host/v1/tx.amino";
+import * as _288 from "./applications/transfer/v1/tx.amino";
+import * as _289 from "./core/channel/v1/tx.amino";
+import * as _290 from "./core/client/v1/tx.amino";
+import * as _291 from "./core/connection/v1/tx.amino";
+import * as _292 from "./lightclients/wasm/v1/tx.amino";
+import * as _293 from "./applications/fee/v1/tx.registry";
+import * as _294 from "./applications/interchain_accounts/controller/v1/tx.registry";
+import * as _295 from "./applications/interchain_accounts/host/v1/tx.registry";
+import * as _296 from "./applications/transfer/v1/tx.registry";
+import * as _297 from "./core/channel/v1/tx.registry";
+import * as _298 from "./core/client/v1/tx.registry";
+import * as _299 from "./core/connection/v1/tx.registry";
+import * as _300 from "./lightclients/wasm/v1/tx.registry";
+import * as _301 from "./applications/fee/v1/query.lcd";
+import * as _302 from "./applications/interchain_accounts/controller/v1/query.lcd";
+import * as _303 from "./applications/interchain_accounts/host/v1/query.lcd";
+import * as _304 from "./applications/transfer/v1/query.lcd";
+import * as _305 from "./core/channel/v1/query.lcd";
+import * as _306 from "./core/client/v1/query.lcd";
+import * as _307 from "./core/connection/v1/query.lcd";
+import * as _308 from "./lightclients/wasm/v1/query.lcd";
+import * as _309 from "./applications/fee/v1/query.rpc.Query";
+import * as _310 from "./applications/interchain_accounts/controller/v1/query.rpc.Query";
+import * as _311 from "./applications/interchain_accounts/host/v1/query.rpc.Query";
+import * as _312 from "./applications/transfer/v1/query.rpc.Query";
+import * as _313 from "./core/channel/v1/query.rpc.Query";
+import * as _314 from "./core/client/v1/query.rpc.Query";
+import * as _315 from "./core/connection/v1/query.rpc.Query";
+import * as _316 from "./lightclients/wasm/v1/query.rpc.Query";
+import * as _317 from "./applications/fee/v1/tx.rpc.msg";
+import * as _318 from "./applications/interchain_accounts/controller/v1/tx.rpc.msg";
+import * as _319 from "./applications/interchain_accounts/host/v1/tx.rpc.msg";
+import * as _320 from "./applications/transfer/v1/tx.rpc.msg";
+import * as _321 from "./core/channel/v1/tx.rpc.msg";
+import * as _322 from "./core/client/v1/tx.rpc.msg";
+import * as _323 from "./core/connection/v1/tx.rpc.msg";
+import * as _324 from "./lightclients/wasm/v1/tx.rpc.msg";
+import * as _415 from "./lcd";
+import * as _416 from "./rpc.query";
+import * as _417 from "./rpc.tx";
 export namespace ibc {
   export namespace applications {
     export namespace fee {
@@ -95,11 +95,11 @@ export namespace ibc {
         ..._89,
         ..._90,
         ..._91,
-        ..._280,
-        ..._288,
-        ..._296,
-        ..._304,
-        ..._312
+        ..._285,
+        ..._293,
+        ..._301,
+        ..._309,
+        ..._317
       };
     }
     export namespace interchain_accounts {
@@ -108,11 +108,11 @@ export namespace ibc {
           ..._92,
           ..._93,
           ..._94,
-          ..._281,
-          ..._289,
-          ..._297,
-          ..._305,
-          ..._313
+          ..._286,
+          ..._294,
+          ..._302,
+          ..._310,
+          ..._318
         };
       }
       export namespace genesis {
@@ -125,11 +125,11 @@ export namespace ibc {
           ..._96,
           ..._97,
           ..._98,
-          ..._282,
-          ..._290,
-          ..._298,
-          ..._306,
-          ..._314
+          ..._287,
+          ..._295,
+          ..._303,
+          ..._311,
+          ..._319
         };
       }
       export const v1 = {
@@ -145,11 +145,11 @@ export namespace ibc {
         ..._104,
         ..._105,
         ..._106,
-        ..._283,
-        ..._291,
-        ..._299,
-        ..._307,
-        ..._315
+        ..._288,
+        ..._296,
+        ..._304,
+        ..._312,
+        ..._320
       };
       export const v2 = {
         ..._107
@@ -164,11 +164,11 @@ export namespace ibc {
         ..._110,
         ..._111,
         ..._112,
-        ..._284,
-        ..._292,
-        ..._300,
-        ..._308,
-        ..._316
+        ..._289,
+        ..._297,
+        ..._305,
+        ..._313,
+        ..._321
       };
     }
     export namespace client {
@@ -177,11 +177,11 @@ export namespace ibc {
         ..._114,
         ..._115,
         ..._116,
-        ..._285,
-        ..._293,
-        ..._301,
-        ..._309,
-        ..._317
+        ..._290,
+        ..._298,
+        ..._306,
+        ..._314,
+        ..._322
       };
     }
     export namespace commitment {
@@ -195,11 +195,11 @@ export namespace ibc {
         ..._119,
         ..._120,
         ..._121,
-        ..._286,
-        ..._294,
-        ..._302,
-        ..._310,
-        ..._318
+        ..._291,
+        ..._299,
+        ..._307,
+        ..._315,
+        ..._323
       };
     }
   }
@@ -228,17 +228,17 @@ export namespace ibc {
         ..._127,
         ..._128,
         ..._129,
-        ..._287,
-        ..._295,
-        ..._303,
-        ..._311,
-        ..._319
+        ..._292,
+        ..._300,
+        ..._308,
+        ..._316,
+        ..._324
       };
     }
   }
   export const ClientFactory = {
-    ..._405,
-    ..._406,
-    ..._407
+    ..._415,
+    ..._416,
+    ..._417
   };
 }

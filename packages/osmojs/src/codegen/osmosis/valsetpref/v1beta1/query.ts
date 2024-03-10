@@ -1,5 +1,6 @@
 import { ValidatorPreference, ValidatorPreferenceAmino, ValidatorPreferenceSDKType } from "./state";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** Request type for UserValidatorPreferences. */
 export interface UserValidatorPreferencesRequest {
   /** user account address */
@@ -49,6 +50,16 @@ function createBaseUserValidatorPreferencesRequest(): UserValidatorPreferencesRe
 }
 export const UserValidatorPreferencesRequest = {
   typeUrl: "/osmosis.valsetpref.v1beta1.UserValidatorPreferencesRequest",
+  aminoType: "osmosis/valsetpref/user-validator-preferences-request",
+  is(o: any): o is UserValidatorPreferencesRequest {
+    return o && (o.$typeUrl === UserValidatorPreferencesRequest.typeUrl || typeof o.address === "string");
+  },
+  isSDK(o: any): o is UserValidatorPreferencesRequestSDKType {
+    return o && (o.$typeUrl === UserValidatorPreferencesRequest.typeUrl || typeof o.address === "string");
+  },
+  isAmino(o: any): o is UserValidatorPreferencesRequestAmino {
+    return o && (o.$typeUrl === UserValidatorPreferencesRequest.typeUrl || typeof o.address === "string");
+  },
   encode(message: UserValidatorPreferencesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -111,6 +122,8 @@ export const UserValidatorPreferencesRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(UserValidatorPreferencesRequest.typeUrl, UserValidatorPreferencesRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(UserValidatorPreferencesRequest.aminoType, UserValidatorPreferencesRequest.typeUrl);
 function createBaseUserValidatorPreferencesResponse(): UserValidatorPreferencesResponse {
   return {
     preferences: []
@@ -118,6 +131,16 @@ function createBaseUserValidatorPreferencesResponse(): UserValidatorPreferencesR
 }
 export const UserValidatorPreferencesResponse = {
   typeUrl: "/osmosis.valsetpref.v1beta1.UserValidatorPreferencesResponse",
+  aminoType: "osmosis/valsetpref/user-validator-preferences-response",
+  is(o: any): o is UserValidatorPreferencesResponse {
+    return o && (o.$typeUrl === UserValidatorPreferencesResponse.typeUrl || Array.isArray(o.preferences) && (!o.preferences.length || ValidatorPreference.is(o.preferences[0])));
+  },
+  isSDK(o: any): o is UserValidatorPreferencesResponseSDKType {
+    return o && (o.$typeUrl === UserValidatorPreferencesResponse.typeUrl || Array.isArray(o.preferences) && (!o.preferences.length || ValidatorPreference.isSDK(o.preferences[0])));
+  },
+  isAmino(o: any): o is UserValidatorPreferencesResponseAmino {
+    return o && (o.$typeUrl === UserValidatorPreferencesResponse.typeUrl || Array.isArray(o.preferences) && (!o.preferences.length || ValidatorPreference.isAmino(o.preferences[0])));
+  },
   encode(message: UserValidatorPreferencesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.preferences) {
       ValidatorPreference.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -182,3 +205,5 @@ export const UserValidatorPreferencesResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(UserValidatorPreferencesResponse.typeUrl, UserValidatorPreferencesResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(UserValidatorPreferencesResponse.aminoType, UserValidatorPreferencesResponse.typeUrl);

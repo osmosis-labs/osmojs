@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface Params {
   /**
    * code_ide_whitelist contains the list of code ids that are allowed to be
@@ -47,6 +48,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.Params",
+  aminoType: "osmosis/cosmwasmpool/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.codeIdWhitelist) && (!o.codeIdWhitelist.length || typeof o.codeIdWhitelist[0] === "bigint") && typeof o.poolMigrationLimit === "bigint");
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.code_id_whitelist) && (!o.code_id_whitelist.length || typeof o.code_id_whitelist[0] === "bigint") && typeof o.pool_migration_limit === "bigint");
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.code_id_whitelist) && (!o.code_id_whitelist.length || typeof o.code_id_whitelist[0] === "bigint") && typeof o.pool_migration_limit === "bigint");
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.codeIdWhitelist) {
@@ -131,3 +142,5 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);

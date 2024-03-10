@@ -1,6 +1,7 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../../google/protobuf/duration";
 import { TwapRecord, TwapRecordAmino, TwapRecordSDKType } from "./twap_record";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** Params holds parameters for the twap module */
 export interface Params {
   pruneEpochIdentifier: string;
@@ -59,6 +60,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.twap.v1beta1.Params",
+  aminoType: "osmosis/twap/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.pruneEpochIdentifier === "string" && Duration.is(o.recordHistoryKeepPeriod));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.prune_epoch_identifier === "string" && Duration.isSDK(o.record_history_keep_period));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.prune_epoch_identifier === "string" && Duration.isAmino(o.record_history_keep_period));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pruneEpochIdentifier !== "") {
       writer.uint32(10).string(message.pruneEpochIdentifier);
@@ -132,6 +143,8 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);
 function createBaseGenesisState(): GenesisState {
   return {
     twaps: [],
@@ -140,6 +153,16 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/osmosis.twap.v1beta1.GenesisState",
+  aminoType: "osmosis/twap/genesis-state",
+  is(o: any): o is GenesisState {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.twaps) && (!o.twaps.length || TwapRecord.is(o.twaps[0])) && Params.is(o.params));
+  },
+  isSDK(o: any): o is GenesisStateSDKType {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.twaps) && (!o.twaps.length || TwapRecord.isSDK(o.twaps[0])) && Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is GenesisStateAmino {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Array.isArray(o.twaps) && (!o.twaps.length || TwapRecord.isAmino(o.twaps[0])) && Params.isAmino(o.params));
+  },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.twaps) {
       TwapRecord.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -215,3 +238,5 @@ export const GenesisState = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);

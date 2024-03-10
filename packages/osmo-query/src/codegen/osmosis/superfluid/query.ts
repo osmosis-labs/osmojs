@@ -5,6 +5,8 @@ import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { SyntheticLock, SyntheticLockAmino, SyntheticLockSDKType } from "../lockup/lock";
 import { DelegationResponse, DelegationResponseAmino, DelegationResponseSDKType } from "../../cosmos/staking/v1beta1/staking";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { GlobalDecoderRegistry } from "../../registry";
+import { isSet } from "../../helpers";
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
   typeUrl: "/osmosis.superfluid.QueryParamsRequest";
@@ -695,6 +697,16 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 export const QueryParamsRequest = {
   typeUrl: "/osmosis.superfluid.QueryParamsRequest",
+  aminoType: "osmosis/query-params-request",
+  is(o: any): o is QueryParamsRequest {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryParamsRequestSDKType {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryParamsRequestAmino {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
   encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -746,6 +758,8 @@ export const QueryParamsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsRequest.aminoType, QueryParamsRequest.typeUrl);
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     params: Params.fromPartial({})
@@ -753,6 +767,16 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 export const QueryParamsResponse = {
   typeUrl: "/osmosis.superfluid.QueryParamsResponse",
+  aminoType: "osmosis/query-params-response",
+  is(o: any): o is QueryParamsResponse {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.is(o.params));
+  },
+  isSDK(o: any): o is QueryParamsResponseSDKType {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is QueryParamsResponseAmino {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isAmino(o.params));
+  },
   encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -815,6 +839,8 @@ export const QueryParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsResponse.aminoType, QueryParamsResponse.typeUrl);
 function createBaseAssetTypeRequest(): AssetTypeRequest {
   return {
     denom: ""
@@ -822,6 +848,16 @@ function createBaseAssetTypeRequest(): AssetTypeRequest {
 }
 export const AssetTypeRequest = {
   typeUrl: "/osmosis.superfluid.AssetTypeRequest",
+  aminoType: "osmosis/asset-type-request",
+  is(o: any): o is AssetTypeRequest {
+    return o && (o.$typeUrl === AssetTypeRequest.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is AssetTypeRequestSDKType {
+    return o && (o.$typeUrl === AssetTypeRequest.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is AssetTypeRequestAmino {
+    return o && (o.$typeUrl === AssetTypeRequest.typeUrl || typeof o.denom === "string");
+  },
   encode(message: AssetTypeRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -884,6 +920,8 @@ export const AssetTypeRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(AssetTypeRequest.typeUrl, AssetTypeRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(AssetTypeRequest.aminoType, AssetTypeRequest.typeUrl);
 function createBaseAssetTypeResponse(): AssetTypeResponse {
   return {
     assetType: 0
@@ -891,6 +929,16 @@ function createBaseAssetTypeResponse(): AssetTypeResponse {
 }
 export const AssetTypeResponse = {
   typeUrl: "/osmosis.superfluid.AssetTypeResponse",
+  aminoType: "osmosis/asset-type-response",
+  is(o: any): o is AssetTypeResponse {
+    return o && (o.$typeUrl === AssetTypeResponse.typeUrl || isSet(o.assetType));
+  },
+  isSDK(o: any): o is AssetTypeResponseSDKType {
+    return o && (o.$typeUrl === AssetTypeResponse.typeUrl || isSet(o.asset_type));
+  },
+  isAmino(o: any): o is AssetTypeResponseAmino {
+    return o && (o.$typeUrl === AssetTypeResponse.typeUrl || isSet(o.asset_type));
+  },
   encode(message: AssetTypeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.assetType !== 0) {
       writer.uint32(8).int32(message.assetType);
@@ -953,11 +1001,23 @@ export const AssetTypeResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(AssetTypeResponse.typeUrl, AssetTypeResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(AssetTypeResponse.aminoType, AssetTypeResponse.typeUrl);
 function createBaseAllAssetsRequest(): AllAssetsRequest {
   return {};
 }
 export const AllAssetsRequest = {
   typeUrl: "/osmosis.superfluid.AllAssetsRequest",
+  aminoType: "osmosis/all-assets-request",
+  is(o: any): o is AllAssetsRequest {
+    return o && o.$typeUrl === AllAssetsRequest.typeUrl;
+  },
+  isSDK(o: any): o is AllAssetsRequestSDKType {
+    return o && o.$typeUrl === AllAssetsRequest.typeUrl;
+  },
+  isAmino(o: any): o is AllAssetsRequestAmino {
+    return o && o.$typeUrl === AllAssetsRequest.typeUrl;
+  },
   encode(_: AllAssetsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -1009,6 +1069,8 @@ export const AllAssetsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(AllAssetsRequest.typeUrl, AllAssetsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(AllAssetsRequest.aminoType, AllAssetsRequest.typeUrl);
 function createBaseAllAssetsResponse(): AllAssetsResponse {
   return {
     assets: []
@@ -1016,6 +1078,16 @@ function createBaseAllAssetsResponse(): AllAssetsResponse {
 }
 export const AllAssetsResponse = {
   typeUrl: "/osmosis.superfluid.AllAssetsResponse",
+  aminoType: "osmosis/all-assets-response",
+  is(o: any): o is AllAssetsResponse {
+    return o && (o.$typeUrl === AllAssetsResponse.typeUrl || Array.isArray(o.assets) && (!o.assets.length || SuperfluidAsset.is(o.assets[0])));
+  },
+  isSDK(o: any): o is AllAssetsResponseSDKType {
+    return o && (o.$typeUrl === AllAssetsResponse.typeUrl || Array.isArray(o.assets) && (!o.assets.length || SuperfluidAsset.isSDK(o.assets[0])));
+  },
+  isAmino(o: any): o is AllAssetsResponseAmino {
+    return o && (o.$typeUrl === AllAssetsResponse.typeUrl || Array.isArray(o.assets) && (!o.assets.length || SuperfluidAsset.isAmino(o.assets[0])));
+  },
   encode(message: AllAssetsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.assets) {
       SuperfluidAsset.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1080,6 +1152,8 @@ export const AllAssetsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(AllAssetsResponse.typeUrl, AllAssetsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(AllAssetsResponse.aminoType, AllAssetsResponse.typeUrl);
 function createBaseAssetMultiplierRequest(): AssetMultiplierRequest {
   return {
     denom: ""
@@ -1087,6 +1161,16 @@ function createBaseAssetMultiplierRequest(): AssetMultiplierRequest {
 }
 export const AssetMultiplierRequest = {
   typeUrl: "/osmosis.superfluid.AssetMultiplierRequest",
+  aminoType: "osmosis/asset-multiplier-request",
+  is(o: any): o is AssetMultiplierRequest {
+    return o && (o.$typeUrl === AssetMultiplierRequest.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is AssetMultiplierRequestSDKType {
+    return o && (o.$typeUrl === AssetMultiplierRequest.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is AssetMultiplierRequestAmino {
+    return o && (o.$typeUrl === AssetMultiplierRequest.typeUrl || typeof o.denom === "string");
+  },
   encode(message: AssetMultiplierRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -1149,6 +1233,8 @@ export const AssetMultiplierRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(AssetMultiplierRequest.typeUrl, AssetMultiplierRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(AssetMultiplierRequest.aminoType, AssetMultiplierRequest.typeUrl);
 function createBaseAssetMultiplierResponse(): AssetMultiplierResponse {
   return {
     osmoEquivalentMultiplier: undefined
@@ -1156,6 +1242,16 @@ function createBaseAssetMultiplierResponse(): AssetMultiplierResponse {
 }
 export const AssetMultiplierResponse = {
   typeUrl: "/osmosis.superfluid.AssetMultiplierResponse",
+  aminoType: "osmosis/asset-multiplier-response",
+  is(o: any): o is AssetMultiplierResponse {
+    return o && o.$typeUrl === AssetMultiplierResponse.typeUrl;
+  },
+  isSDK(o: any): o is AssetMultiplierResponseSDKType {
+    return o && o.$typeUrl === AssetMultiplierResponse.typeUrl;
+  },
+  isAmino(o: any): o is AssetMultiplierResponseAmino {
+    return o && o.$typeUrl === AssetMultiplierResponse.typeUrl;
+  },
   encode(message: AssetMultiplierResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.osmoEquivalentMultiplier !== undefined) {
       OsmoEquivalentMultiplierRecord.encode(message.osmoEquivalentMultiplier, writer.uint32(10).fork()).ldelim();
@@ -1218,6 +1314,8 @@ export const AssetMultiplierResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(AssetMultiplierResponse.typeUrl, AssetMultiplierResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(AssetMultiplierResponse.aminoType, AssetMultiplierResponse.typeUrl);
 function createBaseSuperfluidIntermediaryAccountInfo(): SuperfluidIntermediaryAccountInfo {
   return {
     denom: "",
@@ -1228,6 +1326,16 @@ function createBaseSuperfluidIntermediaryAccountInfo(): SuperfluidIntermediaryAc
 }
 export const SuperfluidIntermediaryAccountInfo = {
   typeUrl: "/osmosis.superfluid.SuperfluidIntermediaryAccountInfo",
+  aminoType: "osmosis/superfluid-intermediary-account-info",
+  is(o: any): o is SuperfluidIntermediaryAccountInfo {
+    return o && (o.$typeUrl === SuperfluidIntermediaryAccountInfo.typeUrl || typeof o.denom === "string" && typeof o.valAddr === "string" && typeof o.gaugeId === "bigint" && typeof o.address === "string");
+  },
+  isSDK(o: any): o is SuperfluidIntermediaryAccountInfoSDKType {
+    return o && (o.$typeUrl === SuperfluidIntermediaryAccountInfo.typeUrl || typeof o.denom === "string" && typeof o.val_addr === "string" && typeof o.gauge_id === "bigint" && typeof o.address === "string");
+  },
+  isAmino(o: any): o is SuperfluidIntermediaryAccountInfoAmino {
+    return o && (o.$typeUrl === SuperfluidIntermediaryAccountInfo.typeUrl || typeof o.denom === "string" && typeof o.val_addr === "string" && typeof o.gauge_id === "bigint" && typeof o.address === "string");
+  },
   encode(message: SuperfluidIntermediaryAccountInfo, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -1323,6 +1431,8 @@ export const SuperfluidIntermediaryAccountInfo = {
     };
   }
 };
+GlobalDecoderRegistry.register(SuperfluidIntermediaryAccountInfo.typeUrl, SuperfluidIntermediaryAccountInfo);
+GlobalDecoderRegistry.registerAminoProtoMapping(SuperfluidIntermediaryAccountInfo.aminoType, SuperfluidIntermediaryAccountInfo.typeUrl);
 function createBaseAllIntermediaryAccountsRequest(): AllIntermediaryAccountsRequest {
   return {
     pagination: undefined
@@ -1330,6 +1440,16 @@ function createBaseAllIntermediaryAccountsRequest(): AllIntermediaryAccountsRequ
 }
 export const AllIntermediaryAccountsRequest = {
   typeUrl: "/osmosis.superfluid.AllIntermediaryAccountsRequest",
+  aminoType: "osmosis/all-intermediary-accounts-request",
+  is(o: any): o is AllIntermediaryAccountsRequest {
+    return o && o.$typeUrl === AllIntermediaryAccountsRequest.typeUrl;
+  },
+  isSDK(o: any): o is AllIntermediaryAccountsRequestSDKType {
+    return o && o.$typeUrl === AllIntermediaryAccountsRequest.typeUrl;
+  },
+  isAmino(o: any): o is AllIntermediaryAccountsRequestAmino {
+    return o && o.$typeUrl === AllIntermediaryAccountsRequest.typeUrl;
+  },
   encode(message: AllIntermediaryAccountsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
@@ -1392,6 +1512,8 @@ export const AllIntermediaryAccountsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(AllIntermediaryAccountsRequest.typeUrl, AllIntermediaryAccountsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(AllIntermediaryAccountsRequest.aminoType, AllIntermediaryAccountsRequest.typeUrl);
 function createBaseAllIntermediaryAccountsResponse(): AllIntermediaryAccountsResponse {
   return {
     accounts: [],
@@ -1400,6 +1522,16 @@ function createBaseAllIntermediaryAccountsResponse(): AllIntermediaryAccountsRes
 }
 export const AllIntermediaryAccountsResponse = {
   typeUrl: "/osmosis.superfluid.AllIntermediaryAccountsResponse",
+  aminoType: "osmosis/all-intermediary-accounts-response",
+  is(o: any): o is AllIntermediaryAccountsResponse {
+    return o && (o.$typeUrl === AllIntermediaryAccountsResponse.typeUrl || Array.isArray(o.accounts) && (!o.accounts.length || SuperfluidIntermediaryAccountInfo.is(o.accounts[0])));
+  },
+  isSDK(o: any): o is AllIntermediaryAccountsResponseSDKType {
+    return o && (o.$typeUrl === AllIntermediaryAccountsResponse.typeUrl || Array.isArray(o.accounts) && (!o.accounts.length || SuperfluidIntermediaryAccountInfo.isSDK(o.accounts[0])));
+  },
+  isAmino(o: any): o is AllIntermediaryAccountsResponseAmino {
+    return o && (o.$typeUrl === AllIntermediaryAccountsResponse.typeUrl || Array.isArray(o.accounts) && (!o.accounts.length || SuperfluidIntermediaryAccountInfo.isAmino(o.accounts[0])));
+  },
   encode(message: AllIntermediaryAccountsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.accounts) {
       SuperfluidIntermediaryAccountInfo.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1475,6 +1607,8 @@ export const AllIntermediaryAccountsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(AllIntermediaryAccountsResponse.typeUrl, AllIntermediaryAccountsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(AllIntermediaryAccountsResponse.aminoType, AllIntermediaryAccountsResponse.typeUrl);
 function createBaseConnectedIntermediaryAccountRequest(): ConnectedIntermediaryAccountRequest {
   return {
     lockId: BigInt(0)
@@ -1482,6 +1616,16 @@ function createBaseConnectedIntermediaryAccountRequest(): ConnectedIntermediaryA
 }
 export const ConnectedIntermediaryAccountRequest = {
   typeUrl: "/osmosis.superfluid.ConnectedIntermediaryAccountRequest",
+  aminoType: "osmosis/connected-intermediary-account-request",
+  is(o: any): o is ConnectedIntermediaryAccountRequest {
+    return o && (o.$typeUrl === ConnectedIntermediaryAccountRequest.typeUrl || typeof o.lockId === "bigint");
+  },
+  isSDK(o: any): o is ConnectedIntermediaryAccountRequestSDKType {
+    return o && (o.$typeUrl === ConnectedIntermediaryAccountRequest.typeUrl || typeof o.lock_id === "bigint");
+  },
+  isAmino(o: any): o is ConnectedIntermediaryAccountRequestAmino {
+    return o && (o.$typeUrl === ConnectedIntermediaryAccountRequest.typeUrl || typeof o.lock_id === "bigint");
+  },
   encode(message: ConnectedIntermediaryAccountRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.lockId !== BigInt(0)) {
       writer.uint32(8).uint64(message.lockId);
@@ -1544,6 +1688,8 @@ export const ConnectedIntermediaryAccountRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(ConnectedIntermediaryAccountRequest.typeUrl, ConnectedIntermediaryAccountRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(ConnectedIntermediaryAccountRequest.aminoType, ConnectedIntermediaryAccountRequest.typeUrl);
 function createBaseConnectedIntermediaryAccountResponse(): ConnectedIntermediaryAccountResponse {
   return {
     account: undefined
@@ -1551,6 +1697,16 @@ function createBaseConnectedIntermediaryAccountResponse(): ConnectedIntermediary
 }
 export const ConnectedIntermediaryAccountResponse = {
   typeUrl: "/osmosis.superfluid.ConnectedIntermediaryAccountResponse",
+  aminoType: "osmosis/connected-intermediary-account-response",
+  is(o: any): o is ConnectedIntermediaryAccountResponse {
+    return o && o.$typeUrl === ConnectedIntermediaryAccountResponse.typeUrl;
+  },
+  isSDK(o: any): o is ConnectedIntermediaryAccountResponseSDKType {
+    return o && o.$typeUrl === ConnectedIntermediaryAccountResponse.typeUrl;
+  },
+  isAmino(o: any): o is ConnectedIntermediaryAccountResponseAmino {
+    return o && o.$typeUrl === ConnectedIntermediaryAccountResponse.typeUrl;
+  },
   encode(message: ConnectedIntermediaryAccountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.account !== undefined) {
       SuperfluidIntermediaryAccountInfo.encode(message.account, writer.uint32(10).fork()).ldelim();
@@ -1613,6 +1769,8 @@ export const ConnectedIntermediaryAccountResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(ConnectedIntermediaryAccountResponse.typeUrl, ConnectedIntermediaryAccountResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(ConnectedIntermediaryAccountResponse.aminoType, ConnectedIntermediaryAccountResponse.typeUrl);
 function createBaseQueryTotalDelegationByValidatorForDenomRequest(): QueryTotalDelegationByValidatorForDenomRequest {
   return {
     denom: ""
@@ -1620,6 +1778,16 @@ function createBaseQueryTotalDelegationByValidatorForDenomRequest(): QueryTotalD
 }
 export const QueryTotalDelegationByValidatorForDenomRequest = {
   typeUrl: "/osmosis.superfluid.QueryTotalDelegationByValidatorForDenomRequest",
+  aminoType: "osmosis/query-total-delegation-by-validator-for-denom-request",
+  is(o: any): o is QueryTotalDelegationByValidatorForDenomRequest {
+    return o && (o.$typeUrl === QueryTotalDelegationByValidatorForDenomRequest.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is QueryTotalDelegationByValidatorForDenomRequestSDKType {
+    return o && (o.$typeUrl === QueryTotalDelegationByValidatorForDenomRequest.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is QueryTotalDelegationByValidatorForDenomRequestAmino {
+    return o && (o.$typeUrl === QueryTotalDelegationByValidatorForDenomRequest.typeUrl || typeof o.denom === "string");
+  },
   encode(message: QueryTotalDelegationByValidatorForDenomRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -1682,6 +1850,8 @@ export const QueryTotalDelegationByValidatorForDenomRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryTotalDelegationByValidatorForDenomRequest.typeUrl, QueryTotalDelegationByValidatorForDenomRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryTotalDelegationByValidatorForDenomRequest.aminoType, QueryTotalDelegationByValidatorForDenomRequest.typeUrl);
 function createBaseQueryTotalDelegationByValidatorForDenomResponse(): QueryTotalDelegationByValidatorForDenomResponse {
   return {
     assets: []
@@ -1689,6 +1859,16 @@ function createBaseQueryTotalDelegationByValidatorForDenomResponse(): QueryTotal
 }
 export const QueryTotalDelegationByValidatorForDenomResponse = {
   typeUrl: "/osmosis.superfluid.QueryTotalDelegationByValidatorForDenomResponse",
+  aminoType: "osmosis/query-total-delegation-by-validator-for-denom-response",
+  is(o: any): o is QueryTotalDelegationByValidatorForDenomResponse {
+    return o && (o.$typeUrl === QueryTotalDelegationByValidatorForDenomResponse.typeUrl || Array.isArray(o.assets) && (!o.assets.length || Delegations.is(o.assets[0])));
+  },
+  isSDK(o: any): o is QueryTotalDelegationByValidatorForDenomResponseSDKType {
+    return o && (o.$typeUrl === QueryTotalDelegationByValidatorForDenomResponse.typeUrl || Array.isArray(o.assets) && (!o.assets.length || Delegations.isSDK(o.assets[0])));
+  },
+  isAmino(o: any): o is QueryTotalDelegationByValidatorForDenomResponseAmino {
+    return o && (o.$typeUrl === QueryTotalDelegationByValidatorForDenomResponse.typeUrl || Array.isArray(o.assets) && (!o.assets.length || Delegations.isAmino(o.assets[0])));
+  },
   encode(message: QueryTotalDelegationByValidatorForDenomResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.assets) {
       Delegations.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -1753,6 +1933,8 @@ export const QueryTotalDelegationByValidatorForDenomResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryTotalDelegationByValidatorForDenomResponse.typeUrl, QueryTotalDelegationByValidatorForDenomResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryTotalDelegationByValidatorForDenomResponse.aminoType, QueryTotalDelegationByValidatorForDenomResponse.typeUrl);
 function createBaseDelegations(): Delegations {
   return {
     valAddr: "",
@@ -1762,6 +1944,16 @@ function createBaseDelegations(): Delegations {
 }
 export const Delegations = {
   typeUrl: "/osmosis.superfluid.Delegations",
+  aminoType: "osmosis/delegations",
+  is(o: any): o is Delegations {
+    return o && (o.$typeUrl === Delegations.typeUrl || typeof o.valAddr === "string" && typeof o.amountSfsd === "string" && typeof o.osmoEquivalent === "string");
+  },
+  isSDK(o: any): o is DelegationsSDKType {
+    return o && (o.$typeUrl === Delegations.typeUrl || typeof o.val_addr === "string" && typeof o.amount_sfsd === "string" && typeof o.osmo_equivalent === "string");
+  },
+  isAmino(o: any): o is DelegationsAmino {
+    return o && (o.$typeUrl === Delegations.typeUrl || typeof o.val_addr === "string" && typeof o.amount_sfsd === "string" && typeof o.osmo_equivalent === "string");
+  },
   encode(message: Delegations, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.valAddr !== "") {
       writer.uint32(10).string(message.valAddr);
@@ -1846,11 +2038,23 @@ export const Delegations = {
     };
   }
 };
+GlobalDecoderRegistry.register(Delegations.typeUrl, Delegations);
+GlobalDecoderRegistry.registerAminoProtoMapping(Delegations.aminoType, Delegations.typeUrl);
 function createBaseTotalSuperfluidDelegationsRequest(): TotalSuperfluidDelegationsRequest {
   return {};
 }
 export const TotalSuperfluidDelegationsRequest = {
   typeUrl: "/osmosis.superfluid.TotalSuperfluidDelegationsRequest",
+  aminoType: "osmosis/total-superfluid-delegations-request",
+  is(o: any): o is TotalSuperfluidDelegationsRequest {
+    return o && o.$typeUrl === TotalSuperfluidDelegationsRequest.typeUrl;
+  },
+  isSDK(o: any): o is TotalSuperfluidDelegationsRequestSDKType {
+    return o && o.$typeUrl === TotalSuperfluidDelegationsRequest.typeUrl;
+  },
+  isAmino(o: any): o is TotalSuperfluidDelegationsRequestAmino {
+    return o && o.$typeUrl === TotalSuperfluidDelegationsRequest.typeUrl;
+  },
   encode(_: TotalSuperfluidDelegationsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -1902,6 +2106,8 @@ export const TotalSuperfluidDelegationsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(TotalSuperfluidDelegationsRequest.typeUrl, TotalSuperfluidDelegationsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(TotalSuperfluidDelegationsRequest.aminoType, TotalSuperfluidDelegationsRequest.typeUrl);
 function createBaseTotalSuperfluidDelegationsResponse(): TotalSuperfluidDelegationsResponse {
   return {
     totalDelegations: ""
@@ -1909,6 +2115,16 @@ function createBaseTotalSuperfluidDelegationsResponse(): TotalSuperfluidDelegati
 }
 export const TotalSuperfluidDelegationsResponse = {
   typeUrl: "/osmosis.superfluid.TotalSuperfluidDelegationsResponse",
+  aminoType: "osmosis/total-superfluid-delegations-response",
+  is(o: any): o is TotalSuperfluidDelegationsResponse {
+    return o && (o.$typeUrl === TotalSuperfluidDelegationsResponse.typeUrl || typeof o.totalDelegations === "string");
+  },
+  isSDK(o: any): o is TotalSuperfluidDelegationsResponseSDKType {
+    return o && (o.$typeUrl === TotalSuperfluidDelegationsResponse.typeUrl || typeof o.total_delegations === "string");
+  },
+  isAmino(o: any): o is TotalSuperfluidDelegationsResponseAmino {
+    return o && (o.$typeUrl === TotalSuperfluidDelegationsResponse.typeUrl || typeof o.total_delegations === "string");
+  },
   encode(message: TotalSuperfluidDelegationsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.totalDelegations !== "") {
       writer.uint32(10).string(message.totalDelegations);
@@ -1971,6 +2187,8 @@ export const TotalSuperfluidDelegationsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(TotalSuperfluidDelegationsResponse.typeUrl, TotalSuperfluidDelegationsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(TotalSuperfluidDelegationsResponse.aminoType, TotalSuperfluidDelegationsResponse.typeUrl);
 function createBaseSuperfluidDelegationAmountRequest(): SuperfluidDelegationAmountRequest {
   return {
     delegatorAddress: "",
@@ -1980,6 +2198,16 @@ function createBaseSuperfluidDelegationAmountRequest(): SuperfluidDelegationAmou
 }
 export const SuperfluidDelegationAmountRequest = {
   typeUrl: "/osmosis.superfluid.SuperfluidDelegationAmountRequest",
+  aminoType: "osmosis/superfluid-delegation-amount-request",
+  is(o: any): o is SuperfluidDelegationAmountRequest {
+    return o && (o.$typeUrl === SuperfluidDelegationAmountRequest.typeUrl || typeof o.delegatorAddress === "string" && typeof o.validatorAddress === "string" && typeof o.denom === "string");
+  },
+  isSDK(o: any): o is SuperfluidDelegationAmountRequestSDKType {
+    return o && (o.$typeUrl === SuperfluidDelegationAmountRequest.typeUrl || typeof o.delegator_address === "string" && typeof o.validator_address === "string" && typeof o.denom === "string");
+  },
+  isAmino(o: any): o is SuperfluidDelegationAmountRequestAmino {
+    return o && (o.$typeUrl === SuperfluidDelegationAmountRequest.typeUrl || typeof o.delegator_address === "string" && typeof o.validator_address === "string" && typeof o.denom === "string");
+  },
   encode(message: SuperfluidDelegationAmountRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegatorAddress !== "") {
       writer.uint32(10).string(message.delegatorAddress);
@@ -2064,6 +2292,8 @@ export const SuperfluidDelegationAmountRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(SuperfluidDelegationAmountRequest.typeUrl, SuperfluidDelegationAmountRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(SuperfluidDelegationAmountRequest.aminoType, SuperfluidDelegationAmountRequest.typeUrl);
 function createBaseSuperfluidDelegationAmountResponse(): SuperfluidDelegationAmountResponse {
   return {
     amount: []
@@ -2071,6 +2301,16 @@ function createBaseSuperfluidDelegationAmountResponse(): SuperfluidDelegationAmo
 }
 export const SuperfluidDelegationAmountResponse = {
   typeUrl: "/osmosis.superfluid.SuperfluidDelegationAmountResponse",
+  aminoType: "osmosis/superfluid-delegation-amount-response",
+  is(o: any): o is SuperfluidDelegationAmountResponse {
+    return o && (o.$typeUrl === SuperfluidDelegationAmountResponse.typeUrl || Array.isArray(o.amount) && (!o.amount.length || Coin.is(o.amount[0])));
+  },
+  isSDK(o: any): o is SuperfluidDelegationAmountResponseSDKType {
+    return o && (o.$typeUrl === SuperfluidDelegationAmountResponse.typeUrl || Array.isArray(o.amount) && (!o.amount.length || Coin.isSDK(o.amount[0])));
+  },
+  isAmino(o: any): o is SuperfluidDelegationAmountResponseAmino {
+    return o && (o.$typeUrl === SuperfluidDelegationAmountResponse.typeUrl || Array.isArray(o.amount) && (!o.amount.length || Coin.isAmino(o.amount[0])));
+  },
   encode(message: SuperfluidDelegationAmountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.amount) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2135,6 +2375,8 @@ export const SuperfluidDelegationAmountResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(SuperfluidDelegationAmountResponse.typeUrl, SuperfluidDelegationAmountResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(SuperfluidDelegationAmountResponse.aminoType, SuperfluidDelegationAmountResponse.typeUrl);
 function createBaseSuperfluidDelegationsByDelegatorRequest(): SuperfluidDelegationsByDelegatorRequest {
   return {
     delegatorAddress: ""
@@ -2142,6 +2384,16 @@ function createBaseSuperfluidDelegationsByDelegatorRequest(): SuperfluidDelegati
 }
 export const SuperfluidDelegationsByDelegatorRequest = {
   typeUrl: "/osmosis.superfluid.SuperfluidDelegationsByDelegatorRequest",
+  aminoType: "osmosis/superfluid-delegations-by-delegator-request",
+  is(o: any): o is SuperfluidDelegationsByDelegatorRequest {
+    return o && (o.$typeUrl === SuperfluidDelegationsByDelegatorRequest.typeUrl || typeof o.delegatorAddress === "string");
+  },
+  isSDK(o: any): o is SuperfluidDelegationsByDelegatorRequestSDKType {
+    return o && (o.$typeUrl === SuperfluidDelegationsByDelegatorRequest.typeUrl || typeof o.delegator_address === "string");
+  },
+  isAmino(o: any): o is SuperfluidDelegationsByDelegatorRequestAmino {
+    return o && (o.$typeUrl === SuperfluidDelegationsByDelegatorRequest.typeUrl || typeof o.delegator_address === "string");
+  },
   encode(message: SuperfluidDelegationsByDelegatorRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegatorAddress !== "") {
       writer.uint32(10).string(message.delegatorAddress);
@@ -2204,6 +2456,8 @@ export const SuperfluidDelegationsByDelegatorRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(SuperfluidDelegationsByDelegatorRequest.typeUrl, SuperfluidDelegationsByDelegatorRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(SuperfluidDelegationsByDelegatorRequest.aminoType, SuperfluidDelegationsByDelegatorRequest.typeUrl);
 function createBaseSuperfluidDelegationsByDelegatorResponse(): SuperfluidDelegationsByDelegatorResponse {
   return {
     superfluidDelegationRecords: [],
@@ -2213,6 +2467,16 @@ function createBaseSuperfluidDelegationsByDelegatorResponse(): SuperfluidDelegat
 }
 export const SuperfluidDelegationsByDelegatorResponse = {
   typeUrl: "/osmosis.superfluid.SuperfluidDelegationsByDelegatorResponse",
+  aminoType: "osmosis/superfluid-delegations-by-delegator-response",
+  is(o: any): o is SuperfluidDelegationsByDelegatorResponse {
+    return o && (o.$typeUrl === SuperfluidDelegationsByDelegatorResponse.typeUrl || Array.isArray(o.superfluidDelegationRecords) && (!o.superfluidDelegationRecords.length || SuperfluidDelegationRecord.is(o.superfluidDelegationRecords[0])) && Array.isArray(o.totalDelegatedCoins) && (!o.totalDelegatedCoins.length || Coin.is(o.totalDelegatedCoins[0])) && Coin.is(o.totalEquivalentStakedAmount));
+  },
+  isSDK(o: any): o is SuperfluidDelegationsByDelegatorResponseSDKType {
+    return o && (o.$typeUrl === SuperfluidDelegationsByDelegatorResponse.typeUrl || Array.isArray(o.superfluid_delegation_records) && (!o.superfluid_delegation_records.length || SuperfluidDelegationRecord.isSDK(o.superfluid_delegation_records[0])) && Array.isArray(o.total_delegated_coins) && (!o.total_delegated_coins.length || Coin.isSDK(o.total_delegated_coins[0])) && Coin.isSDK(o.total_equivalent_staked_amount));
+  },
+  isAmino(o: any): o is SuperfluidDelegationsByDelegatorResponseAmino {
+    return o && (o.$typeUrl === SuperfluidDelegationsByDelegatorResponse.typeUrl || Array.isArray(o.superfluid_delegation_records) && (!o.superfluid_delegation_records.length || SuperfluidDelegationRecord.isAmino(o.superfluid_delegation_records[0])) && Array.isArray(o.total_delegated_coins) && (!o.total_delegated_coins.length || Coin.isAmino(o.total_delegated_coins[0])) && Coin.isAmino(o.total_equivalent_staked_amount));
+  },
   encode(message: SuperfluidDelegationsByDelegatorResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.superfluidDelegationRecords) {
       SuperfluidDelegationRecord.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2301,6 +2565,8 @@ export const SuperfluidDelegationsByDelegatorResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(SuperfluidDelegationsByDelegatorResponse.typeUrl, SuperfluidDelegationsByDelegatorResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(SuperfluidDelegationsByDelegatorResponse.aminoType, SuperfluidDelegationsByDelegatorResponse.typeUrl);
 function createBaseSuperfluidUndelegationsByDelegatorRequest(): SuperfluidUndelegationsByDelegatorRequest {
   return {
     delegatorAddress: "",
@@ -2309,6 +2575,16 @@ function createBaseSuperfluidUndelegationsByDelegatorRequest(): SuperfluidUndele
 }
 export const SuperfluidUndelegationsByDelegatorRequest = {
   typeUrl: "/osmosis.superfluid.SuperfluidUndelegationsByDelegatorRequest",
+  aminoType: "osmosis/superfluid-undelegations-by-delegator-request",
+  is(o: any): o is SuperfluidUndelegationsByDelegatorRequest {
+    return o && (o.$typeUrl === SuperfluidUndelegationsByDelegatorRequest.typeUrl || typeof o.delegatorAddress === "string" && typeof o.denom === "string");
+  },
+  isSDK(o: any): o is SuperfluidUndelegationsByDelegatorRequestSDKType {
+    return o && (o.$typeUrl === SuperfluidUndelegationsByDelegatorRequest.typeUrl || typeof o.delegator_address === "string" && typeof o.denom === "string");
+  },
+  isAmino(o: any): o is SuperfluidUndelegationsByDelegatorRequestAmino {
+    return o && (o.$typeUrl === SuperfluidUndelegationsByDelegatorRequest.typeUrl || typeof o.delegator_address === "string" && typeof o.denom === "string");
+  },
   encode(message: SuperfluidUndelegationsByDelegatorRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegatorAddress !== "") {
       writer.uint32(10).string(message.delegatorAddress);
@@ -2382,6 +2658,8 @@ export const SuperfluidUndelegationsByDelegatorRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(SuperfluidUndelegationsByDelegatorRequest.typeUrl, SuperfluidUndelegationsByDelegatorRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(SuperfluidUndelegationsByDelegatorRequest.aminoType, SuperfluidUndelegationsByDelegatorRequest.typeUrl);
 function createBaseSuperfluidUndelegationsByDelegatorResponse(): SuperfluidUndelegationsByDelegatorResponse {
   return {
     superfluidDelegationRecords: [],
@@ -2391,6 +2669,16 @@ function createBaseSuperfluidUndelegationsByDelegatorResponse(): SuperfluidUndel
 }
 export const SuperfluidUndelegationsByDelegatorResponse = {
   typeUrl: "/osmosis.superfluid.SuperfluidUndelegationsByDelegatorResponse",
+  aminoType: "osmosis/superfluid-undelegations-by-delegator-response",
+  is(o: any): o is SuperfluidUndelegationsByDelegatorResponse {
+    return o && (o.$typeUrl === SuperfluidUndelegationsByDelegatorResponse.typeUrl || Array.isArray(o.superfluidDelegationRecords) && (!o.superfluidDelegationRecords.length || SuperfluidDelegationRecord.is(o.superfluidDelegationRecords[0])) && Array.isArray(o.totalUndelegatedCoins) && (!o.totalUndelegatedCoins.length || Coin.is(o.totalUndelegatedCoins[0])) && Array.isArray(o.syntheticLocks) && (!o.syntheticLocks.length || SyntheticLock.is(o.syntheticLocks[0])));
+  },
+  isSDK(o: any): o is SuperfluidUndelegationsByDelegatorResponseSDKType {
+    return o && (o.$typeUrl === SuperfluidUndelegationsByDelegatorResponse.typeUrl || Array.isArray(o.superfluid_delegation_records) && (!o.superfluid_delegation_records.length || SuperfluidDelegationRecord.isSDK(o.superfluid_delegation_records[0])) && Array.isArray(o.total_undelegated_coins) && (!o.total_undelegated_coins.length || Coin.isSDK(o.total_undelegated_coins[0])) && Array.isArray(o.synthetic_locks) && (!o.synthetic_locks.length || SyntheticLock.isSDK(o.synthetic_locks[0])));
+  },
+  isAmino(o: any): o is SuperfluidUndelegationsByDelegatorResponseAmino {
+    return o && (o.$typeUrl === SuperfluidUndelegationsByDelegatorResponse.typeUrl || Array.isArray(o.superfluid_delegation_records) && (!o.superfluid_delegation_records.length || SuperfluidDelegationRecord.isAmino(o.superfluid_delegation_records[0])) && Array.isArray(o.total_undelegated_coins) && (!o.total_undelegated_coins.length || Coin.isAmino(o.total_undelegated_coins[0])) && Array.isArray(o.synthetic_locks) && (!o.synthetic_locks.length || SyntheticLock.isAmino(o.synthetic_locks[0])));
+  },
   encode(message: SuperfluidUndelegationsByDelegatorResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.superfluidDelegationRecords) {
       SuperfluidDelegationRecord.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2481,6 +2769,8 @@ export const SuperfluidUndelegationsByDelegatorResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(SuperfluidUndelegationsByDelegatorResponse.typeUrl, SuperfluidUndelegationsByDelegatorResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(SuperfluidUndelegationsByDelegatorResponse.aminoType, SuperfluidUndelegationsByDelegatorResponse.typeUrl);
 function createBaseSuperfluidDelegationsByValidatorDenomRequest(): SuperfluidDelegationsByValidatorDenomRequest {
   return {
     validatorAddress: "",
@@ -2489,6 +2779,16 @@ function createBaseSuperfluidDelegationsByValidatorDenomRequest(): SuperfluidDel
 }
 export const SuperfluidDelegationsByValidatorDenomRequest = {
   typeUrl: "/osmosis.superfluid.SuperfluidDelegationsByValidatorDenomRequest",
+  aminoType: "osmosis/superfluid-delegations-by-validator-denom-request",
+  is(o: any): o is SuperfluidDelegationsByValidatorDenomRequest {
+    return o && (o.$typeUrl === SuperfluidDelegationsByValidatorDenomRequest.typeUrl || typeof o.validatorAddress === "string" && typeof o.denom === "string");
+  },
+  isSDK(o: any): o is SuperfluidDelegationsByValidatorDenomRequestSDKType {
+    return o && (o.$typeUrl === SuperfluidDelegationsByValidatorDenomRequest.typeUrl || typeof o.validator_address === "string" && typeof o.denom === "string");
+  },
+  isAmino(o: any): o is SuperfluidDelegationsByValidatorDenomRequestAmino {
+    return o && (o.$typeUrl === SuperfluidDelegationsByValidatorDenomRequest.typeUrl || typeof o.validator_address === "string" && typeof o.denom === "string");
+  },
   encode(message: SuperfluidDelegationsByValidatorDenomRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.validatorAddress !== "") {
       writer.uint32(10).string(message.validatorAddress);
@@ -2562,6 +2862,8 @@ export const SuperfluidDelegationsByValidatorDenomRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(SuperfluidDelegationsByValidatorDenomRequest.typeUrl, SuperfluidDelegationsByValidatorDenomRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(SuperfluidDelegationsByValidatorDenomRequest.aminoType, SuperfluidDelegationsByValidatorDenomRequest.typeUrl);
 function createBaseSuperfluidDelegationsByValidatorDenomResponse(): SuperfluidDelegationsByValidatorDenomResponse {
   return {
     superfluidDelegationRecords: []
@@ -2569,6 +2871,16 @@ function createBaseSuperfluidDelegationsByValidatorDenomResponse(): SuperfluidDe
 }
 export const SuperfluidDelegationsByValidatorDenomResponse = {
   typeUrl: "/osmosis.superfluid.SuperfluidDelegationsByValidatorDenomResponse",
+  aminoType: "osmosis/superfluid-delegations-by-validator-denom-response",
+  is(o: any): o is SuperfluidDelegationsByValidatorDenomResponse {
+    return o && (o.$typeUrl === SuperfluidDelegationsByValidatorDenomResponse.typeUrl || Array.isArray(o.superfluidDelegationRecords) && (!o.superfluidDelegationRecords.length || SuperfluidDelegationRecord.is(o.superfluidDelegationRecords[0])));
+  },
+  isSDK(o: any): o is SuperfluidDelegationsByValidatorDenomResponseSDKType {
+    return o && (o.$typeUrl === SuperfluidDelegationsByValidatorDenomResponse.typeUrl || Array.isArray(o.superfluid_delegation_records) && (!o.superfluid_delegation_records.length || SuperfluidDelegationRecord.isSDK(o.superfluid_delegation_records[0])));
+  },
+  isAmino(o: any): o is SuperfluidDelegationsByValidatorDenomResponseAmino {
+    return o && (o.$typeUrl === SuperfluidDelegationsByValidatorDenomResponse.typeUrl || Array.isArray(o.superfluid_delegation_records) && (!o.superfluid_delegation_records.length || SuperfluidDelegationRecord.isAmino(o.superfluid_delegation_records[0])));
+  },
   encode(message: SuperfluidDelegationsByValidatorDenomResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.superfluidDelegationRecords) {
       SuperfluidDelegationRecord.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2633,6 +2945,8 @@ export const SuperfluidDelegationsByValidatorDenomResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(SuperfluidDelegationsByValidatorDenomResponse.typeUrl, SuperfluidDelegationsByValidatorDenomResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(SuperfluidDelegationsByValidatorDenomResponse.aminoType, SuperfluidDelegationsByValidatorDenomResponse.typeUrl);
 function createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomRequest(): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest {
   return {
     validatorAddress: "",
@@ -2641,6 +2955,16 @@ function createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomRequest(): E
 }
 export const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest = {
   typeUrl: "/osmosis.superfluid.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest",
+  aminoType: "osmosis/estimate-superfluid-delegated-amount-by-validator-denom-request",
+  is(o: any): o is EstimateSuperfluidDelegatedAmountByValidatorDenomRequest {
+    return o && (o.$typeUrl === EstimateSuperfluidDelegatedAmountByValidatorDenomRequest.typeUrl || typeof o.validatorAddress === "string" && typeof o.denom === "string");
+  },
+  isSDK(o: any): o is EstimateSuperfluidDelegatedAmountByValidatorDenomRequestSDKType {
+    return o && (o.$typeUrl === EstimateSuperfluidDelegatedAmountByValidatorDenomRequest.typeUrl || typeof o.validator_address === "string" && typeof o.denom === "string");
+  },
+  isAmino(o: any): o is EstimateSuperfluidDelegatedAmountByValidatorDenomRequestAmino {
+    return o && (o.$typeUrl === EstimateSuperfluidDelegatedAmountByValidatorDenomRequest.typeUrl || typeof o.validator_address === "string" && typeof o.denom === "string");
+  },
   encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.validatorAddress !== "") {
       writer.uint32(10).string(message.validatorAddress);
@@ -2714,6 +3038,8 @@ export const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(EstimateSuperfluidDelegatedAmountByValidatorDenomRequest.typeUrl, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(EstimateSuperfluidDelegatedAmountByValidatorDenomRequest.aminoType, EstimateSuperfluidDelegatedAmountByValidatorDenomRequest.typeUrl);
 function createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomResponse(): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
   return {
     totalDelegatedCoins: []
@@ -2721,6 +3047,16 @@ function createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomResponse(): 
 }
 export const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse = {
   typeUrl: "/osmosis.superfluid.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse",
+  aminoType: "osmosis/estimate-superfluid-delegated-amount-by-validator-denom-response",
+  is(o: any): o is EstimateSuperfluidDelegatedAmountByValidatorDenomResponse {
+    return o && (o.$typeUrl === EstimateSuperfluidDelegatedAmountByValidatorDenomResponse.typeUrl || Array.isArray(o.totalDelegatedCoins) && (!o.totalDelegatedCoins.length || Coin.is(o.totalDelegatedCoins[0])));
+  },
+  isSDK(o: any): o is EstimateSuperfluidDelegatedAmountByValidatorDenomResponseSDKType {
+    return o && (o.$typeUrl === EstimateSuperfluidDelegatedAmountByValidatorDenomResponse.typeUrl || Array.isArray(o.total_delegated_coins) && (!o.total_delegated_coins.length || Coin.isSDK(o.total_delegated_coins[0])));
+  },
+  isAmino(o: any): o is EstimateSuperfluidDelegatedAmountByValidatorDenomResponseAmino {
+    return o && (o.$typeUrl === EstimateSuperfluidDelegatedAmountByValidatorDenomResponse.typeUrl || Array.isArray(o.total_delegated_coins) && (!o.total_delegated_coins.length || Coin.isAmino(o.total_delegated_coins[0])));
+  },
   encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.totalDelegatedCoins) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2785,6 +3121,8 @@ export const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(EstimateSuperfluidDelegatedAmountByValidatorDenomResponse.typeUrl, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(EstimateSuperfluidDelegatedAmountByValidatorDenomResponse.aminoType, EstimateSuperfluidDelegatedAmountByValidatorDenomResponse.typeUrl);
 function createBaseQueryTotalDelegationByDelegatorRequest(): QueryTotalDelegationByDelegatorRequest {
   return {
     delegatorAddress: ""
@@ -2792,6 +3130,16 @@ function createBaseQueryTotalDelegationByDelegatorRequest(): QueryTotalDelegatio
 }
 export const QueryTotalDelegationByDelegatorRequest = {
   typeUrl: "/osmosis.superfluid.QueryTotalDelegationByDelegatorRequest",
+  aminoType: "osmosis/query-total-delegation-by-delegator-request",
+  is(o: any): o is QueryTotalDelegationByDelegatorRequest {
+    return o && (o.$typeUrl === QueryTotalDelegationByDelegatorRequest.typeUrl || typeof o.delegatorAddress === "string");
+  },
+  isSDK(o: any): o is QueryTotalDelegationByDelegatorRequestSDKType {
+    return o && (o.$typeUrl === QueryTotalDelegationByDelegatorRequest.typeUrl || typeof o.delegator_address === "string");
+  },
+  isAmino(o: any): o is QueryTotalDelegationByDelegatorRequestAmino {
+    return o && (o.$typeUrl === QueryTotalDelegationByDelegatorRequest.typeUrl || typeof o.delegator_address === "string");
+  },
   encode(message: QueryTotalDelegationByDelegatorRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegatorAddress !== "") {
       writer.uint32(10).string(message.delegatorAddress);
@@ -2854,6 +3202,8 @@ export const QueryTotalDelegationByDelegatorRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryTotalDelegationByDelegatorRequest.typeUrl, QueryTotalDelegationByDelegatorRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryTotalDelegationByDelegatorRequest.aminoType, QueryTotalDelegationByDelegatorRequest.typeUrl);
 function createBaseQueryTotalDelegationByDelegatorResponse(): QueryTotalDelegationByDelegatorResponse {
   return {
     superfluidDelegationRecords: [],
@@ -2864,6 +3214,16 @@ function createBaseQueryTotalDelegationByDelegatorResponse(): QueryTotalDelegati
 }
 export const QueryTotalDelegationByDelegatorResponse = {
   typeUrl: "/osmosis.superfluid.QueryTotalDelegationByDelegatorResponse",
+  aminoType: "osmosis/query-total-delegation-by-delegator-response",
+  is(o: any): o is QueryTotalDelegationByDelegatorResponse {
+    return o && (o.$typeUrl === QueryTotalDelegationByDelegatorResponse.typeUrl || Array.isArray(o.superfluidDelegationRecords) && (!o.superfluidDelegationRecords.length || SuperfluidDelegationRecord.is(o.superfluidDelegationRecords[0])) && Array.isArray(o.delegationResponse) && (!o.delegationResponse.length || DelegationResponse.is(o.delegationResponse[0])) && Array.isArray(o.totalDelegatedCoins) && (!o.totalDelegatedCoins.length || Coin.is(o.totalDelegatedCoins[0])) && Coin.is(o.totalEquivalentStakedAmount));
+  },
+  isSDK(o: any): o is QueryTotalDelegationByDelegatorResponseSDKType {
+    return o && (o.$typeUrl === QueryTotalDelegationByDelegatorResponse.typeUrl || Array.isArray(o.superfluid_delegation_records) && (!o.superfluid_delegation_records.length || SuperfluidDelegationRecord.isSDK(o.superfluid_delegation_records[0])) && Array.isArray(o.delegation_response) && (!o.delegation_response.length || DelegationResponse.isSDK(o.delegation_response[0])) && Array.isArray(o.total_delegated_coins) && (!o.total_delegated_coins.length || Coin.isSDK(o.total_delegated_coins[0])) && Coin.isSDK(o.total_equivalent_staked_amount));
+  },
+  isAmino(o: any): o is QueryTotalDelegationByDelegatorResponseAmino {
+    return o && (o.$typeUrl === QueryTotalDelegationByDelegatorResponse.typeUrl || Array.isArray(o.superfluid_delegation_records) && (!o.superfluid_delegation_records.length || SuperfluidDelegationRecord.isAmino(o.superfluid_delegation_records[0])) && Array.isArray(o.delegation_response) && (!o.delegation_response.length || DelegationResponse.isAmino(o.delegation_response[0])) && Array.isArray(o.total_delegated_coins) && (!o.total_delegated_coins.length || Coin.isAmino(o.total_delegated_coins[0])) && Coin.isAmino(o.total_equivalent_staked_amount));
+  },
   encode(message: QueryTotalDelegationByDelegatorResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.superfluidDelegationRecords) {
       SuperfluidDelegationRecord.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -2965,11 +3325,23 @@ export const QueryTotalDelegationByDelegatorResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryTotalDelegationByDelegatorResponse.typeUrl, QueryTotalDelegationByDelegatorResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryTotalDelegationByDelegatorResponse.aminoType, QueryTotalDelegationByDelegatorResponse.typeUrl);
 function createBaseQueryUnpoolWhitelistRequest(): QueryUnpoolWhitelistRequest {
   return {};
 }
 export const QueryUnpoolWhitelistRequest = {
   typeUrl: "/osmosis.superfluid.QueryUnpoolWhitelistRequest",
+  aminoType: "osmosis/query-unpool-whitelist-request",
+  is(o: any): o is QueryUnpoolWhitelistRequest {
+    return o && o.$typeUrl === QueryUnpoolWhitelistRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryUnpoolWhitelistRequestSDKType {
+    return o && o.$typeUrl === QueryUnpoolWhitelistRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryUnpoolWhitelistRequestAmino {
+    return o && o.$typeUrl === QueryUnpoolWhitelistRequest.typeUrl;
+  },
   encode(_: QueryUnpoolWhitelistRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -3021,6 +3393,8 @@ export const QueryUnpoolWhitelistRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryUnpoolWhitelistRequest.typeUrl, QueryUnpoolWhitelistRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryUnpoolWhitelistRequest.aminoType, QueryUnpoolWhitelistRequest.typeUrl);
 function createBaseQueryUnpoolWhitelistResponse(): QueryUnpoolWhitelistResponse {
   return {
     poolIds: []
@@ -3028,6 +3402,16 @@ function createBaseQueryUnpoolWhitelistResponse(): QueryUnpoolWhitelistResponse 
 }
 export const QueryUnpoolWhitelistResponse = {
   typeUrl: "/osmosis.superfluid.QueryUnpoolWhitelistResponse",
+  aminoType: "osmosis/query-unpool-whitelist-response",
+  is(o: any): o is QueryUnpoolWhitelistResponse {
+    return o && (o.$typeUrl === QueryUnpoolWhitelistResponse.typeUrl || Array.isArray(o.poolIds) && (!o.poolIds.length || typeof o.poolIds[0] === "bigint"));
+  },
+  isSDK(o: any): o is QueryUnpoolWhitelistResponseSDKType {
+    return o && (o.$typeUrl === QueryUnpoolWhitelistResponse.typeUrl || Array.isArray(o.pool_ids) && (!o.pool_ids.length || typeof o.pool_ids[0] === "bigint"));
+  },
+  isAmino(o: any): o is QueryUnpoolWhitelistResponseAmino {
+    return o && (o.$typeUrl === QueryUnpoolWhitelistResponse.typeUrl || Array.isArray(o.pool_ids) && (!o.pool_ids.length || typeof o.pool_ids[0] === "bigint"));
+  },
   encode(message: QueryUnpoolWhitelistResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.poolIds) {
@@ -3101,6 +3485,8 @@ export const QueryUnpoolWhitelistResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryUnpoolWhitelistResponse.typeUrl, QueryUnpoolWhitelistResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryUnpoolWhitelistResponse.aminoType, QueryUnpoolWhitelistResponse.typeUrl);
 function createBaseUserConcentratedSuperfluidPositionsDelegatedRequest(): UserConcentratedSuperfluidPositionsDelegatedRequest {
   return {
     delegatorAddress: ""
@@ -3108,6 +3494,16 @@ function createBaseUserConcentratedSuperfluidPositionsDelegatedRequest(): UserCo
 }
 export const UserConcentratedSuperfluidPositionsDelegatedRequest = {
   typeUrl: "/osmosis.superfluid.UserConcentratedSuperfluidPositionsDelegatedRequest",
+  aminoType: "osmosis/user-concentrated-superfluid-positions-delegated-request",
+  is(o: any): o is UserConcentratedSuperfluidPositionsDelegatedRequest {
+    return o && (o.$typeUrl === UserConcentratedSuperfluidPositionsDelegatedRequest.typeUrl || typeof o.delegatorAddress === "string");
+  },
+  isSDK(o: any): o is UserConcentratedSuperfluidPositionsDelegatedRequestSDKType {
+    return o && (o.$typeUrl === UserConcentratedSuperfluidPositionsDelegatedRequest.typeUrl || typeof o.delegator_address === "string");
+  },
+  isAmino(o: any): o is UserConcentratedSuperfluidPositionsDelegatedRequestAmino {
+    return o && (o.$typeUrl === UserConcentratedSuperfluidPositionsDelegatedRequest.typeUrl || typeof o.delegator_address === "string");
+  },
   encode(message: UserConcentratedSuperfluidPositionsDelegatedRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegatorAddress !== "") {
       writer.uint32(10).string(message.delegatorAddress);
@@ -3170,6 +3566,8 @@ export const UserConcentratedSuperfluidPositionsDelegatedRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(UserConcentratedSuperfluidPositionsDelegatedRequest.typeUrl, UserConcentratedSuperfluidPositionsDelegatedRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(UserConcentratedSuperfluidPositionsDelegatedRequest.aminoType, UserConcentratedSuperfluidPositionsDelegatedRequest.typeUrl);
 function createBaseUserConcentratedSuperfluidPositionsDelegatedResponse(): UserConcentratedSuperfluidPositionsDelegatedResponse {
   return {
     clPoolUserPositionRecords: []
@@ -3177,6 +3575,16 @@ function createBaseUserConcentratedSuperfluidPositionsDelegatedResponse(): UserC
 }
 export const UserConcentratedSuperfluidPositionsDelegatedResponse = {
   typeUrl: "/osmosis.superfluid.UserConcentratedSuperfluidPositionsDelegatedResponse",
+  aminoType: "osmosis/user-concentrated-superfluid-positions-delegated-response",
+  is(o: any): o is UserConcentratedSuperfluidPositionsDelegatedResponse {
+    return o && (o.$typeUrl === UserConcentratedSuperfluidPositionsDelegatedResponse.typeUrl || Array.isArray(o.clPoolUserPositionRecords) && (!o.clPoolUserPositionRecords.length || ConcentratedPoolUserPositionRecord.is(o.clPoolUserPositionRecords[0])));
+  },
+  isSDK(o: any): o is UserConcentratedSuperfluidPositionsDelegatedResponseSDKType {
+    return o && (o.$typeUrl === UserConcentratedSuperfluidPositionsDelegatedResponse.typeUrl || Array.isArray(o.cl_pool_user_position_records) && (!o.cl_pool_user_position_records.length || ConcentratedPoolUserPositionRecord.isSDK(o.cl_pool_user_position_records[0])));
+  },
+  isAmino(o: any): o is UserConcentratedSuperfluidPositionsDelegatedResponseAmino {
+    return o && (o.$typeUrl === UserConcentratedSuperfluidPositionsDelegatedResponse.typeUrl || Array.isArray(o.cl_pool_user_position_records) && (!o.cl_pool_user_position_records.length || ConcentratedPoolUserPositionRecord.isAmino(o.cl_pool_user_position_records[0])));
+  },
   encode(message: UserConcentratedSuperfluidPositionsDelegatedResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.clPoolUserPositionRecords) {
       ConcentratedPoolUserPositionRecord.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -3241,6 +3649,8 @@ export const UserConcentratedSuperfluidPositionsDelegatedResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(UserConcentratedSuperfluidPositionsDelegatedResponse.typeUrl, UserConcentratedSuperfluidPositionsDelegatedResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(UserConcentratedSuperfluidPositionsDelegatedResponse.aminoType, UserConcentratedSuperfluidPositionsDelegatedResponse.typeUrl);
 function createBaseUserConcentratedSuperfluidPositionsUndelegatingRequest(): UserConcentratedSuperfluidPositionsUndelegatingRequest {
   return {
     delegatorAddress: ""
@@ -3248,6 +3658,16 @@ function createBaseUserConcentratedSuperfluidPositionsUndelegatingRequest(): Use
 }
 export const UserConcentratedSuperfluidPositionsUndelegatingRequest = {
   typeUrl: "/osmosis.superfluid.UserConcentratedSuperfluidPositionsUndelegatingRequest",
+  aminoType: "osmosis/user-concentrated-superfluid-positions-undelegating-request",
+  is(o: any): o is UserConcentratedSuperfluidPositionsUndelegatingRequest {
+    return o && (o.$typeUrl === UserConcentratedSuperfluidPositionsUndelegatingRequest.typeUrl || typeof o.delegatorAddress === "string");
+  },
+  isSDK(o: any): o is UserConcentratedSuperfluidPositionsUndelegatingRequestSDKType {
+    return o && (o.$typeUrl === UserConcentratedSuperfluidPositionsUndelegatingRequest.typeUrl || typeof o.delegator_address === "string");
+  },
+  isAmino(o: any): o is UserConcentratedSuperfluidPositionsUndelegatingRequestAmino {
+    return o && (o.$typeUrl === UserConcentratedSuperfluidPositionsUndelegatingRequest.typeUrl || typeof o.delegator_address === "string");
+  },
   encode(message: UserConcentratedSuperfluidPositionsUndelegatingRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.delegatorAddress !== "") {
       writer.uint32(10).string(message.delegatorAddress);
@@ -3310,6 +3730,8 @@ export const UserConcentratedSuperfluidPositionsUndelegatingRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(UserConcentratedSuperfluidPositionsUndelegatingRequest.typeUrl, UserConcentratedSuperfluidPositionsUndelegatingRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(UserConcentratedSuperfluidPositionsUndelegatingRequest.aminoType, UserConcentratedSuperfluidPositionsUndelegatingRequest.typeUrl);
 function createBaseUserConcentratedSuperfluidPositionsUndelegatingResponse(): UserConcentratedSuperfluidPositionsUndelegatingResponse {
   return {
     clPoolUserPositionRecords: []
@@ -3317,6 +3739,16 @@ function createBaseUserConcentratedSuperfluidPositionsUndelegatingResponse(): Us
 }
 export const UserConcentratedSuperfluidPositionsUndelegatingResponse = {
   typeUrl: "/osmosis.superfluid.UserConcentratedSuperfluidPositionsUndelegatingResponse",
+  aminoType: "osmosis/user-concentrated-superfluid-positions-undelegating-response",
+  is(o: any): o is UserConcentratedSuperfluidPositionsUndelegatingResponse {
+    return o && (o.$typeUrl === UserConcentratedSuperfluidPositionsUndelegatingResponse.typeUrl || Array.isArray(o.clPoolUserPositionRecords) && (!o.clPoolUserPositionRecords.length || ConcentratedPoolUserPositionRecord.is(o.clPoolUserPositionRecords[0])));
+  },
+  isSDK(o: any): o is UserConcentratedSuperfluidPositionsUndelegatingResponseSDKType {
+    return o && (o.$typeUrl === UserConcentratedSuperfluidPositionsUndelegatingResponse.typeUrl || Array.isArray(o.cl_pool_user_position_records) && (!o.cl_pool_user_position_records.length || ConcentratedPoolUserPositionRecord.isSDK(o.cl_pool_user_position_records[0])));
+  },
+  isAmino(o: any): o is UserConcentratedSuperfluidPositionsUndelegatingResponseAmino {
+    return o && (o.$typeUrl === UserConcentratedSuperfluidPositionsUndelegatingResponse.typeUrl || Array.isArray(o.cl_pool_user_position_records) && (!o.cl_pool_user_position_records.length || ConcentratedPoolUserPositionRecord.isAmino(o.cl_pool_user_position_records[0])));
+  },
   encode(message: UserConcentratedSuperfluidPositionsUndelegatingResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.clPoolUserPositionRecords) {
       ConcentratedPoolUserPositionRecord.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -3381,6 +3813,8 @@ export const UserConcentratedSuperfluidPositionsUndelegatingResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(UserConcentratedSuperfluidPositionsUndelegatingResponse.typeUrl, UserConcentratedSuperfluidPositionsUndelegatingResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(UserConcentratedSuperfluidPositionsUndelegatingResponse.aminoType, UserConcentratedSuperfluidPositionsUndelegatingResponse.typeUrl);
 function createBaseQueryRestSupplyRequest(): QueryRestSupplyRequest {
   return {
     denom: ""
@@ -3388,6 +3822,16 @@ function createBaseQueryRestSupplyRequest(): QueryRestSupplyRequest {
 }
 export const QueryRestSupplyRequest = {
   typeUrl: "/osmosis.superfluid.QueryRestSupplyRequest",
+  aminoType: "osmosis/query-rest-supply-request",
+  is(o: any): o is QueryRestSupplyRequest {
+    return o && (o.$typeUrl === QueryRestSupplyRequest.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is QueryRestSupplyRequestSDKType {
+    return o && (o.$typeUrl === QueryRestSupplyRequest.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is QueryRestSupplyRequestAmino {
+    return o && (o.$typeUrl === QueryRestSupplyRequest.typeUrl || typeof o.denom === "string");
+  },
   encode(message: QueryRestSupplyRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -3450,6 +3894,8 @@ export const QueryRestSupplyRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryRestSupplyRequest.typeUrl, QueryRestSupplyRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryRestSupplyRequest.aminoType, QueryRestSupplyRequest.typeUrl);
 function createBaseQueryRestSupplyResponse(): QueryRestSupplyResponse {
   return {
     amount: Coin.fromPartial({})
@@ -3457,6 +3903,16 @@ function createBaseQueryRestSupplyResponse(): QueryRestSupplyResponse {
 }
 export const QueryRestSupplyResponse = {
   typeUrl: "/osmosis.superfluid.QueryRestSupplyResponse",
+  aminoType: "osmosis/query-rest-supply-response",
+  is(o: any): o is QueryRestSupplyResponse {
+    return o && (o.$typeUrl === QueryRestSupplyResponse.typeUrl || Coin.is(o.amount));
+  },
+  isSDK(o: any): o is QueryRestSupplyResponseSDKType {
+    return o && (o.$typeUrl === QueryRestSupplyResponse.typeUrl || Coin.isSDK(o.amount));
+  },
+  isAmino(o: any): o is QueryRestSupplyResponseAmino {
+    return o && (o.$typeUrl === QueryRestSupplyResponse.typeUrl || Coin.isAmino(o.amount));
+  },
   encode(message: QueryRestSupplyResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.amount !== undefined) {
       Coin.encode(message.amount, writer.uint32(10).fork()).ldelim();
@@ -3519,3 +3975,5 @@ export const QueryRestSupplyResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryRestSupplyResponse.typeUrl, QueryRestSupplyResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryRestSupplyResponse.aminoType, QueryRestSupplyResponse.typeUrl);

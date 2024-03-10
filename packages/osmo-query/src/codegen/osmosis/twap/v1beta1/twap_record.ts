@@ -2,6 +2,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { toTimestamp, fromTimestamp, bytesFromBase64, base64FromBytes } from "../../../helpers";
 import { Decimal } from "@cosmjs/math";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * A TWAP record should be indexed in state by pool_id, (asset pair), timestamp
  * The asset pair assets should be lexicographically sorted.
@@ -200,6 +201,16 @@ function createBaseTwapRecord(): TwapRecord {
 }
 export const TwapRecord = {
   typeUrl: "/osmosis.twap.v1beta1.TwapRecord",
+  aminoType: "osmosis/twap/twap-record",
+  is(o: any): o is TwapRecord {
+    return o && (o.$typeUrl === TwapRecord.typeUrl || typeof o.poolId === "bigint" && typeof o.asset0Denom === "string" && typeof o.asset1Denom === "string" && typeof o.height === "bigint" && Timestamp.is(o.time) && typeof o.p0LastSpotPrice === "string" && typeof o.p1LastSpotPrice === "string" && typeof o.p0ArithmeticTwapAccumulator === "string" && typeof o.p1ArithmeticTwapAccumulator === "string" && typeof o.geometricTwapAccumulator === "string" && Timestamp.is(o.lastErrorTime));
+  },
+  isSDK(o: any): o is TwapRecordSDKType {
+    return o && (o.$typeUrl === TwapRecord.typeUrl || typeof o.pool_id === "bigint" && typeof o.asset0_denom === "string" && typeof o.asset1_denom === "string" && typeof o.height === "bigint" && Timestamp.isSDK(o.time) && typeof o.p0_last_spot_price === "string" && typeof o.p1_last_spot_price === "string" && typeof o.p0_arithmetic_twap_accumulator === "string" && typeof o.p1_arithmetic_twap_accumulator === "string" && typeof o.geometric_twap_accumulator === "string" && Timestamp.isSDK(o.last_error_time));
+  },
+  isAmino(o: any): o is TwapRecordAmino {
+    return o && (o.$typeUrl === TwapRecord.typeUrl || typeof o.pool_id === "bigint" && typeof o.asset0_denom === "string" && typeof o.asset1_denom === "string" && typeof o.height === "bigint" && Timestamp.isAmino(o.time) && typeof o.p0_last_spot_price === "string" && typeof o.p1_last_spot_price === "string" && typeof o.p0_arithmetic_twap_accumulator === "string" && typeof o.p1_arithmetic_twap_accumulator === "string" && typeof o.geometric_twap_accumulator === "string" && Timestamp.isAmino(o.last_error_time));
+  },
   encode(message: TwapRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -372,6 +383,8 @@ export const TwapRecord = {
     };
   }
 };
+GlobalDecoderRegistry.register(TwapRecord.typeUrl, TwapRecord);
+GlobalDecoderRegistry.registerAminoProtoMapping(TwapRecord.aminoType, TwapRecord.typeUrl);
 function createBasePruningState(): PruningState {
   return {
     isPruning: false,
@@ -382,6 +395,16 @@ function createBasePruningState(): PruningState {
 }
 export const PruningState = {
   typeUrl: "/osmosis.twap.v1beta1.PruningState",
+  aminoType: "osmosis/twap/pruning-state",
+  is(o: any): o is PruningState {
+    return o && (o.$typeUrl === PruningState.typeUrl || typeof o.isPruning === "boolean" && Timestamp.is(o.lastKeptTime) && (o.lastKeySeen instanceof Uint8Array || typeof o.lastKeySeen === "string") && typeof o.lastSeenPoolId === "bigint");
+  },
+  isSDK(o: any): o is PruningStateSDKType {
+    return o && (o.$typeUrl === PruningState.typeUrl || typeof o.is_pruning === "boolean" && Timestamp.isSDK(o.last_kept_time) && (o.last_key_seen instanceof Uint8Array || typeof o.last_key_seen === "string") && typeof o.last_seen_pool_id === "bigint");
+  },
+  isAmino(o: any): o is PruningStateAmino {
+    return o && (o.$typeUrl === PruningState.typeUrl || typeof o.is_pruning === "boolean" && Timestamp.isAmino(o.last_kept_time) && (o.last_key_seen instanceof Uint8Array || typeof o.last_key_seen === "string") && typeof o.last_seen_pool_id === "bigint");
+  },
   encode(message: PruningState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.isPruning === true) {
       writer.uint32(8).bool(message.isPruning);
@@ -477,3 +500,5 @@ export const PruningState = {
     };
   }
 };
+GlobalDecoderRegistry.register(PruningState.typeUrl, PruningState);
+GlobalDecoderRegistry.registerAminoProtoMapping(PruningState.aminoType, PruningState.typeUrl);

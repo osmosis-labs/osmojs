@@ -1,5 +1,6 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface TrackedVolume {
   amount: Coin[];
 }
@@ -24,6 +25,16 @@ function createBaseTrackedVolume(): TrackedVolume {
 }
 export const TrackedVolume = {
   typeUrl: "/osmosis.poolmanager.v1beta1.TrackedVolume",
+  aminoType: "osmosis/poolmanager/tracked-volume",
+  is(o: any): o is TrackedVolume {
+    return o && (o.$typeUrl === TrackedVolume.typeUrl || Array.isArray(o.amount) && (!o.amount.length || Coin.is(o.amount[0])));
+  },
+  isSDK(o: any): o is TrackedVolumeSDKType {
+    return o && (o.$typeUrl === TrackedVolume.typeUrl || Array.isArray(o.amount) && (!o.amount.length || Coin.isSDK(o.amount[0])));
+  },
+  isAmino(o: any): o is TrackedVolumeAmino {
+    return o && (o.$typeUrl === TrackedVolume.typeUrl || Array.isArray(o.amount) && (!o.amount.length || Coin.isAmino(o.amount[0])));
+  },
   encode(message: TrackedVolume, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.amount) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -88,3 +99,5 @@ export const TrackedVolume = {
     };
   }
 };
+GlobalDecoderRegistry.register(TrackedVolume.typeUrl, TrackedVolume);
+GlobalDecoderRegistry.registerAminoProtoMapping(TrackedVolume.aminoType, TrackedVolume.typeUrl);

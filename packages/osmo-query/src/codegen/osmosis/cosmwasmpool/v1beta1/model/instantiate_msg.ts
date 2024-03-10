@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** ===================== InstantiateMsg */
 export interface InstantiateMsg {
   /**
@@ -34,6 +35,16 @@ function createBaseInstantiateMsg(): InstantiateMsg {
 }
 export const InstantiateMsg = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.InstantiateMsg",
+  aminoType: "osmosis/cosmwasmpool/instantiate-msg",
+  is(o: any): o is InstantiateMsg {
+    return o && (o.$typeUrl === InstantiateMsg.typeUrl || Array.isArray(o.poolAssetDenoms) && (!o.poolAssetDenoms.length || typeof o.poolAssetDenoms[0] === "string"));
+  },
+  isSDK(o: any): o is InstantiateMsgSDKType {
+    return o && (o.$typeUrl === InstantiateMsg.typeUrl || Array.isArray(o.pool_asset_denoms) && (!o.pool_asset_denoms.length || typeof o.pool_asset_denoms[0] === "string"));
+  },
+  isAmino(o: any): o is InstantiateMsgAmino {
+    return o && (o.$typeUrl === InstantiateMsg.typeUrl || Array.isArray(o.pool_asset_denoms) && (!o.pool_asset_denoms.length || typeof o.pool_asset_denoms[0] === "string"));
+  },
   encode(message: InstantiateMsg, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.poolAssetDenoms) {
       writer.uint32(10).string(v!);
@@ -98,3 +109,5 @@ export const InstantiateMsg = {
     };
   }
 };
+GlobalDecoderRegistry.register(InstantiateMsg.typeUrl, InstantiateMsg);
+GlobalDecoderRegistry.registerAminoProtoMapping(InstantiateMsg.aminoType, InstantiateMsg.typeUrl);

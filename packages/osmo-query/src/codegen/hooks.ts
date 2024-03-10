@@ -19,6 +19,7 @@ import * as _IbcCoreClientV1Queryrpc from "./ibc/core/client/v1/query.rpc.Query"
 import * as _IbcCoreConnectionV1Queryrpc from "./ibc/core/connection/v1/query.rpc.Query";
 import * as _IbcLightclientsWasmV1Queryrpc from "./ibc/lightclients/wasm/v1/query.rpc.Query";
 import * as _CosmwasmWasmV1Queryrpc from "./cosmwasm/wasm/v1/query.rpc.Query";
+import * as _OsmosisBridgeV1beta1Queryrpc from "./osmosis/bridge/v1beta1/query.rpc.Query";
 import * as _OsmosisConcentratedliquidityV1beta1Queryrpc from "./osmosis/concentratedliquidity/v1beta1/query.rpc.Query";
 import * as _OsmosisCosmwasmpoolV1beta1Queryrpc from "./osmosis/cosmwasmpool/v1beta1/query.rpc.Query";
 import * as _OsmosisDowntimedetectorV1beta1Queryrpc from "./osmosis/downtimedetector/v1beta1/query.rpc.Query";
@@ -123,6 +124,9 @@ export const createRpcQueryHooks = ({
       }
     },
     osmosis: {
+      bridge: {
+        v1beta1: _OsmosisBridgeV1beta1Queryrpc.createRpcQueryHooks(rpc)
+      },
       concentratedliquidity: {
         v1beta1: _OsmosisConcentratedliquidityV1beta1Queryrpc.createRpcQueryHooks(rpc)
       },

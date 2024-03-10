@@ -2,6 +2,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
 import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface Pool {
   $typeUrl?: "/osmosis.concentratedliquidity.v1beta1.Pool";
   /** pool's address holding all liquidity tokens. */
@@ -103,6 +104,16 @@ function createBasePool(): Pool {
 }
 export const Pool = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.Pool",
+  aminoType: "osmosis/concentratedliquidity/pool",
+  is(o: any): o is Pool {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.incentivesAddress === "string" && typeof o.spreadRewardsAddress === "string" && typeof o.id === "bigint" && typeof o.currentTickLiquidity === "string" && typeof o.token0 === "string" && typeof o.token1 === "string" && typeof o.currentSqrtPrice === "string" && typeof o.currentTick === "bigint" && typeof o.tickSpacing === "bigint" && typeof o.exponentAtPriceOne === "bigint" && typeof o.spreadFactor === "string" && Timestamp.is(o.lastLiquidityUpdate));
+  },
+  isSDK(o: any): o is PoolSDKType {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.incentives_address === "string" && typeof o.spread_rewards_address === "string" && typeof o.id === "bigint" && typeof o.current_tick_liquidity === "string" && typeof o.token0 === "string" && typeof o.token1 === "string" && typeof o.current_sqrt_price === "string" && typeof o.current_tick === "bigint" && typeof o.tick_spacing === "bigint" && typeof o.exponent_at_price_one === "bigint" && typeof o.spread_factor === "string" && Timestamp.isSDK(o.last_liquidity_update));
+  },
+  isAmino(o: any): o is PoolAmino {
+    return o && (o.$typeUrl === Pool.typeUrl || typeof o.address === "string" && typeof o.incentives_address === "string" && typeof o.spread_rewards_address === "string" && typeof o.id === "bigint" && typeof o.current_tick_liquidity === "string" && typeof o.token0 === "string" && typeof o.token1 === "string" && typeof o.current_sqrt_price === "string" && typeof o.current_tick === "bigint" && typeof o.tick_spacing === "bigint" && typeof o.exponent_at_price_one === "bigint" && typeof o.spread_factor === "string" && Timestamp.isAmino(o.last_liquidity_update));
+  },
   encode(message: Pool, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
@@ -297,3 +308,5 @@ export const Pool = {
     };
   }
 };
+GlobalDecoderRegistry.register(Pool.typeUrl, Pool);
+GlobalDecoderRegistry.registerAminoProtoMapping(Pool.aminoType, Pool.typeUrl);
