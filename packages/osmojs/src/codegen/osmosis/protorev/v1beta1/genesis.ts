@@ -2,6 +2,7 @@ import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { TokenPairArbRoutes, TokenPairArbRoutesAmino, TokenPairArbRoutesSDKType, BaseDenom, BaseDenomAmino, BaseDenomSDKType, InfoByPoolType, InfoByPoolTypeAmino, InfoByPoolTypeSDKType, CyclicArbTracker, CyclicArbTrackerAmino, CyclicArbTrackerSDKType } from "./protorev";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** GenesisState defines the protorev module's genesis state. */
 export interface GenesisState {
   /** Parameters for the protorev module. */
@@ -125,6 +126,16 @@ function createBaseGenesisState(): GenesisState {
 }
 export const GenesisState = {
   typeUrl: "/osmosis.protorev.v1beta1.GenesisState",
+  aminoType: "osmosis/protorev/genesis-state",
+  is(o: any): o is GenesisState {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.tokenPairArbRoutes) && (!o.tokenPairArbRoutes.length || TokenPairArbRoutes.is(o.tokenPairArbRoutes[0])) && Array.isArray(o.baseDenoms) && (!o.baseDenoms.length || BaseDenom.is(o.baseDenoms[0])) && typeof o.daysSinceModuleGenesis === "bigint" && Array.isArray(o.developerFees) && (!o.developerFees.length || Coin.is(o.developerFees[0])) && typeof o.latestBlockHeight === "bigint" && typeof o.developerAddress === "string" && typeof o.maxPoolPointsPerBlock === "bigint" && typeof o.maxPoolPointsPerTx === "bigint" && typeof o.pointCountForBlock === "bigint" && Array.isArray(o.profits) && (!o.profits.length || Coin.is(o.profits[0])) && InfoByPoolType.is(o.infoByPoolType));
+  },
+  isSDK(o: any): o is GenesisStateSDKType {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.token_pair_arb_routes) && (!o.token_pair_arb_routes.length || TokenPairArbRoutes.isSDK(o.token_pair_arb_routes[0])) && Array.isArray(o.base_denoms) && (!o.base_denoms.length || BaseDenom.isSDK(o.base_denoms[0])) && typeof o.days_since_module_genesis === "bigint" && Array.isArray(o.developer_fees) && (!o.developer_fees.length || Coin.isSDK(o.developer_fees[0])) && typeof o.latest_block_height === "bigint" && typeof o.developer_address === "string" && typeof o.max_pool_points_per_block === "bigint" && typeof o.max_pool_points_per_tx === "bigint" && typeof o.point_count_for_block === "bigint" && Array.isArray(o.profits) && (!o.profits.length || Coin.isSDK(o.profits[0])) && InfoByPoolType.isSDK(o.info_by_pool_type));
+  },
+  isAmino(o: any): o is GenesisStateAmino {
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.token_pair_arb_routes) && (!o.token_pair_arb_routes.length || TokenPairArbRoutes.isAmino(o.token_pair_arb_routes[0])) && Array.isArray(o.base_denoms) && (!o.base_denoms.length || BaseDenom.isAmino(o.base_denoms[0])) && typeof o.days_since_module_genesis === "bigint" && Array.isArray(o.developer_fees) && (!o.developer_fees.length || Coin.isAmino(o.developer_fees[0])) && typeof o.latest_block_height === "bigint" && typeof o.developer_address === "string" && typeof o.max_pool_points_per_block === "bigint" && typeof o.max_pool_points_per_tx === "bigint" && typeof o.point_count_for_block === "bigint" && Array.isArray(o.profits) && (!o.profits.length || Coin.isAmino(o.profits[0])) && InfoByPoolType.isAmino(o.info_by_pool_type));
+  },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -327,3 +338,5 @@ export const GenesisState = {
     };
   }
 };
+GlobalDecoderRegistry.register(GenesisState.typeUrl, GenesisState);
+GlobalDecoderRegistry.registerAminoProtoMapping(GenesisState.aminoType, GenesisState.typeUrl);

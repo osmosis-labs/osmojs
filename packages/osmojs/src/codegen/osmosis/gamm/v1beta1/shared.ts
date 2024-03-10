@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * MigrationRecords contains all the links between balancer and concentrated
  * pools
@@ -79,6 +80,16 @@ function createBaseMigrationRecords(): MigrationRecords {
 }
 export const MigrationRecords = {
   typeUrl: "/osmosis.gamm.v1beta1.MigrationRecords",
+  aminoType: "osmosis/gamm/migration-records",
+  is(o: any): o is MigrationRecords {
+    return o && (o.$typeUrl === MigrationRecords.typeUrl || Array.isArray(o.balancerToConcentratedPoolLinks) && (!o.balancerToConcentratedPoolLinks.length || BalancerToConcentratedPoolLink.is(o.balancerToConcentratedPoolLinks[0])));
+  },
+  isSDK(o: any): o is MigrationRecordsSDKType {
+    return o && (o.$typeUrl === MigrationRecords.typeUrl || Array.isArray(o.balancer_to_concentrated_pool_links) && (!o.balancer_to_concentrated_pool_links.length || BalancerToConcentratedPoolLink.isSDK(o.balancer_to_concentrated_pool_links[0])));
+  },
+  isAmino(o: any): o is MigrationRecordsAmino {
+    return o && (o.$typeUrl === MigrationRecords.typeUrl || Array.isArray(o.balancer_to_concentrated_pool_links) && (!o.balancer_to_concentrated_pool_links.length || BalancerToConcentratedPoolLink.isAmino(o.balancer_to_concentrated_pool_links[0])));
+  },
   encode(message: MigrationRecords, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.balancerToConcentratedPoolLinks) {
       BalancerToConcentratedPoolLink.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -143,6 +154,8 @@ export const MigrationRecords = {
     };
   }
 };
+GlobalDecoderRegistry.register(MigrationRecords.typeUrl, MigrationRecords);
+GlobalDecoderRegistry.registerAminoProtoMapping(MigrationRecords.aminoType, MigrationRecords.typeUrl);
 function createBaseBalancerToConcentratedPoolLink(): BalancerToConcentratedPoolLink {
   return {
     balancerPoolId: BigInt(0),
@@ -151,6 +164,16 @@ function createBaseBalancerToConcentratedPoolLink(): BalancerToConcentratedPoolL
 }
 export const BalancerToConcentratedPoolLink = {
   typeUrl: "/osmosis.gamm.v1beta1.BalancerToConcentratedPoolLink",
+  aminoType: "osmosis/gamm/balancer-to-concentrated-pool-link",
+  is(o: any): o is BalancerToConcentratedPoolLink {
+    return o && (o.$typeUrl === BalancerToConcentratedPoolLink.typeUrl || typeof o.balancerPoolId === "bigint" && typeof o.clPoolId === "bigint");
+  },
+  isSDK(o: any): o is BalancerToConcentratedPoolLinkSDKType {
+    return o && (o.$typeUrl === BalancerToConcentratedPoolLink.typeUrl || typeof o.balancer_pool_id === "bigint" && typeof o.cl_pool_id === "bigint");
+  },
+  isAmino(o: any): o is BalancerToConcentratedPoolLinkAmino {
+    return o && (o.$typeUrl === BalancerToConcentratedPoolLink.typeUrl || typeof o.balancer_pool_id === "bigint" && typeof o.cl_pool_id === "bigint");
+  },
   encode(message: BalancerToConcentratedPoolLink, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.balancerPoolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.balancerPoolId);
@@ -224,3 +247,5 @@ export const BalancerToConcentratedPoolLink = {
     };
   }
 };
+GlobalDecoderRegistry.register(BalancerToConcentratedPoolLink.typeUrl, BalancerToConcentratedPoolLink);
+GlobalDecoderRegistry.registerAminoProtoMapping(BalancerToConcentratedPoolLink.aminoType, BalancerToConcentratedPoolLink.typeUrl);

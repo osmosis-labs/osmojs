@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { GlobalDecoderRegistry } from "../../registry";
 /** Params holds parameters for the incentives module */
 export interface Params {
   /**
@@ -94,6 +95,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.incentives.Params",
+  aminoType: "osmosis/incentives/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.distrEpochIdentifier === "string" && Array.isArray(o.groupCreationFee) && (!o.groupCreationFee.length || Coin.is(o.groupCreationFee[0])) && Array.isArray(o.unrestrictedCreatorWhitelist) && (!o.unrestrictedCreatorWhitelist.length || typeof o.unrestrictedCreatorWhitelist[0] === "string") && Duration.is(o.internalUptime));
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.distr_epoch_identifier === "string" && Array.isArray(o.group_creation_fee) && (!o.group_creation_fee.length || Coin.isSDK(o.group_creation_fee[0])) && Array.isArray(o.unrestricted_creator_whitelist) && (!o.unrestricted_creator_whitelist.length || typeof o.unrestricted_creator_whitelist[0] === "string") && Duration.isSDK(o.internal_uptime));
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || typeof o.distr_epoch_identifier === "string" && Array.isArray(o.group_creation_fee) && (!o.group_creation_fee.length || Coin.isAmino(o.group_creation_fee[0])) && Array.isArray(o.unrestricted_creator_whitelist) && (!o.unrestricted_creator_whitelist.length || typeof o.unrestricted_creator_whitelist[0] === "string") && Duration.isAmino(o.internal_uptime));
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.distrEpochIdentifier !== "") {
       writer.uint32(10).string(message.distrEpochIdentifier);
@@ -193,3 +204,5 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);

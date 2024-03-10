@@ -1,6 +1,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { DenomAuthorityMetadata, DenomAuthorityMetadataAmino, DenomAuthorityMetadataSDKType } from "./authorityMetadata";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
@@ -247,6 +248,16 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
 }
 export const QueryParamsRequest = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.QueryParamsRequest",
+  aminoType: "osmosis/tokenfactory/query-params-request",
+  is(o: any): o is QueryParamsRequest {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryParamsRequestSDKType {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryParamsRequestAmino {
+    return o && o.$typeUrl === QueryParamsRequest.typeUrl;
+  },
   encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -298,6 +309,8 @@ export const QueryParamsRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsRequest.typeUrl, QueryParamsRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsRequest.aminoType, QueryParamsRequest.typeUrl);
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     params: Params.fromPartial({})
@@ -305,6 +318,16 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
 }
 export const QueryParamsResponse = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.QueryParamsResponse",
+  aminoType: "osmosis/tokenfactory/query-params-response",
+  is(o: any): o is QueryParamsResponse {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.is(o.params));
+  },
+  isSDK(o: any): o is QueryParamsResponseSDKType {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isSDK(o.params));
+  },
+  isAmino(o: any): o is QueryParamsResponseAmino {
+    return o && (o.$typeUrl === QueryParamsResponse.typeUrl || Params.isAmino(o.params));
+  },
   encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
@@ -367,6 +390,8 @@ export const QueryParamsResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryParamsResponse.typeUrl, QueryParamsResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryParamsResponse.aminoType, QueryParamsResponse.typeUrl);
 function createBaseQueryDenomAuthorityMetadataRequest(): QueryDenomAuthorityMetadataRequest {
   return {
     denom: ""
@@ -374,6 +399,16 @@ function createBaseQueryDenomAuthorityMetadataRequest(): QueryDenomAuthorityMeta
 }
 export const QueryDenomAuthorityMetadataRequest = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.QueryDenomAuthorityMetadataRequest",
+  aminoType: "osmosis/tokenfactory/query-denom-authority-metadata-request",
+  is(o: any): o is QueryDenomAuthorityMetadataRequest {
+    return o && (o.$typeUrl === QueryDenomAuthorityMetadataRequest.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is QueryDenomAuthorityMetadataRequestSDKType {
+    return o && (o.$typeUrl === QueryDenomAuthorityMetadataRequest.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is QueryDenomAuthorityMetadataRequestAmino {
+    return o && (o.$typeUrl === QueryDenomAuthorityMetadataRequest.typeUrl || typeof o.denom === "string");
+  },
   encode(message: QueryDenomAuthorityMetadataRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -436,6 +471,8 @@ export const QueryDenomAuthorityMetadataRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryDenomAuthorityMetadataRequest.typeUrl, QueryDenomAuthorityMetadataRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDenomAuthorityMetadataRequest.aminoType, QueryDenomAuthorityMetadataRequest.typeUrl);
 function createBaseQueryDenomAuthorityMetadataResponse(): QueryDenomAuthorityMetadataResponse {
   return {
     authorityMetadata: DenomAuthorityMetadata.fromPartial({})
@@ -443,6 +480,16 @@ function createBaseQueryDenomAuthorityMetadataResponse(): QueryDenomAuthorityMet
 }
 export const QueryDenomAuthorityMetadataResponse = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.QueryDenomAuthorityMetadataResponse",
+  aminoType: "osmosis/tokenfactory/query-denom-authority-metadata-response",
+  is(o: any): o is QueryDenomAuthorityMetadataResponse {
+    return o && (o.$typeUrl === QueryDenomAuthorityMetadataResponse.typeUrl || DenomAuthorityMetadata.is(o.authorityMetadata));
+  },
+  isSDK(o: any): o is QueryDenomAuthorityMetadataResponseSDKType {
+    return o && (o.$typeUrl === QueryDenomAuthorityMetadataResponse.typeUrl || DenomAuthorityMetadata.isSDK(o.authority_metadata));
+  },
+  isAmino(o: any): o is QueryDenomAuthorityMetadataResponseAmino {
+    return o && (o.$typeUrl === QueryDenomAuthorityMetadataResponse.typeUrl || DenomAuthorityMetadata.isAmino(o.authority_metadata));
+  },
   encode(message: QueryDenomAuthorityMetadataResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.authorityMetadata !== undefined) {
       DenomAuthorityMetadata.encode(message.authorityMetadata, writer.uint32(10).fork()).ldelim();
@@ -505,6 +552,8 @@ export const QueryDenomAuthorityMetadataResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryDenomAuthorityMetadataResponse.typeUrl, QueryDenomAuthorityMetadataResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDenomAuthorityMetadataResponse.aminoType, QueryDenomAuthorityMetadataResponse.typeUrl);
 function createBaseQueryDenomsFromCreatorRequest(): QueryDenomsFromCreatorRequest {
   return {
     creator: ""
@@ -512,6 +561,16 @@ function createBaseQueryDenomsFromCreatorRequest(): QueryDenomsFromCreatorReques
 }
 export const QueryDenomsFromCreatorRequest = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.QueryDenomsFromCreatorRequest",
+  aminoType: "osmosis/tokenfactory/query-denoms-from-creator-request",
+  is(o: any): o is QueryDenomsFromCreatorRequest {
+    return o && (o.$typeUrl === QueryDenomsFromCreatorRequest.typeUrl || typeof o.creator === "string");
+  },
+  isSDK(o: any): o is QueryDenomsFromCreatorRequestSDKType {
+    return o && (o.$typeUrl === QueryDenomsFromCreatorRequest.typeUrl || typeof o.creator === "string");
+  },
+  isAmino(o: any): o is QueryDenomsFromCreatorRequestAmino {
+    return o && (o.$typeUrl === QueryDenomsFromCreatorRequest.typeUrl || typeof o.creator === "string");
+  },
   encode(message: QueryDenomsFromCreatorRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
@@ -574,6 +633,8 @@ export const QueryDenomsFromCreatorRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryDenomsFromCreatorRequest.typeUrl, QueryDenomsFromCreatorRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDenomsFromCreatorRequest.aminoType, QueryDenomsFromCreatorRequest.typeUrl);
 function createBaseQueryDenomsFromCreatorResponse(): QueryDenomsFromCreatorResponse {
   return {
     denoms: []
@@ -581,6 +642,16 @@ function createBaseQueryDenomsFromCreatorResponse(): QueryDenomsFromCreatorRespo
 }
 export const QueryDenomsFromCreatorResponse = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.QueryDenomsFromCreatorResponse",
+  aminoType: "osmosis/tokenfactory/query-denoms-from-creator-response",
+  is(o: any): o is QueryDenomsFromCreatorResponse {
+    return o && (o.$typeUrl === QueryDenomsFromCreatorResponse.typeUrl || Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string"));
+  },
+  isSDK(o: any): o is QueryDenomsFromCreatorResponseSDKType {
+    return o && (o.$typeUrl === QueryDenomsFromCreatorResponse.typeUrl || Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string"));
+  },
+  isAmino(o: any): o is QueryDenomsFromCreatorResponseAmino {
+    return o && (o.$typeUrl === QueryDenomsFromCreatorResponse.typeUrl || Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string"));
+  },
   encode(message: QueryDenomsFromCreatorResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.denoms) {
       writer.uint32(10).string(v!);
@@ -645,6 +716,8 @@ export const QueryDenomsFromCreatorResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryDenomsFromCreatorResponse.typeUrl, QueryDenomsFromCreatorResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryDenomsFromCreatorResponse.aminoType, QueryDenomsFromCreatorResponse.typeUrl);
 function createBaseQueryBeforeSendHookAddressRequest(): QueryBeforeSendHookAddressRequest {
   return {
     denom: ""
@@ -652,6 +725,16 @@ function createBaseQueryBeforeSendHookAddressRequest(): QueryBeforeSendHookAddre
 }
 export const QueryBeforeSendHookAddressRequest = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.QueryBeforeSendHookAddressRequest",
+  aminoType: "osmosis/tokenfactory/query-before-send-hook-address-request",
+  is(o: any): o is QueryBeforeSendHookAddressRequest {
+    return o && (o.$typeUrl === QueryBeforeSendHookAddressRequest.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is QueryBeforeSendHookAddressRequestSDKType {
+    return o && (o.$typeUrl === QueryBeforeSendHookAddressRequest.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is QueryBeforeSendHookAddressRequestAmino {
+    return o && (o.$typeUrl === QueryBeforeSendHookAddressRequest.typeUrl || typeof o.denom === "string");
+  },
   encode(message: QueryBeforeSendHookAddressRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom !== "") {
       writer.uint32(10).string(message.denom);
@@ -714,6 +797,8 @@ export const QueryBeforeSendHookAddressRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryBeforeSendHookAddressRequest.typeUrl, QueryBeforeSendHookAddressRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryBeforeSendHookAddressRequest.aminoType, QueryBeforeSendHookAddressRequest.typeUrl);
 function createBaseQueryBeforeSendHookAddressResponse(): QueryBeforeSendHookAddressResponse {
   return {
     cosmwasmAddress: ""
@@ -721,6 +806,16 @@ function createBaseQueryBeforeSendHookAddressResponse(): QueryBeforeSendHookAddr
 }
 export const QueryBeforeSendHookAddressResponse = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.QueryBeforeSendHookAddressResponse",
+  aminoType: "osmosis/tokenfactory/query-before-send-hook-address-response",
+  is(o: any): o is QueryBeforeSendHookAddressResponse {
+    return o && (o.$typeUrl === QueryBeforeSendHookAddressResponse.typeUrl || typeof o.cosmwasmAddress === "string");
+  },
+  isSDK(o: any): o is QueryBeforeSendHookAddressResponseSDKType {
+    return o && (o.$typeUrl === QueryBeforeSendHookAddressResponse.typeUrl || typeof o.cosmwasm_address === "string");
+  },
+  isAmino(o: any): o is QueryBeforeSendHookAddressResponseAmino {
+    return o && (o.$typeUrl === QueryBeforeSendHookAddressResponse.typeUrl || typeof o.cosmwasm_address === "string");
+  },
   encode(message: QueryBeforeSendHookAddressResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.cosmwasmAddress !== "") {
       writer.uint32(10).string(message.cosmwasmAddress);
@@ -783,11 +878,23 @@ export const QueryBeforeSendHookAddressResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryBeforeSendHookAddressResponse.typeUrl, QueryBeforeSendHookAddressResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryBeforeSendHookAddressResponse.aminoType, QueryBeforeSendHookAddressResponse.typeUrl);
 function createBaseQueryAllBeforeSendHooksAddressesRequest(): QueryAllBeforeSendHooksAddressesRequest {
   return {};
 }
 export const QueryAllBeforeSendHooksAddressesRequest = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.QueryAllBeforeSendHooksAddressesRequest",
+  aminoType: "osmosis/tokenfactory/query-all-before-send-hooks-addresses-request",
+  is(o: any): o is QueryAllBeforeSendHooksAddressesRequest {
+    return o && o.$typeUrl === QueryAllBeforeSendHooksAddressesRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryAllBeforeSendHooksAddressesRequestSDKType {
+    return o && o.$typeUrl === QueryAllBeforeSendHooksAddressesRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryAllBeforeSendHooksAddressesRequestAmino {
+    return o && o.$typeUrl === QueryAllBeforeSendHooksAddressesRequest.typeUrl;
+  },
   encode(_: QueryAllBeforeSendHooksAddressesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -839,6 +946,8 @@ export const QueryAllBeforeSendHooksAddressesRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAllBeforeSendHooksAddressesRequest.typeUrl, QueryAllBeforeSendHooksAddressesRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAllBeforeSendHooksAddressesRequest.aminoType, QueryAllBeforeSendHooksAddressesRequest.typeUrl);
 function createBaseQueryAllBeforeSendHooksAddressesResponse(): QueryAllBeforeSendHooksAddressesResponse {
   return {
     denoms: [],
@@ -847,6 +956,16 @@ function createBaseQueryAllBeforeSendHooksAddressesResponse(): QueryAllBeforeSen
 }
 export const QueryAllBeforeSendHooksAddressesResponse = {
   typeUrl: "/osmosis.tokenfactory.v1beta1.QueryAllBeforeSendHooksAddressesResponse",
+  aminoType: "osmosis/tokenfactory/query-all-before-send-hooks-addresses-response",
+  is(o: any): o is QueryAllBeforeSendHooksAddressesResponse {
+    return o && (o.$typeUrl === QueryAllBeforeSendHooksAddressesResponse.typeUrl || Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string") && Array.isArray(o.beforeSendHookAddresses) && (!o.beforeSendHookAddresses.length || typeof o.beforeSendHookAddresses[0] === "string"));
+  },
+  isSDK(o: any): o is QueryAllBeforeSendHooksAddressesResponseSDKType {
+    return o && (o.$typeUrl === QueryAllBeforeSendHooksAddressesResponse.typeUrl || Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string") && Array.isArray(o.before_send_hook_addresses) && (!o.before_send_hook_addresses.length || typeof o.before_send_hook_addresses[0] === "string"));
+  },
+  isAmino(o: any): o is QueryAllBeforeSendHooksAddressesResponseAmino {
+    return o && (o.$typeUrl === QueryAllBeforeSendHooksAddressesResponse.typeUrl || Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string") && Array.isArray(o.before_send_hook_addresses) && (!o.before_send_hook_addresses.length || typeof o.before_send_hook_addresses[0] === "string"));
+  },
   encode(message: QueryAllBeforeSendHooksAddressesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.denoms) {
       writer.uint32(10).string(v!);
@@ -924,3 +1043,5 @@ export const QueryAllBeforeSendHooksAddressesResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(QueryAllBeforeSendHooksAddressesResponse.typeUrl, QueryAllBeforeSendHooksAddressesResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(QueryAllBeforeSendHooksAddressesResponse.aminoType, QueryAllBeforeSendHooksAddressesResponse.typeUrl);

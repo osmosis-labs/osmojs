@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { bytesFromBase64, base64FromBytes } from "../../../helpers";
+import { GlobalDecoderRegistry } from "../../../registry";
 /** MsgIBCSend */
 export interface MsgIBCSend {
   /** the channel by which the packet will be sent */
@@ -107,6 +108,16 @@ function createBaseMsgIBCSend(): MsgIBCSend {
 }
 export const MsgIBCSend = {
   typeUrl: "/cosmwasm.wasm.v1.MsgIBCSend",
+  aminoType: "wasm/MsgIBCSend",
+  is(o: any): o is MsgIBCSend {
+    return o && (o.$typeUrl === MsgIBCSend.typeUrl || typeof o.channel === "string" && typeof o.timeoutHeight === "bigint" && typeof o.timeoutTimestamp === "bigint" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
+  isSDK(o: any): o is MsgIBCSendSDKType {
+    return o && (o.$typeUrl === MsgIBCSend.typeUrl || typeof o.channel === "string" && typeof o.timeout_height === "bigint" && typeof o.timeout_timestamp === "bigint" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
+  isAmino(o: any): o is MsgIBCSendAmino {
+    return o && (o.$typeUrl === MsgIBCSend.typeUrl || typeof o.channel === "string" && typeof o.timeout_height === "bigint" && typeof o.timeout_timestamp === "bigint" && (o.data instanceof Uint8Array || typeof o.data === "string"));
+  },
   encode(message: MsgIBCSend, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.channel !== "") {
       writer.uint32(18).string(message.channel);
@@ -202,6 +213,8 @@ export const MsgIBCSend = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgIBCSend.typeUrl, MsgIBCSend);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgIBCSend.aminoType, MsgIBCSend.typeUrl);
 function createBaseMsgIBCSendResponse(): MsgIBCSendResponse {
   return {
     sequence: BigInt(0)
@@ -209,6 +222,16 @@ function createBaseMsgIBCSendResponse(): MsgIBCSendResponse {
 }
 export const MsgIBCSendResponse = {
   typeUrl: "/cosmwasm.wasm.v1.MsgIBCSendResponse",
+  aminoType: "wasm/MsgIBCSendResponse",
+  is(o: any): o is MsgIBCSendResponse {
+    return o && (o.$typeUrl === MsgIBCSendResponse.typeUrl || typeof o.sequence === "bigint");
+  },
+  isSDK(o: any): o is MsgIBCSendResponseSDKType {
+    return o && (o.$typeUrl === MsgIBCSendResponse.typeUrl || typeof o.sequence === "bigint");
+  },
+  isAmino(o: any): o is MsgIBCSendResponseAmino {
+    return o && (o.$typeUrl === MsgIBCSendResponse.typeUrl || typeof o.sequence === "bigint");
+  },
   encode(message: MsgIBCSendResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sequence !== BigInt(0)) {
       writer.uint32(8).uint64(message.sequence);
@@ -271,6 +294,8 @@ export const MsgIBCSendResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgIBCSendResponse.typeUrl, MsgIBCSendResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgIBCSendResponse.aminoType, MsgIBCSendResponse.typeUrl);
 function createBaseMsgIBCCloseChannel(): MsgIBCCloseChannel {
   return {
     channel: ""
@@ -278,6 +303,16 @@ function createBaseMsgIBCCloseChannel(): MsgIBCCloseChannel {
 }
 export const MsgIBCCloseChannel = {
   typeUrl: "/cosmwasm.wasm.v1.MsgIBCCloseChannel",
+  aminoType: "wasm/MsgIBCCloseChannel",
+  is(o: any): o is MsgIBCCloseChannel {
+    return o && (o.$typeUrl === MsgIBCCloseChannel.typeUrl || typeof o.channel === "string");
+  },
+  isSDK(o: any): o is MsgIBCCloseChannelSDKType {
+    return o && (o.$typeUrl === MsgIBCCloseChannel.typeUrl || typeof o.channel === "string");
+  },
+  isAmino(o: any): o is MsgIBCCloseChannelAmino {
+    return o && (o.$typeUrl === MsgIBCCloseChannel.typeUrl || typeof o.channel === "string");
+  },
   encode(message: MsgIBCCloseChannel, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.channel !== "") {
       writer.uint32(18).string(message.channel);
@@ -340,3 +375,5 @@ export const MsgIBCCloseChannel = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgIBCCloseChannel.typeUrl, MsgIBCCloseChannel);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgIBCCloseChannel.aminoType, MsgIBCCloseChannel.typeUrl);

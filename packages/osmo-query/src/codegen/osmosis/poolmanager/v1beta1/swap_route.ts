@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface SwapAmountInRoute {
   poolId: bigint;
   tokenOutDenom: string;
@@ -87,6 +88,16 @@ function createBaseSwapAmountInRoute(): SwapAmountInRoute {
 }
 export const SwapAmountInRoute = {
   typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountInRoute",
+  aminoType: "osmosis/poolmanager/swap-amount-in-route",
+  is(o: any): o is SwapAmountInRoute {
+    return o && (o.$typeUrl === SwapAmountInRoute.typeUrl || typeof o.poolId === "bigint" && typeof o.tokenOutDenom === "string");
+  },
+  isSDK(o: any): o is SwapAmountInRouteSDKType {
+    return o && (o.$typeUrl === SwapAmountInRoute.typeUrl || typeof o.pool_id === "bigint" && typeof o.token_out_denom === "string");
+  },
+  isAmino(o: any): o is SwapAmountInRouteAmino {
+    return o && (o.$typeUrl === SwapAmountInRoute.typeUrl || typeof o.pool_id === "bigint" && typeof o.token_out_denom === "string");
+  },
   encode(message: SwapAmountInRoute, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -160,6 +171,8 @@ export const SwapAmountInRoute = {
     };
   }
 };
+GlobalDecoderRegistry.register(SwapAmountInRoute.typeUrl, SwapAmountInRoute);
+GlobalDecoderRegistry.registerAminoProtoMapping(SwapAmountInRoute.aminoType, SwapAmountInRoute.typeUrl);
 function createBaseSwapAmountOutRoute(): SwapAmountOutRoute {
   return {
     poolId: BigInt(0),
@@ -168,6 +181,16 @@ function createBaseSwapAmountOutRoute(): SwapAmountOutRoute {
 }
 export const SwapAmountOutRoute = {
   typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountOutRoute",
+  aminoType: "osmosis/poolmanager/swap-amount-out-route",
+  is(o: any): o is SwapAmountOutRoute {
+    return o && (o.$typeUrl === SwapAmountOutRoute.typeUrl || typeof o.poolId === "bigint" && typeof o.tokenInDenom === "string");
+  },
+  isSDK(o: any): o is SwapAmountOutRouteSDKType {
+    return o && (o.$typeUrl === SwapAmountOutRoute.typeUrl || typeof o.pool_id === "bigint" && typeof o.token_in_denom === "string");
+  },
+  isAmino(o: any): o is SwapAmountOutRouteAmino {
+    return o && (o.$typeUrl === SwapAmountOutRoute.typeUrl || typeof o.pool_id === "bigint" && typeof o.token_in_denom === "string");
+  },
   encode(message: SwapAmountOutRoute, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.poolId !== BigInt(0)) {
       writer.uint32(8).uint64(message.poolId);
@@ -241,6 +264,8 @@ export const SwapAmountOutRoute = {
     };
   }
 };
+GlobalDecoderRegistry.register(SwapAmountOutRoute.typeUrl, SwapAmountOutRoute);
+GlobalDecoderRegistry.registerAminoProtoMapping(SwapAmountOutRoute.aminoType, SwapAmountOutRoute.typeUrl);
 function createBaseSwapAmountInSplitRoute(): SwapAmountInSplitRoute {
   return {
     pools: [],
@@ -249,6 +274,16 @@ function createBaseSwapAmountInSplitRoute(): SwapAmountInSplitRoute {
 }
 export const SwapAmountInSplitRoute = {
   typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountInSplitRoute",
+  aminoType: "osmosis/poolmanager/swap-amount-in-split-route",
+  is(o: any): o is SwapAmountInSplitRoute {
+    return o && (o.$typeUrl === SwapAmountInSplitRoute.typeUrl || Array.isArray(o.pools) && (!o.pools.length || SwapAmountInRoute.is(o.pools[0])) && typeof o.tokenInAmount === "string");
+  },
+  isSDK(o: any): o is SwapAmountInSplitRouteSDKType {
+    return o && (o.$typeUrl === SwapAmountInSplitRoute.typeUrl || Array.isArray(o.pools) && (!o.pools.length || SwapAmountInRoute.isSDK(o.pools[0])) && typeof o.token_in_amount === "string");
+  },
+  isAmino(o: any): o is SwapAmountInSplitRouteAmino {
+    return o && (o.$typeUrl === SwapAmountInSplitRoute.typeUrl || Array.isArray(o.pools) && (!o.pools.length || SwapAmountInRoute.isAmino(o.pools[0])) && typeof o.token_in_amount === "string");
+  },
   encode(message: SwapAmountInSplitRoute, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.pools) {
       SwapAmountInRoute.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -324,6 +359,8 @@ export const SwapAmountInSplitRoute = {
     };
   }
 };
+GlobalDecoderRegistry.register(SwapAmountInSplitRoute.typeUrl, SwapAmountInSplitRoute);
+GlobalDecoderRegistry.registerAminoProtoMapping(SwapAmountInSplitRoute.aminoType, SwapAmountInSplitRoute.typeUrl);
 function createBaseSwapAmountOutSplitRoute(): SwapAmountOutSplitRoute {
   return {
     pools: [],
@@ -332,6 +369,16 @@ function createBaseSwapAmountOutSplitRoute(): SwapAmountOutSplitRoute {
 }
 export const SwapAmountOutSplitRoute = {
   typeUrl: "/osmosis.poolmanager.v1beta1.SwapAmountOutSplitRoute",
+  aminoType: "osmosis/poolmanager/swap-amount-out-split-route",
+  is(o: any): o is SwapAmountOutSplitRoute {
+    return o && (o.$typeUrl === SwapAmountOutSplitRoute.typeUrl || Array.isArray(o.pools) && (!o.pools.length || SwapAmountOutRoute.is(o.pools[0])) && typeof o.tokenOutAmount === "string");
+  },
+  isSDK(o: any): o is SwapAmountOutSplitRouteSDKType {
+    return o && (o.$typeUrl === SwapAmountOutSplitRoute.typeUrl || Array.isArray(o.pools) && (!o.pools.length || SwapAmountOutRoute.isSDK(o.pools[0])) && typeof o.token_out_amount === "string");
+  },
+  isAmino(o: any): o is SwapAmountOutSplitRouteAmino {
+    return o && (o.$typeUrl === SwapAmountOutSplitRoute.typeUrl || Array.isArray(o.pools) && (!o.pools.length || SwapAmountOutRoute.isAmino(o.pools[0])) && typeof o.token_out_amount === "string");
+  },
   encode(message: SwapAmountOutSplitRoute, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.pools) {
       SwapAmountOutRoute.encode(v!, writer.uint32(10).fork()).ldelim();
@@ -407,3 +454,5 @@ export const SwapAmountOutSplitRoute = {
     };
   }
 };
+GlobalDecoderRegistry.register(SwapAmountOutSplitRoute.typeUrl, SwapAmountOutSplitRoute);
+GlobalDecoderRegistry.registerAminoProtoMapping(SwapAmountOutSplitRoute.aminoType, SwapAmountOutSplitRoute.typeUrl);

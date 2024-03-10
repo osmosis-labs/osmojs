@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * ValidatorPreference defines the message structure for
  * CreateValidatorSetPreference. It allows a user to set {val_addr, weight} in
@@ -96,6 +97,16 @@ function createBaseValidatorPreference(): ValidatorPreference {
 }
 export const ValidatorPreference = {
   typeUrl: "/osmosis.valsetpref.v1beta1.ValidatorPreference",
+  aminoType: "osmosis/valsetpref/validator-preference",
+  is(o: any): o is ValidatorPreference {
+    return o && (o.$typeUrl === ValidatorPreference.typeUrl || typeof o.valOperAddress === "string" && typeof o.weight === "string");
+  },
+  isSDK(o: any): o is ValidatorPreferenceSDKType {
+    return o && (o.$typeUrl === ValidatorPreference.typeUrl || typeof o.val_oper_address === "string" && typeof o.weight === "string");
+  },
+  isAmino(o: any): o is ValidatorPreferenceAmino {
+    return o && (o.$typeUrl === ValidatorPreference.typeUrl || typeof o.val_oper_address === "string" && typeof o.weight === "string");
+  },
   encode(message: ValidatorPreference, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.valOperAddress !== "") {
       writer.uint32(10).string(message.valOperAddress);
@@ -169,6 +180,8 @@ export const ValidatorPreference = {
     };
   }
 };
+GlobalDecoderRegistry.register(ValidatorPreference.typeUrl, ValidatorPreference);
+GlobalDecoderRegistry.registerAminoProtoMapping(ValidatorPreference.aminoType, ValidatorPreference.typeUrl);
 function createBaseValidatorSetPreferences(): ValidatorSetPreferences {
   return {
     preferences: []
@@ -176,6 +189,16 @@ function createBaseValidatorSetPreferences(): ValidatorSetPreferences {
 }
 export const ValidatorSetPreferences = {
   typeUrl: "/osmosis.valsetpref.v1beta1.ValidatorSetPreferences",
+  aminoType: "osmosis/valsetpref/validator-set-preferences",
+  is(o: any): o is ValidatorSetPreferences {
+    return o && (o.$typeUrl === ValidatorSetPreferences.typeUrl || Array.isArray(o.preferences) && (!o.preferences.length || ValidatorPreference.is(o.preferences[0])));
+  },
+  isSDK(o: any): o is ValidatorSetPreferencesSDKType {
+    return o && (o.$typeUrl === ValidatorSetPreferences.typeUrl || Array.isArray(o.preferences) && (!o.preferences.length || ValidatorPreference.isSDK(o.preferences[0])));
+  },
+  isAmino(o: any): o is ValidatorSetPreferencesAmino {
+    return o && (o.$typeUrl === ValidatorSetPreferences.typeUrl || Array.isArray(o.preferences) && (!o.preferences.length || ValidatorPreference.isAmino(o.preferences[0])));
+  },
   encode(message: ValidatorSetPreferences, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     for (const v of message.preferences) {
       ValidatorPreference.encode(v!, writer.uint32(18).fork()).ldelim();
@@ -240,3 +263,5 @@ export const ValidatorSetPreferences = {
     };
   }
 };
+GlobalDecoderRegistry.register(ValidatorSetPreferences.typeUrl, ValidatorSetPreferences);
+GlobalDecoderRegistry.registerAminoProtoMapping(ValidatorSetPreferences.aminoType, ValidatorSetPreferences.typeUrl);

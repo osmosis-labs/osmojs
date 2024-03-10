@@ -1,6 +1,7 @@
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { Decimal } from "@cosmjs/math";
+import { GlobalDecoderRegistry } from "../../registry";
 export interface Params {
   /**
    * authorized_tick_spacing is an array of uint64s that represents the tick
@@ -125,6 +126,16 @@ function createBaseParams(): Params {
 }
 export const Params = {
   typeUrl: "/osmosis.concentratedliquidity.Params",
+  aminoType: "osmosis/concentratedliquidity/params",
+  is(o: any): o is Params {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.authorizedTickSpacing) && (!o.authorizedTickSpacing.length || typeof o.authorizedTickSpacing[0] === "bigint") && Array.isArray(o.authorizedSpreadFactors) && (!o.authorizedSpreadFactors.length || typeof o.authorizedSpreadFactors[0] === "string") && typeof o.balancerSharesRewardDiscount === "string" && Array.isArray(o.authorizedQuoteDenoms) && (!o.authorizedQuoteDenoms.length || typeof o.authorizedQuoteDenoms[0] === "string") && Array.isArray(o.authorizedUptimes) && (!o.authorizedUptimes.length || Duration.is(o.authorizedUptimes[0])) && typeof o.isPermissionlessPoolCreationEnabled === "boolean" && Array.isArray(o.unrestrictedPoolCreatorWhitelist) && (!o.unrestrictedPoolCreatorWhitelist.length || typeof o.unrestrictedPoolCreatorWhitelist[0] === "string") && typeof o.hookGasLimit === "bigint");
+  },
+  isSDK(o: any): o is ParamsSDKType {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.authorized_tick_spacing) && (!o.authorized_tick_spacing.length || typeof o.authorized_tick_spacing[0] === "bigint") && Array.isArray(o.authorized_spread_factors) && (!o.authorized_spread_factors.length || typeof o.authorized_spread_factors[0] === "string") && typeof o.balancer_shares_reward_discount === "string" && Array.isArray(o.authorized_quote_denoms) && (!o.authorized_quote_denoms.length || typeof o.authorized_quote_denoms[0] === "string") && Array.isArray(o.authorized_uptimes) && (!o.authorized_uptimes.length || Duration.isSDK(o.authorized_uptimes[0])) && typeof o.is_permissionless_pool_creation_enabled === "boolean" && Array.isArray(o.unrestricted_pool_creator_whitelist) && (!o.unrestricted_pool_creator_whitelist.length || typeof o.unrestricted_pool_creator_whitelist[0] === "string") && typeof o.hook_gas_limit === "bigint");
+  },
+  isAmino(o: any): o is ParamsAmino {
+    return o && (o.$typeUrl === Params.typeUrl || Array.isArray(o.authorized_tick_spacing) && (!o.authorized_tick_spacing.length || typeof o.authorized_tick_spacing[0] === "bigint") && Array.isArray(o.authorized_spread_factors) && (!o.authorized_spread_factors.length || typeof o.authorized_spread_factors[0] === "string") && typeof o.balancer_shares_reward_discount === "string" && Array.isArray(o.authorized_quote_denoms) && (!o.authorized_quote_denoms.length || typeof o.authorized_quote_denoms[0] === "string") && Array.isArray(o.authorized_uptimes) && (!o.authorized_uptimes.length || Duration.isAmino(o.authorized_uptimes[0])) && typeof o.is_permissionless_pool_creation_enabled === "boolean" && Array.isArray(o.unrestricted_pool_creator_whitelist) && (!o.unrestricted_pool_creator_whitelist.length || typeof o.unrestricted_pool_creator_whitelist[0] === "string") && typeof o.hook_gas_limit === "bigint");
+  },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.authorizedTickSpacing) {
@@ -283,3 +294,5 @@ export const Params = {
     };
   }
 };
+GlobalDecoderRegistry.register(Params.typeUrl, Params);
+GlobalDecoderRegistry.registerAminoProtoMapping(Params.aminoType, Params.typeUrl);

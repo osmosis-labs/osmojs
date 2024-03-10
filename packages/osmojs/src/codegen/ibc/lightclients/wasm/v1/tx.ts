@@ -1,5 +1,6 @@
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** MsgStoreCode defines the request type for the StoreCode rpc. */
 export interface MsgStoreCode {
   /** signer address */
@@ -149,6 +150,16 @@ function createBaseMsgStoreCode(): MsgStoreCode {
 }
 export const MsgStoreCode = {
   typeUrl: "/ibc.lightclients.wasm.v1.MsgStoreCode",
+  aminoType: "cosmos-sdk/MsgStoreCode",
+  is(o: any): o is MsgStoreCode {
+    return o && (o.$typeUrl === MsgStoreCode.typeUrl || typeof o.signer === "string" && (o.wasmByteCode instanceof Uint8Array || typeof o.wasmByteCode === "string"));
+  },
+  isSDK(o: any): o is MsgStoreCodeSDKType {
+    return o && (o.$typeUrl === MsgStoreCode.typeUrl || typeof o.signer === "string" && (o.wasm_byte_code instanceof Uint8Array || typeof o.wasm_byte_code === "string"));
+  },
+  isAmino(o: any): o is MsgStoreCodeAmino {
+    return o && (o.$typeUrl === MsgStoreCode.typeUrl || typeof o.signer === "string" && (o.wasm_byte_code instanceof Uint8Array || typeof o.wasm_byte_code === "string"));
+  },
   encode(message: MsgStoreCode, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.signer !== "") {
       writer.uint32(10).string(message.signer);
@@ -222,6 +233,8 @@ export const MsgStoreCode = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgStoreCode.typeUrl, MsgStoreCode);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgStoreCode.aminoType, MsgStoreCode.typeUrl);
 function createBaseMsgStoreCodeResponse(): MsgStoreCodeResponse {
   return {
     checksum: new Uint8Array()
@@ -229,6 +242,16 @@ function createBaseMsgStoreCodeResponse(): MsgStoreCodeResponse {
 }
 export const MsgStoreCodeResponse = {
   typeUrl: "/ibc.lightclients.wasm.v1.MsgStoreCodeResponse",
+  aminoType: "cosmos-sdk/MsgStoreCodeResponse",
+  is(o: any): o is MsgStoreCodeResponse {
+    return o && (o.$typeUrl === MsgStoreCodeResponse.typeUrl || o.checksum instanceof Uint8Array || typeof o.checksum === "string");
+  },
+  isSDK(o: any): o is MsgStoreCodeResponseSDKType {
+    return o && (o.$typeUrl === MsgStoreCodeResponse.typeUrl || o.checksum instanceof Uint8Array || typeof o.checksum === "string");
+  },
+  isAmino(o: any): o is MsgStoreCodeResponseAmino {
+    return o && (o.$typeUrl === MsgStoreCodeResponse.typeUrl || o.checksum instanceof Uint8Array || typeof o.checksum === "string");
+  },
   encode(message: MsgStoreCodeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.checksum.length !== 0) {
       writer.uint32(10).bytes(message.checksum);
@@ -291,6 +314,8 @@ export const MsgStoreCodeResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgStoreCodeResponse.typeUrl, MsgStoreCodeResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgStoreCodeResponse.aminoType, MsgStoreCodeResponse.typeUrl);
 function createBaseMsgRemoveChecksum(): MsgRemoveChecksum {
   return {
     signer: "",
@@ -299,6 +324,16 @@ function createBaseMsgRemoveChecksum(): MsgRemoveChecksum {
 }
 export const MsgRemoveChecksum = {
   typeUrl: "/ibc.lightclients.wasm.v1.MsgRemoveChecksum",
+  aminoType: "cosmos-sdk/MsgRemoveChecksum",
+  is(o: any): o is MsgRemoveChecksum {
+    return o && (o.$typeUrl === MsgRemoveChecksum.typeUrl || typeof o.signer === "string" && (o.checksum instanceof Uint8Array || typeof o.checksum === "string"));
+  },
+  isSDK(o: any): o is MsgRemoveChecksumSDKType {
+    return o && (o.$typeUrl === MsgRemoveChecksum.typeUrl || typeof o.signer === "string" && (o.checksum instanceof Uint8Array || typeof o.checksum === "string"));
+  },
+  isAmino(o: any): o is MsgRemoveChecksumAmino {
+    return o && (o.$typeUrl === MsgRemoveChecksum.typeUrl || typeof o.signer === "string" && (o.checksum instanceof Uint8Array || typeof o.checksum === "string"));
+  },
   encode(message: MsgRemoveChecksum, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.signer !== "") {
       writer.uint32(10).string(message.signer);
@@ -372,11 +407,23 @@ export const MsgRemoveChecksum = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgRemoveChecksum.typeUrl, MsgRemoveChecksum);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgRemoveChecksum.aminoType, MsgRemoveChecksum.typeUrl);
 function createBaseMsgRemoveChecksumResponse(): MsgRemoveChecksumResponse {
   return {};
 }
 export const MsgRemoveChecksumResponse = {
   typeUrl: "/ibc.lightclients.wasm.v1.MsgRemoveChecksumResponse",
+  aminoType: "cosmos-sdk/MsgRemoveChecksumResponse",
+  is(o: any): o is MsgRemoveChecksumResponse {
+    return o && o.$typeUrl === MsgRemoveChecksumResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgRemoveChecksumResponseSDKType {
+    return o && o.$typeUrl === MsgRemoveChecksumResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgRemoveChecksumResponseAmino {
+    return o && o.$typeUrl === MsgRemoveChecksumResponse.typeUrl;
+  },
   encode(_: MsgRemoveChecksumResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -428,6 +475,8 @@ export const MsgRemoveChecksumResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgRemoveChecksumResponse.typeUrl, MsgRemoveChecksumResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgRemoveChecksumResponse.aminoType, MsgRemoveChecksumResponse.typeUrl);
 function createBaseMsgMigrateContract(): MsgMigrateContract {
   return {
     signer: "",
@@ -438,6 +487,16 @@ function createBaseMsgMigrateContract(): MsgMigrateContract {
 }
 export const MsgMigrateContract = {
   typeUrl: "/ibc.lightclients.wasm.v1.MsgMigrateContract",
+  aminoType: "cosmos-sdk/MsgMigrateContract",
+  is(o: any): o is MsgMigrateContract {
+    return o && (o.$typeUrl === MsgMigrateContract.typeUrl || typeof o.signer === "string" && typeof o.clientId === "string" && (o.checksum instanceof Uint8Array || typeof o.checksum === "string") && (o.msg instanceof Uint8Array || typeof o.msg === "string"));
+  },
+  isSDK(o: any): o is MsgMigrateContractSDKType {
+    return o && (o.$typeUrl === MsgMigrateContract.typeUrl || typeof o.signer === "string" && typeof o.client_id === "string" && (o.checksum instanceof Uint8Array || typeof o.checksum === "string") && (o.msg instanceof Uint8Array || typeof o.msg === "string"));
+  },
+  isAmino(o: any): o is MsgMigrateContractAmino {
+    return o && (o.$typeUrl === MsgMigrateContract.typeUrl || typeof o.signer === "string" && typeof o.client_id === "string" && (o.checksum instanceof Uint8Array || typeof o.checksum === "string") && (o.msg instanceof Uint8Array || typeof o.msg === "string"));
+  },
   encode(message: MsgMigrateContract, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.signer !== "") {
       writer.uint32(10).string(message.signer);
@@ -533,11 +592,23 @@ export const MsgMigrateContract = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgMigrateContract.typeUrl, MsgMigrateContract);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgMigrateContract.aminoType, MsgMigrateContract.typeUrl);
 function createBaseMsgMigrateContractResponse(): MsgMigrateContractResponse {
   return {};
 }
 export const MsgMigrateContractResponse = {
   typeUrl: "/ibc.lightclients.wasm.v1.MsgMigrateContractResponse",
+  aminoType: "cosmos-sdk/MsgMigrateContractResponse",
+  is(o: any): o is MsgMigrateContractResponse {
+    return o && o.$typeUrl === MsgMigrateContractResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgMigrateContractResponseSDKType {
+    return o && o.$typeUrl === MsgMigrateContractResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgMigrateContractResponseAmino {
+    return o && o.$typeUrl === MsgMigrateContractResponse.typeUrl;
+  },
   encode(_: MsgMigrateContractResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
@@ -589,3 +660,5 @@ export const MsgMigrateContractResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(MsgMigrateContractResponse.typeUrl, MsgMigrateContractResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(MsgMigrateContractResponse.aminoType, MsgMigrateContractResponse.typeUrl);

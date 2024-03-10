@@ -2,6 +2,7 @@ import { Duration, DurationAmino, DurationSDKType } from "../../../google/protob
 import { DecCoin, DecCoinAmino, DecCoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { Decimal } from "@cosmjs/math";
 import { toTimestamp, fromTimestamp } from "../../../helpers";
 /**
@@ -113,6 +114,16 @@ function createBaseIncentiveRecord(): IncentiveRecord {
 }
 export const IncentiveRecord = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecord",
+  aminoType: "osmosis/concentratedliquidity/incentive-record",
+  is(o: any): o is IncentiveRecord {
+    return o && (o.$typeUrl === IncentiveRecord.typeUrl || typeof o.incentiveId === "bigint" && typeof o.poolId === "bigint" && IncentiveRecordBody.is(o.incentiveRecordBody) && Duration.is(o.minUptime));
+  },
+  isSDK(o: any): o is IncentiveRecordSDKType {
+    return o && (o.$typeUrl === IncentiveRecord.typeUrl || typeof o.incentive_id === "bigint" && typeof o.pool_id === "bigint" && IncentiveRecordBody.isSDK(o.incentive_record_body) && Duration.isSDK(o.min_uptime));
+  },
+  isAmino(o: any): o is IncentiveRecordAmino {
+    return o && (o.$typeUrl === IncentiveRecord.typeUrl || typeof o.incentive_id === "bigint" && typeof o.pool_id === "bigint" && IncentiveRecordBody.isAmino(o.incentive_record_body) && Duration.isAmino(o.min_uptime));
+  },
   encode(message: IncentiveRecord, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.incentiveId !== BigInt(0)) {
       writer.uint32(8).uint64(message.incentiveId);
@@ -208,6 +219,8 @@ export const IncentiveRecord = {
     };
   }
 };
+GlobalDecoderRegistry.register(IncentiveRecord.typeUrl, IncentiveRecord);
+GlobalDecoderRegistry.registerAminoProtoMapping(IncentiveRecord.aminoType, IncentiveRecord.typeUrl);
 function createBaseIncentiveRecordBody(): IncentiveRecordBody {
   return {
     remainingCoin: DecCoin.fromPartial({}),
@@ -217,6 +230,16 @@ function createBaseIncentiveRecordBody(): IncentiveRecordBody {
 }
 export const IncentiveRecordBody = {
   typeUrl: "/osmosis.concentratedliquidity.v1beta1.IncentiveRecordBody",
+  aminoType: "osmosis/concentratedliquidity/incentive-record-body",
+  is(o: any): o is IncentiveRecordBody {
+    return o && (o.$typeUrl === IncentiveRecordBody.typeUrl || DecCoin.is(o.remainingCoin) && typeof o.emissionRate === "string" && Timestamp.is(o.startTime));
+  },
+  isSDK(o: any): o is IncentiveRecordBodySDKType {
+    return o && (o.$typeUrl === IncentiveRecordBody.typeUrl || DecCoin.isSDK(o.remaining_coin) && typeof o.emission_rate === "string" && Timestamp.isSDK(o.start_time));
+  },
+  isAmino(o: any): o is IncentiveRecordBodyAmino {
+    return o && (o.$typeUrl === IncentiveRecordBody.typeUrl || DecCoin.isAmino(o.remaining_coin) && typeof o.emission_rate === "string" && Timestamp.isAmino(o.start_time));
+  },
   encode(message: IncentiveRecordBody, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.remainingCoin !== undefined) {
       DecCoin.encode(message.remainingCoin, writer.uint32(10).fork()).ldelim();
@@ -301,3 +324,5 @@ export const IncentiveRecordBody = {
     };
   }
 };
+GlobalDecoderRegistry.register(IncentiveRecordBody.typeUrl, IncentiveRecordBody);
+GlobalDecoderRegistry.registerAminoProtoMapping(IncentiveRecordBody.aminoType, IncentiveRecordBody.typeUrl);

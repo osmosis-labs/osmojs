@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * SetProtoRevEnabledProposal is a gov Content type to update whether the
  * protorev module is enabled
@@ -86,6 +87,16 @@ function createBaseSetProtoRevEnabledProposal(): SetProtoRevEnabledProposal {
 }
 export const SetProtoRevEnabledProposal = {
   typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevEnabledProposal",
+  aminoType: "osmosis/SetProtoRevEnabledProposal",
+  is(o: any): o is SetProtoRevEnabledProposal {
+    return o && (o.$typeUrl === SetProtoRevEnabledProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.enabled === "boolean");
+  },
+  isSDK(o: any): o is SetProtoRevEnabledProposalSDKType {
+    return o && (o.$typeUrl === SetProtoRevEnabledProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.enabled === "boolean");
+  },
+  isAmino(o: any): o is SetProtoRevEnabledProposalAmino {
+    return o && (o.$typeUrl === SetProtoRevEnabledProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.enabled === "boolean");
+  },
   encode(message: SetProtoRevEnabledProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -170,6 +181,8 @@ export const SetProtoRevEnabledProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(SetProtoRevEnabledProposal.typeUrl, SetProtoRevEnabledProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(SetProtoRevEnabledProposal.aminoType, SetProtoRevEnabledProposal.typeUrl);
 function createBaseSetProtoRevAdminAccountProposal(): SetProtoRevAdminAccountProposal {
   return {
     $typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevAdminAccountProposal",
@@ -180,6 +193,16 @@ function createBaseSetProtoRevAdminAccountProposal(): SetProtoRevAdminAccountPro
 }
 export const SetProtoRevAdminAccountProposal = {
   typeUrl: "/osmosis.protorev.v1beta1.SetProtoRevAdminAccountProposal",
+  aminoType: "osmosis/SetProtoRevAdminAccountProposal",
+  is(o: any): o is SetProtoRevAdminAccountProposal {
+    return o && (o.$typeUrl === SetProtoRevAdminAccountProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.account === "string");
+  },
+  isSDK(o: any): o is SetProtoRevAdminAccountProposalSDKType {
+    return o && (o.$typeUrl === SetProtoRevAdminAccountProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.account === "string");
+  },
+  isAmino(o: any): o is SetProtoRevAdminAccountProposalAmino {
+    return o && (o.$typeUrl === SetProtoRevAdminAccountProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.account === "string");
+  },
   encode(message: SetProtoRevAdminAccountProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -264,3 +287,5 @@ export const SetProtoRevAdminAccountProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(SetProtoRevAdminAccountProposal.typeUrl, SetProtoRevAdminAccountProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(SetProtoRevAdminAccountProposal.aminoType, SetProtoRevAdminAccountProposal.typeUrl);

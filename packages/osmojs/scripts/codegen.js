@@ -25,7 +25,8 @@ telescope({
     experimentalGlobalProtoNamespace: true, //  [ 'v1beta1' ] concentratedliquidity
     interfaces: {
       enabled: true,
-      useUnionTypes: false
+      useUnionTypes: true,
+      useGlobalDecoderRegistry: true
     },
     prototypes: {
       addTypeUrlToDecoders: true,

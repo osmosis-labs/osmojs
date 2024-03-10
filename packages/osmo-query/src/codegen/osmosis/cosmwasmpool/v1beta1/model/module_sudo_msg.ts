@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** ===================== SwapExactAmountIn */
 export interface SwapExactAmountIn {
   sender: string;
@@ -192,6 +193,16 @@ function createBaseSwapExactAmountIn(): SwapExactAmountIn {
 }
 export const SwapExactAmountIn = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountIn",
+  aminoType: "osmosis/cosmwasmpool/swap-exact-amount-in",
+  is(o: any): o is SwapExactAmountIn {
+    return o && (o.$typeUrl === SwapExactAmountIn.typeUrl || typeof o.sender === "string" && Coin.is(o.tokenIn) && typeof o.tokenOutDenom === "string" && typeof o.tokenOutMinAmount === "string" && typeof o.swapFee === "string");
+  },
+  isSDK(o: any): o is SwapExactAmountInSDKType {
+    return o && (o.$typeUrl === SwapExactAmountIn.typeUrl || typeof o.sender === "string" && Coin.isSDK(o.token_in) && typeof o.token_out_denom === "string" && typeof o.token_out_min_amount === "string" && typeof o.swap_fee === "string");
+  },
+  isAmino(o: any): o is SwapExactAmountInAmino {
+    return o && (o.$typeUrl === SwapExactAmountIn.typeUrl || typeof o.sender === "string" && Coin.isAmino(o.token_in) && typeof o.token_out_denom === "string" && typeof o.token_out_min_amount === "string" && typeof o.swap_fee === "string");
+  },
   encode(message: SwapExactAmountIn, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -298,6 +309,8 @@ export const SwapExactAmountIn = {
     };
   }
 };
+GlobalDecoderRegistry.register(SwapExactAmountIn.typeUrl, SwapExactAmountIn);
+GlobalDecoderRegistry.registerAminoProtoMapping(SwapExactAmountIn.aminoType, SwapExactAmountIn.typeUrl);
 function createBaseSwapExactAmountInSudoMsg(): SwapExactAmountInSudoMsg {
   return {
     swapExactAmountIn: SwapExactAmountIn.fromPartial({})
@@ -305,6 +318,16 @@ function createBaseSwapExactAmountInSudoMsg(): SwapExactAmountInSudoMsg {
 }
 export const SwapExactAmountInSudoMsg = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountInSudoMsg",
+  aminoType: "osmosis/cosmwasmpool/swap-exact-amount-in-sudo-msg",
+  is(o: any): o is SwapExactAmountInSudoMsg {
+    return o && (o.$typeUrl === SwapExactAmountInSudoMsg.typeUrl || SwapExactAmountIn.is(o.swapExactAmountIn));
+  },
+  isSDK(o: any): o is SwapExactAmountInSudoMsgSDKType {
+    return o && (o.$typeUrl === SwapExactAmountInSudoMsg.typeUrl || SwapExactAmountIn.isSDK(o.swap_exact_amount_in));
+  },
+  isAmino(o: any): o is SwapExactAmountInSudoMsgAmino {
+    return o && (o.$typeUrl === SwapExactAmountInSudoMsg.typeUrl || SwapExactAmountIn.isAmino(o.swap_exact_amount_in));
+  },
   encode(message: SwapExactAmountInSudoMsg, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.swapExactAmountIn !== undefined) {
       SwapExactAmountIn.encode(message.swapExactAmountIn, writer.uint32(10).fork()).ldelim();
@@ -367,6 +390,8 @@ export const SwapExactAmountInSudoMsg = {
     };
   }
 };
+GlobalDecoderRegistry.register(SwapExactAmountInSudoMsg.typeUrl, SwapExactAmountInSudoMsg);
+GlobalDecoderRegistry.registerAminoProtoMapping(SwapExactAmountInSudoMsg.aminoType, SwapExactAmountInSudoMsg.typeUrl);
 function createBaseSwapExactAmountInSudoMsgResponse(): SwapExactAmountInSudoMsgResponse {
   return {
     tokenOutAmount: ""
@@ -374,6 +399,16 @@ function createBaseSwapExactAmountInSudoMsgResponse(): SwapExactAmountInSudoMsgR
 }
 export const SwapExactAmountInSudoMsgResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountInSudoMsgResponse",
+  aminoType: "osmosis/cosmwasmpool/swap-exact-amount-in-sudo-msg-response",
+  is(o: any): o is SwapExactAmountInSudoMsgResponse {
+    return o && (o.$typeUrl === SwapExactAmountInSudoMsgResponse.typeUrl || typeof o.tokenOutAmount === "string");
+  },
+  isSDK(o: any): o is SwapExactAmountInSudoMsgResponseSDKType {
+    return o && (o.$typeUrl === SwapExactAmountInSudoMsgResponse.typeUrl || typeof o.token_out_amount === "string");
+  },
+  isAmino(o: any): o is SwapExactAmountInSudoMsgResponseAmino {
+    return o && (o.$typeUrl === SwapExactAmountInSudoMsgResponse.typeUrl || typeof o.token_out_amount === "string");
+  },
   encode(message: SwapExactAmountInSudoMsgResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenOutAmount !== "") {
       writer.uint32(10).string(message.tokenOutAmount);
@@ -436,6 +471,8 @@ export const SwapExactAmountInSudoMsgResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(SwapExactAmountInSudoMsgResponse.typeUrl, SwapExactAmountInSudoMsgResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(SwapExactAmountInSudoMsgResponse.aminoType, SwapExactAmountInSudoMsgResponse.typeUrl);
 function createBaseSwapExactAmountOut(): SwapExactAmountOut {
   return {
     sender: "",
@@ -447,6 +484,16 @@ function createBaseSwapExactAmountOut(): SwapExactAmountOut {
 }
 export const SwapExactAmountOut = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountOut",
+  aminoType: "osmosis/cosmwasmpool/swap-exact-amount-out",
+  is(o: any): o is SwapExactAmountOut {
+    return o && (o.$typeUrl === SwapExactAmountOut.typeUrl || typeof o.sender === "string" && Coin.is(o.tokenOut) && typeof o.tokenInDenom === "string" && typeof o.tokenInMaxAmount === "string" && typeof o.swapFee === "string");
+  },
+  isSDK(o: any): o is SwapExactAmountOutSDKType {
+    return o && (o.$typeUrl === SwapExactAmountOut.typeUrl || typeof o.sender === "string" && Coin.isSDK(o.token_out) && typeof o.token_in_denom === "string" && typeof o.token_in_max_amount === "string" && typeof o.swap_fee === "string");
+  },
+  isAmino(o: any): o is SwapExactAmountOutAmino {
+    return o && (o.$typeUrl === SwapExactAmountOut.typeUrl || typeof o.sender === "string" && Coin.isAmino(o.token_out) && typeof o.token_in_denom === "string" && typeof o.token_in_max_amount === "string" && typeof o.swap_fee === "string");
+  },
   encode(message: SwapExactAmountOut, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sender !== "") {
       writer.uint32(10).string(message.sender);
@@ -553,6 +600,8 @@ export const SwapExactAmountOut = {
     };
   }
 };
+GlobalDecoderRegistry.register(SwapExactAmountOut.typeUrl, SwapExactAmountOut);
+GlobalDecoderRegistry.registerAminoProtoMapping(SwapExactAmountOut.aminoType, SwapExactAmountOut.typeUrl);
 function createBaseSwapExactAmountOutSudoMsg(): SwapExactAmountOutSudoMsg {
   return {
     swapExactAmountOut: SwapExactAmountOut.fromPartial({})
@@ -560,6 +609,16 @@ function createBaseSwapExactAmountOutSudoMsg(): SwapExactAmountOutSudoMsg {
 }
 export const SwapExactAmountOutSudoMsg = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountOutSudoMsg",
+  aminoType: "osmosis/cosmwasmpool/swap-exact-amount-out-sudo-msg",
+  is(o: any): o is SwapExactAmountOutSudoMsg {
+    return o && (o.$typeUrl === SwapExactAmountOutSudoMsg.typeUrl || SwapExactAmountOut.is(o.swapExactAmountOut));
+  },
+  isSDK(o: any): o is SwapExactAmountOutSudoMsgSDKType {
+    return o && (o.$typeUrl === SwapExactAmountOutSudoMsg.typeUrl || SwapExactAmountOut.isSDK(o.swap_exact_amount_out));
+  },
+  isAmino(o: any): o is SwapExactAmountOutSudoMsgAmino {
+    return o && (o.$typeUrl === SwapExactAmountOutSudoMsg.typeUrl || SwapExactAmountOut.isAmino(o.swap_exact_amount_out));
+  },
   encode(message: SwapExactAmountOutSudoMsg, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.swapExactAmountOut !== undefined) {
       SwapExactAmountOut.encode(message.swapExactAmountOut, writer.uint32(10).fork()).ldelim();
@@ -622,6 +681,8 @@ export const SwapExactAmountOutSudoMsg = {
     };
   }
 };
+GlobalDecoderRegistry.register(SwapExactAmountOutSudoMsg.typeUrl, SwapExactAmountOutSudoMsg);
+GlobalDecoderRegistry.registerAminoProtoMapping(SwapExactAmountOutSudoMsg.aminoType, SwapExactAmountOutSudoMsg.typeUrl);
 function createBaseSwapExactAmountOutSudoMsgResponse(): SwapExactAmountOutSudoMsgResponse {
   return {
     tokenInAmount: ""
@@ -629,6 +690,16 @@ function createBaseSwapExactAmountOutSudoMsgResponse(): SwapExactAmountOutSudoMs
 }
 export const SwapExactAmountOutSudoMsgResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.SwapExactAmountOutSudoMsgResponse",
+  aminoType: "osmosis/cosmwasmpool/swap-exact-amount-out-sudo-msg-response",
+  is(o: any): o is SwapExactAmountOutSudoMsgResponse {
+    return o && (o.$typeUrl === SwapExactAmountOutSudoMsgResponse.typeUrl || typeof o.tokenInAmount === "string");
+  },
+  isSDK(o: any): o is SwapExactAmountOutSudoMsgResponseSDKType {
+    return o && (o.$typeUrl === SwapExactAmountOutSudoMsgResponse.typeUrl || typeof o.token_in_amount === "string");
+  },
+  isAmino(o: any): o is SwapExactAmountOutSudoMsgResponseAmino {
+    return o && (o.$typeUrl === SwapExactAmountOutSudoMsgResponse.typeUrl || typeof o.token_in_amount === "string");
+  },
   encode(message: SwapExactAmountOutSudoMsgResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenInAmount !== "") {
       writer.uint32(10).string(message.tokenInAmount);
@@ -691,3 +762,5 @@ export const SwapExactAmountOutSudoMsgResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(SwapExactAmountOutSudoMsgResponse.typeUrl, SwapExactAmountOutSudoMsgResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(SwapExactAmountOutSudoMsgResponse.aminoType, SwapExactAmountOutSudoMsgResponse.typeUrl);

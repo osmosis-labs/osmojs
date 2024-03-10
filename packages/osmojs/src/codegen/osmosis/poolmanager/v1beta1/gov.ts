@@ -1,5 +1,6 @@
 import { DenomPairTakerFee, DenomPairTakerFeeAmino, DenomPairTakerFeeSDKType } from "./tx";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
  * DenomPairTakerFeeProposal is a type for adding/removing a custom taker fee(s)
  * for one or more denom pairs.
@@ -44,6 +45,16 @@ function createBaseDenomPairTakerFeeProposal(): DenomPairTakerFeeProposal {
 }
 export const DenomPairTakerFeeProposal = {
   typeUrl: "/osmosis.poolmanager.v1beta1.DenomPairTakerFeeProposal",
+  aminoType: "osmosis/poolmanager/denom-pair-taker-fee-proposal",
+  is(o: any): o is DenomPairTakerFeeProposal {
+    return o && (o.$typeUrl === DenomPairTakerFeeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.denomPairTakerFee) && (!o.denomPairTakerFee.length || DenomPairTakerFee.is(o.denomPairTakerFee[0])));
+  },
+  isSDK(o: any): o is DenomPairTakerFeeProposalSDKType {
+    return o && (o.$typeUrl === DenomPairTakerFeeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.denom_pair_taker_fee) && (!o.denom_pair_taker_fee.length || DenomPairTakerFee.isSDK(o.denom_pair_taker_fee[0])));
+  },
+  isAmino(o: any): o is DenomPairTakerFeeProposalAmino {
+    return o && (o.$typeUrl === DenomPairTakerFeeProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.denom_pair_taker_fee) && (!o.denom_pair_taker_fee.length || DenomPairTakerFee.isAmino(o.denom_pair_taker_fee[0])));
+  },
   encode(message: DenomPairTakerFeeProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -130,3 +141,5 @@ export const DenomPairTakerFeeProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(DenomPairTakerFeeProposal.typeUrl, DenomPairTakerFeeProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(DenomPairTakerFeeProposal.aminoType, DenomPairTakerFeeProposal.typeUrl);

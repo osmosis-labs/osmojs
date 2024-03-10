@@ -1,4 +1,5 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 export interface BitArray {
   bits: bigint;
   elems: bigint[];
@@ -27,6 +28,15 @@ function createBaseBitArray(): BitArray {
 }
 export const BitArray = {
   typeUrl: "/tendermint.libs.bits.BitArray",
+  is(o: any): o is BitArray {
+    return o && (o.$typeUrl === BitArray.typeUrl || typeof o.bits === "bigint" && Array.isArray(o.elems) && (!o.elems.length || typeof o.elems[0] === "bigint"));
+  },
+  isSDK(o: any): o is BitArraySDKType {
+    return o && (o.$typeUrl === BitArray.typeUrl || typeof o.bits === "bigint" && Array.isArray(o.elems) && (!o.elems.length || typeof o.elems[0] === "bigint"));
+  },
+  isAmino(o: any): o is BitArrayAmino {
+    return o && (o.$typeUrl === BitArray.typeUrl || typeof o.bits === "bigint" && Array.isArray(o.elems) && (!o.elems.length || typeof o.elems[0] === "bigint"));
+  },
   encode(message: BitArray, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.bits !== BigInt(0)) {
       writer.uint32(8).int64(message.bits);
@@ -105,3 +115,4 @@ export const BitArray = {
     };
   }
 };
+GlobalDecoderRegistry.register(BitArray.typeUrl, BitArray);

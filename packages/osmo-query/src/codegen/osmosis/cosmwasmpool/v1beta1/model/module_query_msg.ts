@@ -1,6 +1,7 @@
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { Decimal } from "@cosmjs/math";
+import { GlobalDecoderRegistry } from "../../../../registry";
 /** ===================== CalcOutAmtGivenIn */
 export interface CalcOutAmtGivenIn {
   /** token_in is the token to be sent to the pool. */
@@ -162,6 +163,16 @@ function createBaseCalcOutAmtGivenIn(): CalcOutAmtGivenIn {
 }
 export const CalcOutAmtGivenIn = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcOutAmtGivenIn",
+  aminoType: "osmosis/cosmwasmpool/calc-out-amt-given-in",
+  is(o: any): o is CalcOutAmtGivenIn {
+    return o && (o.$typeUrl === CalcOutAmtGivenIn.typeUrl || Coin.is(o.tokenIn) && typeof o.tokenOutDenom === "string" && typeof o.swapFee === "string");
+  },
+  isSDK(o: any): o is CalcOutAmtGivenInSDKType {
+    return o && (o.$typeUrl === CalcOutAmtGivenIn.typeUrl || Coin.isSDK(o.token_in) && typeof o.token_out_denom === "string" && typeof o.swap_fee === "string");
+  },
+  isAmino(o: any): o is CalcOutAmtGivenInAmino {
+    return o && (o.$typeUrl === CalcOutAmtGivenIn.typeUrl || Coin.isAmino(o.token_in) && typeof o.token_out_denom === "string" && typeof o.swap_fee === "string");
+  },
   encode(message: CalcOutAmtGivenIn, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenIn !== undefined) {
       Coin.encode(message.tokenIn, writer.uint32(10).fork()).ldelim();
@@ -246,6 +257,8 @@ export const CalcOutAmtGivenIn = {
     };
   }
 };
+GlobalDecoderRegistry.register(CalcOutAmtGivenIn.typeUrl, CalcOutAmtGivenIn);
+GlobalDecoderRegistry.registerAminoProtoMapping(CalcOutAmtGivenIn.aminoType, CalcOutAmtGivenIn.typeUrl);
 function createBaseCalcOutAmtGivenInRequest(): CalcOutAmtGivenInRequest {
   return {
     calcOutAmtGivenIn: CalcOutAmtGivenIn.fromPartial({})
@@ -253,6 +266,16 @@ function createBaseCalcOutAmtGivenInRequest(): CalcOutAmtGivenInRequest {
 }
 export const CalcOutAmtGivenInRequest = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcOutAmtGivenInRequest",
+  aminoType: "osmosis/cosmwasmpool/calc-out-amt-given-in-request",
+  is(o: any): o is CalcOutAmtGivenInRequest {
+    return o && (o.$typeUrl === CalcOutAmtGivenInRequest.typeUrl || CalcOutAmtGivenIn.is(o.calcOutAmtGivenIn));
+  },
+  isSDK(o: any): o is CalcOutAmtGivenInRequestSDKType {
+    return o && (o.$typeUrl === CalcOutAmtGivenInRequest.typeUrl || CalcOutAmtGivenIn.isSDK(o.calc_out_amt_given_in));
+  },
+  isAmino(o: any): o is CalcOutAmtGivenInRequestAmino {
+    return o && (o.$typeUrl === CalcOutAmtGivenInRequest.typeUrl || CalcOutAmtGivenIn.isAmino(o.calc_out_amt_given_in));
+  },
   encode(message: CalcOutAmtGivenInRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.calcOutAmtGivenIn !== undefined) {
       CalcOutAmtGivenIn.encode(message.calcOutAmtGivenIn, writer.uint32(10).fork()).ldelim();
@@ -315,6 +338,8 @@ export const CalcOutAmtGivenInRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(CalcOutAmtGivenInRequest.typeUrl, CalcOutAmtGivenInRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(CalcOutAmtGivenInRequest.aminoType, CalcOutAmtGivenInRequest.typeUrl);
 function createBaseCalcOutAmtGivenInResponse(): CalcOutAmtGivenInResponse {
   return {
     tokenOut: Coin.fromPartial({})
@@ -322,6 +347,16 @@ function createBaseCalcOutAmtGivenInResponse(): CalcOutAmtGivenInResponse {
 }
 export const CalcOutAmtGivenInResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcOutAmtGivenInResponse",
+  aminoType: "osmosis/cosmwasmpool/calc-out-amt-given-in-response",
+  is(o: any): o is CalcOutAmtGivenInResponse {
+    return o && (o.$typeUrl === CalcOutAmtGivenInResponse.typeUrl || Coin.is(o.tokenOut));
+  },
+  isSDK(o: any): o is CalcOutAmtGivenInResponseSDKType {
+    return o && (o.$typeUrl === CalcOutAmtGivenInResponse.typeUrl || Coin.isSDK(o.token_out));
+  },
+  isAmino(o: any): o is CalcOutAmtGivenInResponseAmino {
+    return o && (o.$typeUrl === CalcOutAmtGivenInResponse.typeUrl || Coin.isAmino(o.token_out));
+  },
   encode(message: CalcOutAmtGivenInResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenOut !== undefined) {
       Coin.encode(message.tokenOut, writer.uint32(10).fork()).ldelim();
@@ -384,6 +419,8 @@ export const CalcOutAmtGivenInResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(CalcOutAmtGivenInResponse.typeUrl, CalcOutAmtGivenInResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(CalcOutAmtGivenInResponse.aminoType, CalcOutAmtGivenInResponse.typeUrl);
 function createBaseCalcInAmtGivenOut(): CalcInAmtGivenOut {
   return {
     tokenOut: Coin.fromPartial({}),
@@ -393,6 +430,16 @@ function createBaseCalcInAmtGivenOut(): CalcInAmtGivenOut {
 }
 export const CalcInAmtGivenOut = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcInAmtGivenOut",
+  aminoType: "osmosis/cosmwasmpool/calc-in-amt-given-out",
+  is(o: any): o is CalcInAmtGivenOut {
+    return o && (o.$typeUrl === CalcInAmtGivenOut.typeUrl || Coin.is(o.tokenOut) && typeof o.tokenInDenom === "string" && typeof o.swapFee === "string");
+  },
+  isSDK(o: any): o is CalcInAmtGivenOutSDKType {
+    return o && (o.$typeUrl === CalcInAmtGivenOut.typeUrl || Coin.isSDK(o.token_out) && typeof o.token_in_denom === "string" && typeof o.swap_fee === "string");
+  },
+  isAmino(o: any): o is CalcInAmtGivenOutAmino {
+    return o && (o.$typeUrl === CalcInAmtGivenOut.typeUrl || Coin.isAmino(o.token_out) && typeof o.token_in_denom === "string" && typeof o.swap_fee === "string");
+  },
   encode(message: CalcInAmtGivenOut, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenOut !== undefined) {
       Coin.encode(message.tokenOut, writer.uint32(10).fork()).ldelim();
@@ -477,6 +524,8 @@ export const CalcInAmtGivenOut = {
     };
   }
 };
+GlobalDecoderRegistry.register(CalcInAmtGivenOut.typeUrl, CalcInAmtGivenOut);
+GlobalDecoderRegistry.registerAminoProtoMapping(CalcInAmtGivenOut.aminoType, CalcInAmtGivenOut.typeUrl);
 function createBaseCalcInAmtGivenOutRequest(): CalcInAmtGivenOutRequest {
   return {
     calcInAmtGivenOut: CalcInAmtGivenOut.fromPartial({})
@@ -484,6 +533,16 @@ function createBaseCalcInAmtGivenOutRequest(): CalcInAmtGivenOutRequest {
 }
 export const CalcInAmtGivenOutRequest = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcInAmtGivenOutRequest",
+  aminoType: "osmosis/cosmwasmpool/calc-in-amt-given-out-request",
+  is(o: any): o is CalcInAmtGivenOutRequest {
+    return o && (o.$typeUrl === CalcInAmtGivenOutRequest.typeUrl || CalcInAmtGivenOut.is(o.calcInAmtGivenOut));
+  },
+  isSDK(o: any): o is CalcInAmtGivenOutRequestSDKType {
+    return o && (o.$typeUrl === CalcInAmtGivenOutRequest.typeUrl || CalcInAmtGivenOut.isSDK(o.calc_in_amt_given_out));
+  },
+  isAmino(o: any): o is CalcInAmtGivenOutRequestAmino {
+    return o && (o.$typeUrl === CalcInAmtGivenOutRequest.typeUrl || CalcInAmtGivenOut.isAmino(o.calc_in_amt_given_out));
+  },
   encode(message: CalcInAmtGivenOutRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.calcInAmtGivenOut !== undefined) {
       CalcInAmtGivenOut.encode(message.calcInAmtGivenOut, writer.uint32(10).fork()).ldelim();
@@ -546,6 +605,8 @@ export const CalcInAmtGivenOutRequest = {
     };
   }
 };
+GlobalDecoderRegistry.register(CalcInAmtGivenOutRequest.typeUrl, CalcInAmtGivenOutRequest);
+GlobalDecoderRegistry.registerAminoProtoMapping(CalcInAmtGivenOutRequest.aminoType, CalcInAmtGivenOutRequest.typeUrl);
 function createBaseCalcInAmtGivenOutResponse(): CalcInAmtGivenOutResponse {
   return {
     tokenIn: Coin.fromPartial({})
@@ -553,6 +614,16 @@ function createBaseCalcInAmtGivenOutResponse(): CalcInAmtGivenOutResponse {
 }
 export const CalcInAmtGivenOutResponse = {
   typeUrl: "/osmosis.cosmwasmpool.v1beta1.CalcInAmtGivenOutResponse",
+  aminoType: "osmosis/cosmwasmpool/calc-in-amt-given-out-response",
+  is(o: any): o is CalcInAmtGivenOutResponse {
+    return o && (o.$typeUrl === CalcInAmtGivenOutResponse.typeUrl || Coin.is(o.tokenIn));
+  },
+  isSDK(o: any): o is CalcInAmtGivenOutResponseSDKType {
+    return o && (o.$typeUrl === CalcInAmtGivenOutResponse.typeUrl || Coin.isSDK(o.token_in));
+  },
+  isAmino(o: any): o is CalcInAmtGivenOutResponseAmino {
+    return o && (o.$typeUrl === CalcInAmtGivenOutResponse.typeUrl || Coin.isAmino(o.token_in));
+  },
   encode(message: CalcInAmtGivenOutResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tokenIn !== undefined) {
       Coin.encode(message.tokenIn, writer.uint32(10).fork()).ldelim();
@@ -615,3 +686,5 @@ export const CalcInAmtGivenOutResponse = {
     };
   }
 };
+GlobalDecoderRegistry.register(CalcInAmtGivenOutResponse.typeUrl, CalcInAmtGivenOutResponse);
+GlobalDecoderRegistry.registerAminoProtoMapping(CalcInAmtGivenOutResponse.aminoType, CalcInAmtGivenOutResponse.typeUrl);

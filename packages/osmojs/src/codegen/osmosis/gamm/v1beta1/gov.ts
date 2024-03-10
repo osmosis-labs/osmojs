@@ -1,5 +1,6 @@
 import { BalancerToConcentratedPoolLink, BalancerToConcentratedPoolLinkAmino, BalancerToConcentratedPoolLinkSDKType } from "./shared";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 import { Decimal } from "@cosmjs/math";
 /**
  * ReplaceMigrationRecordsProposal is a gov Content type for updating the
@@ -221,6 +222,16 @@ function createBaseReplaceMigrationRecordsProposal(): ReplaceMigrationRecordsPro
 }
 export const ReplaceMigrationRecordsProposal = {
   typeUrl: "/osmosis.gamm.v1beta1.ReplaceMigrationRecordsProposal",
+  aminoType: "osmosis/ReplaceMigrationRecordsProposal",
+  is(o: any): o is ReplaceMigrationRecordsProposal {
+    return o && (o.$typeUrl === ReplaceMigrationRecordsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || BalancerToConcentratedPoolLink.is(o.records[0])));
+  },
+  isSDK(o: any): o is ReplaceMigrationRecordsProposalSDKType {
+    return o && (o.$typeUrl === ReplaceMigrationRecordsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || BalancerToConcentratedPoolLink.isSDK(o.records[0])));
+  },
+  isAmino(o: any): o is ReplaceMigrationRecordsProposalAmino {
+    return o && (o.$typeUrl === ReplaceMigrationRecordsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || BalancerToConcentratedPoolLink.isAmino(o.records[0])));
+  },
   encode(message: ReplaceMigrationRecordsProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -307,6 +318,8 @@ export const ReplaceMigrationRecordsProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(ReplaceMigrationRecordsProposal.typeUrl, ReplaceMigrationRecordsProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(ReplaceMigrationRecordsProposal.aminoType, ReplaceMigrationRecordsProposal.typeUrl);
 function createBaseUpdateMigrationRecordsProposal(): UpdateMigrationRecordsProposal {
   return {
     $typeUrl: "/osmosis.gamm.v1beta1.UpdateMigrationRecordsProposal",
@@ -317,6 +330,16 @@ function createBaseUpdateMigrationRecordsProposal(): UpdateMigrationRecordsPropo
 }
 export const UpdateMigrationRecordsProposal = {
   typeUrl: "/osmosis.gamm.v1beta1.UpdateMigrationRecordsProposal",
+  aminoType: "osmosis/UpdateMigrationRecordsProposal",
+  is(o: any): o is UpdateMigrationRecordsProposal {
+    return o && (o.$typeUrl === UpdateMigrationRecordsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || BalancerToConcentratedPoolLink.is(o.records[0])));
+  },
+  isSDK(o: any): o is UpdateMigrationRecordsProposalSDKType {
+    return o && (o.$typeUrl === UpdateMigrationRecordsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || BalancerToConcentratedPoolLink.isSDK(o.records[0])));
+  },
+  isAmino(o: any): o is UpdateMigrationRecordsProposalAmino {
+    return o && (o.$typeUrl === UpdateMigrationRecordsProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.records) && (!o.records.length || BalancerToConcentratedPoolLink.isAmino(o.records[0])));
+  },
   encode(message: UpdateMigrationRecordsProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -403,6 +426,8 @@ export const UpdateMigrationRecordsProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(UpdateMigrationRecordsProposal.typeUrl, UpdateMigrationRecordsProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(UpdateMigrationRecordsProposal.aminoType, UpdateMigrationRecordsProposal.typeUrl);
 function createBasePoolRecordWithCFMMLink(): PoolRecordWithCFMMLink {
   return {
     denom0: "",
@@ -415,6 +440,16 @@ function createBasePoolRecordWithCFMMLink(): PoolRecordWithCFMMLink {
 }
 export const PoolRecordWithCFMMLink = {
   typeUrl: "/osmosis.gamm.v1beta1.PoolRecordWithCFMMLink",
+  aminoType: "osmosis/gamm/pool-record-with-cfmm-link",
+  is(o: any): o is PoolRecordWithCFMMLink {
+    return o && (o.$typeUrl === PoolRecordWithCFMMLink.typeUrl || typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.tickSpacing === "bigint" && typeof o.exponentAtPriceOne === "string" && typeof o.spreadFactor === "string" && typeof o.balancerPoolId === "bigint");
+  },
+  isSDK(o: any): o is PoolRecordWithCFMMLinkSDKType {
+    return o && (o.$typeUrl === PoolRecordWithCFMMLink.typeUrl || typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.tick_spacing === "bigint" && typeof o.exponent_at_price_one === "string" && typeof o.spread_factor === "string" && typeof o.balancer_pool_id === "bigint");
+  },
+  isAmino(o: any): o is PoolRecordWithCFMMLinkAmino {
+    return o && (o.$typeUrl === PoolRecordWithCFMMLink.typeUrl || typeof o.denom0 === "string" && typeof o.denom1 === "string" && typeof o.tick_spacing === "bigint" && typeof o.exponent_at_price_one === "string" && typeof o.spread_factor === "string" && typeof o.balancer_pool_id === "bigint");
+  },
   encode(message: PoolRecordWithCFMMLink, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.denom0 !== "") {
       writer.uint32(10).string(message.denom0);
@@ -532,6 +567,8 @@ export const PoolRecordWithCFMMLink = {
     };
   }
 };
+GlobalDecoderRegistry.register(PoolRecordWithCFMMLink.typeUrl, PoolRecordWithCFMMLink);
+GlobalDecoderRegistry.registerAminoProtoMapping(PoolRecordWithCFMMLink.aminoType, PoolRecordWithCFMMLink.typeUrl);
 function createBaseCreateConcentratedLiquidityPoolsAndLinktoCFMMProposal(): CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal {
   return {
     $typeUrl: "/osmosis.gamm.v1beta1.CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal",
@@ -542,6 +579,16 @@ function createBaseCreateConcentratedLiquidityPoolsAndLinktoCFMMProposal(): Crea
 }
 export const CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal = {
   typeUrl: "/osmosis.gamm.v1beta1.CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal",
+  aminoType: "osmosis/CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal",
+  is(o: any): o is CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal {
+    return o && (o.$typeUrl === CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.poolRecordsWithCfmmLink) && (!o.poolRecordsWithCfmmLink.length || PoolRecordWithCFMMLink.is(o.poolRecordsWithCfmmLink[0])));
+  },
+  isSDK(o: any): o is CreateConcentratedLiquidityPoolsAndLinktoCFMMProposalSDKType {
+    return o && (o.$typeUrl === CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.pool_records_with_cfmm_link) && (!o.pool_records_with_cfmm_link.length || PoolRecordWithCFMMLink.isSDK(o.pool_records_with_cfmm_link[0])));
+  },
+  isAmino(o: any): o is CreateConcentratedLiquidityPoolsAndLinktoCFMMProposalAmino {
+    return o && (o.$typeUrl === CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && Array.isArray(o.pool_records_with_cfmm_link) && (!o.pool_records_with_cfmm_link.length || PoolRecordWithCFMMLink.isAmino(o.pool_records_with_cfmm_link[0])));
+  },
   encode(message: CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -628,6 +675,8 @@ export const CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal.typeUrl, CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal.aminoType, CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal.typeUrl);
 function createBaseSetScalingFactorControllerProposal(): SetScalingFactorControllerProposal {
   return {
     $typeUrl: "/osmosis.gamm.v1beta1.SetScalingFactorControllerProposal",
@@ -639,6 +688,16 @@ function createBaseSetScalingFactorControllerProposal(): SetScalingFactorControl
 }
 export const SetScalingFactorControllerProposal = {
   typeUrl: "/osmosis.gamm.v1beta1.SetScalingFactorControllerProposal",
+  aminoType: "osmosis/SetScalingFactorControllerProposal",
+  is(o: any): o is SetScalingFactorControllerProposal {
+    return o && (o.$typeUrl === SetScalingFactorControllerProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.poolId === "bigint" && typeof o.controllerAddress === "string");
+  },
+  isSDK(o: any): o is SetScalingFactorControllerProposalSDKType {
+    return o && (o.$typeUrl === SetScalingFactorControllerProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.pool_id === "bigint" && typeof o.controller_address === "string");
+  },
+  isAmino(o: any): o is SetScalingFactorControllerProposalAmino {
+    return o && (o.$typeUrl === SetScalingFactorControllerProposal.typeUrl || typeof o.title === "string" && typeof o.description === "string" && typeof o.pool_id === "bigint" && typeof o.controller_address === "string");
+  },
   encode(message: SetScalingFactorControllerProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
@@ -734,3 +793,5 @@ export const SetScalingFactorControllerProposal = {
     };
   }
 };
+GlobalDecoderRegistry.register(SetScalingFactorControllerProposal.typeUrl, SetScalingFactorControllerProposal);
+GlobalDecoderRegistry.registerAminoProtoMapping(SetScalingFactorControllerProposal.aminoType, SetScalingFactorControllerProposal.typeUrl);
