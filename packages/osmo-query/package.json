@@ -1,6 +1,6 @@
 {
   "name": "osmo-query",
-  "version": "16.9.2",
+  "version": "16.10.0",
   "description": "Typescript Protobuf Messages for Osmosis with react-query",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs/tree/master/packages/osmojs#readme",
