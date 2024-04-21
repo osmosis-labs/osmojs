@@ -21,6 +21,15 @@ yarn starship startPortForward
 # check pids
 yarn starship printForwardPids
 ```
+Run Tests
+
+```sh
+# test
+yarn e2e:test
+
+# watch 
+yarn e2e:watch
+```
 
 Teardown
 
