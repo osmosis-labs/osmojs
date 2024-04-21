@@ -1,20 +1,18 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
-import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
-
-import { ibc, getSigningOsmosisClient } from '../../src/codegen';
+import { StargateClient, assertIsDeliverTxSuccess } from '@cosmjs/stargate';
+import { ibc, getSigningOsmosisClient, getSigningCosmosClientOptions } from '../../src/codegen';
 import { useChain } from '../src';
 import './setup.test';
 
 describe('Token transfers', () => {
   let wallet, denom, address;
-  let chainInfo, getCoin, getStargateClient, getRpcEndpoint, creditFromFaucet;
+  let chainInfo, getCoin, getRpcEndpoint, creditFromFaucet;
 
   beforeAll(async () => {
     ({
       chainInfo,
       getCoin,
-      getStargateClient,
       getRpcEndpoint,
       creditFromFaucet
     } = useChain('osmosis'));
@@ -80,9 +78,12 @@ describe('Token transfers', () => {
 
     const {
       chainInfo: cosmosChainInfo,
-      getStargateClient: cosmosGetStargateClient,
       getRpcEndpoint: cosmosRpcEndpoint
     } = useChain('cosmos');
+
+    const {
+      getRpcEndpoint: osmosisRpcEndpoint
+    } = useChain('osmosis');
 
     // Initialize wallet address for cosmos chain
     const cosmosWallet = await DirectSecp256k1HdWallet.fromMnemonic(
@@ -139,7 +140,7 @@ describe('Token transfers', () => {
     assertIsDeliverTxSuccess(resp);
 
     // Check osmos in address on cosmos chain
-    const cosmosClient = await cosmosGetStargateClient();
+    const cosmosClient = await StargateClient.connect(cosmosRpcEndpoint(), getSigningCosmosClientOptions());
     const balances = await cosmosClient.getAllBalances(cosmosAddress);
 
     // check balances

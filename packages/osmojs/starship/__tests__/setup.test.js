@@ -1,6 +1,8 @@
 import path from 'path';
 
 import { Config, useChain, useRegistry } from '../src';
+import { getSigningCosmosClientOptions } from '../../src/codegen';
+import { StargateClient} from '@cosmjs/stargate';
 
 beforeAll(async () => {
   const configFile = path.join(__dirname, '..', 'configs', 'config.yaml');
@@ -12,8 +14,8 @@ describe('Test clients', () => {
   let client;
 
   beforeAll(async () => {
-    const { getStargateClient } = useChain('osmosis');
-    client = await getStargateClient();
+    const { getRpcEndpoint } = useChain('osmosis');
+    client = await StargateClient.connect(getRpcEndpoint(), getSigningCosmosClientOptions());
   });
 
   it('check chain height', async () => {

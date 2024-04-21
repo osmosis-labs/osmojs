@@ -77,11 +77,6 @@ export const useChain = (chainName, signingOptions = null) => {
     signingOptions = getSigningCosmosClientOptions();
   }
 
-  const getStargateClient = () => {
-    const rpcEndpoint = getRpcEndpoint();
-    return StargateClient.connect(rpcEndpoint, signingOptions);
-  };
-
   const getCoin = () => {
     return chainInfo.fetcher.getChainAssetList(chainName).assets[0];
   };
@@ -112,7 +107,6 @@ export const useChain = (chainName, signingOptions = null) => {
     getRpcEndpoint,
     getRestEndpoint,
     getGenesisMnemonic,
-    getStargateClient,
     creditFromFaucet
   };
 };

@@ -1,16 +1,16 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
-import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
-import { coin, coins } from '@cosmjs/amino';
+import { StargateClient, assertIsDeliverTxSuccess } from '@cosmjs/stargate';
+import { coin } from '@cosmjs/amino';
 import { Secp256k1HdWallet } from '@cosmjs/amino';
 
-import { osmosis, google, getSigningOsmosisClient, amino } from '../../src/codegen';
+import { osmosis, google, getSigningOsmosisClient, getSigningCosmosClientOptions } from '../../src/codegen';
 import { useChain, calcShareOutAmount, transferIbcTokens } from '../src';
 import './setup.test';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 
 describe('Pool testing over IBC tokens', () => {
   let protoSigner, aminoSigner, denom, address;
-  let chainInfo, getCoin, getStargateClient, getRpcEndpoint, creditFromFaucet;
+  let chainInfo, getCoin, getRpcEndpoint, creditFromFaucet;
 
   // Variables used accross testcases
   let poolId;
@@ -20,7 +20,6 @@ describe('Pool testing over IBC tokens', () => {
     ({
       chainInfo,
       getCoin,
-      getStargateClient,
       getRpcEndpoint,
       creditFromFaucet
     } = useChain('osmosis'));
@@ -42,7 +41,7 @@ describe('Pool testing over IBC tokens', () => {
   }, 200000);
 
   it('check address has tokens', async () => {
-    const client = await getStargateClient();
+    const client = await StargateClient.connect(getRpcEndpoint(), getSigningCosmosClientOptions());
     const balances = await client.getAllBalances(address);
 
     expect(balances.length).toEqual(2);
@@ -122,7 +121,7 @@ describe('Pool testing over IBC tokens', () => {
       rpcEndpoint: getRpcEndpoint()
     });
 
-    const client = await getStargateClient();
+    const client = await StargateClient.connect(getRpcEndpoint(), getSigningCosmosClientOptions());
 
     const poolResponse = await queryClient.osmosis.gamm.v1beta1.pool({
       poolId
