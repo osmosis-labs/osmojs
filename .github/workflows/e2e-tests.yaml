@@ -33,7 +33,7 @@ jobs:
         id: starship-infra
         uses: cosmology-tech/starship-action@0.2.12
         with:
-          values: ./packages/osmojs/starship/configs/config.workflow.yaml
+          values: packages/osmojs/starship/configs/config.workflow.yaml
           port-forward: true
           version: 0.1.38
 
