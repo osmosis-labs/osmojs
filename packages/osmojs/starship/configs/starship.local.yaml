@@ -1,5 +1,5 @@
 helmName: osmojs
-helmFile: ./config.yaml
+helmFile: ./config.local.yaml
 helmRepo: starship
 helmRepoUrl: https://cosmology-tech.github.io/starship/
 helmChart: devnet

@@ -1,3 +1,37 @@
+## TLDR
+
+Deploy
+
+```sh
+# setup helm/starship
+yarn starship setup
+
+# sanity check
+kubectl get pods --all-namespaces
+
+# deploy starship
+yarn starship deploy
+
+# wait til STATUS=Running
+kubectl get pods
+
+# port forwarding
+yarn starship startPortForward
+
+# check pids
+yarn starship printForwardPids
+```
+
+Teardown
+
+```sh
+# stop port forwarding (done by clean() too)
+# yarn starship stopPortForward
+
+# stop ports and delete & remove helm chart
+yarn starship clean
+```
+
 ## 1. Installation
 Inorder to get started with starship, one needs to install the following
 * `kubectl`: https://kubernetes.io/docs/tasks/tools/
