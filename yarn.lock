@@ -2782,21 +2782,21 @@
   resolved "https://registry.npmmirror.com/@sinonjs/text-encoding/-/text-encoding-0.7.2.tgz#5981a8db18b56ba38ef0efb7d995b12aa7b51918"
   integrity sha512-sXXKG+uL9IrKqViTtao2Ws6dy0znu9sOaP1di/jKGW1M6VssO8vlpXCQcpZ+jisQ1tTFAC5Jo/EOzFbggBagFQ==
 
-"@starship-ci/cli@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@starship-ci/cli/-/cli-1.1.0.tgz#cbcda3581bc0a5b53893c5d34672d86a40c73401"
-  integrity sha512-U1N914lQPnG46uZh6V9ouMy0N7uYCrnkCfkvaMhT2XFGKTFRVtPkRMhhQZurD6zhS8ewT9j5kjvZrar5FKko1Q==
+"@starship-ci/cli@1.4.1":
+  version "1.4.1"
+  resolved "https://registry.npmjs.org/@starship-ci/cli/-/cli-1.4.1.tgz#9b66f028b6a0decfce98fd60191256e142fac5ca"
+  integrity sha512-DkbfjJvJYt9sQXzSMHkw5PUnd95gM5iStoz7Xg0oLXZ7DSOehPiAO6Htm8L2g4+TyYJ6V7kA6Iuq9Um3VAXReQ==
   dependencies:
-    "@starship-ci/client" "^1.1.0"
+    "@starship-ci/client" "^1.2.0"
     chalk "^4.1.0"
     deepmerge "^4.3.1"
     js-yaml "^4.1.0"
     minimist "^1.2.8"
 
-"@starship-ci/client@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@starship-ci/client/-/client-1.1.0.tgz#42e0ecf6703873b53725f6868870d58e68317197"
-  integrity sha512-o7S6UjiccVEERQkHkgNY2OHnzTfEM5G0n3YpWRB90Pyq8rtiRAxfr1soaGghEU2sgztRfclNrH7rVAOzQMWKoA==
+"@starship-ci/client@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@starship-ci/client/-/client-1.2.0.tgz#1b73a79a5394efc665025b948600467bb3416140"
+  integrity sha512-C37junDe08jU8jRQDFfDM1dBKupFpEahutXfYgx0N8dwFf3x8Nh/CdZOPnpjJyhRjoBANEPOcJqylMVYkVelhQ==
   dependencies:
     chalk "^4.1.0"
     deepmerge "^4.3.1"
@@ -8856,10 +8856,10 @@ stack-utils@^2.0.3:
   dependencies:
     escape-string-regexp "^2.0.0"
 
-starshipjs@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/starshipjs/-/starshipjs-1.1.0.tgz#8f151220f6375144abfb07b750ce794b50578314"
-  integrity sha512-NrinW+MCdYVj4FcvA3lm82AHchB9g8v9C40QoFoVOAWxD0nHFzR7kRrVC/YVFU16AEsFMX6CfptxKyUUPHZcbw==
+starshipjs@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/starshipjs/-/starshipjs-1.1.1.tgz#205b3d0052b743cfeb42a6a003ac63def9e4ee94"
+  integrity sha512-2Q4cqw98/6qbmfoEz8aRGbJZgusBiufYTv7AMJdoBeK478H5P5RwEj5gnfcIJ+/CYhrzjf/LOhi+ulULr/8wFA==
   dependencies:
     "@chain-registry/client" "1.18.1"
     js-yaml "^4.1.0"

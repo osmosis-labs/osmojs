@@ -7,19 +7,19 @@ Deploy
 yarn starship setup
 
 # sanity check
-kubectl get pods --all-namespaces
+yarn starship get-pods
 
 # deploy starship
 yarn starship deploy
 
 # wait til STATUS=Running
-kubectl get pods
+yarn starship get-pods
 
 # port forwarding
-yarn starship startPortForward
+yarn starship start-ports
 
 # check pids
-yarn starship printForwardPids
+yarn starship port-pids
 ```
 Run Tests
 
@@ -35,7 +35,7 @@ Teardown
 
 ```sh
 # stop port forwarding (done by clean() too)
-# yarn starship stopPortForward
+# yarn starship stop-ports
 
 # stop ports and delete & remove helm chart
 yarn starship clean
@@ -70,7 +70,7 @@ to a kubernetes cluster locally.
 NOTE: Resources constraint on local machine will affect the performance of Starship spinup time
 
 ```bash
-yarn starship setupKind
+yarn starship setup-kind
 ```
 
 Run the following command to check connection to a k8s cluster
@@ -113,7 +113,7 @@ Which will
 ## 6. Cleanup kind (optional)
 If you are using kind for your kubernetes cluster, you can delete it with
 ```bash
-yarn starship cleanKind
+yarn starship clean-kind
 ```
 
 ## Related

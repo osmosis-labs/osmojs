@@ -1,13 +1,13 @@
 import path from 'path';
 
-import { Config, useChain, useRegistry } from 'starshipjs';
+import { ConfigContext, useChain, useRegistry } from 'starshipjs';
 import { getSigningCosmosClientOptions } from '../../src/codegen';
 import { StargateClient} from '@cosmjs/stargate';
 
 beforeAll(async () => {
   const configFile = path.join(__dirname, '..', 'configs', 'config.yaml');
-  Config.setConfigFile = configFile;
-  Config.setRegistry = await useRegistry(configFile);
+  ConfigContext.setConfigFile(configFile);
+  ConfigContext.setRegistry(await useRegistry(configFile))
 });
 
 describe('Test clients', () => {

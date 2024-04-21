@@ -4,7 +4,7 @@ import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
 import BigNumber from 'bignumber.js';
 
 import { getSigningIbcClient } from '../../src/codegen';
-import { useChain, Config } from 'starshipjs';
+import { useChain, ConfigContext } from 'starshipjs';
 
 export const calcShareOutAmount = (poolInfo, coinsNeeded) => {
   return poolInfo.poolAssets
@@ -51,7 +51,7 @@ export const transferIbcTokens = async (fromChain, toChain, toAddress, amount) =
 };
 
 const findIbcInfo = (chainInfo, toChainInfo) => {
-  const registry = Config.registry;
+  const registry = ConfigContext.registry;
   const ibcInfos = registry.getChainIbcData(chainInfo.chain.chain_id);
   const found = ibcInfos.find(
     i => i.chain_1.chain_name === chainInfo.chain.chain_id &&
