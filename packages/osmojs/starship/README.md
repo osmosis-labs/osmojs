@@ -1,3 +1,46 @@
+## TLDR
+
+Deploy
+
+```sh
+# setup helm/starship
+yarn starship setup
+
+# sanity check
+kubectl get pods --all-namespaces
+
+# deploy starship
+yarn starship deploy
+
+# wait til STATUS=Running
+kubectl get pods
+
+# port forwarding
+yarn starship startPortForward
+
+# check pids
+yarn starship printForwardPids
+```
+Run Tests
+
+```sh
+# test
+yarn starship:test
+
+# watch 
+yarn starship:watch
+```
+
+Teardown
+
+```sh
+# stop port forwarding (done by clean() too)
+# yarn starship stopPortForward
+
+# stop ports and delete & remove helm chart
+yarn starship clean
+```
+
 ## 1. Installation
 Inorder to get started with starship, one needs to install the following
 * `kubectl`: https://kubernetes.io/docs/tasks/tools/
@@ -9,7 +52,7 @@ Note: To make the process easy we have a simple command that will try and instal
 so that you dont have to.
 
 ```bash
-npm run e2e:deps
+yarn starship setup
 ```
 This command will 
 * check (and install) if your system has all the dependencies needed to run the e2e tests wtih Starship
@@ -28,7 +71,7 @@ to a kubernetes cluster locally.
 NOTE: Resources constraint on local machine will affect the performance of Starship spinup time
 
 ```bash
-npm run e2e:kind
+yarn starship setupKind
 ```
 
 Run the following command to check connection to a k8s cluster
@@ -41,7 +84,7 @@ Now with the dependencies and a kubernetes cluster in handy, we can proceed with
 
 Run
 ```bash
-npm run e2e:start
+yarn starship deploy
 ```
 
 We use the config file `configs/config.yaml` as the genesis file to define the topology of the e2e test infra. Change it as required
@@ -54,7 +97,7 @@ our end-to-end tests.
 
 Run
 ```bash
-npm run e2e:test
+npm run starship:test
 ```
 
 ## 5. Stop the infra
@@ -62,7 +105,7 @@ The tests should be ideompotent, so the tests can be run multiple times (which i
 
 Once the state of the mini-cosmos is corrupted, you can stop the deployments with
 ```bash
-npm run e2e:stop
+npm run starship clean
 ```
 Which will
 * Stop port-forwarding the traffic to your local
@@ -71,7 +114,7 @@ Which will
 ## 6. Cleanup kind (optional)
 If you are using kind for your kubernetes cluster, you can delete it with
 ```bash
-npm run e2e:clean
+yarn starship cleanKind
 ```
 
 ## Related

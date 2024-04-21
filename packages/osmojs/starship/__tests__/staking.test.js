@@ -1,15 +1,14 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
-import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
-import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
+import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import BigNumber from 'bignumber.js';
 
 import { cosmos, getSigningOsmosisClient } from '../../src/codegen';
-import { useChain } from '../src';
+import { useChain } from 'starshipjs';
 import './setup.test';
 
 describe('Staking tokens testing', () => {
   let wallet, denom, address;
-  let chainInfo, getCoin, getStargateClient, getRpcEndpoint, creditFromFaucet;
+  let chainInfo, getCoin, getRpcEndpoint, creditFromFaucet;
 
   // Variables used accross testcases
   let queryClient;
@@ -20,7 +19,6 @@ describe('Staking tokens testing', () => {
     ({
       chainInfo,
       getCoin,
-      getStargateClient,
       getRpcEndpoint,
       creditFromFaucet
     } = useChain('osmosis'));

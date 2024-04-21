@@ -1,0 +1,7 @@
+helmName: osmojs
+helmFile: ./config.yaml
+helmRepo: starship
+helmRepoUrl: https://cosmology-tech.github.io/starship/
+helmChart: devnet
+helmVersion: v0.1.38
+kindCluster: starship

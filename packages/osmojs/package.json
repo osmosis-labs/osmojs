@@ -29,15 +29,13 @@
     "test": "jest --config ./jest.osmojs.config.json",
     "test:watch": "jest --watch --config ./jest.osmojs.config.json",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand --config ./jest.osmojs.config.json",
-    "e2e": "npm run e2e:test",
-    "e2e:deps": "cd tests && make setup",
-    "e2e:kind": "cd tests && make setup-kind",
-    "e2e:start": "cd tests && make start",
-    "e2e:test": "jest --config ./jest.starship.config.json --verbose --bail",
-    "e2e:debug": "jest --config ./jest.starship.config.json --runInBand --verbose --bail",
-    "e2e:watch": "jest --watch --config ./jest.starship.config.json",
-    "e2e:stop": "cd tests && make stop",
-    "e2e:clean": "cd tests && make stop clean"
+    "setupKind": "starship setupKind --config ./starship/configs/starship.yaml",
+    "cleanKind": "starship cleanKind --config ./starship/configs/starship.yaml",
+    "starship": "starship --config ./starship/configs/starship.yaml",
+    "starship:local": "starship --config ./starship/configs/starship.local.yaml",
+    "starship:test": "jest --config ./jest.starship.config.json --verbose --bail",
+    "starship:debug": "jest --config ./jest.starship.config.json --runInBand --verbose --bail",
+    "starship:watch": "jest --watch --config ./jest.starship.config.json"
   },
   "publishConfig": {
     "access": "public"
@@ -83,6 +81,7 @@
     "@protobufs/ibc": "^0.1.0",
     "@protobufs/osmosis": "^0.2.0",
     "@protobufs/tendermint": "^0.0.10",
+    "@starship-ci/cli": "0.6.0",
     "@types/jest": "^29.5.3",
     "ast-stringify": "0.1.0",
     "axios": "^0.27.2",
@@ -107,6 +106,7 @@
     "publish-scripts": "0.1.0",
     "rimraf": "3.0.2",
     "sinon": "14.0.2",
+    "starshipjs": "^0.3.0",
     "ts-jest": "^29.1.1",
     "typescript": "^5.0.4"
   },
