@@ -2782,6 +2782,28 @@
   resolved "https://registry.npmmirror.com/@sinonjs/text-encoding/-/text-encoding-0.7.2.tgz#5981a8db18b56ba38ef0efb7d995b12aa7b51918"
   integrity sha512-sXXKG+uL9IrKqViTtao2Ws6dy0znu9sOaP1di/jKGW1M6VssO8vlpXCQcpZ+jisQ1tTFAC5Jo/EOzFbggBagFQ==
 
+"@starship-ci/cli@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.npmjs.org/@starship-ci/cli/-/cli-0.4.0.tgz#cb1d6379f839c9a0de229843486673c0adde633f"
+  integrity sha512-T/IKMOCUy4s7vyxocJ9n4pmJfA+oXHfhYoqoYuORNx5wWhr+llAnzKrK/CfFWMScDRIZy3W4kXIrMxfEr7XG9w==
+  dependencies:
+    "@starship-ci/client" "^0.2.0"
+    chalk "^4.1.0"
+    deepmerge "^4.3.1"
+    js-yaml "^4.1.0"
+    minimist "^1.2.8"
+
+"@starship-ci/client@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.npmjs.org/@starship-ci/client/-/client-0.2.0.tgz#04e82354c8e10ab9164499d31a72637a23db57b1"
+  integrity sha512-kqmmnpWthQDuhbQAILlBmABBT/C1S+p9qQ2egFfT2edhtq5sBWvgvJOLBUFNm0WcFixGQa+8TMoytZXmzvnEJQ==
+  dependencies:
+    chalk "^4.1.0"
+    deepmerge "^4.3.1"
+    js-yaml "^4.1.0"
+    mkdirp "3.0.1"
+    shelljs "^0.8.5"
+
 "@tanstack/query-core@4.32.6":
   version "4.32.6"
   resolved "https://registry.npmmirror.com/@tanstack/query-core/-/query-core-4.32.6.tgz#cf7df91ab1542e67a82624fefb12a55f580b4c01"
@@ -4305,7 +4327,7 @@ deepmerge@4.2.2:
   resolved "https://registry.npmmirror.com/deepmerge/-/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
   integrity sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==
 
-deepmerge@4.3.1, deepmerge@^4.2.2:
+deepmerge@4.3.1, deepmerge@^4.2.2, deepmerge@^4.3.1:
   version "4.3.1"
   resolved "https://registry.npmmirror.com/deepmerge/-/deepmerge-4.3.1.tgz#44b5f2147cd3b00d4b56137685966f26fd25dd4a"
   integrity sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==
@@ -7285,7 +7307,7 @@ mkdirp@3.0.0:
   resolved "https://registry.npmmirror.com/mkdirp/-/mkdirp-3.0.0.tgz#758101231418bda24435c0888a91d9bd91f1372d"
   integrity sha512-7+JDnNsyCvZXoUJdkMR0oUE2AmAdsNXGTmRbiOjYIwQ6q+bL6NwrozGQdPcmYaNcrhH37F50HHBUzoaBV6FITQ==
 
-mkdirp@^3.0.1:
+mkdirp@3.0.1, mkdirp@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmmirror.com/mkdirp/-/mkdirp-3.0.1.tgz#e44e4c5607fb279c168241713cc6e0fea9adcb50"
   integrity sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==
@@ -8631,7 +8653,7 @@ shebang-regex@^3.0.0:
   resolved "https://registry.npmmirror.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
-shelljs@0.8.5:
+shelljs@0.8.5, shelljs@^0.8.5:
   version "0.8.5"
   resolved "https://registry.npmmirror.com/shelljs/-/shelljs-0.8.5.tgz#de055408d8361bed66c669d2f000538ced8ee20c"
   integrity sha512-TiwcRcrkhHvbrZbnRcFYMLl30Dfov3HKqzp5tO5b4pt6G/SezKcYhmDg15zXVBswHmctSAQKznqNW2LO5tTDow==
