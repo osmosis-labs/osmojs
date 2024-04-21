@@ -5,7 +5,8 @@ import {
   getSigningCosmosClient,
   getSigningOsmosisClient
 } from '../../src/codegen';
-import { useChain, waitUntil } from '../src';
+import { useChain } from 'starshipjs';
+import { waitUntil } from '../src';
 import './setup.test';
 import { Secp256k1HdWallet } from '@cosmjs/amino';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';

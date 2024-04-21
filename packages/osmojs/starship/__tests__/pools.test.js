@@ -4,7 +4,8 @@ import { coin } from '@cosmjs/amino';
 import { Secp256k1HdWallet } from '@cosmjs/amino';
 
 import { osmosis, google, getSigningOsmosisClient, getSigningCosmosClientOptions } from '../../src/codegen';
-import { useChain, calcShareOutAmount, transferIbcTokens } from '../src';
+import { useChain } from 'starshipjs';
+import { calcShareOutAmount, transferIbcTokens } from '../src';
 import './setup.test';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 

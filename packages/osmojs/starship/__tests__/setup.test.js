@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { Config, useChain, useRegistry } from '../src';
+import { Config, useChain, useRegistry } from 'starshipjs';
 import { getSigningCosmosClientOptions } from '../../src/codegen';
 import { StargateClient} from '@cosmjs/stargate';
 

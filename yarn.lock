@@ -8856,6 +8856,15 @@ stack-utils@^2.0.3:
   dependencies:
     escape-string-regexp "^2.0.0"
 
+starshipjs@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/starshipjs/-/starshipjs-0.3.0.tgz#3c922ef9ce44026da89dfbfb7377e1c09e7d6c8e"
+  integrity sha512-7tUKB/qEiiP5aKLiImu92GTEYYG6duO6hK+6lHKVJMT8+udsXlC+ZpcuIPW4qlYm+8XIi7CHjtwCu7xa2cwfwA==
+  dependencies:
+    "@chain-registry/client" "1.18.1"
+    js-yaml "^4.1.0"
+    node-fetch "^2.6.9"
+
 string-argv@^0.3.2:
   version "0.3.2"
   resolved "https://registry.npmmirror.com/string-argv/-/string-argv-0.3.2.tgz#2b6d0ef24b656274d957d54e0a4bbf6153dc02b6"

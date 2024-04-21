@@ -1,9 +1,9 @@
 import { generateMnemonic } from '@confio/relayer/build/lib/helpers';
-import { StargateClient, assertIsDeliverTxSuccess } from '@cosmjs/stargate';import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
+import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import BigNumber from 'bignumber.js';
 
 import { cosmos, getSigningOsmosisClient } from '../../src/codegen';
-import { useChain } from '../src';
+import { useChain } from 'starshipjs';
 import './setup.test';
 
 describe('Staking tokens testing', () => {

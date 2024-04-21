@@ -106,6 +106,7 @@
     "publish-scripts": "0.1.0",
     "rimraf": "3.0.2",
     "sinon": "14.0.2",
+    "starshipjs": "^0.3.0",
     "ts-jest": "^29.1.1",
     "typescript": "^5.0.4"
   },

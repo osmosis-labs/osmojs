@@ -4,7 +4,7 @@ import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
 import BigNumber from 'bignumber.js';
 
 import { getSigningIbcClient } from '../../src/codegen';
-import { useChain, Config } from './config';
+import { useChain, Config } from 'starshipjs';
 
 export const calcShareOutAmount = (poolInfo, coinsNeeded) => {
   return poolInfo.poolAssets
