@@ -2782,21 +2782,21 @@
   resolved "https://registry.npmmirror.com/@sinonjs/text-encoding/-/text-encoding-0.7.2.tgz#5981a8db18b56ba38ef0efb7d995b12aa7b51918"
   integrity sha512-sXXKG+uL9IrKqViTtao2Ws6dy0znu9sOaP1di/jKGW1M6VssO8vlpXCQcpZ+jisQ1tTFAC5Jo/EOzFbggBagFQ==
 
-"@starship-ci/cli@0.5.0":
-  version "0.5.0"
-  resolved "https://registry.npmjs.org/@starship-ci/cli/-/cli-0.5.0.tgz#a4f9bec4b08508b2e2225dc69f2971760bf9b0bd"
-  integrity sha512-8puZveYJxe2wmXTkqTK2i3ypG/CR+vaixlGbxKzpaqAFKbhuj6u2hUGIp4MaXyOoDLck5dMXFc8vIP/o4sW0sg==
+"@starship-ci/cli@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.npmjs.org/@starship-ci/cli/-/cli-0.6.0.tgz#1c12b0c5146632b1bf190f4f32863d1223b6abb6"
+  integrity sha512-os75jU5LU7L64MO7GWjNiy6ORyZ8lWY4L8SXvhFKLhC+nlLQXqlxJlvUnRS/Vdft7tyd0dYLtuFZu1okPecG4w==
   dependencies:
-    "@starship-ci/client" "^0.3.0"
+    "@starship-ci/client" "^0.4.0"
     chalk "^4.1.0"
     deepmerge "^4.3.1"
     js-yaml "^4.1.0"
     minimist "^1.2.8"
 
-"@starship-ci/client@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.npmjs.org/@starship-ci/client/-/client-0.3.0.tgz#8546ce8638d5f10eca57fc4aea55ad602f85923f"
-  integrity sha512-3seBA3GldBJmDHdRqnNWnuZV+YJiH7/np2yttDOrotkipQTc0FHw5JeKPigP0CxSEFoDmhKLmIXm8qXT6fgZpw==
+"@starship-ci/client@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.npmjs.org/@starship-ci/client/-/client-0.4.0.tgz#9398e1aa3706f72ff6c4f1d13f086208e2376f00"
+  integrity sha512-DQcNEOR/PcVU2dAfro7puV4AzKIyzFbOkqrndATmlbUMuvEq90uiuB+kO+RwVtyHf/02ztlEBWsPs+toFawj2Q==
   dependencies:
     chalk "^4.1.0"
     deepmerge "^4.3.1"

@@ -33,9 +33,9 @@
     "cleanKind": "starship cleanKind --config ./starship/configs/starship.yaml",
     "starship": "starship --config ./starship/configs/starship.yaml",
     "starship:local": "starship --config ./starship/configs/starship.local.yaml",
-    "e2e:test": "jest --config ./jest.starship.config.json --verbose --bail",
-    "e2e:debug": "jest --config ./jest.starship.config.json --runInBand --verbose --bail",
-    "e2e:watch": "jest --watch --config ./jest.starship.config.json"
+    "starship:test": "jest --config ./jest.starship.config.json --verbose --bail",
+    "starship:debug": "jest --config ./jest.starship.config.json --runInBand --verbose --bail",
+    "starship:watch": "jest --watch --config ./jest.starship.config.json"
   },
   "publishConfig": {
     "access": "public"
@@ -81,7 +81,7 @@
     "@protobufs/ibc": "^0.1.0",
     "@protobufs/osmosis": "^0.2.0",
     "@protobufs/tendermint": "^0.0.10",
-    "@starship-ci/cli": "0.5.0",
+    "@starship-ci/cli": "0.6.0",
     "@types/jest": "^29.5.3",
     "ast-stringify": "0.1.0",
     "axios": "^0.27.2",

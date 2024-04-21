@@ -38,4 +38,4 @@ jobs:
           version: 0.1.38
 
       - name: Run E2E Tests
-        run: cd ./packages/osmojs && yarn e2e:test
+        run: cd ./packages/osmojs && yarn starship:test
