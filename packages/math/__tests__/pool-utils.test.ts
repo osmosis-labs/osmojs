@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { assets } from 'chain-registry';
 import { asset_lists } from '@chain-registry/assets';
 import { getOsmoAssetByDenom } from "../src/utils";

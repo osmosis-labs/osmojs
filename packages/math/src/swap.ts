@@ -3,9 +3,9 @@ import { BigNumber } from "bignumber.js";
 import { CoinDenom, Trade, PrettyPair } from "./types";
 import { symbolToOsmoDenom } from "./utils";
 import { Decimal } from "decimal.js-light";
-import { SwapAmountInRoute } from "osmojs/dist/codegen/osmosis/poolmanager/v1beta1/swap_route";
-import { Pool } from "osmojs/dist/codegen/osmosis/gamm/v1beta1/balancerPool";
-import { Coin } from "osmojs/dist/codegen/cosmos/base/v1beta1/coin";
+import { SwapAmountInRoute } from "osmojs/osmosis/poolmanager/v1beta1/swap_route";
+import { Pool } from "osmojs/osmosis/gamm/v1beta1/balancerPool";
+import { Coin } from "osmojs/cosmos/base/v1beta1/coin";
 
 export const routesThroughPools = ({
   denom,
@@ -227,7 +227,7 @@ export const calcPriceImpactGivenOut = (
 };
 
 export const pow = (x: BigNumber, y: BigNumber): BigNumber => {
-  if(y.isInteger()){
+  if (y.isInteger()) {
     return x.pow(y);
   } else {
     return new BigNumber(new Decimal(x.toString()).pow(new Decimal(y.toString())).toString())

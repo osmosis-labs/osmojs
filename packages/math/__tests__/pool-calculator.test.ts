@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { assets } from 'chain-registry';
 import { asset_lists } from '@chain-registry/assets';
 import priceResponse from "../../../__fixtures__/coingecko/api/v3/simple/price/data.json";

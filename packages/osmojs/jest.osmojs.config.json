@@ -1,9 +1,0 @@
-{
-    "testTimeout": 15000,
-    "modulePathIgnorePatterns": [
-        "starship",
-        "cosmos-sdk",
-        "ics23",
-        "ibc-go"
-    ]
-}
