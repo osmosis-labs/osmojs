@@ -1,6 +1,6 @@
 {
   "name": "@osmonauts/math",
-  "version": "1.15.1",
+  "version": "1.16.0",
   "description": "Math calculations for Osmosis",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs",
@@ -28,15 +28,15 @@
     "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "chain-registry": "1.18.0",
-    "@chain-registry/assets": "1.19.0"
+    "@chain-registry/assets": "1.19.0",
+    "chain-registry": "1.18.0"
   },
   "dependencies": {
     "@chain-registry/types": "0.16.0",
     "@chain-registry/utils": "1.13.1",
     "bignumber.js": "9.1.2",
     "decimal.js-light": "^2.5.1",
-    "osmojs": "^16.12.1"
+    "osmojs": "^16.13.0"
   },
   "keywords": [
     "web3",
