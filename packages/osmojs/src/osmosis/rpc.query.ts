@@ -49,9 +49,6 @@ export const createRPCQueryClient = async ({
       }
     },
     osmosis: {
-      bridge: {
-        v1beta1: (await import("./bridge/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
-      },
       concentratedliquidity: {
         v1beta1: (await import("./concentratedliquidity/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },
