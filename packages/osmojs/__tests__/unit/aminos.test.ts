@@ -1,7 +1,7 @@
 import { coin } from '@cosmjs/amino';
 
-import { osmosis } from '../../src/codegen';
-import { AminoConverter } from '../../src/codegen/osmosis/gamm/v1beta1/tx.amino';
+import { osmosis } from '../../src';
+import { AminoConverter } from '../../src/osmosis/gamm/v1beta1/tx.amino';
 
 it('AminoConverter', async () => {
   const msg = AminoConverter['/osmosis.gamm.v1beta1.MsgJoinPool'].toAmino(

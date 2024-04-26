@@ -4,7 +4,7 @@ exports[`messages 1`] = `
 {
   "typeUrl": "/osmosis.gamm.v1beta1.MsgJoinPool",
   "value": {
-    "poolId": "606",
+    "poolId": 606n,
     "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
     "shareOutAmount": "101010101",
     "tokenInMaxs": [
@@ -25,7 +25,7 @@ exports[`messages.scoped 1`] = `
 {
   "typeUrl": "/osmosis.gamm.v1beta1.MsgJoinPool",
   "value": {
-    "poolId": "606",
+    "poolId": 606n,
     "sender": "osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc",
     "shareOutAmount": "101010101",
     "tokenInMaxs": [

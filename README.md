@@ -245,7 +245,7 @@ Make sure to create a `fee` object in addition to your message.
 For most messages, you can use the predefined fee objects.
 
 ```ts
-import { FEES } from 'osmojs';
+import { FEES } from '@osmonauts/utils';
 
 const fee = FEES.osmosis.swapExactAmountIn();
 ```

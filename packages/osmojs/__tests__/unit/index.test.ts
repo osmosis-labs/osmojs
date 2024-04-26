@@ -1,7 +1,7 @@
 import { coin } from '@cosmjs/amino';
 
-import { osmosis } from '../../src/codegen';
-import { MsgJoinPool } from '../../src/codegen/osmosis/gamm/v1beta1/tx';
+import { osmosis } from '../../src';
+import { MsgJoinPool } from '../../src/osmosis/gamm/v1beta1/tx';
 
 it('fromPartial', async () => {
   expect(

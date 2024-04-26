@@ -1,7 +1,7 @@
 import { coin } from '@cosmjs/amino';
-import { MsgJoinPool } from '../../src/codegen/osmosis/gamm/v1beta1/tx';
-import { MessageComposer  } from '../../src/codegen/osmosis/gamm/v1beta1/tx.registry';
-import { osmosis } from '../../src/codegen';
+import { MsgJoinPool } from '../../src/osmosis/gamm/v1beta1/tx';
+import { MessageComposer } from '../../src/osmosis/gamm/v1beta1/tx.registry';
+import { osmosis } from '../../src';
 
 it('encoded', async () => {
   const msg = MessageComposer.encoded.joinPool({
@@ -27,7 +27,7 @@ it('encoded', async () => {
 });
 
 it('encoded.scoped', async () => {
-  const msg =  osmosis.gamm.v1beta1.MessageComposer.encoded.joinPool({
+  const msg = osmosis.gamm.v1beta1.MessageComposer.encoded.joinPool({
     poolId: BigInt('606'),
     sender: 'osmo1f4vxvvvvvvvvvv3luuddddddddddcccccccccc',
     shareOutAmount: '101010101',
