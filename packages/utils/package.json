@@ -1,0 +1,44 @@
+{
+  "name": "@osmonauts/utils",
+  "version": "1.15.1",
+  "description": "Utils for Osmosis",
+  "author": "Dan Lynch <pyramation@gmail.com>",
+  "homepage": "https://github.com/osmosis-labs/osmojs",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "index.js",
+  "module": "esm/index.js",
+  "types": "index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/osmosis-labs/osmojs"
+  },
+  "bugs": {
+    "url": "https://github.com/osmosis-labs/osmojs/issues"
+  },
+  "scripts": {
+    "copy": "copyfiles -f LICENSE-MIT LICENSE-Apache README.md package.json dist",
+    "clean": "del dist/**",
+    "prepare": "npm run build",
+    "build": "npm run clean; tsc; tsc -p tsconfig.esm.json; npm run copy",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "osmojs": "^16.12.1"
+  },
+  "dependencies": {
+    "@cosmjs/stargate": "0.32.3",
+    "@cosmjs/amino": "0.32.3"
+  },
+  "keywords": [
+    "web3",
+    "osmosis",
+    "osmojs",
+    "dex",
+    "math"
+  ]
+}

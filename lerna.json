@@ -1,5 +1,5 @@
 {
-  "lerna": "7",
+  "lerna": "6",
   "conventionalCommits": true,
   "npmClient": "yarn",
   "npmClientArgs": [
@@ -12,7 +12,7 @@
   "registry": "https://registry.npmjs.org",
   "command": {
     "create": {
-      "homepage": "https://github.com/cosmology-tech/telescope",
+      "homepage": "https://github.com/osmosis-labs/osmojs",
       "license": "SEE LICENSE IN LICENSE",
       "access": "restricted"
     },

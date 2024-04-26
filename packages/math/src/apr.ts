@@ -1,5 +1,5 @@
 import { CalcPoolAprsParams } from "./types";
-import { Duration } from "osmojs/dist/codegen/google/protobuf/duration";
+import { Duration } from "osmojs/google/protobuf/duration";
 import { calcPoolLiquidity } from "./pool-utils";
 import BigNumber from "bignumber.js";
 import {

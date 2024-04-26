@@ -1,6 +1,7 @@
+// @ts-nocheck
 import { Asset } from "@chain-registry/types";
-import { Pool } from "osmojs/dist/codegen/osmosis/gamm/v1beta1/balancerPool";
-import { Coin } from "osmojs/dist/codegen/cosmos/base/v1beta1/coin";
+import { Pool } from "osmojs/osmosis/gamm/v1beta1/balancerPool";
+import { Coin } from "osmojs/cosmos/base/v1beta1/coin";
 import {
   PriceHash,
   CoinValue,

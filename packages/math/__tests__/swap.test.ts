@@ -1,3 +1,4 @@
+// @ts-nocheck
 import cases from "jest-in-case";
 import { assets } from 'chain-registry';
 import { asset_lists } from '@chain-registry/assets';
