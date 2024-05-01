@@ -2507,21 +2507,22 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@starship-ci/cli@1.4.5", "@starship-ci/cli@^1.4.5":
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/@starship-ci/cli/-/cli-1.4.5.tgz#06f5904f49fd25d1d25bd3278c8db8d1b6873de8"
-  integrity sha512-jvDxg0OImOq6DOvPINgLjGJOah9qIt3POkaELVwLXi0SkUzQDf2Nha9UYOaSs1mI0KBoZAmUwIocTOcGHISCGw==
+"@starship-ci/cli@1.5.0", "@starship-ci/cli@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@starship-ci/cli/-/cli-1.5.0.tgz#c761dfe569bd862fa11599321faaab450ed6cc7b"
+  integrity sha512-Ks3fPCFpVfw1qGxY7S57qFEUe6Ew3Q9YiiYK6bUWH86xcQLtLAdNBJZF39XZom9RXBcKwnStxF0vI0TCBYc5QA==
   dependencies:
-    "@starship-ci/client" "^1.2.4"
+    "@starship-ci/client" "^1.3.0"
     chalk "^4.1.0"
     deepmerge "^4.3.1"
+    inquirerer "^1.9.0"
     js-yaml "^4.1.0"
     minimist "^1.2.8"
 
-"@starship-ci/client@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@starship-ci/client/-/client-1.2.4.tgz#aa84383397167c4249395ad0c856ee149e16eefc"
-  integrity sha512-XleLm5gcLdpsJLOn5AmCoZg3rgwKs+dp+ocJRUlOlTeRTn9A91MAD37KVoXmRteKSBiUCBsveD2EVKVhILHUWQ==
+"@starship-ci/client@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@starship-ci/client/-/client-1.3.0.tgz#7d60634da04bc65ac5519460ad3d41a8b44b02ab"
+  integrity sha512-zV5rygG34LhNxQG8RJiNxuoC2ZJ6fivm2EC/SpRIoxYJRC2NNVZDBhMiF9kTRBYCTkMM5mRUxiWdmRIwLR30JQ==
   dependencies:
     chalk "^4.1.0"
     deepmerge "^4.3.1"
@@ -5357,6 +5358,16 @@ inquirerer@0.1.3:
     colors "^1.1.2"
     inquirer "^6.0.0"
     inquirer-autocomplete-prompt "^0.11.1"
+
+inquirerer@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/inquirerer/-/inquirerer-1.9.0.tgz#108071773a28ea5b950271572ac3051f34e0c92e"
+  integrity sha512-/LAn/F70YvRQZWz9r1q1seoO2oRMiSCSK8xKHGlkNebSibx5FppUKZLEjXgkCy1tgccas933q/Y7qNccFxrYkw==
+  dependencies:
+    chalk "^4.1.0"
+    deepmerge "^4.3.1"
+    js-yaml "^4.1.0"
+    minimist "^1.2.8"
 
 interpret@^1.0.0:
   version "1.4.0"
