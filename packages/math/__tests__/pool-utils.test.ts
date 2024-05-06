@@ -72,11 +72,9 @@ export const omit = (obj, ...props) => {
 describe("Test pool calculations", () => {
   let osmosisAssets, pools, prices;
   beforeAll(() => {
-    osmosisAssets = assets.find(({ chain_name }) => chain_name === 'osmosis');
-    const osmosisAssetList = asset_lists.find(({ chain_name }) => chain_name === 'osmosis');
-    osmosisAssets = [...(osmosisAssets?.assets || []), ...(osmosisAssetList?.assets || [])];
+    osmosisAssets = assets.filter(a => a.chain_name === 'osmosis')
     pools = poolResponse.pools.map((p) => omit(p, "@type"));
-    prices = convertGeckoPricesToDenomPriceHash(osmosisAssets, priceResponse);
+    prices = convertGeckoPricesToDenomPriceHash([...assets, ...asset_lists], priceResponse);
   });
 
   cases(
