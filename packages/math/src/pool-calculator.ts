@@ -1,4 +1,4 @@
-import { Asset } from '@chain-registry/types';
+import { AssetList } from '@chain-registry/types';
 import { Pool } from "osmojs/osmosis/gamm/v1beta1/balancerPool";
 import { Coin } from "osmojs/cosmos/base/v1beta1/coin";
 import {
@@ -24,11 +24,11 @@ import {
 } from './pool-utils';
 
 export interface LiquidityPoolCalculatorOptions {
-  assets: Asset[];
+  assets: AssetList[];
 }
 
 export class LiquidityPoolCalculator {
-  assets: Asset[];
+  assets: AssetList[];
 
   constructor(options: LiquidityPoolCalculatorOptions) {
     this.assets = options.assets;
