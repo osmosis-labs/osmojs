@@ -1,4 +1,4 @@
-import { Asset, AssetDenomUnit } from "@chain-registry/types";
+import { AssetDenomUnit, AssetList } from "@chain-registry/types";
 import { Coin } from "osmojs/cosmos/base/v1beta1/coin";
 import { Duration } from "osmojs/google/protobuf/duration";
 import { Pool } from "osmojs/osmosis/gamm/v1beta1/balancerPool";
@@ -58,7 +58,7 @@ export interface PoolPretty extends Pool {
 export interface CalcPoolAprsParams {
   activeGauges: Gauge[];
   pool: Pool;
-  assets: Asset[];
+  assets: AssetList[];
   prices: PriceHash;
   superfluidPools: SuperfluidAsset[];
   aprSuperfluid: string | number;

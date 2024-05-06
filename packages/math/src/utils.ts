@@ -6,73 +6,73 @@ import {
   PriceHash,
   CoinGeckoUSDResponse,
 } from "./types";
-import { Asset } from "@chain-registry/types";
+import { Asset, AssetList } from "@chain-registry/types";
 import {
   getAssetByDenom,
   getDenomByCoinGeckoId,
-  getSymbolByChainDenom,
-  getChainDenomBySymbol,
+  getSymbolByDenom,
+  getDenomBySymbol,
   getExponentByDenom as _getExponentByDenom,
-  convertCoinGeckoPricesToDenomPriceMap,
-  noDecimals as _noDecimals,
-  convertBaseUnitsToDollarValue,
-  convertDollarValueToDenomUnits,
-  convertBaseUnitsToDisplayUnits
+  mapCoinGeckoPricesToDenoms,
+  roundDown,
+  convertBaseUnitToDollarValue,
+  convertDollarValueToBaseUnit,
+  convertBaseUnitToDisplayUnit,
 } from "@chain-registry/utils";
 
-export const getOsmoAssetByDenom = (assets: Asset[], denom: CoinDenom): Asset => {
-  return getAssetByDenom(assets, denom);
+export const getOsmoAssetByDenom = (assets: AssetList[], denom: CoinDenom): Asset => {
+  return getAssetByDenom(assets, denom) as Asset
 };
 
-export const getDenomForCoinGeckoId = (assets: Asset[], coinGeckoId: CoinGeckoToken): CoinDenom => {
+export const getDenomForCoinGeckoId = (assets: AssetList[], coinGeckoId: CoinGeckoToken): CoinDenom => {
   return getDenomByCoinGeckoId(assets, coinGeckoId);
 };
 
-export const osmoDenomToSymbol = (assets: Asset[], denom: CoinDenom): CoinSymbol => {
-  return getSymbolByChainDenom(assets, denom);
+export const osmoDenomToSymbol = (assets: AssetList[], denom: CoinDenom): CoinSymbol => {
+  return getSymbolByDenom(assets, denom);
 };
 
-export const symbolToOsmoDenom = (assets: Asset[], token: CoinSymbol): CoinDenom => {
-  return getChainDenomBySymbol(assets, token);
+export const symbolToOsmoDenom = (assets: AssetList[], token: CoinSymbol): CoinDenom => {
+  return getDenomBySymbol(assets, token);
 };
 
-export const getExponentByDenom = (assets: Asset[], denom: CoinDenom): Exponent => {
+export const getExponentByDenom = (assets: AssetList[], denom: CoinDenom): Exponent => {
   return _getExponentByDenom(assets, denom);
 };
 
 export const convertGeckoPricesToDenomPriceHash = (
-  assets: Asset[],
+  assets: AssetList[],
   prices: CoinGeckoUSDResponse
 ): PriceHash => {
-  return convertCoinGeckoPricesToDenomPriceMap(assets, prices);
+  return mapCoinGeckoPricesToDenoms(assets, prices);
 };
 
 export const noDecimals = (num: number | string) => {
-  return _noDecimals(num);
+  return roundDown(num);
 };
 
 export const baseUnitsToDollarValue = (
-  assets: Asset[],
+  assets: AssetList[],
   prices: PriceHash,
   symbol: string,
   amount: string | number
 ) => {
-  return convertBaseUnitsToDollarValue(assets, prices, symbol, amount);
+  return convertBaseUnitToDollarValue(assets, prices, symbol, amount);
 };
 
 export const dollarValueToDenomUnits = (
-  assets: Asset[],
+  assets: AssetList[],
   prices: PriceHash,
   symbol: string,
   value: string | number
 ) => {
-  return convertDollarValueToDenomUnits(assets, prices, symbol, value);
+  return convertDollarValueToBaseUnit(assets, prices, symbol, value);
 };
 
 export const baseUnitsToDisplayUnits = (
-  assets: Asset[],
+  assets: AssetList[],
   symbol: string,
   amount: string | number
 ) => {
-  return convertBaseUnitsToDisplayUnits(assets, symbol, amount);
+  return convertBaseUnitToDisplayUnit(assets, symbol, amount);
 };
