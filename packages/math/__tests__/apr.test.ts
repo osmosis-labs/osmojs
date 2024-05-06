@@ -1,6 +1,5 @@
 // @ts-nocheck
 import { assets } from 'chain-registry';
-import { asset_lists } from '@chain-registry/assets';
 import priceResponse from "../../../__fixtures__/coingecko/api/v3/simple/price/data.json";
 import poolResponse from "../../../__fixtures__/rpc/osmosis/gamm/v1beta1/pools/data.json";
 import activeGaugesResponse from "../../../__fixtures__/rpc/osmosis/incentives/v1beta1/active_gauges/data.json";
@@ -11,6 +10,7 @@ import cases from "jest-in-case";
 import { omit } from "./pool-utils.test";
 import { calcPoolAprs } from "../src/apr";
 import { convertGeckoPricesToDenomPriceHash } from "../src/utils";
+import { asset_lists } from '@chain-registry/assets';
 
 const toCamel = (str) => {
   return str.replace(/([-_][a-z])/gi, ($1) => {
@@ -56,13 +56,11 @@ const keysToCamel = (obj) => {
 };
 
 describe("Test APR calculations", () => {
-  let osmosisAssets, pools, prices;
+  let osmosisAssets: AssetList[], pools, prices;
   beforeAll(() => {
-    osmosisAssets = assets.find(({ chain_name }) => chain_name === 'osmosis');
-    const osmosisAssetList = asset_lists.find(({ chain_name }) => chain_name === 'osmosis');
-    osmosisAssets = [...(osmosisAssets?.assets || []), ...(osmosisAssetList?.assets || [])];
+    osmosisAssets = assets.filter(a => a.chain_name === "osmosis");
     pools = poolResponse.pools;
-    prices = convertGeckoPricesToDenomPriceHash(osmosisAssets, priceResponse);
+    prices = convertGeckoPricesToDenomPriceHash([...assets, ...asset_lists], priceResponse);
   });
 
   cases(
