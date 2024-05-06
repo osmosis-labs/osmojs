@@ -22,16 +22,13 @@ import poolResponse from "../../../__fixtures__/rpc/osmosis/gamm/v1beta1/pools/d
 import { omit } from "./pool-utils.test";
 import BigNumber from "bignumber.js";
 
-const osmosisAssets = [
-  ...(assets.find(({ chain_name }) => chain_name === 'osmosis')?.assets || []),
-  ...(asset_lists.find(({ chain_name }) => chain_name === 'osmosis')?.assets || [])
-];
+const osmosisAssets = assets.filter(a => a.chain_name === 'osmosis')
 
 describe("Test swap calculations", () => {
   let pools, prices;
   beforeAll(() => {
     pools = poolResponse.pools.map((p) => omit(p, "@type"));
-    prices = convertGeckoPricesToDenomPriceHash(osmosisAssets, priceResponse);
+    prices = convertGeckoPricesToDenomPriceHash([...assets, ...asset_lists], priceResponse);
   });
 
   cases(
