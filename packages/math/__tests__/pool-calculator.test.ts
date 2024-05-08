@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { assets } from 'chain-registry';
+import { assets } from 'chain-registry/mainnet';
 import { asset_lists } from '@chain-registry/assets';
 import priceResponse from "../../../__fixtures__/coingecko/api/v3/simple/price/data.json";
 import poolResponse from "../../../__fixtures__/rpc/osmosis/gamm/v1beta1/pools/data.json";
@@ -56,14 +56,12 @@ const fakeBalances = [
 ];
 
 describe("Test pool calculations of LiquidityPoolCalculator", () => {
-  let osmosisAssets, pools, prices;
+  let osmosisAssets: AssetList[], pools, prices;
   let calculator: LiquidityPoolCalculator;
   beforeAll(() => {
-    osmosisAssets = assets.find(({ chain_name }) => chain_name === 'osmosis');
-    const osmosisAssetList = asset_lists.find(({ chain_name }) => chain_name === 'osmosis');
-    osmosisAssets = [...(osmosisAssets?.assets || []), ...(osmosisAssetList?.assets || [])];
+    osmosisAssets = assets.filter(a => a.chain_name === "osmosis");
     pools = poolResponse.pools.map((p) => omit(p, "@type"));
-    prices = convertGeckoPricesToDenomPriceHash(osmosisAssets, priceResponse);
+    prices = convertGeckoPricesToDenomPriceHash([...asset_lists, ...assets], priceResponse);
     calculator = new LiquidityPoolCalculator({ assets: osmosisAssets });
   });
 

@@ -33,8 +33,9 @@
   },
   "dependencies": {
     "@chain-registry/types": "0.16.0",
-    "@chain-registry/utils": "1.13.1",
+    "@chain-registry/utils": "^1.30.0",
     "bignumber.js": "9.1.2",
+    "chain-registry": "^1.46.7",
     "decimal.js-light": "^2.5.1",
     "osmojs": "^16.13.0"
   },

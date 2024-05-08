@@ -1,4 +1,4 @@
-import { Asset } from "@chain-registry/types";
+import { AssetList } from "@chain-registry/types";
 import { BigNumber } from "bignumber.js";
 import { CoinDenom, Trade, PrettyPair } from "./types";
 import { symbolToOsmoDenom } from "./utils";
@@ -47,7 +47,7 @@ export const routesThroughPools = ({
 };
 
 export const getRoutesForTrade = (
-  assets: Asset[],
+  assets: AssetList[],
   {
     trade,
     pairs,

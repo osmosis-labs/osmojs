@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Asset } from "@chain-registry/types";
+import { AssetList } from "@chain-registry/types";
 import { Pool } from "osmojs/osmosis/gamm/v1beta1/balancerPool";
 import { Coin } from "osmojs/cosmos/base/v1beta1/coin";
 import {
@@ -21,12 +21,11 @@ import {
   getOsmoAssetByDenom,
 } from "./utils";
 
-export const calcPoolLiquidity = (assets: Asset[], pool: Pool, prices: PriceHash): string => {
+export const calcPoolLiquidity = (assets: AssetList[], pool: Pool, prices: PriceHash): string => {
   return pool.poolAssets
     .reduce((res, { token }) => {
-      const liquidity = new BigNumber(token.amount)
-        .shiftedBy(-getExponentByDenom(assets, token.denom))
-        .multipliedBy(prices[token.denom]);
+      const symbol = osmoDenomToSymbol(assets, token.denom);
+      const liquidity = baseUnitsToDollarValue(assets, prices, symbol, token.amount);
       return res.plus(liquidity);
     }, new BigNumber(0))
     .toString();
@@ -37,7 +36,7 @@ export const getPoolByGammName = (pools: Pool[], gammId: string): Pool => {
 };
 
 export const convertGammTokenToDollarValue = (
-  assets: Asset[],
+  assets: AssetList[],
   coin: Coin,
   pool: Pool,
   prices: PriceHash
@@ -52,7 +51,7 @@ export const convertGammTokenToDollarValue = (
 };
 
 export const convertDollarValueToCoins = (
-  assets: Asset[],
+  assets: AssetList[],
   value: string | number,
   pool: Pool,
   prices: PriceHash
@@ -78,7 +77,7 @@ export const convertDollarValueToCoins = (
 };
 
 export const convertDollarValueToShares = (
-  assets: Asset[],
+  assets: AssetList[],
   value: string | number,
   pool: Pool,
   prices: PriceHash
@@ -93,7 +92,7 @@ export const convertDollarValueToShares = (
 };
 
 export const prettyPool = (
-  assets: Asset[],
+  assets: AssetList[],
   pool: Pool,
   { includeDetails = false } = {}
 ): PoolPretty => {
@@ -143,15 +142,16 @@ export const prettyPool = (
 };
 
 export const calcCoinsNeededForValue = (
-  assets: Asset[],
+  assets: AssetList[],
   prices: PriceHash,
   poolInfo: PoolPretty,
   value: string | number
 ) => {
   const val = new BigNumber(value);
   const coinsNeeded = poolInfo.poolAssetsPretty.map(
-    ({ symbol, amount, denom, ratio }) => {
+    ({ amount, denom, ratio }) => {
       const valueByRatio = val.multipliedBy(ratio).toString();
+      const symbol = osmoDenomToSymbol(assets, denom)
       const amountNeeded = dollarValueToDenomUnits(
         assets,
         prices,
@@ -177,7 +177,7 @@ export const calcCoinsNeededForValue = (
 };
 
 export const getCoinBalance = (
-  assets: Asset[],
+  assets: AssetList[],
   prices: PriceHash,
   balances: Coin[],
   prettyAsset: PoolAssetPretty
@@ -190,10 +190,12 @@ export const getCoinBalance = (
     return { ...coinBalance, displayValue: 0 };
   }
 
+  const symbol = osmoDenomToSymbol(assets, prettyAsset.denom)
+
   const displayValue = baseUnitsToDollarValue(
     assets,
     prices,
-    prettyAsset.symbol,
+    symbol,
     coinBalance.amount
   );
 
@@ -201,7 +203,7 @@ export const getCoinBalance = (
 };
 
 export const calcMaxCoinsForPool = (
-  assets: Asset[],
+  assets: AssetList[],
   prices: PriceHash,
   poolInfo: PoolPretty,
   balances: Coin[]
@@ -218,7 +220,10 @@ export const calcMaxCoinsForPool = (
     const coinValue = new BigNumber(smallestTotalDollarValue)
       .multipliedBy(asset.ratio)
       .toString();
-    const amount = dollarValueToDenomUnits(assets, prices, asset.symbol, coinValue);
+
+    const symbol = osmoDenomToSymbol(assets, asset.denom)
+
+    const amount = dollarValueToDenomUnits(assets, prices, symbol, coinValue);
 
     return {
       denom: asset.denom,
@@ -251,7 +256,7 @@ export const calcShareOutAmount = (
 };
 
 export const makePoolPairs = (
-  assets: Asset[],
+  assets: AssetList[],
   pools: Pool[],
   prices: PriceHash,
   liquidityLimit = 100_000
