@@ -36,7 +36,7 @@ telescope({
           'cosmos.app.v1beta1',
           'cosmos.autocli.v1',
           'cosmos.base.kv.v1beta1',
-          'cosmos.base.reflection.v1beta1',
+          // 'cosmos.base.reflection.v1beta1',
           'cosmos.base.snapshots.v1beta1',
           'cosmos.base.store.v1beta1',
           'cosmos.base.tendermint.v1beta1',
@@ -106,6 +106,7 @@ telescope({
     },
     rpcClients: {
       enabled: true,
+      enabledServices: ['Service', 'Msg', 'Query', 'ReflectionService'],
       camelCase: true,
       useConnectComet: true
     }
