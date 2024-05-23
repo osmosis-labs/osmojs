@@ -106,6 +106,7 @@ telescope({
     },
     rpcClients: {
       enabled: true,
+      enabledServices: ['Service', 'Msg', 'Query', 'ReflectionService'],
       camelCase: true,
       useConnectComet: true
     }
