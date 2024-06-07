@@ -20,8 +20,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
-          cache: 'yarn'
+          node-version: "20.x"
+          cache: "yarn"
 
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
@@ -31,7 +31,7 @@ jobs:
 
       - name: Set Up Starship Infrastructure
         id: starship-infra
-        uses: cosmology-tech/starship-action@0.2.12
+        uses: cosmology-tech/starship-action@0.2.19
         with:
           values: packages/osmojs/starship/configs/config.workflow.yaml
           port-forward: true

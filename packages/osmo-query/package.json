@@ -39,8 +39,7 @@
     "@protobufs/google": "^0.0.10",
     "@protobufs/ibc": "^0.1.0",
     "@protobufs/osmosis": "^0.4.0",
-    "@protobufs/tendermint": "^0.0.10",
-    "@starship-ci/cli": "1.5.0"
+    "@protobufs/tendermint": "^0.0.10"
   },
   "dependencies": {
     "@cosmjs/amino": "0.32.3",

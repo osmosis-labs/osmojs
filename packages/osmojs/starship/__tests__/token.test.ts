@@ -82,7 +82,7 @@ describe('Token transfers', () => {
     const {
       chainInfo: cosmosChainInfo,
       getRpcEndpoint: cosmosRpcEndpoint
-    } = useChain('cosmos');
+    } = useChain('cosmoshub');
 
     const {
       getRpcEndpoint: osmosisRpcEndpoint

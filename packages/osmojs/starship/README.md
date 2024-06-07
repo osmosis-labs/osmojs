@@ -6,14 +6,11 @@ Deploy
 # setup helm/starship
 yarn starship setup
 
-# sanity check
-yarn starship get-pods
-
 # deploy starship
 yarn starship deploy
 
 # wait til STATUS=Running
-yarn starship get-pods
+yarn starship wait-for-pods 
 
 # port forwarding
 yarn starship start-ports
