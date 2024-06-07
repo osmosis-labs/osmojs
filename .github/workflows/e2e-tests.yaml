@@ -36,7 +36,7 @@ jobs:
           values: packages/osmojs/starship/configs/config.workflow.yaml
           port-forward: true
           version: 0.2.3
-          cli-version: a5fd3f14d700e384f6afd170f236d24c52410da5
+          cli-version: f35dc85407b350077765a0b3c17a4c1632c7d53c
 
       - name: Run E2E Tests
         run: cd ./packages/osmojs && yarn starship:test
