@@ -46,8 +46,8 @@
     "@protobufs/ibc": "^0.1.0",
     "@protobufs/osmosis": "^0.4.0",
     "@protobufs/tendermint": "^0.0.10",
-    "@starship-ci/cli": "^1.5.0",
-    "starshipjs": "^1.1.4"
+    "@starship-ci/cli": "^2.1.0",
+    "starshipjs": "^2.1.0"
   },
   "dependencies": {
     "@cosmjs/amino": "0.32.3",

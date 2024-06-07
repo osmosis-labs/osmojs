@@ -4,10 +4,9 @@ import './setup.test';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
 import BigNumber from 'bignumber.js';
-import { useChain } from 'starshipjs';
+import { generateMnemonic,useChain } from 'starshipjs';
 
 import { cosmos, getSigningOsmosisClient } from '../../src';
-import { generateMnemonic } from '../src';
 
 describe('Staking tokens testing', () => {
   let wallet, denom, address;

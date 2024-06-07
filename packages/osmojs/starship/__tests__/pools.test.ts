@@ -7,10 +7,9 @@ import { coin } from '@cosmjs/amino';
 import { Secp256k1HdWallet } from '@cosmjs/amino';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { assertIsDeliverTxSuccess, StargateClient } from '@cosmjs/stargate';
-import { useChain } from 'starshipjs';
+import { generateMnemonic, useChain } from 'starshipjs';
 
 import { getSigningOsmosisClient, google, osmosis } from '../../src';
-import { generateMnemonic } from '../src';
 import { calcShareOutAmount, transferIbcTokens } from '../src';
 
 describe('Pool testing over IBC tokens', () => {
@@ -48,7 +47,7 @@ describe('Pool testing over IBC tokens', () => {
 
     // Transfer osmosis and ibc tokens to address, send only osmo to address
     await creditFromFaucet(address);
-    await transferIbcTokens('cosmos', 'osmosis', address, '100000000');
+    await transferIbcTokens('cosmoshub', 'osmosis', address, '100000000');
   }, 200000);
 
   it('check address has tokens', async () => {
