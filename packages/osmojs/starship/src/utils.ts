@@ -1,16 +1,11 @@
 // @ts-nocheck
 import { ChainInfo } from "@chain-registry/client";
-import { Bip39, Random } from "@cosmjs/crypto";
 import { Coin, DirectSecp256k1HdWallet, OfflineSigner } from '@cosmjs/proto-signing';
 import { assertIsDeliverTxSuccess, SigningStargateClient } from '@cosmjs/stargate';
 import BigNumber from 'bignumber.js';
-import { ConfigContext, useChain } from 'starshipjs';
+import { ConfigContext, generateMnemonic, useChain } from 'starshipjs';
 
 import { getSigningIbcClient } from '../../src';
-
-export function generateMnemonic(): string {
-  return Bip39.encode(Random.getBytes(16)).toString();
-}
 
 export const calcShareOutAmount = (poolInfo, coinsNeeded) => {
   return poolInfo.poolAssets

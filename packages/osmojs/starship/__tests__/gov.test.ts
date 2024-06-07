@@ -8,13 +8,13 @@ import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { assertIsDeliverTxSuccess } from '@cosmjs/stargate';
 import { BigNumber } from 'bignumber.js';
 import { useChain } from 'starshipjs';
+import { generateMnemonic } from 'starshipjs';
 
 import {
   cosmos,
   getSigningCosmosClient,
   getSigningOsmosisClient
 } from '../../src';
-import { generateMnemonic } from '../src';
 import { waitUntil } from '../src';
 
 describe('Governance tests for osmosis', () => {
@@ -131,8 +131,8 @@ describe('Governance tests for osmosis', () => {
     });
 
     const contentMsg = cosmos.gov.v1beta1.TextProposal.fromPartial({
-      title: 'Test Proposal',
-      description: 'Test text proposal for the e2e testing'
+      title: 'My Test Proposal 🚀',
+      description: 'Test text proposal for the e2e testing 🚀'
     });
 
     // Stake half of the tokens

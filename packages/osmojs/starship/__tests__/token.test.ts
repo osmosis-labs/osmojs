@@ -3,10 +3,9 @@ import './setup.test';
 
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { assertIsDeliverTxSuccess, StargateClient } from '@cosmjs/stargate';
-import { useChain } from 'starshipjs';
+import { generateMnemonic, useChain } from 'starshipjs';
 
 import { getSigningOsmosisClient, ibc } from '../../src';
-import { generateMnemonic } from '../src';
 
 describe('Token transfers', () => {
   let wallet, denom, address;

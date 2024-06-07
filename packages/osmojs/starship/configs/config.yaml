@@ -24,10 +24,10 @@ relayers:
       - osmosis-1
       - cosmos-2
 
-# explorer:
-#   enabled: true
-#   ports:
-#     rest: 8080
+explorer:
+  enabled: true
+  ports:
+    rest: 8080
 
 registry:
   enabled: true

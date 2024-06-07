@@ -7,10 +7,9 @@ import { coin } from '@cosmjs/amino';
 import { Secp256k1HdWallet } from '@cosmjs/amino';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { assertIsDeliverTxSuccess, StargateClient } from '@cosmjs/stargate';
-import { useChain } from 'starshipjs';
+import { generateMnemonic, useChain } from 'starshipjs';
 
 import { getSigningOsmosisClient, google, osmosis } from '../../src';
-import { generateMnemonic } from '../src';
 import { calcShareOutAmount, transferIbcTokens } from '../src';
 
 describe('Pool testing over IBC tokens', () => {

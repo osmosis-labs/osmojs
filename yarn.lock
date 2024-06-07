@@ -1888,7 +1888,7 @@
     write-pkg "4.0.0"
     yargs "16.2.0"
 
-"@noble/hashes@^1", "@noble/hashes@^1.0.0":
+"@noble/hashes@^1", "@noble/hashes@^1.0.0", "@noble/hashes@^1.2.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.4.0.tgz#45814aa329f30e4fe0ba49426f49dfccdd066426"
   integrity sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==
@@ -2516,22 +2516,22 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@starship-ci/cli@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@starship-ci/cli/-/cli-2.0.2.tgz#f7d429855eaf4e8394f8bb93067a79575c79a6fb"
-  integrity sha512-CfhiHY553k05uvO3ytFpE5WpiJN00SOpBZxEE8EZ4U7byyXTocBiAWzebTb7AeB7v1iaTEACKq9/4/X0dIuELQ==
+"@starship-ci/cli@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@starship-ci/cli/-/cli-2.1.0.tgz#4e469edf6dceea42fe9a9ed92e4f35b167438e82"
+  integrity sha512-rngL4hWQyHwJjnMd1UfsP2IcCKsBJUw7zHf2V1cwq8NRS7g7FRkWSSbyCN1F6LjIEbuP216eI1/qwnNDd56bwQ==
   dependencies:
-    "@starship-ci/client" "^2.0.2"
+    "@starship-ci/client" "^2.1.0"
     chalk "^4.1.0"
     deepmerge "^4.3.1"
     inquirerer "^1.9.0"
     js-yaml "^4.1.0"
     minimist "^1.2.8"
 
-"@starship-ci/client@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@starship-ci/client/-/client-2.0.2.tgz#0e432b339b6a2dbb1b6cf20286e99ac8e658ebf7"
-  integrity sha512-3qiIJqyKyVC7C+EluP5i/fzLOoWgWHlHnu091y9O+2lR/0bOFNJxMtTOTYaREZhdHyQ7gc/6RBZLVm39dIPP6w==
+"@starship-ci/client@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@starship-ci/client/-/client-2.1.0.tgz#e316af56a7055c198c71104d9d58df6f02dd80bc"
+  integrity sha512-n8l+bpSGW86fHKpbmP6JGCJxJ2mDzsF6Dm40YUx9FZW44qrjiFVy4eJ67xL8psQ8e3367mSuduFbvdnNUZvzOQ==
   dependencies:
     chalk "^4.1.0"
     deepmerge "^4.3.1"
@@ -3261,6 +3261,13 @@ bin-links@^4.0.1:
     npm-normalize-package-bin "^3.0.0"
     read-cmd-shim "^4.0.0"
     write-file-atomic "^5.0.0"
+
+bip39@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/bip39/-/bip39-3.1.0.tgz#c55a418deaf48826a6ceb34ac55b3ee1577e18a3"
+  integrity sha512-c9kiwdk45Do5GL0vJMe7tS95VjCii65mYAH7DfWl3uW8AVzXKQVUm64i3hzVybBDMp9r7j9iNxR85+ul8MdN/A==
+  dependencies:
+    "@noble/hashes" "^1.2.0"
 
 bl@^4.0.3, bl@^4.1.0:
   version "4.1.0"
@@ -8306,12 +8313,13 @@ stack-utils@^2.0.3:
   dependencies:
     escape-string-regexp "^2.0.0"
 
-starshipjs@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/starshipjs/-/starshipjs-2.0.2.tgz#f441ab43b39c3bd2d29ece466375590d341da0be"
-  integrity sha512-863+4l8Ra6FejYIybkHFltdHIe163fFj3jjx6IKvoFX3E/x2TFrnF7AM9ldbsWQUkPznIAP5QBA0pDDNfW6wJg==
+starshipjs@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/starshipjs/-/starshipjs-2.1.0.tgz#6e3462af8d8b3eaadbed37e236c9e00f99f5cfc5"
+  integrity sha512-z41NLSnBlCZ1yarcwgMFYioJYHiLZ2hMF9qvqmvg0vJ8lyVfWCRYYDYFFtZTcjKsbZgiayW6vP7HLRMqYq1c7g==
   dependencies:
     "@chain-registry/client" "1.18.1"
+    bip39 "^3.1.0"
     js-yaml "^4.1.0"
     node-fetch "^2.6.9"
 
