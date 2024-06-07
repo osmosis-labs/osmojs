@@ -48,7 +48,7 @@ describe('Pool testing over IBC tokens', () => {
 
     // Transfer osmosis and ibc tokens to address, send only osmo to address
     await creditFromFaucet(address);
-    await transferIbcTokens('cosmos', 'osmosis', address, '100000000');
+    await transferIbcTokens('cosmoshub', 'osmosis', address, '100000000');
   }, 200000);
 
   it('check address has tokens', async () => {
