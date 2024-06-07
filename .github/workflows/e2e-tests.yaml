@@ -31,7 +31,7 @@ jobs:
 
       - name: Set Up Starship Infrastructure
         id: starship-infra
-        uses: cosmology-tech/starship-action@0.2.19
+        uses: cosmology-tech/starship-action@0.3.0
         with:
           values: packages/osmojs/starship/configs/config.workflow.yaml
           port-forward: true
