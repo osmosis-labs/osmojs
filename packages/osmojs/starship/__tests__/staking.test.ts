@@ -24,7 +24,7 @@ describe('Staking tokens testing', () => {
       getRpcEndpoint,
       creditFromFaucet
     } = useChain('osmosis'));
-    denom = getCoin().base;
+    denom = (await getCoin()).base;
 
     // Initialize wallet
     wallet = await DirectSecp256k1HdWallet.fromMnemonic(generateMnemonic(), {
@@ -34,7 +34,7 @@ describe('Staking tokens testing', () => {
 
     // Create custom cosmos interchain client
     queryClient = await cosmos.ClientFactory.createRPCQueryClient({
-      rpcEndpoint: getRpcEndpoint()
+      rpcEndpoint: await getRpcEndpoint()
     });
 
     // Transfer osmosis and ibc tokens to address, send only osmo to address
@@ -71,7 +71,7 @@ describe('Staking tokens testing', () => {
 
   it('stake tokens to genesis validator', async () => {
     const signingClient = await getSigningOsmosisClient({
-      rpcEndpoint: getRpcEndpoint(),
+      rpcEndpoint: await getRpcEndpoint(),
       signer: wallet
     });
 

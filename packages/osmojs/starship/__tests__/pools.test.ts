@@ -16,8 +16,8 @@ describe('Pool testing over IBC tokens', () => {
   let protoSigner, aminoSigner, denom, address;
 
   let chainInfo: ChainInfo;
-  let getCoin: () => Asset;
-  let getRpcEndpoint: () => string;
+  let getCoin: () => Promise<Asset>;
+  let getRpcEndpoint: () => Promise<string>;
   let creditFromFaucet: (address: string, denom?: string | null) => Promise<void>;
 
   // Variables used accross testcases
@@ -33,7 +33,7 @@ describe('Pool testing over IBC tokens', () => {
       getRpcEndpoint,
       creditFromFaucet
     } = useChain('osmosis'));
-    denom = getCoin().base;
+    denom = (await getCoin()).base;
 
     const mnemonic = generateMnemonic();
     // Initialize wallet
@@ -51,7 +51,7 @@ describe('Pool testing over IBC tokens', () => {
   }, 200000);
 
   it('check address has tokens', async () => {
-    const client = await StargateClient.connect(getRpcEndpoint());
+    const client = await StargateClient.connect(await getRpcEndpoint());
     const balances = await client.getAllBalances(address);
 
     expect(balances.length).toEqual(2);
@@ -62,7 +62,7 @@ describe('Pool testing over IBC tokens', () => {
 
   it('create ibc pools with ibc atom osmo', async () => {
     const signingClient = await getSigningOsmosisClient({
-      rpcEndpoint: getRpcEndpoint(),
+      rpcEndpoint: await getRpcEndpoint(),
       signer: protoSigner
     });
 
@@ -128,10 +128,10 @@ describe('Pool testing over IBC tokens', () => {
   it('query pool via id, verify creation', async () => {
     // Query the created pool
     const queryClient = await osmosis.ClientFactory.createRPCQueryClient({
-      rpcEndpoint: getRpcEndpoint()
+      rpcEndpoint: await getRpcEndpoint()
     });
 
-    const client = await StargateClient.connect(getRpcEndpoint());
+    const client = await StargateClient.connect(await getRpcEndpoint());
 
     const poolResponse = await queryClient.osmosis.gamm.v1beta1.pool({
       poolId
@@ -160,7 +160,7 @@ describe('Pool testing over IBC tokens', () => {
 
   it('join pool', async () => {
     const signingClient = await getSigningOsmosisClient({
-      rpcEndpoint: getRpcEndpoint(),
+      rpcEndpoint: await getRpcEndpoint(),
       signer: aminoSigner
     });
 
@@ -208,7 +208,7 @@ describe('Pool testing over IBC tokens', () => {
 
   it('lock tokens', async () => {
     const signingClient = await getSigningOsmosisClient({
-      rpcEndpoint: getRpcEndpoint(),
+      rpcEndpoint: await getRpcEndpoint(),
       signer: aminoSigner
     });
 
@@ -251,7 +251,7 @@ describe('Pool testing over IBC tokens', () => {
 
   it('swap tokens using pool, to address without ibc token', async () => {
     const signingClient = await getSigningOsmosisClient({
-      rpcEndpoint: getRpcEndpoint(),
+      rpcEndpoint: await getRpcEndpoint(),
       signer: aminoSigner
     });
 

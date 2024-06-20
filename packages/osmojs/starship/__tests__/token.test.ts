@@ -18,7 +18,7 @@ describe('Token transfers', () => {
       getRpcEndpoint,
       creditFromFaucet
     } = useChain('osmosis'));
-    denom = getCoin().base;
+    denom = (await getCoin()).base;
 
     // Initialize wallet
     wallet = await DirectSecp256k1HdWallet.fromMnemonic(generateMnemonic(), {
@@ -38,7 +38,7 @@ describe('Token transfers', () => {
     const address2 = (await wallet2.getAccounts())[0].address;
 
     const signingClient = await getSigningOsmosisClient({
-      rpcEndpoint: getRpcEndpoint(),
+      rpcEndpoint: await getRpcEndpoint(),
       signer: wallet
     });
 
@@ -74,7 +74,7 @@ describe('Token transfers', () => {
 
   it('send ibc osmo tokens to address on cosmos chain', async () => {
     const signingClient = await getSigningOsmosisClient({
-      rpcEndpoint: getRpcEndpoint(),
+      rpcEndpoint: await getRpcEndpoint(),
       signer: wallet
     });
 
@@ -95,12 +95,12 @@ describe('Token transfers', () => {
     const cosmosAddress = (await cosmosWallet.getAccounts())[0].address;
 
     const ibcInfos = chainInfo.fetcher.getChainIbcData(
-      chainInfo.chain.chain_id
+      chainInfo.chain.chain_name
     );
     const ibcInfo = ibcInfos.find(
       (i) =>
-        i.chain_1.chain_name === chainInfo.chain.chain_id &&
-        i.chain_2.chain_name === cosmosChainInfo.chain.chain_id
+        i.chain_1.chain_name === chainInfo.chain.chain_name &&
+        i.chain_2.chain_name === cosmosChainInfo.chain.chain_name
     );
 
     expect(ibcInfo).toBeTruthy();
@@ -142,7 +142,7 @@ describe('Token transfers', () => {
     assertIsDeliverTxSuccess(resp);
 
     // Check osmos in address on cosmos chain
-    const cosmosClient = await StargateClient.connect(cosmosRpcEndpoint());
+    const cosmosClient = await StargateClient.connect(await cosmosRpcEndpoint());
     const balances = await cosmosClient.getAllBalances(cosmosAddress);
 
     // check balances
@@ -157,7 +157,7 @@ describe('Token transfers', () => {
 
     // check ibc denom trace of the same
     const queryClient = await ibc.ClientFactory.createRPCQueryClient({
-      rpcEndpoint: cosmosRpcEndpoint()
+      rpcEndpoint: await cosmosRpcEndpoint()
     });
     const trace = await queryClient.ibc.applications.transfer.v1.denomTrace({
       // @ts-ignore

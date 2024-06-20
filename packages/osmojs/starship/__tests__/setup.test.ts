@@ -14,7 +14,7 @@ describe('Test clients', () => {
 
   beforeAll(async () => {
     const { getRpcEndpoint } = useChain('osmosis');
-    client = await StargateClient.connect(getRpcEndpoint());
+    client = await StargateClient.connect(await getRpcEndpoint());
   });
 
   it('check chain height', async () => {
