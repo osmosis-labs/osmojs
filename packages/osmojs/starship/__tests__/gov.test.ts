@@ -20,8 +20,8 @@ import { waitUntil } from '../src';
 describe('Governance tests for osmosis', () => {
   let protoSigner, aminoSigner, denom, address;
   let chainInfo: ChainInfo;
-  let getCoin: () => Asset;
-  let getRpcEndpoint: () => string;
+  let getCoin: () => Promise<Asset>;
+  let getRpcEndpoint: () => Promise<string>;
   let creditFromFaucet: (address: string, denom?: string | null) => Promise<void>;
 
   // Variables used accross testcases
@@ -38,7 +38,7 @@ describe('Governance tests for osmosis', () => {
       getRpcEndpoint,
       creditFromFaucet
     } = useChain('osmosis'));
-    denom = getCoin().base;
+    denom = (await getCoin()).base;
 
     const mnemonic = generateMnemonic();
     // Initialize wallet
@@ -52,7 +52,7 @@ describe('Governance tests for osmosis', () => {
 
     // Create custom cosmos interchain client
     queryClient = await cosmos.ClientFactory.createRPCQueryClient({
-      rpcEndpoint: getRpcEndpoint()
+      rpcEndpoint: (await getRpcEndpoint())
     });
 
     // Transfer osmosis to address
@@ -89,7 +89,7 @@ describe('Governance tests for osmosis', () => {
 
   it('stake tokens to genesis validator', async () => {
     const signingClient = await getSigningOsmosisClient({
-      rpcEndpoint: getRpcEndpoint(),
+      rpcEndpoint: await getRpcEndpoint(),
       signer: protoSigner
     });
 
@@ -126,7 +126,7 @@ describe('Governance tests for osmosis', () => {
 
   it('submit a txt proposal', async () => {
     const signingClient = await getSigningCosmosClient({
-      rpcEndpoint: getRpcEndpoint(),
+      rpcEndpoint: await getRpcEndpoint(),
       signer: protoSigner
     });
 
@@ -189,7 +189,7 @@ describe('Governance tests for osmosis', () => {
   it('vote on proposal from address', async () => {
     // create genesis address signing client
     const signingClient = await getSigningCosmosClient({
-      rpcEndpoint: getRpcEndpoint(),
+      rpcEndpoint: await getRpcEndpoint(),
       signer: protoSigner
     });
 

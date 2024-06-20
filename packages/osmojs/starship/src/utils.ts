@@ -42,8 +42,8 @@ export const transferIbcTokens = async (fromChain: string, toChain: string, toAd
 
   await fromChainData.creditFromFaucet(fromAddress);
 
-  const fromClient = await setupIbcClient(fromChainData.getRpcEndpoint(), wallet);
-  const token = { denom: fromChainData.getCoin().base, amount };
+  const fromClient = await setupIbcClient(await fromChainData.getRpcEndpoint(), wallet);
+  const token = { denom: (await fromChainData.getCoin()).base, amount };
 
   const resp = await sendIbcTokens(fromClient, fromAddress, toAddress, token, ibcInfo, amount);
 
@@ -53,10 +53,10 @@ export const transferIbcTokens = async (fromChain: string, toChain: string, toAd
 
 const findIbcInfo = (chainInfo: ChainInfo, toChainInfo: ChainInfo) => {
   const registry = ConfigContext.registry;
-  const ibcInfos = registry!.getChainIbcData(chainInfo.chain.chain_id);
+  const ibcInfos = registry!.getChainIbcData(chainInfo.chain.chain_name);
   const found = ibcInfos.find(
-    i => i.chain_1.chain_name === chainInfo.chain.chain_id &&
-      i.chain_2.chain_name === toChainInfo.chain.chain_id
+    i => i.chain_1.chain_name === chainInfo.chain.chain_name &&
+      i.chain_2.chain_name === toChainInfo.chain.chain_name
   );
   if (!found) throw new Error('Cannot find IBC info');
   return found;
