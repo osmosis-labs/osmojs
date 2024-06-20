@@ -2516,22 +2516,22 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@starship-ci/cli@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@starship-ci/cli/-/cli-2.1.0.tgz#4e469edf6dceea42fe9a9ed92e4f35b167438e82"
-  integrity sha512-rngL4hWQyHwJjnMd1UfsP2IcCKsBJUw7zHf2V1cwq8NRS7g7FRkWSSbyCN1F6LjIEbuP216eI1/qwnNDd56bwQ==
+"@starship-ci/cli@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@starship-ci/cli/-/cli-2.7.0.tgz#706a90ae6f3e3e1c784b28fe260e9388dbe95c83"
+  integrity sha512-gcLT0hA/wQJtidHZiIb1ICgJtF2ISSpiUVb/3dGU/1tBYKKOgYMuTkmTUOnocGI3QdkAwOB+7Rlw0BeH4fieFg==
   dependencies:
-    "@starship-ci/client" "^2.1.0"
+    "@starship-ci/client" "^2.7.0"
     chalk "^4.1.0"
     deepmerge "^4.3.1"
     inquirerer "^1.9.0"
     js-yaml "^4.1.0"
     minimist "^1.2.8"
 
-"@starship-ci/client@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@starship-ci/client/-/client-2.1.0.tgz#e316af56a7055c198c71104d9d58df6f02dd80bc"
-  integrity sha512-n8l+bpSGW86fHKpbmP6JGCJxJ2mDzsF6Dm40YUx9FZW44qrjiFVy4eJ67xL8psQ8e3367mSuduFbvdnNUZvzOQ==
+"@starship-ci/client@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@starship-ci/client/-/client-2.7.0.tgz#b85fce50267b909a11eeed6e3ff8f45b318b505a"
+  integrity sha512-xoo5Feu0MxT5yCg9dDBsxN/Tl/GRazAMEAsPtHSFTBf7FokGMGmFgkcuXR4g2VSTy6qmHC69iKQORIlhir9s2g==
   dependencies:
     chalk "^4.1.0"
     deepmerge "^4.3.1"
@@ -8313,10 +8313,10 @@ stack-utils@^2.0.3:
   dependencies:
     escape-string-regexp "^2.0.0"
 
-starshipjs@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/starshipjs/-/starshipjs-2.1.0.tgz#6e3462af8d8b3eaadbed37e236c9e00f99f5cfc5"
-  integrity sha512-z41NLSnBlCZ1yarcwgMFYioJYHiLZ2hMF9qvqmvg0vJ8lyVfWCRYYDYFFtZTcjKsbZgiayW6vP7HLRMqYq1c7g==
+starshipjs@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/starshipjs/-/starshipjs-2.3.0.tgz#074a0aae279a8ca589e0aeddf823fe2f7854fb29"
+  integrity sha512-XdHMuyDXVeZe63GawkD71xKXuuXH2MQ12Qr3p5XbYoMfP6TsVvgwf5g5hE9KJ6lYR2uXXhjL5DaVZPGyvku7hA==
   dependencies:
     "@chain-registry/client" "1.18.1"
     bip39 "^3.1.0"
