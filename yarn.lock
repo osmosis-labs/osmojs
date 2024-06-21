@@ -2516,22 +2516,22 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@starship-ci/cli@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@starship-ci/cli/-/cli-2.7.0.tgz#706a90ae6f3e3e1c784b28fe260e9388dbe95c83"
-  integrity sha512-gcLT0hA/wQJtidHZiIb1ICgJtF2ISSpiUVb/3dGU/1tBYKKOgYMuTkmTUOnocGI3QdkAwOB+7Rlw0BeH4fieFg==
+"@starship-ci/cli@^2.8.1":
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/@starship-ci/cli/-/cli-2.8.1.tgz#053fce14c906b4e054aa7596eebafe28861341a4"
+  integrity sha512-1PiE87/fcJglkm82C1ts4iFDm4zPrp+BWg592Ccf5djSEiz/7mRjzWKYxJoe/w+QKdhAN5PLoCb66D15z84pWw==
   dependencies:
-    "@starship-ci/client" "^2.7.0"
+    "@starship-ci/client" "^2.7.2"
     chalk "^4.1.0"
     deepmerge "^4.3.1"
     inquirerer "^1.9.0"
     js-yaml "^4.1.0"
     minimist "^1.2.8"
 
-"@starship-ci/client@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@starship-ci/client/-/client-2.7.0.tgz#b85fce50267b909a11eeed6e3ff8f45b318b505a"
-  integrity sha512-xoo5Feu0MxT5yCg9dDBsxN/Tl/GRazAMEAsPtHSFTBf7FokGMGmFgkcuXR4g2VSTy6qmHC69iKQORIlhir9s2g==
+"@starship-ci/client@^2.7.2":
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/@starship-ci/client/-/client-2.7.2.tgz#2ce7108aa425c177adbabccd08168166b7e66c5c"
+  integrity sha512-Mk0bDPU20LO2l+UiMMJki4Tc03bzIsvugpL6Gx39NV+9zfDUuUhuWgW4Kq1mCxSxpDe2p3+UQC3ZeRm7ITWdMQ==
   dependencies:
     chalk "^4.1.0"
     deepmerge "^4.3.1"
