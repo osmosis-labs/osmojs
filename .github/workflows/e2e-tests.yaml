@@ -34,7 +34,8 @@ jobs:
         uses: cosmology-tech/starship-action@0.5.3
         with:
           config: packages/osmojs/starship/configs/config.workflow.yaml
-          version: 0.2.5
+          version: 0.2.6
+          cli-version: 2.7.2
 
       - name: Run E2E Tests
         run: cd ./packages/osmojs && yarn starship:test

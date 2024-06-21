@@ -1,3 +1,0 @@
-helmName: osmojs
-helmFile: ./config.yaml
-helmVersion: v0.2.5
