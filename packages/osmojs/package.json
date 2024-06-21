@@ -28,7 +28,7 @@
     "test": "jest --config ./jest.osmojs.config.js",
     "test:watch": "jest --watch --config ./jest.osmojs.config.js",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand --config ./jest.osmojs.config.js",
-    "starship": "starship --config ./starship/configs/starship.yaml",
+    "starship": "starship --config ./starship/configs/config.yaml",
     "starship:test": "jest --config ./jest.starship.config.js --verbose --bail",
     "starship:debug": "jest --config ./jest.starship.config.js --runInBand --verbose --bail",
     "starship:watch": "jest --watch --config ./jest.starship.config.js"
@@ -46,7 +46,7 @@
     "@protobufs/ibc": "^0.1.0",
     "@protobufs/osmosis": "^0.4.0",
     "@protobufs/tendermint": "^0.0.10",
-    "@starship-ci/cli": "^2.7.0",
+    "@starship-ci/cli": "^2.7.1",
     "starshipjs": "^2.3.0"
   },
   "dependencies": {
