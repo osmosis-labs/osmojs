@@ -1,13 +1,13 @@
-import { AssetDenomUnit, AssetList } from "@chain-registry/types";
+import { DenomUnit, AssetList } from "@chain-registry/types";
 import { Coin } from "osmojs/cosmos/base/v1beta1/coin";
 import { Duration } from "osmojs/google/protobuf/duration";
 import { Pool } from "osmojs/osmosis/gamm/v1beta1/balancerPool";
 import { Gauge } from "osmojs/osmosis/incentives/gauge";
 import { SuperfluidAsset } from "osmojs/osmosis/superfluid/superfluid";
 
-export type CoinDenom = AssetDenomUnit["denom"];
+export type CoinDenom = DenomUnit["denom"];
 
-export type Exponent = AssetDenomUnit["exponent"];
+export type Exponent = DenomUnit["exponent"];
 
 export type CoinSymbol = string;
 
