@@ -1,5 +1,5 @@
 name: osmojs
-version: v0.2.6
+version: v0.2.20
 
 chains:
   - id: osmosis-1
