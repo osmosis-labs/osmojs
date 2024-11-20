@@ -32,7 +32,7 @@
     "chain-registry": "1.18.0"
   },
   "dependencies": {
-    "@chain-registry/types": "0.16.0",
+    "@chain-registry/types": "^0.50.15",
     "@chain-registry/utils": "^1.30.0",
     "bignumber.js": "9.1.2",
     "chain-registry": "^1.46.7",
