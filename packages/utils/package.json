@@ -1,6 +1,6 @@
 {
   "name": "@osmonauts/utils",
-  "version": "1.17.0",
+  "version": "1.18.0",
   "description": "Utils for Osmosis",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/osmosis-labs/osmojs",
@@ -28,7 +28,7 @@
     "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "osmojs": "^16.14.0"
+    "osmojs": "^16.15.0"
   },
   "dependencies": {
     "@cosmjs/amino": "0.32.3",
