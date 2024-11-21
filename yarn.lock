@@ -1089,13 +1089,12 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@chain-registry/assets@1.19.0":
-  version "1.19.0"
-  resolved "https://registry.yarnpkg.com/@chain-registry/assets/-/assets-1.19.0.tgz#26135ee669df28e54dcd250b5ae116b74ede40c8"
-  integrity sha512-g4dSKLmE3OBjLsSeE1XKEHu+tFH3P1lPrx+P7+0dJoExYkhMYXMMGodxYBhuho2SfuA6bYwTPGsETIO1AkaMHQ==
+"@chain-registry/assets@^1.70.38":
+  version "1.70.38"
+  resolved "https://registry.yarnpkg.com/@chain-registry/assets/-/assets-1.70.38.tgz#7ec2be8c9b33d4516ecf7bfff91c46ac41353a3d"
+  integrity sha512-/OtCqdU5WGQwCSaTM1gBSAiKHBhkFQqv7dp9Cl8XMbOPA/b6DhTXkqKsh3kTFeK3kE44HGW1aGtO3230Z4TFpQ==
   dependencies:
-    "@babel/runtime" "^7.21.0"
-    "@chain-registry/types" "^0.16.0"
+    "@chain-registry/types" "^0.50.17"
 
 "@chain-registry/client@1.18.1":
   version "1.18.1"
@@ -1118,7 +1117,7 @@
     bfs-path "^1.0.2"
     cross-fetch "^3.1.5"
 
-"@chain-registry/types@0.16.0", "@chain-registry/types@^0.16.0":
+"@chain-registry/types@0.16.0":
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/@chain-registry/types/-/types-0.16.0.tgz#f76409186899a976d33693d7f458c33d71a66730"
   integrity sha512-4j6vq2Vqn/nF+UBjvRPUVs6eM3+5rJ+dPmEWpd/OoNH3wTy1k6aoilcSTZRR//vGcI5EOVGsxhhJxUzo2qqweA==
@@ -1132,22 +1131,12 @@
   dependencies:
     "@babel/runtime" "^7.21.0"
 
-"@chain-registry/types@^0.28.11":
-  version "0.28.11"
-  resolved "https://registry.yarnpkg.com/@chain-registry/types/-/types-0.28.11.tgz#be43fcd3d9489a5cb427cae1d25a274e210c252a"
-  integrity sha512-pTsd6YGq+W6qnqWkWI7VxPYrx1T8B6usjlG5XmZxUJJFpB7HULot9WLPmcB/DEUxR8pekyiIN3x93761mql4sQ==
-
 "@chain-registry/types@^0.28.2":
   version "0.28.2"
   resolved "https://registry.yarnpkg.com/@chain-registry/types/-/types-0.28.2.tgz#5218f2c51a80193ec233a7f66a0c7218a73848d7"
   integrity sha512-JcBNM3kMgpwe/PTmDhXmSEQuGE2iKXPgiCoRUW4SH7vveF66sTRpBKYMZWa4wS7AGe49YvQUttQv/EMofbEhCw==
 
-"@chain-registry/types@^0.29.0":
-  version "0.29.0"
-  resolved "https://registry.yarnpkg.com/@chain-registry/types/-/types-0.29.0.tgz#04751885c687df18feebfdfef446d8d45658a519"
-  integrity sha512-62oOUxD4tgSkv04drULpaLtCLW6IpnQ9ieNGLg5pVvbrD886yE6m3iO9ddOLqf6z6tcMFlxKxZ5c9vl6jdnIZg==
-
-"@chain-registry/types@^0.50.15":
+"@chain-registry/types@^0.50.15", "@chain-registry/types@^0.50.17":
   version "0.50.17"
   resolved "https://registry.yarnpkg.com/@chain-registry/types/-/types-0.50.17.tgz#5e85a5ebe1452a8cf57f9bd506c2e62b3d84ab2e"
   integrity sha512-2J6b2C/KbKHrx4nYuj9X2IqAuNdiJ9BRD96l7URfAwK2X4U+KZbYSMQ8mvNe5SLdVexDZuBFj735suQI9xVnkQ==
@@ -1161,13 +1150,13 @@
     bignumber.js "9.1.1"
     sha.js "^2.4.11"
 
-"@chain-registry/utils@^1.30.0":
-  version "1.30.0"
-  resolved "https://registry.yarnpkg.com/@chain-registry/utils/-/utils-1.30.0.tgz#4fa6493941b7c750bb357100ddbbcd60cd7d9ddc"
-  integrity sha512-qVXAH4X3h3/b4cr/YTr7JlEMH00Mh2g8alJV/+L5oZL/rkuZuuLbopv6m73xgcbvSMQe2JvvAhIqaYSJjv/TIw==
+"@chain-registry/utils@^1.51.17":
+  version "1.51.17"
+  resolved "https://registry.yarnpkg.com/@chain-registry/utils/-/utils-1.51.17.tgz#01182200b71e945c29a15dde3fe377b03ddf57e8"
+  integrity sha512-UGWi1mPGK1IQlC/OeFUrNibb7ZAlM1GhbAkRklw+GCzoH5rCwFOWn4X4NRpLACgOPOcmV30yoibOM0Gi2nlS7g==
   dependencies:
-    "@chain-registry/types" "^0.29.0"
-    bignumber.js "9.1.1"
+    "@chain-registry/types" "^0.50.17"
+    bignumber.js "9.1.2"
     sha.js "^2.4.11"
 
 "@confio/ics23@^0.6.8":
@@ -3465,12 +3454,12 @@ case@1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-chain-registry@^1.46.7:
-  version "1.46.7"
-  resolved "https://registry.yarnpkg.com/chain-registry/-/chain-registry-1.46.7.tgz#3db167017ce67ed20de150db318296f730ee44bd"
-  integrity sha512-UDWtYJBBeRZuW4xpa0afhPJsDAmiBvsbcuCtZd9pLLD95snluRhRaBxh3YRKnU7B34L9El9cVaJRs0uKLBEN8w==
+chain-registry@^1.69.38:
+  version "1.69.38"
+  resolved "https://registry.yarnpkg.com/chain-registry/-/chain-registry-1.69.38.tgz#23ccc0063a7083d6a7e3c4cb24ff3153f4d2d5a3"
+  integrity sha512-4w2ib4UIwshP+/siEX1cQF1Rdprip4+wfySR9JYTDB5JmKvHlZENOOZHsBzVyOtt3rTIxAjmUEf1rtVluJhWzA==
   dependencies:
-    "@chain-registry/types" "^0.28.11"
+    "@chain-registry/types" "^0.50.17"
 
 chalk@4.1.0:
   version "4.1.0"
