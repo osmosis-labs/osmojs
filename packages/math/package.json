@@ -28,14 +28,13 @@
     "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "@chain-registry/assets": "1.19.0",
-    "chain-registry": "1.18.0"
+    "@chain-registry/assets": "^1.70.38"
   },
   "dependencies": {
     "@chain-registry/types": "^0.50.15",
-    "@chain-registry/utils": "^1.30.0",
+    "@chain-registry/utils": "^1.51.17",
     "bignumber.js": "9.1.2",
-    "chain-registry": "^1.46.7",
+    "chain-registry": "^1.69.38",
     "decimal.js-light": "^2.5.1",
     "osmojs": "^16.14.0"
   },
