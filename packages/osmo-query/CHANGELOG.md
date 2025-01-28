@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [16.14.0](https://github.com/cosmology-tech/osmojs/compare/osmo-query@16.13.0...osmo-query@16.14.0) (2024-11-21)
+# [16.14.0](https://github.com/hyperweb-io/osmojs/compare/osmo-query@16.13.0...osmo-query@16.14.0) (2024-11-21)
 
 **Note:** Version bump only for package osmo-query
 
@@ -11,7 +11,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [16.13.0](https://github.com/cosmology-tech/osmojs/compare/osmo-query@16.12.0...osmo-query@16.13.0) (2024-05-08)
+# [16.13.0](https://github.com/hyperweb-io/osmojs/compare/osmo-query@16.12.0...osmo-query@16.13.0) (2024-05-08)
 
 **Note:** Version bump only for package osmo-query
 
@@ -19,7 +19,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [16.12.0](https://github.com/cosmology-tech/osmojs/compare/osmo-query@16.11.0...osmo-query@16.12.0) (2024-04-26)
+# [16.12.0](https://github.com/hyperweb-io/osmojs/compare/osmo-query@16.11.0...osmo-query@16.12.0) (2024-04-26)
 
 **Note:** Version bump only for package osmo-query
 

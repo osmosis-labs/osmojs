@@ -31,7 +31,7 @@ jobs:
 
       - name: Set Up Starship Infrastructure
         id: starship-infra
-        uses: cosmology-tech/starship-action@0.5.7
+        uses: hyperweb-io/starship-action@0.5.7
         with:
           config: packages/osmojs/starship/configs/config.workflow.yaml
           cli-version: 2.9.0

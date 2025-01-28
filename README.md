@@ -12,7 +12,7 @@
   </a>
    <a href="https://github.com/osmosis-labs/osmojs/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
    <a href="https://www.npmjs.com/package/osmojs"><img height="20" src="https://img.shields.io/github/package-json/v/osmosis-labs/osmojs?filename=packages%2Fosmojs%2Fpackage.json"></a>
-   <a href="https://github.com/cosmology-tech/starshipjs"><img height="20" src="https://img.shields.io/badge/CI-Starship-blue"></a>
+   <a href="https://github.com/hyperweb-io/starshipjs"><img height="20" src="https://img.shields.io/badge/CI-Starship-blue"></a>
 </p>
 
 [OsmosJS](https://github.com/osmosis-labs/osmojs) makes it easy to compose and broadcast Osmosis and Cosmos messages, with all of the proto and amino encoding handled for you.
@@ -130,7 +130,7 @@ const routes = getRoutesForTrade({
 const tokenOutMinAmount = calcAmountWithSlippage(tokenOutAmount, slippage);
 ```
 
-For more details, check out the [swap-tokens](https://github.com/cosmology-tech/create-cosmos-app/tree/main#swap-tokens) example.
+For more details, check out the [swap-tokens](https://github.com/hyperweb-io/create-cosmos-app/tree/main#swap-tokens) example.
 
 ### Lockup Messages
 
@@ -286,9 +286,9 @@ const fee = {
 
 ## Connecting with Wallets and Signing Messages
 
-⚡️ For web interfaces, we recommend using [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit). Continue below to see how to manually construct signers and clients.
+⚡️ For web interfaces, we recommend using [cosmos-kit](https://github.com/hyperweb-io/cosmos-kit). Continue below to see how to manually construct signers and clients.
 
-Here are the docs on [creating signers](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#signing-clients) in cosmos-kit that can be used with Keplr and other wallets.
+Here are the docs on [creating signers](https://github.com/hyperweb-io/cosmos-kit/tree/main/packages/react#signing-clients) in cosmos-kit that can be used with Keplr and other wallets.
 
 ### Initializing the Stargate Client
 
@@ -307,7 +307,7 @@ const client = await getSigningOsmosisClient({
 
 To broadcast messages, you can create signers with a variety of options:
 
-* [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#signing-clients) (recommended)
+* [cosmos-kit](https://github.com/hyperweb-io/cosmos-kit/tree/main/packages/react#signing-clients) (recommended)
 * [keplr](https://docs.keplr.app/api/cosmjs.html)
 * [cosmjs](https://gist.github.com/webmaster128/8444d42a7eceeda2544c8a59fbd7e1d9)
 ### Amino Signer

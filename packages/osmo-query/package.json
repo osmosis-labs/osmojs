@@ -6,7 +6,7 @@
   "main": "index.js",
   "module": "esm/index.js",
   "types": "index.d.ts",
-  "homepage": "https://github.com/cosmology-tech/osmojs",
+  "homepage": "https://github.com/hyperweb-io/osmojs",
   "license": "SEE LICENSE IN LICENSE",
   "publishConfig": {
     "access": "public",
@@ -14,10 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cosmology-tech/osmojs"
+    "url": "https://github.com/hyperweb-io/osmojs"
   },
   "bugs": {
-    "url": "https://github.com/cosmology-tech/osmojs/issues"
+    "url": "https://github.com/hyperweb-io/osmojs/issues"
   },
   "scripts": {
     "copy": "copyfiles -f LICENSE-MIT LICENSE-Apache README.md package.json dist",

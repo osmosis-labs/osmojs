@@ -128,7 +128,7 @@ const routes = getRoutesForTrade({
 const tokenOutMinAmount = calcAmountWithSlippage(tokenOutAmount, slippage);
 ```
 
-For more details, check out the [swap-tokens](https://github.com/cosmology-tech/create-cosmos-app/tree/main#swap-tokens) example.
+For more details, check out the [swap-tokens](https://github.com/hyperweb-io/create-cosmos-app/tree/main#swap-tokens) example.
 
 ### Lockup Messages
 
@@ -284,9 +284,9 @@ const fee = {
 
 ## Connecting with Wallets and Signing Messages
 
-⚡️ For web interfaces, we recommend using [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit). Continue below to see how to manually construct signers and clients.
+⚡️ For web interfaces, we recommend using [cosmos-kit](https://github.com/hyperweb-io/cosmos-kit). Continue below to see how to manually construct signers and clients.
 
-Here are the docs on [creating signers](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#signing-clients) in cosmos-kit that can be used with Keplr and other wallets.
+Here are the docs on [creating signers](https://github.com/hyperweb-io/cosmos-kit/tree/main/packages/react#signing-clients) in cosmos-kit that can be used with Keplr and other wallets.
 
 ### Initializing the Stargate Client
 
@@ -305,7 +305,7 @@ const client = await getSigningOsmosisClient({
 
 To broadcast messages, you can create signers with a variety of options:
 
-* [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#signing-clients) (recommended)
+* [cosmos-kit](https://github.com/hyperweb-io/cosmos-kit/tree/main/packages/react#signing-clients) (recommended)
 * [keplr](https://docs.keplr.app/api/cosmjs.html)
 * [cosmjs](https://gist.github.com/webmaster128/8444d42a7eceeda2544c8a59fbd7e1d9)
 ### Amino Signer
