@@ -6,7 +6,7 @@ FROM ghcr.io/strangelove-ventures/heighliner/osmosis:v16.1.0 as source
 
 FROM alpine:3.16
 
-LABEL org.opencontainers.image.source="https://github.com/cosmology-tech/starship"
+LABEL org.opencontainers.image.source="https://github.com/hyperweb-io/starship"
 
 COPY --from=source /bin /usr/bin
 COPY --from=source /lib /usr/lib

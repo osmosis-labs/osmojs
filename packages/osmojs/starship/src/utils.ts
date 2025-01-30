@@ -73,7 +73,7 @@ const setupIbcClient = async (rpcEndpoint: string, wallet: OfflineSigner): Promi
 const sendIbcTokens = async (client: SigningStargateClient, fromAddress: string, toAddress: string, token: Coin, ibcInfo: any, _amount) => {
   const { port_id: sourcePort, channel_id: sourceChannel } = ibcInfo.channels[0].chain_1;
   const timeoutTime = Math.floor(Date.now() / 1000) + 300; // 5 minutes
-  const fee = { amount: [{ denom: token.denom, amount: '100000' }], gas: '550000' };
+  const fee = { amount: [{ denom: token.denom, amount: '1000000' }], gas: '550000' };
 
   return client.sendIbcTokens(fromAddress, toAddress, token, sourcePort, sourceChannel, undefined, timeoutTime, fee);
 };
