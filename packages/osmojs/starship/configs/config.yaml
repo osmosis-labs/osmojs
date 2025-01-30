@@ -1,5 +1,5 @@
 name: osmojs
-version: v1.0.0
+version: v1.1.0
 
 chains:
   - id: osmosis-1
@@ -14,8 +14,6 @@ chains:
   - id: cosmos-2
     name: cosmoshub
     numValidators: 1
-    faucet:
-      type: starship
     ports:
       rest: 1313
       rpc: 26653
