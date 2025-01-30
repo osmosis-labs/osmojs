@@ -31,10 +31,10 @@ jobs:
 
       - name: Set Up Starship Infrastructure
         id: starship-infra
-        uses: hyperweb-io/starship-action@0.5.7
+        uses: hyperweb-io/starship-action@0.5.8
         with:
           config: packages/osmojs/starship/configs/config.workflow.yaml
-          cli-version: 2.9.0
+          cli-version: 3.0.0
 
       - name: Run E2E Tests
         run: cd ./packages/osmojs && yarn starship:test
