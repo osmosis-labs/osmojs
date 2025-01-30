@@ -103,7 +103,7 @@ describe('Pool testing over IBC tokens', () => {
           amount: '1000000'
         }
       ],
-      gas: '55000'
+      gas: '550000'
     };
 
     const result = await signingClient.signAndBroadcast(
@@ -182,7 +182,7 @@ describe('Pool testing over IBC tokens', () => {
           amount: '1000000'
         }
       ],
-      gas: '55000'
+      gas: '550000'
     };
 
     const result = await signingClient.signAndBroadcast(
@@ -236,7 +236,7 @@ describe('Pool testing over IBC tokens', () => {
           amount: '1000000'
         }
       ],
-      gas: '55000'
+      gas: '550000'
     };
 
     const result = await signingClient.signAndBroadcast(
@@ -286,7 +286,7 @@ describe('Pool testing over IBC tokens', () => {
           amount: '1000000'
         }
       ],
-      gas: '55000'
+      gas: '550000'
     };
 
     const result = await signingClient.signAndBroadcast(

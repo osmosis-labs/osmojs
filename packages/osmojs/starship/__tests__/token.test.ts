@@ -49,7 +49,7 @@ describe('Token transfers', () => {
           amount: '1000000'
         }
       ],
-      gas: '55000'
+      gas: '550000'
     };
 
     const token = {
@@ -119,7 +119,7 @@ describe('Token transfers', () => {
           amount: '1000000'
         }
       ],
-      gas: '55000'
+      gas: '550000'
     };
 
     const token = {

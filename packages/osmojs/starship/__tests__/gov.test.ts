@@ -117,7 +117,7 @@ describe('Governance tests for osmosis', () => {
           amount: '1000000'
         }
       ],
-      gas: '55000'
+      gas: '550000'
     };
 
     const result = await signingClient.signAndBroadcast(address, [msg], fee);
@@ -157,7 +157,7 @@ describe('Governance tests for osmosis', () => {
           amount: '1000000'
         }
       ],
-      gas: '55000'
+      gas: '550000'
     };
 
     const result = await signingClient.signAndBroadcast(address, [msg], fee);
@@ -207,7 +207,7 @@ describe('Governance tests for osmosis', () => {
           amount: '1000000'
         }
       ],
-      gas: '55000'
+      gas: '550000'
     };
 
     const result = await signingClient.signAndBroadcast(
