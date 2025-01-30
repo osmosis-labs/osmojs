@@ -99,7 +99,7 @@ describe('Staking tokens testing', () => {
           amount: '1000000'
         }
       ],
-      gas: '550000'
+      gas: '55000'
     };
 
     const result = await signingClient.signAndBroadcast(address, [msg], fee);
