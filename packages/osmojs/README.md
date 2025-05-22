@@ -15,7 +15,7 @@
    <a href="https://github.com/hyperweb-io/starshipjs"><img height="20" src="https://img.shields.io/badge/CI-Starship-blue"></a>
 </p>
 
-[OsmosJS](https://github.com/osmosis-labs/osmojs) makes it easy to compose and broadcast Osmosis and Cosmos messages, with all of the proto and amino encoding handled for you.
+[OsmoJS](https://github.com/osmosis-labs/osmojs) makes it easy to compose and broadcast Osmosis and Cosmos messages, with all of the proto and amino encoding handled for you.
 
 ---
 ## install
